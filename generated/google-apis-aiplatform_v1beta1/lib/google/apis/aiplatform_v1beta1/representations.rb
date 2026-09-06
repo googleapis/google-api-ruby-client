@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenaiVertexV1beta1CreateInteractionHttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenaiVertexV1beta1CreateInteractionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -874,6 +880,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenaiVertexV1beta1ProcessingCallDelta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenaiVertexV1beta1ProcessingCallStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenaiVertexV1beta1ProcessingResultDelta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenaiVertexV1beta1ProcessingResultStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GenaiVertexV1beta1RagStoreConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1294,6 +1324,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1A2APart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1A2aPart
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1462,6 +1558,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1AgentResponseCustomization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1AgentTool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1529,6 +1631,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ApiAuthApiKeyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1739,6 +1853,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1AuthConfigOidcConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1973,6 +2099,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1BatchReadTensorboardTimeSeriesDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5189,6 +5327,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1LineageSubgraph
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordEventsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11278,6 +11428,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1Trial
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -11900,6 +12056,7 @@ module Google
           property :exr_color_space_override, as: 'exrColorSpaceOverride'
           property :human_pose, as: 'humanPose', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionHumanPose, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionHumanPose::Representation
       
+          property :model_endpoint_override, as: 'modelEndpointOverride'
           property :model_name, as: 'modelName'
           property :num_diffusion_steps, as: 'numDiffusionSteps'
           property :omni_rewriter, as: 'omniRewriter', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsOmniRewriterConfig::Representation
@@ -12490,6 +12647,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index, as: 'index'
+        end
+      end
+      
+      class GenaiVertexV1beta1CreateInteractionHttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_body, as: 'httpBody', class: Google::Apis::AiplatformV1beta1::GoogleApiHttpBody, decorator: Google::Apis::AiplatformV1beta1::GoogleApiHttpBody::Representation
+      
         end
       end
       
@@ -13322,6 +13487,30 @@ module Google
         end
       end
       
+      class GenaiVertexV1beta1ProcessingCallDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GenaiVertexV1beta1ProcessingCallStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GenaiVertexV1beta1ProcessingResultDelta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GenaiVertexV1beta1ProcessingResultStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GenaiVertexV1beta1RagStoreConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -13495,6 +13684,8 @@ module Google
       
           property :mcp_server_tool_call, as: 'mcpServerToolCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallDelta::Representation
       
+          property :processing_call, as: 'processingCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallDelta::Representation
+      
           property :retrieval_call, as: 'retrievalCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallDelta::Representation
       
           property :signature, :base64 => true, as: 'signature'
@@ -13515,6 +13706,8 @@ module Google
           property :google_search_result, as: 'googleSearchResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1GoogleSearchResultDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1GoogleSearchResultDelta::Representation
       
           property :mcp_server_tool_result, as: 'mcpServerToolResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultDelta::Representation
+      
+          property :processing_result, as: 'processingResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultDelta::Representation
       
           property :retrieval_result, as: 'retrievalResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultDelta, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultDelta::Representation
       
@@ -13808,6 +14001,8 @@ module Google
           property :id, as: 'id'
           property :mcp_server_tool_call, as: 'mcpServerToolCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallStep::Representation
       
+          property :processing_call, as: 'processingCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallStep::Representation
+      
           property :retrieval_call, as: 'retrievalCall', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalCallStep::Representation
       
           property :signature, :base64 => true, as: 'signature'
@@ -13884,6 +14079,8 @@ module Google
       
           property :mcp_server_tool_result, as: 'mcpServerToolResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultStep::Representation
       
+          property :processing_result, as: 'processingResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultStep::Representation
+      
           property :retrieval_result, as: 'retrievalResult', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultStep, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1RetrievalResultStep::Representation
       
           property :signature, :base64 => true, as: 'signature'
@@ -13899,7 +14096,6 @@ module Google
           collection :custom_vocabulary, as: 'customVocabulary'
           property :diarization_mode, as: 'diarizationMode'
           collection :language_codes, as: 'languageCodes'
-          property :mode, as: 'mode'
           collection :timestamp_granularities, as: 'timestampGranularities'
         end
       end
@@ -14044,6 +14240,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
           property :mime_type_string, as: 'mimeTypeString'
+          property :name, as: 'name'
           property :processing_config, as: 'processingConfig', class: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1VideoContentMediaProcessing, decorator: Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1VideoContentMediaProcessing::Representation
       
           property :processing_type, as: 'processingType'
@@ -14106,6 +14303,141 @@ module Google
           property :content_type, as: 'contentType'
           property :data, :base64 => true, as: 'data'
           collection :extensions, as: 'extensions'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2APart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :filename, as: 'filename'
+          property :media_type, as: 'mediaType'
+          hash :metadata, as: 'metadata'
+          property :raw, :base64 => true, as: 'raw'
+          property :text, as: 'text'
+          property :url, as: 'url'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_id, as: 'appId'
+          collection :artifacts, as: 'artifacts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact::Representation
+      
+          property :context_id, as: 'contextId'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :expire_time, as: 'expireTime'
+          property :generation, :numeric_string => true, as: 'generation'
+          collection :history, as: 'history', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          property :purge_time, as: 'purgeTime'
+          hash :service_metadata, as: 'serviceMetadata'
+          property :status, as: 'status', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatus, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatus::Representation
+      
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime'
+          property :user_id, as: 'userId'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :extensions, as: 'extensions'
+          hash :metadata, as: 'metadata'
+          collection :parts, as: 'parts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :append, as: 'append'
+          property :artifact, as: 'artifact', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact::Representation
+      
+          property :last_chunk, as: 'lastChunk'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :event_data, as: 'eventData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEventData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEventData::Representation
+      
+          property :generation, :numeric_string => true, as: 'generation'
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEventData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_change, as: 'artifactChange', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange::Representation
+      
+          property :history_append, as: 'historyAppend', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend::Representation
+      
+          property :metadata_change, as: 'metadataChange', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange::Representation
+      
+          property :status_update, as: 'statusUpdate', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extensions, as: 'extensions'
+          property :message_id, as: 'messageId'
+          hash :metadata, as: 'metadata'
+          collection :parts, as: 'parts', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart::Representation
+      
+          collection :reference_task_ids, as: 'referenceTaskIds'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage::Representation
+      
+          property :state, as: 'state'
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage::Representation
+      
+          property :state, as: 'state'
+          property :timestamp, as: 'timestamp'
         end
       end
       
@@ -14404,6 +14736,13 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1AgentResponseCustomization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :denial_message, as: 'denialMessage'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1AgentTool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14551,6 +14890,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key_secret_version, as: 'apiKeySecretVersion'
           property :api_key_string, as: 'apiKeyString'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent::Representation
+      
+          property :generation, :numeric_string => true, as: 'generation'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation, :numeric_string => true, as: 'generation'
         end
       end
       
@@ -14779,7 +15134,6 @@ module Google
           collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints::Representation
       
-          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -14890,6 +15244,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id_token, as: 'idToken'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -15280,6 +15646,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :time_series_data, as: 'timeSeriesData', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TimeSeriesData, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TimeSeriesData::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :inputs, as: 'inputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :outputs, as: 'outputs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk::Representation
       
         end
       end
@@ -20117,6 +20499,8 @@ module Google
       
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+          property :translation_config, as: 'translationConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TranslationConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TranslationConfig::Representation
+      
         end
       end
       
@@ -21038,6 +21422,24 @@ module Google
       
           collection :executions, as: 'executions', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Execution, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Execution::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordEventsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :a2a_task_records, as: 'a2aTaskRecords', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecord, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecord::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -21984,6 +22386,7 @@ module Google
       class GoogleCloudAiplatformV1beta1Memory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :disable_memory_revisions, as: 'disableMemoryRevisions'
@@ -22147,6 +22550,7 @@ module Google
       class GoogleCloudAiplatformV1beta1MemoryRevision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :context, as: 'context'
           property :create_time, as: 'createTime'
           property :expire_time, as: 'expireTime'
           collection :extracted_memories, as: 'extractedMemories', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IntermediateExtractedMemory, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1IntermediateExtractedMemory::Representation
@@ -27101,6 +27505,7 @@ module Google
           property :source_sandbox_environment, as: 'sourceSandboxEnvironment'
           property :ttl, as: 'ttl'
           property :update_time, as: 'updateTime'
+          property :use_gke_td, as: 'useGkeTd'
         end
       end
       
@@ -27113,6 +27518,7 @@ module Google
       
           property :shell_environment, as: 'shellEnvironment', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecShellEnvironment, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecShellEnvironment::Representation
       
+          property :use_gke_td, as: 'useGkeTd'
         end
       end
       
@@ -27152,6 +27558,7 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          property :use_gke_td, as: 'useGkeTd'
         end
       end
       
@@ -27186,7 +27593,6 @@ module Google
       class GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateEgressControlConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :customer_vpc_network, as: 'customerVpcNetwork'
           collection :dns_peering_configs, as: 'dnsPeeringConfigs', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateEgressControlConfigDnsPeeringConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateEgressControlConfigDnsPeeringConfig::Representation
       
           property :internet_access, as: 'internetAccess'
@@ -29385,6 +29791,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
           property :agent_identity, as: 'agentIdentity'
+          property :agent_response_customization, as: 'agentResponseCustomization', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentResponseCustomization, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentResponseCustomization::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -31231,6 +31639,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finished, as: 'finished'
           property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :echo_target_language, as: 'echoTargetLanguage'
+          property :target_language_code, as: 'targetLanguageCode'
         end
       end
       
