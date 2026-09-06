@@ -1,5 +1,9 @@
 # Release history for google-apis-developerknowledge_v1alpha
 
+### v0.9.0 (2026-09-06)
+
+* Regenerated from discovery document revision 20260830
+
 ### v0.8.0 (2026-08-16)
 
 * Regenerated from discovery document revision 20260809
