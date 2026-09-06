@@ -33,6 +33,11 @@ module Google
         # @return [Array<Google::Apis::ManagedkafkaV1::NetworkConfig>]
         attr_accessor :network_configs
       
+        # The configuration for a public Kafka cluster
+        # Corresponds to the JSON property `publicClusterConfig`
+        # @return [Google::Apis::ManagedkafkaV1::PublicClusterConfig]
+        attr_accessor :public_cluster_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -40,6 +45,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_configs = args[:network_configs] if args.key?(:network_configs)
+          @public_cluster_config = args[:public_cluster_config] if args.key?(:public_cluster_config)
         end
       end
       
@@ -183,6 +189,26 @@ module Google
         def update!(**args)
           @acl = args[:acl] if args.key?(:acl)
           @acl_created = args[:acl_created] if args.key?(:acl_created)
+        end
+      end
+      
+      # Capacity configuration at a per-broker level within the Kafka cluster. The
+      # config will be appled to each broker in the cluster.
+      class BrokerCapacityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+        # Corresponds to the JSON property `diskSizeGib`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disk_size_gib = args[:disk_size_gib] if args.key?(:disk_size_gib)
         end
       end
       
@@ -347,6 +373,23 @@ module Google
       class Cluster
         include Google::Apis::Core::Hashable
       
+        # Output only. The bootstrap address of the Kafka cluster. The returned address
+        # format is: `bootstrap-...managedkafka.s.cloud.goog` or `bootstrap...
+        # managedkafka..cloud.goog` (legacy format). ## Examples: `bootstrap-
+        # nol2mecj8p94jhx2ge2rg54579a.c0aad26f.europe-west1.managedkafka.s.cloud.goog` -
+        # `bootstrap.my-cluster.us-central1.managedkafka.my-project.cloud.goog` The port
+        # number is omitted so clients can connect to their target listener (for example,
+        # `:9092` for TLS or `:9094` for mTLS).
+        # Corresponds to the JSON property `bootstrapAddress`
+        # @return [String]
+        attr_accessor :bootstrap_address
+      
+        # Capacity configuration at a per-broker level within the Kafka cluster. The
+        # config will be appled to each broker in the cluster.
+        # Corresponds to the JSON property `brokerCapacityConfig`
+        # @return [Google::Apis::ManagedkafkaV1::BrokerCapacityConfig]
+        attr_accessor :broker_capacity_config
+      
         # Output only. Only populated when FULL view is requested. Details of each
         # broker in the cluster.
         # Corresponds to the JSON property `brokerDetails`
@@ -362,6 +405,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Describes the effective capacity configuration of a Kafka cluster, both
+        # cluster-wide and per-broker.
+        # Corresponds to the JSON property `effectiveCapacityConfig`
+        # @return [Google::Apis::ManagedkafkaV1::EffectiveCapacityConfig]
+        attr_accessor :effective_capacity_config
       
         # Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
         # Corresponds to the JSON property `gcpConfig`
@@ -384,6 +433,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Details of the public cluster feature for the Kafka cluster.
+        # Corresponds to the JSON property `publicClusterDetails`
+        # @return [Google::Apis::ManagedkafkaV1::PublicClusterDetails]
+        attr_accessor :public_cluster_details
       
         # Defines rebalancing behavior of a Kafka cluster.
         # Corresponds to the JSON property `rebalanceConfig`
@@ -430,13 +484,17 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bootstrap_address = args[:bootstrap_address] if args.key?(:bootstrap_address)
+          @broker_capacity_config = args[:broker_capacity_config] if args.key?(:broker_capacity_config)
           @broker_details = args[:broker_details] if args.key?(:broker_details)
           @capacity_config = args[:capacity_config] if args.key?(:capacity_config)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @effective_capacity_config = args[:effective_capacity_config] if args.key?(:effective_capacity_config)
           @gcp_config = args[:gcp_config] if args.key?(:gcp_config)
           @kafka_version = args[:kafka_version] if args.key?(:kafka_version)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @public_cluster_details = args[:public_cluster_details] if args.key?(:public_cluster_details)
           @rebalance_config = args[:rebalance_config] if args.key?(:rebalance_config)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -882,6 +940,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Describes the effective capacity configuration of a Kafka cluster, both
+      # cluster-wide and per-broker.
+      class EffectiveCapacityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of brokers in the cluster.
+        # Corresponds to the JSON property `brokerCount`
+        # @return [Fixnum]
+        attr_accessor :broker_count
+      
+        # Output only. The disk assigned to each broker in Gibibytes.
+        # Corresponds to the JSON property `brokerDiskSizeGib`
+        # @return [Fixnum]
+        attr_accessor :broker_disk_size_gib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @broker_count = args[:broker_count] if args.key?(:broker_count)
+          @broker_disk_size_gib = args[:broker_disk_size_gib] if args.key?(:broker_disk_size_gib)
         end
       end
       
@@ -1488,6 +1572,61 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # The configuration for a public Kafka cluster
+      class PublicClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of IPv4 ranges in CIDR notation that are allowed to connect
+        # to the public Kafka broker endpoints. The Kafka cluster should only be exposed
+        # to trusted external ranges. A maximum of 500 IP ranges can be specified and no
+        # single range can be larger than a `/16`. This field is required if
+        # PublicClusterConfig is specified.
+        # Corresponds to the JSON property `allowedSourceIpRanges`
+        # @return [Array<String>]
+        attr_accessor :allowed_source_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_source_ip_ranges = args[:allowed_source_ip_ranges] if args.key?(:allowed_source_ip_ranges)
+        end
+      end
+      
+      # Details of the public cluster feature for the Kafka cluster.
+      class PublicClusterDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. DNS discovery records that resolve to all of the external IP
+        # addresses associated with the public cluster. Used for configuring DNS-based
+        # egress firewall rules to a public cluster. discovery_dns_record can be added
+        # to this list if the cluster is scaled up. Must configure DNS based firewalls
+        # to resolve ALL DNS records in this list as large clusters have IP addresses
+        # sharded across records. Each record contains a maximum of 30 IP addresses.
+        # Corresponds to the JSON property `discoveryDnsRecords`
+        # @return [Array<String>]
+        attr_accessor :discovery_dns_records
+      
+        # Output only. All of the external IP addresses associated with the public
+        # cluster used for configuring egress firewall rules to a public cluster.
+        # external_ip_address can be added to this list if the cluster is scaled up.
+        # Corresponds to the JSON property `externalIpAddresses`
+        # @return [Array<String>]
+        attr_accessor :external_ip_addresses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @discovery_dns_records = args[:discovery_dns_records] if args.key?(:discovery_dns_records)
+          @external_ip_addresses = args[:external_ip_addresses] if args.key?(:external_ip_addresses)
         end
       end
       
