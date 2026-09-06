@@ -4155,6 +4155,7 @@ module Google
       class GoogleCloudCesV1mainImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :alt_text, as: 'altText'
           property :data, :base64 => true, as: 'data'
           property :mime_type, as: 'mimeType'
         end

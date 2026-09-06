@@ -179,6 +179,11 @@ module Google
       class GoogleCloudCesV1mainImage
         include Google::Apis::Core::Hashable
       
+        # Optional. The alternative text for the image.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
         # Required. Raw bytes of the image.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -197,6 +202,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
           @data = args[:data] if args.key?(:data)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
