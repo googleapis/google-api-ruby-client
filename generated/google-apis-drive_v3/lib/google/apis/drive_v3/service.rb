@@ -1298,6 +1298,8 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
+        # @param [Boolean] copy_comments
+        #   Whether to copy the comments associated with the file.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
@@ -1340,13 +1342,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, copy_comments: nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV3::File::Representation
           command.request_object = file_object
           command.response_representation = Google::Apis::DriveV3::File::Representation
           command.response_class = Google::Apis::DriveV3::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['copyComments'] = copy_comments unless copy_comments.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ignoreDefaultVisibility'] = ignore_default_visibility unless ignore_default_visibility.nil?
           command.query['includeLabels'] = include_labels unless include_labels.nil?
