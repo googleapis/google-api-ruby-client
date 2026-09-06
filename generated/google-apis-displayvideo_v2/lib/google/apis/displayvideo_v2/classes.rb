@@ -4619,7 +4619,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The display name of the digital content label rating tier to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept the
+        # value `CONTENT_RATING_TIER_UNRATED`. All other values will be deprecated and
+        # no longer be accepted.**
         # Corresponds to the JSON property `excludedContentRatingTier`
         # @return [String]
         attr_accessor :excluded_content_rating_tier
@@ -9827,7 +9829,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. An enum for the DV360 Sensitive category content classified to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept `
+        # SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
+        # . All other values will be deprecated and no longer be accepted.**
         # Corresponds to the JSON property `excludedSensitiveCategory`
         # @return [String]
         attr_accessor :excluded_sensitive_category
