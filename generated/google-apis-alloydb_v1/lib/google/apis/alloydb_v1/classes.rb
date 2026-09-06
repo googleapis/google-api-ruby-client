@@ -1280,6 +1280,35 @@ module Google
         end
       end
       
+      # DnsAutomationInfo contains information about the DNS automation for the
+      # instance.
+      class DnsAutomationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified domain name of the instance for DNS
+        # automation. Example: "...alloydb.goog.". Note: The AUDIT directive is
+        # intentionally omitted because this field contains sensitive network topology
+        # information.
+        # Corresponds to the JSON property `fullyQualifiedDomainName`
+        # @return [String]
+        attr_accessor :fully_qualified_domain_name
+      
+        # Output only. The state of the DNS automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fully_qualified_domain_name = args[:fully_qualified_domain_name] if args.key?(:fully_qualified_domain_name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1888,6 +1917,11 @@ module Google
         # @return [Google::Apis::AlloydbV1::PscInstanceConfig]
         attr_accessor :psc_instance_config
       
+        # Information about the Private Service Connect (PSC) for the instance.
+        # Corresponds to the JSON property `pscInstanceInfo`
+        # @return [Google::Apis::AlloydbV1::PscInstanceInfo]
+        attr_accessor :psc_instance_info
+      
         # Output only. The public IP addresses for the Instance. This is available ONLY
         # when enable_public_ip is set. This is the connection endpoint for an end-user
         # application.
@@ -1973,6 +2007,7 @@ module Google
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
+          @psc_instance_info = args[:psc_instance_info] if args.key?(:psc_instance_info)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
@@ -2798,10 +2833,30 @@ module Google
         # @return [String]
         attr_accessor :consumer_project
       
+        # Output only. List of DNS automation info for the PSC auto connection.
+        # Corresponds to the JSON property `dnsAutomationInfos`
+        # @return [Array<Google::Apis::AlloydbV1::DnsAutomationInfo>]
+        attr_accessor :dns_automation_infos
+      
         # Output only. The IP address of the PSC service automation endpoint.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Output only. The PSC service connection policy name. The format is "projects//
+        # regions//serviceConnectionPolicies/"
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        # Output only. The creation state or result of the connection policy. Possible
+        # values include: - `ACTIVE`: The policy was created successfully. - `
+        # PERMISSION_DENIED`: Sufficient permissions were not provided. Note that this
+        # field is an unstructured output and customers should not rely on the specific
+        # string value or error message directly.
+        # Corresponds to the JSON property `serviceConnectionPolicyCreationState`
+        # @return [String]
+        attr_accessor :service_connection_policy_creation_state
       
         # Output only. The status of the PSC service automation connection. Possible
         # values: "STATE_UNSPECIFIED" - An invalid state as the default case. "ACTIVE" -
@@ -2824,7 +2879,10 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @dns_automation_infos = args[:dns_automation_infos] if args.key?(:dns_automation_infos)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
+          @service_connection_policy_creation_state = args[:service_connection_policy_creation_state] if args.key?(:service_connection_policy_creation_state)
           @status = args[:status] if args.key?(:status)
         end
       end
@@ -2867,10 +2925,20 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_consumer_projects
       
+        # Optional. Configuration for setting up PSC auto connection for the instance.
+        # Corresponds to the JSON property `pscAutoConnectionPolicyState`
+        # @return [String]
+        attr_accessor :psc_auto_connection_policy_state
+      
         # Optional. Configurations for setting up PSC service automation.
         # Corresponds to the JSON property `pscAutoConnections`
         # @return [Array<Google::Apis::AlloydbV1::PscAutoConnectionConfig>]
         attr_accessor :psc_auto_connections
+      
+        # Optional. Configuration for setting up PSC auto DNS for the instance.
+        # Corresponds to the JSON property `pscAutoDnsState`
+        # @return [String]
+        attr_accessor :psc_auto_dns_state
       
         # Output only. The DNS name of the instance for PSC connectivity. Name
         # convention: ...alloydb-psc.goog
@@ -2899,10 +2967,54 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_consumer_projects = args[:allowed_consumer_projects] if args.key?(:allowed_consumer_projects)
+          @psc_auto_connection_policy_state = args[:psc_auto_connection_policy_state] if args.key?(:psc_auto_connection_policy_state)
           @psc_auto_connections = args[:psc_auto_connections] if args.key?(:psc_auto_connections)
+          @psc_auto_dns_state = args[:psc_auto_dns_state] if args.key?(:psc_auto_dns_state)
           @psc_dns_name = args[:psc_dns_name] if args.key?(:psc_dns_name)
           @psc_interface_configs = args[:psc_interface_configs] if args.key?(:psc_interface_configs)
           @service_attachment_link = args[:service_attachment_link] if args.key?(:service_attachment_link)
+        end
+      end
+      
+      # Information about the Private Service Connect (PSC) for the instance.
+      class PscInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates if the PSC auto connection policy is enabled for the
+        # instance. For older instances, this will be off by default, but for newer
+        # instances, this will be auto-enabled.
+        # Corresponds to the JSON property `effectivePscAutoConnectionPolicy`
+        # @return [Boolean]
+        attr_accessor :effective_psc_auto_connection_policy
+        alias_method :effective_psc_auto_connection_policy?, :effective_psc_auto_connection_policy
+      
+        # Output only. The effective state of the PSC auto DNS for the instance.
+        # Corresponds to the JSON property `effectivePscAutoDnsEnabled`
+        # @return [Boolean]
+        attr_accessor :effective_psc_auto_dns_enabled
+        alias_method :effective_psc_auto_dns_enabled?, :effective_psc_auto_dns_enabled
+      
+        # Output only. Specifies the auto DNS names for the instance.
+        # Corresponds to the JSON property `pscAutoDnsNames`
+        # @return [Array<String>]
+        attr_accessor :psc_auto_dns_names
+      
+        # Output only. The PSC service connection policy name. The format is "projects//
+        # regions//serviceConnectionPolicies/"
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_psc_auto_connection_policy = args[:effective_psc_auto_connection_policy] if args.key?(:effective_psc_auto_connection_policy)
+          @effective_psc_auto_dns_enabled = args[:effective_psc_auto_dns_enabled] if args.key?(:effective_psc_auto_dns_enabled)
+          @psc_auto_dns_names = args[:psc_auto_dns_names] if args.key?(:psc_auto_dns_names)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
         end
       end
       
