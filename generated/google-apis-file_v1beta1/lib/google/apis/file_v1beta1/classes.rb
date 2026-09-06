@@ -151,6 +151,13 @@ module Google
         # @return [String]
         attr_accessor :source_instance_tier
       
+        # Optional. The resource name of the Filestore volume that the backup is created
+        # from. Should be in the format: projects/`project_id`/locations/`location_id`/
+        # volumePools/`volume_pool_id`/volumes/`volume_id`
+        # Corresponds to the JSON property `sourceVolume`
+        # @return [String]
+        attr_accessor :source_volume
+      
         # Output only. The backup state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -192,6 +199,7 @@ module Google
           @source_file_share = args[:source_file_share] if args.key?(:source_file_share)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
           @source_instance_tier = args[:source_instance_tier] if args.key?(:source_instance_tier)
+          @source_volume = args[:source_volume] if args.key?(:source_volume)
           @state = args[:state] if args.key?(:state)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @tags = args[:tags] if args.key?(:tags)
@@ -1130,73 +1138,6 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @suspension_reasons = args[:suspension_reasons] if args.key?(:suspension_reasons)
           @tags = args[:tags] if args.key?(:tags)
-          @tier = args[:tier] if args.key?(:tier)
-        end
-      end
-      
-      # InstanceTemplate representation of a Cloud Filestore volume pool instance
-      # template.
-      class InstanceTemplate
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Backend type.
-        # Corresponds to the JSON property `backendType`
-        # @return [String]
-        attr_accessor :backend_type
-      
-        # Optional. Capacity in GB.
-        # Corresponds to the JSON property `capacityGb`
-        # @return [Fixnum]
-        attr_accessor :capacity_gb
-      
-        # Optional. Instance labels.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Optional. Network configurations.
-        # Corresponds to the JSON property `networks`
-        # @return [Array<Google::Apis::FileV1beta1::NetworkConfig>]
-        attr_accessor :networks
-      
-        # Used for setting the performance configuration. If the user doesn't specify
-        # PerformanceConfig, automatically provision the default performance settings as
-        # described in https://cloud.google.com/filestore/docs/performance. Larger
-        # instances will be linearly set to more IOPS. If the instance's capacity is
-        # increased or decreased, its performance will be automatically adjusted upwards
-        # or downwards accordingly (respectively).
-        # Corresponds to the JSON property `performanceConfig`
-        # @return [Google::Apis::FileV1beta1::PerformanceConfig]
-        attr_accessor :performance_config
-      
-        # Optional. File protocol.
-        # Corresponds to the JSON property `protocol`
-        # @return [String]
-        attr_accessor :protocol
-      
-        # Optional. Request overrides in JSON format.
-        # Corresponds to the JSON property `requestOverrides`
-        # @return [String]
-        attr_accessor :request_overrides
-      
-        # Optional. Tier of the instance.
-        # Corresponds to the JSON property `tier`
-        # @return [String]
-        attr_accessor :tier
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @backend_type = args[:backend_type] if args.key?(:backend_type)
-          @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
-          @labels = args[:labels] if args.key?(:labels)
-          @networks = args[:networks] if args.key?(:networks)
-          @performance_config = args[:performance_config] if args.key?(:performance_config)
-          @protocol = args[:protocol] if args.key?(:protocol)
-          @request_overrides = args[:request_overrides] if args.key?(:request_overrides)
           @tier = args[:tier] if args.key?(:tier)
         end
       end
@@ -2341,11 +2282,18 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-        # Must be greater than 0.
+        # Optional. File share capacity in gigabytes (GB). Filestore defines 1 GB as
+        # 1024^3 bytes. Must be greater than 0. Exactly one of capacity_gb or
+        # capacity_mb must be specified.
         # Corresponds to the JSON property `capacityGb`
         # @return [Fixnum]
         attr_accessor :capacity_gb
+      
+        # Optional. File share capacity in Megabytes (MB). Must be greater than 0.
+        # Exactly one of capacity_gb or capacity_mb must be specified.
+        # Corresponds to the JSON property `capacityMb`
+        # @return [Fixnum]
+        attr_accessor :capacity_mb
       
         # Output only. The time when the share was created.
         # Corresponds to the JSON property `createTime`
@@ -2393,6 +2341,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
+          @capacity_mb = args[:capacity_mb] if args.key?(:capacity_mb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
@@ -2634,76 +2583,30 @@ module Google
       class VolumePool
         include Google::Apis::Core::Hashable
       
+        # Optional. The number of IOPs provisioned per active volume.
+        # Corresponds to the JSON property `activeVolumeIops`
+        # @return [Fixnum]
+        attr_accessor :active_volume_iops
+      
         # Output only. The time when the volume pool was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. The default quota per volume in MiB. Default: 1024 MiB.
+        # Corresponds to the JSON property `defaultVolumeQuotaMib`
+        # @return [Fixnum]
+        attr_accessor :default_volume_quota_mib
       
         # Optional. A description of the volume pool with 2048 characters or less.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional. The page size to use when listing instances.
-        # Corresponds to the JSON property `instanceListPageSize`
-        # @return [Fixnum]
-        attr_accessor :instance_list_page_size
-      
-        # Optional. Instance name prefix.
-        # Corresponds to the JSON property `instanceNamePrefix`
-        # @return [String]
-        attr_accessor :instance_name_prefix
-      
-        # InstanceTemplate representation of a Cloud Filestore volume pool instance
-        # template.
-        # Corresponds to the JSON property `instanceTemplate`
-        # @return [Google::Apis::FileV1beta1::InstanceTemplate]
-        attr_accessor :instance_template
-      
         # Optional. Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
-      
-        # Optional. The maximum number of candidates to fetch when acquiring a volume.
-        # Corresponds to the JSON property `maxAcquireCandidates`
-        # @return [Fixnum]
-        attr_accessor :max_acquire_candidates
-      
-        # Optional. Maximum number of instances to create.
-        # Corresponds to the JSON property `maxInstances`
-        # @return [Fixnum]
-        attr_accessor :max_instances
-      
-        # Optional. The maximum number of pending instance creation requests.
-        # Corresponds to the JSON property `maxPendingInstanceCreations`
-        # @return [Fixnum]
-        attr_accessor :max_pending_instance_creations
-      
-        # Optional. The maximum number of pending volume creation requests per instance.
-        # Corresponds to the JSON property `maxPendingVolumeCreationsPerInstance`
-        # @return [Fixnum]
-        attr_accessor :max_pending_volume_creations_per_instance
-      
-        # Optional. The maximum number of pending volume deletion requests per instance.
-        # Corresponds to the JSON property `maxPendingVolumeDeletionsPerInstance`
-        # @return [Fixnum]
-        attr_accessor :max_pending_volume_deletions_per_instance
-      
-        # Optional. Maximum number of volumes per instance.
-        # Corresponds to the JSON property `maxVolumesPerInstance`
-        # @return [Fixnum]
-        attr_accessor :max_volumes_per_instance
-      
-        # Optional. Minimum number of available volumes to maintain.
-        # Corresponds to the JSON property `minAvailableVolumes`
-        # @return [Fixnum]
-        attr_accessor :min_available_volumes
-      
-        # Optional. Minimum number of instances to create.
-        # Corresponds to the JSON property `minInstances`
-        # @return [Fixnum]
-        attr_accessor :min_instances
       
         # Identifier. The resource name of the volume pool, in the format `projects/`
         # project`/locations/`location`/volumePools/`volume_pool``.
@@ -2711,37 +2614,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The ratio of Negba instances to maintain in the volume pool, between
-        # 0 and 1.
-        # Corresponds to the JSON property `negbaInstanceRatio`
-        # @return [Float]
-        attr_accessor :negba_instance_ratio
-      
-        # Optional. The maximum number of operations to poll in a single reconciliation
-        # run.
-        # Corresponds to the JSON property `operationPollLimit`
-        # @return [Fixnum]
-        attr_accessor :operation_poll_limit
-      
-        # Output only. The volume pool state.
-        # Corresponds to the JSON property `state`
+        # Required. The VPC network to which the VolumePool should be attached. Only
+        # Private Service Connect (PSC) is supported.
+        # Corresponds to the JSON property `network`
         # @return [String]
-        attr_accessor :state
+        attr_accessor :network
       
-        # Output only. Unique ID of the resource, as defined by CCFE.
-        # Corresponds to the JSON property `uniqueId`
+        # Output only. System-assigned unique identifier for the volume pool.
+        # Corresponds to the JSON property `uid`
         # @return [String]
-        attr_accessor :unique_id
-      
-        # Optional. The number of volumes to create in a single batch.
-        # Corresponds to the JSON property `volumeBatchSize`
-        # @return [Fixnum]
-        attr_accessor :volume_batch_size
-      
-        # Optional. Volume size in MiB.
-        # Corresponds to the JSON property `volumeSizeMb`
-        # @return [Fixnum]
-        attr_accessor :volume_size_mb
+        attr_accessor :uid
       
         def initialize(**args)
            update!(**args)
@@ -2749,27 +2631,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_volume_iops = args[:active_volume_iops] if args.key?(:active_volume_iops)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @default_volume_quota_mib = args[:default_volume_quota_mib] if args.key?(:default_volume_quota_mib)
           @description = args[:description] if args.key?(:description)
-          @instance_list_page_size = args[:instance_list_page_size] if args.key?(:instance_list_page_size)
-          @instance_name_prefix = args[:instance_name_prefix] if args.key?(:instance_name_prefix)
-          @instance_template = args[:instance_template] if args.key?(:instance_template)
           @labels = args[:labels] if args.key?(:labels)
-          @max_acquire_candidates = args[:max_acquire_candidates] if args.key?(:max_acquire_candidates)
-          @max_instances = args[:max_instances] if args.key?(:max_instances)
-          @max_pending_instance_creations = args[:max_pending_instance_creations] if args.key?(:max_pending_instance_creations)
-          @max_pending_volume_creations_per_instance = args[:max_pending_volume_creations_per_instance] if args.key?(:max_pending_volume_creations_per_instance)
-          @max_pending_volume_deletions_per_instance = args[:max_pending_volume_deletions_per_instance] if args.key?(:max_pending_volume_deletions_per_instance)
-          @max_volumes_per_instance = args[:max_volumes_per_instance] if args.key?(:max_volumes_per_instance)
-          @min_available_volumes = args[:min_available_volumes] if args.key?(:min_available_volumes)
-          @min_instances = args[:min_instances] if args.key?(:min_instances)
           @name = args[:name] if args.key?(:name)
-          @negba_instance_ratio = args[:negba_instance_ratio] if args.key?(:negba_instance_ratio)
-          @operation_poll_limit = args[:operation_poll_limit] if args.key?(:operation_poll_limit)
-          @state = args[:state] if args.key?(:state)
-          @unique_id = args[:unique_id] if args.key?(:unique_id)
-          @volume_batch_size = args[:volume_batch_size] if args.key?(:volume_batch_size)
-          @volume_size_mb = args[:volume_size_mb] if args.key?(:volume_size_mb)
+          @network = args[:network] if args.key?(:network)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

@@ -154,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class InstanceTemplate
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LdapConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -432,6 +426,7 @@ module Google
           property :source_file_share, as: 'sourceFileShare'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_tier, as: 'sourceInstanceTier'
+          property :source_volume, as: 'sourceVolume'
           property :state, as: 'state'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           hash :tags, as: 'tags'
@@ -658,22 +653,6 @@ module Google
           property :status_message, as: 'statusMessage'
           collection :suspension_reasons, as: 'suspensionReasons'
           hash :tags, as: 'tags'
-          property :tier, as: 'tier'
-        end
-      end
-      
-      class InstanceTemplate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :backend_type, as: 'backendType'
-          property :capacity_gb, as: 'capacityGb'
-          hash :labels, as: 'labels'
-          collection :networks, as: 'networks', class: Google::Apis::FileV1beta1::NetworkConfig, decorator: Google::Apis::FileV1beta1::NetworkConfig::Representation
-      
-          property :performance_config, as: 'performanceConfig', class: Google::Apis::FileV1beta1::PerformanceConfig, decorator: Google::Apis::FileV1beta1::PerformanceConfig::Representation
-      
-          property :protocol, as: 'protocol'
-          property :request_overrides, as: 'requestOverrides'
           property :tier, as: 'tier'
         end
       end
@@ -989,6 +968,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :capacity_mb, :numeric_string => true, as: 'capacityMb'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
@@ -1058,28 +1038,14 @@ module Google
       class VolumePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_volume_iops, as: 'activeVolumeIops'
           property :create_time, as: 'createTime'
+          property :default_volume_quota_mib, as: 'defaultVolumeQuotaMib'
           property :description, as: 'description'
-          property :instance_list_page_size, as: 'instanceListPageSize'
-          property :instance_name_prefix, as: 'instanceNamePrefix'
-          property :instance_template, as: 'instanceTemplate', class: Google::Apis::FileV1beta1::InstanceTemplate, decorator: Google::Apis::FileV1beta1::InstanceTemplate::Representation
-      
           hash :labels, as: 'labels'
-          property :max_acquire_candidates, as: 'maxAcquireCandidates'
-          property :max_instances, as: 'maxInstances'
-          property :max_pending_instance_creations, as: 'maxPendingInstanceCreations'
-          property :max_pending_volume_creations_per_instance, as: 'maxPendingVolumeCreationsPerInstance'
-          property :max_pending_volume_deletions_per_instance, as: 'maxPendingVolumeDeletionsPerInstance'
-          property :max_volumes_per_instance, as: 'maxVolumesPerInstance'
-          property :min_available_volumes, as: 'minAvailableVolumes'
-          property :min_instances, as: 'minInstances'
           property :name, as: 'name'
-          property :negba_instance_ratio, as: 'negbaInstanceRatio'
-          property :operation_poll_limit, as: 'operationPollLimit'
-          property :state, as: 'state'
-          property :unique_id, as: 'uniqueId'
-          property :volume_batch_size, as: 'volumeBatchSize'
-          property :volume_size_mb, as: 'volumeSizeMb'
+          property :network, as: 'network'
+          property :uid, as: 'uid'
         end
       end
       
