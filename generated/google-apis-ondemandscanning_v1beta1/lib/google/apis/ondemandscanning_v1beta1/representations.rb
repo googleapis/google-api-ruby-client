@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TokenUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpgradeDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1381,6 +1387,8 @@ module Google
           property :max_severity, as: 'maxSeverity'
           property :model_id, as: 'modelId'
           property :scan_status, as: 'scanStatus'
+          property :token_usage, as: 'tokenUsage', class: Google::Apis::OndemandscanningV1beta1::TokenUsage, decorator: Google::Apis::OndemandscanningV1beta1::TokenUsage::Representation
+      
         end
       end
       
@@ -1861,6 +1869,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :digest, as: 'digest'
           property :name, as: 'name'
+        end
+      end
+      
+      class TokenUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_count, :numeric_string => true, as: 'cacheCount'
+          property :candidate_count, :numeric_string => true, as: 'candidateCount'
+          property :prompt_count, :numeric_string => true, as: 'promptCount'
+          property :thinking_count, :numeric_string => true, as: 'thinkingCount'
+          property :tool_use_prompt_count, :numeric_string => true, as: 'toolUsePromptCount'
         end
       end
       
