@@ -75,6 +75,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionHumanPose]
         attr_accessor :human_pose
       
+        # Optional. BNS override for model backend. Enabled only for local and autopush
+        # environments by the flag `lvm_allow_model_zoo_bns_override`.
+        # Corresponds to the JSON property `modelEndpointOverride`
+        # @return [String]
+        attr_accessor :model_endpoint_override
+      
         # Model names, as defined in: xyz
         # Corresponds to the JSON property `modelName`
         # @return [String]
@@ -172,6 +178,7 @@ module Google
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @exr_color_space_override = args[:exr_color_space_override] if args.key?(:exr_color_space_override)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
+          @model_endpoint_override = args[:model_endpoint_override] if args.key?(:model_endpoint_override)
           @model_name = args[:model_name] if args.key?(:model_name)
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
           @omni_rewriter = args[:omni_rewriter] if args.key?(:omni_rewriter)
@@ -2041,6 +2048,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @index = args[:index] if args.key?(:index)
+        end
+      end
+      
+      # Request message for [InteractionsService.CreateInteractionHttp].
+      class GenaiVertexV1beta1CreateInteractionHttpRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_body = args[:http_body] if args.key?(:http_body)
         end
       end
       
@@ -4647,6 +4688,59 @@ module Google
         end
       end
       
+      # Streaming delta for a server-initiated media processing step.
+      class GenaiVertexV1beta1ProcessingCallDelta
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A server-initiated processing step for media analysis (e.g. video
+      # understanding).
+      class GenaiVertexV1beta1ProcessingCallStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Streaming delta for the result of a server-initiated media processing step.
+      class GenaiVertexV1beta1ProcessingResultDelta
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The result of a server-initiated media processing step.
+      class GenaiVertexV1beta1ProcessingResultStep
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Use to specify configuration for RAG Store.
       class GenaiVertexV1beta1RagStoreConfig
         include Google::Apis::Core::Hashable
@@ -5152,6 +5246,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallDelta]
         attr_accessor :mcp_server_tool_call
       
+        # Streaming delta for a server-initiated media processing step.
+        # Corresponds to the JSON property `processingCall`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallDelta]
+        attr_accessor :processing_call
+      
         # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
         # etc. RetrievalType decides which tool is used.
         # Corresponds to the JSON property `retrievalCall`
@@ -5180,6 +5279,7 @@ module Google
           @google_maps_call = args[:google_maps_call] if args.key?(:google_maps_call)
           @google_search_call = args[:google_search_call] if args.key?(:google_search_call)
           @mcp_server_tool_call = args[:mcp_server_tool_call] if args.key?(:mcp_server_tool_call)
+          @processing_call = args[:processing_call] if args.key?(:processing_call)
           @retrieval_call = args[:retrieval_call] if args.key?(:retrieval_call)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_call = args[:url_context_call] if args.key?(:url_context_call)
@@ -5215,6 +5315,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultDelta]
         attr_accessor :mcp_server_tool_result
       
+        # Streaming delta for the result of a server-initiated media processing step.
+        # Corresponds to the JSON property `processingResult`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultDelta]
+        attr_accessor :processing_result
+      
         # Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
         # etc. ToolResultDelta.type
         # Corresponds to the JSON property `retrievalResult`
@@ -5243,6 +5348,7 @@ module Google
           @google_maps_result = args[:google_maps_result] if args.key?(:google_maps_result)
           @google_search_result = args[:google_search_result] if args.key?(:google_search_result)
           @mcp_server_tool_result = args[:mcp_server_tool_result] if args.key?(:mcp_server_tool_result)
+          @processing_result = args[:processing_result] if args.key?(:processing_result)
           @retrieval_result = args[:retrieval_result] if args.key?(:retrieval_result)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_result = args[:url_context_result] if args.key?(:url_context_result)
@@ -6046,6 +6152,12 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolCallStep]
         attr_accessor :mcp_server_tool_call
       
+        # A server-initiated processing step for media analysis (e.g. video
+        # understanding).
+        # Corresponds to the JSON property `processingCall`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingCallStep]
+        attr_accessor :processing_call
+      
         # Retrieval call step. Used by Vertex Retrieval tools such as Parallel AI, Exa
         # AI, Vertex AI Search, etc. RetrievalType decides which tool is used.
         # Corresponds to the JSON property `retrievalCall`
@@ -6076,6 +6188,7 @@ module Google
           @google_search_call = args[:google_search_call] if args.key?(:google_search_call)
           @id = args[:id] if args.key?(:id)
           @mcp_server_tool_call = args[:mcp_server_tool_call] if args.key?(:mcp_server_tool_call)
+          @processing_call = args[:processing_call] if args.key?(:processing_call)
           @retrieval_call = args[:retrieval_call] if args.key?(:retrieval_call)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_call = args[:url_context_call] if args.key?(:url_context_call)
@@ -6276,6 +6389,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1McpServerToolResultStep]
         attr_accessor :mcp_server_tool_result
       
+        # The result of a server-initiated media processing step.
+        # Corresponds to the JSON property `processingResult`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1ProcessingResultStep]
+        attr_accessor :processing_result
+      
         # Vertex Retrieval result step. Used by Vertex Retrieval tools such as Parallel
         # AI, Exa AI, Vertex AI Search, etc.
         # Corresponds to the JSON property `retrievalResult`
@@ -6306,6 +6424,7 @@ module Google
           @google_maps_result = args[:google_maps_result] if args.key?(:google_maps_result)
           @google_search_result = args[:google_search_result] if args.key?(:google_search_result)
           @mcp_server_tool_result = args[:mcp_server_tool_result] if args.key?(:mcp_server_tool_result)
+          @processing_result = args[:processing_result] if args.key?(:processing_result)
           @retrieval_result = args[:retrieval_result] if args.key?(:retrieval_result)
           @signature = args[:signature] if args.key?(:signature)
           @url_context_result = args[:url_context_result] if args.key?(:url_context_result)
@@ -6338,17 +6457,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :language_codes
       
-        # Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If
-        # unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model
-        # performs disfluency removal (eliminating filler words, repetitions, and false
-        # starts), light grammatical cleanup, automatic formatting (paragraphs, bullet
-        # points, numbered lists), and minor user edits (inline self-corrections).
-        # Timestamps (`timestamp_granularities`) and diarization (`diarization_mode`)
-        # are incompatible with mode `SMART`.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
         # Optional. The granularity of timestamps to include in the transcription output.
         # Supported values: "word". If empty, no timestamps are generated.
         # Corresponds to the JSON property `timestampGranularities`
@@ -6365,7 +6473,6 @@ module Google
           @custom_vocabulary = args[:custom_vocabulary] if args.key?(:custom_vocabulary)
           @diarization_mode = args[:diarization_mode] if args.key?(:diarization_mode)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
-          @mode = args[:mode] if args.key?(:mode)
           @timestamp_granularities = args[:timestamp_granularities] if args.key?(:timestamp_granularities)
         end
       end
@@ -6779,6 +6886,12 @@ module Google
         # @return [String]
         attr_accessor :mime_type_string
       
+        # A user-defined name for this content block. Can be referenced by the model in
+        # the final response.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # 
         # Corresponds to the JSON property `processingConfig`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1VideoContentMediaProcessing]
@@ -6807,6 +6920,7 @@ module Google
         def update!(**args)
           @data = args[:data] if args.key?(:data)
           @mime_type_string = args[:mime_type_string] if args.key?(:mime_type_string)
+          @name = args[:name] if args.key?(:name)
           @processing_config = args[:processing_config] if args.key?(:processing_config)
           @processing_type = args[:processing_type] if args.key?(:processing_type)
           @resolution = args[:resolution] if args.key?(:resolution)
@@ -7035,6 +7149,503 @@ module Google
           @content_type = args[:content_type] if args.key?(:content_type)
           @data = args[:data] if args.key?(:data)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # A single part of a message or artifact. A part carries exactly one kind of
+      # content.
+      class GoogleCloudAiplatformV1beta1A2APart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arbitrary data content.
+        # Corresponds to the JSON property `data`
+        # @return [Object]
+        attr_accessor :data
+      
+        # Optional. The name of the file, when the part represents a file.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Optional. The IANA media type of the content, e.g. "text/plain" or "image/png".
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        # Optional. Additional context or parameters related to the part. Extensions can
+        # be used to strongly type metadata values for specific use cases.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Optional. Raw binary content.
+        # Corresponds to the JSON property `raw`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :raw
+      
+        # Optional. Textual content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Optional. A URL pointing to the content.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @filename = args[:filename] if args.key?(:filename)
+          @media_type = args[:media_type] if args.key?(:media_type)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @raw = args[:raw] if args.key?(:raw)
+          @text = args[:text] if args.key?(:text)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # An A2ATaskRecord represents an A2ATask (unit of work) persisted in storage.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecord
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Agent application which created the task.
+        # Corresponds to the JSON property `appId`
+        # @return [String]
+        attr_accessor :app_id
+      
+        # Output only. The artifacts produced by the task.
+        # Corresponds to the JSON property `artifacts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact>]
+        attr_accessor :artifacts
+      
+        # Optional. A generic identifier for grouping related tasks (e.g., session_id,
+        # workflow_id).
+        # Corresponds to the JSON property `contextId`
+        # @return [String]
+        attr_accessor :context_id
+      
+        # Output only. The creation timestamp of the task.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The deletion timestamp of the task.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Output only. Timestamp of when this task is considered expired. This is *
+        # always* provided on output, and is calculated based on the `update_time` and
+        # the `ttl`.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only. The task generation number.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. The history of the task messages.
+        # Corresponds to the JSON property `history`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage>]
+        attr_accessor :history
+      
+        # Optional. A flexible key-value map for protocol extensions to attach custom
+        # attributes to core data structures.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Identifier. The resource name of the task. Format: `projects/`project`/
+        # locations/`location`/taskStores/`task_store`/a2aTaskRecords/`a2a_task_record``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The purge timestamp of the task.
+        # Corresponds to the JSON property `purgeTime`
+        # @return [String]
+        attr_accessor :purge_time
+      
+        # Optional. Metadata relevant to the A2ATaskRecordService, not the agent to
+        # agent communication.
+        # Corresponds to the JSON property `serviceMetadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :service_metadata
+      
+        # Represents the status of an A2ATaskRecord.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatus]
+        attr_accessor :status
+      
+        # Optional. Input only. The TTL (Time To Live) for the task. If not set, the
+        # task will expire in 24 hours by default. Valid range: (0 seconds, 1000 days]
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # Output only. The last update timestamp of the task.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Task owner user ID.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_id = args[:app_id] if args.key?(:app_id)
+          @artifacts = args[:artifacts] if args.key?(:artifacts)
+          @context_id = args[:context_id] if args.key?(:context_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @generation = args[:generation] if args.key?(:generation)
+          @history = args[:history] if args.key?(:history)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+          @purge_time = args[:purge_time] if args.key?(:purge_time)
+          @service_metadata = args[:service_metadata] if args.key?(:service_metadata)
+          @status = args[:status] if args.key?(:status)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @user_id = args[:user_id] if args.key?(:user_id)
+        end
+      end
+      
+      # Represents a single artifact produced by a task.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Required. The unique identifier of the artifact within the task.
+        # Corresponds to the JSON property `artifactId`
+        # @return [String]
+        attr_accessor :artifact_id
+      
+        # Optional. A human-readable description of the artifact.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The human-readable name of the artifact.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. A2A protocol extensions associated with the artifact.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<String>]
+        attr_accessor :extensions
+      
+        # Optional. Additional context or parameters related to the artifact. Extensions
+        # can be used to strongly type metadata values for specific use cases.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Required. The content parts that make up the artifact.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @parts = args[:parts] if args.key?(:parts)
+        end
+      end
+      
+      # An event payload describing a change to one of the task's artifacts.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the artifact parts should be appended to an existing
+        # artifact rather than replacing it.
+        # Corresponds to the JSON property `append`
+        # @return [Boolean]
+        attr_accessor :append
+        alias_method :append?, :append
+      
+        # Represents a single artifact produced by a task.
+        # Corresponds to the JSON property `artifact`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifact]
+        attr_accessor :artifact
+      
+        # Optional. Whether this is the last chunk of a streamed artifact.
+        # Corresponds to the JSON property `lastChunk`
+        # @return [Boolean]
+        attr_accessor :last_chunk
+        alias_method :last_chunk?, :last_chunk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @append = args[:append] if args.key?(:append)
+          @artifact = args[:artifact] if args.key?(:artifact)
+          @last_chunk = args[:last_chunk] if args.key?(:last_chunk)
+        end
+      end
+      
+      # An event that records a single change applied to a task's state.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEvent
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the event was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The data describing the change carried by an A2ATaskRecordEvent. Multiple
+        # changes can be set in a single event.
+        # Corresponds to the JSON property `eventData`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEventData]
+        attr_accessor :event_data
+      
+        # Output only. The generation number of the task after this event is applied.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Optional. Additional context or parameters related to the event. Extensions
+        # can be used to strongly type metadata values for specific use cases.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @event_data = args[:event_data] if args.key?(:event_data)
+          @generation = args[:generation] if args.key?(:generation)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # The data describing the change carried by an A2ATaskRecordEvent. Multiple
+      # changes can be set in a single event.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordEventData
+        include Google::Apis::Core::Hashable
+      
+        # An event payload describing a change to one of the task's artifacts.
+        # Corresponds to the JSON property `artifactChange`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordArtifactChange]
+        attr_accessor :artifact_change
+      
+        # An event payload that appends a new message to the task history.
+        # Corresponds to the JSON property `historyAppend`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend]
+        attr_accessor :history_append
+      
+        # An event payload describing a change to the task-level metadata.
+        # Corresponds to the JSON property `metadataChange`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange]
+        attr_accessor :metadata_change
+      
+        # An event payload that updates the task's state and optional status message.
+        # Corresponds to the JSON property `statusUpdate`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate]
+        attr_accessor :status_update
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_change = args[:artifact_change] if args.key?(:artifact_change)
+          @history_append = args[:history_append] if args.key?(:history_append)
+          @metadata_change = args[:metadata_change] if args.key?(:metadata_change)
+          @status_update = args[:status_update] if args.key?(:status_update)
+        end
+      end
+      
+      # An event payload that appends a new message to the task history.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordHistoryAppend
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single message in a conversation, compliant with the A2A
+        # specification.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Represents a single message in a conversation, compliant with the A2A
+      # specification.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMessage
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A2A protocol extensions associated with the message.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<String>]
+        attr_accessor :extensions
+      
+        # Required. The unique identifier of the message.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
+        # Optional. Additional context or parameters related to the message. Extensions
+        # can be used to strongly type metadata values for specific use cases.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Required. The content parts that make up the message.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2APart>]
+        attr_accessor :parts
+      
+        # Optional. The IDs of other tasks referenced by this message.
+        # Corresponds to the JSON property `referenceTaskIds`
+        # @return [Array<String>]
+        attr_accessor :reference_task_ids
+      
+        # Required. The role of the sender of the message.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @message_id = args[:message_id] if args.key?(:message_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @parts = args[:parts] if args.key?(:parts)
+          @reference_task_ids = args[:reference_task_ids] if args.key?(:reference_task_ids)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # An event payload describing a change to the task-level metadata.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordMetadataChange
+        include Google::Apis::Core::Hashable
+      
+        # Required. The updated task metadata after the change. This is a partial update
+        # that will be merged with the existing metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Optional. A field mask indicating which metadata paths changed. If unset, all
+        # fields are updated.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Represents the status of an A2ATaskRecord.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatus
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single message in a conversation, compliant with the A2A
+        # specification.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage]
+        attr_accessor :message
+      
+        # Output only. The current state of the task.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time at which the state was set.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+      end
+      
+      # An event payload that updates the task's state and optional status message.
+      class GoogleCloudAiplatformV1beta1A2ATaskRecordStatusUpdate
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single message in a conversation, compliant with the A2A
+        # specification.
+        # Corresponds to the JSON property `message`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage]
+        attr_accessor :message
+      
+        # Required. The new state of the task.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The time at which the status change occurred.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @state = args[:state] if args.key?(:state)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       
@@ -8079,6 +8690,29 @@ module Google
         end
       end
       
+      # Customizes the agent's response to the end user when a `
+      # SemanticGovernancePolicy` is evaluated (for example, with a custom message
+      # shown on denial).
+      class GoogleCloudAiplatformV1beta1AgentResponseCustomization
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Custom message shown to the end user when the policy check results
+        # in a denial. Use this to explain the rationale to the user. Max 1000
+        # characters.
+        # Corresponds to the JSON property `denialMessage`
+        # @return [String]
+        attr_accessor :denial_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @denial_message = args[:denial_message] if args.key?(:denial_message)
+        end
+      end
+      
       # A tool provides a list of actions available to the Agent during the process of
       # executing a task.
       class GoogleCloudAiplatformV1beta1AgentTool
@@ -8090,20 +8724,26 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # Optional. The name of the MCP server. Only applicable when `type` is `
-        # mcp_server`.
+        # Optional. The tool's GCP resource name, used to resolve the tool. Applicable
+        # when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry)
+        # , for example `projects/`project`/locations/`location`/.../mcpServers/`id`` or
+        # `projects/`project`/locations/`location`/.../endpoints/`id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Required. The type of the tool. Supported types: * `code_execution` * `
-        # filesystem` * `google_search` * `mcp_server` * `url_context`
+        # endpoint` * `filesystem` * `google_search` * `mcp_server` * `url_context`
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional. The URL for the MCP server endpoint. Only applicable when `type` is `
-        # mcp_server`.
+        # Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to
+        # create the downstream AI App. Applicable when `type` is `mcp_server` or `
+        # endpoint`. It is duplicated here (the resource name is already in `name`) only
+        # because the Agent service is not yet connected to Agent Registry to derive it
+        # from `name`; the Task Service instead resolves it from Agent Registry (
+        # GetMcpServer / GetEndpoint) at task creation.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -8672,6 +9312,50 @@ module Google
         def update!(**args)
           @api_key_secret_version = args[:api_key_secret_version] if args.key?(:api_key_secret_version)
           @api_key_string = args[:api_key_string] if args.key?(:api_key_string)
+        end
+      end
+      
+      # Request message for A2ATaskRecordService.AppendA2ATaskRecordEvents.
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The events to append to the task.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent>]
+        attr_accessor :events
+      
+        # Required. The current task generation.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+          @generation = args[:generation] if args.key?(:generation)
+        end
+      end
+      
+      # Response message for A2ATaskRecordService.AppendA2ATaskRecordEvents.
+      class GoogleCloudAiplatformV1beta1AppendA2ATaskRecordEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Task generation matching the last event
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation = args[:generation] if args.key?(:generation)
         end
       end
       
@@ -9472,16 +10156,6 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
-        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
-        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
-        # model performs disfluency removal (eliminating filler words, repetitions, and
-        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
-        # bullet points, numbered lists), and minor user edits (inline self-corrections).
-        # Timestamps and diarization are incompatible with mode `SMART`.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -9500,7 +10174,6 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
-          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -9855,6 +10528,35 @@ module Google
         def update!(**args)
           @id_token = args[:id_token] if args.key?(:id_token)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Request message for SandboxEnvironmentExecutionService.
+      # AuthorizeSandboxEnvironmentAccess.
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for SandboxEnvironmentExecutionService.
+      # AuthorizeSandboxEnvironmentAccess. Intentionally empty: a successful response
+      # is the authorization result.
+      class GoogleCloudAiplatformV1beta1AuthorizeSandboxEnvironmentAccessResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -11175,6 +11877,46 @@ module Google
         # Update properties of this object
         def update!(**args)
           @time_series_data = args[:time_series_data] if args.key?(:time_series_data)
+        end
+      end
+      
+      # Request message for SandboxEnvironmentExecutionService.
+      # BidiExecuteSandboxEnvironment.
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The inputs to the sandbox environment.
+        # Corresponds to the JSON property `inputs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk>]
+        attr_accessor :inputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inputs = args[:inputs] if args.key?(:inputs)
+        end
+      end
+      
+      # Response message for SandboxEnvironmentExecutionService.
+      # BidiExecuteSandboxEnvironment.
+      class GoogleCloudAiplatformV1beta1BidiExecuteSandboxEnvironmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # The outputs from the sandbox environment.
+        # Corresponds to the JSON property `outputs`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Chunk>]
+        attr_accessor :outputs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outputs = args[:outputs] if args.key?(:outputs)
         end
       end
       
@@ -14441,10 +15183,14 @@ module Google
         # Optional. The region to use for code execution. If set, the Code Execution
         # Sandbox will be invoked in the specified region regardless of the request's
         # originating region. Must be a region where the Code Execution Sandbox is
-        # available. Supported regions: us-central1, us-east1, us-east4, us-west1, us-
-        # west4, southamerica-east1, europe-west2, europe-west3, asia-east1, asia-south1,
-        # asia-southeast1. If unset, the request's originating region is used; requests
-        # from regions where the sandbox is unavailable will fail with UNIMPLEMENTED.
+        # available. Supported regions: northamerica-northeast1, southamerica-east1, us-
+        # central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-
+        # north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-
+        # west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-
+        # east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-
+        # southeast1, australia-southeast2. If unset, the request's originating region
+        # is used; requests from regions where the sandbox is unavailable will fail with
+        # UNIMPLEMENTED.
         # Corresponds to the JSON property `codeExecutionRegion`
         # @return [String]
         attr_accessor :code_execution_region
@@ -19447,9 +20193,13 @@ module Google
         # Optional. The region to use for code execution. If set, the Code Execution
         # Sandbox will be invoked in the specified region regardless of the request's
         # originating region. Must be a region where the Code Execution Sandbox is
-        # available. Supported regions: us-central1, us-east1, us-east4, us-west1, us-
-        # west4, southamerica-east1, europe-west2, europe-west3, asia-east1, asia-south1,
-        # asia-southeast1. If unset, the request's originating region is used.
+        # available. Supported regions: northamerica-northeast1, southamerica-east1, us-
+        # central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-
+        # north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-
+        # west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-
+        # east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-
+        # southeast1, australia-southeast2. If unset, the request's originating region
+        # is used.
         # Corresponds to the JSON property `codeExecutionRegion`
         # @return [String]
         attr_accessor :code_execution_region
@@ -28254,6 +29004,11 @@ module Google
         # @return [Float]
         attr_accessor :top_p
       
+        # Config for translation features.
+        # Corresponds to the JSON property `translationConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1TranslationConfig]
+        attr_accessor :translation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -28285,6 +29040,7 @@ module Google
           @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+          @translation_config = args[:translation_config] if args.key?(:translation_config)
         end
       end
       
@@ -31601,6 +32357,58 @@ module Google
         end
       end
       
+      # Response message for A2ATaskRecordService.ListA2ATaskRecordEvents.
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of A2ATaskRecordEvents in the requested page.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordEvent>]
+        attr_accessor :events
+      
+        # A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for A2ATaskRecordService.ListA2ATaskRecords.
+      class GoogleCloudAiplatformV1beta1ListA2ATaskRecordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of A2ATaskRecords in the requested page.
+        # Corresponds to the JSON property `a2aTaskRecords`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecord>]
+        attr_accessor :a2a_task_records
+      
+        # A token, which can be sent as A2ATaskRecordService.ListA2ATaskRecordsRequest.
+        # page_token to retrieve the next page. Absence of this field indicates there
+        # are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @a2a_task_records = args[:a2a_task_records] if args.key?(:a2a_task_records)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListA2aTaskEvents.
       class GoogleCloudAiplatformV1beta1ListA2aTaskEventsResponse
         include Google::Apis::Core::Hashable
@@ -34442,6 +35250,11 @@ module Google
       class GoogleCloudAiplatformV1beta1Memory
         include Google::Apis::Core::Hashable
       
+        # Optional. Represents the context of the memory.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
         # Output only. Represents the timestamp when this Memory was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -34551,6 +35364,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @disable_memory_revisions = args[:disable_memory_revisions] if args.key?(:disable_memory_revisions)
@@ -35010,6 +35824,12 @@ module Google
       class GoogleCloudAiplatformV1beta1MemoryRevision
         include Google::Apis::Core::Hashable
       
+        # Output only. Represents the context of the Memory Revision. The context may
+        # include context from both the historical revisions and the extracted content.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
         # Output only. Represents the timestamp when this Memory Revision was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -35060,6 +35880,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @context = args[:context] if args.key?(:context)
           @create_time = args[:create_time] if args.key?(:create_time)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @extracted_memories = args[:extracted_memories] if args.key?(:extracted_memories)
@@ -41272,8 +42093,8 @@ module Google
       class GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservability
         include Google::Apis::Core::Hashable
       
-        # Optional. Optional log view that will be used to query logs. If empty, the `
-        # _Default` view will be used.
+        # Optional. Optional log view that will be used to query logs. If empty, the
+        # project's default view (`projects/`project_id``) will be used.
         # Corresponds to the JSON property `logView`
         # @return [String]
         attr_accessor :log_view
@@ -41296,8 +42117,8 @@ module Google
         attr_accessor :trace_scope
       
         # Optional. Optional trace view that will be used to query traces. If empty, the
-        # `_Default` view will be used. NOTE: This field is not supported yet and will
-        # be ignored if set.
+        # `_AllSpans` view from `_Trace` US bucket will be used, i.e. `projects/`
+        # project_id`/locations/us/buckets/_Trace/datasets/Spans/views/_AllSpans`.
         # Corresponds to the JSON property `traceView`
         # @return [String]
         attr_accessor :trace_view
@@ -52269,6 +53090,12 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Output only. Whether the source SandboxEnvironment uses the GKE TD pool.
+        # Corresponds to the JSON property `useGkeTd`
+        # @return [Boolean]
+        attr_accessor :use_gke_td
+        alias_method :use_gke_td?, :use_gke_td
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52286,6 +53113,7 @@ module Google
           @source_sandbox_environment = args[:source_sandbox_environment] if args.key?(:source_sandbox_environment)
           @ttl = args[:ttl] if args.key?(:ttl)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_gke_td = args[:use_gke_td] if args.key?(:use_gke_td)
         end
       end
       
@@ -52308,6 +53136,13 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentSpecShellEnvironment]
         attr_accessor :shell_environment
       
+        # Optional. Immutable. Whether to provision the SandboxEnvironment via the GKE
+        # TD pool. Immutable.
+        # Corresponds to the JSON property `useGkeTd`
+        # @return [Boolean]
+        attr_accessor :use_gke_td
+        alias_method :use_gke_td?, :use_gke_td
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52317,6 +53152,7 @@ module Google
           @code_execution_environment = args[:code_execution_environment] if args.key?(:code_execution_environment)
           @computer_use_environment = args[:computer_use_environment] if args.key?(:computer_use_environment)
           @shell_environment = args[:shell_environment] if args.key?(:shell_environment)
+          @use_gke_td = args[:use_gke_td] if args.key?(:use_gke_td)
         end
       end
       
@@ -52424,6 +53260,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Immutable. Whether to provision the SandboxEnvironmentTemplate via
+        # the GKE TD pool.
+        # Corresponds to the JSON property `useGkeTd`
+        # @return [Boolean]
+        attr_accessor :use_gke_td
+        alias_method :use_gke_td?, :use_gke_td
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52439,6 +53282,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_gke_td = args[:use_gke_td] if args.key?(:use_gke_td)
         end
       end
       
@@ -52525,11 +53369,6 @@ module Google
       class GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplateEgressControlConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The customer VPC network that sandbox egress is routed into.
-        # Corresponds to the JSON property `customerVpcNetwork`
-        # @return [String]
-        attr_accessor :customer_vpc_network
-      
         # Optional. DNS peering configurations that allow sandbox egress to resolve
         # customer-internal domains via the customer VPC.
         # Corresponds to the JSON property `dnsPeeringConfigs`
@@ -52554,7 +53393,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @customer_vpc_network = args[:customer_vpc_network] if args.key?(:customer_vpc_network)
           @dns_peering_configs = args[:dns_peering_configs] if args.key?(:dns_peering_configs)
           @internet_access = args[:internet_access] if args.key?(:internet_access)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
@@ -60760,6 +61598,13 @@ module Google
         # @return [String]
         attr_accessor :agent_identity
       
+        # Customizes the agent's response to the end user when a `
+        # SemanticGovernancePolicy` is evaluated (for example, with a custom message
+        # shown on denial).
+        # Corresponds to the JSON property `agentResponseCustomization`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentResponseCustomization]
+        attr_accessor :agent_response_customization
+      
         # Output only. Timestamp when this SemanticGovernancePolicy was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -60810,6 +61655,7 @@ module Google
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
           @agent_identity = args[:agent_identity] if args.key?(:agent_identity)
+          @agent_response_customization = args[:agent_response_customization] if args.key?(:agent_response_customization)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -67032,6 +67878,35 @@ module Google
         def update!(**args)
           @finished = args[:finished] if args.key?(:finished)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Config for translation features.
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, the model will generate audio when the target language is
+        # spoken, essentially it will parrot the input. If `false`, we will not produce
+        # audio for the target language.
+        # Corresponds to the JSON property `echoTargetLanguage`
+        # @return [Boolean]
+        attr_accessor :echo_target_language
+        alias_method :echo_target_language?, :echo_target_language
+      
+        # Required. The target language for translation. Supported values are BCP-47
+        # language codes (e.g. "en", "es", "fr").
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @echo_target_language = args[:echo_target_language] if args.key?(:echo_target_language)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
         end
       end
       
