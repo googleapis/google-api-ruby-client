@@ -471,6 +471,8 @@ module Google
         # @param [String] page_token
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
+        # @param [Boolean] regional_fanout_requested
+        #   Optional.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -491,7 +493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_project_job(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def aggregated_project_job(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs:aggregated', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
@@ -501,6 +503,7 @@ module Google
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -673,6 +676,8 @@ module Google
         # @param [String] page_token
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
+        # @param [Boolean] regional_fanout_requested
+        #   Optional.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -693,7 +698,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_jobs(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_jobs(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
@@ -703,6 +708,7 @@ module Google
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1464,6 +1470,8 @@ module Google
         # @param [String] page_token
         #   Set this to the 'next_page_token' field of a previous response to request
         #   additional results in a long list.
+        # @param [Boolean] regional_fanout_requested
+        #   Optional.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -1484,7 +1492,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(project_id, location, filter: nil, name: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(project_id, location, filter: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
@@ -1494,6 +1502,7 @@ module Google
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
