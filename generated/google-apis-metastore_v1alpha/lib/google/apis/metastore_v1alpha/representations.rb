@@ -124,24 +124,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CdcConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudSqlConnectionConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudSqlMigrationConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CompleteMigrationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,43 +725,6 @@ module Google
         end
       end
       
-      class CdcConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bucket, as: 'bucket'
-          property :password, as: 'password'
-          property :reverse_proxy_subnet, as: 'reverseProxySubnet'
-          property :root_path, as: 'rootPath'
-          property :subnet_ip_range, as: 'subnetIpRange'
-          property :username, as: 'username'
-          property :vpc_network, as: 'vpcNetwork'
-        end
-      end
-      
-      class CloudSqlConnectionConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :hive_database_name, as: 'hiveDatabaseName'
-          property :instance_connection_name, as: 'instanceConnectionName'
-          property :ip_address, as: 'ipAddress'
-          property :nat_subnet, as: 'natSubnet'
-          property :password, as: 'password'
-          property :port, as: 'port'
-          property :proxy_subnet, as: 'proxySubnet'
-          property :username, as: 'username'
-        end
-      end
-      
-      class CloudSqlMigrationConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cdc_config, as: 'cdcConfig', class: Google::Apis::MetastoreV1alpha::CdcConfig, decorator: Google::Apis::MetastoreV1alpha::CdcConfig::Representation
-      
-          property :cloud_sql_connection_config, as: 'cloudSqlConnectionConfig', class: Google::Apis::MetastoreV1alpha::CloudSqlConnectionConfig, decorator: Google::Apis::MetastoreV1alpha::CloudSqlConnectionConfig::Representation
-      
-        end
-      end
-      
       class CompleteMigrationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1173,8 +1118,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :biglake_metastore_migration_config, as: 'biglakeMetastoreMigrationConfig', class: Google::Apis::MetastoreV1alpha::BigLakeMetastoreMigrationConfig, decorator: Google::Apis::MetastoreV1alpha::BigLakeMetastoreMigrationConfig::Representation
       
-          property :cloud_sql_migration_config, as: 'cloudSqlMigrationConfig', class: Google::Apis::MetastoreV1alpha::CloudSqlMigrationConfig, decorator: Google::Apis::MetastoreV1alpha::CloudSqlMigrationConfig::Representation
-      
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
           property :name, as: 'name'
@@ -1439,6 +1382,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :migration_execution, as: 'migrationExecution', class: Google::Apis::MetastoreV1alpha::MigrationExecution, decorator: Google::Apis::MetastoreV1alpha::MigrationExecution::Representation
       
+          property :migration_execution_id, as: 'migrationExecutionId'
           property :request_id, as: 'requestId'
         end
       end
