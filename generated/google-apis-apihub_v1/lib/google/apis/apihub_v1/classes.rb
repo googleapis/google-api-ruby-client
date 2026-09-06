@@ -149,6 +149,21 @@ module Google
       class GoogleCloudApihubV1Addon
         include Google::Apis::Core::Hashable
       
+        # Output only. The Vertex AI region where the BoostSpec Gemini model calls run
+        # for this API Hub instance. Populated only for the SpecGen addon (`system-spec-
+        # generation`); other addons leave this field empty. `gemini-2.5-flash` is not
+        # available in every API Hub region, so the effective region may differ from the
+        # API Hub instance's own region. The value follows these semantics: - `""`:
+        # BoostSpec is disabled in this region (the addon is not SpecGen, or the API Hub
+        # instance region has no configured Gemini endpoint or fallback). - Equal to the
+        # API Hub instance region: BoostSpec calls run in-region. - Differs from the API
+        # Hub instance region: BoostSpec calls run in the specified fallback region.
+        # Callers rendering this field can derive the three display states from this
+        # single field combined with the API Hub instance region.
+        # Corresponds to the JSON property `boostSpecGeminiRegionId`
+        # @return [String]
+        attr_accessor :boost_spec_gemini_region_id
+      
         # Configuration for the addon.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
@@ -197,6 +212,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_spec_gemini_region_id = args[:boost_spec_gemini_region_id] if args.key?(:boost_spec_gemini_region_id)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
