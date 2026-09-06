@@ -1223,6 +1223,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :claimed_scopes
       
+        # Output only. Detailed scope information corresponding to each entry in `
+        # claimed_scopes`.
+        # Corresponds to the JSON property `claimedScopesInfo`
+        # @return [Array<Google::Apis::CloudnumberregistryV1alpha::ScopeInfo>]
+        attr_accessor :claimed_scopes_info
+      
         # Output only. The time at which the RegistryBook was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1257,11 +1263,45 @@ module Google
         def update!(**args)
           @aggregated_data = args[:aggregated_data] if args.key?(:aggregated_data)
           @claimed_scopes = args[:claimed_scopes] if args.key?(:claimed_scopes)
+          @claimed_scopes_info = args[:claimed_scopes_info] if args.key?(:claimed_scopes_info)
           @create_time = args[:create_time] if args.key?(:create_time)
           @is_default = args[:is_default] if args.key?(:is_default)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Details of a scope (e.g. project or folder).
+      class ScopeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Human-readable display title of the scope shown in Console (e.g. "
+        # My Cloud Project"). Used for UI display.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Programmatic string identifier of the scope (e.g. GCP Project ID "
+        # my-project-id"). Used for API and code logic.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. Resource name of the scope, e.g. "projects/1234567890".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1293,8 +1333,10 @@ module Google
         # Optional. Search query. This string filters resources in an AIP-160-like
         # format. It has some limitations. You can only specify top level conjunctions
         # or attribute level negations. Each restriction can only be used once except
-        # the attribute restriction. The available restrictions for Ranges are: - `realm`
-        # : The Realm name to search in. - `ip_address`: The IP address to search for
+        # the attribute restriction. The available restrictions for Ranges are: - `
+        # resource_id`: The resource ID to search for within Ranges (only substring
+        # matching using the format `resource_id="*value*"` is supported). - `realm`:
+        # The Realm name to search in. - `ip_address`: The IP address to search for
         # within Ranges. - `ip_version`: The IP version to filter by (e.g., "IPV4", "
         # IPV6"). - `parent_range`: The parent Range of the Range to search for. - `
         # attribute_text`: The attribute text to search for within Ranges. - `attribute`:
@@ -1303,10 +1345,11 @@ module Google
         # The management type of the Realm (e.g., "CNR", "USER"). Only one of
         # attribute_text or multiple attribute filters can be specified. Examples: - `
         # realm=test-realm` - `realm=test-realm AND ip_address=10.0.0.0` - `realm=test-
-        # realm AND ip_version=IPV6` - `realm=test-realm AND attribute_text=test` - `
-        # ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` -
-        # `attribute_text=test AND parent_range=projects/123/locations/global/
-        # discoveredRanges/test-parent-range` - `management_type=CNR`
+        # realm AND ip_version=IPV6` - `realm=test-realm AND resource_id="*my-range*"` -
+        # `realm=test-realm AND attribute_text=test` - `ip_address=10.0.0.0 AND
+        # attribute:(key1=value1) AND attribute:(key2=value2)` - `attribute_text=test
+        # AND parent_range=projects/123/locations/global/discoveredRanges/test-parent-
+        # range` - `management_type=CNR`
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query

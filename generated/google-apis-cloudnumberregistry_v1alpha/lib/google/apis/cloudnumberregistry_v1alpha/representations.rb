@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScopeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchIpResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -564,11 +570,22 @@ module Google
           property :aggregated_data, as: 'aggregatedData', class: Google::Apis::CloudnumberregistryV1alpha::AggregatedData, decorator: Google::Apis::CloudnumberregistryV1alpha::AggregatedData::Representation
       
           collection :claimed_scopes, as: 'claimedScopes'
+          collection :claimed_scopes_info, as: 'claimedScopesInfo', class: Google::Apis::CloudnumberregistryV1alpha::ScopeInfo, decorator: Google::Apis::CloudnumberregistryV1alpha::ScopeInfo::Representation
+      
           property :create_time, as: 'createTime'
           property :is_default, as: 'isDefault'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ScopeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :name, as: 'name'
         end
       end
       
