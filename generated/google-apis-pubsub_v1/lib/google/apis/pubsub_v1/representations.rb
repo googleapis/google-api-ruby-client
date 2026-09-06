@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompiledProtoSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -594,6 +600,14 @@ module Google
         end
       end
       
+      class CompiledProtoSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_bytes, :base64 => true, as: 'compiledBytes'
+          property :root_message, as: 'rootMessage'
+        end
+      end
+      
       class Compression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -913,6 +927,8 @@ module Google
       class Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_proto_schema, as: 'compiledProtoSchema', class: Google::Apis::PubsubV1::CompiledProtoSchema, decorator: Google::Apis::PubsubV1::CompiledProtoSchema::Representation
+      
           property :definition, as: 'definition'
           property :name, as: 'name'
           property :revision_create_time, as: 'revisionCreateTime'

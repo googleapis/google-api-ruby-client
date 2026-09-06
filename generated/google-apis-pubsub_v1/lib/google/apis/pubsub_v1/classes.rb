@@ -749,6 +749,32 @@ module Google
         end
       end
       
+      # Configuration specific to compiled Protocol Buffer schemas.
+      class CompiledProtoSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. The compiled FileDescriptorSet binary.
+        # Corresponds to the JSON property `compiledBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :compiled_bytes
+      
+        # Required. The name of the root message type in the schema.
+        # Corresponds to the JSON property `rootMessage`
+        # @return [String]
+        attr_accessor :root_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compiled_bytes = args[:compiled_bytes] if args.key?(:compiled_bytes)
+          @root_message = args[:root_message] if args.key?(:root_message)
+        end
+      end
+      
       # Configuration for compressing/decompressing message data using a user-
       # specified compression algorithm.
       class Compression
@@ -1942,6 +1968,11 @@ module Google
       class Schema
         include Google::Apis::Core::Hashable
       
+        # Configuration specific to compiled Protocol Buffer schemas.
+        # Corresponds to the JSON property `compiledProtoSchema`
+        # @return [Google::Apis::PubsubV1::CompiledProtoSchema]
+        attr_accessor :compiled_proto_schema
+      
         # The definition of the schema. This should contain a string representing the
         # full definition of the schema that is a valid schema definition of the type
         # specified in `type`.
@@ -1975,6 +2006,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compiled_proto_schema = args[:compiled_proto_schema] if args.key?(:compiled_proto_schema)
           @definition = args[:definition] if args.key?(:definition)
           @name = args[:name] if args.key?(:name)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)
