@@ -5731,6 +5731,11 @@ module Google
         # @return [String]
         attr_accessor :scan_state
       
+        # Token usage associated with an AI scan.
+        # Corresponds to the JSON property `tokenUsage`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::TokenUsage]
+        attr_accessor :token_usage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5740,6 +5745,7 @@ module Google
           @max_severity = args[:max_severity] if args.key?(:max_severity)
           @model_id = args[:model_id] if args.key?(:model_id)
           @scan_state = args[:scan_state] if args.key?(:scan_state)
+          @token_usage = args[:token_usage] if args.key?(:token_usage)
         end
       end
       
@@ -8258,6 +8264,49 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Token usage associated with an AI scan.
+      class TokenUsage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Cache matched tokens for implicit cache.
+        # Corresponds to the JSON property `cacheCount`
+        # @return [Fixnum]
+        attr_accessor :cache_count
+      
+        # Output only. Tokens in the model response.
+        # Corresponds to the JSON property `candidateCount`
+        # @return [Fixnum]
+        attr_accessor :candidate_count
+      
+        # Output only. Tokens in the user request.
+        # Corresponds to the JSON property `promptCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_count
+      
+        # Output only. Tokens in the thinking output.
+        # Corresponds to the JSON property `thinkingCount`
+        # @return [Fixnum]
+        attr_accessor :thinking_count
+      
+        # Output only. Prompt tokens for using tools.
+        # Corresponds to the JSON property `toolUsePromptCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_count = args[:cache_count] if args.key?(:cache_count)
+          @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @prompt_count = args[:prompt_count] if args.key?(:prompt_count)
+          @thinking_count = args[:thinking_count] if args.key?(:thinking_count)
+          @tool_use_prompt_count = args[:tool_use_prompt_count] if args.key?(:tool_use_prompt_count)
         end
       end
       
