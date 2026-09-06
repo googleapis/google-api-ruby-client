@@ -1591,7 +1591,6 @@ module Google
           property :default_uri_disabled, as: 'defaultUriDisabled'
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
-          property :durable_execution, as: 'durableExecution'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
           property :generation, :numeric_string => true, as: 'generation'
