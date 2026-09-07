@@ -421,7 +421,6 @@ EOF
 
   context 'with batch uploads' do
     before(:example) do
-      allow(SecureRandom).to receive(:uuid).and_return('b1981e17-f622-49af-b2eb-203308b1b17d')
       allow(Digest::SHA1).to receive(:hexdigest).and_return('outer', 'inner')
       response = <<EOF.gsub(/\n/, "\r\n")
 --batch123
@@ -471,12 +470,13 @@ EOF
       expected_body = <<EOF.gsub(/\n/, "\r\n")
 --outer
 Content-Type: application/http
-Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d\\+0>
+Content-Id: <[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\+0>
 Content-Length: \\d+
 Content-Transfer-Encoding: binary
 
 POST /upload/zoo/animals\\? HTTP/1\\.1
 X-Goog-Api-Client: #{Regexp.escape(x_goog_api_client_value)}
+X-Goog-Gcs-Idempotency-Token: [0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
 Authorization: Bearer a token
