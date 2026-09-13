@@ -892,6 +892,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CalendarModeExtensionAdviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeExtensionAdviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CalendarModeExtensionAdviceResponseNotRecommendedReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CalendarModeRecommendation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1523,6 +1541,12 @@ module Google
       end
       
       class Duration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicCompressionPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10165,6 +10189,8 @@ module Google
       class AliasIpRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :candidate_subnetwork_range_names, as: 'candidateSubnetworkRangeNames'
+          property :effective_subnetwork_range_name, as: 'effectiveSubnetworkRangeName'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :subnetwork_range_name, as: 'subnetworkRangeName'
         end
@@ -11517,6 +11543,32 @@ module Google
         end
       end
       
+      class CalendarModeExtensionAdviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time_not_later_than, as: 'endTimeNotLaterThan'
+          property :future_reservation, as: 'futureReservation'
+        end
+      end
+      
+      class CalendarModeExtensionAdviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :not_recommended_reason, as: 'notRecommendedReason', class: Google::Apis::ComputeBeta::CalendarModeExtensionAdviceResponseNotRecommendedReason, decorator: Google::Apis::ComputeBeta::CalendarModeExtensionAdviceResponseNotRecommendedReason::Representation
+      
+          property :recommendation_id, as: 'recommendationId'
+        end
+      end
+      
+      class CalendarModeExtensionAdviceResponseNotRecommendedReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :status, as: 'status'
+        end
+      end
+      
       class CalendarModeRecommendation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12652,6 +12704,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class DynamicCompressionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_mode, as: 'compressionMode'
         end
       end
       
@@ -14755,6 +14814,8 @@ module Google
       
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeBeta::CorsPolicy, decorator: Google::Apis::ComputeBeta::CorsPolicy::Representation
       
+          property :dynamic_compression_policy, as: 'dynamicCompressionPolicy', class: Google::Apis::ComputeBeta::DynamicCompressionPolicy, decorator: Google::Apis::ComputeBeta::DynamicCompressionPolicy::Representation
+      
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeBeta::HttpFaultInjection, decorator: Google::Apis::ComputeBeta::HttpFaultInjection::Representation
       
           property :image_optimization_policy, as: 'imageOptimizationPolicy', class: Google::Apis::ComputeBeta::ImageOptimizationPolicy, decorator: Google::Apis::ComputeBeta::ImageOptimizationPolicy::Representation
@@ -16353,6 +16414,7 @@ module Google
       class InstancePropertiesPatch
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :expose_host_topology, as: 'exposeHostTopology'
           hash :labels, as: 'labels'
           hash :metadata, as: 'metadata'
         end
@@ -17750,6 +17812,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fail_open, as: 'failOpen'
+          property :interconnect_key_group, as: 'interconnectKeyGroup'
           collection :pre_shared_keys, as: 'preSharedKeys', class: Google::Apis::ComputeBeta::InterconnectMacsecPreSharedKey, decorator: Google::Apis::ComputeBeta::InterconnectMacsecPreSharedKey::Representation
       
         end
@@ -22993,6 +23056,7 @@ module Google
           property :block, as: 'block'
           property :cluster, as: 'cluster'
           property :host, as: 'host'
+          property :machine, as: 'machine'
           property :subblock, as: 'subblock'
         end
       end
@@ -23994,6 +24058,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :expose_host_topology, as: 'exposeHostTopology'
           property :graceful_shutdown, as: 'gracefulShutdown', class: Google::Apis::ComputeBeta::SchedulingGracefulShutdown, decorator: Google::Apis::ComputeBeta::SchedulingGracefulShutdown::Representation
       
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
