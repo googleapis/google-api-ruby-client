@@ -34,8 +34,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     let(:command) do
       command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
       command.options.authorization = Signet::OAuth2::Client.new({
-        :token_credential_uri => 'https://accounts.google.com/o/oauth2/token'
-      })
+                                                                   token_credential_uri: 'https://accounts.google.com/o/oauth2/token'
+                                                                 })
       command
     end
 
@@ -43,7 +43,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       before(:example) do
         stub_request(:post, 'https://accounts.google.com/o/oauth2/token').to_return(
           { status: [500, 'Server error'] },
-          { status: [200, ''], headers: { 'Content-Type' => 'application/json' }, body: '{"access_token": "foo"}' })
+          { status: [200, ''], headers: { 'Content-Type' => 'application/json' }, body: '{"access_token": "foo"}' }
+        )
         stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
       end
 
@@ -59,7 +60,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       before(:example) do
         stub_request(:post, 'https://accounts.google.com/o/oauth2/token').to_return(
           { status: [500, 'Server error'] },
-          { status: [401, 'Unauthorized'] })
+          { status: [401, 'Unauthorized'] }
+        )
       end
 
       it 'should raise error' do
@@ -157,7 +159,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         base_interval: Google::Apis::RequestOptions.default.base_interval,
         max_interval: Google::Apis::RequestOptions.default.max_interval,
         multiplier: Google::Apis::RequestOptions.default.multiplier,
-        on: described_class::RETRIABLE_ERRORS).and_call_original
+        on: described_class::RETRIABLE_ERRORS
+      ).and_call_original
       allow(Retriable).to receive(:retriable).and_call_original
 
       command.execute(client)
@@ -202,7 +205,6 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       it 'should raise error with HTTP status code' do
         expect(err.status_code).to eq 500
       end
-
     end
 
     context('with callbacks') do
@@ -339,80 +341,82 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
 
     it 'should not swallow errors raised in block' do
-      expect { command.execute(client) { raise "Potatoes detected in tailpipe" } }.to raise_error("Potatoes detected in tailpipe")
+      expect { command.execute(client) { raise 'Potatoes detected in tailpipe' } }.to raise_error('Potatoes detected in tailpipe')
     end
   end
 
-  context('with opencensus integration') do
-    it 'should create an opencensus span for a successful call' do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: "Hello world")
-      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      OpenCensus::Trace.start_request_trace do |span_context|
-        command.execute(client)
-        spans = span_context.build_contained_spans
-        expect(spans.size).to eql 1
-        span = spans.first
-        expect(span.name.value).to eql '/zoo/animals'
-        expect(span.status.code).to eql 0
-        attrs = span.attributes
-        expect(attrs['http.host'].value).to eql 'www.googleapis.com'
-        expect(attrs['http.method'].value).to eql 'GET'
-        expect(attrs['http.path'].value).to eql '/zoo/animals'
-        expect(attrs['http.status_code']).to eql 200
-        events = span.time_events
-        expect(events.size).to eql 2
-        expect(events[0].type).to eql :SENT
-        expect(events[0].uncompressed_size).to eql 0
-        expect(events[1].type).to eql :RECEIVED
-        expect(events[1].uncompressed_size).to eql 11
+  if Google::Apis::Core::HttpCommand::OPENCENSUS_AVAILABLE
+    context('with opencensus integration') do
+      it 'should create an opencensus span for a successful call' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''], body: 'Hello world')
+        command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+        OpenCensus::Trace.start_request_trace do |span_context|
+          command.execute(client)
+          spans = span_context.build_contained_spans
+          expect(spans.size).to eql 1
+          span = spans.first
+          expect(span.name.value).to eql '/zoo/animals'
+          expect(span.status.code).to eql 0
+          attrs = span.attributes
+          expect(attrs['http.host'].value).to eql 'www.googleapis.com'
+          expect(attrs['http.method'].value).to eql 'GET'
+          expect(attrs['http.path'].value).to eql '/zoo/animals'
+          expect(attrs['http.status_code']).to eql 200
+          events = span.time_events
+          expect(events.size).to eql 2
+          expect(events[0].type).to eql :SENT
+          expect(events[0].uncompressed_size).to eql 0
+          expect(events[1].type).to eql :RECEIVED
+          expect(events[1].uncompressed_size).to eql 11
+        end
       end
-    end
 
-    it 'should create an opencensus span for a call failure' do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [403, ''])
-      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      OpenCensus::Trace.start_request_trace do |span_context|
-        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
-        spans = span_context.build_contained_spans
-        expect(spans.size).to eql 1
-        span = spans.first
-        expect(span.name.value).to eql '/zoo/animals'
-        expect(span.status.code).to eql 7
-        attrs = span.attributes
-        expect(attrs['http.host'].value).to eql 'www.googleapis.com'
-        expect(attrs['http.method'].value).to eql 'GET'
-        expect(attrs['http.path'].value).to eql '/zoo/animals'
-        expect(attrs['http.status_code']).to eql 403
+      it 'should create an opencensus span for a call failure' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [403, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+        OpenCensus::Trace.start_request_trace do |span_context|
+          expect { command.execute(client) }.to raise_error(Google::Apis::ClientError)
+          spans = span_context.build_contained_spans
+          expect(spans.size).to eql 1
+          span = spans.first
+          expect(span.name.value).to eql '/zoo/animals'
+          expect(span.status.code).to eql 7
+          attrs = span.attributes
+          expect(attrs['http.host'].value).to eql 'www.googleapis.com'
+          expect(attrs['http.method'].value).to eql 'GET'
+          expect(attrs['http.path'].value).to eql '/zoo/animals'
+          expect(attrs['http.status_code']).to eql 403
+        end
       end
-    end
 
-    it 'should propagate trace context header' do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
-      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      OpenCensus::Trace.start_request_trace do |span_context|
-        result = command.execute(client)
-        expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
-          .with { |req| !req.headers['Traceparent'].empty? }).to have_been_made
+      it 'should propagate trace context header' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Hello world))
+        command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+        OpenCensus::Trace.start_request_trace do |_span_context|
+          result = command.execute(client)
+          expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+            .with { |req| !req.headers['Traceparent'].empty? }).to have_been_made
+        end
       end
-    end
 
-    it 'should not create an opencensus span if disabled' do
-      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
-      command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-      command.options.use_opencensus = false
-      OpenCensus::Trace.start_request_trace do |span_context|
-        command.execute(client)
-        spans = span_context.build_contained_spans
-        expect(spans.size).to eql 0
+      it 'should not create an opencensus span if disabled' do
+        stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+        command.options.use_opencensus = false
+        OpenCensus::Trace.start_request_trace do |span_context|
+          command.execute(client)
+          spans = span_context.build_contained_spans
+          expect(spans.size).to eql 0
+        end
       end
     end
-  end if Google::Apis::Core::HttpCommand::OPENCENSUS_AVAILABLE
+  end
 
   it 'should send repeated query parameters' do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -420,7 +424,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&foo=bar')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.execute(client)
   end
 
@@ -437,8 +441,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=2019-06-22T13:51:37-07:00&b=2019-06-22T13:51:37-07:00&b=2019-07-23T14:54:12-07:00')
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    date1 = DateTime.new(2019, 6, 22, 13, 51, 37, "-0700")
-    date2 = DateTime.new(2019, 7, 23, 14, 54, 12, "-0700")
+    date1 = DateTime.new(2019, 6, 22, 13, 51, 37, '-0700')
+    date2 = DateTime.new(2019, 7, 23, 14, 54, 12, '-0700')
     command.query['a'] = date1
     command.query['b'] = [date1, date2]
     command.execute(client)
@@ -446,9 +450,9 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
   it 'should form encode parameters when method is POST and no body present' do
     stub_request(:post, 'https://www.googleapis.com/zoo/animals?a=1&a=2&a=3&b=hello&c=true&d=0')
-        .to_return(status: [200, ''])
+      .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:post, 'https://www.googleapis.com/zoo/animals')
-    command.query['a'] = [1,2,3]
+    command.query['a'] = [1, 2, 3]
     command.query['b'] = 'hello'
     command.query['c'] = nil
     command.query['d'] = 0
@@ -460,7 +464,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       .to_return(status: [200, ''])
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals?foo=bar')
     command.options.query = {
-      'a' => [1,2,3],
+      'a' => [1, 2, 3],
       'b' => false
     }
     command.execute(client)
@@ -520,7 +524,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     command.options.retries = 0
     expect { command.execute(client) }.to raise_error(Google::Apis::RequestTimeOutError)
-  end  
+  end
 
   it 'should not normalize unicode values by default' do
     stub_request(:get, 'https://www.googleapis.com/Cafe%CC%81').to_return(status: [200, ''])
@@ -543,83 +547,231 @@ RSpec.describe Google::Apis::Core::HttpCommand do
 
   it 'should set X-Goog-Api-Version headers when requested' do
     command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
-    command.set_api_version_header "v1_20240502"
+    command.set_api_version_header 'v1_20240502'
     stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: %(Api version))
     result = command.execute(client)
     expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
       .with { |req| req.headers['X-Goog-Api-Version'] == 'v1_20240502' }).to have_been_made
-    expect(result).to eql "Api version"
+    expect(result).to eql 'Api version'
   end
 
-  describe "#safe_pretty_representation" do
+  describe '#safe_pretty_representation' do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    it "should show fields in a normal object" do
+    it 'should show fields in a normal object' do
       obj = Google::Apis::SecretmanagerV1::AccessSecretVersionResponse.new
-      obj.instance_variable_set(:@payload, "hello")
+      obj.instance_variable_set(:@payload, 'hello')
       str = command.send(:safe_pretty_representation, obj)
-      expect(str).to include("@payload")
-      expect(str).not_to include("(fields redacted)")
+      expect(str).to include('@payload')
+      expect(str).not_to include('(fields redacted)')
       expect(str).to include("\n")
     end
 
-    it "should not show fields in a restricted object" do
+    it 'should not show fields in a restricted object' do
       obj = Google::Apis::SecretmanagerV1::SecretPayload.new
-      obj.instance_variable_set(:@payload, "hello")
+      obj.instance_variable_set(:@payload, 'hello')
       str = command.send(:safe_pretty_representation, obj)
-      expect(str).not_to include("@payload")
-      expect(str).to include("(fields redacted)")
+      expect(str).not_to include('@payload')
+      expect(str).to include('(fields redacted)')
       expect(str).to include("\n")
     end
 
-    it "should not show fields in a nested restricted object" do
+    it 'should not show fields in a nested restricted object' do
       obj = Google::Apis::SecretmanagerV1::AccessSecretVersionResponse.new
       payload = Google::Apis::SecretmanagerV1::SecretPayload.new
-      payload.instance_variable_set(:@data, "whoops")
+      payload.instance_variable_set(:@data, 'whoops')
       obj.instance_variable_set(:@payload, payload)
       str = command.send(:safe_pretty_representation, obj)
-      expect(str).to include("@payload")
-      expect(str).not_to include("@data")
-      expect(str).to include("(fields redacted)")
+      expect(str).to include('@payload')
+      expect(str).not_to include('@data')
+      expect(str).to include('(fields redacted)')
       expect(str).to include("\n")
     end
   end
 
-  describe "#safe_single_line_representation" do
+  describe '#safe_single_line_representation' do
     let(:command) do
       Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
     end
 
-    it "should show fields in a normal object" do
+    it 'should show fields in a normal object' do
       obj = Google::Apis::SecretmanagerV1::AccessSecretVersionResponse.new
-      obj.instance_variable_set(:@payload, "hello")
+      obj.instance_variable_set(:@payload, 'hello')
       str = command.send(:safe_single_line_representation, obj)
-      expect(str).to include("@payload")
-      expect(str).not_to include("(fields redacted)")
+      expect(str).to include('@payload')
+      expect(str).not_to include('(fields redacted)')
       expect(str).not_to include("\n")
     end
 
-    it "should not show fields in a restricted object" do
+    it 'should not show fields in a restricted object' do
       obj = Google::Apis::SecretmanagerV1::SecretPayload.new
-      obj.instance_variable_set(:@payload, "hello")
+      obj.instance_variable_set(:@payload, 'hello')
       str = command.send(:safe_single_line_representation, obj)
-      expect(str).not_to include("@payload")
-      expect(str).to include("(fields redacted)")
+      expect(str).not_to include('@payload')
+      expect(str).to include('(fields redacted)')
       expect(str).not_to include("\n")
     end
 
-    it "should not show fields in a nested restricted object" do
+    it 'should not show fields in a nested restricted object' do
       obj = Google::Apis::SecretmanagerV1::AccessSecretVersionResponse.new
       payload = Google::Apis::SecretmanagerV1::SecretPayload.new
-      payload.instance_variable_set(:@data, "whoops")
+      payload.instance_variable_set(:@data, 'whoops')
       obj.instance_variable_set(:@payload, payload)
       str = command.send(:safe_single_line_representation, obj)
-      expect(str).to include("@payload")
-      expect(str).not_to include("@data")
-      expect(str).to include("(fields redacted)")
+      expect(str).to include('@payload')
+      expect(str).not_to include('@data')
+      expect(str).to include('(fields redacted)')
       expect(str).not_to include("\n")
+    end
+  end
+
+  describe 'path parameter validation' do
+    context 'with simple path variables' do
+      # Source template specification:
+      # Pattern: v1/projects/{project}/locations/{location}/webhooks/{webhook}
+      # Variable constraints (RFC 6570 simple expansion):
+      # - Must not contain slashes (cannot span path segments)
+      # - Must not contain traversal segments ('.', '..')
+      # - Must not contain query/fragment injections ('?', '#')
+      let(:template) do
+        Addressable::Template.new(
+          'https://www.googleapis.com/v1/projects/{project}/locations/{location}/webhooks/{webhook}'
+        )
+      end
+
+      it 'should allow safe parameter values' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook')
+          .to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = 'billing-webhook'
+        command.options.retries = 0
+        expect { command.execute(client) }.not_to raise_error
+      end
+
+      it 'should reject slashes in simple parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = 'parent/child-webhook'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /cannot contain slashes/)
+      end
+
+      it 'should reject dot or double-dot in simple parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = '..'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value .. for webhook')
+      end
+
+      it 'should reject URL-encoded dot or double-dot in simple parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = '%2e%2e'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value .. for webhook')
+
+        command.params[:webhook] = '%2e'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Invalid value . for webhook')
+      end
+
+      it 'should reject query parameter injections' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = 'billing-webhook?key=val'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+      end
+
+      it 'should reject fragment parameter injections' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = 'billing-webhook#fragment'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+      end
+    end
+
+    context 'with reserved path variables' do
+      # Source template specification:
+      # Pattern: v1/{+parent}/indexes
+      # Variable constraints (RFC 6570 reserved expansion):
+      # - Allows slashes (multiple path segments)
+      # - Relative traversals within the segment boundary (e.g. 'a/b/../c') are allowed
+      # - Traversals escaping the left parameter boundary (e.g. '../escape') are blocked
+      # - Invalid structures like double-slashes '//' or single dots '.' are blocked
+      # - Query/fragment injections ('?', '#') are blocked
+      let(:template) { Addressable::Template.new('https://www.googleapis.com/v1/{+parent}/indexes') }
+
+      it 'should allow safe double wildcard paths' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/indexes')
+          .to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1'
+        command.options.retries = 0
+        expect { command.execute(client) }.not_to raise_error
+      end
+
+      it 'should reject relative traversals inside the wildcard' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1/../../default'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject traversals escaping the left parameter boundary' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] =
+          'projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject parameter values starting with parent directory traversals' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = '../escape-db'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject invalid segments like single dot' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123/./databases/default'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject URL-encoded dots and slashes in reserved parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e/doc2'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e/a'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/..%2f..%2fescape-db'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+
+        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e%2f%2e%2e%2fescape-db'
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, 'Value for parent must not contain segments that are exactly . or ..')
+      end
+
+      it 'should reject invalid empty segments' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123//databases/default'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /Invalid path segment/)
+      end
     end
   end
 end
