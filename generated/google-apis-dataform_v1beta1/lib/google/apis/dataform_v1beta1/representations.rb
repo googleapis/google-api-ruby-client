@@ -64,6 +64,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryUnitTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryUnitTestAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +269,18 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -527,6 +551,12 @@ module Google
       end
       
       class NotebookRuntimeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -974,6 +1004,31 @@ module Google
         end
       end
       
+      class BigQueryUnitTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :expected_output_query, as: 'expectedOutputQuery'
+          collection :tags, as: 'tags'
+          property :test_query, as: 'testQuery'
+        end
+      end
+      
+      class BigQueryUnitTestAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_results_job_id, as: 'actualResultsJobId'
+          property :actual_results_sql_script, as: 'actualResultsSqlScript'
+          property :expected_results_job_id, as: 'expectedResultsJobId'
+          property :expected_results_sql_script, as: 'expectedResultsSqlScript'
+          property :total_billed_bytes, :numeric_string => true, as: 'totalBilledBytes'
+          property :total_processed_bytes, :numeric_string => true, as: 'totalProcessedBytes'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1150,6 +1205,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assertion, as: 'assertion', class: Google::Apis::DataformV1beta1::Assertion, decorator: Google::Apis::DataformV1beta1::Assertion::Representation
       
+          property :bigquery_unit_test, as: 'bigqueryUnitTest', class: Google::Apis::DataformV1beta1::BigQueryUnitTest, decorator: Google::Apis::DataformV1beta1::BigQueryUnitTest::Representation
+      
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
           property :data_preparation, as: 'dataPreparation', class: Google::Apis::DataformV1beta1::DataPreparation, decorator: Google::Apis::DataformV1beta1::DataPreparation::Representation
@@ -1285,6 +1342,23 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EndUserAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DataformV1beta1::OAuthConfig, decorator: Google::Apis::DataformV1beta1::OAuthConfig::Representation
+      
+        end
+      end
+      
+      class EndUserAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DataformV1beta1::OAuthConfig, decorator: Google::Apis::DataformV1beta1::OAuthConfig::Representation
+      
+          property :user_email, as: 'userEmail'
         end
       end
       
@@ -1494,6 +1568,9 @@ module Google
       class InvocationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_user_auth_config, as: 'endUserAuthConfig', class: Google::Apis::DataformV1beta1::EndUserAuthenticationConfig, decorator: Google::Apis::DataformV1beta1::EndUserAuthenticationConfig::Representation
+      
+          property :execution_mode, as: 'executionMode'
           property :fully_refresh_incremental_tables_enabled, as: 'fullyRefreshIncrementalTablesEnabled'
           collection :included_tags, as: 'includedTags'
           collection :included_targets, as: 'includedTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
@@ -1691,6 +1768,13 @@ module Google
           property :gcs_output_bucket, as: 'gcsOutputBucket'
           property :gcs_repository_snapshot_destination, as: 'gcsRepositorySnapshotDestination', class: Google::Apis::DataformV1beta1::GcsRepositorySnapshotDestination, decorator: Google::Apis::DataformV1beta1::GcsRepositorySnapshotDestination::Representation
       
+        end
+      end
+      
+      class OAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_oauth_scopes, as: 'additionalOauthScopes'
         end
       end
       
@@ -1960,6 +2044,8 @@ module Google
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :display_name, as: 'displayName'
+          property :end_user_auth_config, as: 'endUserAuthConfig', class: Google::Apis::DataformV1beta1::EndUserAuthConfig, decorator: Google::Apis::DataformV1beta1::EndUserAuthConfig::Representation
+      
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
           property :internal_metadata, as: 'internalMetadata'
@@ -2228,6 +2314,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_action, as: 'bigqueryAction', class: Google::Apis::DataformV1beta1::BigQueryAction, decorator: Google::Apis::DataformV1beta1::BigQueryAction::Representation
+      
+          property :bigquery_unit_test_action, as: 'bigqueryUnitTestAction', class: Google::Apis::DataformV1beta1::BigQueryUnitTestAction, decorator: Google::Apis::DataformV1beta1::BigQueryUnitTestAction::Representation
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
