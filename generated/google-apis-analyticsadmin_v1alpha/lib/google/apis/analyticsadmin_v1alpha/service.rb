@@ -5101,7 +5101,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a single Key Event.
+        # Retrieves a single Key Event.
         # @param [String] name
         #   Required. The resource name of the Key Event to retrieve. Format: properties/`
         #   property`/keyEvents/`key_event` Example: "properties/123/keyEvents/456"
