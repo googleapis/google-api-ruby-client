@@ -17317,6 +17317,189 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates an Evaluation Experiment.
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the Evaluation
+        #   Experiment in. Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment] google_cloud_aiplatform_v1beta1_evaluation_experiment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_evaluation_experiment(parent, google_cloud_aiplatform_v1beta1_evaluation_experiment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/evaluationExperiments', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_evaluation_experiment_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Evaluation Experiment.
+        # @param [String] name
+        #   Required. The name of the EvaluationExperiment resource to be deleted. Format:
+        #   `projects/`project`/locations/`location`/evaluationExperiments/`
+        #   evaluation_experiment``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_evaluation_experiment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets an Evaluation Experiment.
+        # @param [String] name
+        #   Required. The name of the EvaluationExperiment resource. Format: `projects/`
+        #   project`/locations/`location`/evaluationExperiments/`evaluation_experiment``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_evaluation_experiment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Evaluation Experiments.
+        # @param [String] parent
+        #   Required. The resource name of the Location from which to list the Evaluation
+        #   Experiments. Format: `projects/`project`/locations/`location``
+        # @param [String] filter
+        #   Optional. Filter expression that matches a subset of the EvaluationExperiments
+        #   to show. For field names both snake_case and camelCase are supported. For more
+        #   information about filter syntax, see [AIP-160](https://google.aip.dev/160).
+        # @param [String] order_by
+        #   Optional. A comma-separated list of fields to order by, sorted in ascending
+        #   order by default. Use `desc` after a field name for descending.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Evaluation Experiments to return.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListEvaluationExperiments`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_evaluation_experiments(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/evaluationExperiments', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ListEvaluationExperimentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an Evaluation Experiment.
+        # @param [String] name
+        #   Identifier. The resource name of the EvaluationExperiment. This is a unique
+        #   identifier. Format: `projects/`project`/locations/`location`/
+        #   evaluationExperiments/`evaluation_experiment``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment] google_cloud_aiplatform_v1beta1_evaluation_experiment_object
+        # @param [String] update_mask
+        #   Optional. The update mask applies to the resource. For the `FieldMask`
+        #   definition, see google.protobuf.FieldMask.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_evaluation_experiment(name, google_cloud_aiplatform_v1beta1_evaluation_experiment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_evaluation_experiment_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationExperiment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates an Evaluation Item.
         # @param [String] parent
         #   Required. The resource name of the Location to create the Evaluation Item in.
@@ -31561,6 +31744,49 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Clears (purges) the trained model artifacts derived from a MonitoredAgent's
+        # data. The purged model is rebuilt by the next scheduled training run. To clear
+        # every MonitoredAgent in a location's scope, use the `-` wildcard agent segment
+        # for the name field: `projects/`project`/locations/`location`/monitoredAgents/-`
+        # This is the on-demand data-deletion path for customers who have deleted the
+        # underlying logs / observability data a model was trained on. It deletes only
+        # the derived model artifacts in the tenant project (it does NOT delete the
+        # scope, tenant project, or monitoring). To stop monitoring an agent entirely,
+        # disable it via DisableMonitoredAgent. See go/aad-clear-training-data.
+        # @param [String] name
+        #   Required. The MonitoredAgent whose trained model artifacts to purge. Use the `-
+        #   ` wildcard agent segment to purge every MonitoredAgent in the scope. Format: `
+        #   projects/`project`/locations/`location`/monitoredAgents/`monitored_agent``
+        # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ClearTrainingDataRequest] google_cloud_aiplatform_v1beta1_clear_training_data_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def clear_project_location_monitored_agent_training_data(name, google_cloud_aiplatform_v1beta1_clear_training_data_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:clearTrainingData', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ClearTrainingDataRequest::Representation
+          command.request_object = google_cloud_aiplatform_v1beta1_clear_training_data_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -46281,14 +46507,16 @@ module Google
         #   Format: `projects/`project`/locations/`location`/taskStores/`task_store``
         # @param [String] filter
         #   Optional. The standard list filter. More detail in [AIP-160](https://google.
-        #   aip.dev/160). Supported fields: * `context_id` * `status.state` Example: `
-        #   context_id="abc"`, `status.state="WORKING"`.
+        #   aip.dev/160). Supported fields: * `task_id` * `context_id` * `status.state` * `
+        #   app_id` * `user_id` * `create_time` range (i.e. `create_time>="2025-01-31T11:
+        #   30:00-04:00"` where the timestamp is in RFC 3339 format) Example: `context_id="
+        #   abc"`, `status.state="WORKING"`.
         # @param [String] order_by
         #   Optional. A comma-separated list of fields to order by, sorted in ascending
         #   order. Use "desc" after a field name for descending. If this field is omitted,
-        #   the default ordering is `create_time` descending. More detail in [AIP-132](
-        #   https://google.aip.dev/132). Supported fields: * `create_time` * `update_time`
-        #   Example: `create_time desc`.
+        #   the default ordering is `task_id` descending. More detail in [AIP-132](https://
+        #   google.aip.dev/132). Supported field: * `task_id` * `create_time` Example: `
+        #   create_time desc`, `task_id asc`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of tasks to return. The service may return fewer
         #   than this value. If unspecified, at most 10 tasks will be returned. The
@@ -46333,15 +46561,19 @@ module Google
         #   Format: `projects/`project`/locations/`location`/taskStores/`task_store`/
         #   a2aTaskRecords/`a2a_task_record``
         # @param [String] filter
-        #   Optional. The standard list filter. Supported fields: * `create_time` range (i.
-        #   e. `create_time>="2025-01-31T11:30:00-04:00"` where the timestamp is in RFC
-        #   3339 format) More detail in [AIP-160](https://google.aip.dev/160).
+        #   Optional. The standard list filter. Supported fields: * `generation` * `
+        #   create_time` range (i.e. `create_time>="2025-01-31T11:30:00-04:00"` where the
+        #   timestamp is in RFC 3339 format) More detail in [AIP-160](https://google.aip.
+        #   dev/160).
         # @param [String] order_by
-        #   Optional. A comma-separated list of fields to order the results by. If this
-        #   field is omitted, the results will be ordered by `generation` in ascending
-        #   order. For each field, the default sort order is ascending. To specify
-        #   descending order for a field, append a ` desc` suffix. For example: `
-        #   create_time desc`. Supported fields: * `create_time` * `generation`
+        #   Optional. Specifies the order of the returned events. If omitted, results
+        #   default to `generation` in ascending order. To specify descending order,
+        #   append a ` desc` suffix. For example: `generation desc`. Supported fields: * `
+        #   generation` Note: Ordering directly by event timestamp (e.g., `create_time`)
+        #   is not supported. Users requiring time-based traversal should use `generation`
+        #   ordering and scan the results until the desired time threshold is reached (e.g.
+        #   , for chronological order, use default ascending and stop when `create_time`
+        #   exceeds your target).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events to return. The service may return fewer
         #   than this value. If unspecified, at most 100 events will be returned. The
