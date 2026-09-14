@@ -34,7 +34,6 @@ RSpec.describe Google::Apis::Core::ApiCommand do
 
   let(:client_version) { "1.2.3" }
   let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{client_version}" }
-
   context('with preparation') do
     let(:command) do
       Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals', client_version: client_version)
@@ -67,6 +66,14 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       expect(command.header['x-goog-api-client']).to be nil
     end
 
+    it 'should not accumulate duplicate gccl-invocation-id clauses when prepare! is called multiple times' do
+      command.options.add_invocation_id_header = true
+      command.prepare!
+      first_header = command.header['X-Goog-Api-Client']
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql first_header
+    end
+
     it 'should not set the X-Goog-User-Project header if there is no quota_project' do
       command.prepare!
       expect(command.header['X-Goog-User-Project']).to be_nil
@@ -88,7 +95,36 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     it "should set the gccl-invocation-id to a random UUID" do
       command.options.add_invocation_id_header = true
       command.prepare!
-      expect(command.header["X-Goog-Api-Client"]).to include("gccl-invocation-id")
+      expect(command.header["X-Goog-Api-Client"]).to match(/gccl-invocation-id\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)
+    end
+
+    it "should set the X-Goog-Gcs-Idempotency-Token header" do
+      command.prepare!
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)
+    end
+
+    it "should not set the X-Goog-Gcs-Idempotency-Token header when option is false" do
+      command.options.add_idempotency_token_header = false
+      command.prepare!
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'should generate different tokens for different command instances' do
+      cmd1 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+      cmd2 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+
+      cmd1.prepare!
+      cmd2.prepare!
+
+      expect(cmd1.header['X-Goog-Gcs-Idempotency-Token']).not_to eq(cmd2.header['X-Goog-Gcs-Idempotency-Token'])
+    end
+
+    it "should respect custom X-Goog-Gcs-Idempotency-Token in options.header regardless of casing" do
+      command.options.header = { 'x-goog-gcs-idempotency-token' => 'my-custom-token' }
+      command.prepare!
+      expect(command.header['x-goog-gcs-idempotency-token']).to eql 'my-custom-token'
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
     end
   end
 
@@ -250,10 +286,17 @@ EOF
       command.options.add_invocation_id_header = true
       result = command.execute(client)
       invocation_id_header = command.header["X-Goog-Api-Client"]
-      
       expect(invocation_id_header).to include("gccl-invocation-id")
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Api-Client'] == invocation_id_header }).to have_been_made.times(2)
+    end
+
+    it 'should keep same idempotency_token across retries' do
+      result = command.execute(client)
+      idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
+        .with { |req| req.headers['X-Goog-Gcs-Idempotency-Token'] == idempotency_token_header })
+        .to have_been_made.times(2)
     end
   end
 
