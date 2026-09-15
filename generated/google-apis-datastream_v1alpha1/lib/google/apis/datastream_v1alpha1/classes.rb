@@ -466,7 +466,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # The reason of the error. This is a constant value that identifies the
+        # The reason for the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
         # domain of errors. This should be at most 63 characters and match a regular
         # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -577,7 +577,7 @@ module Google
         # @return [Google::Apis::DatastreamV1alpha1::LocalizedMessage]
         attr_accessor :localized_message
       
-        # The reason of the field-level error. This is a constant value that identifies
+        # The reason for the field-level error. This is a constant value that identifies
         # the proximate cause of the field-level error. It should uniquely identify the
         # type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain.
         # This should be at most 63 characters and match a regular expression of `A-Z+[

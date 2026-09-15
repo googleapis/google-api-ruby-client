@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FinishOAuthResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class McpToolVisibility
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -735,6 +747,14 @@ module Google
         end
       end
       
+      class FieldVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restriction, as: 'restriction'
+          property :selector, as: 'selector'
+        end
+      end
+      
       class FinishOAuthResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1011,6 +1031,16 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class McpToolVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_visibility, as: 'fieldVisibility', class: Google::Apis::DeveloperconnectV1::FieldVisibility, decorator: Google::Apis::DeveloperconnectV1::FieldVisibility::Representation
+      
+          property :visibility_enforcement_strategy, as: 'visibilityEnforcementStrategy'
+          property :visibility_restriction, as: 'visibilityRestriction'
         end
       end
       

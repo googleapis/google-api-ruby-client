@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1313,6 +1319,7 @@ module Google
           property :end_time, as: 'endTime'
           property :name, as: 'name'
           property :seat_count, :numeric_string => true, as: 'seatCount'
+          property :signup_source, as: 'signupSource'
           property :sku, as: 'sku'
           property :start_time, as: 'startTime'
           property :state, as: 'state'
@@ -1383,6 +1390,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_info, as: 'deviceInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo::Representation
       
+          property :dispatch_info, as: 'dispatchInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo::Representation
+      
           property :group_info, as: 'groupInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo::Representation
       
           property :output_type, as: 'outputType'
@@ -1392,6 +1401,13 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_type, as: 'outputType'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_type, as: 'outputType'

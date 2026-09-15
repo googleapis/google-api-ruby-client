@@ -51,7 +51,10 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Atomically updates the ResourceRecordSet collection.
+        # Atomically updates the ResourceRecordSet collection. Note: While `dns.changes.
+        # create` is the baseline permission required to invoke this method, additional
+        # permissions are checked depending on the specific additions or deletions
+        # contained in the payload.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [String] managed_zone
@@ -359,7 +362,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new ManagedZone.
+        # Creates a new ManagedZone. Note: While `dns.managedZones.create` is the
+        # baseline permission required to invoke this method, additional permissions are
+        # required if the managed zone configuration references other resources.
         # @param [String] project
         #   Identifies the project addressed by this request.
         # @param [Google::Apis::DnsV1::ManagedZone] managed_zone_object

@@ -558,6 +558,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. Immutable. The visibility of the combined curation package fee and
+        # data segment fees (the total curation fee).
+        # Corresponds to the JSON property `curationFeeVisibility`
+        # @return [String]
+        attr_accessor :curation_fee_visibility
+      
         # Optional. A description of the curated package, provided by the curator.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -578,6 +584,12 @@ module Google
         # Corresponds to the JSON property `floorPriceCpm`
         # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::Money]
         attr_accessor :floor_price_cpm
+      
+        # Optional. The fee will be charged as a percentage of the impression cost,
+        # represented in millipercent. For example, 1% is represented as 1000.
+        # Corresponds to the JSON property `millipercentOfMediaFee`
+        # @return [Fixnum]
+        attr_accessor :millipercent_of_media_fee
       
         # Identifier. The unique resource name for the curated package. Format: `
         # curators/`accountId`/curatedPackages/`curatedPackageId``
@@ -610,10 +622,12 @@ module Google
         def update!(**args)
           @access_settings = args[:access_settings] if args.key?(:access_settings)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @curation_fee_visibility = args[:curation_fee_visibility] if args.key?(:curation_fee_visibility)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @fee_cpm = args[:fee_cpm] if args.key?(:fee_cpm)
           @floor_price_cpm = args[:floor_price_cpm] if args.key?(:floor_price_cpm)
+          @millipercent_of_media_fee = args[:millipercent_of_media_fee] if args.key?(:millipercent_of_media_fee)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @targeting = args[:targeting] if args.key?(:targeting)
@@ -623,7 +637,7 @@ module Google
       
       # Defines an identifier for a segment of inventory that can be targeted by
       # curators or media planners in the deals or auction packages UI. Curation of
-      # inventory is done by curators on external platforms.
+      # inventory is done by curators on external platforms. -- Next ID: 9 --
       class DataSegment
         include Google::Apis::Core::Hashable
       
@@ -636,6 +650,12 @@ module Google
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
+      
+        # Optional. The fee will be charged as a percentage of the impression cost,
+        # represented in millipercent. For example, 1% is represented as 1000.
+        # Corresponds to the JSON property `millipercentOfMediaFee`
+        # @return [Fixnum]
+        attr_accessor :millipercent_of_media_fee
       
         # Immutable. Identifier. The unique identifier for the data segment. Account ID
         # corresponds to the account ID that created the segment. v1alpha format: `
@@ -655,6 +675,17 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Optional. Immutable. The ID of the User List wrapped by this Data Segment.
+        # Curators with a linked Data Partner account can create a data segment that
+        # wraps a user list owned by the linked Data Partner account. User lists can be
+        # uploaded and managed using the [Data Manager API](https://developers.google.
+        # com/data-manager/api/data-partners/audiences). Linking a user list to a data
+        # segment lets you define a segment of inventory that is based on an audience
+        # you create.
+        # Corresponds to the JSON property `userListId`
+        # @return [String]
+        attr_accessor :user_list_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -663,9 +694,11 @@ module Google
         def update!(**args)
           @cpm_fee = args[:cpm_fee] if args.key?(:cpm_fee)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @millipercent_of_media_fee = args[:millipercent_of_media_fee] if args.key?(:millipercent_of_media_fee)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @user_list_id = args[:user_list_id] if args.key?(:user_list_id)
         end
       end
       

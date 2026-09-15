@@ -76,12 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -208,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaLimitedUseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +215,18 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,12 +293,6 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaResourcePolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleFirebaseAppcheckV1betaSafetyNetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -403,14 +403,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaV3Config, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaRecaptchaV3Config::Representation
-      
-        end
-      end
-      
-      class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaSafetyNetConfig::Representation
       
         end
       end
@@ -558,13 +550,6 @@ module Google
         end
       end
       
-      class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :safety_net_token, as: 'safetyNetToken'
-        end
-      end
-      
       class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -593,6 +578,13 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaLimitedUseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jti, as: 'jti'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -617,6 +609,23 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use_config, as: 'limitedUseConfig', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaLimitedUseConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaLimitedUseConfig::Representation
+      
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -723,14 +732,6 @@ module Google
           property :name, as: 'name'
           property :target_resource, as: 'targetResource'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleFirebaseAppcheckV1betaSafetyNetConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :token_ttl, as: 'tokenTtl'
         end
       end
       

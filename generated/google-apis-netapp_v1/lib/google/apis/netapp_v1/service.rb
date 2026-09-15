@@ -2118,6 +2118,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the current state, progress, and details of a split operation for a
+        # volume. This method is relevant when the volume is a clone. For volumes that
+        # are not clones, this method will return an error.
+        # @param [String] name
+        #   Required. The full name of the volume. Format: projects/`project_number`/
+        #   locations/`location`/volumes/`volume_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::SplitStatus] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::SplitStatus]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_volume_split_status(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:getSplitStatus', options)
+          command.response_representation = Google::Apis::NetappV1::SplitStatus::Representation
+          command.response_class = Google::Apis::NetappV1::SplitStatus
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists Volumes in a given project.
         # @param [String] parent
         #   Required. Parent value for ListVolumesRequest
@@ -2262,6 +2295,42 @@ module Google
           command = make_simple_command(:post, 'v1/{+name}:revert', options)
           command.request_representation = Google::Apis::NetappV1::RevertVolumeRequest::Representation
           command.request_object = revert_volume_request_object
+          command.response_representation = Google::Apis::NetappV1::Operation::Representation
+          command.response_class = Google::Apis::NetappV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Splits a clone volume from its source volume. This operation will only work
+        # for volumes which have clone_details set(clones). For volumes that are not
+        # clones, this operation will return an error.
+        # @param [String] name
+        #   Required. The full name of the clone volume to be split from its source.
+        #   Format: projects/`project_number`/locations/`location`/volumes/`volume_id`
+        # @param [Google::Apis::NetappV1::StartSplitRequest] start_split_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetappV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetappV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_volume_split(name, start_split_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:startSplit', options)
+          command.request_representation = Google::Apis::NetappV1::StartSplitRequest::Representation
+          command.request_object = start_split_request_object
           command.response_representation = Google::Apis::NetappV1::Operation::Representation
           command.response_class = Google::Apis::NetappV1::Operation
           command.params['name'] = name unless name.nil?

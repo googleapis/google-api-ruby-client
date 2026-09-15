@@ -180,6 +180,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # Reads documents in a transaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -196,6 +201,7 @@ module Google
           @mask = args[:mask] if args.key?(:mask)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -252,6 +258,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # The writes to apply. Method does not apply writes atomically and does not
         # guarantee ordering. Each write succeeds or fails independently. You cannot
         # write to the same document more than once per request.
@@ -266,6 +277,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @writes = args[:writes] if args.key?(:writes)
         end
       end
@@ -306,6 +318,11 @@ module Google
         # @return [Google::Apis::FirestoreV1beta1::TransactionOptions]
         attr_accessor :options
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -313,6 +330,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @options = args[:options] if args.key?(:options)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -450,6 +468,11 @@ module Google
       class CommitRequest
         include Google::Apis::Core::Hashable
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # If set, applies all writes in this transaction, and commits it.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -467,6 +490,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @transaction = args[:transaction] if args.key?(:transaction)
           @writes = args[:writes] if args.key?(:writes)
         end
@@ -851,6 +875,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # A Firestore query represented as an ordered list of operations / stages. This
         # is considered the top-level function which plans and executes a query. It is
         # logically equivalent to `query(stages, options)`, but prevents the client from
@@ -875,12 +904,13 @@ module Google
           @auto_commit_transaction = args[:auto_commit_transaction] if args.key?(:auto_commit_transaction)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @structured_pipeline = args[:structured_pipeline] if args.key?(:structured_pipeline)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
       
-      # The response for Firestore.Execute.
+      # The response for Firestore.ExecutePipeline.
       class ExecutePipelineResponse
         include Google::Apis::Core::Hashable
       
@@ -1583,12 +1613,31 @@ module Google
       class GoogleFirestoreAdminV1UpdateDatabaseMetadata
         include Google::Apis::Core::Hashable
       
+        # The time this operation completed. Will be unset if operation still in
+        # progress.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The time this operation started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The state of the operation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2080,6 +2129,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2089,6 +2143,7 @@ module Google
           @page_size = args[:page_size] if args.key?(:page_size)
           @page_token = args[:page_token] if args.key?(:page_token)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -2162,6 +2217,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :remove_target
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2171,6 +2231,7 @@ module Google
           @add_target = args[:add_target] if args.key?(:add_target)
           @labels = args[:labels] if args.key?(:labels)
           @remove_target = args[:remove_target] if args.key?(:remove_target)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -2317,6 +2378,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # A Firestore query. The query stages are executed in the following order: 1.
         # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
         # find_nearest
@@ -2334,6 +2400,7 @@ module Google
           @page_token = args[:page_token] if args.key?(:page_token)
           @partition_count = args[:partition_count] if args.key?(:partition_count)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
         end
       end
@@ -2544,9 +2611,53 @@ module Google
         end
       end
       
+      # Options for a request.
+      class RequestOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The request tags for the request. Request tags are user-provided
+        # strings used for usage monitoring, cost management, and observability. Callers
+        # can associate custom application context (such as component, microservice,
+        # feature name, or operation type) with database requests. These tags are
+        # collected and aggregated in usage and monitoring reports, allowing billable
+        # operations and usage metrics to be sliced and analyzed by tag. These tags *
+        # only* show up in monitoring and are visible in administrative operations (such
+        # as usage reports). They do not affect data storage, query semantics, or
+        # request execution. Cardinality and Best Practices: - Request tags are most
+        # effective when using a bounded set of distinct values (e.g., fewer than 100
+        # distinct tags across an entire database). Using a large number of distinct
+        # tags may result in tags being omitted from top usage dashboards. - Use
+        # structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`
+        # ) and avoid high-cardinality values such as UUIDs, request IDs, timestamps,
+        # user IDs, or document keys. - Do not include sensitive data or personally
+        # identifiable information (PII) in request tags, as they show up in
+        # administrative monitoring. The tags are processed as follows: - Leading and
+        # trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out.
+        # - Truncated to a maximum of 510 characters. - Deduplicated within the same
+        # request. - Limited to a maximum of 50 tags per request (excess tags are
+        # silently discarded).
+        # Corresponds to the JSON property `requestTags`
+        # @return [Array<String>]
+        attr_accessor :request_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_tags = args[:request_tags] if args.key?(:request_tags)
+        end
+      end
+      
       # The request for Firestore.Rollback.
       class RollbackRequest
         include Google::Apis::Core::Hashable
+      
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
       
         # Required. The transaction to roll back.
         # Corresponds to the JSON property `transaction`
@@ -2560,6 +2671,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -2585,6 +2697,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # Firestore query for running an aggregation over a StructuredQuery.
         # Corresponds to the JSON property `structuredAggregationQuery`
         # @return [Google::Apis::FirestoreV1beta1::StructuredAggregationQuery]
@@ -2606,6 +2723,7 @@ module Google
           @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @structured_aggregation_query = args[:structured_aggregation_query] if args.key?(:structured_aggregation_query)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
@@ -2677,6 +2795,11 @@ module Google
         # @return [String]
         attr_accessor :read_time
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # A Firestore query. The query stages are executed in the following order: 1.
         # from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit 7.
         # find_nearest
@@ -2700,6 +2823,7 @@ module Google
           @explain_options = args[:explain_options] if args.key?(:explain_options)
           @new_transaction = args[:new_transaction] if args.key?(:new_transaction)
           @read_time = args[:read_time] if args.key?(:read_time)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @structured_query = args[:structured_query] if args.key?(:structured_query)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
@@ -3217,8 +3341,10 @@ module Google
         attr_accessor :boolean_value
         alias_method :boolean_value?, :boolean_value
       
-        # A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes
-        # are considered by queries.
+        # A bytes value. In Standard edition databases: * The value must not exceed 1
+        # MiB - 89 bytes. * Only the first 1,500 bytes are considered by queries. In
+        # Enterprise edition databases, there is no limit on the size of the value.
+        # However, it is still subject to document and index entry size limits.
         # Corresponds to the JSON property `bytesValue`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3278,9 +3404,11 @@ module Google
         # @return [String]
         attr_accessor :reference_value
       
-        # A string value. The string, represented as UTF-8, must not exceed 1 MiB - 89
-        # bytes. Only the first 1,500 bytes of the UTF-8 representation are considered
-        # by queries.
+        # A string value. In Standard edition databases: * The string, represented as
+        # UTF-8, must not exceed 1 MiB - 89 bytes. * Only the first 1,500 bytes of the
+        # UTF-8 representation are considered by queries. In Enterprise edition
+        # databases, there is no limit on the size of the value. However, it is still
+        # subject to document and index entry size limits.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -3391,6 +3519,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::FirestoreV1beta1::RequestOptions]
+        attr_accessor :request_options
+      
         # The ID of the write stream to resume. This may only be set in the first
         # message. When left empty, a new write stream will be created.
         # Corresponds to the JSON property `streamId`
@@ -3424,6 +3557,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @stream_id = args[:stream_id] if args.key?(:stream_id)
           @stream_token = args[:stream_token] if args.key?(:stream_token)
           @writes = args[:writes] if args.key?(:writes)

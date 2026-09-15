@@ -227,6 +227,107 @@ module Google
         end
       end
       
+      # Represents a BigQuery unit test.
+      class BigQueryUnitTest
+        include Google::Apis::Core::Hashable
+      
+        # A list of actions that this action depends on.
+        # Corresponds to the JSON property `dependencyTargets`
+        # @return [Array<Google::Apis::DataformV1beta1::Target>]
+        attr_accessor :dependency_targets
+      
+        # Whether this action is disabled (i.e. should not be run).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The name of the unit test.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Expected output query to compare against the test query.
+        # Corresponds to the JSON property `expectedOutputQuery`
+        # @return [String]
+        attr_accessor :expected_output_query
+      
+        # Arbitrary, user-defined tags on this action.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Test query to execute.
+        # Corresponds to the JSON property `testQuery`
+        # @return [String]
+        attr_accessor :test_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expected_output_query = args[:expected_output_query] if args.key?(:expected_output_query)
+          @tags = args[:tags] if args.key?(:tags)
+          @test_query = args[:test_query] if args.key?(:test_query)
+        end
+      end
+      
+      # Represents a workflow action that will run a BigQuery unit test.
+      class BigQueryUnitTestAction
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Job ID for the actual results.
+        # Corresponds to the JSON property `actualResultsJobId`
+        # @return [String]
+        attr_accessor :actual_results_job_id
+      
+        # Output only. SQL script for the actual results.
+        # Corresponds to the JSON property `actualResultsSqlScript`
+        # @return [String]
+        attr_accessor :actual_results_sql_script
+      
+        # Output only. Job ID for the expected results.
+        # Corresponds to the JSON property `expectedResultsJobId`
+        # @return [String]
+        attr_accessor :expected_results_job_id
+      
+        # Output only. SQL script for the expected results.
+        # Corresponds to the JSON property `expectedResultsSqlScript`
+        # @return [String]
+        attr_accessor :expected_results_sql_script
+      
+        # Output only. Total bytes billed for this action. Combined total for actual and
+        # expected jobs.
+        # Corresponds to the JSON property `totalBilledBytes`
+        # @return [Fixnum]
+        attr_accessor :total_billed_bytes
+      
+        # Output only. Total bytes processed for this action. Combined total for actual
+        # and expected jobs.
+        # Corresponds to the JSON property `totalProcessedBytes`
+        # @return [Fixnum]
+        attr_accessor :total_processed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actual_results_job_id = args[:actual_results_job_id] if args.key?(:actual_results_job_id)
+          @actual_results_sql_script = args[:actual_results_sql_script] if args.key?(:actual_results_sql_script)
+          @expected_results_job_id = args[:expected_results_job_id] if args.key?(:expected_results_job_id)
+          @expected_results_sql_script = args[:expected_results_sql_script] if args.key?(:expected_results_sql_script)
+          @total_billed_bytes = args[:total_billed_bytes] if args.key?(:total_billed_bytes)
+          @total_processed_bytes = args[:total_processed_bytes] if args.key?(:total_processed_bytes)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -328,6 +429,31 @@ module Google
         end
       end
       
+      # Contains metadata about a branch.
+      class BranchMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The branch name.
+        # Corresponds to the JSON property `branchName`
+        # @return [String]
+        attr_accessor :branch_name
+      
+        # Represents a single commit log.
+        # Corresponds to the JSON property `lastCommit`
+        # @return [Google::Apis::DataformV1beta1::CommitLogEntry]
+        attr_accessor :last_commit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_name = args[:branch_name] if args.key?(:branch_name)
+          @last_commit = args[:last_commit] if args.key?(:last_commit)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -364,6 +490,44 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # `CheckoutWorkspaceBranch` request message.
+      class CheckoutWorkspaceBranchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the branch in the Git repository to which the workspace
+        # should be checked out.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Optional. If set to true and the branch does not exist, it will be created.
+        # Otherwise, an error will be thrown.
+        # Corresponds to the JSON property `createIfNotExists`
+        # @return [Boolean]
+        attr_accessor :create_if_not_exists
+        alias_method :create_if_not_exists?, :create_if_not_exists
+      
+        # Optional. The name of the branch in the Git repository from which the new
+        # branch should be created. If left unset, the workspace's current branch name
+        # will be used. Accepts only branch names from FetchWorkspaceBranches response,
+        # and can only be set if `create_if_not_exists` is true. Oherwise, an error will
+        # be thrown.
+        # Corresponds to the JSON property `sourceBranch`
+        # @return [String]
+        attr_accessor :source_branch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @create_if_not_exists = args[:create_if_not_exists] if args.key?(:create_if_not_exists)
+          @source_branch = args[:source_branch] if args.key?(:source_branch)
         end
       end
       
@@ -409,6 +573,11 @@ module Google
         # @return [String]
         attr_accessor :default_schema
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1beta1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         # Optional. The suffix that should be appended to all schema (BigQuery dataset
         # ID) names.
         # Corresponds to the JSON property `schemaSuffix`
@@ -439,6 +608,7 @@ module Google
           @default_location = args[:default_location] if args.key?(:default_location)
           @default_notebook_runtime_options = args[:default_notebook_runtime_options] if args.key?(:default_notebook_runtime_options)
           @default_schema = args[:default_schema] if args.key?(:default_schema)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
           @schema_suffix = args[:schema_suffix] if args.key?(:schema_suffix)
           @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
           @vars = args[:vars] if args.key?(:vars)
@@ -730,6 +900,11 @@ module Google
         # @return [String]
         attr_accessor :dataform_core_version
       
+        # Metadata about a repository snapshot stored in Google Cloud Storage.
+        # Corresponds to the JSON property `gcsRepositorySnapshotMetadata`
+        # @return [Google::Apis::DataformV1beta1::GcsRepositorySnapshotMetadata]
+        attr_accessor :gcs_repository_snapshot_metadata
+      
         # Immutable. Git commit/tag/branch name at which the repository should be
         # compiled. Must exist in the remote repository. Examples: - a commit SHA: `
         # 12ade345` - a tag: `tag1` - a branch name: `branch1`
@@ -783,6 +958,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @dataform_core_version = args[:dataform_core_version] if args.key?(:dataform_core_version)
+          @gcs_repository_snapshot_metadata = args[:gcs_repository_snapshot_metadata] if args.key?(:gcs_repository_snapshot_metadata)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
@@ -801,6 +977,11 @@ module Google
         # Corresponds to the JSON property `assertion`
         # @return [Google::Apis::DataformV1beta1::Assertion]
         attr_accessor :assertion
+      
+        # Represents a BigQuery unit test.
+        # Corresponds to the JSON property `bigqueryUnitTest`
+        # @return [Google::Apis::DataformV1beta1::BigQueryUnitTest]
+        attr_accessor :bigquery_unit_test
       
         # Represents an action identifier. If the action writes output, the output will
         # be written to the referenced database object.
@@ -860,6 +1041,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
+          @bigquery_unit_test = args[:bigquery_unit_test] if args.key?(:bigquery_unit_test)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @data_preparation = args[:data_preparation] if args.key?(:data_preparation)
           @declaration = args[:declaration] if args.key?(:declaration)
@@ -1048,6 +1230,46 @@ module Google
         end
       end
       
+      # `DeleteBranch` request message.
+      class DeleteBranchRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the branch in the Git repository to delete.
+        # Corresponds to the JSON property `branch`
+        # @return [String]
+        attr_accessor :branch
+      
+        # Optional. If set to true, any non-pushed commits on the branch will be deleted.
+        # Upstream branch name will be the same as the branch to delete.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch = args[:branch] if args.key?(:branch)
+          @force = args[:force] if args.key?(:force)
+        end
+      end
+      
+      # `DeleteBranch` response message.
+      class DeleteBranchResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents the delete file operation.
       class DeleteFile
         include Google::Apis::Core::Hashable
@@ -1202,6 +1424,50 @@ module Google
         end
       end
       
+      # Includes configuration options for repository end user authentication.
+      class EndUserAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth configuration for end user authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DataformV1beta1::OAuthConfig]
+        attr_accessor :oauth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+        end
+      end
+      
+      # Includes configuration options for end user authentication.
+      class EndUserAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth configuration for end user authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DataformV1beta1::OAuthConfig]
+        attr_accessor :oauth_config
+      
+        # Output only. Email address of the user to run workflow invocations under.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @user_email = args[:user_email] if args.key?(:user_email)
+        end
+      end
+      
       # Error table information, used to write error data into a BigQuery table.
       class ErrorTable
         include Google::Apis::Core::Hashable
@@ -1279,6 +1545,25 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response message for `FetchCurrentWorkspaceBranch` method.
+      class FetchCurrentWorkspaceBranchResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the current branch for the workspace.
+        # Corresponds to the JSON property `branchName`
+        # @return [String]
+        attr_accessor :branch_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branch_name = args[:branch_name] if args.key?(:branch_name)
         end
       end
       
@@ -1387,6 +1672,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commits = args[:commits] if args.key?(:commits)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for `FetchWorkspaceBranches` method.
+      class FetchWorkspaceBranchesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The branches in the workspace.
+        # Corresponds to the JSON property `branches`
+        # @return [Array<Google::Apis::DataformV1beta1::BranchMetadata>]
+        attr_accessor :branches
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @branches = args[:branches] if args.key?(:branches)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -1554,6 +1865,59 @@ module Google
         def update!(**args)
           @folder = args[:folder] if args.key?(:folder)
           @repository = args[:repository] if args.key?(:repository)
+        end
+      end
+      
+      # Configures the destination for a repository snapshot.
+      class GcsRepositorySnapshotDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Google Cloud Storage destination to upload the repository
+        # snapshot to. Format: `gs://bucket-name/path/`.
+        # Corresponds to the JSON property `repositorySnapshotUri`
+        # @return [String]
+        attr_accessor :repository_snapshot_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repository_snapshot_uri = args[:repository_snapshot_uri] if args.key?(:repository_snapshot_uri)
+        end
+      end
+      
+      # Metadata about a repository snapshot stored in Google Cloud Storage.
+      class GcsRepositorySnapshotMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The crc32c checksum of the repository snapshot, big-endian base64
+        # encoded.
+        # Corresponds to the JSON property `crc32cChecksum`
+        # @return [String]
+        attr_accessor :crc32c_checksum
+      
+        # Output only. The generation number of the Cloud Storage object. See https://
+        # cloud.google.com/storage/docs/metadata#generation-number.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. The Google Cloud Storage URI of the repository snapshot.
+        # Corresponds to the JSON property `repositorySnapshotUri`
+        # @return [String]
+        attr_accessor :repository_snapshot_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crc32c_checksum = args[:crc32c_checksum] if args.key?(:crc32c_checksum)
+          @generation = args[:generation] if args.key?(:generation)
+          @repository_snapshot_uri = args[:repository_snapshot_uri] if args.key?(:repository_snapshot_uri)
         end
       end
       
@@ -1729,12 +2093,18 @@ module Google
       class InstallNpmPackagesRequest
         include Google::Apis::Core::Hashable
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1beta1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
         end
       end
       
@@ -1786,6 +2156,16 @@ module Google
       class InvocationConfig
         include Google::Apis::Core::Hashable
       
+        # Includes configuration options for end user authentication.
+        # Corresponds to the JSON property `endUserAuthConfig`
+        # @return [Google::Apis::DataformV1beta1::EndUserAuthenticationConfig]
+        attr_accessor :end_user_auth_config
+      
+        # Optional. Specifies the execution mode for the workflow invocation.
+        # Corresponds to the JSON property `executionMode`
+        # @return [String]
+        attr_accessor :execution_mode
+      
         # Optional. When set to true, any incremental tables will be fully refreshed.
         # Corresponds to the JSON property `fullyRefreshIncrementalTablesEnabled`
         # @return [Boolean]
@@ -1834,6 +2214,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_user_auth_config = args[:end_user_auth_config] if args.key?(:end_user_auth_config)
+          @execution_mode = args[:execution_mode] if args.key?(:execution_mode)
           @fully_refresh_incremental_tables_enabled = args[:fully_refresh_incremental_tables_enabled] if args.key?(:fully_refresh_incremental_tables_enabled)
           @included_tags = args[:included_tags] if args.key?(:included_tags)
           @included_targets = args[:included_targets] if args.key?(:included_targets)
@@ -2381,6 +2763,11 @@ module Google
         # @return [String]
         attr_accessor :contents
       
+        # Output only. The path to the notebook file in the repository.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
         # Output only. The ID of the Gemini Enterprise Agent Platform job that executed
         # the notebook in contents and also the ID used for the outputs created in
         # Google Cloud Storage buckets. Only set once the job has started to run.
@@ -2395,6 +2782,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
+          @file_path = args[:file_path] if args.key?(:file_path)
           @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
@@ -2417,6 +2805,11 @@ module Google
         # @return [String]
         attr_accessor :gcs_output_bucket
       
+        # Configures the destination for a repository snapshot.
+        # Corresponds to the JSON property `gcsRepositorySnapshotDestination`
+        # @return [Google::Apis::DataformV1beta1::GcsRepositorySnapshotDestination]
+        attr_accessor :gcs_repository_snapshot_destination
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2425,6 +2818,27 @@ module Google
         def update!(**args)
           @ai_platform_notebook_runtime_template = args[:ai_platform_notebook_runtime_template] if args.key?(:ai_platform_notebook_runtime_template)
           @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
+          @gcs_repository_snapshot_destination = args[:gcs_repository_snapshot_destination] if args.key?(:gcs_repository_snapshot_destination)
+        end
+      end
+      
+      # OAuth configuration for end user authentication.
+      class OAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional OAuth scopes to use for BigQuery executions. Scopes
+        # always in use: `https://www.googleapis.com/auth/bigquery`
+        # Corresponds to the JSON property `additionalOauthScopes`
+        # @return [Array<String>]
+        attr_accessor :additional_oauth_scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_oauth_scopes = args[:additional_oauth_scopes] if args.key?(:additional_oauth_scopes)
         end
       end
       
@@ -2597,6 +3011,33 @@ module Google
           @queries = args[:queries] if args.key?(:queries)
           @relation_descriptor = args[:relation_descriptor] if args.key?(:relation_descriptor)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Defines the pipeline type and path within the Git repository.
+      class PipelineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative path within the Git repository where the pipeline is
+        # defined. For example, for a Dataform pipeline, it is a path to the folder
+        # where `workflow_settings.yaml` or `dataform.json` is located.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. The type of the pipeline.
+        # Corresponds to the JSON property `pipelineType`
+        # @return [String]
+        attr_accessor :pipeline_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @pipeline_type = args[:pipeline_type] if args.key?(:pipeline_type)
         end
       end
       
@@ -3266,8 +3707,9 @@ module Google
         attr_accessor :release_compilation_result
       
         # Optional. Specifies the time zone to be used when interpreting cron_schedule.
-        # Must be a time zone name from the time zone database (https://en.wikipedia.org/
-        # wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        # Must be a time zone name from the [time zone database](https://en.wikipedia.
+        # org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is `
+        # UTC`.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -3382,6 +3824,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Includes configuration options for repository end user authentication.
+        # Corresponds to the JSON property `endUserAuthConfig`
+        # @return [Google::Apis::DataformV1beta1::EndUserAuthConfig]
+        attr_accessor :end_user_auth_config
+      
         # Controls Git remote configuration for a repository.
         # Corresponds to the JSON property `gitRemoteSettings`
         # @return [Google::Apis::DataformV1beta1::GitRemoteSettings]
@@ -3465,6 +3912,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_user_auth_config = args[:end_user_auth_config] if args.key?(:end_user_auth_config)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -3855,6 +4303,47 @@ module Google
         end
       end
       
+      # `SyncWorkspaceRefs` request message.
+      class SyncWorkspaceRefsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Can be used to deepen the commit history of shallow clones. Git
+        # documentation: https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt--
+        # -deependepth
+        # Corresponds to the JSON property `deepen`
+        # @return [Fixnum]
+        attr_accessor :deepen
+      
+        # Optional. The name of the branch in the Git remote to which the refs should be
+        # fetched for. If left unset, all remote branches will be fetched.
+        # Corresponds to the JSON property `remoteBranchName`
+        # @return [String]
+        attr_accessor :remote_branch_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deepen = args[:deepen] if args.key?(:deepen)
+          @remote_branch_name = args[:remote_branch_name] if args.key?(:remote_branch_name)
+        end
+      end
+      
+      # `SyncWorkspaceRefs` response message.
+      class SyncWorkspaceRefsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a table update trigger configuration.
       class TableUpdateTrigger
         include Google::Apis::Core::Hashable
@@ -4164,8 +4653,9 @@ module Google
         attr_accessor :release_config
       
         # Optional. Specifies the time zone to be used when interpreting cron_schedule.
-        # Must be a time zone name from the time zone database (https://en.wikipedia.org/
-        # wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        # Must be a time zone name from the [time zone database](https://en.wikipedia.
+        # org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is `
+        # UTC`.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -4241,6 +4731,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1beta1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         # Metadata used to identify if a resource is user scoped.
         # Corresponds to the JSON property `privateResourceMetadata`
         # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
@@ -4276,6 +4771,7 @@ module Google
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
           @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @resolved_compilation_result = args[:resolved_compilation_result] if args.key?(:resolved_compilation_result)
           @state = args[:state] if args.key?(:state)
@@ -4291,6 +4787,11 @@ module Google
         # Corresponds to the JSON property `bigqueryAction`
         # @return [Google::Apis::DataformV1beta1::BigQueryAction]
         attr_accessor :bigquery_action
+      
+        # Represents a workflow action that will run a BigQuery unit test.
+        # Corresponds to the JSON property `bigqueryUnitTestAction`
+        # @return [Google::Apis::DataformV1beta1::BigQueryUnitTestAction]
+        attr_accessor :bigquery_unit_test_action
       
         # Represents an action identifier. If the action writes output, the output will
         # be written to the referenced database object.
@@ -4346,6 +4847,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_action = args[:bigquery_action] if args.key?(:bigquery_action)
+          @bigquery_unit_test_action = args[:bigquery_unit_test_action] if args.key?(:bigquery_unit_test_action)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @data_preparation_action = args[:data_preparation_action] if args.key?(:data_preparation_action)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
@@ -4399,7 +4901,7 @@ module Google
       
         # Optional. Minimum duration between two consecutive executions. If not
         # specified, the workflow will be executed every time trigger conditions are met
-        # and no ongoing workflow execution.
+        # and there is no ongoing workflow execution.
         # Corresponds to the JSON property `minExecutionDuration`
         # @return [String]
         attr_accessor :min_execution_duration
@@ -4445,12 +4947,28 @@ module Google
         # @return [Google::Apis::DataformV1beta1::DataEncryptionState]
         attr_accessor :data_encryption_state
       
+        # Optional. Input only. Immutable. The maximum depth of the Git repository to
+        # checkout for this workspace. If defined and greater than 0, the Git repository
+        # will be created as a shallow clone with the given depth, otherwise a full
+        # clone will be performed. This field is available only for GitHub, GitLab and
+        # 1p repositories with enabled branch management.
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
         # Optional. If set to true, workspaces will not be moved if its linked
         # Repository is moved. Instead, it will be deleted.
         # Corresponds to the JSON property `disableMoves`
         # @return [Boolean]
         attr_accessor :disable_moves
         alias_method :disable_moves?, :disable_moves
+      
+        # Immutable. Controls the enablement of branch checkout for the workspace. When
+        # set to True, the workspace will be allowed to checkout branches.
+        # Corresponds to the JSON property `enableBranchManagement`
+        # @return [Boolean]
+        attr_accessor :enable_branch_management
+        alias_method :enable_branch_management?, :enable_branch_management
       
         # Output only. All the metadata information that is used internally to serve the
         # resource. For example: timestamps, flags, status fields, etc. The format of
@@ -4464,10 +4982,25 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Input only. Immutable. The name of the default upstream branch for
+        # all pull/push operations in the remote repository for this workspace. If empty,
+        # the HEAD branch from repository will be used.
+        # Corresponds to the JSON property `originalBranch`
+        # @return [String]
+        attr_accessor :original_branch
+      
         # Metadata used to identify if a resource is user scoped.
         # Corresponds to the JSON property `privateResourceMetadata`
         # @return [Google::Apis::DataformV1beta1::PrivateResourceMetadata]
         attr_accessor :private_resource_metadata
+      
+        # Output only. If set to true, the workspace was created as a shallow clone.
+        # Will be set to true if the depth field is set to a value greater than 0,
+        # otherwise it will be set to false.
+        # Corresponds to the JSON property `shallow`
+        # @return [Boolean]
+        attr_accessor :shallow
+        alias_method :shallow?, :shallow
       
         def initialize(**args)
            update!(**args)
@@ -4477,10 +5010,14 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
+          @depth = args[:depth] if args.key?(:depth)
           @disable_moves = args[:disable_moves] if args.key?(:disable_moves)
+          @enable_branch_management = args[:enable_branch_management] if args.key?(:enable_branch_management)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
+          @original_branch = args[:original_branch] if args.key?(:original_branch)
           @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
+          @shallow = args[:shallow] if args.key?(:shallow)
         end
       end
       

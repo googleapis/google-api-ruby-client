@@ -54,8 +54,11 @@ module Google
       # See exercise GPS location data in Google Health
       AUTH_GOOGLEHEALTH_LOCATION_READONLY = 'https://www.googleapis.com/auth/googlehealth.location.readonly'
 
-      # Add exercise GPS location data to Google Health, and edit or delete the data it adds.
-      AUTH_GOOGLEHEALTH_LOCATION_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.location.writeonly'
+      # Add logged symptoms data to Google Health, and edit or delete the data it adds
+      AUTH_GOOGLEHEALTH_LOGGED_SYMPTOMS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly'
+
+      # Add mindfulness data to Google Health, and edit or delete the data it adds
+      AUTH_GOOGLEHEALTH_MINDFULNESS_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly'
 
       # Add nutrition data to Google Health, and edit or delete the data it adds.
       AUTH_GOOGLEHEALTH_NUTRITION_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.nutrition.writeonly'
@@ -65,6 +68,9 @@ module Google
 
       # Add profile data to Google Health, and edit or delete the data it adds.
       AUTH_GOOGLEHEALTH_PROFILE_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.profile.writeonly'
+
+      # Add reproductive health data to Google Health, and edit or delete the data it adds
+      AUTH_GOOGLEHEALTH_REPRODUCTIVE_HEALTH_WRITEONLY = 'https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly'
 
       # See your Google Health settings
       AUTH_GOOGLEHEALTH_SETTINGS_READONLY = 'https://www.googleapis.com/auth/googlehealth.settings.readonly'

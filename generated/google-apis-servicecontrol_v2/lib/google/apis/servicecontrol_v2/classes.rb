@@ -294,6 +294,37 @@ module Google
         end
       end
       
+      # A composite unique identifier for a PAM Grant which is `Org/Folder/Project
+      # identifier, grant Unique Identifier` tuple.
+      class AuditPamBindingId
+        include Google::Apis::Core::Hashable
+      
+        # Output only. GCP Project/Folder/Organization identifier to which the PAM
+        # entitlement/grant is bound to. Container will be in the following form:
+        # projects/$project_num or folders/$folder_num or organizations/$org
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # Output only. Represents the unique identifier for the PAM grant.
+        # Full_resource_name_pattern for PAM Grant is: //privilegedaccessmanager.
+        # googleapis.com/ (projects|folders|organizations)/$0/locations/$1/entitlements/$
+        # 2/ grants/$3 where $3 is the grant_uuid.
+        # Corresponds to the JSON property `grantUuid`
+        # @return [String]
+        attr_accessor :grant_uuid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container = args[:container] if args.key?(:container)
+          @grant_uuid = args[:grant_uuid] if args.key?(:grant_uuid)
+        end
+      end
+      
       # This message defines request authentication attributes. Terminology is based
       # on the JSON Web Token (JWT) standard, but the terms also correlate to concepts
       # in other standards.
@@ -491,6 +522,12 @@ module Google
         # @return [String]
         attr_accessor :permission_type
       
+        # Metadata about the Privileged Access Manager (PAM) backed authorization
+        # decisions.
+        # Corresponds to the JSON property `privilegedAccessManagerMetadata`
+        # @return [Google::Apis::ServicecontrolV2::PrivilegedAccessManagerMetadata]
+        attr_accessor :privileged_access_manager_metadata
+      
         # The resource being accessed, as a REST-style or cloud resource string. For
         # example: bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or
         # projects/PROJECTID/datasets/DATASETID
@@ -514,6 +551,7 @@ module Google
           @granted = args[:granted] if args.key?(:granted)
           @permission = args[:permission] if args.key?(:permission)
           @permission_type = args[:permission_type] if args.key?(:permission_type)
+          @privileged_access_manager_metadata = args[:privileged_access_manager_metadata] if args.key?(:privileged_access_manager_metadata)
           @resource = args[:resource] if args.key?(:resource)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
         end
@@ -772,6 +810,11 @@ module Google
         # @return [Google::Apis::ServicecontrolV2::OrgPolicyViolationInfo]
         attr_accessor :org_policy_violation_info
       
+        # Represents Regional Access Boundary (RAB) Policy Violation information.
+        # Corresponds to the JSON property `rabPolicyViolationInfo`
+        # @return [Google::Apis::ServicecontrolV2::RabPolicyViolationInfo]
+        attr_accessor :rab_policy_violation_info
+      
         def initialize(**args)
            update!(**args)
         end
@@ -779,6 +822,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @org_policy_violation_info = args[:org_policy_violation_info] if args.key?(:org_policy_violation_info)
+          @rab_policy_violation_info = args[:rab_policy_violation_info] if args.key?(:rab_policy_violation_info)
+        end
+      end
+      
+      # Metadata about the Privileged Access Manager (PAM) backed authorization
+      # decisions.
+      class PrivilegedAccessManagerMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. If PAM is managing the elevated access, AuditPamBindingId is
+        # written to an Identity and Access Management (IAM) policy, which specifies
+        # access controls for resources. If the access is granted via an IAM policy with
+        # a binding which is managed by Privileged Access Manager,
+        # PrivilegedAccessManagerMetadata will contain the AuditPamBindingId.
+        # Corresponds to the JSON property `pamBindingIds`
+        # @return [Array<Google::Apis::ServicecontrolV2::AuditPamBindingId>]
+        attr_accessor :pam_binding_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pam_binding_ids = args[:pam_binding_ids] if args.key?(:pam_binding_ids)
+        end
+      end
+      
+      # Represents Regional Access Boundary (RAB) Policy Violation information.
+      class RabPolicyViolationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Error message detailing what triggered the violation. The error
+        # message content originates from the authz library e.g., google3/cloud/security/
+        # iam/cap/deny_explanation/internal/make_error_msg.cc. This will be the same (
+        # canonical) error message provided by the http error code.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Optional. The list of target locations of the resource.
+        # Corresponds to the JSON property `resourceLocations`
+        # @return [Array<String>]
+        attr_accessor :resource_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @resource_locations = args[:resource_locations] if args.key?(:resource_locations)
         end
       end
       

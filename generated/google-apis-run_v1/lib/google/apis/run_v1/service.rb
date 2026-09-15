@@ -513,12 +513,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a Instance.
+        # Create an Instance.
         # @param [String] parent
-        #   Required. The namespace in which the Instance should be created. Replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The resource's parent. In Cloud Run, it may be one of the following:
+        #   * ``project_id_or_number`` * `namespaces/`project_id_or_number`` * `namespaces/
+        #   `project_id_or_number`/instances` * `projects/`project_id_or_number`/locations/
+        #   `region`` * `projects/`project_id_or_number`/regions/`region`` Parent resource
+        #   namespace.
         # @param [Google::Apis::RunV1::Instance] instance_object
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -536,25 +541,32 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_instance(parent, instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_namespace_instance(parent, instance_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'apis/run.googleapis.com/v1/{+parent}/instances', options)
           command.request_representation = Google::Apis::RunV1::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::RunV1::Instance::Representation
           command.response_class = Google::Apis::RunV1::Instance
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a Instance.
+        # Delete an Instance.
         # @param [String] name
-        #   Required. The name of the Instance to delete. Replace `namespace` with the
-        #   project ID or number. It takes the form namespaces/`namespace`. For example:
-        #   namespaces/PROJECT_ID
+        #   Required. The fully qualified name of the Instance to delete. It can be any of
+        #   the following forms: * `namespaces/`project_id_or_number`/instances/`
+        #   instance_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/instances/`instance_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/instances/`instance_name``
+        #   Parent resource namespace.
         # @param [String] api_version
         #   Optional. Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] kind
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -578,12 +590,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_instance(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_instance(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/run.googleapis.com/v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -593,9 +606,12 @@ module Google
         
         # Get an Instance.
         # @param [String] name
-        #   Required. The name of the Instance to retrieve. It takes the form namespaces/`
-        #   namespace`/instances/`Instance_name` and the `endpoint` must be regional.
-        #   Replace `namespace` with the project ID or number.
+        #   Required. The fully qualified name of the Instance to retrieve. It can be any
+        #   of the following forms: * `namespaces/`project_id_or_number`/instances/`
+        #   instance_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/instances/`instance_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/instances/`instance_name``
+        #   Parent resource namespace.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -625,9 +641,11 @@ module Google
         
         # List Instances. Results are sorted by creation time, descending.
         # @param [String] parent
-        #   Required. The namespace from which the Instances should be listed. Replace `
-        #   namespace` with the project ID or number. It takes the form namespaces/`
-        #   namespace`. For example: namespaces/PROJECT_ID
+        #   Required. The parent from where the resources should be listed. In Cloud Run,
+        #   it may be one of the following: * ``project_id_or_number`` * `namespaces/`
+        #   project_id_or_number`` * `namespaces/`project_id_or_number`/instances` * `
+        #   projects/`project_id_or_number`/locations/`region`` * `projects/`
+        #   project_id_or_number`/regions/`region`` Parent resource namespace.
         # @param [String] continue
         #   Optional. Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -679,10 +697,16 @@ module Google
         
         # Replace an Instance.
         # @param [String] name
-        #   Required. The name of the Instance being replaced. Replace `namespace` with
-        #   the project ID or number. It takes the form namespaces/`namespace`. For
-        #   example: namespaces/PROJECT_ID
+        #   Required. The fully qualified name of the Instance being replaced. It can be
+        #   any of the following forms: * `namespaces/`project_id_or_number`/instances/`
+        #   instance_name`` (only when the `endpoint` is regional) * `projects/`
+        #   project_id_or_number`/locations/`region`/instances/`instance_name`` * `
+        #   projects/`project_id_or_number`/regions/`region`/instances/`instance_name``
+        #   Parent resource namespace.
         # @param [Google::Apis::RunV1::Instance] instance_object
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -700,13 +724,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_instance_instance(name, instance_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def replace_namespace_instance_instance(name, instance_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'apis/run.googleapis.com/v1/{+name}', options)
           command.request_representation = Google::Apis::RunV1::Instance::Representation
           command.request_object = instance_object
           command.response_representation = Google::Apis::RunV1::Instance::Representation
           command.response_class = Google::Apis::RunV1::Instance
           command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -788,6 +813,9 @@ module Google
         #   with the project ID or number. It takes the form namespaces/`namespace`. For
         #   example: namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Job] job_object
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -805,13 +833,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_job(parent, job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_namespace_job(parent, job_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'apis/run.googleapis.com/v1/{+parent}/jobs', options)
           command.request_representation = Google::Apis::RunV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::RunV1::Job::Representation
           command.response_class = Google::Apis::RunV1::Job
           command.params['parent'] = parent unless parent.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -824,6 +853,9 @@ module Google
         #   namespaces/PROJECT_ID
         # @param [String] api_version
         #   Optional. Cloud Run currently ignores this parameter.
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] kind
         #   Optional. Cloud Run currently ignores this parameter.
         # @param [String] propagation_policy
@@ -847,12 +879,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_job(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_job(name, api_version: nil, dry_run: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/run.googleapis.com/v1/{+name}', options)
           command.response_representation = Google::Apis::RunV1::Status::Representation
           command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['kind'] = kind unless kind.nil?
           command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -955,6 +988,9 @@ module Google
         #   project ID or number. It takes the form namespaces/`namespace`. For example:
         #   namespaces/PROJECT_ID
         # @param [Google::Apis::RunV1::Job] job_object
+        # @param [String] dry_run
+        #   Optional. Indicates that the server should validate the request and populate
+        #   default values without persisting the request. Supported values: `all`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -972,13 +1008,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_job_job(name, job_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def replace_namespace_job_job(name, job_object = nil, dry_run: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:put, 'apis/run.googleapis.com/v1/{+name}', options)
           command.request_representation = Google::Apis::RunV1::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::RunV1::Job::Representation
           command.response_class = Google::Apis::RunV1::Job
           command.params['name'] = name unless name.nil?
+          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2159,7 +2196,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the IAM Access Control policy currently in effect for the given instance.
+        # Gets the IAM Access Control policy currently in effect for the given instance.
         # This result does not include any inherited policies.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested. See [Resource

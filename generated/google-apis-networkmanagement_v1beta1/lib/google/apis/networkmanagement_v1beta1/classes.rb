@@ -400,7 +400,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The URI of the Cloud Run service that the revision belongs to.
-        # The format is: projects/`project`/locations/`location`/services/`service`
+        # The format is: projects/`project`/locations/`location`/services/`service`.
+        # Mutually exclusive with worker_pool_uri.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -412,6 +413,13 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Output only. The URI of the worker pool that the revision belongs to. The
+        # format is: projects/`project`/locations/`location`/workerPools/`workerPool`.
+        # Mutually exclusive with service_uri.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -420,6 +428,7 @@ module Google
         def update!(**args)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -438,7 +447,8 @@ module Google
         attr_accessor :location
       
         # URI of Cloud Run service this revision belongs to. Format: `projects/`
-        # project_id`/locations/`location`/services/`service_id``
+        # project_id`/locations/`location`/services/`service_id`` Mutually exclusive
+        # with `worker_pool_uri`.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -448,6 +458,13 @@ module Google
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
+      
+        # URI of Cloud Run worker pool this revision belongs to. Format: `projects/`
+        # project_id`/locations/`location`/workerPools/`worker_pool_id``. Mutually
+        # exclusive with `service_uri`.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
       
         def initialize(**args)
            update!(**args)
@@ -459,6 +476,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -1356,6 +1374,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. State of the firewalls allowing health check traffic to the load
+        # balancer frontend (Envoy proxies). This is the result of the firewall
+        # configuration analysis verifying that health check traffic from required IP
+        # ranges to the the Envoy-based load balancer frontend is allowed by firewall
+        # rules with the load balancer target.
+        # Corresponds to the JSON property `envoyHealthCheckFirewallsConfigState`
+        # @return [String]
+        attr_accessor :envoy_health_check_firewalls_config_state
+      
         # Name of the load balancer the forwarding rule belongs to. Empty for forwarding
         # rules not related to load balancers (like PSC forwarding rules).
         # Corresponds to the JSON property `loadBalancerName`
@@ -1419,6 +1446,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @envoy_health_check_firewalls_config_state = args[:envoy_health_check_firewalls_config_state] if args.key?(:envoy_health_check_firewalls_config_state)
           @load_balancer_name = args[:load_balancer_name] if args.key?(:load_balancer_name)
           @matched_port_range = args[:matched_port_range] if args.key?(:matched_port_range)
           @matched_protocol = args[:matched_protocol] if args.key?(:matched_protocol)
@@ -2286,6 +2314,11 @@ module Google
         # @return [String]
         attr_accessor :router_uri
       
+        # The number of the NAT rule that was matched.
+        # Corresponds to the JSON property `ruleNumber`
+        # @return [Fixnum]
+        attr_accessor :rule_number
+      
         # Type of NAT.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -2310,6 +2343,7 @@ module Google
           @old_source_port = args[:old_source_port] if args.key?(:old_source_port)
           @protocol = args[:protocol] if args.key?(:protocol)
           @router_uri = args[:router_uri] if args.key?(:router_uri)
+          @rule_number = args[:rule_number] if args.key?(:rule_number)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -3592,6 +3626,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo]
         attr_accessor :storage_bucket
       
+        # For display only. Metadata associated with a step that was redacted due to
+        # missing permissions.
+        # Corresponds to the JSON property `viewerPermissionMissingInfo`
+        # @return [Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo]
+        attr_accessor :viewer_permission_missing_info
+      
         # For display only. Metadata associated with a VPC connector.
         # Corresponds to the JSON property `vpcConnector`
         # @return [Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo]
@@ -3653,6 +3693,7 @@ module Google
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
+          @viewer_permission_missing_info = args[:viewer_permission_missing_info] if args.key?(:viewer_permission_missing_info)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
@@ -3759,6 +3800,26 @@ module Google
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @forward_trace_id = args[:forward_trace_id] if args.key?(:forward_trace_id)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # For display only. Metadata associated with a step that was redacted due to
+      # missing permissions.
+      class ViewerPermissionMissingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Types of the resources that the user does not have permission to view.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       

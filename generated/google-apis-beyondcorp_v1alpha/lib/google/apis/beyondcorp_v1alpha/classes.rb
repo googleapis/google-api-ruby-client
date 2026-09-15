@@ -2431,6 +2431,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :seat_count
       
+        # Optional. Input only. The source from which the subscription was initiated,
+        # for example "admin-console-browser-overview" or "admin-console-security-
+        # insights".
+        # Corresponds to the JSON property `signupSource`
+        # @return [String]
+        attr_accessor :signup_source
+      
         # Required. SKU of subscription.
         # Corresponds to the JSON property `sku`
         # @return [String]
@@ -2469,6 +2476,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @seat_count = args[:seat_count] if args.key?(:seat_count)
+          @signup_source = args[:signup_source] if args.key?(:signup_source)
           @sku = args[:sku] if args.key?(:sku)
           @start_time = args[:start_time] if args.key?(:start_time)
           @state = args[:state] if args.key?(:state)
@@ -2685,6 +2693,11 @@ module Google
         # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo]
         attr_accessor :device_info
       
+        # The delegated dispatch information configuration.
+        # Corresponds to the JSON property `dispatchInfo`
+        # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo]
+        attr_accessor :dispatch_info
+      
         # The delegated group configuration details.
         # Corresponds to the JSON property `groupInfo`
         # @return [Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo]
@@ -2707,6 +2720,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_info = args[:device_info] if args.key?(:device_info)
+          @dispatch_info = args[:dispatch_info] if args.key?(:dispatch_info)
           @group_info = args[:group_info] if args.key?(:group_info)
           @output_type = args[:output_type] if args.key?(:output_type)
           @user_info = args[:user_info] if args.key?(:user_info)
@@ -2718,6 +2732,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The output type details for the delegated device.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_type = args[:output_type] if args.key?(:output_type)
+        end
+      end
+      
+      # The delegated dispatch information configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The output type details for the delegated dispatch information.
         # Corresponds to the JSON property `outputType`
         # @return [String]
         attr_accessor :output_type

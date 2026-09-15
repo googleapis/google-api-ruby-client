@@ -158,6 +158,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # A table type
+        # Corresponds to the JSON property `tableType`
+        # @return [Google::Apis::BigqueryV2::StandardSqlTableType]
+        attr_accessor :table_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -169,6 +174,7 @@ module Google
           @is_aggregate = args[:is_aggregate] if args.key?(:is_aggregate)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @table_type = args[:table_type] if args.key?(:table_type)
         end
       end
       
@@ -505,6 +511,77 @@ module Google
           @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
           @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
           @time_series_ids = args[:time_series_ids] if args.key?(:time_series_ids)
+        end
+      end
+      
+      # Arrow RecordBatch. This feature is not yet available.
+      class ArrowRecordBatch
+        include Google::Apis::Core::Hashable
+      
+        # IPC-serialized Arrow RecordBatch.
+        # Corresponds to the JSON property `serializedRecordBatch`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_record_batch
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serialized_record_batch = args[:serialized_record_batch] if args.key?(:serialized_record_batch)
+        end
+      end
+      
+      # Arrow schema as specified in https://arrow.apache.org/docs/python/api/
+      # datatypes.html and serialized to bytes using IPC: https://arrow.apache.org/
+      # docs/format/Columnar.html#serialization-and-interprocess-communication-ipc See
+      # code samples on how this message can be deserialized. This feature is not yet
+      # available.
+      class ArrowSchema
+        include Google::Apis::Core::Hashable
+      
+        # IPC serialized Arrow schema.
+        # Corresponds to the JSON property `serializedSchema`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :serialized_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @serialized_schema = args[:serialized_schema] if args.key?(:serialized_schema)
+        end
+      end
+      
+      # Contains options specific to Arrow Serialization. This feature is not yet
+      # available.
+      class ArrowSerializationOptions
+        include Google::Apis::Core::Hashable
+      
+        # The compression codec to use for Arrow buffers in serialized record batches.
+        # Corresponds to the JSON property `bufferCompression`
+        # @return [String]
+        attr_accessor :buffer_compression
+      
+        # Optional. Set timestamp precision option. If not set, the default precision is
+        # microseconds.
+        # Corresponds to the JSON property `picosTimestampPrecision`
+        # @return [String]
+        attr_accessor :picos_timestamp_precision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buffer_compression = args[:buffer_compression] if args.key?(:buffer_compression)
+          @picos_timestamp_precision = args[:picos_timestamp_precision] if args.key?(:picos_timestamp_precision)
         end
       end
       
@@ -3897,8 +3974,9 @@ module Google
         # @return [Google::Apis::BigqueryV2::GenAiErrorStats]
         attr_accessor :error_stats
       
-        # Function level stats for GenAi Functions. See https://docs.cloud.google.com/
-        # bigquery/docs/generative-ai-overview
+        # Function level stats for GenAI Functions. For more information, see [
+        # Generative AI overview](https://docs.cloud.google.com/bigquery/docs/generative-
+        # ai-overview).
         # Corresponds to the JSON property `functionStats`
         # @return [Array<Google::Apis::BigqueryV2::GenAiFunctionStats>]
         attr_accessor :function_stats
@@ -3950,7 +4028,7 @@ module Google
         attr_accessor :asynchronous
         alias_method :asynchronous?, :asynchronous
       
-        # Optional. The generation expression (e.g. AI.EMBED(...)) used to generated the
+        # Optional. The generation expression (e.g. AI.EMBED(...)) used to generate the
         # field.
         # Corresponds to the JSON property `generationExpression`
         # @return [String]
@@ -5046,7 +5124,10 @@ module Google
         # Optional. The reservation that job would use. User can specify a reservation
         # to execute the job. If reservation is not set, reservation is determined based
         # on the rules defined by the reservation assignments. The expected format is `
-        # projects/`project`/locations/`location`/reservations/`reservation``.
+        # projects/`project`/locations/`location`/reservations/`reservation``. Forces
+        # the query to use on-demand billing when set to `none`, which requires the
+        # project or organization to have `reservation_override_mode` set to `
+        # ALLOW_ANY_OVERRIDE`.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
@@ -6180,6 +6261,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :final_execution_duration_ms
       
+        # Output only. Regions where the global query accesses data.
+        # Corresponds to the JSON property `globalQueryRemoteRegions`
+        # @return [Array<String>]
+        attr_accessor :global_query_remote_regions
+      
         # Statistics for a load job.
         # Corresponds to the JSON property `load`
         # @return [Google::Apis::BigqueryV2::JobStatistics3]
@@ -6189,6 +6275,11 @@ module Google
         # Corresponds to the JSON property `numChildJobs`
         # @return [Fixnum]
         attr_accessor :num_child_jobs
+      
+        # A job reference is a fully qualified identifier for referring to a job.
+        # Corresponds to the JSON property `parentGlobalQueryJob`
+        # @return [Google::Apis::BigqueryV2::JobReference]
+        attr_accessor :parent_global_query_job
       
         # Output only. If this is a child job, specifies the job ID of the parent.
         # Corresponds to the JSON property `parentJobId`
@@ -6278,8 +6369,10 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @extract = args[:extract] if args.key?(:extract)
           @final_execution_duration_ms = args[:final_execution_duration_ms] if args.key?(:final_execution_duration_ms)
+          @global_query_remote_regions = args[:global_query_remote_regions] if args.key?(:global_query_remote_regions)
           @load = args[:load] if args.key?(:load)
           @num_child_jobs = args[:num_child_jobs] if args.key?(:num_child_jobs)
+          @parent_global_query_job = args[:parent_global_query_job] if args.key?(:parent_global_query_job)
           @parent_job_id = args[:parent_job_id] if args.key?(:parent_job_id)
           @query = args[:query] if args.key?(:query)
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
@@ -6474,6 +6567,12 @@ module Google
         # Corresponds to the JSON property `numDmlAffectedRows`
         # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
+      
+        # Output only. Storage and caching statistics per cloud provider for queries
+        # over object storage.
+        # Corresponds to the JSON property `objectStorageStats`
+        # @return [Array<Google::Apis::BigqueryV2::ObjectStorageStats>]
+        attr_accessor :object_storage_stats
       
         # Performance insights for the job.
         # Corresponds to the JSON property `performanceInsights`
@@ -6719,6 +6818,7 @@ module Google
           @model_training_current_iteration = args[:model_training_current_iteration] if args.key?(:model_training_current_iteration)
           @model_training_expected_total_iteration = args[:model_training_expected_total_iteration] if args.key?(:model_training_expected_total_iteration)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
+          @object_storage_stats = args[:object_storage_stats] if args.key?(:object_storage_stats)
           @performance_insights = args[:performance_insights] if args.key?(:performance_insights)
           @query_info = args[:query_info] if args.key?(:query_info)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
@@ -6873,6 +6973,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :copied_rows
       
+        # Output only. Destination region for a cross-region copy job. Not set for in-
+        # region copy jobs.
+        # Corresponds to the JSON property `remoteDestinationRegion`
+        # @return [String]
+        attr_accessor :remote_destination_region
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6881,6 +6987,7 @@ module Google
         def update!(**args)
           @copied_logical_bytes = args[:copied_logical_bytes] if args.key?(:copied_logical_bytes)
           @copied_rows = args[:copied_rows] if args.key?(:copied_rows)
+          @remote_destination_region = args[:remote_destination_region] if args.key?(:remote_destination_region)
         end
       end
       
@@ -7717,6 +7824,38 @@ module Google
         end
       end
       
+      # Storage and caching statistics for object storage.
+      class ObjectStorageStats
+        include Google::Apis::Core::Hashable
+      
+        # Total bytes read from the GCP Lakehouse-internal cache, avoiding an object
+        # storage read.
+        # Corresponds to the JSON property `cacheBytesRead`
+        # @return [Fixnum]
+        attr_accessor :cache_bytes_read
+      
+        # The cloud provider for this block of statistics.
+        # Corresponds to the JSON property `cloudProvider`
+        # @return [String]
+        attr_accessor :cloud_provider
+      
+        # Total bytes read directly from the cloud provider's storage.
+        # Corresponds to the JSON property `objectStorageBytesRead`
+        # @return [Fixnum]
+        attr_accessor :object_storage_bytes_read
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_bytes_read = args[:cache_bytes_read] if args.key?(:cache_bytes_read)
+          @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
+          @object_storage_bytes_read = args[:object_storage_bytes_read] if args.key?(:object_storage_bytes_read)
+        end
+      end
+      
       # Parquet Options for load and make external tables.
       class ParquetOptions
         include Google::Apis::Core::Hashable
@@ -8397,6 +8536,12 @@ module Google
       class QueryRequest
         include Google::Apis::Core::Hashable
       
+        # Contains options specific to Arrow Serialization. This feature is not yet
+        # available.
+        # Corresponds to the JSON property `arrowSerializationOptions`
+        # @return [Google::Apis::BigqueryV2::ArrowSerializationOptions]
+        attr_accessor :arrow_serialization_options
+      
         # Optional. Connection properties which can modify the query behavior.
         # Corresponds to the JSON property `connectionProperties`
         # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
@@ -8529,6 +8674,17 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
       
+        # Optional. The query results format. If the value is anything other than `
+        # STRUCT_ENCODING` or unspecified: * The schema of the results will be provided
+        # in `QueryResponse.results_schema` field. * The results of the first page will
+        # be provided in `QueryResponse.results` field. * The `QueryResponse.rows` will
+        # not be populated. * The `QueryResponse.schema` for `QueryResponse.rows` will
+        # also not be populated since it is the schema of the `QueryResponse.rows`. This
+        # feature is not yet available.
+        # Corresponds to the JSON property `queryResultsFormat`
+        # @return [String]
+        attr_accessor :query_results_format
+      
         # Optional. A unique user provided identifier to ensure idempotent behavior for
         # queries. Note that this is different from the job_id. It has the following
         # properties: 1. It is case-sensitive, limited to up to 36 ASCII characters. A
@@ -8554,7 +8710,9 @@ module Google
       
         # Optional. The reservation that jobs.query request would use. User can specify
         # a reservation to execute the job.query. The expected format is `projects/`
-        # project`/locations/`location`/reservations/`reservation``.
+        # project`/locations/`location`/reservations/`reservation``. Forces the query to
+        # use on-demand billing when set to `none`. This requires the project or
+        # organization to have `reservation_override_mode` set to `ALLOW_ANY_OVERRIDE`.
         # Corresponds to the JSON property `reservation`
         # @return [String]
         attr_accessor :reservation
@@ -8606,6 +8764,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arrow_serialization_options = args[:arrow_serialization_options] if args.key?(:arrow_serialization_options)
           @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @continuous = args[:continuous] if args.key?(:continuous)
           @create_session = args[:create_session] if args.key?(:create_session)
@@ -8625,6 +8784,7 @@ module Google
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @query_results_format = args[:query_results_format] if args.key?(:query_results_format)
           @request_id = args[:request_id] if args.key?(:request_id)
           @reservation = args[:reservation] if args.key?(:reservation)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
@@ -8637,6 +8797,20 @@ module Google
       # 
       class QueryResponse
         include Google::Apis::Core::Hashable
+      
+        # Arrow RecordBatch. This feature is not yet available.
+        # Corresponds to the JSON property `arrowRecordBatch`
+        # @return [Google::Apis::BigqueryV2::ArrowRecordBatch]
+        attr_accessor :arrow_record_batch
+      
+        # Arrow schema as specified in https://arrow.apache.org/docs/python/api/
+        # datatypes.html and serialized to bytes using IPC: https://arrow.apache.org/
+        # docs/format/Columnar.html#serialization-and-interprocess-communication-ipc See
+        # code samples on how this message can be deserialized. This feature is not yet
+        # available.
+        # Corresponds to the JSON property `arrowSchema`
+        # @return [Google::Apis::BigqueryV2::ArrowSchema]
+        attr_accessor :arrow_schema
       
         # Whether the query result was fetched from the query cache.
         # Corresponds to the JSON property `cacheHit`
@@ -8708,6 +8882,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_dml_affected_rows
       
+        # Output only. The number of rows out of `total_rows` returned in this response.
+        # This feature is not yet available.
+        # Corresponds to the JSON property `pageRowCount`
+        # @return [Fixnum]
+        attr_accessor :page_row_count
+      
         # A token used for paging results. A non-empty token indicates that additional
         # results are available. To see additional results, query the [`jobs.
         # getQueryResults`](https://cloud.google.com/bigquery/docs/reference/rest/v2/
@@ -8746,6 +8926,99 @@ module Google
         # @return [Fixnum]
         attr_accessor :start_time
       
+        # Output only. The type of query statement, if valid. Possible values: * `SELECT`
+        # : [`SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # query-syntax#select_list) statement. * `ASSERT`: [`ASSERT`](https://cloud.
+        # google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert)
+        # statement. * `INSERT`: [`INSERT`](https://cloud.google.com/bigquery/docs/
+        # reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`
+        # UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-
+        # syntax#update_statement) statement. * `DELETE`: [`DELETE`](https://cloud.
+        # google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        # statement. * `MERGE`: [`MERGE`](https://cloud.google.com/bigquery/docs/
+        # reference/standard-sql/data-manipulation-language) statement. * `CREATE_TABLE`:
+        # [`CREATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-
+        # sql/data-definition-language#create_table_statement) statement, without `AS
+        # SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](https://cloud.
+        # google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_table_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](https://
+        # cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-
+        # create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`
+        # CREATE MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/data-definition-language#create_materialized_view_statement)
+        # statement. * `CREATE_FUNCTION`: [`CREATE FUNCTION`](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_function_statement) statement. * `CREATE_TABLE_FUNCTION`: [`CREATE
+        # TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # data-definition-language#create_table_function_statement) statement. * `
+        # CREATE_PROCEDURE`: [`CREATE PROCEDURE`](https://cloud.google.com/bigquery/docs/
+        # reference/standard-sql/data-definition-language#create_procedure) statement. *
+        # `CREATE_ROW_ACCESS_POLICY`: [`CREATE ROW ACCESS POLICY`](https://cloud.google.
+        # com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_row_access_policy_statement) statement. * `CREATE_SCHEMA`: [`CREATE
+        # SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # definition-language#create_schema_statement) statement. * `
+        # CREATE_SNAPSHOT_TABLE`: [`CREATE SNAPSHOT TABLE`](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-definition-language#
+        # create_snapshot_table_statement) statement. * `CREATE_SEARCH_INDEX`: [`CREATE
+        # SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # data-definition-language#create_search_index_statement) statement. * `
+        # DROP_TABLE`: [`DROP TABLE`](https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/data-definition-language#drop_table_statement) statement. * `
+        # DROP_EXTERNAL_TABLE`: [`DROP EXTERNAL TABLE`](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-definition-language#
+        # drop_external_table_statement) statement. * `DROP_VIEW`: [`DROP VIEW`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # drop_view_statement) statement. * `DROP_MODEL`: [`DROP MODEL`](https://cloud.
+        # google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-
+        # model) statement. * `DROP_MATERIALIZED_VIEW`: [`DROP MATERIALIZED VIEW`](https:
+        # //cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-
+        # language#drop_materialized_view_statement) statement. * `DROP_FUNCTION` : [`
+        # DROP FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # data-definition-language#drop_function_statement) statement. * `
+        # DROP_TABLE_FUNCTION` : [`DROP TABLE FUNCTION`](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-definition-language#
+        # drop_table_function) statement. * `DROP_PROCEDURE`: [`DROP PROCEDURE`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # drop_procedure_statement) statement. * `DROP_SEARCH_INDEX`: [`DROP SEARCH
+        # INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # definition-language#drop_search_index) statement. * `DROP_SCHEMA`: [`DROP
+        # SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # definition-language#drop_schema_statement) statement. * `DROP_SNAPSHOT_TABLE`:
+        # [`DROP SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/data-definition-language#drop_snapshot_table_statement) statement.
+        # * `DROP_ROW_ACCESS_POLICY`: [`DROP [ALL] ROW ACCESS POLICY|POLICIES`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#
+        # drop_row_access_policy_statement) statement. * `ALTER_TABLE`: [`ALTER TABLE`](
+        # https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-
+        # language#alter_table_set_options_statement) statement. * `ALTER_VIEW`: [`ALTER
+        # VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-
+        # definition-language#alter_view_set_options_statement) statement. * `
+        # ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED VIEW`](https://cloud.google.com/
+        # bigquery/docs/reference/standard-sql/data-definition-language#
+        # alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`
+        # ALTER SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # data-definition-language#alter_schema_set_options_statement) statement. * `
+        # SCRIPT`: [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-
+        # sql/procedural-language). * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](https://cloud.
+        # google.com/bigquery/docs/reference/standard-sql/dml-syntax#
+        # truncate_table_statement) statement. * `CREATE_EXTERNAL_TABLE`: [`CREATE
+        # EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # data-definition-language#create_external_table_statement) statement. * `
+        # EXPORT_DATA`: [`EXPORT DATA`](https://cloud.google.com/bigquery/docs/reference/
+        # standard-sql/other-statements#export_data_statement) statement. * `
+        # EXPORT_MODEL`: [`EXPORT MODEL`](https://cloud.google.com/bigquery-ml/docs/
+        # reference/standard-sql/bigqueryml-syntax-export-model) statement. * `LOAD_DATA`
+        # : [`LOAD DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/
+        # other-statements#load_data_statement) statement. * `CALL`: [`CALL`](https://
+        # cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call)
+        # statement.
+        # Corresponds to the JSON property `statementType`
+        # @return [String]
+        attr_accessor :statement_type
+      
         # Output only. If the project is configured to use on-demand pricing, then this
         # field contains the total bytes billed for the job. If the project is
         # configured to use flat-rate pricing, then you are not billed for bytes and
@@ -8777,6 +9050,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arrow_record_batch = args[:arrow_record_batch] if args.key?(:arrow_record_batch)
+          @arrow_schema = args[:arrow_schema] if args.key?(:arrow_schema)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @dml_stats = args[:dml_stats] if args.key?(:dml_stats)
@@ -8788,12 +9063,14 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
+          @page_row_count = args[:page_row_count] if args.key?(:page_row_count)
           @page_token = args[:page_token] if args.key?(:page_token)
           @query_id = args[:query_id] if args.key?(:query_id)
           @rows = args[:rows] if args.key?(:rows)
           @schema = args[:schema] if args.key?(:schema)
           @session_info = args[:session_info] if args.key?(:session_info)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @statement_type = args[:statement_type] if args.key?(:statement_type)
           @total_bytes_billed = args[:total_bytes_billed] if args.key?(:total_bytes_billed)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_rows = args[:total_rows] if args.key?(:total_rows)
@@ -9824,6 +10101,22 @@ module Google
       class SkewSource
         include Google::Apis::Core::Hashable
       
+        # Output only. Max partition output size (in bytes) for this stage.
+        # Corresponds to the JSON property `outputBytesMax`
+        # @return [Fixnum]
+        attr_accessor :output_bytes_max
+      
+        # Output only. Median partition output size (in bytes) for this stage.
+        # Corresponds to the JSON property `outputBytesMedian`
+        # @return [Fixnum]
+        attr_accessor :output_bytes_median
+      
+        # Output only. 95-th percentile of partition output size (in bytes) for this
+        # stage.
+        # Corresponds to the JSON property `outputBytesP95`
+        # @return [Fixnum]
+        attr_accessor :output_bytes_p95
+      
         # Output only. Stage id of the skew source stage.
         # Corresponds to the JSON property `stageId`
         # @return [Fixnum]
@@ -9835,6 +10128,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @output_bytes_max = args[:output_bytes_max] if args.key?(:output_bytes_max)
+          @output_bytes_median = args[:output_bytes_median] if args.key?(:output_bytes_median)
+          @output_bytes_p95 = args[:output_bytes_p95] if args.key?(:output_bytes_p95)
           @stage_id = args[:stage_id] if args.key?(:stage_id)
         end
       end
@@ -11214,16 +11510,17 @@ module Google
         attr_accessor :collation
       
         # Optional. Specifies the data governance tags on this field. This field works
-        # with other column-level security fields as follows: - Precedence: If a data
-        # governance tag is attached to a column, it takes precedence over the policy
-        # tag attached to the column. However, if a data policy is attached to a column,
-        # it takes precedence over the data governance tag. - Patching behavior (how
-        # this field behaves during a `Table.patch` schema update): - Unset: If the `
-        # data_governance_tags_info` field is omitted from the update request, the
-        # existing tags on the column are preserved. - Empty Field: To clear data
-        # governance tags from a column, send the `data_governance_tags_info` field as
-        # an empty object. This will remove all tags from the column. - Updating tags:
-        # To replace existing tag, send the field with the new tag.
+        # with other column-level security fields as follows: * **Precedence**: If a
+        # data governance tag is attached to a column, it takes precedence over the
+        # policy tag attached to the column. However, if a data policy is attached to a
+        # column, it takes precedence over the data governance tag. * **Patching
+        # behavior**: Describes how this field behaves during a `Table.patch` schema
+        # update: * **Unset**: If the `data_governance_tags_info` field is omitted from
+        # the update request, the existing tags on the column are preserved. * **Empty
+        # Field**: To clear data governance tags from a column, send the `
+        # data_governance_tags_info` field as an empty object. This removes all tags
+        # from the column. * **Updating tags**: To replace an existing tag, send the
+        # field with the new tag.
         # Corresponds to the JSON property `dataGovernanceTagsInfo`
         # @return [Google::Apis::BigqueryV2::TableFieldSchema::DataGovernanceTagsInfo]
         attr_accessor :data_governance_tags_info
@@ -11399,28 +11696,29 @@ module Google
         end
         
         # Optional. Specifies the data governance tags on this field. This field works
-        # with other column-level security fields as follows: - Precedence: If a data
-        # governance tag is attached to a column, it takes precedence over the policy
-        # tag attached to the column. However, if a data policy is attached to a column,
-        # it takes precedence over the data governance tag. - Patching behavior (how
-        # this field behaves during a `Table.patch` schema update): - Unset: If the `
-        # data_governance_tags_info` field is omitted from the update request, the
-        # existing tags on the column are preserved. - Empty Field: To clear data
-        # governance tags from a column, send the `data_governance_tags_info` field as
-        # an empty object. This will remove all tags from the column. - Updating tags:
-        # To replace existing tag, send the field with the new tag.
+        # with other column-level security fields as follows: * **Precedence**: If a
+        # data governance tag is attached to a column, it takes precedence over the
+        # policy tag attached to the column. However, if a data policy is attached to a
+        # column, it takes precedence over the data governance tag. * **Patching
+        # behavior**: Describes how this field behaves during a `Table.patch` schema
+        # update: * **Unset**: If the `data_governance_tags_info` field is omitted from
+        # the update request, the existing tags on the column are preserved. * **Empty
+        # Field**: To clear data governance tags from a column, send the `
+        # data_governance_tags_info` field as an empty object. This removes all tags
+        # from the column. * **Updating tags**: To replace an existing tag, send the
+        # field with the new tag.
         class DataGovernanceTagsInfo
           include Google::Apis::Core::Hashable
         
           # Optional. The data governance tags added to this field are used for field-
           # level access control. Only one data governance tag is currently supported on a
           # field. Tag keys are globally unique. Tag key is expected to be in the
-          # namespaced format, for example "123456789012/pii" where 123456789012 is the ID
-          # of the parent organization or project resource for this tag key. Tag value is
+          # namespaced format, for example "parent-id/pii" where parent-id is the ID of
+          # the parent organization or project resource for this tag key. Tag value is
           # expected to be the short name, for example "sensitive". See [Tag definitions](
           # https://cloud.google.com/iam/docs/tags-access-control#definitions) for more
-          # details. For example: "123456789012/pii": "sensitive", "myProject/cost_center":
-          # "sales"
+          # details. For example: "parent-id/pii": "sensitive", "myProject/cost_center": "
+          # sales"
           # Corresponds to the JSON property `dataGovernanceTags`
           # @return [Hash<String,String>]
           attr_accessor :data_governance_tags

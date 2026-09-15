@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuspendWorkstationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +743,14 @@ module Google
         end
       end
       
+      class SuspendWorkstationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -832,6 +846,7 @@ module Google
           property :grant_workstation_admin_role_on_create, as: 'grantWorkstationAdminRoleOnCreate'
           property :host, as: 'host', class: Google::Apis::WorkstationsV1::Host, decorator: Google::Apis::WorkstationsV1::Host::Representation
       
+          property :idle_action, as: 'idleAction'
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
           property :max_usable_workstations, as: 'maxUsableWorkstations'

@@ -924,6 +924,9 @@ module Google
         # @param [String] name
         #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
         #   policy_id`/servicePerimeters/`service_perimeters_id``
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -941,11 +944,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_access_policy_service_perimeter(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_access_policy_service_perimeter(name, deleted_principal_syntax: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ServicePerimeter
           command.params['name'] = name unless name.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -955,6 +959,9 @@ module Google
         # @param [String] parent
         #   Required. Resource name for the access policy to list Service Perimeters from.
         #   Format: `accessPolicies/`policy_id``
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it.
         # @param [Fixnum] page_size
         #   Number of Service Perimeters to include in the list. Default 100.
         # @param [String] page_token
@@ -977,11 +984,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_access_policy_service_perimeters(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_access_policy_service_perimeters(parent, deleted_principal_syntax: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/servicePerimeters', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ListServicePerimetersResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListServicePerimetersResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -999,6 +1007,10 @@ module Google
         #   component must begin with a letter, followed by alphanumeric characters or `_`.
         #   After you create a `ServicePerimeter`, you cannot change its `name`.
         # @param [Google::Apis::AccesscontextmanagerV1::ServicePerimeter] service_perimeter_object
+        # @param [String] deleted_principal_syntax
+        #   Optional. If true, the response will contain the deleted principal syntax for
+        #   identities that support it and the request can contain identities with deleted
+        #   principal syntax.
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
         # @param [String] fields
@@ -1018,13 +1030,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_access_policy_service_perimeter(name, service_perimeter_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_access_policy_service_perimeter(name, service_perimeter_object = nil, deleted_principal_syntax: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
           command.request_object = service_perimeter_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['deletedPrincipalSyntax'] = deleted_principal_syntax unless deleted_principal_syntax.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1104,6 +1117,37 @@ module Google
           command.request_object = test_iam_permissions_request_object
           command.response_representation = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up the configured service perimeter for a given resource Format: ['
+        # projects/`projectNumber`', 'folders/`folderNumber`'].
+        # @param [String] resource
+        #   Required. The Resource to resolve (e.g. "projects/123", "folders/456").
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_folder_configured_service_perimeter(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:lookupConfiguredServicePerimeter', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse
           command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1364,6 +1408,12 @@ module Google
         # Lists all GcpUserAccessBindings for a Google Cloud organization.
         # @param [String] parent
         #   Required. Example: "organizations/256"
+        # @param [String] filter
+        #   Optional. The literal filter to apply to the results returned. See https://
+        #   google.aip.dev/160 for more details. Accepts values: * `principal:group_key` *
+        #   `principal:service_account` OR `principal:service_account_project_number`. If
+        #   this field is empty or not one of the above, the default value is `"principal:
+        #   group_key"`.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return. The server may return fewer items.
         #   If left blank, the server may return any number of items.
@@ -1387,11 +1437,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_gcp_user_access_bindings(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_gcp_user_access_bindings(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/gcpUserAccessBindings', options)
           command.response_representation = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse::Representation
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListGcpUserAccessBindingsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1486,6 +1537,37 @@ module Google
           command.response_class = Google::Apis::AccesscontextmanagerV1::ListSupportedPermissionsResponse
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Looks up the configured service perimeter for a given resource Format: ['
+        # projects/`projectNumber`', 'folders/`folderNumber`'].
+        # @param [String] resource
+        #   Required. The Resource to resolve (e.g. "projects/123", "folders/456").
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def lookup_project_configured_service_perimeter(resource, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+resource}:lookupConfiguredServicePerimeter', options)
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::LookupConfiguredServicePerimeterResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

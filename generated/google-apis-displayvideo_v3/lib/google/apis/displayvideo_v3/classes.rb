@@ -157,7 +157,7 @@ module Google
         end
       end
       
-      # A single ad associated with an ad group.
+      # LINT: LEGACY_NAMES A single ad associated with an ad group.
       class AdGroupAd
         include Google::Apis::Core::Hashable
       
@@ -1194,6 +1194,21 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::AdvertiserDataAccessConfig]
         attr_accessor :data_access_config
       
+        # Optional. The default business name for the advertiser. This is the value used
+        # by YouTube and Demand Gen ads under this advertiser if a business name is not
+        # provided.
+        # Corresponds to the JSON property `defaultBusinessName`
+        # @return [String]
+        attr_accessor :default_business_name
+      
+        # Optional. The asset ID of the default logo image for the advertiser. This is
+        # the asset ID that will be used by YouTube and Demand ads under this advertiser
+        # if a logo asset is not provided. You must use advertisers.adAssets.upload to
+        # upload this asset using the API.
+        # Corresponds to the JSON property `defaultLogoAssetId`
+        # @return [Fixnum]
+        attr_accessor :default_logo_asset_id
+      
         # Required. The display name of the advertiser. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
@@ -1264,6 +1279,8 @@ module Google
           @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
+          @default_business_name = args[:default_business_name] if args.key?(:default_business_name)
+          @default_logo_asset_id = args[:default_logo_asset_id] if args.key?(:default_logo_asset_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @general_config = args[:general_config] if args.key?(:general_config)
@@ -4629,117 +4646,6 @@ module Google
         end
       end
       
-      # User consent status.
-      class Consent
-        include Google::Apis::Core::Hashable
-      
-        # Represents consent for ad personalization.
-        # Corresponds to the JSON property `adPersonalization`
-        # @return [String]
-        attr_accessor :ad_personalization
-      
-        # Represents consent for ad user data.
-        # Corresponds to the JSON property `adUserData`
-        # @return [String]
-        attr_accessor :ad_user_data
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ad_personalization = args[:ad_personalization] if args.key?(:ad_personalization)
-          @ad_user_data = args[:ad_user_data] if args.key?(:ad_user_data)
-        end
-      end
-      
-      # Contact information defining a Customer Match audience member.
-      class ContactInfo
-        include Google::Apis::Core::Hashable
-      
-        # Country code of the member. Must also be set with the following fields: *
-        # hashed_first_name * hashed_last_name * zip_codes
-        # Corresponds to the JSON property `countryCode`
-        # @return [String]
-        attr_accessor :country_code
-      
-        # A list of SHA256 hashed email of the member. Before hashing, remove all
-        # whitespace and make sure the string is all lowercase.
-        # Corresponds to the JSON property `hashedEmails`
-        # @return [Array<String>]
-        attr_accessor :hashed_emails
-      
-        # SHA256 hashed first name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_last_name * zip_codes
-        # Corresponds to the JSON property `hashedFirstName`
-        # @return [String]
-        attr_accessor :hashed_first_name
-      
-        # SHA256 hashed last name of the member. Before hashing, remove all whitespace
-        # and make sure the string is all lowercase. Must also be set with the following
-        # fields: * country_code * hashed_first_name * zip_codes
-        # Corresponds to the JSON property `hashedLastName`
-        # @return [String]
-        attr_accessor :hashed_last_name
-      
-        # A list of SHA256 hashed phone numbers of the member. Before hashing, all phone
-        # numbers must be formatted using the [E.164 format](//en.wikipedia.org/wiki/E.
-        # 164) and include the country calling code.
-        # Corresponds to the JSON property `hashedPhoneNumbers`
-        # @return [Array<String>]
-        attr_accessor :hashed_phone_numbers
-      
-        # A list of zip codes of the member. Must also be set with the following fields:
-        # * country_code * hashed_first_name * hashed_last_name
-        # Corresponds to the JSON property `zipCodes`
-        # @return [Array<String>]
-        attr_accessor :zip_codes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @country_code = args[:country_code] if args.key?(:country_code)
-          @hashed_emails = args[:hashed_emails] if args.key?(:hashed_emails)
-          @hashed_first_name = args[:hashed_first_name] if args.key?(:hashed_first_name)
-          @hashed_last_name = args[:hashed_last_name] if args.key?(:hashed_last_name)
-          @hashed_phone_numbers = args[:hashed_phone_numbers] if args.key?(:hashed_phone_numbers)
-          @zip_codes = args[:zip_codes] if args.key?(:zip_codes)
-        end
-      end
-      
-      # Wrapper message for a list of contact information defining Customer Match
-      # audience members.
-      class ContactInfoList
-        include Google::Apis::Core::Hashable
-      
-        # User consent status.
-        # Corresponds to the JSON property `consent`
-        # @return [Google::Apis::DisplayvideoV3::Consent]
-        attr_accessor :consent
-      
-        # A list of ContactInfo objects defining Customer Match audience members. The
-        # size of members after splitting the contact_infos mustn't be greater than 500,
-        # 000.
-        # Corresponds to the JSON property `contactInfos`
-        # @return [Array<Google::Apis::DisplayvideoV3::ContactInfo>]
-        attr_accessor :contact_infos
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consent = args[:consent] if args.key?(:consent)
-          @contact_infos = args[:contact_infos] if args.key?(:contact_infos)
-        end
-      end
-      
       # Details for content duration assigned targeting option. This will be populated
       # in the content_duration_details field when targeting_type is `
       # TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not
@@ -5090,9 +4996,7 @@ module Google
         # attribution model will determine how conversions are counted. The Primary
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
-        # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently rolling out. This field will be available to all partners by *June
-        # 24, 2026*.
+        # Demand Gen line items.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -5532,6 +5436,12 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Optional. The original third-party tag used for the creative. Required and
         # only valid for third-party tag creatives. Third-party tag creatives are
         # creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY`
@@ -5655,6 +5565,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @skip_offset = args[:skip_offset] if args.key?(:skip_offset)
           @skippable = args[:skippable] if args.key?(:skippable)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_tag = args[:third_party_tag] if args.key?(:third_party_tag)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)
           @timer_events = args[:timer_events] if args.key?(:timer_events)
@@ -6336,7 +6247,9 @@ module Google
       class DemandGenCarouselAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Optional. The business name shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6411,7 +6324,9 @@ module Google
       class DemandGenImageAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Optional. The business name shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6454,7 +6369,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of logo images shown on the ad.
+        # The list of logo images shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
         # Corresponds to the JSON property `logoImages`
         # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
         attr_accessor :logo_images
@@ -6511,7 +6428,9 @@ module Google
       class DemandGenProductAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Optional. The business name shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6636,7 +6555,9 @@ module Google
       class DemandGenVideoAd
         include Google::Apis::Core::Hashable
       
-        # Required. The business name shown on the ad.
+        # Optional. The business name shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
         # Corresponds to the JSON property `businessName`
         # @return [String]
         attr_accessor :business_name
@@ -6865,7 +6786,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The display name of the digital content label rating tier to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept the
+        # value `CONTENT_RATING_TIER_UNRATED`. All other values will be deprecated and
+        # no longer be accepted.**
         # Corresponds to the JSON property `excludedContentRatingTier`
         # @return [String]
         attr_accessor :excluded_content_rating_tier
@@ -7194,73 +7117,6 @@ module Google
         end
       end
       
-      # Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-      class EditCustomerMatchMembersRequest
-        include Google::Apis::Core::Hashable
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `addedContactInfoList`
-        # @return [Google::Apis::DisplayvideoV3::ContactInfoList]
-        attr_accessor :added_contact_info_list
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `addedMobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV3::MobileDeviceIdList]
-        attr_accessor :added_mobile_device_id_list
-      
-        # Required. The ID of the owner advertiser of the updated Customer Match
-        # FirstAndThirdPartyAudience.
-        # Corresponds to the JSON property `advertiserId`
-        # @return [Fixnum]
-        attr_accessor :advertiser_id
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `removedContactInfoList`
-        # @return [Google::Apis::DisplayvideoV3::ContactInfoList]
-        attr_accessor :removed_contact_info_list
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `removedMobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV3::MobileDeviceIdList]
-        attr_accessor :removed_mobile_device_id_list
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @added_contact_info_list = args[:added_contact_info_list] if args.key?(:added_contact_info_list)
-          @added_mobile_device_id_list = args[:added_mobile_device_id_list] if args.key?(:added_mobile_device_id_list)
-          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
-          @removed_contact_info_list = args[:removed_contact_info_list] if args.key?(:removed_contact_info_list)
-          @removed_mobile_device_id_list = args[:removed_mobile_device_id_list] if args.key?(:removed_mobile_device_id_list)
-        end
-      end
-      
-      # The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.
-      class EditCustomerMatchMembersResponse
-        include Google::Apis::Core::Hashable
-      
-        # Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
-        # @return [Fixnum]
-        attr_accessor :first_and_third_party_audience_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
-        end
-      end
-      
       # Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.
       class EditGuaranteedOrderReadAccessorsRequest
         include Google::Apis::Core::Hashable
@@ -7550,162 +7406,6 @@ module Google
           @reporting_name = args[:reporting_name] if args.key?(:reporting_name)
           @type = args[:type] if args.key?(:type)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Describes a first or third party audience list used for targeting. First party
-      # audiences are created via usage of client data. Third party audiences are
-      # provided by Third Party data providers and can only be licensed to customers.
-      class FirstAndThirdPartyAudience
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The estimated audience size for the Display network in the past
-        # month. If the size is less than 1000, the number will be hidden and 0 will be
-        # returned due to privacy reasons. Otherwise, the number will be rounded off to
-        # two significant digits. Only returned in GET request.
-        # Corresponds to the JSON property `activeDisplayAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :active_display_audience_size
-      
-        # The app_id matches with the type of the mobile_device_ids being uploaded. Only
-        # applicable to audience_type `CUSTOMER_MATCH_DEVICE_ID`
-        # Corresponds to the JSON property `appId`
-        # @return [String]
-        attr_accessor :app_id
-      
-        # Output only. The source of the audience.
-        # Corresponds to the JSON property `audienceSource`
-        # @return [String]
-        attr_accessor :audience_source
-      
-        # The type of the audience.
-        # Corresponds to the JSON property `audienceType`
-        # @return [String]
-        attr_accessor :audience_type
-      
-        # Wrapper message for a list of contact information defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `contactInfoList`
-        # @return [Google::Apis::DisplayvideoV3::ContactInfoList]
-        attr_accessor :contact_info_list
-      
-        # The user-provided description of the audience. Only applicable to first party
-        # audiences.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. The estimated audience size for the Display network. If the size
-        # is less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only returned in GET request.
-        # Corresponds to the JSON property `displayAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_audience_size
-      
-        # Output only. The estimated desktop audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayDesktopAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_desktop_audience_size
-      
-        # Output only. The estimated mobile app audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayMobileAppAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_mobile_app_audience_size
-      
-        # Output only. The estimated mobile web audience size in Display network. If the
-        # size is less than 1000, the number will be hidden and 0 will be returned due
-        # to privacy reasons. Otherwise, the number will be rounded off to two
-        # significant digits. Only applicable to first party audiences. Only returned in
-        # GET request.
-        # Corresponds to the JSON property `displayMobileWebAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :display_mobile_web_audience_size
-      
-        # The display name of the first and third party audience.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. The unique ID of the first and third party audience. Assigned by
-        # the system.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceId`
-        # @return [Fixnum]
-        attr_accessor :first_and_third_party_audience_id
-      
-        # Whether the audience is a first or third party audience.
-        # Corresponds to the JSON property `firstAndThirdPartyAudienceType`
-        # @return [String]
-        attr_accessor :first_and_third_party_audience_type
-      
-        # Output only. The estimated audience size for Gmail network. If the size is
-        # less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only applicable to first party audiences. Only returned in GET request.
-        # Corresponds to the JSON property `gmailAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :gmail_audience_size
-      
-        # The duration in days that an entry remains in the audience after the
-        # qualifying event. The set value must be greater than 0 and less than or equal
-        # to 540. Only applicable to first party audiences. This field is required if
-        # one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` * `
-        # CUSTOMER_MATCH_DEVICE_ID`
-        # Corresponds to the JSON property `membershipDurationDays`
-        # @return [Fixnum]
-        attr_accessor :membership_duration_days
-      
-        # Wrapper message for a list of mobile device IDs defining Customer Match
-        # audience members.
-        # Corresponds to the JSON property `mobileDeviceIdList`
-        # @return [Google::Apis::DisplayvideoV3::MobileDeviceIdList]
-        attr_accessor :mobile_device_id_list
-      
-        # Output only. The resource name of the first and third party audience.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The estimated audience size for YouTube network. If the size is
-        # less than 1000, the number will be hidden and 0 will be returned due to
-        # privacy reasons. Otherwise, the number will be rounded off to two significant
-        # digits. Only applicable to first party audiences. Only returned in GET request.
-        # Corresponds to the JSON property `youtubeAudienceSize`
-        # @return [Fixnum]
-        attr_accessor :youtube_audience_size
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @active_display_audience_size = args[:active_display_audience_size] if args.key?(:active_display_audience_size)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @audience_source = args[:audience_source] if args.key?(:audience_source)
-          @audience_type = args[:audience_type] if args.key?(:audience_type)
-          @contact_info_list = args[:contact_info_list] if args.key?(:contact_info_list)
-          @description = args[:description] if args.key?(:description)
-          @display_audience_size = args[:display_audience_size] if args.key?(:display_audience_size)
-          @display_desktop_audience_size = args[:display_desktop_audience_size] if args.key?(:display_desktop_audience_size)
-          @display_mobile_app_audience_size = args[:display_mobile_app_audience_size] if args.key?(:display_mobile_app_audience_size)
-          @display_mobile_web_audience_size = args[:display_mobile_web_audience_size] if args.key?(:display_mobile_web_audience_size)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @first_and_third_party_audience_id = args[:first_and_third_party_audience_id] if args.key?(:first_and_third_party_audience_id)
-          @first_and_third_party_audience_type = args[:first_and_third_party_audience_type] if args.key?(:first_and_third_party_audience_type)
-          @gmail_audience_size = args[:gmail_audience_size] if args.key?(:gmail_audience_size)
-          @membership_duration_days = args[:membership_duration_days] if args.key?(:membership_duration_days)
-          @mobile_device_id_list = args[:mobile_device_id_list] if args.key?(:mobile_device_id_list)
-          @name = args[:name] if args.key?(:name)
-          @youtube_audience_size = args[:youtube_audience_size] if args.key?(:youtube_audience_size)
         end
       end
       
@@ -10012,34 +9712,6 @@ module Google
       end
       
       # 
-      class ListFirstAndThirdPartyAudiencesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of first and third party audiences. Audience size properties will not
-        # be included. This list will be absent if empty.
-        # Corresponds to the JSON property `firstAndThirdPartyAudiences`
-        # @return [Array<Google::Apis::DisplayvideoV3::FirstAndThirdPartyAudience>]
-        attr_accessor :first_and_third_party_audiences
-      
-        # A token to retrieve the next page of results. Pass this value in the
-        # page_token field in the subsequent call to `ListFirstAndThirdPartyAudiences`
-        # method to retrieve the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @first_and_third_party_audiences = args[:first_and_third_party_audiences] if args.key?(:first_and_third_party_audiences)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # 
       class ListFloodlightActivitiesResponse
         include Google::Apis::Core::Hashable
       
@@ -10762,33 +10434,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @platform = args[:platform] if args.key?(:platform)
           @publisher = args[:publisher] if args.key?(:publisher)
-        end
-      end
-      
-      # Wrapper message for a list of mobile device IDs defining Customer Match
-      # audience members.
-      class MobileDeviceIdList
-        include Google::Apis::Core::Hashable
-      
-        # User consent status.
-        # Corresponds to the JSON property `consent`
-        # @return [Google::Apis::DisplayvideoV3::Consent]
-        attr_accessor :consent
-      
-        # A list of mobile device IDs defining Customer Match audience members. The size
-        # of mobile_device_ids mustn't be greater than 500,000.
-        # Corresponds to the JSON property `mobileDeviceIds`
-        # @return [Array<String>]
-        attr_accessor :mobile_device_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @consent = args[:consent] if args.key?(:consent)
-          @mobile_device_ids = args[:mobile_device_ids] if args.key?(:mobile_device_ids)
         end
       end
       
@@ -12495,7 +12140,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. An enum for the DV360 Sensitive category content classified to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept `
+        # SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
+        # . All other values will be deprecated and no longer be accepted.**
         # Corresponds to the JSON property `excludedSensitiveCategory`
         # @return [String]
         attr_accessor :excluded_sensitive_category
@@ -12735,9 +12382,7 @@ module Google
         alias_method :enable_optimized_targeting?, :enable_optimized_targeting
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
-        # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently rolling out. This field will be available
-        # to all partners by *June 24, 2026*.
+        # This field can only be set for Demand Gen ad groups.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -13066,7 +12711,7 @@ module Google
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
         # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
-        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        # THIRD_PARTY_VENDOR_MACROMILL`
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV3::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs

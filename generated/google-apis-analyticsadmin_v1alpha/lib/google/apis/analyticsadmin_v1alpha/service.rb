@@ -197,6 +197,8 @@ module Google
         # Returns all accounts accessible by the caller. Note that these accounts might
         # not currently have GA properties. Soft-deleted (ie: "trashed") accounts are
         # excluded by default. Returns an empty list if no relevant accounts are found.
+        # Note: The easiest way to retrieve a list of all properties you have access to
+        # is by using `ListAccountSummaries`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of resources to return. The service may return
         #   fewer than this value, even if there are additional pages. If unspecified, at
@@ -2796,7 +2798,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a CustomDimension.
+        # Creates a CustomDimension. Warning: It's not permissible to use this method to
+        # collect data on individual users. In particular, sending user IDs in custom
+        # dimensions violates the [Google Analytics Terms of Service](https://www.google.
+        # com/analytics/terms/).
         # @param [String] parent
         #   Required. Example format: properties/1234
         # @param [Google::Apis::AnalyticsadminV1alpha::GoogleAnalyticsAdminV1alphaCustomDimension] google_analytics_admin_v1alpha_custom_dimension_object
@@ -5096,7 +5101,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a single Key Event.
+        # Retrieves a single Key Event.
         # @param [String] name
         #   Required. The resource name of the Key Event to retrieve. Format: properties/`
         #   property`/keyEvents/`key_event` Example: "properties/123/keyEvents/456"

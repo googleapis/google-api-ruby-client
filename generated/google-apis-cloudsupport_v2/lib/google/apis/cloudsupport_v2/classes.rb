@@ -744,6 +744,22 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The request message for the EscalateCase endpoint.
       class EscalateCaseRequest
         include Google::Apis::Core::Hashable
@@ -786,6 +802,19 @@ module Google
         def update!(**args)
           @justification = args[:justification] if args.key?(:justification)
           @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Request message for ExpungeSupportEventSubscription.
+      class ExpungeSupportEventSubscriptionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1193,7 +1222,15 @@ module Google
         end
       end
       
-      # A support event subscription.
+      # A support event subscription. You can also manage support event subscriptions
+      # using other tools: * [`gcloud support support-event-subscriptions`](/sdk/
+      # gcloud/reference/support/support-event-subscriptions) (or [`gcloud beta`](/sdk/
+      # gcloud/reference/beta/support/support-event-subscriptions) for beta) * [
+      # Terraform `google_cloud_support_support_event_subscription`](https://registry.
+      # terraform.io/providers/hashicorp/google/latest/docs/resources/
+      # cloud_support_support_event_subscription) (or [google-beta provider](https://
+      # registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/
+      # cloud_support_support_event_subscription) for beta)
       class SupportEventSubscription
         include Google::Apis::Core::Hashable
       

@@ -520,6 +520,7 @@ module Google
           property :dataset, as: 'dataset'
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3::GlossaryConfig, decorator: Google::Apis::TranslateV3::GlossaryConfig::Representation
       
+          property :mime_type, as: 'mimeType'
           property :reference_sentence_config, as: 'referenceSentenceConfig', class: Google::Apis::TranslateV3::ReferenceSentenceConfig, decorator: Google::Apis::TranslateV3::ReferenceSentenceConfig::Representation
       
         end

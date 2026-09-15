@@ -899,6 +899,112 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Processes the given call conversions. List of thrown errors: [
+        # AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
+        # [PartialFailureError]() [QuotaError]() [RequestError]()
+        # @param [String] customer_id
+        #   Required. The ID of the customer performing the upload.
+        # @param [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest] google_ads_searchads360_v23_services__upload_call_conversions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_customer_call_conversions(customer_id, google_ads_searchads360_v23_services__upload_call_conversions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v23/customers/{+customerId}:uploadCallConversions', options)
+          command.request_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest::Representation
+          command.request_object = google_ads_searchads360_v23_services__upload_call_conversions_request_object
+          command.response_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse::Representation
+          command.response_class = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes the given click conversions. List of thrown errors: [
+        # AuthenticationError]() [AuthorizationError]() [ConversionUploadError]() [
+        # HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]() [
+        # RequestError]()
+        # @param [String] customer_id
+        #   Required. The ID of the customer performing the upload.
+        # @param [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest] google_ads_searchads360_v23_services__upload_click_conversions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_customer_click_conversions(customer_id, google_ads_searchads360_v23_services__upload_click_conversions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v23/customers/{+customerId}:uploadClickConversions', options)
+          command.request_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest::Representation
+          command.request_object = google_ads_searchads360_v23_services__upload_click_conversions_request_object
+          command.response_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse::Representation
+          command.response_class = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes the given conversion adjustments. List of thrown errors: [
+        # AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
+        # [PartialFailureError]() [QuotaError]() [RequestError]()
+        # @param [String] customer_id
+        #   Required. The ID of the customer performing the upload.
+        # @param [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest] google_ads_searchads360_v23_services__upload_conversion_adjustments_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_customer_conversion_adjustments(customer_id, google_ads_searchads360_v23_services__upload_conversion_adjustments_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v23/customers/{+customerId}:uploadConversionAdjustments', options)
+          command.request_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest::Representation
+          command.request_object = google_ads_searchads360_v23_services__upload_conversion_adjustments_request_object
+          command.response_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse::Representation
+          command.response_class = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads the given user data. List of thrown errors: [AuthenticationError]() [
         # AuthorizationError]() [CollectionSizeError]() [FieldError]() [HeaderError]() [
         # InternalError]() [MutateError]() [OfflineUserDataJobError]() [QuotaError]() [
@@ -5043,6 +5149,42 @@ module Google
           command.request_object = google_ads_searchads360_v23_services__search_search_ads360_request_object
           command.response_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSearchSearchAds360Response::Representation
           command.response_class = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesSearchSearchAds360Response
+          command.params['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates Search Ads 360 campaigns. Operation statuses are returned. List of
+        # thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [
+        # InternalError]() [MutateError]() [QuotaError]() [RequestError]()
+        # @param [String] customer_id
+        #   Required. The ID of the customer whose Search Ads 360 campaigns are being
+        #   modified.
+        # @param [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest] google_ads_searchads360_v23_services__mutate_search_ads360_campaigns_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mutate_customer_search_ads360_campaign(customer_id, google_ads_searchads360_v23_services__mutate_search_ads360_campaigns_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v23/customers/{+customerId}/searchAds360Campaigns:mutate', options)
+          command.request_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest::Representation
+          command.request_object = google_ads_searchads360_v23_services__mutate_search_ads360_campaigns_request_object
+          command.response_representation = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse::Representation
+          command.response_class = Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

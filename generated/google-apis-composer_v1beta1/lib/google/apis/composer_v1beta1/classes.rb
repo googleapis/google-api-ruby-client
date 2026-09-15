@@ -533,6 +533,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Selects the environment mode that determines what settings are
+        # customizable and what features are available in the environment.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Identifier. The resource name of the environment, in the form: "projects/`
         # projectId`/locations/`locationId`/environments/`environmentId`" EnvironmentId
         # must start with a lowercase letter followed by up to 63 lowercase letters,
@@ -583,6 +589,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -878,6 +885,19 @@ module Google
           @is_failover_replica_available = args[:is_failover_replica_available] if args.key?(:is_failover_replica_available)
           @primary_gce_zone = args[:primary_gce_zone] if args.key?(:primary_gce_zone)
           @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
+        end
+      end
+      
+      # Request to hibernate a Composer environment.
+      class HibernateEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1896,6 +1916,19 @@ module Google
         end
       end
       
+      # Request to resume a Composer environment.
+      class ResumeEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to create a snapshot of a Cloud Composer environment.
       class SaveSnapshotRequest
         include Google::Apis::Core::Hashable
@@ -2036,6 +2069,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :airflow_config_overrides
       
+        # Optional. The selected mode of audit logs replication. This field is supported
+        # for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.*
+        # and newer.
+        # Corresponds to the JSON property `auditLogsReplicationMode`
+        # @return [String]
+        attr_accessor :audit_logs_replication_mode
+      
         # Configuration for Cloud Data Lineage integration.
         # Corresponds to the JSON property `cloudDataLineageIntegration`
         # @return [Google::Apis::ComposerV1beta1::CloudDataLineageIntegration]
@@ -2114,6 +2154,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @airflow_config_overrides = args[:airflow_config_overrides] if args.key?(:airflow_config_overrides)
+          @audit_logs_replication_mode = args[:audit_logs_replication_mode] if args.key?(:audit_logs_replication_mode)
           @cloud_data_lineage_integration = args[:cloud_data_lineage_integration] if args.key?(:cloud_data_lineage_integration)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)

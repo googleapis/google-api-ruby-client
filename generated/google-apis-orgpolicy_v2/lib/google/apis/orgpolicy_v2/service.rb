@@ -56,7 +56,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that parents the constraint. Must be in
         #   one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -99,7 +100,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that will parent the new policy. Must be
         #   in one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -237,7 +239,7 @@ module Google
         #   Required. The target Google Cloud resource that parents the set of constraints
         #   and policies that will be returned from this call. Must be in one of the
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
-        #   folders/`folder_id`` * `organizations/`organization_id``
+        #   folders/`folder_number`` * `organizations/`organization_number``
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -282,8 +284,8 @@ module Google
         #   Immutable. The resource name of the policy. Must be one of the following forms,
         #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
-        #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   folders/`folder_number`/policies/`constraint_name`` * `organizations/`
+        #   organization_number`/policies/`constraint_name`` For example, `projects/123/
         #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
@@ -326,7 +328,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that parents the constraint. Must be in
         #   one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -550,7 +553,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that will parent the new policy. Must be
         #   in one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -688,7 +692,7 @@ module Google
         #   Required. The target Google Cloud resource that parents the set of constraints
         #   and policies that will be returned from this call. Must be in one of the
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
-        #   folders/`folder_id`` * `organizations/`organization_id``
+        #   folders/`folder_number`` * `organizations/`organization_number``
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -733,8 +737,8 @@ module Google
         #   Immutable. The resource name of the policy. Must be one of the following forms,
         #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
-        #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   folders/`folder_number`/policies/`constraint_name`` * `organizations/`
+        #   organization_number`/policies/`constraint_name`` For example, `projects/123/
         #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.
@@ -777,7 +781,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that parents the constraint. Must be in
         #   one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -820,7 +825,8 @@ module Google
         # @param [String] parent
         #   Required. The Google Cloud resource that will parent the new policy. Must be
         #   in one of the following forms: * `projects/`project_number`` * `projects/`
-        #   project_id`` * `folders/`folder_id`` * `organizations/`organization_id``
+        #   project_id`` * `folders/`folder_number`` * `organizations/`organization_number`
+        #   `
         # @param [Google::Apis::OrgpolicyV2::GoogleCloudOrgpolicyV2Policy] google_cloud_orgpolicy_v2_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -958,7 +964,7 @@ module Google
         #   Required. The target Google Cloud resource that parents the set of constraints
         #   and policies that will be returned from this call. Must be in one of the
         #   following forms: * `projects/`project_number`` * `projects/`project_id`` * `
-        #   folders/`folder_id`` * `organizations/`organization_id``
+        #   folders/`folder_number`` * `organizations/`organization_number``
         # @param [Fixnum] page_size
         #   Size of the pages to be returned. This is not used, but the server may at any
         #   point start using this field to limit page size.
@@ -1003,8 +1009,8 @@ module Google
         #   Immutable. The resource name of the policy. Must be one of the following forms,
         #   where `constraint_name` is the name of the constraint that this policy
         #   configures: * `projects/`project_number`/policies/`constraint_name`` * `
-        #   folders/`folder_id`/policies/`constraint_name`` * `organizations/`
-        #   organization_id`/policies/`constraint_name`` For example, `projects/123/
+        #   folders/`folder_number`/policies/`constraint_name`` * `organizations/`
+        #   organization_number`/policies/`constraint_name`` For example, `projects/123/
         #   policies/compute.disableSerialPortAccess`. Note: `projects/`project_id`/
         #   policies/`constraint_name`` is also an acceptable name for API requests, but
         #   responses will return the name using the equivalent project number.

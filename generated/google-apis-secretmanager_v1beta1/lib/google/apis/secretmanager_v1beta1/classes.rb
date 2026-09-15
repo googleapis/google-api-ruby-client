@@ -803,6 +803,40 @@ module Google
         end
       end
       
+      # Output-only policy member strings of a Google Cloud resource's built-in
+      # identity.
+      class ResourcePolicyMember
+        include Google::Apis::Core::Hashable
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # user-assigned name (https://google.aip.dev/122). If a resource is deleted and
+        # recreated with the same name, the binding will be applicable to the new
+        # resource. Example: `principal://parametermanager.googleapis.com/projects/12345/
+        # name/locations/us-central1-a/parameters/my-parameter`
+        # Corresponds to the JSON property `iamPolicyNamePrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_name_principal
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # system-assigned unique identifier (https://google.aip.dev/148#uid). If a
+        # resource is deleted and recreated with the same name, the binding will not be
+        # applicable to the new resource Example: `principal://parametermanager.
+        # googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+        # Corresponds to the JSON property `iamPolicyUidPrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_uid_principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name_principal = args[:iam_policy_name_principal] if args.key?(:iam_policy_name_principal)
+          @iam_policy_uid_principal = args[:iam_policy_uid_principal] if args.key?(:iam_policy_uid_principal)
+        end
+      end
+      
       # A Secret is a logical secret whose value and versions can be accessed. A
       # Secret is made up of zero or more SecretVersions that represent the secret
       # data.

@@ -1,0 +1,7 @@
+{
+    "api_id": "androiddeveloperidstatus:v1",
+    "name_pretty": "Android Developer ID Status API",
+    "distribution_name": "google-apis-androiddeveloperidstatus_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}

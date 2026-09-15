@@ -308,6 +308,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the extended agent card for the authenticated agent.
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1AgentCard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1AgentCard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_app_extended_agent_card(tenant, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+tenant}/extendedAgentCard', options)
+          command.response_representation = Google::Apis::CesV1::LfA2aV1AgentCard::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1AgentCard
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports the specified app.
         # @param [String] parent
         #   Required. The parent resource name with the location of the app to import.
@@ -995,6 +1026,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the extended agent card for the authenticated agent.
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1AgentCard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1AgentCard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_app_deployment_extended_agent_card(tenant, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+tenant}/extendedAgentCard', options)
+          command.response_representation = Google::Apis::CesV1::LfA2aV1AgentCard::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1AgentCard
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists deployments in the given app.
         # @param [String] parent
         #   Required. The parent app. Format: `projects/`project`/locations/`location`/
@@ -1073,6 +1135,75 @@ module Google
           command.response_class = Google::Apis::CesV1::Deployment
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a message to an agent.
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1SendMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1SendMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_app_deployment_message(tenant, lf_a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:send', options)
+          command.request_representation = Google::Apis::CesV1::LfA2aV1SendMessageRequest::Representation
+          command.request_object = lf_a2a_v1_send_message_request_object
+          command.response_representation = Google::Apis::CesV1::LfA2aV1SendMessageResponse::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1SendMessageResponse
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a streaming message to an agent, allowing for real-time interaction and
+        # status updates. Streaming version of `SendMessage`
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1StreamResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1StreamResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_app_deployment_message(tenant, lf_a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:stream', options)
+          command.request_representation = Google::Apis::CesV1::LfA2aV1SendMessageRequest::Representation
+          command.request_object = lf_a2a_v1_send_message_request_object
+          command.response_representation = Google::Apis::CesV1::LfA2aV1StreamResponse::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1StreamResponse
+          command.params['tenant'] = tenant unless tenant.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1463,7 +1594,8 @@ module Google
         
         # Sends a message to an agent.
         # @param [String] tenant
-        #   Optional. Tenant ID, provided as a path parameter.
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
         # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1488,6 +1620,41 @@ module Google
           command.request_object = lf_a2a_v1_send_message_request_object
           command.response_representation = Google::Apis::CesV1::LfA2aV1SendMessageResponse::Representation
           command.response_class = Google::Apis::CesV1::LfA2aV1SendMessageResponse
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a streaming message to an agent, allowing for real-time interaction and
+        # status updates. Streaming version of `SendMessage`
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1StreamResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1StreamResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_app_message(tenant, lf_a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:stream', options)
+          command.request_representation = Google::Apis::CesV1::LfA2aV1SendMessageRequest::Representation
+          command.request_object = lf_a2a_v1_send_message_request_object
+          command.response_representation = Google::Apis::CesV1::LfA2aV1StreamResponse::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1StreamResponse
           command.params['tenant'] = tenant unless tenant.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2132,6 +2299,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the extended agent card for the authenticated agent.
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1AgentCard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1AgentCard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_app_version_extended_agent_card(tenant, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+tenant}/extendedAgentCard', options)
+          command.response_representation = Google::Apis::CesV1::LfA2aV1AgentCard::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1AgentCard
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all app versions in the given app.
         # @param [String] parent
         #   Required. The resource name of the app to list app versions from.
@@ -2178,6 +2376,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified app version.
+        # @param [String] name
+        #   Identifier. The unique identifier of the app version. Format: `projects/`
+        #   project`/locations/`location`/apps/`app`/versions/`version``
+        # @param [Google::Apis::CesV1::AppVersion] app_version_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update. If empty, fields `display_name` and `
+        #   description` will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::AppVersion] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::AppVersion]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_app_version(name, app_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CesV1::AppVersion::Representation
+          command.request_object = app_version_object
+          command.response_representation = Google::Apis::CesV1::AppVersion::Representation
+          command.response_class = Google::Apis::CesV1::AppVersion
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Restores the specified app version. This will create a new app version from
         # the current draft app and overwrite the current draft with the specified app
         # version.
@@ -2208,6 +2444,75 @@ module Google
           command.response_representation = Google::Apis::CesV1::Operation::Representation
           command.response_class = Google::Apis::CesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a message to an agent.
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1SendMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1SendMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_project_location_app_version_message(tenant, lf_a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:send', options)
+          command.request_representation = Google::Apis::CesV1::LfA2aV1SendMessageRequest::Representation
+          command.request_object = lf_a2a_v1_send_message_request_object
+          command.response_representation = Google::Apis::CesV1::LfA2aV1SendMessageResponse::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1SendMessageResponse
+          command.params['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sends a streaming message to an agent, allowing for real-time interaction and
+        # status updates. Streaming version of `SendMessage`
+        # @param [String] tenant
+        #   Optional. Opaque routing identifier. Must match the `tenant` value from the
+        #   selected `AgentInterface` in the Agent Card when that field is set.
+        # @param [Google::Apis::CesV1::LfA2aV1SendMessageRequest] lf_a2a_v1_send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::LfA2aV1StreamResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::LfA2aV1StreamResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_project_location_app_version_message(tenant, lf_a2a_v1_send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+tenant}/message:stream', options)
+          command.request_representation = Google::Apis::CesV1::LfA2aV1SendMessageRequest::Representation
+          command.request_object = lf_a2a_v1_send_message_request_object
+          command.response_representation = Google::Apis::CesV1::LfA2aV1StreamResponse::Representation
+          command.response_class = Google::Apis::CesV1::LfA2aV1StreamResponse
+          command.params['tenant'] = tenant unless tenant.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

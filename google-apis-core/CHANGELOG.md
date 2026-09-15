@@ -1,5 +1,11 @@
 # Release History
 
+### 1.2.5 (2026-07-20)
+
+#### Bug Fixes
+
+* ignore non-2xx status codes in streaming downloads ([#27256](https://github.com/googleapis/google-api-ruby-client/issues/27256)) 
+
 ### 1.2.4 (2026-06-28)
 
 #### Bug Fixes

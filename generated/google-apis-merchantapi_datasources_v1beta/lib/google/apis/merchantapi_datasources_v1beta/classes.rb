@@ -122,8 +122,9 @@ module Google
       class DataSourceReference
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of the primary data source. Format: `accounts/`account`/
-        # dataSources/`datasource``
+        # Optional. Deprecated: Use `self` instead to reference the primary data source.
+        # The name of the primary data source. Format: `accounts/`account`/dataSources/`
+        # datasource``
         # Corresponds to the JSON property `primaryDataSourceName`
         # @return [String]
         attr_accessor :primary_data_source_name

@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module RetailV2beta
-      # Vertex AI Search for commerce API
+      # AI Commerce Search API
       #
-      # Vertex AI Search for commerce API is made up of Retail Search, Browse and
+      # The AI Commerce Search API is made up of Retail Search, Browse and
       #  Recommendations. These discovery AI solutions help you implement personalized
       #  search, browse and recommendations, based on machine learning models, across
       #  your websites and mobile applications.
@@ -2664,8 +2664,8 @@ module Google
         
         # Writes a single user event from the browser. For larger user event payload
         # over 16 KB, the POST method should be used instead, otherwise a 400 Bad
-        # Request error is returned. This method is used only by the Retail API
-        # JavaScript pixel and Google Tag Manager. Users should not call this method
+        # Request error is returned. This method is used only by the AI Commerce Search
+        # API JavaScript pixel and Google Tag Manager. Users should not call this method
         # directly.
         # @param [String] parent
         #   Required. The parent catalog name, such as `projects/1234/locations/global/

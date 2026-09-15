@@ -77,6 +77,11 @@ module Google
       class CloudSqlInstance
         include Google::Apis::Core::Hashable
       
+        # Output only. [Output only] The Cloud SQL instance edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # Required. Name of the CloudSQL instance, in the format: ``` projects/`project`/
         # locations/`location`/instances/`instance` ```
         # Corresponds to the JSON property `instance`
@@ -89,6 +94,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @edition = args[:edition] if args.key?(:edition)
           @instance = args[:instance] if args.key?(:instance)
         end
       end
@@ -1403,6 +1409,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # Output only. The list of connectors in this service.
+        # Corresponds to the JSON property `connectors`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::Connector>]
+        attr_accessor :connectors
+      
         # Output only. [Output only] Create time stamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -1442,6 +1453,16 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Output only. The list of schemas in this service.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::Schema>]
+        attr_accessor :schemas
+      
+        # Used to represent a set of source files.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::FirebasedataconnectV1beta::Source]
+        attr_accessor :source
+      
         # Output only. System-assigned, unique identifier.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -1459,12 +1480,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @connectors = args[:connectors] if args.key?(:connectors)
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @schemas = args[:schemas] if args.key?(:schemas)
+          @source = args[:source] if args.key?(:source)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

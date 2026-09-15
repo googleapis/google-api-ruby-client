@@ -2333,6 +2333,12 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # Conversational prompts to trigger agents like Shopping Agent. This is an
+        # experimental feature for select customers.
+        # Corresponds to the JSON property `agentPrompts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
+        attr_accessor :agent_prompts
+      
         # A map of matched attribute suggestions. This field is only available for `
         # cloud-retail` dataset. Current supported keys: * `brands` * `categories`
         # Corresponds to the JSON property `attributeResults`
@@ -2371,10 +2377,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_prompts = args[:agent_prompts] if args.key?(:agent_prompts)
           @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # A conversational prompt to trigger agents like Shopping Agent.
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The conversational prompt string.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
         end
       end
       
@@ -2400,6 +2426,13 @@ module Google
       # Resource that represents completion results.
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         include Google::Apis::Core::Hashable
+      
+        # Deprecated: Use CompleteQueryResponse.agent_prompts instead. Conversational
+        # prompts to trigger agents like Shopping Agent. There may be multiple prompts
+        # for a single suggestion. This is an experimental feature for select customers.
+        # Corresponds to the JSON property `agentPrompts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
+        attr_accessor :agent_prompts
       
         # Custom attributes for the suggestion term. * For `user-data`, the attributes
         # are additional custom attributes ingested through BigQuery. * For `cloud-
@@ -2435,6 +2468,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_prompts = args[:agent_prompts] if args.key?(:agent_prompts)
           @attributes = args[:attributes] if args.key?(:attributes)
           @facets = args[:facets] if args.key?(:facets)
           @suggestion = args[:suggestion] if args.key?(:suggestion)
@@ -3374,7 +3408,7 @@ module Google
       class GoogleCloudRetailV2alphaEnrollSolutionResponse
         include Google::Apis::Core::Hashable
       
-        # Retail API solution that the project has enrolled.
+        # AI Commerce Search API solution that the project has enrolled.
         # Corresponds to the JSON property `enrolledSolution`
         # @return [String]
         attr_accessor :enrolled_solution
@@ -4479,7 +4513,7 @@ module Google
       class GoogleCloudRetailV2alphaListEnrolledSolutionsResponse
         include Google::Apis::Core::Hashable
       
-        # Retail API solutions that the project has enrolled.
+        # AI Commerce Search API solutions that the project has enrolled.
         # Corresponds to the JSON property `enrolledSolutions`
         # @return [Array<String>]
         attr_accessor :enrolled_solutions
@@ -5641,8 +5675,8 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :params
       
-        # UserEvent captures all metadata information Retail API needs to know about how
-        # end users interact with customers' website.
+        # UserEvent captures all metadata information AI Commerce Search API needs to
+        # know about how end users interact with customers' website.
         # Corresponds to the JSON property `userEvent`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaUserEvent]
         attr_accessor :user_event
@@ -6120,11 +6154,12 @@ module Google
         # type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS"
         # represents size type; "27" represents size value. In "32 inches", both size
         # system and size type are empty, while size value is "32 inches". A maximum of
-        # 20 values are allowed per Product. Each value must be a UTF-8 encoded string
-        # with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is
-        # returned. Corresponding properties: Google Merchant Center property [size](
-        # https://support.google.com/merchants/answer/6324492), [size_type](https://
-        # support.google.com/merchants/answer/6324497), and [size_system](https://
+        # 20 values are allowed per Product by default. This limit can be increased
+        # using dynamic override configurations. Each value must be a UTF-8 encoded
+        # string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT
+        # error is returned. Corresponding properties: Google Merchant Center property [
+        # size](https://support.google.com/merchants/answer/6324492), [size_type](https:/
+        # /support.google.com/merchants/answer/6324497), and [size_system](https://
         # support.google.com/merchants/answer/6324502). Schema.org property [Product.
         # size](https://schema.org/size).
         # Corresponds to the JSON property `sizes`
@@ -6414,7 +6449,7 @@ module Google
       class GoogleCloudRetailV2alphaProject
         include Google::Apis::Core::Hashable
       
-        # Output only. Retail API solutions that the project has enrolled.
+        # Output only. AI Commerce Search API solutions that the project has enrolled.
         # Corresponds to the JSON property `enrolledSolutions`
         # @return [Array<String>]
         attr_accessor :enrolled_solutions
@@ -7576,6 +7611,16 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpec]
         attr_accessor :conversational_search_spec
       
+        # Optional. A set of controls that are applied dynamically to the search request.
+        # These controls are applied in addition to the controls specified in the
+        # serving config. These controls are expected to not yet be persisted in storage.
+        # A control could be applied twice if it is in both the serving config and
+        # specified here. A maximum of 5 values are allowed. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `dynamicControls`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl>]
+        attr_accessor :dynamic_controls
+      
         # The specifications of dynamically generated facets.
         # Corresponds to the JSON property `dynamicFacetSpec`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec]
@@ -7609,6 +7654,12 @@ module Google
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
+      
+        # Optional. A list of control IDs to ignore. These controls will not be applied
+        # to the search request, even if they are specified in the serving config.
+        # Corresponds to the JSON property `ignoredControlIds`
+        # @return [Array<String>]
+        attr_accessor :ignored_control_ids
       
         # The labels applied to a resource must meet the following requirements: * Each
         # resource can have multiple labels, up to a maximum of 64. * Each label must be
@@ -7801,11 +7852,13 @@ module Google
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
+          @dynamic_controls = args[:dynamic_controls] if args.key?(:dynamic_controls)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
           @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
+          @ignored_control_ids = args[:ignored_control_ids] if args.key?(:ignored_control_ids)
           @labels = args[:labels] if args.key?(:labels)
           @language_code = args[:language_code] if args.key?(:language_code)
           @offset = args[:offset] if args.key?(:offset)
@@ -9186,8 +9239,8 @@ module Google
         end
       end
       
-      # UserEvent captures all metadata information Retail API needs to know about how
-      # end users interact with customers' website.
+      # UserEvent captures all metadata information AI Commerce Search API needs to
+      # know about how end users interact with customers' website.
       class GoogleCloudRetailV2alphaUserEvent
         include Google::Apis::Core::Hashable
       
@@ -9195,17 +9248,17 @@ module Google
         # provide custom attributes for ingested user events, also include them in the
         # user events that you associate with prediction requests. Custom attribute
         # formatting must be consistent between imported events and events provided with
-        # prediction requests. This lets the Retail API use those custom attributes when
-        # training models and serving predictions, which helps improve recommendation
-        # quality. This field needs to pass all below criteria, otherwise an
-        # INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string
-        # with a length limit of 5,000 characters. * For text attributes, at most 400
-        # values are allowed. Empty values are not allowed. Each value must be a UTF-8
-        # encoded string with a length limit of 256 characters. * For number attributes,
-        # at most 400 values are allowed. For product recommendations, an example of
-        # extra user information is traffic_channel, which is how a user arrives at the
-        # site. Users can arrive at the site by coming to the site directly, coming
-        # through Google search, or in other ways.
+        # prediction requests. This lets the AI Commerce Search API use those custom
+        # attributes when training models and serving predictions, which helps improve
+        # recommendation quality. This field needs to pass all below criteria, otherwise
+        # an INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded
+        # string with a length limit of 5,000 characters. * For text attributes, at most
+        # 400 values are allowed. Empty values are not allowed. Each value must be a UTF-
+        # 8 encoded string with a length limit of 256 characters. * For number
+        # attributes, at most 400 values are allowed. For product recommendations, an
+        # example of extra user information is traffic_channel, which is how a user
+        # arrives at the site. Users can arrive at the site by coming to the site
+        # directly, coming through Google search, or in other ways.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute>]
         attr_accessor :attributes
@@ -9265,8 +9318,8 @@ module Google
       
         # A list of identifiers for the independent experiment groups this user event
         # belongs to. This is used to distinguish between user events associated with
-        # different experiment setups (e.g. using Retail API, using different
-        # recommendation models).
+        # different experiment setups (such as by using AI Commerce Search API, or using
+        # different recommendation models).
         # Corresponds to the JSON property `experimentIds`
         # @return [Array<String>]
         attr_accessor :experiment_ids

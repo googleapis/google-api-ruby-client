@@ -31,6 +31,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud App Lifecycle Management data and see the email address for your Google Account
+      AUTH_SAASSERVICEMGMT_READ_WRITE = 'https://www.googleapis.com/auth/saasservicemgmt.read-write'
+
+      # See your Google Cloud App Lifecycle Management data and the email address of your Google Account
+      AUTH_SAASSERVICEMGMT_READONLY = 'https://www.googleapis.com/auth/saasservicemgmt.readonly'
     end
   end
 end

@@ -1237,6 +1237,7 @@ module Google
       class ExecutionSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :delay_execution, as: 'delayExecution'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
           property :template, as: 'template', class: Google::Apis::RunV1::TaskTemplateSpec, decorator: Google::Apis::RunV1::TaskTemplateSpec::Representation
@@ -1576,6 +1577,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1GitSourceRepository::Representation
       
@@ -2247,6 +2249,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV1::ContainerOverride, decorator: Google::Apis::RunV1::ContainerOverride::Representation
       
+          property :delay_execution, as: 'delayExecution'
           property :task_count, as: 'taskCount'
           property :timeout_seconds, as: 'timeoutSeconds'
         end
@@ -2337,8 +2340,6 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :runtime_class_name, as: 'runtimeClassName'
-          collection :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::Container, decorator: Google::Apis::RunV1::Container::Representation
-      
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
@@ -2504,6 +2505,7 @@ module Google
       class StartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
         end
       end
       
@@ -2546,6 +2548,7 @@ module Google
       class StopInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dry_run, as: 'dryRun'
         end
       end
       

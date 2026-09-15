@@ -1578,9 +1578,9 @@ module Google
       class BackupVault
         include Google::Apis::Core::Hashable
       
-        # Optional. Note: This field is added for future use case and will not be
-        # supported in the current release. Access restriction for the backup vault.
-        # Default value is WITHIN_ORGANIZATION if not provided during creation.
+        # Optional. Restricts access to certain sources and destinations for data being
+        # sent into, or restored from, the backup vault. Defaults to WITHIN_ORGANIZATION
+        # if not provided during creation.
         # Corresponds to the JSON property `accessRestriction`
         # @return [String]
         attr_accessor :access_restriction
@@ -2033,6 +2033,17 @@ module Google
       class ComputeInstanceBackupPlanProperties
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, only the boot disk will be backed up.
+        # Corresponds to the JSON property `bootDiskOnly`
+        # @return [Boolean]
+        attr_accessor :boot_disk_only
+        alias_method :boot_disk_only?, :boot_disk_only
+      
+        # Message for selective disk backup exclusion labels.
+        # Corresponds to the JSON property `diskExclusionLabels`
+        # @return [Google::Apis::BackupdrV1::DiskExclusionLabels]
+        attr_accessor :disk_exclusion_labels
+      
         # Optional. Indicates whether to perform a guest flush operation before taking a
         # compute backup. When set to false, the system will create crash-consistent
         # backups. Default value is false.
@@ -2047,6 +2058,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boot_disk_only = args[:boot_disk_only] if args.key?(:boot_disk_only)
+          @disk_exclusion_labels = args[:disk_exclusion_labels] if args.key?(:disk_exclusion_labels)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
         end
       end
@@ -2079,6 +2092,11 @@ module Google
         # @return [Array<Google::Apis::BackupdrV1::AttachedDisk>]
         attr_accessor :disk
       
+        # Optional. List of disks excluded from the backup.
+        # Corresponds to the JSON property `excludedDisks`
+        # @return [Array<String>]
+        attr_accessor :excluded_disks
+      
         # A list of guest accelerator cards' type and count to use for instances created
         # from these properties.
         # Corresponds to the JSON property `guestAccelerator`
@@ -2092,6 +2110,11 @@ module Google
         # @return [Boolean]
         attr_accessor :guest_flush
         alias_method :guest_flush?, :guest_flush
+      
+        # Optional. List of disks included in the backup.
+        # Corresponds to the JSON property `includedDisks`
+        # @return [Array<String>]
+        attr_accessor :included_disks
       
         # KeyRevocationActionType of the instance. Supported options are "STOP" and "
         # NONE". The default value is "NONE" if it is not specified.
@@ -2163,8 +2186,10 @@ module Google
           @can_ip_forward = args[:can_ip_forward] if args.key?(:can_ip_forward)
           @description = args[:description] if args.key?(:description)
           @disk = args[:disk] if args.key?(:disk)
+          @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
           @guest_accelerator = args[:guest_accelerator] if args.key?(:guest_accelerator)
           @guest_flush = args[:guest_flush] if args.key?(:guest_flush)
+          @included_disks = args[:included_disks] if args.key?(:included_disks)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -3056,6 +3081,26 @@ module Google
         end
       end
       
+      # Message for selective disk backup exclusion labels.
+      class DiskExclusionLabels
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Labels used to identify disks for exclusion from the backup. If a
+        # disk carries any of these labels, it will be excluded (OR logic).
+        # Corresponds to the JSON property `labels`
+        # @return [Array<Google::Apis::BackupdrV1::LabelKeyValPair>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
       # DiskRestoreProperties represents the properties of a Disk restore.
       class DiskRestoreProperties
         include Google::Apis::Core::Hashable
@@ -3094,6 +3139,11 @@ module Google
         # Corresponds to the JSON property `guestOsFeature`
         # @return [Array<Google::Apis::BackupdrV1::GuestOsFeature>]
         attr_accessor :guest_os_feature
+      
+        # Options for creating a disk from a source Compute Instance backup.
+        # Corresponds to the JSON property `instanceBackupSource`
+        # @return [Google::Apis::BackupdrV1::RestoreDiskFromInstanceOptions]
+        attr_accessor :instance_backup_source
       
         # Optional. Labels to apply to this disk. These can be modified later using
         # setLabels method. Label values can be empty.
@@ -3170,6 +3220,7 @@ module Google
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
           @guest_os_feature = args[:guest_os_feature] if args.key?(:guest_os_feature)
+          @instance_backup_source = args[:instance_backup_source] if args.key?(:instance_backup_source)
           @labels = args[:labels] if args.key?(:labels)
           @licenses = args[:licenses] if args.key?(:licenses)
           @name = args[:name] if args.key?(:name)
@@ -4154,6 +4205,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
+      # Message for a label key-value pair.
+      class LabelKeyValPair
+        include Google::Apis::Core::Hashable
+      
+        # Key of the label. The key must follow the format: `\\p`Ll`\\p`Lo``0,62``. This
+        # means the key must start with a lowercase letter or a lowercase international
+        # character, followed by zero or more lowercase letters, lowercase international
+        # characters, numbers, underscores, or dashes. The key must be at most 63
+        # characters long. International characters are allowed.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Value of the label. The value must follow the format: `[\\p`Ll`\\p`Lo`\\p`N`_-]
+        # `1,63``. This means the value must be one or more lowercase letters, lowercase
+        # international characters, numbers, underscores, or dashes. The value must be
+        # at most 63 characters long. International characters are allowed.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -5429,6 +5512,33 @@ module Google
         end
       end
       
+      # Options for creating a disk from a source Compute Instance backup.
+      class RestoreDiskFromInstanceOptions
+        include Google::Apis::Core::Hashable
+      
+        # Specifies that the boot disk should be restored from the instance backup. This
+        # field should only be set to `true` if selected.
+        # Corresponds to the JSON property `bootDisk`
+        # @return [Boolean]
+        attr_accessor :boot_disk
+        alias_method :boot_disk?, :boot_disk
+      
+        # The device name of the disk to restore from the VM backup.
+        # Corresponds to the JSON property `sourceDeviceName`
+        # @return [String]
+        attr_accessor :source_device_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk = args[:boot_disk] if args.key?(:boot_disk)
+          @source_device_name = args[:source_device_name] if args.key?(:source_device_name)
+        end
+      end
+      
       # Message for rules config info.
       class RuleConfigInfo
         include Google::Apis::Core::Hashable
@@ -5753,7 +5863,7 @@ module Google
         # is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A
         # validation error will occur if a value is supplied and `recurrence_type` is
         # not `HOURLY`. The supported values for each resource type are as follows: * `
-        # compute.googleapis.com/Instance`: 4-23 * `compute.googleapis.com/Disk`: 1-23 *
+        # compute.googleapis.com/Instance`: 1-23 * `compute.googleapis.com/Disk`: 1-23 *
         # `sqladmin.googleapis.com/Instance`: 6-23 * `alloydb.googleapis.com/Cluster`: 1-
         # 23 * `file.googleapis.com/Instance`: 1-23 Refer to link https://cloud.google.
         # com/backup-disaster-recovery/docs/concepts/cloud_best_practices for more

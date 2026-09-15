@@ -2525,6 +2525,52 @@ module Google
         end
       end
       
+      # Details regarding the expiration of this role assignment. Used to
+      # automatically revoke access when the time limit is reached.
+      class ExpirationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The specific timestamp when the role assignment expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # External identifier used to link and identify this group across external
+      # directory systems.
+      class ExternalId
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier string assigned by the external provider.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The system or identity provider managing this ID.
+        # Corresponds to the JSON property `namespace`
+        # @return [String]
+        attr_accessor :namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @namespace = args[:namespace] if args.key?(:namespace)
+        end
+      end
+      
       # Info about failures
       class FailureInfo
         include Google::Apis::Core::Hashable
@@ -2743,6 +2789,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Optional. The list of external IDs for the group, such as an immutable
+        # identifier from an external identity provider or directory sync client. Each
+        # entry contains a namespace and an ID value.
+        # Corresponds to the JSON property `externalIds`
+        # @return [Array<Google::Apis::AdminDirectoryV1::ExternalId>]
+        attr_accessor :external_ids
+      
         # Read-only. The unique ID of a group. A group `id` can be used as a group
         # request URI's `groupKey`.
         # Corresponds to the JSON property `id`
@@ -2781,6 +2834,7 @@ module Google
           @direct_members_count = args[:direct_members_count] if args.key?(:direct_members_count)
           @email = args[:email] if args.key?(:email)
           @etag = args[:etag] if args.key?(:etag)
+          @external_ids = args[:external_ids] if args.key?(:external_ids)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -4112,6 +4166,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Details regarding the expiration of this role assignment. Used to
+        # automatically revoke access when the time limit is reached.
+        # Corresponds to the JSON property `expirationDetails`
+        # @return [Google::Apis::AdminDirectoryV1::ExpirationDetails]
+        attr_accessor :expiration_details
+      
         # The type of the API resource. This is always `admin#directory#roleAssignment`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -4148,6 +4208,7 @@ module Google
           @assignee_type = args[:assignee_type] if args.key?(:assignee_type)
           @condition = args[:condition] if args.key?(:condition)
           @etag = args[:etag] if args.key?(:etag)
+          @expiration_details = args[:expiration_details] if args.key?(:expiration_details)
           @kind = args[:kind] if args.key?(:kind)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @role_assignment_id = args[:role_assignment_id] if args.key?(:role_assignment_id)

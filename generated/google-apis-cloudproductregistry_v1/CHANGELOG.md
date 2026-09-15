@@ -1,5 +1,9 @@
 # Release history for google-apis-cloudproductregistry_v1
 
+### v0.2.0 (2026-08-09)
+
+* Regenerated from discovery document revision 20260805
+
 ### v0.1.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260611

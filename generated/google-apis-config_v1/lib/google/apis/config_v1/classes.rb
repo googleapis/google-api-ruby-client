@@ -621,6 +621,12 @@ module Google
         # @return [Google::Apis::ConfigV1::ApplyResults]
         attr_accessor :apply_results
       
+        # Output only. Indicating if early apply results are available.
+        # Corresponds to the JSON property `applyResultsAvailable`
+        # @return [Boolean]
+        attr_accessor :apply_results_available
+        alias_method :apply_results_available?, :apply_results_available
+      
         # Output only. Cloud Build instance UUID associated with this operation.
         # Corresponds to the JSON property `build`
         # @return [String]
@@ -644,6 +650,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @apply_results = args[:apply_results] if args.key?(:apply_results)
+          @apply_results_available = args[:apply_results_available] if args.key?(:apply_results_available)
           @build = args[:build] if args.key?(:build)
           @logs = args[:logs] if args.key?(:logs)
           @step = args[:step] if args.key?(:step)
@@ -1812,10 +1819,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Optional deployment reference. If specified, the preview will be
-        # performed using the provided deployment's current state and use any relevant
-        # fields from the deployment unless explicitly specified in the preview create
-        # request.
+        # Optional. Deployment reference. If specified, the preview will be performed
+        # using the provided deployment's current state and use any relevant fields from
+        # the deployment unless explicitly specified in the preview create request.
         # Corresponds to the JSON property `deployment`
         # @return [String]
         attr_accessor :deployment

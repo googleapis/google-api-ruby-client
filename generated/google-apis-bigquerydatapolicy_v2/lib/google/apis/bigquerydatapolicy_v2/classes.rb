@@ -244,8 +244,8 @@ module Google
         end
       end
       
-      # Data Governance tag This is a namespaced name specifying the key and the value.
-      # For example: `project-id/pii/sensitive`.
+      # This is a namespaced name specifying the key and the value. For example: `
+      # project-id/pii/sensitive`.
       class DataGovernanceTag
         include Google::Apis::Core::Hashable
       
@@ -303,8 +303,8 @@ module Google
       class DataPolicy
         include Google::Apis::Core::Hashable
       
-        # Data Governance tag This is a namespaced name specifying the key and the value.
-        # For example: `project-id/pii/sensitive`.
+        # This is a namespaced name specifying the key and the value. For example: `
+        # project-id/pii/sensitive`.
         # Corresponds to the JSON property `dataGovernanceTag`
         # @return [Google::Apis::BigquerydatapolicyV2::DataGovernanceTag]
         attr_accessor :data_governance_tag

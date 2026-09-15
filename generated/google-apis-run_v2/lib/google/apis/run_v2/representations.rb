@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2UploadSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2UploadSourceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2VersionToPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -941,6 +953,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :execution_reason, as: 'executionReason'
+          property :instance_reason, as: 'instanceReason'
           property :last_transition_time, as: 'lastTransitionTime'
           property :message, as: 'message'
           property :reason, as: 'reason'
@@ -1097,6 +1110,7 @@ module Google
           hash :annotations, as: 'annotations'
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
+          property :delay_execution, as: 'delayExecution'
           hash :labels, as: 'labels'
           property :parallelism, as: 'parallelism'
           property :task_count, as: 'taskCount'
@@ -1400,6 +1414,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :container_overrides, as: 'containerOverrides', class: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride, decorator: Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride::Representation
       
+          property :delay_execution, as: 'delayExecution'
           property :task_count, as: 'taskCount'
           property :timeout, as: 'timeout'
         end
@@ -1595,6 +1610,7 @@ module Google
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling::Representation
       
+          property :ssh_enabled, as: 'sshEnabled'
           property :template, as: 'template', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionTemplate::Representation
       
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
@@ -1800,6 +1816,21 @@ module Google
           property :tag, as: 'tag'
           property :type, as: 'type'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudRunV2UploadSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleCloudRunV2UploadSourceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_storage_source, as: 'cloudStorageSource', class: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource, decorator: Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource::Representation
+      
         end
       end
       
@@ -2199,6 +2230,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceRepository, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1GitSourceRepository::Representation
       

@@ -543,6 +543,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an ad asset. Returns the updated ad asset if successful. Supports
+        # updating assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `
+        # AD_ASSET_TYPE_IMAGE`. Only the AdAsset.synthetic_content_attestation_status
+        # field is mutable.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser this ad asset belongs to.
+        # @param [Fixnum] ad_asset_id
+        #   Output only. The ID of the ad asset. Referred to as the asset ID when assigned
+        #   to an ad.
+        # @param [Google::Apis::DisplayvideoV4::AdAsset] ad_asset_object
+        # @param [String] update_mask
+        #   Required. The list of fields to update. Only AdAsset.
+        #   synthetic_content_attestation_status is mutable.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV4::AdAsset] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV4::AdAsset]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_ad_asset(advertiser_id, ad_asset_id, ad_asset_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.request_object = ad_asset_object
+          command.response_representation = Google::Apis::DisplayvideoV4::AdAsset::Representation
+          command.response_class = Google::Apis::DisplayvideoV4::AdAsset
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['adAssetId'] = ad_asset_id unless ad_asset_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Uploads and creates an ad asset. Returns the ID of the newly-created ad asset
         # if successful. Only supports the uploading of assets with the AdAssetType `
         # AD_ASSET_TYPE_IMAGE`.
@@ -589,8 +633,6 @@ module Google
         end
         
         # Creates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroupAd] ad_group_ad_object
@@ -624,8 +666,6 @@ module Google
         end
         
         # Deletes an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -753,8 +793,6 @@ module Google
         end
         
         # Updates an ad group ad. This method is only supported for Demand Gen ads.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad belongs to.
         # @param [Fixnum] ad_group_ad_id
@@ -799,9 +837,7 @@ module Google
         # BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad
         # group, and then create the assigned targeting options provided in
         # BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is
-        # only supported for Demand Gen ad groups. Retrieval and management of Demand
-        # Gen resources is currently rolling out. This method will be available to all
-        # partners by *June 24, 2026*.
+        # only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad groups belong to.
         # @param [Google::Apis::DisplayvideoV4::BulkEditAdGroupAssignedTargetingOptionsRequest] bulk_edit_ad_group_assigned_targeting_options_request_object
@@ -899,9 +935,7 @@ module Google
         end
         
         # Creates a new ad group. Returns the newly created ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Google::Apis::DisplayvideoV4::AdGroup] ad_group_object
@@ -935,9 +969,7 @@ module Google
         end
         
         # Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not
-        # exist. This method is only supported for Demand Gen ad groups. Retrieval and
-        # management of Demand Gen resources is currently rolling out. This method will
-        # be available to all partners by *June 24, 2026*.
+        # exist. This method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser this ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1066,9 +1098,7 @@ module Google
         end
         
         # Updates an existing ad group. Returns the updated ad group if successful. This
-        # method is only supported for Demand Gen ad groups. Retrieval and management of
-        # Demand Gen resources is currently rolling out. This method will be available
-        # to all partners by *June 24, 2026*.
+        # method is only supported for Demand Gen ad groups.
         # @param [Fixnum] advertiser_id
         #   Output only. The unique ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1109,8 +1139,6 @@ module Google
         
         # Assigns a targeting option to an ad group. Returns the assigned targeting
         # option if successful. This method is only supported for Demand Gen ad groups.
-        # Retrieval and management of Demand Gen resources is currently rolling out.
-        # This method will be available to all partners by *June 24, 2026*.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -1158,9 +1186,7 @@ module Google
         
         # Deletes an assigned targeting option from an ad group. This method is only
         # supported for Demand Gen ad groups with the AdGroupFormat `
-        # AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources
-        # is currently rolling out. This method will be available to all partners by *
-        # June 24, 2026*.
+        # AD_GROUP_FORMAT_DEMAND_GEN`.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser the ad group belongs to.
         # @param [Fixnum] ad_group_id
@@ -4257,6 +4283,8 @@ module Google
         end
         
         # Generates a reach forecast for a given advertiser and targeting configuration.
+        # API support for generating reach forecasts and retrieving related metadata is
+        # in beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser that will run the planned campaign.
         # @param [Google::Apis::DisplayvideoV4::GenerateReachForecastRequest] generate_reach_forecast_request_object
@@ -4289,7 +4317,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of countries where reach forecasting is supported.
+        # Retrieves the list of countries where reach forecasting is supported. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable locations for.
         # @param [String] fields
@@ -4319,7 +4349,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of products that can be planned for a location.
+        # Retrieves the list of products that can be planned for a location. API support
+        # for generating reach forecasts and retrieving related metadata is in beta.
+        # This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable products for.
         # @param [String] plannable_location_id
@@ -4352,7 +4384,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves Google Audiences (User Interests) available for forecasting.
+        # Retrieves Google Audiences (User Interests) available for forecasting. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to list plannable user interests for.
         # @param [String] product_category
@@ -4385,20 +4419,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves first and third party user lists available for forecasting.
+        # Retrieves first and third party user lists available for forecasting. API
+        # support for generating reach forecasts and retrieving related metadata is in
+        # beta. This method is only available to allowlisted users.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the advertiser to retrieve plannable user lists for.
         # @param [String] filter
         #   Optional. Allows filtering by plannable user list properties. Supported syntax:
         #   * Filter expressions are made up of one or more restrictions. * Restrictions
         #   can be combined by `AND` or `OR` logical operators. * A restriction has the
-        #   form of ``field` `operator` `value``. * The `updateTime` field must use the `
-        #   GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. *
-        #   All other fields must use the `EQUALS (=)` operator. Supported fields: * `
-        #   plannableStatus` Examples: * All plannable user lists: `plannableStatus="
-        #   PLANNABLE"` The length of this field should be no more than 500 characters.
-        #   Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/
-        #   filters) guide for more information.
+        #   form of ``field` `operator` `value``. * The `displayName` field must use the `
+        #   HAS (:)` operator. * All other fields must use the `EQUALS (=)` operator.
+        #   Supported fields: * `plannableStatus` * `displayName` * `userListType` * `name`
+        #   Examples: * All plannable user lists: `plannableStatus="PLANNABLE"` *
+        #   Plannable user lists with display name containing "Shopping": `plannableStatus=
+        #   "PLANNABLE" AND displayName:"Shopping"` * First party user lists: `
+        #   userListType="FIRST_PARTY"` The length of this field should be no more than
+        #   500 characters. Reference our [filter `LIST` requests](/display-video/api/
+        #   guides/how-tos/filters) guide for more information.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Must be between `1` and `5000`. If unspecified
         #   will default to `5000`.

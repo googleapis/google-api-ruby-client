@@ -1,0 +1,7 @@
+{
+    "api_id": "curationpartners:v1",
+    "name_pretty": "Curation Partners API",
+    "distribution_name": "google-apis-curationpartners_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}

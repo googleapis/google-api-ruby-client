@@ -864,6 +864,7 @@ module Google
         # minute to [`Durations.MAX_VALUE`](https://developers.google.com/protocol-
         # buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
         # approximately 10,000 years. If not specified, the default duration is 1 hour.
+        # In the JSON REST API, this is represented as a string (e.g., `3600s`).
         # Corresponds to the JSON property `duration`
         # @return [String]
         attr_accessor :duration
@@ -1172,11 +1173,6 @@ module Google
       class GoogleAuthenticationSettings
         include Google::Apis::Core::Hashable
       
-        # Whether dedicated devices are allowed.
-        # Corresponds to the JSON property `dedicatedDevicesAllowed`
-        # @return [String]
-        attr_accessor :dedicated_devices_allowed
-      
         # Whether Google authentication is required.
         # Corresponds to the JSON property `googleAuthenticationRequired`
         # @return [String]
@@ -1188,7 +1184,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @dedicated_devices_allowed = args[:dedicated_devices_allowed] if args.key?(:dedicated_devices_allowed)
           @google_authentication_required = args[:google_authentication_required] if args.key?(:google_authentication_required)
         end
       end

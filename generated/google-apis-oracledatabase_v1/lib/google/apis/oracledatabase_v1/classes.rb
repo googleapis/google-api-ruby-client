@@ -1424,7 +1424,7 @@ module Google
         # @return [Float]
         attr_accessor :data_storage_size_tb
       
-        # Output only. The database server type of the Exadata Infrastructure.
+        # Optional. The database server type of the Exadata Infrastructure.
         # Corresponds to the JSON property `databaseServerType`
         # @return [String]
         attr_accessor :database_server_type
@@ -1531,7 +1531,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :storage_count
       
-        # Output only. The storage server type of the Exadata Infrastructure.
+        # Optional. The storage server type of the Exadata Infrastructure.
         # Corresponds to the JSON property `storageServerType`
         # @return [String]
         attr_accessor :storage_server_type
@@ -1888,6 +1888,18 @@ module Google
         # @return [Google::Apis::OracledatabaseV1::TimeZone]
         attr_accessor :time_zone
       
+        # Optional. Specifies whether VM backups are stored on local DB server storage
+        # or Exascale storage.
+        # Corresponds to the JSON property `vmBackupStorageType`
+        # @return [String]
+        attr_accessor :vm_backup_storage_type
+      
+        # Optional. Specifies whether VM file system storage / VM images are stored on
+        # local DB server storage or Exascale storage.
+        # Corresponds to the JSON property `vmFileSystemStorageType`
+        # @return [String]
+        attr_accessor :vm_file_system_storage_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1928,6 +1940,8 @@ module Google
           @storage_size_gb = args[:storage_size_gb] if args.key?(:storage_size_gb)
           @system_version = args[:system_version] if args.key?(:system_version)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @vm_backup_storage_type = args[:vm_backup_storage_type] if args.key?(:vm_backup_storage_type)
+          @vm_file_system_storage_type = args[:vm_file_system_storage_type] if args.key?(:vm_file_system_storage_type)
         end
       end
       
@@ -1945,6 +1959,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_storage_size_gb
       
+        # Optional. Storage size needed for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `totalVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_vm_storage_size_gb
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1953,6 +1972,7 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
+          @total_vm_storage_size_gb = args[:total_vm_storage_size_gb] if args.key?(:total_vm_storage_size_gb)
         end
       end
       
@@ -2871,6 +2891,8 @@ module Google
         attr_accessor :data_collection_options
       
         # Optional. The data storage size in GB that is currently available to DbSystems.
+        # The value is same as initial_data_storage_size_gb. This can be modified from
+        # OCI console.
         # Corresponds to the JSON property `dataStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :data_storage_size_gb
@@ -2920,12 +2942,15 @@ module Google
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # Optional. The memory size in GB.
+        # Optional. The memory size in GB. This value can not be set and is
+        # automatically calculated based on the number of ECPUs allocated to the
+        # DbSystem.
         # Corresponds to the JSON property `memorySizeGb`
         # @return [Fixnum]
         attr_accessor :memory_size_gb
       
-        # Optional. The number of nodes in the DbSystem.
+        # Optional. The number of nodes to launch for a virtual machine DbSystem. By
+        # default this will be set to 1.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
@@ -2940,7 +2965,8 @@ module Google
         # @return [String]
         attr_accessor :private_ip
       
-        # Optional. The reco/redo storage size in GB.
+        # Optional. The reco/redo storage size in GB. The value for recovery storage
+        # size is based on the available data storage size.
         # Corresponds to the JSON property `recoStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :reco_storage_size_gb
@@ -2996,6 +3022,11 @@ module Google
       class DbSystemShape
         include Google::Apis::Core::Hashable
       
+        # Optional. Available core count.
+        # Corresponds to the JSON property `availableCoreCount`
+        # @return [Fixnum]
+        attr_accessor :available_core_count
+      
         # Optional. Number of cores per node.
         # Corresponds to the JSON property `availableCoreCountPerNode`
         # @return [Fixnum]
@@ -3010,6 +3041,11 @@ module Google
         # Corresponds to the JSON property `availableMemoryPerNodeGb`
         # @return [Fixnum]
         attr_accessor :available_memory_per_node_gb
+      
+        # Optional. Core count increment.
+        # Corresponds to the JSON property `coreCountIncrement`
+        # @return [Fixnum]
+        attr_accessor :core_count_increment
       
         # Optional. Maximum number of database servers.
         # Corresponds to the JSON property `maxNodeCount`
@@ -3046,6 +3082,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_storage_count
       
+        # Optional. Minimum core count per node.
+        # Corresponds to the JSON property `minimumCoreCount`
+        # @return [Fixnum]
+        attr_accessor :minimum_core_count
+      
         # Identifier. The name of the Database System Shape resource with the format:
         # projects/`project`/locations/`region`/dbSystemShapes/`db_system_shape`
         # Corresponds to the JSON property `name`
@@ -3063,9 +3104,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @available_core_count = args[:available_core_count] if args.key?(:available_core_count)
           @available_core_count_per_node = args[:available_core_count_per_node] if args.key?(:available_core_count_per_node)
           @available_data_storage_tb = args[:available_data_storage_tb] if args.key?(:available_data_storage_tb)
           @available_memory_per_node_gb = args[:available_memory_per_node_gb] if args.key?(:available_memory_per_node_gb)
+          @core_count_increment = args[:core_count_increment] if args.key?(:core_count_increment)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @max_storage_count = args[:max_storage_count] if args.key?(:max_storage_count)
           @min_core_count_per_node = args[:min_core_count_per_node] if args.key?(:min_core_count_per_node)
@@ -3073,6 +3116,7 @@ module Google
           @min_memory_per_node_gb = args[:min_memory_per_node_gb] if args.key?(:min_memory_per_node_gb)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
           @min_storage_count = args[:min_storage_count] if args.key?(:min_storage_count)
+          @minimum_core_count = args[:minimum_core_count] if args.key?(:minimum_core_count)
           @name = args[:name] if args.key?(:name)
           @shape = args[:shape] if args.key?(:shape)
         end
@@ -3369,6 +3413,12 @@ module Google
         # @return [String]
         attr_accessor :gcp_oracle_zone
       
+        # The identity connector details which will allow OCI to securely access the
+        # resources in the customer project.
+        # Corresponds to the JSON property `identityConnector`
+        # @return [Google::Apis::OracledatabaseV1::IdentityConnector]
+        attr_accessor :identity_connector
+      
         # Optional. The labels or tags associated with the ExadbVmCluster.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -3411,6 +3461,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @entitlement_id = args[:entitlement_id] if args.key?(:entitlement_id)
           @gcp_oracle_zone = args[:gcp_oracle_zone] if args.key?(:gcp_oracle_zone)
+          @identity_connector = args[:identity_connector] if args.key?(:identity_connector)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @odb_network = args[:odb_network] if args.key?(:odb_network)
@@ -3590,10 +3641,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_storage_size_gb
       
+        # Output only. Available storage size for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `availableVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :available_vm_storage_size_gb
+      
         # Output only. Total storage size needed for Exascale in GBs.
         # Corresponds to the JSON property `totalStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :total_storage_size_gb
+      
+        # Output only. Storage size needed for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `totalVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_vm_storage_size_gb
       
         def initialize(**args)
            update!(**args)
@@ -3602,7 +3663,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_storage_size_gb = args[:available_storage_size_gb] if args.key?(:available_storage_size_gb)
+          @available_vm_storage_size_gb = args[:available_vm_storage_size_gb] if args.key?(:available_vm_storage_size_gb)
           @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
+          @total_vm_storage_size_gb = args[:total_vm_storage_size_gb] if args.key?(:total_vm_storage_size_gb)
         end
       end
       

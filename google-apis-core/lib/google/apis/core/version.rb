@@ -16,7 +16,7 @@ module Google
   module Apis
     module Core
       # Core version
-      VERSION = "1.2.4".freeze
+      VERSION = "1.2.5".freeze
     end
   end
 end

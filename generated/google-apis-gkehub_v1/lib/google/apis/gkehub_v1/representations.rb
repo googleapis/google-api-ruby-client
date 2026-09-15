@@ -814,6 +814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerStageSoakDurationOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1036,7 +1042,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceMeshFeatureCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServiceMeshFeatureSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceMeshFeatureState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1388,6 +1406,8 @@ module Google
           property :fleetobservability, as: 'fleetobservability', class: Google::Apis::GkehubV1::FleetObservabilityFeatureState, decorator: Google::Apis::GkehubV1::FleetObservabilityFeatureState::Representation
       
           property :rbacrolebindingactuation, as: 'rbacrolebindingactuation', class: Google::Apis::GkehubV1::RbacRoleBindingActuationFeatureState, decorator: Google::Apis::GkehubV1::RbacRoleBindingActuationFeatureState::Representation
+      
+          property :servicemesh, as: 'servicemesh', class: Google::Apis::GkehubV1::ServiceMeshFeatureState, decorator: Google::Apis::GkehubV1::ServiceMeshFeatureState::Representation
       
           property :state, as: 'state', class: Google::Apis::GkehubV1::FeatureState, decorator: Google::Apis::GkehubV1::FeatureState::Representation
       
@@ -2532,6 +2552,13 @@ module Google
         end
       end
       
+      class PerStageSoakDurationOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :stage_overrides, as: 'stageOverrides'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2762,12 +2789,15 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :ignore_cluster_disruption_budgets, as: 'ignoreClusterDisruptionBudgets'
+          property :ignore_maintenance_policies, as: 'ignoreMaintenancePolicies'
           property :intent, as: 'intent'
           hash :labels, as: 'labels'
           hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1::RolloutMembershipState, decorator: Google::Apis::GkehubV1::RolloutMembershipState::Representation
       
           property :name, as: 'name'
           property :rollout_sequence, as: 'rolloutSequence'
+          hash :stage_soak_duration_overrides, as: 'stageSoakDurationOverrides'
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1::RolloutStage, decorator: Google::Apis::GkehubV1::RolloutStage::Representation
       
           property :state, as: 'state'
@@ -2925,10 +2955,29 @@ module Google
         end
       end
       
+      class ServiceMeshFeatureCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details'
+          property :documentation_link, as: 'documentationLink'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class ServiceMeshFeatureSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :modernization_compatibility, as: 'modernizationCompatibility'
+          property :modernization_strategy, as: 'modernizationStrategy'
+        end
+      end
+      
+      class ServiceMeshFeatureState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::GkehubV1::ServiceMeshFeatureCondition, decorator: Google::Apis::GkehubV1::ServiceMeshFeatureCondition::Representation
+      
         end
       end
       
@@ -3014,6 +3063,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :force, as: 'force'
+          property :ignore_cluster_disruption_budgets, as: 'ignoreClusterDisruptionBudgets'
+          property :ignore_maintenance_policies, as: 'ignoreMaintenancePolicies'
+          property :patch_only, as: 'patchOnly'
+          property :soak_duration_override_all_stages, as: 'soakDurationOverrideAllStages'
+          property :soak_duration_override_per_stage, as: 'soakDurationOverridePerStage', class: Google::Apis::GkehubV1::PerStageSoakDurationOverrides, decorator: Google::Apis::GkehubV1::PerStageSoakDurationOverrides::Representation
+      
           property :upgrade_type, as: 'upgradeType'
           property :version, as: 'version'
         end

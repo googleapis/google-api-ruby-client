@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddRequestHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,7 +274,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupConfiguredServicePerimeterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MethodSelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Modifier
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +305,24 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Principal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateServiceConnectEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +353,12 @@ module Google
       end
       
       class ScopedAccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServicePattern
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -435,6 +477,14 @@ module Google
         end
       end
       
+      class AddRequestHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class ApiOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -509,6 +559,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restricted_client_application, as: 'restrictedClientApplication', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+      
+          property :restricted_project, as: 'restrictedProject', class: Google::Apis::AccesscontextmanagerV1::Project, decorator: Google::Apis::AccesscontextmanagerV1::Project::Representation
       
         end
       end
@@ -590,6 +642,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint, decorator: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -628,7 +682,7 @@ module Google
           collection :dry_run_access_levels, as: 'dryRunAccessLevels'
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
-          collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
+          property :principal, as: 'principal', class: Google::Apis::AccesscontextmanagerV1::Principal, decorator: Google::Apis::AccesscontextmanagerV1::Principal::Representation
       
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
       
@@ -683,6 +737,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_level, as: 'accessLevel'
+          property :psc_endpoint, as: 'pscEndpoint', class: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint, decorator: Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint::Representation
+      
           property :resource, as: 'resource'
         end
       end
@@ -769,11 +825,29 @@ module Google
         end
       end
       
+      class LookupConfiguredServicePerimeterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restricted_resource, as: 'restrictedResource'
+          property :restricted_resource_dry_run, as: 'restrictedResourceDryRun'
+          property :service_perimeter, as: 'servicePerimeter'
+          property :service_perimeter_dry_run, as: 'servicePerimeterDryRun'
+        end
+      end
+      
       class MethodSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :method_prop, as: 'method'
           property :permission, as: 'permission'
+        end
+      end
+      
+      class Modifier
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_request_header, as: 'addRequestHeader', class: Google::Apis::AccesscontextmanagerV1::AddRequestHeader, decorator: Google::Apis::AccesscontextmanagerV1::AddRequestHeader::Representation
+      
         end
       end
       
@@ -807,6 +881,29 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Principal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :federated_principal, as: 'federatedPrincipal'
+          property :service_account, as: 'serviceAccount'
+          property :service_account_project_number, as: 'serviceAccountProjectNumber'
+        end
+      end
+      
+      class PrivateServiceConnectEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class Project
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -853,6 +950,16 @@ module Google
       
           property :scope, as: 'scope', class: Google::Apis::AccesscontextmanagerV1::AccessScope, decorator: Google::Apis::AccesscontextmanagerV1::AccessScope::Representation
       
+        end
+      end
+      
+      class ServicePattern
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :modifiers, as: 'modifiers', class: Google::Apis::AccesscontextmanagerV1::Modifier, decorator: Google::Apis::AccesscontextmanagerV1::Modifier::Representation
+      
+          property :pattern, as: 'pattern'
+          property :service, as: 'service'
         end
       end
       
@@ -947,8 +1054,11 @@ module Google
       class VpcAccessibleServices
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_service_patterns, as: 'allowedServicePatterns', class: Google::Apis::AccesscontextmanagerV1::ServicePattern, decorator: Google::Apis::AccesscontextmanagerV1::ServicePattern::Representation
+      
           collection :allowed_services, as: 'allowedServices'
           property :enable_restriction, as: 'enableRestriction'
+          collection :service_patterns_enforcement_scopes, as: 'servicePatternsEnforcementScopes'
         end
       end
       

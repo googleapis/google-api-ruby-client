@@ -826,6 +826,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MaliciousContentLlmResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MaliciousContentStaticResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MalwareScanResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Note
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +881,12 @@ module Google
       end
       
       class PackagesSummaryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerScannerVerdict
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1078,6 +1102,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TokenUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1126,6 +1156,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkspacePolicyResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AiSkillAnalysisNote
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1138,6 +1174,8 @@ module Google
           collection :findings, as: 'findings', class: Google::Apis::ContaineranalysisV1beta1::Finding, decorator: Google::Apis::ContaineranalysisV1beta1::Finding::Representation
       
           property :max_severity, as: 'maxSeverity'
+          property :per_scanner_verdict, as: 'perScannerVerdict', class: Google::Apis::ContaineranalysisV1beta1::PerScannerVerdict, decorator: Google::Apis::ContaineranalysisV1beta1::PerScannerVerdict::Representation
+      
           property :skill_name, as: 'skillName'
         end
       end
@@ -1728,6 +1766,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1DependencyGitSourceRepository::Representation
       
@@ -2598,6 +2637,33 @@ module Google
         end
       end
       
+      class MaliciousContentLlmResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_severity, as: 'maxSeverity'
+          property :model_id, as: 'modelId'
+          property :scan_status, as: 'scanStatus'
+          property :token_usage, as: 'tokenUsage', class: Google::Apis::ContaineranalysisV1beta1::TokenUsage, decorator: Google::Apis::ContaineranalysisV1beta1::TokenUsage::Representation
+      
+        end
+      end
+      
+      class MaliciousContentStaticResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_severity, as: 'maxSeverity'
+          property :scan_status, as: 'scanStatus'
+        end
+      end
+      
+      class MalwareScanResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan_status, as: 'scanStatus'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
       class Note
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2774,6 +2840,20 @@ module Google
           collection :licenses_summary, as: 'licensesSummary', class: Google::Apis::ContaineranalysisV1beta1::LicensesSummary, decorator: Google::Apis::ContaineranalysisV1beta1::LicensesSummary::Representation
       
           property :resource_url, as: 'resourceUrl'
+        end
+      end
+      
+      class PerScannerVerdict
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :malicious_content_llm_result, as: 'maliciousContentLlmResult', class: Google::Apis::ContaineranalysisV1beta1::MaliciousContentLlmResult, decorator: Google::Apis::ContaineranalysisV1beta1::MaliciousContentLlmResult::Representation
+      
+          property :malicious_content_static_result, as: 'maliciousContentStaticResult', class: Google::Apis::ContaineranalysisV1beta1::MaliciousContentStaticResult, decorator: Google::Apis::ContaineranalysisV1beta1::MaliciousContentStaticResult::Representation
+      
+          property :malware_scan, as: 'malwareScan', class: Google::Apis::ContaineranalysisV1beta1::MalwareScanResult, decorator: Google::Apis::ContaineranalysisV1beta1::MalwareScanResult::Representation
+      
+          property :workspace_policy, as: 'workspacePolicy', class: Google::Apis::ContaineranalysisV1beta1::WorkspacePolicyResult, decorator: Google::Apis::ContaineranalysisV1beta1::WorkspacePolicyResult::Representation
+      
         end
       end
       
@@ -3104,6 +3184,17 @@ module Google
         end
       end
       
+      class TokenUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_count, :numeric_string => true, as: 'cacheCount'
+          property :candidate_count, :numeric_string => true, as: 'candidateCount'
+          property :prompt_count, :numeric_string => true, as: 'promptCount'
+          property :thinking_count, :numeric_string => true, as: 'thinkingCount'
+          property :tool_use_prompt_count, :numeric_string => true, as: 'toolUsePromptCount'
+        end
+      end
+      
       class Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3205,6 +3296,14 @@ module Google
           collection :fixing_kbs, as: 'fixingKbs', class: Google::Apis::ContaineranalysisV1beta1::KnowledgeBase, decorator: Google::Apis::ContaineranalysisV1beta1::KnowledgeBase::Representation
       
           property :name, as: 'name'
+        end
+      end
+      
+      class WorkspacePolicyResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scan_status, as: 'scanStatus'
+          property :verdict, as: 'verdict'
         end
       end
     end

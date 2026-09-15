@@ -126,8 +126,8 @@ module Google
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] end_time
-        #   End of the time interval (inclusive) during which the trace data was collected
-        #   from the application.
+        #   Required. End of the time interval (inclusive) during which the trace data was
+        #   collected from the application.
         # @param [String] filter
         #   Optional. A filter against properties of the trace. See [filter syntax
         #   documentation](https://cloud.google.com/trace/docs/trace-filters) for details.
@@ -143,11 +143,11 @@ module Google
         #   implementation selects a reasonable value. The implementation may return fewer
         #   traces than the requested page size.
         # @param [String] page_token
-        #   Token identifying the page of results to return. If provided, use the value of
-        #   the `next_page_token` field from a previous request.
+        #   Optional. Token identifying the page of results to return. If provided, use
+        #   the value of the `next_page_token` field from a previous request.
         # @param [String] start_time
-        #   Start of the time interval (inclusive) during which the trace data was
-        #   collected from the application.
+        #   Required. Start of the time interval (inclusive) during which the trace data
+        #   was collected from the application.
         # @param [String] view
         #   Optional. Type of data returned for traces in the list. Default is `MINIMAL`.
         # @param [String] fields

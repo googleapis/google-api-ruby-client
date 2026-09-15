@@ -411,6 +411,414 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Enrolls an app in Play App Signing using a self-hosted Google Cloud KMS key.
+        # Warning: Do not use this method for standard Play App Signing enrollment. *
+        # Standard enrollment with Google-generated or Google-managed keys cannot be
+        # done via API. * This advanced API is strictly for enterprise organizations
+        # with mandatory compliance, regulatory, or policy requirements to retain key
+        # custody in an external Google Cloud KMS instance. * Prerequisites: Requires an
+        # active, properly configured Google Cloud KMS key with appropriate IAM
+        # permissions granted to Google Play before calling this method. See Help Center:
+        # https://support.google.com/googleplay/android-developer/answer/9842756
+        # @param [String] name
+        #   Required. Either package name or app ID of the app enrolling in Play Signing.
+        # @param [Google::Apis::AndroidpublisherV3::EnrollAppRequest] enroll_app_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::EnrollAppResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::EnrollAppResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def enroll_appsigning_app(name, enroll_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{name}/appSigning:enrollApp', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::EnrollAppRequest::Representation
+          command.request_object = enroll_app_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::EnrollAppResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::EnrollAppResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rotates an app's signing key to a new self-hosted Google Cloud KMS key.
+        # Warning: This method only applies to apps enrolled with self-hosted Cloud KMS
+        # keys. For apps using standard Google-managed Play App Signing, key rotation
+        # requests must be initiated through the Google Play Console UI. See Help Center:
+        # https://support.google.com/googleplay/android-developer/answer/9842756
+        # @param [String] name
+        #   Required. Either package name or app ID of the app rotating the signing key.
+        # @param [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyRequest] rotate_app_signing_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def rotate_appsigning_app_signing_key(name, rotate_app_signing_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{name}/appSigning:rotateAppSigningKey', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyRequest::Representation
+          command.request_object = rotate_app_signing_key_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::RotateAppSigningKeyResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an app store hosted app. This must be called before any other RPCs for
+        # this hosted app.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppRequest] create_app_store_hosted_app_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def createappstorehostedapp_appstoreappsreview(app_store_package_name, create_app_store_hosted_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps:create', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppRequest::Representation
+          command.request_object = create_app_store_hosted_app_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::CreateAppStoreHostedAppResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates details for an app hosted on an app store. Use this to provide details
+        # for a new app, or to update details for an existing app. The update will be
+        # sent for review immediately after creation.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppRequest] update_app_store_hosted_app_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def updateappstorehostedapp_appstoreappsreview(app_store_package_name, update_app_store_hosted_app_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps:update', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppRequest::Representation
+          command.request_object = update_app_store_hosted_app_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the publish status of an app store hosted app. The default state after
+        # calling UpdateAppStoreHostedApp is PUBLISHED. It is not necessary to call this
+        # RPC explicitly to set an app to PUBLISHED.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [String] package_name
+        #   Required. Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusRequest] update_app_store_hosted_app_publish_status_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def updateappstorehostedapppublishstatus_appstoreappsreview(app_store_package_name, package_name, update_app_store_hosted_app_publish_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusRequest::Representation
+          command.request_object = update_app_store_hosted_app_publish_status_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::UpdateAppStoreHostedAppPublishStatusResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Upload an APK file for the hosted app. Returns an ID to track this APK.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [String] package_name
+        #   Required. Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::UploadApkRequest] upload_apk_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::UploadApkResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::UploadApkResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def uploadapk_appstoreappsreview(app_store_package_name, package_name, upload_apk_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload', options)
+          else
+            command = make_upload_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/apks:upload', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::AndroidpublisherV3::UploadApkRequest::Representation
+          command.request_object = upload_apk_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::UploadApkResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::UploadApkResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Upload a policy declaration file for the hosted app. Returns an ID to track
+        # the file.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [String] package_name
+        #   Required. Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileRequest] upload_app_store_app_policy_declaration_file_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def uploadappstoreapppolicydeclarationfile_appstoreappsreview(app_store_package_name, package_name, upload_app_store_app_policy_declaration_file_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload', options)
+          else
+            command = make_upload_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/policyDeclarationFiles:upload', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileRequest::Representation
+          command.request_object = upload_app_store_app_policy_declaration_file_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::UploadAppStoreAppPolicyDeclarationFileResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Upload a screenshot or app icon for the hosted app. Returns an ID to track the
+        # image.
+        # @param [String] app_store_package_name
+        #   Required. Package name of the third-party app store.
+        # @param [String] package_name
+        #   Required. Package name of the app.
+        # @param [Google::Apis::AndroidpublisherV3::UploadImageRequest] upload_image_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::UploadImageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::UploadImageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def uploadimage_appstoreappsreview(app_store_package_name, package_name, upload_image_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload', options)
+          else
+            command = make_upload_command(:post, 'androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}/images:upload', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::AndroidpublisherV3::UploadImageRequest::Representation
+          command.request_object = upload_image_request_object
+          command.response_representation = Google::Apis::AndroidpublisherV3::UploadImageResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::UploadImageResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns metadata about a recently updated app.
+        # @param [String] app_store_package_name
+        #   Required. The package name of the app store on behalf of which the request is
+        #   made.
+        # @param [String] play_app_package_name
+        #   Required. The package name of the requested Play app.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::RecentAppView] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::RecentAppView]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_appstorecatalog_recentappview(app_store_package_name, play_app_package_name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentAppViews/{playAppPackageName}', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::RecentAppView::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::RecentAppView
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.params['playAppPackageName'] = play_app_package_name unless play_app_package_name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists update events for eligible apps in the given time range.
+        # @param [String] app_store_package_name
+        #   Required. The package name of the app store on behalf of which the request is
+        #   made.
+        # @param [String] end_time
+        #   Required. The end time of the range (exclusive).
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of update events to return. The service may
+        #   return fewer than this value. If unspecified, at most 100 update events will
+        #   be returned. The maximum value is 1000; values above 1000 will be coerced to
+        #   1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListRecentUpdateEvents` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListRecentUpdateEvents` must match the call that
+        #   provided the page token.
+        # @param [String] start_time
+        #   Required. The start time of the range (inclusive).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_appstorecatalog_recentupdateevents(app_store_package_name, end_time: nil, page_size: nil, page_token: nil, start_time: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentUpdateEvents', options)
+          command.response_representation = Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse::Representation
+          command.response_class = Google::Apis::AndroidpublisherV3::ListRecentUpdateEventsResponse
+          command.params['appStorePackageName'] = app_store_package_name unless app_store_package_name.nil?
+          command.query['endTime'] = end_time unless end_time.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Commits an app edit.
         # @param [String] package_name
         #   Package name of the app.
@@ -4489,6 +4897,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Provide refund preference and purchase usage for a chargeback request
+        # @param [String] package_name
+        #   Required. The package name of the application for which this subscription or
+        #   in-app item was purchased (for example, 'com.some.thing').
+        # @param [String] order_id
+        #   Required. The order ID provided to the user when the subscription or in-app
+        #   order was purchased.
+        # @param [Google::Apis::AndroidpublisherV3::OrdersReviewRefundRequest] orders_review_refund_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reviewrefund_order(package_name, order_id, orders_review_refund_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/orders/{orderId}:reviewrefund', options)
+          command.request_representation = Google::Apis::AndroidpublisherV3::OrdersReviewRefundRequest::Representation
+          command.request_object = orders_review_refund_request_object
+          command.params['packageName'] = package_name unless package_name.nil?
+          command.params['orderId'] = order_id unless order_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Acknowledges a purchase of an inapp item.
         # @param [String] package_name
         #   The package name of the application the inapp product was sold in (for example,
@@ -4746,118 +5190,6 @@ module Google
           command.request_object = subscription_purchases_defer_request_object
           command.response_representation = Google::Apis::AndroidpublisherV3::SubscriptionPurchasesDeferResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::SubscriptionPurchasesDeferResponse
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
-          command.params['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's
-        # subscription purchase is valid and returns its expiry time.
-        # @param [String] package_name
-        #   The package name of the application for which this subscription was purchased (
-        #   for example, 'com.some.thing').
-        # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
-        # @param [String] token
-        #   The token provided to the user's device when the subscription was purchased.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV3::SubscriptionPurchase] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidpublisherV3::SubscriptionPurchase]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}', options)
-          command.response_representation = Google::Apis::AndroidpublisherV3::SubscriptionPurchase::Representation
-          command.response_class = Google::Apis::AndroidpublisherV3::SubscriptionPurchase
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
-          command.params['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: Use orders.refund instead. Refunds a user's subscription purchase,
-        # but the subscription remains valid until its expiration time and it will
-        # continue to recur.
-        # @param [String] package_name
-        #   The package name of the application for which this subscription was purchased (
-        #   for example, 'com.some.thing').
-        # @param [String] subscription_id
-        #   "The purchased subscription ID (for example, 'monthly001').
-        # @param [String] token
-        #   The token provided to the user's device when the subscription was purchased.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def refund_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:refund', options)
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
-          command.params['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and
-        # immediately revokes a user's subscription purchase. Access to the subscription
-        # will be terminated immediately and it will stop recurring.
-        # @param [String] package_name
-        #   The package name of the application for which this subscription was purchased (
-        #   for example, 'com.some.thing').
-        # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
-        # @param [String] token
-        #   The token provided to the user's device when the subscription was purchased.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def revoke_purchase_subscription(package_name, subscription_id, token, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:revoke', options)
           command.params['packageName'] = package_name unless package_name.nil?
           command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
           command.params['token'] = token unless token.nil?

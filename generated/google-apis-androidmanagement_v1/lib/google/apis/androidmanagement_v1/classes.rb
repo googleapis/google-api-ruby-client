@@ -1825,6 +1825,35 @@ module Google
         end
       end
       
+      # Policies controlling cross-device communication.
+      class CrossDevicePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Manages video streaming of apps on the device for fully managed
+        # devices or in the work profile for devices with work profiles to nearby
+        # devices. This is supported on Android 13 and above.
+        # Corresponds to the JSON property `nearbyAppStreaming`
+        # @return [String]
+        attr_accessor :nearby_app_streaming
+      
+        # Optional. Manages streaming of notifications from apps on the device for fully
+        # managed devices or in the work profile for devices with work profiles to
+        # nearby devices. This is supported on Android 13 and above.
+        # Corresponds to the JSON property `nearbyNotificationStreaming`
+        # @return [String]
+        attr_accessor :nearby_notification_streaming
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nearby_app_streaming = args[:nearby_app_streaming] if args.key?(:nearby_app_streaming)
+          @nearby_notification_streaming = args[:nearby_notification_streaming] if args.key?(:nearby_notification_streaming)
+        end
+      end
+      
       # Controls the data from the work profile that can be accessed from the personal
       # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
       # if the device does not have a work profile.
@@ -2489,24 +2518,25 @@ module Google
       class DeviceRadioState
         include Google::Apis::Core::Hashable
       
-        # Controls whether airplane mode can be toggled by the user or not.
+        # Optional. Controls whether airplane mode can be toggled by the user or not.
         # Corresponds to the JSON property `airplaneModeState`
         # @return [String]
         attr_accessor :airplane_mode_state
       
-        # Controls whether cellular 2G setting can be toggled by the user or not.
+        # Optional. Controls whether cellular 2G setting can be toggled by the user or
+        # not.
         # Corresponds to the JSON property `cellularTwoGState`
         # @return [String]
         attr_accessor :cellular_two_g_state
       
-        # The minimum required security level of Wi-Fi networks that the device can
-        # connect to.
+        # Optional. The minimum required security level of Wi-Fi networks that the
+        # device can connect to.
         # Corresponds to the JSON property `minimumWifiSecurityLevel`
         # @return [String]
         attr_accessor :minimum_wifi_security_level
       
-        # Controls the state of the ultra wideband setting and whether the user can
-        # toggle it on or off.
+        # Optional. Controls the state of the ultra wideband setting and whether the
+        # user can toggle it on or off.
         # Corresponds to the JSON property `ultraWidebandState`
         # @return [String]
         attr_accessor :ultra_wideband_state
@@ -2516,7 +2546,7 @@ module Google
         # @return [String]
         attr_accessor :user_initiated_add_esim_settings
       
-        # Controls current state of Wi-Fi and if user can change its state.
+        # Optional. Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
         attr_accessor :wifi_state
@@ -4309,7 +4339,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :configuration_variables
       
-        # The ID of the managed configurations template.
+        # The ID of the managed configurations template. This value must be a numeric
+        # string containing exactly one or more digits (for example, "123456").
         # Corresponds to the JSON property `templateId`
         # @return [String]
         attr_accessor :template_id
@@ -5470,6 +5501,11 @@ module Google
         attr_accessor :credentials_config_disabled
         alias_method :credentials_config_disabled?, :credentials_config_disabled
       
+        # Policies controlling cross-device communication.
+        # Corresponds to the JSON property `crossDevicePolicies`
+        # @return [Google::Apis::AndroidmanagementV1::CrossDevicePolicies]
+        attr_accessor :cross_device_policies
+      
         # Controls the data from the work profile that can be accessed from the personal
         # profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported
         # if the device does not have a work profile.
@@ -5492,9 +5528,12 @@ module Google
         # Optional. The default application setting for supported types. If the default
         # application is successfully set for at least one app type on a profile, users
         # are prevented from changing any default applications on that profile.Only one
-        # DefaultApplicationSetting is allowed for each DefaultApplicationType.See
-        # Default application settings (https://developers.google.com/android/management/
-        # default-application-settings) guide for more details.
+        # DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning:
+        # Do not configure this and persistent_preferred_activities for the same intent
+        # domain, such as web browsing. Setting both for the same intent domain can lead
+        # to unpredictable behavior.See Default application settings (https://developers.
+        # google.com/android/management/default-application-settings) guide for more
+        # details.
         # Corresponds to the JSON property `defaultApplicationSettings`
         # @return [Array<Google::Apis::AndroidmanagementV1::DefaultApplicationSetting>]
         attr_accessor :default_application_settings
@@ -5732,7 +5771,9 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
         attr_accessor :permitted_input_methods
       
-        # Default intent handler activities.
+        # Default intent handler activities.Warning: Do not configure this and
+        # default_application_settings for the same intent domain, such as web browsing.
+        # Setting both for the same intent domain can lead to unpredictable behavior.
         # Corresponds to the JSON property `persistentPreferredActivities`
         # @return [Array<Google::Apis::AndroidmanagementV1::PersistentPreferredActivity>]
         attr_accessor :persistent_preferred_activities
@@ -6004,6 +6045,7 @@ module Google
           @create_windows_disabled = args[:create_windows_disabled] if args.key?(:create_windows_disabled)
           @credential_provider_policy_default = args[:credential_provider_policy_default] if args.key?(:credential_provider_policy_default)
           @credentials_config_disabled = args[:credentials_config_disabled] if args.key?(:credentials_config_disabled)
+          @cross_device_policies = args[:cross_device_policies] if args.key?(:cross_device_policies)
           @cross_profile_policies = args[:cross_profile_policies] if args.key?(:cross_profile_policies)
           @data_roaming_disabled = args[:data_roaming_disabled] if args.key?(:data_roaming_disabled)
           @debugging_features_allowed = args[:debugging_features_allowed] if args.key?(:debugging_features_allowed)
@@ -7948,7 +7990,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the factory-reset protection data is preserved on the device. This
-        # setting doesn’t apply to work profiles.
+        # setting applies to fully managed devices and work profiles on company-owned
+        # devices.
         # Corresponds to the JSON property `preserveFrp`
         # @return [Boolean]
         attr_accessor :preserve_frp
@@ -8026,7 +8069,8 @@ module Google
         # field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This
         # must be an enterprise account and not a consumer account. Once set and a
         # Google authenticated account is added to the device, changing this field will
-        # have no effect, and thus recommended to be set only once.
+        # have no effect, and thus recommended to be set only once. The email address
+        # must be all lowercase.
         # Corresponds to the JSON property `requiredAccountEmail`
         # @return [String]
         attr_accessor :required_account_email

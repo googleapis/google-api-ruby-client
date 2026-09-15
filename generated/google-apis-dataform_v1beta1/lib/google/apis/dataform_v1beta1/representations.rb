@@ -64,7 +64,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryUnitTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryUnitTestAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BranchMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +101,12 @@ module Google
       end
       
       class CancelWorkflowInvocationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CheckoutWorkspaceBranchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteBranchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteBranchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -238,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EndUserAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndUserAuthenticationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorTable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +293,12 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchCurrentWorkspaceBranchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchWorkspaceBranchesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -305,6 +365,18 @@ module Google
       end
       
       class FolderContentsEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsRepositorySnapshotDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsRepositorySnapshotMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -484,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OAuthConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +575,12 @@ module Google
       end
       
       class Operations
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PipelineConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -724,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SyncWorkspaceRefsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SyncWorkspaceRefsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableUpdateTrigger
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -908,6 +1004,31 @@ module Google
         end
       end
       
+      class BigQueryUnitTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependency_targets, as: 'dependencyTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
+      
+          property :disabled, as: 'disabled'
+          property :display_name, as: 'displayName'
+          property :expected_output_query, as: 'expectedOutputQuery'
+          collection :tags, as: 'tags'
+          property :test_query, as: 'testQuery'
+        end
+      end
+      
+      class BigQueryUnitTestAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :actual_results_job_id, as: 'actualResultsJobId'
+          property :actual_results_sql_script, as: 'actualResultsSqlScript'
+          property :expected_results_job_id, as: 'expectedResultsJobId'
+          property :expected_results_sql_script, as: 'expectedResultsSqlScript'
+          property :total_billed_bytes, :numeric_string => true, as: 'totalBilledBytes'
+          property :total_processed_bytes, :numeric_string => true, as: 'totalProcessedBytes'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -915,6 +1036,15 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class BranchMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
+          property :last_commit, as: 'lastCommit', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
         end
       end
       
@@ -936,6 +1066,15 @@ module Google
         end
       end
       
+      class CheckoutWorkspaceBranchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :create_if_not_exists, as: 'createIfNotExists'
+          property :source_branch, as: 'sourceBranch'
+        end
+      end
+      
       class CodeCompilationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -947,6 +1086,8 @@ module Google
           property :default_notebook_runtime_options, as: 'defaultNotebookRuntimeOptions', class: Google::Apis::DataformV1beta1::NotebookRuntimeOptions, decorator: Google::Apis::DataformV1beta1::NotebookRuntimeOptions::Representation
       
           property :default_schema, as: 'defaultSchema'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1beta1::PipelineConfig, decorator: Google::Apis::DataformV1beta1::PipelineConfig::Representation
+      
           property :schema_suffix, as: 'schemaSuffix'
           property :table_prefix, as: 'tablePrefix'
           hash :vars, as: 'vars'
@@ -1046,6 +1187,8 @@ module Google
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :dataform_core_version, as: 'dataformCoreVersion'
+          property :gcs_repository_snapshot_metadata, as: 'gcsRepositorySnapshotMetadata', class: Google::Apis::DataformV1beta1::GcsRepositorySnapshotMetadata, decorator: Google::Apis::DataformV1beta1::GcsRepositorySnapshotMetadata::Representation
+      
           property :git_commitish, as: 'gitCommitish'
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
@@ -1061,6 +1204,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assertion, as: 'assertion', class: Google::Apis::DataformV1beta1::Assertion, decorator: Google::Apis::DataformV1beta1::Assertion::Representation
+      
+          property :bigquery_unit_test, as: 'bigqueryUnitTest', class: Google::Apis::DataformV1beta1::BigQueryUnitTest, decorator: Google::Apis::DataformV1beta1::BigQueryUnitTest::Representation
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
@@ -1136,6 +1281,20 @@ module Google
         end
       end
       
+      class DeleteBranchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch, as: 'branch'
+          property :force, as: 'force'
+        end
+      end
+      
+      class DeleteBranchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DeleteFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1186,6 +1345,23 @@ module Google
         end
       end
       
+      class EndUserAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DataformV1beta1::OAuthConfig, decorator: Google::Apis::DataformV1beta1::OAuthConfig::Representation
+      
+        end
+      end
+      
+      class EndUserAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :oauth_config, as: 'oauthConfig', class: Google::Apis::DataformV1beta1::OAuthConfig, decorator: Google::Apis::DataformV1beta1::OAuthConfig::Representation
+      
+          property :user_email, as: 'userEmail'
+        end
+      end
+      
       class ErrorTable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1202,6 +1378,13 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FetchCurrentWorkspaceBranchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :branch_name, as: 'branchName'
         end
       end
       
@@ -1239,6 +1422,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :commits, as: 'commits', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchWorkspaceBranchesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :branches, as: 'branches', class: Google::Apis::DataformV1beta1::BranchMetadata, decorator: Google::Apis::DataformV1beta1::BranchMetadata::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -1293,6 +1485,22 @@ module Google
         end
       end
       
+      class GcsRepositorySnapshotDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :repository_snapshot_uri, as: 'repositorySnapshotUri'
+        end
+      end
+      
+      class GcsRepositorySnapshotMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crc32c_checksum, as: 'crc32cChecksum'
+          property :generation, :numeric_string => true, as: 'generation'
+          property :repository_snapshot_uri, as: 'repositorySnapshotUri'
+        end
+      end
+      
       class GitRemoteSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1338,6 +1546,8 @@ module Google
       class InstallNpmPackagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1beta1::PipelineConfig, decorator: Google::Apis::DataformV1beta1::PipelineConfig::Representation
+      
         end
       end
       
@@ -1358,6 +1568,9 @@ module Google
       class InvocationConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_user_auth_config, as: 'endUserAuthConfig', class: Google::Apis::DataformV1beta1::EndUserAuthenticationConfig, decorator: Google::Apis::DataformV1beta1::EndUserAuthenticationConfig::Representation
+      
+          property :execution_mode, as: 'executionMode'
           property :fully_refresh_incremental_tables_enabled, as: 'fullyRefreshIncrementalTablesEnabled'
           collection :included_tags, as: 'includedTags'
           collection :included_targets, as: 'includedTargets', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
@@ -1543,6 +1756,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contents, as: 'contents'
+          property :file_path, as: 'filePath'
           property :job_id, as: 'jobId'
         end
       end
@@ -1552,6 +1766,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ai_platform_notebook_runtime_template, as: 'aiPlatformNotebookRuntimeTemplate'
           property :gcs_output_bucket, as: 'gcsOutputBucket'
+          property :gcs_repository_snapshot_destination, as: 'gcsRepositorySnapshotDestination', class: Google::Apis::DataformV1beta1::GcsRepositorySnapshotDestination, decorator: Google::Apis::DataformV1beta1::GcsRepositorySnapshotDestination::Representation
+      
+        end
+      end
+      
+      class OAuthConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :additional_oauth_scopes, as: 'additionalOauthScopes'
         end
       end
       
@@ -1591,6 +1814,14 @@ module Google
           property :relation_descriptor, as: 'relationDescriptor', class: Google::Apis::DataformV1beta1::RelationDescriptor, decorator: Google::Apis::DataformV1beta1::RelationDescriptor::Representation
       
           collection :tags, as: 'tags'
+        end
+      end
+      
+      class PipelineConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path, as: 'path'
+          property :pipeline_type, as: 'pipelineType'
         end
       end
       
@@ -1813,6 +2044,8 @@ module Google
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
           property :display_name, as: 'displayName'
+          property :end_user_auth_config, as: 'endUserAuthConfig', class: Google::Apis::DataformV1beta1::EndUserAuthConfig, decorator: Google::Apis::DataformV1beta1::EndUserAuthConfig::Representation
+      
           property :git_remote_settings, as: 'gitRemoteSettings', class: Google::Apis::DataformV1beta1::GitRemoteSettings, decorator: Google::Apis::DataformV1beta1::GitRemoteSettings::Representation
       
           property :internal_metadata, as: 'internalMetadata'
@@ -1942,6 +2175,20 @@ module Google
         end
       end
       
+      class SyncWorkspaceRefsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deepen, as: 'deepen'
+          property :remote_branch_name, as: 'remoteBranchName'
+        end
+      end
+      
+      class SyncWorkspaceRefsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class TableUpdateTrigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2053,6 +2300,8 @@ module Google
           property :invocation_timing, as: 'invocationTiming', class: Google::Apis::DataformV1beta1::Interval, decorator: Google::Apis::DataformV1beta1::Interval::Representation
       
           property :name, as: 'name'
+          property :pipeline_config, as: 'pipelineConfig', class: Google::Apis::DataformV1beta1::PipelineConfig, decorator: Google::Apis::DataformV1beta1::PipelineConfig::Representation
+      
           property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1beta1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1beta1::PrivateResourceMetadata::Representation
       
           property :resolved_compilation_result, as: 'resolvedCompilationResult'
@@ -2065,6 +2314,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_action, as: 'bigqueryAction', class: Google::Apis::DataformV1beta1::BigQueryAction, decorator: Google::Apis::DataformV1beta1::BigQueryAction::Representation
+      
+          property :bigquery_unit_test_action, as: 'bigqueryUnitTestAction', class: Google::Apis::DataformV1beta1::BigQueryUnitTestAction, decorator: Google::Apis::DataformV1beta1::BigQueryUnitTestAction::Representation
       
           property :canonical_target, as: 'canonicalTarget', class: Google::Apis::DataformV1beta1::Target, decorator: Google::Apis::DataformV1beta1::Target::Representation
       
@@ -2110,11 +2361,15 @@ module Google
           property :create_time, as: 'createTime'
           property :data_encryption_state, as: 'dataEncryptionState', class: Google::Apis::DataformV1beta1::DataEncryptionState, decorator: Google::Apis::DataformV1beta1::DataEncryptionState::Representation
       
+          property :depth, as: 'depth'
           property :disable_moves, as: 'disableMoves'
+          property :enable_branch_management, as: 'enableBranchManagement'
           property :internal_metadata, as: 'internalMetadata'
           property :name, as: 'name'
+          property :original_branch, as: 'originalBranch'
           property :private_resource_metadata, as: 'privateResourceMetadata', class: Google::Apis::DataformV1beta1::PrivateResourceMetadata, decorator: Google::Apis::DataformV1beta1::PrivateResourceMetadata::Representation
       
+          property :shallow, as: 'shallow'
         end
       end
       

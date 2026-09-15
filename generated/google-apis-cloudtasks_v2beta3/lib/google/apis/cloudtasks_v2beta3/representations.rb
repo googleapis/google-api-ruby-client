@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateTasksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteTasksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +173,12 @@ module Google
       end
       
       class OidcToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -321,6 +339,23 @@ module Google
         end
       end
       
+      class BatchCreateTasksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          collection :requests, as: 'requests', class: Google::Apis::CloudtasksV2beta3::CreateTaskRequest, decorator: Google::Apis::CloudtasksV2beta3::CreateTaskRequest::Representation
+      
+        end
+      end
+      
+      class BatchDeleteTasksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -358,6 +393,7 @@ module Google
       class CreateTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           property :response_view, as: 'responseView'
           property :task, as: 'task', class: Google::Apis::CloudtasksV2beta3::Task, decorator: Google::Apis::CloudtasksV2beta3::Task::Representation
       
@@ -500,6 +536,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audience, as: 'audience'
           property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudtasksV2beta3::Status, decorator: Google::Apis::CloudtasksV2beta3::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -657,6 +705,8 @@ module Google
           property :pull_message, as: 'pullMessage', class: Google::Apis::CloudtasksV2beta3::PullMessage, decorator: Google::Apis::CloudtasksV2beta3::PullMessage::Representation
       
           property :response_count, as: 'responseCount'
+          property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2beta3::RetryConfig, decorator: Google::Apis::CloudtasksV2beta3::RetryConfig::Representation
+      
           property :schedule_time, as: 'scheduleTime'
           property :view, as: 'view'
         end

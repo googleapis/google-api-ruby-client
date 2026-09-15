@@ -92,6 +92,9 @@ module Google
         # - "freeBusyReader" - Provides read access to free/busy information.
         # - "reader" - Provides read access to the calendar. Private events will appear
         # to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - Provides read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
         # Provides read access to the calendar's ACLs.
@@ -198,6 +201,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Label properties defined on this calendar. If specified, overwrites the
+        # existing label properties. If not specified, the label properties remain
+        # unchanged.
+        # Corresponds to the JSON property `labelProperties`
+        # @return [Google::Apis::CalendarV3::LabelProperties]
+        attr_accessor :label_properties
+      
         # Geographic location of the calendar as free-form text. Optional.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -227,6 +237,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @label_properties = args[:label_properties] if args.key?(:label_properties)
           @location = args[:location] if args.key?(:location)
           @summary = args[:summary] if args.key?(:summary)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
@@ -288,6 +299,9 @@ module Google
         # - "freeBusyReader" - Provides read access to free/busy information.
         # - "reader" - Provides read access to the calendar. Private events will appear
         # to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - Provides read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - Provides read and write access to the calendar. Private events
         # will appear to users with writer access, and event details will be visible.
         # - "owner" - Provides manager access to the calendar. This role has all of the
@@ -1154,6 +1168,18 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # The ID of the event label assigned to the event. Optional. This refers to the
+        # ID of an entry in the labelProperties.eventLabels property of the calendar (
+        # see the Calendars.get endpoint.)
+        # This property supersedes the index-based colorId property. To set or change
+        # this property, you need to specify eventLabelVersion=1 in the parameters of
+        # the insert, import, update, and patch methods.
+        # Setting an empty string, or not setting this field at all, will remove the
+        # existing label from the event.
+        # Corresponds to the JSON property `eventLabelId`
+        # @return [String]
+        attr_accessor :event_label_id
+      
         # Specific type of the event. This cannot be modified after the event is created.
         # Possible values are:
         # - "birthday" - A special all-day event with an annual recurrence.
@@ -1390,6 +1416,12 @@ module Google
         # details.
         # - "confidential" - The event is private. This value is provided for
         # compatibility reasons.
+        # Note on recurring events: Changing the visibility of a single instance of a
+        # recurring event can affect all instances of the series. If the new setting is
+        # more restrictive (e.g. from public to private), it is applied to all instances.
+        # If the new setting is less restrictive (e.g. from private to public), the
+        # change is ignored. To make a recurring event less restrictive, you must update
+        # the parent recurring event.
         # Corresponds to the JSON property `visibility`
         # @return [String]
         attr_accessor :visibility
@@ -1418,6 +1450,7 @@ module Google
           @end = args[:end] if args.key?(:end)
           @end_time_unspecified = args[:end_time_unspecified] if args.key?(:end_time_unspecified)
           @etag = args[:etag] if args.key?(:etag)
+          @event_label_id = args[:event_label_id] if args.key?(:event_label_id)
           @event_type = args[:event_type] if args.key?(:event_type)
           @extended_properties = args[:extended_properties] if args.key?(:extended_properties)
           @focus_time_properties = args[:focus_time_properties] if args.key?(:focus_time_properties)
@@ -1960,12 +1993,34 @@ module Google
       class EventLabel
         include Google::Apis::Core::Hashable
       
+        # Background color of the label in hexadecimal format, such as "#039be5". Events
+        # with this label are displayed in this color. Required.
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [String]
+        attr_accessor :background_color
+      
+        # The ID of the label. Optional when inserting a new label. If not provided, a
+        # unique ID will be generated. Required when updating a label.
+        # If provided, the ID must be unique within the calendar and follow UUID format.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Name of the label. Optional.
+        # If provided this must have at most 50 characters.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -2148,6 +2203,9 @@ module Google
         # - "freeBusyReader" - The user has read access to free/busy information.
         # - "reader" - The user has read access to the calendar. Private events will
         # appear to users with reader access, but event details will be hidden.
+        # - "writerWithoutPrivateAccess" - The user has read and write access to the
+        # calendar. Private events will appear to users with writerWithoutPrivateAccess
+        # access, but event details will be hidden.
         # - "writer" - The user has read and write access to the calendar. Private
         # events will appear to users with writer access, and event details will be
         # visible.
@@ -2403,12 +2461,22 @@ module Google
       class LabelProperties
         include Google::Apis::Core::Hashable
       
+        # Event labels defined on this calendar. If this is present when updating the
+        # calendar, it will replace the existing event labels.
+        # Extend the list to add a new event label, and remove entities from the list to
+        # delete a label from calendar.
+        # Each calendar can have a maximum of 200 labels.
+        # Corresponds to the JSON property `eventLabels`
+        # @return [Array<Google::Apis::CalendarV3::EventLabel>]
+        attr_accessor :event_labels
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @event_labels = args[:event_labels] if args.key?(:event_labels)
         end
       end
       

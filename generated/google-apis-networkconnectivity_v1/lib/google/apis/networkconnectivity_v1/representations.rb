@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPscAuthorizationPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRegionalEndpointsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +473,12 @@ module Google
       end
       
       class ProducerPscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscAuthorizationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1239,6 +1251,16 @@ module Google
         end
       end
       
+      class ListPscAuthorizationPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :psc_authorization_policies, as: 'pscAuthorizationPolicies', class: Google::Apis::NetworkconnectivityV1::PscAuthorizationPolicy, decorator: Google::Apis::NetworkconnectivityV1::PscAuthorizationPolicy::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRegionalEndpointsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1489,6 +1511,22 @@ module Google
           property :automated_dns_creation_spec, as: 'automatedDnsCreationSpec', class: Google::Apis::NetworkconnectivityV1::AutomatedDnsCreationSpec, decorator: Google::Apis::NetworkconnectivityV1::AutomatedDnsCreationSpec::Representation
       
           property :service_attachment_uri, as: 'serviceAttachmentUri'
+        end
+      end
+      
+      class PscAuthorizationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization_mode, as: 'authorizationMode'
+          collection :authorized_client_resources, as: 'authorizedClientResources'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target_resource_uri, as: 'targetResourceUri'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
         end
       end
       

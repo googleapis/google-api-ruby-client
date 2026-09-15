@@ -2454,6 +2454,31 @@ module Google
         end
       end
       
+      # A column header in the report.
+      class ColumnHeader
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The column name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The column type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Companion Click-through override.
       class CompanionClickThroughOverride
         include Google::Apis::Core::Hashable
@@ -3704,6 +3729,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :subaccount_id
       
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations. [Learn more about
+        # labeling requirements in AI regulations.](https://support.google.com/
+        # campaignmanager/answer/17232030)
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Third-party URL used to record backup image impressions. Applicable to the
         # following creative types: all RICH_MEDIA.
         # Corresponds to the JSON property `thirdPartyBackupImageImpressionsUrl`
@@ -3822,6 +3855,7 @@ module Google
           @studio_creative_id = args[:studio_creative_id] if args.key?(:studio_creative_id)
           @studio_trafficked_creative_id = args[:studio_trafficked_creative_id] if args.key?(:studio_trafficked_creative_id)
           @subaccount_id = args[:subaccount_id] if args.key?(:subaccount_id)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_backup_image_impressions_url = args[:third_party_backup_image_impressions_url] if args.key?(:third_party_backup_image_impressions_url)
           @third_party_rich_media_impressions_url = args[:third_party_rich_media_impressions_url] if args.key?(:third_party_rich_media_impressions_url)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)
@@ -11510,6 +11544,123 @@ module Google
         end
       end
       
+      # The request body containing ad-hoc query parameters.
+      class ReportDataQueryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents a date range.
+        # Corresponds to the JSON property `dateRange`
+        # @return [Google::Apis::DfareportingV5::DateRange]
+        attr_accessor :date_range
+      
+        # Optional. The list of dimension values on which report lines are filtered.
+        # Utilizes the existing legacy filter message `DimensionValue`.
+        # Corresponds to the JSON property `dimensionFilters`
+        # @return [Array<Google::Apis::DfareportingV5::DimensionValue>]
+        attr_accessor :dimension_filters
+      
+        # Optional. The list of dimension names to group by.
+        # Corresponds to the JSON property `dimensionNames`
+        # @return [Array<String>]
+        attr_accessor :dimension_names
+      
+        # Optional. Maximum number of result rows to return per page. The default value
+        # is 100. The maximum allowed value is 1000. Values above 1000 will be coerced (
+        # clamped) down to 1000. Negative values will be rejected.
+        # Corresponds to the JSON property `maxResults`
+        # @return [Fixnum]
+        attr_accessor :max_results
+      
+        # Required. The list of metric names to include.
+        # Corresponds to the JSON property `metricNames`
+        # @return [Array<String>]
+        attr_accessor :metric_names
+      
+        # Optional. Continuation token for paginating results.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. Sort options across either requested dimensions or metrics.
+        # Corresponds to the JSON property `sortBys`
+        # @return [Array<Google::Apis::DfareportingV5::SortBy>]
+        attr_accessor :sort_bys
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_range = args[:date_range] if args.key?(:date_range)
+          @dimension_filters = args[:dimension_filters] if args.key?(:dimension_filters)
+          @dimension_names = args[:dimension_names] if args.key?(:dimension_names)
+          @max_results = args[:max_results] if args.key?(:max_results)
+          @metric_names = args[:metric_names] if args.key?(:metric_names)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @sort_bys = args[:sort_bys] if args.key?(:sort_bys)
+        end
+      end
+      
+      # Represents a response to report data request.
+      class ReportDataResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Ordered descriptors of the requested column fields.
+        # Corresponds to the JSON property `columnHeaders`
+        # @return [Array<Google::Apis::DfareportingV5::ColumnHeader>]
+        attr_accessor :column_headers
+      
+        # Output only. Token to retrieve the next page of rows, or empty if end of
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. The resulting set of matching data rows.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::DfareportingV5::ReportDataRow>]
+        attr_accessor :rows
+      
+        # A row of report data.
+        # Corresponds to the JSON property `totalRow`
+        # @return [Google::Apis::DfareportingV5::ReportDataRow]
+        attr_accessor :total_row
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_headers = args[:column_headers] if args.key?(:column_headers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rows = args[:rows] if args.key?(:rows)
+          @total_row = args[:total_row] if args.key?(:total_row)
+        end
+      end
+      
+      # A row of report data.
+      class ReportDataRow
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A single sequential list of all cell values matching
+        # column_headers indices exactly. - Metric cells that are suppressed due to
+        # Minimum Reporting Standard (MRS) privacy protection constraints return "-".
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Represents the list of reports.
       class ReportList
         include Google::Apis::Core::Hashable
@@ -12243,6 +12394,31 @@ module Google
           @progress_offset = args[:progress_offset] if args.key?(:progress_offset)
           @skip_offset = args[:skip_offset] if args.key?(:skip_offset)
           @skippable = args[:skippable] if args.key?(:skippable)
+        end
+      end
+      
+      # Specifies the sort configuration for a specific field in the report.
+      class SortBy
+        include Google::Apis::Core::Hashable
+      
+        # Required. The dimension or metric field name to sort on.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The sort order of this column.
+        # Corresponds to the JSON property `sortOrder`
+        # @return [String]
+        attr_accessor :sort_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @sort_order = args[:sort_order] if args.key?(:sort_order)
         end
       end
       

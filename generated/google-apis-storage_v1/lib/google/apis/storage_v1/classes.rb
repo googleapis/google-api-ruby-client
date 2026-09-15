@@ -2307,6 +2307,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration options for the rapid cache of a managed folder.
+        # Corresponds to the JSON property `rapidCacheConfig`
+        # @return [Google::Apis::StorageV1::RapidCacheConfig]
+        attr_accessor :rapid_cache_config
+      
         # The link to this managed folder.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -2329,6 +2334,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @metageneration = args[:metageneration] if args.key?(:metageneration)
           @name = args[:name] if args.key?(:name)
+          @rapid_cache_config = args[:rapid_cache_config] if args.key?(:rapid_cache_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -3198,6 +3204,187 @@ module Google
             @members = args[:members] if args.key?(:members)
             @role = args[:role] if args.key?(:role)
           end
+        end
+      end
+      
+      # A Rapid Cache instance.
+      class RapidCache
+        include Google::Apis::Core::Hashable
+      
+        # The cache-level entry admission policy.
+        # Corresponds to the JSON property `admissionPolicy`
+        # @return [String]
+        attr_accessor :admission_policy
+      
+        # The name of the bucket containing this cache instance.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # The type of Rapid Cache this represents. Valid values include: "rapid-cache"
+        # and "rapid-cache-ultra".
+        # Corresponds to the JSON property `cacheType`
+        # @return [String]
+        attr_accessor :cache_type
+      
+        # The creation time of the cache instance in RFC 3339 format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
+        # The ID of the resource, including the project number, bucket name and rapid
+        # cache ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Specifies whether objects are ingested into the cache upon write.
+        # Corresponds to the JSON property `ingestOnWrite`
+        # @return [Boolean]
+        attr_accessor :ingest_on_write
+        alias_method :ingest_on_write?, :ingest_on_write
+      
+        # The kind of item this is. For Rapid Cache, this is always storage#rapidCache.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # True if the cache instance has an active Update long-running operation.
+        # Corresponds to the JSON property `pendingUpdate`
+        # @return [Boolean]
+        attr_accessor :pending_update
+        alias_method :pending_update?, :pending_update
+      
+        # The ID of the Rapid cache instance.
+        # Corresponds to the JSON property `rapidCacheId`
+        # @return [String]
+        attr_accessor :rapid_cache_id
+      
+        # The link to this cache instance.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # The current state of the cache instance.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The TTL of all cache entries in whole seconds. e.g., "7200s".
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        # The modification time of the cache instance metadata in RFC 3339 format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [DateTime]
+        attr_accessor :update_time
+      
+        # The zone in which the cache instance is running. For example, us-central1-a.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admission_policy = args[:admission_policy] if args.key?(:admission_policy)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @cache_type = args[:cache_type] if args.key?(:cache_type)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @ingest_on_write = args[:ingest_on_write] if args.key?(:ingest_on_write)
+          @kind = args[:kind] if args.key?(:kind)
+          @pending_update = args[:pending_update] if args.key?(:pending_update)
+          @rapid_cache_id = args[:rapid_cache_id] if args.key?(:rapid_cache_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Configuration options for the rapid cache of a managed folder.
+      class RapidCacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # A map of rapid cache IDs to the corresponding `RapidCachePolicy`
+        # configurations for a managed folder.
+        # Corresponds to the JSON property `policies`
+        # @return [Hash<String,Google::Apis::StorageV1::RapidCachePolicy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
+      # The rapid cache policy configuration for a managed folder.
+      class RapidCachePolicy
+        include Google::Apis::Core::Hashable
+      
+        # The ingest-on-write policy for objects in the managed folder. When set to `
+        # enabled`, objects are automatically ingested into the cache when they are
+        # written to the managed folder.
+        # Corresponds to the JSON property `ingestOnWrite`
+        # @return [String]
+        attr_accessor :ingest_on_write
+      
+        # The unique identifier of the rapid cache.
+        # Corresponds to the JSON property `rapidCacheId`
+        # @return [String]
+        attr_accessor :rapid_cache_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ingest_on_write = args[:ingest_on_write] if args.key?(:ingest_on_write)
+          @rapid_cache_id = args[:rapid_cache_id] if args.key?(:rapid_cache_id)
+        end
+      end
+      
+      # A list of Rapid Caches.
+      class RapidCaches
+        include Google::Apis::Core::Hashable
+      
+        # The list of items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::StorageV1::RapidCache>]
+        attr_accessor :items
+      
+        # The kind of item this is. For lists of Rapid Caches, this is always storage#
+        # rapidCaches.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The continuation token, used to page through large result sets. Provide this
+        # value in a subsequent request to return the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

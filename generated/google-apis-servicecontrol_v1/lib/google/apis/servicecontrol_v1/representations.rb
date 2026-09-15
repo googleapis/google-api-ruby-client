@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuditPamBindingId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Auth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -220,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrivilegedAccessManagerMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuotaError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +251,12 @@ module Google
       end
       
       class QuotaProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RabPolicyViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -453,6 +471,14 @@ module Google
         end
       end
       
+      class AuditPamBindingId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container, as: 'container'
+          property :grant_uuid, as: 'grantUuid'
+        end
+      end
+      
       class Auth
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -491,6 +517,8 @@ module Google
           property :granted, as: 'granted'
           property :permission, as: 'permission'
           property :permission_type, as: 'permissionType'
+          property :privileged_access_manager_metadata, as: 'privilegedAccessManagerMetadata', class: Google::Apis::ServicecontrolV1::PrivilegedAccessManagerMetadata, decorator: Google::Apis::ServicecontrolV1::PrivilegedAccessManagerMetadata::Representation
+      
           property :resource, as: 'resource'
           property :resource_attributes, as: 'resourceAttributes', class: Google::Apis::ServicecontrolV1::Resource, decorator: Google::Apis::ServicecontrolV1::Resource::Representation
       
@@ -777,6 +805,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :org_policy_violation_info, as: 'orgPolicyViolationInfo', class: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo::Representation
       
+          property :rab_policy_violation_info, as: 'rabPolicyViolationInfo', class: Google::Apis::ServicecontrolV1::RabPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::RabPolicyViolationInfo::Representation
+      
+        end
+      end
+      
+      class PrivilegedAccessManagerMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :pam_binding_ids, as: 'pamBindingIds', class: Google::Apis::ServicecontrolV1::AuditPamBindingId, decorator: Google::Apis::ServicecontrolV1::AuditPamBindingId::Representation
+      
         end
       end
       
@@ -819,6 +857,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :quota_mode, as: 'quotaMode'
+        end
+      end
+      
+      class RabPolicyViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          collection :resource_locations, as: 'resourceLocations'
         end
       end
       

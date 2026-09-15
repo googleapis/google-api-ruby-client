@@ -292,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuspendWorkstationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +461,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :archive_timeout, as: 'archiveTimeout'
           property :max_size_gb, as: 'maxSizeGb'
+          property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
+          property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
           property :reclaim_policy, as: 'reclaimPolicy'
           property :size_gb, as: 'sizeGb'
           property :source_snapshot, as: 'sourceSnapshot'
@@ -636,6 +644,7 @@ module Google
           property :access_token, as: 'accessToken'
           property :email, as: 'email'
           property :expire_time, as: 'expireTime'
+          property :expires_in, as: 'expiresIn'
           property :scopes, as: 'scopes'
         end
       end
@@ -774,6 +783,14 @@ module Google
         end
       end
       
+      class SuspendWorkstationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
       class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -835,6 +852,7 @@ module Google
           hash :annotations, as: 'annotations'
           collection :conditions, as: 'conditions', class: Google::Apis::WorkstationsV1beta::Status, decorator: Google::Apis::WorkstationsV1beta::Status::Representation
       
+          property :console_base_url, as: 'consoleBaseUrl'
           property :control_plane_ip, as: 'controlPlaneIp'
           property :create_time, as: 'createTime'
           property :degraded, as: 'degraded'
@@ -889,6 +907,7 @@ module Google
       
           property :http_options, as: 'httpOptions', class: Google::Apis::WorkstationsV1beta::HttpOptions, decorator: Google::Apis::WorkstationsV1beta::HttpOptions::Representation
       
+          property :idle_action, as: 'idleAction'
           property :idle_timeout, as: 'idleTimeout'
           hash :labels, as: 'labels'
           property :max_usable_workstations, as: 'maxUsableWorkstations'

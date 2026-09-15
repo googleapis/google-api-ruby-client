@@ -1417,9 +1417,10 @@ module Google
         #   Required. The parent value for Database System Shapes in the following format:
         #   projects/`project`/locations/`location`.
         # @param [String] filter
-        #   Optional. An expression for filtering the results of the request. Only the
-        #   gcp_oracle_zone_id field is supported in this format: `gcp_oracle_zone_id="`
-        #   gcp_oracle_zone_id`"`.
+        #   Optional. An expression for filtering the results of the request. The `
+        #   gcp_oracle_zone_id`, `shape_family`, and `database_edition` fields are
+        #   supported in the following format: `gcp_oracle_zone_id="`gcp_oracle_zone_id`"
+        #   AND shape_family="`shape_family`" AND database_edition="`database_edition`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, at most 50
         #   database system shapes will be returned. The maximum value is 1000; values
@@ -2171,9 +2172,9 @@ module Google
         #   Required. The parent value for Grid Infrastructure Version in the following
         #   format: Format: projects/`project`/locations/`location`.
         # @param [String] filter
-        #   Optional. An expression for filtering the results of the request. Only the
-        #   shape, gcp_oracle_zone and gi_version fields are supported in this format: `
-        #   shape="`shape`"`.
+        #   Optional. An expression for filtering the results of the request. Only the `
+        #   shape` and `gcp_oracle_zone_id` fields are supported in the following format: `
+        #   shape="`shape`" AND gcp_oracle_zone_id="`gcp_oracle_zone_id`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
         #   50 Oracle Grid Infrastructure (GI) versions will be returned. The maximum
@@ -2216,9 +2217,10 @@ module Google
         #   Required. The parent value for the MinorVersion resource with the format:
         #   projects/`project`/locations/`location`/giVersions/`gi_version`
         # @param [String] filter
-        #   Optional. An expression for filtering the results of the request. Only
-        #   shapeFamily and gcp_oracle_zone_id are supported in this format: `shape_family=
-        #   "`shapeFamily`" AND gcp_oracle_zone_id="`gcp_oracle_zone_id`"`.
+        #   Optional. An expression for filtering the results of the request. Only the `
+        #   shape_family` and `gcp_oracle_zone_id` fields are supported in the following
+        #   format: `shape_family="`shape_family`" AND gcp_oracle_zone_id="`
+        #   gcp_oracle_zone_id`"`.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return. If unspecified, a maximum of
         #   50 System Versions will be returned. The maximum value is 1000; values above

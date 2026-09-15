@@ -1826,6 +1826,11 @@ module Google
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo]
         attr_accessor :device_info
       
+        # The delegated dispatch information configuration.
+        # Corresponds to the JSON property `dispatchInfo`
+        # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo]
+        attr_accessor :dispatch_info
+      
         # The delegated group configuration details.
         # Corresponds to the JSON property `groupInfo`
         # @return [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo]
@@ -1848,6 +1853,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @device_info = args[:device_info] if args.key?(:device_info)
+          @dispatch_info = args[:dispatch_info] if args.key?(:dispatch_info)
           @group_info = args[:group_info] if args.key?(:group_info)
           @output_type = args[:output_type] if args.key?(:output_type)
           @user_info = args[:user_info] if args.key?(:user_info)
@@ -1859,6 +1865,25 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The output type details for the delegated device.
+        # Corresponds to the JSON property `outputType`
+        # @return [String]
+        attr_accessor :output_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_type = args[:output_type] if args.key?(:output_type)
+        end
+      end
+      
+      # The delegated dispatch information configuration.
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The output type details for the delegated dispatch information.
         # Corresponds to the JSON property `outputType`
         # @return [String]
         attr_accessor :output_type

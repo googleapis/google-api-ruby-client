@@ -1043,6 +1043,11 @@ module Google
         attr_accessor :advanced_settings
       
         # 
+        # Corresponds to the JSON property `codeBlockFunction`
+        # @return [String]
+        attr_accessor :code_block_function
+      
+        # 
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
@@ -1091,6 +1096,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @code_block_function = args[:code_block_function] if args.key?(:code_block_function)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @generators = args[:generators] if args.key?(:generators)
@@ -4417,6 +4423,11 @@ module Google
         attr_accessor :advanced_settings
       
         # 
+        # Corresponds to the JSON property `codeBlockFunction`
+        # @return [String]
+        attr_accessor :code_block_function
+      
+        # 
         # Corresponds to the JSON property `conditionalCases`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases>]
         attr_accessor :conditional_cases
@@ -4465,6 +4476,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advanced_settings = args[:advanced_settings] if args.key?(:advanced_settings)
+          @code_block_function = args[:code_block_function] if args.key?(:code_block_function)
           @conditional_cases = args[:conditional_cases] if args.key?(:conditional_cases)
           @enable_generative_fallback = args[:enable_generative_fallback] if args.key?(:enable_generative_fallback)
           @generators = args[:generators] if args.key?(:generators)
@@ -11778,10 +11790,21 @@ module Google
         alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
       
         # 
+        # Corresponds to the JSON property `enableVoiceActivityEvents`
+        # @return [Boolean]
+        attr_accessor :enable_voice_activity_events
+        alias_method :enable_voice_activity_events?, :enable_voice_activity_events
+      
+        # 
         # Corresponds to the JSON property `enableWordInfo`
         # @return [Boolean]
         attr_accessor :enable_word_info
         alias_method :enable_word_info?, :enable_word_info
+      
+        # 
+        # Corresponds to the JSON property `geminiAsrConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig]
+        attr_accessor :gemini_asr_config
       
         # 
         # Corresponds to the JSON property `languageCode`
@@ -11830,6 +11853,12 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext>]
         attr_accessor :speech_contexts
       
+        # 
+        # Corresponds to the JSON property `useGeminiAsr`
+        # @return [Boolean]
+        attr_accessor :use_gemini_asr
+        alias_method :use_gemini_asr?, :use_gemini_asr
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11839,7 +11868,9 @@ module Google
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
+          @enable_voice_activity_events = args[:enable_voice_activity_events] if args.key?(:enable_voice_activity_events)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
+          @gemini_asr_config = args[:gemini_asr_config] if args.key?(:gemini_asr_config)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
           @model_variant = args[:model_variant] if args.key?(:model_variant)
@@ -11849,6 +11880,7 @@ module Google
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
           @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
+          @use_gemini_asr = args[:use_gemini_asr] if args.key?(:use_gemini_asr)
         end
       end
       
@@ -13566,6 +13598,26 @@ module Google
         attr_accessor :prompt_token_count
       
         # 
+        # Corresponds to the JSON property `similarityToLastQuery`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query
+      
+        # 
+        # Corresponds to the JSON property `similarityToLastQueryThreshold`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query_threshold
+      
+        # 
+        # Corresponds to the JSON property `thinkingBudgetTokens`
+        # @return [Fixnum]
+        attr_accessor :thinking_budget_tokens
+      
+        # 
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
+        # 
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -13578,6 +13630,10 @@ module Google
         def update!(**args)
           @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @similarity_to_last_query = args[:similarity_to_last_query] if args.key?(:similarity_to_last_query)
+          @similarity_to_last_query_threshold = args[:similarity_to_last_query_threshold] if args.key?(:similarity_to_last_query_threshold)
+          @thinking_budget_tokens = args[:thinking_budget_tokens] if args.key?(:thinking_budget_tokens)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
@@ -14463,6 +14519,37 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2ProbeDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `initTime`
+        # @return [String]
+        attr_accessor :init_time
+      
+        # 
+        # Corresponds to the JSON property `optionsLatency`
+        # @return [String]
+        attr_accessor :options_latency
+      
+        # 
+        # Corresponds to the JSON property `probeStatus`
+        # @return [String]
+        attr_accessor :probe_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @init_time = args[:init_time] if args.key?(:init_time)
+          @options_latency = args[:options_latency] if args.key?(:options_latency)
+          @probe_status = args[:probe_status] if args.key?(:probe_status)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2QueryInput
         include Google::Apis::Core::Hashable
       
@@ -14879,6 +14966,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `cesDebugInfo`
+        # @return [Hash<String,Object>]
+        attr_accessor :ces_debug_info
+      
+        # 
         # Corresponds to the JSON property `datastoreResponseReason`
         # @return [String]
         attr_accessor :datastore_response_reason
@@ -14904,6 +14996,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ces_debug_info = args[:ces_debug_info] if args.key?(:ces_debug_info)
           @datastore_response_reason = args[:datastore_response_reason] if args.key?(:datastore_response_reason)
           @ingested_context_reference_debug_info = args[:ingested_context_reference_debug_info] if args.key?(:ingested_context_reference_debug_info)
           @search_knowledge_behavior = args[:search_knowledge_behavior] if args.key?(:search_knowledge_behavior)
@@ -15511,6 +15604,87 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2SipHostname
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `connectionState`
+        # @return [String]
+        attr_accessor :connection_state
+      
+        # 
+        # Corresponds to the JSON property `enabledSipPing`
+        # @return [Boolean]
+        attr_accessor :enabled_sip_ping
+        alias_method :enabled_sip_ping?, :enabled_sip_ping
+      
+        # 
+        # Corresponds to the JSON property `errorDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails]
+        attr_accessor :error_details
+      
+        # 
+        # Corresponds to the JSON property `peerHostname`
+        # @return [String]
+        attr_accessor :peer_hostname
+      
+        # 
+        # Corresponds to the JSON property `peerSocketAddress`
+        # @return [String]
+        attr_accessor :peer_socket_address
+      
+        # 
+        # Corresponds to the JSON property `pingInterval`
+        # @return [String]
+        attr_accessor :ping_interval
+      
+        # 
+        # Corresponds to the JSON property `probeDetails`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ProbeDetails]
+        attr_accessor :probe_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_state = args[:connection_state] if args.key?(:connection_state)
+          @enabled_sip_ping = args[:enabled_sip_ping] if args.key?(:enabled_sip_ping)
+          @error_details = args[:error_details] if args.key?(:error_details)
+          @peer_hostname = args[:peer_hostname] if args.key?(:peer_hostname)
+          @peer_socket_address = args[:peer_socket_address] if args.key?(:peer_socket_address)
+          @ping_interval = args[:ping_interval] if args.key?(:ping_interval)
+          @probe_details = args[:probe_details] if args.key?(:probe_details)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2SipHostnameHostnameErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `certificateState`
+        # @return [String]
+        attr_accessor :certificate_state
+      
+        # 
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_state = args[:certificate_state] if args.key?(:certificate_state)
+          @error_message = args[:error_message] if args.key?(:error_message)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2SipTrunk
         include Google::Apis::Core::Hashable
       
@@ -15530,9 +15704,19 @@ module Google
         attr_accessor :expected_hostname
       
         # 
+        # Corresponds to the JSON property `googleRootCertFile`
+        # @return [String]
+        attr_accessor :google_root_cert_file
+      
+        # 
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `peerHostnames`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SipHostname>]
+        attr_accessor :peer_hostnames
       
         def initialize(**args)
            update!(**args)
@@ -15543,7 +15727,9 @@ module Google
           @connections = args[:connections] if args.key?(:connections)
           @display_name = args[:display_name] if args.key?(:display_name)
           @expected_hostname = args[:expected_hostname] if args.key?(:expected_hostname)
+          @google_root_cert_file = args[:google_root_cert_file] if args.key?(:google_root_cert_file)
           @name = args[:name] if args.key?(:name)
+          @peer_hostnames = args[:peer_hostnames] if args.key?(:peer_hostnames)
         end
       end
       
@@ -15694,6 +15880,11 @@ module Google
         alias_method :enable_word_info?, :enable_word_info
       
         # 
+        # Corresponds to the JSON property `geminiAsrConfig`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig]
+        attr_accessor :gemini_asr_config
+      
+        # 
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -15719,6 +15910,12 @@ module Google
         attr_accessor :speech_model_variant
       
         # 
+        # Corresponds to the JSON property `useGeminiAsr`
+        # @return [Boolean]
+        attr_accessor :use_gemini_asr
+        alias_method :use_gemini_asr?, :use_gemini_asr
+      
+        # 
         # Corresponds to the JSON property `useTimeoutBasedEndpointing`
         # @return [Boolean]
         attr_accessor :use_timeout_based_endpointing
@@ -15732,12 +15929,57 @@ module Google
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
+          @gemini_asr_config = args[:gemini_asr_config] if args.key?(:gemini_asr_config)
           @language_code = args[:language_code] if args.key?(:language_code)
           @model = args[:model] if args.key?(:model)
           @phrase_sets = args[:phrase_sets] if args.key?(:phrase_sets)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @speech_model_variant = args[:speech_model_variant] if args.key?(:speech_model_variant)
+          @use_gemini_asr = args[:use_gemini_asr] if args.key?(:use_gemini_asr)
           @use_timeout_based_endpointing = args[:use_timeout_based_endpointing] if args.key?(:use_timeout_based_endpointing)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2SpeechToTextConfigGeminiAsrConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endOfSpeechSensitivity`
+        # @return [String]
+        attr_accessor :end_of_speech_sensitivity
+      
+        # 
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # 
+        # Corresponds to the JSON property `prefixPaddingMs`
+        # @return [Fixnum]
+        attr_accessor :prefix_padding_ms
+      
+        # 
+        # Corresponds to the JSON property `silenceDurationMs`
+        # @return [Fixnum]
+        attr_accessor :silence_duration_ms
+      
+        # 
+        # Corresponds to the JSON property `startOfSpeechSensitivity`
+        # @return [String]
+        attr_accessor :start_of_speech_sensitivity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_speech_sensitivity = args[:end_of_speech_sensitivity] if args.key?(:end_of_speech_sensitivity)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @prefix_padding_ms = args[:prefix_padding_ms] if args.key?(:prefix_padding_ms)
+          @silence_duration_ms = args[:silence_duration_ms] if args.key?(:silence_duration_ms)
+          @start_of_speech_sensitivity = args[:start_of_speech_sensitivity] if args.key?(:start_of_speech_sensitivity)
         end
       end
       
@@ -17439,6 +17681,12 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # 
+        # Corresponds to the JSON property `retryable`
+        # @return [Boolean]
+        attr_accessor :retryable
+        alias_method :retryable?, :retryable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17446,6 +17694,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @retryable = args[:retryable] if args.key?(:retryable)
         end
       end
       
@@ -21157,6 +21406,26 @@ module Google
         attr_accessor :prompt_token_count
       
         # 
+        # Corresponds to the JSON property `similarityToLastQuery`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query
+      
+        # 
+        # Corresponds to the JSON property `similarityToLastQueryThreshold`
+        # @return [Float]
+        attr_accessor :similarity_to_last_query_threshold
+      
+        # 
+        # Corresponds to the JSON property `thinkingBudgetTokens`
+        # @return [Fixnum]
+        attr_accessor :thinking_budget_tokens
+      
+        # 
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
+        # 
         # Corresponds to the JSON property `totalTokenCount`
         # @return [Fixnum]
         attr_accessor :total_token_count
@@ -21169,6 +21438,10 @@ module Google
         def update!(**args)
           @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
           @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @similarity_to_last_query = args[:similarity_to_last_query] if args.key?(:similarity_to_last_query)
+          @similarity_to_last_query_threshold = args[:similarity_to_last_query_threshold] if args.key?(:similarity_to_last_query_threshold)
+          @thinking_budget_tokens = args[:thinking_budget_tokens] if args.key?(:thinking_budget_tokens)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
           @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
@@ -22385,6 +22658,12 @@ module Google
         # @return [String]
         attr_accessor :message
       
+        # 
+        # Corresponds to the JSON property `retryable`
+        # @return [Boolean]
+        attr_accessor :retryable
+        alias_method :retryable?, :retryable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22392,6 +22671,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @retryable = args[:retryable] if args.key?(:retryable)
         end
       end
       

@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSqlSingleUserCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerManagedEncryption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableManagedRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +137,12 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedRotationStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +191,18 @@ module Google
       end
       
       class ReplicationStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateSecretRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,6 +334,15 @@ module Google
         end
       end
       
+      class CloudSqlSingleUserCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_id, as: 'instanceId'
+          property :password, as: 'password'
+          property :username, as: 'username'
+        end
+      end
+      
       class CustomerManagedEncryption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -335,6 +374,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableManagedRotationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_single_user_credentials, as: 'cloudSqlSingleUserCredentials', class: Google::Apis::SecretmanagerV1::CloudSqlSingleUserCredentials, decorator: Google::Apis::SecretmanagerV1::CloudSqlSingleUserCredentials::Representation
+      
         end
       end
       
@@ -392,6 +439,15 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class ManagedRotationStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::SecretmanagerV1::Status, decorator: Google::Apis::SecretmanagerV1::Status::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -481,9 +537,25 @@ module Google
         end
       end
       
+      class ResourcePolicyMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_name_principal, as: 'iamPolicyNamePrincipal'
+          property :iam_policy_uid_principal, as: 'iamPolicyUidPrincipal'
+        end
+      end
+      
+      class RotateSecretRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Rotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :managed_rotation_status, as: 'managedRotationStatus', class: Google::Apis::SecretmanagerV1::ManagedRotationStatus, decorator: Google::Apis::SecretmanagerV1::ManagedRotationStatus::Representation
+      
           property :next_rotation_time, as: 'nextRotationTime'
           property :rotation_period, as: 'rotationPeriod'
         end
@@ -500,10 +572,13 @@ module Google
           property :expire_time, as: 'expireTime'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :policy_member, as: 'policyMember', class: Google::Apis::SecretmanagerV1::ResourcePolicyMember, decorator: Google::Apis::SecretmanagerV1::ResourcePolicyMember::Representation
+      
           property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1::Replication, decorator: Google::Apis::SecretmanagerV1::Replication::Representation
       
           property :rotation, as: 'rotation', class: Google::Apis::SecretmanagerV1::Rotation, decorator: Google::Apis::SecretmanagerV1::Rotation::Representation
       
+          property :secret_type, as: 'secretType'
           hash :tags, as: 'tags'
           collection :topics, as: 'topics', class: Google::Apis::SecretmanagerV1::Topic, decorator: Google::Apis::SecretmanagerV1::Topic::Representation
       

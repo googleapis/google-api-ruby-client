@@ -988,6 +988,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1EntrySource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1768,6 +1774,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIamV1ResourcePolicyMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIamV1SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1913,6 +1925,7 @@ module Google
       class GoogleCloudDataplexV1ApproveChangeRequestRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment'
           property :etag, as: 'etag'
         end
       end
@@ -2201,6 +2214,7 @@ module Google
           property :name, as: 'name'
           property :rejection_comment, as: 'rejectionComment'
           property :resource, as: 'resource'
+          property :reviewer_comment, as: 'reviewerComment'
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_entry, as: 'updateEntry', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest::Representation
@@ -2488,6 +2502,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :sql, as: 'sql'
+          property :sql_dialect, as: 'sqlDialect'
         end
       end
       
@@ -2536,6 +2551,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
           collection :generation_scopes, as: 'generationScopes'
+          property :sql_dialect, as: 'sqlDialect'
         end
       end
       
@@ -2550,6 +2566,8 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :parent_data_domain, as: 'parentDataDomain'
+          property :policy_member, as: 'policyMember', class: Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember, decorator: Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember::Representation
+      
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end
@@ -3604,6 +3622,15 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entry_link_type_id, as: 'entryLinkTypeId'
+          property :event_type, as: 'eventType'
+          property :message, as: 'message'
+        end
+      end
+      
       class GoogleCloudDataplexV1EntrySource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4223,7 +4250,6 @@ module Google
       class GoogleCloudDataplexV1LookupContextRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context'
           hash :options, as: 'options'
           collection :resources, as: 'resources'
         end
@@ -4955,6 +4981,14 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleIamV1ResourcePolicyMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_name_principal, as: 'iamPolicyNamePrincipal'
+          property :iam_policy_uid_principal, as: 'iamPolicyUidPrincipal'
         end
       end
       

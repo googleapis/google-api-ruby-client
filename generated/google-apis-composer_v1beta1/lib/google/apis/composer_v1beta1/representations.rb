@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HibernateEnvironmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpAllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class RestartWebServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeEnvironmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -560,6 +572,7 @@ module Google
       
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -641,6 +654,12 @@ module Google
           property :is_failover_replica_available, as: 'isFailoverReplicaAvailable'
           property :primary_gce_zone, as: 'primaryGceZone'
           property :secondary_gce_zone, as: 'secondaryGceZone'
+        end
+      end
+      
+      class HibernateEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -883,6 +902,12 @@ module Google
         end
       end
       
+      class ResumeEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class SaveSnapshotRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -921,6 +946,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :airflow_config_overrides, as: 'airflowConfigOverrides'
+          property :audit_logs_replication_mode, as: 'auditLogsReplicationMode'
           property :cloud_data_lineage_integration, as: 'cloudDataLineageIntegration', class: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration, decorator: Google::Apis::ComposerV1beta1::CloudDataLineageIntegration::Representation
       
           hash :env_variables, as: 'envVariables'

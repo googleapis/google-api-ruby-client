@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -474,6 +480,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audience, as: 'audience'
           property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudtasksV2::Status, decorator: Google::Apis::CloudtasksV2::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       

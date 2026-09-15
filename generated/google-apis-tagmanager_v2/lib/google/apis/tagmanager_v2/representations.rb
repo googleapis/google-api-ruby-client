@@ -58,12 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CompilerErrorLite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -529,14 +523,6 @@ module Google
         end
       end
       
-      class CompilerErrorLite
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message, as: 'errorMessage'
-          property :error_type, as: 'errorType'
-        end
-      end
-      
       class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -671,8 +657,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
-          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
-      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
           property :new_workspace_path, as: 'newWorkspacePath'
@@ -1025,8 +1009,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
-          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
-      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
         end
@@ -1036,8 +1018,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compiler_error, as: 'compilerError'
-          collection :compiler_errors, as: 'compilerErrors', class: Google::Apis::TagmanagerV2::CompilerErrorLite, decorator: Google::Apis::TagmanagerV2::CompilerErrorLite::Representation
-      
           property :container_version, as: 'containerVersion', class: Google::Apis::TagmanagerV2::ContainerVersion, decorator: Google::Apis::TagmanagerV2::ContainerVersion::Representation
       
           property :sync_status, as: 'syncStatus', class: Google::Apis::TagmanagerV2::SyncStatus, decorator: Google::Apis::TagmanagerV2::SyncStatus::Representation

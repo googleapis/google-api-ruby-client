@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ViewerPermissionMissingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcConnectorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +569,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -573,6 +580,7 @@ module Google
           property :location, as: 'location'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -769,6 +777,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :envoy_health_check_firewalls_config_state, as: 'envoyHealthCheckFirewallsConfigState'
           property :load_balancer_name, as: 'loadBalancerName'
           property :matched_port_range, as: 'matchedPortRange'
           property :matched_protocol, as: 'matchedProtocol'
@@ -995,6 +1004,7 @@ module Google
           property :old_source_port, as: 'oldSourcePort'
           property :protocol, as: 'protocol'
           property :router_uri, as: 'routerUri'
+          property :rule_number, as: 'ruleNumber'
           property :type, as: 'type'
         end
       end
@@ -1317,6 +1327,8 @@ module Google
           property :state, as: 'state'
           property :storage_bucket, as: 'storageBucket', class: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo, decorator: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo::Representation
       
+          property :viewer_permission_missing_info, as: 'viewerPermissionMissingInfo', class: Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo::Representation
+      
           property :vpc_connector, as: 'vpcConnector', class: Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo, decorator: Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo::Representation
       
           property :vpn_gateway, as: 'vpnGateway', class: Google::Apis::NetworkmanagementV1beta1::VpnGatewayInfo, decorator: Google::Apis::NetworkmanagementV1beta1::VpnGatewayInfo::Representation
@@ -1355,6 +1367,13 @@ module Google
           property :forward_trace_id, as: 'forwardTraceId'
           collection :steps, as: 'steps', class: Google::Apis::NetworkmanagementV1beta1::Step, decorator: Google::Apis::NetworkmanagementV1beta1::Step::Representation
       
+        end
+      end
+      
+      class ViewerPermissionMissingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       

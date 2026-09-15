@@ -3,7 +3,6 @@
 .yardoc
 .bundle
 .rvmrc
-Gemfile.lock
 coverage
 doc
 heckling

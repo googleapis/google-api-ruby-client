@@ -1,5 +1,9 @@
 # Release history for google-apis-bigquerydatapolicy_v2
 
+### v0.4.0 (2026-08-02)
+
+* Regenerated from discovery document revision 20260722
+
 ### v0.3.0 (2026-06-14)
 
 * Regenerated using generator version 0.19.0

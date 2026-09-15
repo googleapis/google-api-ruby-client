@@ -1980,6 +1980,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_pool, as: 'caPool'
+          property :certificate_issuance_mode, as: 'certificateIssuanceMode'
           property :create_time, as: 'createTime'
           collection :custom_tls_features, as: 'customTlsFeatures'
           property :description, as: 'description'

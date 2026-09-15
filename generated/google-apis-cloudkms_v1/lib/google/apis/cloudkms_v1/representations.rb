@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportTrustedKeyWrappedCryptoKeyVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,12 @@ module Google
       end
       
       class ImportJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportTrustedKeyWrappedCryptoKeyVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -538,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Source
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +575,12 @@ module Google
       end
       
       class UpdateCryptoKeyPrimaryVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeKeyTrust
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -759,6 +783,7 @@ module Google
       
           property :generate_time, as: 'generateTime'
           property :generation_failure_reason, as: 'generationFailureReason'
+          property :hsm_trusted, as: 'hsmTrusted'
           property :import_failure_reason, as: 'importFailureReason'
           property :import_job, as: 'importJob'
           property :import_time, as: 'importTime'
@@ -766,6 +791,7 @@ module Google
           property :protection_level, as: 'protectionLevel'
           property :reimport_eligible, as: 'reimportEligible'
           property :state, as: 'state'
+          property :trusted_wrapping_enabled, as: 'trustedWrappingEnabled'
         end
       end
       
@@ -905,6 +931,14 @@ module Google
         end
       end
       
+      class ExportTrustedKeyWrappedCryptoKeyVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :wrapped_key, :base64 => true, as: 'wrappedKey'
+          property :wrapped_key_crc32c, :numeric_string => true, as: 'wrappedKeyCrc32c'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -918,6 +952,7 @@ module Google
       class ExternalProtectionLevelOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ekm_connection_backend_override, as: 'ekmConnectionBackendOverride'
           property :ekm_connection_key_path, as: 'ekmConnectionKeyPath'
           property :external_key_uri, as: 'externalKeyUri'
         end
@@ -946,6 +981,7 @@ module Google
           property :crypto_key_version, as: 'cryptoKeyVersion'
           property :import_job, as: 'importJob'
           property :rsa_aes_wrapped_key, :base64 => true, as: 'rsaAesWrappedKey'
+          property :trusted_wrapping_enabled, as: 'trustedWrappingEnabled'
           property :wrapped_key, :base64 => true, as: 'wrappedKey'
         end
       end
@@ -967,6 +1003,16 @@ module Google
       
           property :public_key_format, as: 'publicKeyFormat'
           property :state, as: 'state'
+        end
+      end
+      
+      class ImportTrustedKeyWrappedCryptoKeyVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :crypto_key_version, as: 'cryptoKeyVersion'
+          property :importing_key, as: 'importingKey'
+          property :wrapped_key, :base64 => true, as: 'wrappedKey'
         end
       end
       
@@ -1382,6 +1428,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_project, as: 'keyProject'
+          property :key_project_resolution_mode, as: 'keyProjectResolutionMode'
+          property :source, as: 'source', class: Google::Apis::CloudkmsV1::Source, decorator: Google::Apis::CloudkmsV1::Source::Representation
+      
         end
       end
       
@@ -1449,6 +1498,15 @@ module Google
       
           property :state, as: 'state'
           property :ttl, as: 'ttl'
+          property :upgrade_key_trust, as: 'upgradeKeyTrust', class: Google::Apis::CloudkmsV1::UpgradeKeyTrust, decorator: Google::Apis::CloudkmsV1::UpgradeKeyTrust::Representation
+      
+        end
+      end
+      
+      class Source
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -1479,6 +1537,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crypto_key_version_id, as: 'cryptoKeyVersionId'
+        end
+      end
+      
+      class UpgradeKeyTrust
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :two_factor_public_key_pem, as: 'twoFactorPublicKeyPem'
         end
       end
       

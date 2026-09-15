@@ -44,10 +44,15 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1::Finding>]
         attr_accessor :findings
       
-        # Maximum severity found among findings.
+        # Maximum severity found among findings. Per scanner verdict details.
         # Corresponds to the JSON property `maxSeverity`
         # @return [String]
         attr_accessor :max_severity
+      
+        # Per scanner verdict.
+        # Corresponds to the JSON property `perScannerVerdict`
+        # @return [Google::Apis::ContaineranalysisV1::PerScannerVerdict]
+        attr_accessor :per_scanner_verdict
       
         # Name of the skill that produced this analysis.
         # Corresponds to the JSON property `skillName`
@@ -62,6 +67,7 @@ module Google
         def update!(**args)
           @findings = args[:findings] if args.key?(:findings)
           @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @per_scanner_verdict = args[:per_scanner_verdict] if args.key?(:per_scanner_verdict)
           @skill_name = args[:skill_name] if args.key?(:skill_name)
         end
       end
@@ -2763,6 +2769,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -2787,6 +2801,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
@@ -5492,6 +5507,93 @@ module Google
         end
       end
       
+      # Result of Malicious Content LLM scan.
+      class MaliciousContentLlmResult
+        include Google::Apis::Core::Hashable
+      
+        # Tracks max severity found.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # The base name of the model that performed the scan.
+        # Corresponds to the JSON property `modelId`
+        # @return [String]
+        attr_accessor :model_id
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        # Token usage associated with an AI scan.
+        # Corresponds to the JSON property `tokenUsage`
+        # @return [Google::Apis::ContaineranalysisV1::TokenUsage]
+        attr_accessor :token_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @model_id = args[:model_id] if args.key?(:model_id)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+          @token_usage = args[:token_usage] if args.key?(:token_usage)
+        end
+      end
+      
+      # Result of Malicious Content Static scan.
+      class MaliciousContentStaticResult
+        include Google::Apis::Core::Hashable
+      
+        # Tracks max severity found.
+        # Corresponds to the JSON property `maxSeverity`
+        # @return [String]
+        attr_accessor :max_severity
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_severity = args[:max_severity] if args.key?(:max_severity)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+        end
+      end
+      
+      # Result of Malware scan.
+      class MalwareScanResult
+        include Google::Apis::Core::Hashable
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        # Verdict of the scan.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
       # 
       class Material
         include Google::Apis::Core::Hashable
@@ -6158,6 +6260,43 @@ module Google
           @name = args[:name] if args.key?(:name)
           @package_type = args[:package_type] if args.key?(:package_type)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class PerScannerVerdict
+        include Google::Apis::Core::Hashable
+      
+        # Result of Malicious Content LLM scan.
+        # Corresponds to the JSON property `maliciousContentLlmResult`
+        # @return [Google::Apis::ContaineranalysisV1::MaliciousContentLlmResult]
+        attr_accessor :malicious_content_llm_result
+      
+        # Result of Malicious Content Static scan.
+        # Corresponds to the JSON property `maliciousContentStaticResult`
+        # @return [Google::Apis::ContaineranalysisV1::MaliciousContentStaticResult]
+        attr_accessor :malicious_content_static_result
+      
+        # Result of Malware scan.
+        # Corresponds to the JSON property `malwareScan`
+        # @return [Google::Apis::ContaineranalysisV1::MalwareScanResult]
+        attr_accessor :malware_scan
+      
+        # Result of Workspace Policy scan.
+        # Corresponds to the JSON property `workspacePolicy`
+        # @return [Google::Apis::ContaineranalysisV1::WorkspacePolicyResult]
+        attr_accessor :workspace_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @malicious_content_llm_result = args[:malicious_content_llm_result] if args.key?(:malicious_content_llm_result)
+          @malicious_content_static_result = args[:malicious_content_static_result] if args.key?(:malicious_content_static_result)
+          @malware_scan = args[:malware_scan] if args.key?(:malware_scan)
+          @workspace_policy = args[:workspace_policy] if args.key?(:workspace_policy)
         end
       end
       
@@ -7519,6 +7658,49 @@ module Google
         end
       end
       
+      # Token usage associated with an AI scan.
+      class TokenUsage
+        include Google::Apis::Core::Hashable
+      
+        # Cache matched tokens for implicit cache.
+        # Corresponds to the JSON property `cacheCount`
+        # @return [Fixnum]
+        attr_accessor :cache_count
+      
+        # Tokens in the model response.
+        # Corresponds to the JSON property `candidateCount`
+        # @return [Fixnum]
+        attr_accessor :candidate_count
+      
+        # Tokens in the user request.
+        # Corresponds to the JSON property `promptCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_count
+      
+        # Tokens in the thinking output.
+        # Corresponds to the JSON property `thinkingCount`
+        # @return [Fixnum]
+        attr_accessor :thinking_count
+      
+        # Prompt tokens for using tools.
+        # Corresponds to the JSON property `toolUsePromptCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cache_count = args[:cache_count] if args.key?(:cache_count)
+          @candidate_count = args[:candidate_count] if args.key?(:candidate_count)
+          @prompt_count = args[:prompt_count] if args.key?(:prompt_count)
+          @thinking_count = args[:thinking_count] if args.key?(:thinking_count)
+          @tool_use_prompt_count = args[:tool_use_prompt_count] if args.key?(:tool_use_prompt_count)
+        end
+      end
+      
       # The Upgrade Distribution represents metadata about the Upgrade for each
       # operating system (CPE). Some distributions have additional metadata around
       # updates, classifying them into various categories and severities.
@@ -8204,6 +8386,31 @@ module Google
           @last_published_timestamp = args[:last_published_timestamp] if args.key?(:last_published_timestamp)
           @support_url = args[:support_url] if args.key?(:support_url)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Result of Workspace Policy scan.
+      class WorkspacePolicyResult
+        include Google::Apis::Core::Hashable
+      
+        # Status of the scan.
+        # Corresponds to the JSON property `scanStatus`
+        # @return [String]
+        attr_accessor :scan_status
+      
+        # Verdict of the scan.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scan_status = args[:scan_status] if args.key?(:scan_status)
+          @verdict = args[:verdict] if args.key?(:verdict)
         end
       end
     end

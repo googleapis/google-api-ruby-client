@@ -169,6 +169,11 @@ module Google
         # @return [Hash<String,Google::Apis::HypercomputeclusterV1::StorageResource>]
         attr_accessor :storage_resources
       
+        # Output only. The globally unique identifier for this Cluster.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         # Output only. Time that the cluster was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -189,6 +194,7 @@ module Google
           @orchestrator = args[:orchestrator] if args.key?(:orchestrator)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @storage_resources = args[:storage_resources] if args.key?(:storage_resources)
+          @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end

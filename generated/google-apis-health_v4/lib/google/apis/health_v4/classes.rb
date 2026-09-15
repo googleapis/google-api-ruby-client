@@ -808,10 +808,10 @@ module Google
       
         # Authorization mechanism for a subscriber endpoint. For all requests sent by
         # the Webhooks service, the JSON payload is cryptographically signed. The
-        # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-        # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-        # signature using Google Health API's public key to confirm the payload was sent
-        # by the Health API.
+        # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+        # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+        # this signature using Google Health API's public key to confirm the payload was
+        # sent by the Health API.
         # Corresponds to the JSON property `endpointAuthorization`
         # @return [Google::Apis::HealthV4::EndpointAuthorization]
         attr_accessor :endpoint_authorization
@@ -1112,9 +1112,12 @@ module Google
         # Optional. The data source family name to roll up. If empty, data points from
         # all available data sources will be rolled up. Format: `users/me/
         # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
-        # dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/
-        # google-wearables` - tracker devices - `users/me/dataSourceFamilies/google-
-        # sources` - Google first party sources
+        # dataSourceFamilies/all-sources` - Default value. Includes data from all
+        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
+        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
+        # data from tracker devices, manually logged data, and Health Connect.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -1307,7 +1310,12 @@ module Google
         # @return [Google::Apis::HealthV4::TimeInHeartRateZoneRollupValue]
         attr_accessor :time_in_heart_rate_zone
       
-        # Represents the result of the rollup of the user's total calories.
+        # Represents the result of the rollup of the user's total calories. Note:
+        # Queries for the `total-calories` data type must include a time interval filter
+        # (such as `total_calories.interval.start_time` or `total_calories.interval.
+        # civil_start_time`). The maximum range is 14 days. Example filter query: `
+        # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+        # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
         # Corresponds to the JSON property `totalCalories`
         # @return [Google::Apis::HealthV4::TotalCaloriesRollupValue]
         attr_accessor :total_calories
@@ -1617,6 +1625,16 @@ module Google
         # @return [Google::Apis::HealthV4::IrregularRhythmNotification]
         attr_accessor :irregular_rhythm_notification
       
+        # Menstrual period record.
+        # Corresponds to the JSON property `menstrualPeriod`
+        # @return [Google::Apis::HealthV4::MenstrualPeriod]
+        attr_accessor :menstrual_period
+      
+        # Moods record.
+        # Corresponds to the JSON property `moods`
+        # @return [Google::Apis::HealthV4::Moods]
+        attr_accessor :moods
+      
         # Identifier. Data point name, only supported for the subset of identifiable
         # data types. For the majority of the data types, individual data points do not
         # need to be identified and this field would be empty. Format: `users/`user`/
@@ -1632,18 +1650,23 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Holds information about a user logged food. There are two ways of creating a
-        # nutrition log based on the food type: 1. Identified food: Using the food field,
-        # which is a reference to a Food resource. In this case fields `nutrients`, `
-        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # Holds information about food logged by a user. There are two ways of creating
+        # a nutrition log based on the food type: 1. Identified food: Using the food
+        # field, which is a reference to a Food resource. In this case fields `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
         # food_display_name` will be populated based on the referenced food. 2.
         # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
         # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
         # manually. The identified food is preferred over the anonymous food. Nutrition
-        # logs created from anonymous food are not be editable.
+        # logs created from anonymous food are not editable.
         # Corresponds to the JSON property `nutritionLog`
         # @return [Google::Apis::HealthV4::NutritionLog]
         attr_accessor :nutrition_log
+      
+        # Ovulation test record.
+        # Corresponds to the JSON property `ovulationTest`
+        # @return [Google::Apis::HealthV4::OvulationTest]
+        attr_accessor :ovulation_test
       
         # Captures the user's instantaneous oxygen saturation percentage (SpO2).
         # Corresponds to the JSON property `oxygenSaturation`
@@ -1682,6 +1705,11 @@ module Google
         # Corresponds to the JSON property `swimLengthsData`
         # @return [Google::Apis::HealthV4::SwimLengthsData]
         attr_accessor :swim_lengths_data
+      
+        # Symptoms logged by the user.
+        # Corresponds to the JSON property `symptoms`
+        # @return [Google::Apis::HealthV4::Symptoms]
+        attr_accessor :symptoms
       
         # Time in heart rate zone record. It's an interval spent in specific heart rate
         # zone.
@@ -1733,8 +1761,11 @@ module Google
           @height = args[:height] if args.key?(:height)
           @hydration_log = args[:hydration_log] if args.key?(:hydration_log)
           @irregular_rhythm_notification = args[:irregular_rhythm_notification] if args.key?(:irregular_rhythm_notification)
+          @menstrual_period = args[:menstrual_period] if args.key?(:menstrual_period)
+          @moods = args[:moods] if args.key?(:moods)
           @name = args[:name] if args.key?(:name)
           @nutrition_log = args[:nutrition_log] if args.key?(:nutrition_log)
+          @ovulation_test = args[:ovulation_test] if args.key?(:ovulation_test)
           @oxygen_saturation = args[:oxygen_saturation] if args.key?(:oxygen_saturation)
           @respiratory_rate_sleep_summary = args[:respiratory_rate_sleep_summary] if args.key?(:respiratory_rate_sleep_summary)
           @run_vo2_max = args[:run_vo2_max] if args.key?(:run_vo2_max)
@@ -1742,6 +1773,7 @@ module Google
           @sleep = args[:sleep] if args.key?(:sleep)
           @steps = args[:steps] if args.key?(:steps)
           @swim_lengths_data = args[:swim_lengths_data] if args.key?(:swim_lengths_data)
+          @symptoms = args[:symptoms] if args.key?(:symptoms)
           @time_in_heart_rate_zone = args[:time_in_heart_rate_zone] if args.key?(:time_in_heart_rate_zone)
           @vo2_max = args[:vo2_max] if args.key?(:vo2_max)
           @weight = args[:weight] if args.key?(:weight)
@@ -2078,10 +2110,10 @@ module Google
       
       # Authorization mechanism for a subscriber endpoint. For all requests sent by
       # the Webhooks service, the JSON payload is cryptographically signed. The
-      # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-      # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-      # signature using Google Health API's public key to confirm the payload was sent
-      # by the Health API.
+      # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+      # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+      # this signature using Google Health API's public key to confirm the payload was
+      # sent by the Health API.
       class EndpointAuthorization
         include Google::Apis::Core::Hashable
       
@@ -2117,7 +2149,7 @@ module Google
       class EnergyQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the energy in kilocalories.
+        # Required. The energy value in kilocalories.
         # Corresponds to the JSON property `kcal`
         # @return [Float]
         attr_accessor :kcal
@@ -2177,7 +2209,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. Exercise display name.
+        # Required. The localized, human-readable name of the exercise. For all exercise
+        # types other than `OTHER`, the system ignores client input and overrides this
+        # field with a generated name based on `exercise_type` (e.g., "Walking" for `
+        # WALKING`). If `exercise_type` is `OTHER`, this field can contain the user's
+        # custom, free-form display name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2868,6 +2904,54 @@ module Google
         end
       end
       
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
       # Represents an HTTP header.
       class HttpHeader
         include Google::Apis::Core::Hashable
@@ -3244,6 +3328,40 @@ module Google
         end
       end
       
+      # Represents the POST body contained in a GetShlManifestRequest This message is
+      # nested to represent that See https://build.fhir.org/ig/HL7/smart-health-cards-
+      # and-links/links-specification.html#smart-health-link-manifest-request
+      class ManifestParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Integer upper bound on the length of embedded payloads
+        # Corresponds to the JSON property `embeddedLengthMax`
+        # @return [Fixnum]
+        attr_accessor :embedded_length_max
+      
+        # Optional.
+        # Corresponds to the JSON property `passcode`
+        # @return [String]
+        attr_accessor :passcode
+      
+        # Required. A string describing the recipient (e.g.,the name of an organization
+        # or person) suitable for display to the Receiving User
+        # Corresponds to the JSON property `recipient`
+        # @return [String]
+        attr_accessor :recipient
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embedded_length_max = args[:embedded_length_max] if args.key?(:embedded_length_max)
+          @passcode = args[:passcode] if args.key?(:passcode)
+          @recipient = args[:recipient] if args.key?(:recipient)
+        end
+      end
+      
       # Software as Medical Device (SaMD) metadata. Used to construct the Unique
       # Device Identifier (UDI).
       class MedicalDeviceInfo
@@ -3287,6 +3405,31 @@ module Google
           @feature_version = args[:feature_version] if args.key?(:feature_version)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @service_version = args[:service_version] if args.key?(:service_version)
+        end
+      end
+      
+      # Menstrual period record.
+      class MenstrualPeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval of an observed data point.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::HealthV4::ObservationTimeInterval]
+        attr_accessor :interval
+      
+        # Optional. Standard free-form notes captured at manual logging.
+        # Corresponds to the JSON property `notes`
+        # @return [String]
+        attr_accessor :notes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @notes = args[:notes] if args.key?(:notes)
         end
       end
       
@@ -3425,11 +3568,42 @@ module Google
         end
       end
       
+      # Moods record.
+      class Moods
+        include Google::Apis::Core::Hashable
+      
+        # Required. The moods logged.
+        # Corresponds to the JSON property `moods`
+        # @return [Array<String>]
+        attr_accessor :moods
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Optional. The valences.
+        # Corresponds to the JSON property `valences`
+        # @return [Array<String>]
+        attr_accessor :valences
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @moods = args[:moods] if args.key?(:moods)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @valences = args[:valences] if args.key?(:valences)
+        end
+      end
+      
       # Represents the quantity of a nutrient.
       class NutrientQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the nutrient.
+        # Required. The nutrient type.
         # Corresponds to the JSON property `nutrient`
         # @return [String]
         attr_accessor :nutrient
@@ -3475,15 +3649,15 @@ module Google
         end
       end
       
-      # Holds information about a user logged food. There are two ways of creating a
-      # nutrition log based on the food type: 1. Identified food: Using the food field,
-      # which is a reference to a Food resource. In this case fields `nutrients`, `
-      # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+      # Holds information about food logged by a user. There are two ways of creating
+      # a nutrition log based on the food type: 1. Identified food: Using the food
+      # field, which is a reference to a Food resource. In this case fields `nutrients`
+      # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
       # food_display_name` will be populated based on the referenced food. 2.
       # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
       # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
       # manually. The identified food is preferred over the anonymous food. Nutrition
-      # logs created from anonymous food are not be editable.
+      # logs created from anonymous food are not editable.
       class NutritionLog
         include Google::Apis::Core::Hashable
       
@@ -3497,14 +3671,15 @@ module Google
         # @return [Google::Apis::HealthV4::EnergyQuantity]
         attr_accessor :energy_from_fat
       
-        # Required. Represents the food ID.
+        # Optional. The resource name of the Food item. Required when creating a
+        # nutrition log from an identified food. For anonymous food logs, use the `
+        # food_display_name` field instead.
         # Corresponds to the JSON property `food`
         # @return [String]
         attr_accessor :food
       
-        # Value representing the display name of the food. For nutrition logs created
-        # from an identified food, this field will be populated based on the referenced
-        # food. For anonymous food, this field will be populated manually.
+        # The display name of the food. For identified food logs, this is populated
+        # automatically from the referenced food.
         # Corresponds to the JSON property `foodDisplayName`
         # @return [String]
         attr_accessor :food_display_name
@@ -3515,12 +3690,12 @@ module Google
         # @return [Google::Apis::HealthV4::SessionTimeInterval]
         attr_accessor :interval
       
-        # Optional. Value representing the meal type of the nutrition log.
+        # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
         # Corresponds to the JSON property `mealType`
         # @return [String]
         attr_accessor :meal_type
       
-        # Optional. Value representing the nutrients of the nutrition log.
+        # Optional. An array of individual nutrient values for the nutrition log.
         # Corresponds to the JSON property `nutrients`
         # @return [Array<Google::Apis::HealthV4::NutrientQuantity>]
         attr_accessor :nutrients
@@ -3790,6 +3965,31 @@ module Google
           @end_utc_offset = args[:end_utc_offset] if args.key?(:end_utc_offset)
           @start_time = args[:start_time] if args.key?(:start_time)
           @start_utc_offset = args[:start_utc_offset] if args.key?(:start_utc_offset)
+        end
+      end
+      
+      # Ovulation test record.
+      class OvulationTest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The result of the ovulation test.
+        # Corresponds to the JSON property `result`
+        # @return [String]
+        attr_accessor :result
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @result = args[:result] if args.key?(:result)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
         end
       end
       
@@ -4186,15 +4386,15 @@ module Google
         # @return [Google::Apis::HealthV4::HydrationLog]
         attr_accessor :hydration_log
       
-        # Holds information about a user logged food. There are two ways of creating a
-        # nutrition log based on the food type: 1. Identified food: Using the food field,
-        # which is a reference to a Food resource. In this case fields `nutrients`, `
-        # energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
+        # Holds information about food logged by a user. There are two ways of creating
+        # a nutrition log based on the food type: 1. Identified food: Using the food
+        # field, which is a reference to a Food resource. In this case fields `nutrients`
+        # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `
         # food_display_name` will be populated based on the referenced food. 2.
         # Anonymous food: Using the `food_display_name` field and setting the `nutrients`
         # , `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields
         # manually. The identified food is preferred over the anonymous food. Nutrition
-        # logs created from anonymous food are not be editable.
+        # logs created from anonymous food are not editable.
         # Corresponds to the JSON property `nutritionLog`
         # @return [Google::Apis::HealthV4::NutritionLog]
         attr_accessor :nutrition_log
@@ -4404,9 +4604,12 @@ module Google
         # Optional. The data source family name to roll up. If empty, data points from
         # all available data sources will be rolled up. Format: `users/me/
         # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
-        # dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/
-        # google-wearables` - tracker devices - `users/me/dataSourceFamilies/google-
-        # sources` - Google first party sources
+        # dataSourceFamilies/all-sources` - Default value. Includes data from all
+        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
+        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
+        # data from tracker devices, manually logged data, and Health Connect.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -4594,7 +4797,12 @@ module Google
         # @return [Google::Apis::HealthV4::TimeInHeartRateZoneRollupValue]
         attr_accessor :time_in_heart_rate_zone
       
-        # Represents the result of the rollup of the user's total calories.
+        # Represents the result of the rollup of the user's total calories. Note:
+        # Queries for the `total-calories` data type must include a time interval filter
+        # (such as `total_calories.interval.start_time` or `total_calories.interval.
+        # civil_start_time`). The maximum range is 14 days. Example filter query: `
+        # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+        # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
         # Corresponds to the JSON property `totalCalories`
         # @return [Google::Apis::HealthV4::TotalCaloriesRollupValue]
         attr_accessor :total_calories
@@ -4738,7 +4946,7 @@ module Google
       class Serving
         include Google::Apis::Core::Hashable
       
-        # Optional. Amount of food consumed, fractional values are supported.
+        # Optional. The number of servings.
         # Corresponds to the JSON property `amount`
         # @return [Float]
         attr_accessor :amount
@@ -4833,8 +5041,7 @@ module Google
         attr_accessor :auto_stride_enabled
         alias_method :auto_stride_enabled?, :auto_stride_enabled
       
-        # Optional. The measurement unit defined in the user's account settings. Updates
-        # to this field are currently not supported.
+        # Optional. The measurement unit defined in the user's account settings.
         # Corresponds to the JSON property `distanceUnit`
         # @return [String]
         attr_accessor :distance_unit
@@ -4967,6 +5174,12 @@ module Google
         # @return [Array<Google::Apis::HealthV4::OutOfBedSegment>]
         attr_accessor :out_of_bed_segments
       
+        # Output only. List of short awake segments (under a set threshold) that are
+        # part of the sleep session. These can overlap with sleep stages.
+        # Corresponds to the JSON property `shortAwakenings`
+        # @return [Array<Google::Apis::HealthV4::SleepStage>]
+        attr_accessor :short_awakenings
+      
         # Optional. List of non-overlapping contiguous sleep stage segments that cover
         # the sleep period.
         # Corresponds to the JSON property `stages`
@@ -4998,6 +5211,7 @@ module Google
           @interval = args[:interval] if args.key?(:interval)
           @metadata = args[:metadata] if args.key?(:metadata)
           @out_of_bed_segments = args[:out_of_bed_segments] if args.key?(:out_of_bed_segments)
+          @short_awakenings = args[:short_awakenings] if args.key?(:short_awakenings)
           @stages = args[:stages] if args.key?(:stages)
           @summary = args[:summary] if args.key?(:summary)
           @type = args[:type] if args.key?(:type)
@@ -5013,6 +5227,15 @@ module Google
         # Corresponds to the JSON property `externalId`
         # @return [String]
         attr_accessor :external_id
+      
+        # Output only. `main_sleep`: the longest sleep session with stages within one
+        # day. If no sleep session has stages, then the longest sleep is the `main_sleep`
+        # . If there are multiple days of sleep in the response, there is one `
+        # main_sleep` per day.
+        # Corresponds to the JSON property `mainSleep`
+        # @return [Boolean]
+        attr_accessor :main_sleep
+        alias_method :main_sleep?, :main_sleep
       
         # Output only. Some sleeps autodetected by algorithms can be manually edited by
         # users.
@@ -5048,6 +5271,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @external_id = args[:external_id] if args.key?(:external_id)
+          @main_sleep = args[:main_sleep] if args.key?(:main_sleep)
           @manually_edited = args[:manually_edited] if args.key?(:manually_edited)
           @nap = args[:nap] if args.key?(:nap)
           @processed = args[:processed] if args.key?(:processed)
@@ -5347,10 +5571,10 @@ module Google
       
         # Authorization mechanism for a subscriber endpoint. For all requests sent by
         # the Webhooks service, the JSON payload is cryptographically signed. The
-        # signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This is an
-        # ECDSA (NIST P256) signature of the JSON payload. Clients must verify this
-        # signature using Google Health API's public key to confirm the payload was sent
-        # by the Health API.
+        # signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This
+        # is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify
+        # this signature using Google Health API's public key to confirm the payload was
+        # sent by the Health API.
         # Corresponds to the JSON property `endpointAuthorization`
         # @return [Google::Apis::HealthV4::EndpointAuthorization]
         attr_accessor :endpoint_authorization
@@ -5527,6 +5751,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stroke_count_sum = args[:stroke_count_sum] if args.key?(:stroke_count_sum)
+        end
+      end
+      
+      # Symptoms logged by the user.
+      class Symptoms
+        include Google::Apis::Core::Hashable
+      
+        # Represents a sample time of an observed data point.
+        # Corresponds to the JSON property `sampleTime`
+        # @return [Google::Apis::HealthV4::ObservationSampleTime]
+        attr_accessor :sample_time
+      
+        # Required. List of symptoms experienced.
+        # Corresponds to the JSON property `symptoms`
+        # @return [Array<String>]
+        attr_accessor :symptoms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sample_time = args[:sample_time] if args.key?(:sample_time)
+          @symptoms = args[:symptoms] if args.key?(:symptoms)
         end
       end
       
@@ -5708,7 +5957,12 @@ module Google
         end
       end
       
-      # Represents the result of the rollup of the user's total calories.
+      # Represents the result of the rollup of the user's total calories. Note:
+      # Queries for the `total-calories` data type must include a time interval filter
+      # (such as `total_calories.interval.start_time` or `total_calories.interval.
+      # civil_start_time`). The maximum range is 14 days. Example filter query: `
+      # total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND
+      # total_calories.interval.start_time < "2026-04-21T00:00:00Z"`
       class TotalCaloriesRollupValue
         include Google::Apis::Core::Hashable
       
@@ -5846,7 +6100,7 @@ module Google
       class WeightQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the weight in grams.
+        # Required. The weight value in grams.
         # Corresponds to the JSON property `grams`
         # @return [Float]
         attr_accessor :grams

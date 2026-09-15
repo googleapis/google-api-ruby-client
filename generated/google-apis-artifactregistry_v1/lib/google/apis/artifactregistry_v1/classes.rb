@@ -2224,6 +2224,20 @@ module Google
         end
       end
       
+      # The configuration for the no-cache fetching mode, which acts as a non-caching
+      # proxy.
+      class NoCacheFetching
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # NpmPackage represents an npm artifact.
       class NpmPackage
         include Google::Apis::Core::Hashable
@@ -2850,6 +2864,12 @@ module Google
         # @return [Google::Apis::ArtifactregistryV1::MavenRepository]
         attr_accessor :maven_repository
       
+        # The configuration for the no-cache fetching mode, which acts as a non-caching
+        # proxy.
+        # Corresponds to the JSON property `noCache`
+        # @return [Google::Apis::ArtifactregistryV1::NoCacheFetching]
+        attr_accessor :no_cache
+      
         # Configuration for a Npm remote repository.
         # Corresponds to the JSON property `npmRepository`
         # @return [Google::Apis::ArtifactregistryV1::NpmRepository]
@@ -2882,6 +2902,7 @@ module Google
           @disable_upstream_validation = args[:disable_upstream_validation] if args.key?(:disable_upstream_validation)
           @docker_repository = args[:docker_repository] if args.key?(:docker_repository)
           @maven_repository = args[:maven_repository] if args.key?(:maven_repository)
+          @no_cache = args[:no_cache] if args.key?(:no_cache)
           @npm_repository = args[:npm_repository] if args.key?(:npm_repository)
           @python_repository = args[:python_repository] if args.key?(:python_repository)
           @upstream_credentials = args[:upstream_credentials] if args.key?(:upstream_credentials)
@@ -3356,6 +3377,12 @@ module Google
         # @return [String]
         attr_accessor :file_id
       
+        # Optional. The type of the file to upload. Defaulting to ATTACHMENT if not
+        # specified.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3363,6 +3390,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @file_id = args[:file_id] if args.key?(:file_id)
+          @file_type = args[:file_type] if args.key?(:file_type)
         end
       end
       
@@ -3421,6 +3449,13 @@ module Google
         # @return [String]
         attr_accessor :package_id
       
+        # Optional. Client specified annotations to attach to the version upon creation.
+        # This field is only applied if the Version is created during this upload. If
+        # the Version already exists and this field is set, the request will fail.
+        # Corresponds to the JSON property `versionAnnotations`
+        # @return [Hash<String,String>]
+        attr_accessor :version_annotations
+      
         # The ID of the version of the generic artifact. If the version does not exist,
         # a new version will be created. The version_id must start and end with a letter
         # or number, can only contain lowercase letters, numbers, the following
@@ -3438,6 +3473,7 @@ module Google
         def update!(**args)
           @filename = args[:filename] if args.key?(:filename)
           @package_id = args[:package_id] if args.key?(:package_id)
+          @version_annotations = args[:version_annotations] if args.key?(:version_annotations)
           @version_id = args[:version_id] if args.key?(:version_id)
         end
       end
@@ -3880,7 +3916,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Config for whether this repository has vulnerability scanning
-        # disabled.
+        # disabled. When unset (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as
+        # INHERITED for Docker repositories and DISABLED for non-Docker repositories.
         # Corresponds to the JSON property `enablementConfig`
         # @return [String]
         attr_accessor :enablement_config

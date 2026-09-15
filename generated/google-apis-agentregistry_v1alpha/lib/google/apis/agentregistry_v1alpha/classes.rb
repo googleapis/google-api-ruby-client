@@ -250,6 +250,27 @@ module Google
         end
       end
       
+      # Direct write-only raw archive payload upload.
+      class ArchiveUploadSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Input only. Write-only raw ZIP/TAR archive payload bytes containing
+        # the skill package.
+        # Corresponds to the JSON property `archiveContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :archive_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_content = args[:archive_content] if args.key?(:archive_content)
+        end
+      end
+      
       # The AuthProvider of the Binding.
       class AuthProviderBinding
         include Google::Apis::Core::Hashable
@@ -515,6 +536,77 @@ module Google
         end
       end
       
+      # Structured metadata attributes extracted from the package's local SKILL.md
+      # frontmatter.
+      class Frontmatter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Environmental dependencies or local sidecars.
+        # Corresponds to the JSON property `compatibility`
+        # @return [String]
+        attr_accessor :compatibility
+      
+        # Required. Functional description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. License.
+        # Corresponds to the JSON property `license`
+        # @return [String]
+        attr_accessor :license
+      
+        # Optional. Extensible flattened map mapping custom tags, authors, and version
+        # parameters.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
+      
+        # Required. The name of the skill.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility = args[:compatibility] if args.key?(:compatibility)
+          @description = args[:description] if args.key?(:description)
+          @license = args[:license] if args.key?(:license)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Specifications for Cloud Storage objects.
+      class GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Cloud Storage object generation ID. If not specified, the latest
+        # generation is used.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Required. Cloud Storage object URI. Format: `gs://`bucket_name`/`object_name``
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @generation = args[:generation] if args.key?(:generation)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents the connection details for an Agent or MCP Server.
       class Interface
         include Google::Apis::Core::Hashable
@@ -705,6 +797,31 @@ module Google
         end
       end
       
+      # Response listing Publishers.
+      class ListPublishersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page offset continuation token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The returned list of Publishers.
+        # Corresponds to the JSON property `publishers`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Publisher>]
+        attr_accessor :publishers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @publishers = args[:publishers] if args.key?(:publishers)
+        end
+      end
+      
       # Message for response to listing Services
       class ListServicesResponse
         include Google::Apis::Core::Hashable
@@ -730,6 +847,62 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # Response listing Revisions.
+      class ListSkillRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page offset continuation token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Returned version snapshot list.
+        # Corresponds to the JSON property `skillRevisions`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::SkillRevision>]
+        attr_accessor :skill_revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @skill_revisions = args[:skill_revisions] if args.key?(:skill_revisions)
+        end
+      end
+      
+      # Response structure listing logical Skills.
+      class ListSkillsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Page continuation continuation token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Returned container list.
+        # Corresponds to the JSON property `skills`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Skill>]
+        attr_accessor :skills
+      
+        # Unreachable locations or failures.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @skills = args[:skills] if args.key?(:skills)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1032,6 +1205,59 @@ module Google
         end
       end
       
+      # Represents a verified Publisher of Skills. Prepopulated publishers include `
+      # publishers/cloud.google.com` and `publishers/workspace.google.com`.
+      class Publisher
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Human readable display name of the publisher.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. URI pointing to official publisher documentation.
+        # Corresponds to the JSON property `documentationUri`
+        # @return [String]
+        attr_accessor :documentation_uri
+      
+        # Identifier. Resource name of the publisher. Format: `projects/`project`/
+        # locations/`location`/publishers/`publisher``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The curation tier of the publisher.
+        # Corresponds to the JSON property `publisherTier`
+        # @return [String]
+        attr_accessor :publisher_tier
+      
+        # Optional. URI pointing to the support portal or email.
+        # Corresponds to the JSON property `supportUri`
+        # @return [String]
+        attr_accessor :support_uri
+      
+        # Required. The verified prefix (e.g. "snowflake-", "google-") associated with
+        # this publisher. The system uses this prefix to enforce name-squatting rules
+        # during Skill registration. Must be globally unique across all publishers.
+        # Corresponds to the JSON property `verifiedPrefix`
+        # @return [String]
+        attr_accessor :verified_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @documentation_uri = args[:documentation_uri] if args.key?(:documentation_uri)
+          @name = args[:name] if args.key?(:name)
+          @publisher_tier = args[:publisher_tier] if args.key?(:publisher_tier)
+          @support_uri = args[:support_uri] if args.key?(:support_uri)
+          @verified_prefix = args[:verified_prefix] if args.key?(:verified_prefix)
+        end
+      end
+      
       # Message for searching Agents
       class SearchAgentsRequest
         include Google::Apis::Core::Hashable
@@ -1198,6 +1424,31 @@ module Google
         end
       end
       
+      # Response listing searched Skills.
+      class SearchSkillsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Query page offset continuation token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Matched Skills list.
+        # Corresponds to the JSON property `skills`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Skill>]
+        attr_accessor :skills
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @skills = args[:skills] if args.key?(:skills)
+        end
+      end
+      
       # Represents a user-defined Service.
       class Service
         include Google::Apis::Core::Hashable
@@ -1274,6 +1525,192 @@ module Google
           @name = args[:name] if args.key?(:name)
           @registry_resource = args[:registry_resource] if args.key?(:registry_resource)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents an Executable Agent Skill or a Composite Tool Suite (Bundle).
+      # Sibling resource with Agent and McpServer under agentregistry.googleapis.com.
+      class Skill
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The full resource name of the revision currently served by default (
+        # floating track). Format: `projects/`project`/locations/`location`/skills/`
+        # skill`/revisions/`revision``
+        # Corresponds to the JSON property `defaultRevision`
+        # @return [String]
+        attr_accessor :default_revision
+      
+        # Optional. Brief summary describing the capabilities of the skill. Maximum
+        # length is 2048 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Human-readable display name of the skill. Maximum length is 128
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Structured metadata attributes extracted from the package's local SKILL.md
+        # frontmatter.
+        # Corresponds to the JSON property `frontmatter`
+        # @return [Google::Apis::AgentregistryV1alpha::Frontmatter]
+        attr_accessor :frontmatter
+      
+        # Represents an immutable, versioned snapshot of a Skill package.
+        # Corresponds to the JSON property `initialRevision`
+        # @return [Google::Apis::AgentregistryV1alpha::SkillRevision]
+        attr_accessor :initial_revision
+      
+        # Identifier. Resource name of the Skill. Format: `projects/`project`/locations/`
+        # location`/skills/`skill`` The ``skill`` segment acts as the resource ID. If
+        # the skill is associated with a Publisher, this segment typically uses a
+        # hyphenated namespace prefix corresponding to the publisher (e.g., `google-
+        # workspace-create-docs`).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The publisher resource associated with this skill. Format: `projects/
+        # `project`/locations/`location`/publishers/`publisher`` The publisher dictates
+        # the allowed namespace prefixes for the skill's name and logical `skill_id` (e.
+        # g., Publisher `google` authorizes the `google-*` prefix).
+        # Corresponds to the JSON property `publisher`
+        # @return [String]
+        attr_accessor :publisher
+      
+        # Output only. A stable, globally unique logical identifier for the skill. It is
+        # securely constructed by the backend by combining the associated `publisher`'s
+        # verified namespace and the skill's resource ID to enforce strict ownership.
+        # For example, the prefix `google-` is reserved exclusively for first-party
+        # Google publishers to prevent namespace squatting. Example: `urn:skill:google-
+        # workspace:create-docs`
+        # Corresponds to the JSON property `skillId`
+        # @return [String]
+        attr_accessor :skill_id
+      
+        # Output only. The system-managed state of the skill.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. User-managed target state of the skill.
+        # Corresponds to the JSON property `targetState`
+        # @return [String]
+        attr_accessor :target_state
+      
+        # Required. Structural deployment type (SIMPLE leaf vs COMPOSITE bundle).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Output only. Universally unique identifier (UUID4) for the logical container.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_revision = args[:default_revision] if args.key?(:default_revision)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @frontmatter = args[:frontmatter] if args.key?(:frontmatter)
+          @initial_revision = args[:initial_revision] if args.key?(:initial_revision)
+          @name = args[:name] if args.key?(:name)
+          @publisher = args[:publisher] if args.key?(:publisher)
+          @skill_id = args[:skill_id] if args.key?(:skill_id)
+          @state = args[:state] if args.key?(:state)
+          @target_state = args[:target_state] if args.key?(:target_state)
+          @type = args[:type] if args.key?(:type)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents an immutable, versioned snapshot of a Skill package.
+      class SkillRevision
+        include Google::Apis::Core::Hashable
+      
+        # Direct write-only raw archive payload upload.
+        # Corresponds to the JSON property `archiveUploadSource`
+        # @return [Google::Apis::AgentregistryV1alpha::ArchiveUploadSource]
+        attr_accessor :archive_upload_source
+      
+        # Output only. Revision creation timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Structured metadata attributes extracted from the package's local SKILL.md
+        # frontmatter.
+        # Corresponds to the JSON property `frontmatter`
+        # @return [Google::Apis::AgentregistryV1alpha::Frontmatter]
+        attr_accessor :frontmatter
+      
+        # Specifications for Cloud Storage objects.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::AgentregistryV1alpha::GcsSource]
+        attr_accessor :gcs_source
+      
+        # Identifier. Resource name of the SkillRevision. Format: `projects/`project`/
+        # locations/`location`/skills/`skill`/revisions/`revision``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Cryptographic SHA-256 integrity and deduplication digest of the
+        # payload zip.
+        # Corresponds to the JSON property `sha256Hash`
+        # @return [String]
+        attr_accessor :sha256_hash
+      
+        # Output only. Size of the compiled zip payload in bytes (assists client
+        # download progress).
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. The system-managed lifecycle state of this revision.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Universally unique identifier (UUID4) for the skill revision.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @archive_upload_source = args[:archive_upload_source] if args.key?(:archive_upload_source)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @frontmatter = args[:frontmatter] if args.key?(:frontmatter)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
+          @name = args[:name] if args.key?(:name)
+          @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

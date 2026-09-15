@@ -51,6 +51,138 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Adds a domain to the allowlist.
+        # @param [Google::Apis::CloudidentityV1::AllowlistedDomain] allowlisted_domain_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_allowlisted_domain(allowlisted_domain_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/allowlistedDomains', options)
+          command.request_representation = Google::Apis::CloudidentityV1::AllowlistedDomain::Representation
+          command.request_object = allowlisted_domain_object
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes a domain from the allowlist.
+        # @param [String] name
+        #   Required. Specifies the [resource name](https://google.aip.dev/122) of the
+        #   domain to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_allowlisted_domain(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::Operation::Representation
+          command.response_class = Google::Apis::CloudidentityV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a specific domain from the allowlist.
+        # @param [String] name
+        #   Required. Specifies the [resource name](https://google.aip.dev/122) of the
+        #   domain to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::AllowlistedDomain] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::AllowlistedDomain]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_allowlisted_domain(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudidentityV1::AllowlistedDomain::Representation
+          command.response_class = Google::Apis::CloudidentityV1::AllowlistedDomain
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the domains in the allowlist.
+        # @param [String] filter
+        #   Optional. Provides an optional filter for list results. Currently, only exact
+        #   matches on the domain are supported, such as "domain = 'google.com'", with no
+        #   composite conditions.
+        # @param [Fixnum] page_size
+        #   Optional. Specifies the requested page size. If unspecified, the service
+        #   returns at most 5000 domains. The maximum value is 5000; values above 5000
+        #   coerce to 5000. The limits can change over time.
+        # @param [String] page_token
+        #   Optional. Identifies a token from a previous page of results, if any.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1::ListAllowlistedDomainsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1::ListAllowlistedDomainsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_allowlisted_domains(filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/allowlistedDomains', options)
+          command.response_representation = Google::Apis::CloudidentityV1::ListAllowlistedDomainsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1::ListAllowlistedDomainsResponse
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels a UserInvitation that was already sent.
         # @param [String] name
         #   Required. `UserInvitation` name in the format `customers/`customer`/
@@ -1307,18 +1439,25 @@ module Google
         #   The `next_page_token` value returned from a previous search request, if any.
         # @param [String] query
         #   Required. The search query. * Must be specified in [Common Expression Language]
-        #   (https://opensource.google/projects/cel). * Must contain equality operators on
-        #   the parent, e.g. `parent == 'customers/`customer_id`'`. The `customer_id` must
-        #   begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://
-        #   support.google.com/cloudidentity/answer/10070793) * Can contain optional
-        #   inclusion operators on `labels` such as `'cloudidentity.googleapis.com/groups.
-        #   discussion_forum' in labels`). * Can contain an optional equality operator on `
-        #   domain_name`. e.g. `domain_name == 'examplepetstore.com'` * Can contain
-        #   optional `startsWith/contains/equality` operators on `group_key`, e.g. `
-        #   group_key.startsWith('dev')`, `group_key.contains('dev'), group_key == 'dev@
-        #   examplepetstore.com'` * Can contain optional `startsWith/contains/equality`
-        #   operators on `display_name`, such as `display_name.startsWith('dev')` , `
-        #   display_name.contains('dev')`, `display_name == 'dev'`
+        #   (https://opensource.google/projects/cel). See [CEL Introduction](https://
+        #   github.com/google/cel-spec/blob/master/doc/intro.md) for CEL syntax usage and
+        #   examples. * Must contain equality operators on the parent, e.g. `parent == '
+        #   customers/`customer_id`'`. The `customer_id` must begin with "C" (for example,
+        #   'C046psxkn'). [Find your customer ID.] (https://support.google.com/
+        #   cloudidentity/answer/10070793) * Can contain optional inclusion operators on `
+        #   labels` such as `'cloudidentity.googleapis.com/groups.discussion_forum' in
+        #   labels`). * Can contain an optional equality operator on `domain_name`. e.g. `
+        #   domain_name == 'examplepetstore.com'` * Can contain optional `startsWith/
+        #   contains/equality` operators on `group_key`, e.g. `group_key.startsWith('dev')`
+        #   , `group_key.contains('dev'), group_key == 'dev@examplepetstore.com'` * Can
+        #   contain optional `startsWith/contains/equality` operators on `display_name`,
+        #   such as `display_name.startsWith('dev')` , `display_name.contains('dev')`, `
+        #   display_name == 'dev'` Examples: * Search for all discussion forums under a
+        #   customer: `parent == 'customers/C046psxkn' && 'cloudidentity.googleapis.com/
+        #   groups.discussion_forum' in labels` * Search for groups with key starting with
+        #   'sales': `parent == 'customers/C046psxkn' && group_key.startsWith('sales')` *
+        #   Search for groups with display name containing 'test': `parent == 'customers/
+        #   C046psxkn' && display_name.contains('test')`
         # @param [String] view
         #   The level of detail to be returned. If unspecified, defaults to `View.BASIC`.
         # @param [String] fields

@@ -337,6 +337,12 @@ module Google
       class GoogleCloudDataplexV1ApproveChangeRequestRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The comment or reason for approving the ChangeRequest. Maximum
+        # length is 1024 characters.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
         # Optional. The etag of the ChangeRequest.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -348,6 +354,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
           @etag = args[:etag] if args.key?(:etag)
         end
       end
@@ -1396,6 +1403,12 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # Output only. The comment provided by the reviewer when approving or rejecting
+        # the ChangeRequest. Maximum length is 1024 characters.
+        # Corresponds to the JSON property `reviewerComment`
+        # @return [String]
+        attr_accessor :reviewer_comment
+      
         # Output only. The current state of the ChangeRequest.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -1458,6 +1471,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @rejection_comment = args[:rejection_comment] if args.key?(:rejection_comment)
           @resource = args[:resource] if args.key?(:resource)
+          @reviewer_comment = args[:reviewer_comment] if args.key?(:reviewer_comment)
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_entry = args[:update_entry] if args.key?(:update_entry)
@@ -2520,6 +2534,11 @@ module Google
         # @return [String]
         attr_accessor :sql
       
+        # Output only. The SQL dialect of the query.
+        # Corresponds to the JSON property `sqlDialect`
+        # @return [String]
+        attr_accessor :sql_dialect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2528,6 +2547,7 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @sql = args[:sql] if args.key?(:sql)
+          @sql_dialect = args[:sql_dialect] if args.key?(:sql_dialect)
         end
       end
       
@@ -2674,6 +2694,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :generation_scopes
       
+        # Optional. The SQL dialect to use in the generated SQL queries. If not
+        # specified, the default dialect is Google SQL.
+        # Corresponds to the JSON property `sqlDialect`
+        # @return [String]
+        attr_accessor :sql_dialect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2682,6 +2708,7 @@ module Google
         def update!(**args)
           @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
           @generation_scopes = args[:generation_scopes] if args.key?(:generation_scopes)
+          @sql_dialect = args[:sql_dialect] if args.key?(:sql_dialect)
         end
       end
       
@@ -2731,6 +2758,12 @@ module Google
         # @return [String]
         attr_accessor :parent_data_domain
       
+        # Output-only policy member strings of a Google Cloud resource's built-in
+        # identity.
+        # Corresponds to the JSON property `policyMember`
+        # @return [Google::Apis::DataplexV1::GoogleIamV1ResourcePolicyMember]
+        attr_accessor :policy_member
+      
         # Output only. System-generated globally unique ID for the DataDomain.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -2754,6 +2787,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent_data_domain = args[:parent_data_domain] if args.key?(:parent_data_domain)
+          @policy_member = args[:policy_member] if args.key?(:policy_member)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -6693,6 +6727,37 @@ module Google
         end
       end
       
+      # Payload associated with EntryLinkType related log events.
+      class GoogleCloudDataplexV1EntryLinkTypeEvent
+        include Google::Apis::Core::Hashable
+      
+        # Name of the resource.
+        # Corresponds to the JSON property `entryLinkTypeId`
+        # @return [String]
+        attr_accessor :entry_link_type_id
+      
+        # The type of the event.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # The log message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_link_type_id = args[:entry_link_type_id] if args.key?(:entry_link_type_id)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # Information related to the source system of the data resource that is
       # represented by the entry.
       class GoogleCloudDataplexV1EntrySource
@@ -8856,12 +8921,6 @@ module Google
       class GoogleCloudDataplexV1LookupContextRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The text representing contextual information for which metadata
-        # context is being requested.
-        # Corresponds to the JSON property `context`
-        # @return [String]
-        attr_accessor :context
-      
         # Optional. Allows to configure the context.Supported options: format - The
         # format of the context (one of yaml, xml, json, default is yaml).
         # context_budget - If provided, the output will be intelligently truncated on a
@@ -8887,7 +8946,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @context = args[:context] if args.key?(:context)
           @options = args[:options] if args.key?(:options)
           @resources = args[:resources] if args.key?(:resources)
         end
@@ -11807,6 +11865,40 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Output-only policy member strings of a Google Cloud resource's built-in
+      # identity.
+      class GoogleIamV1ResourcePolicyMember
+        include Google::Apis::Core::Hashable
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # user-assigned name (https://google.aip.dev/122). If a resource is deleted and
+        # recreated with the same name, the binding will be applicable to the new
+        # resource.Example: principal://parametermanager.googleapis.com/projects/12345/
+        # name/locations/us-central1-a/parameters/my-parameter
+        # Corresponds to the JSON property `iamPolicyNamePrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_name_principal
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # system-assigned unique identifier (https://google.aip.dev/148#uid). If a
+        # resource is deleted and recreated with the same name, the binding will not be
+        # applicable to the new resourceExample: principal://parametermanager.googleapis.
+        # com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+        # Corresponds to the JSON property `iamPolicyUidPrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_uid_principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name_principal = args[:iam_policy_name_principal] if args.key?(:iam_policy_name_principal)
+          @iam_policy_uid_principal = args[:iam_policy_uid_principal] if args.key?(:iam_policy_uid_principal)
         end
       end
       

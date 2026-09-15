@@ -569,6 +569,37 @@ module Google
         end
       end
       
+      # Contact information for the app.
+      class AppContactInformation
+        include Google::Apis::Core::Hashable
+      
+        # The contact email for this app. Always set.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # The contact phone for this app. Optionally provided by the developer.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The contact website url for this app. Optionally provided by the developer.
+        # Corresponds to the JSON property `websiteUrl`
+        # @return [String]
+        attr_accessor :website_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @website_url = args[:website_url] if args.key?(:website_url)
+        end
+      end
+      
       # The app details. The resource for DetailsService.
       class AppDetails
         include Google::Apis::Core::Hashable
@@ -697,6 +728,172 @@ module Google
           @remote_in_app_update_data = args[:remote_in_app_update_data] if args.key?(:remote_in_app_update_data)
           @status = args[:status] if args.key?(:status)
           @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # An installable set of active APKs. A set of APKs might only contain 1 APK if
+      # the app in question publishes using APKs. If the app uses app bundles (or a
+      # similar technology), this set should contain all APKs (even optional ones)
+      # that might be installed for this app. A set of APKs should be installable
+      # together. If certain APKs are exclusive to one another and cannot be installed
+      # together, then a separate AppStoreAppActiveApkSet should be created.
+      class AppStoreAppActiveApkSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. The ID for the main base application module. Example: base.apk or
+        # app.apk.
+        # Corresponds to the JSON property `baseApkId`
+        # @return [String]
+        attr_accessor :base_apk_id
+      
+        # Optional. IDs for split modules that might be installed in combination with
+        # the base APK. Can be empty if app bundles (or a similar technology) are not
+        # used. Example: config.en.apk.
+        # Corresponds to the JSON property `splitApkId`
+        # @return [Array<String>]
+        attr_accessor :split_apk_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_apk_id = args[:base_apk_id] if args.key?(:base_apk_id)
+          @split_apk_id = args[:split_apk_id] if args.key?(:split_apk_id)
+        end
+      end
+      
+      # Information about active APKs of an app store hosted app.
+      class AppStoreAppActiveApks
+        include Google::Apis::Core::Hashable
+      
+        # Required. List specifying which APK sets are distributed together. This list
+        # should contain all APKs that you're distributing for this app. Add an entry
+        # for each individual installable set of APKs.
+        # Corresponds to the JSON property `activeApkSets`
+        # @return [Array<Google::Apis::AndroidpublisherV3::AppStoreAppActiveApkSet>]
+        attr_accessor :active_apk_sets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_apk_sets = args[:active_apk_sets] if args.key?(:active_apk_sets)
+        end
+      end
+      
+      # Details about the app.
+      class AppStoreAppDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The app developer's contact email address.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # Required. The app developer's name.
+        # Corresponds to the JSON property `developerName`
+        # @return [String]
+        attr_accessor :developer_name
+      
+        # Optional. Website link for the developer or app.
+        # Corresponds to the JSON property `developerWebsite`
+        # @return [String]
+        attr_accessor :developer_website
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @developer_name = args[:developer_name] if args.key?(:developer_name)
+          @developer_website = args[:developer_website] if args.key?(:developer_website)
+        end
+      end
+      
+      # A policy declaration with its responses.
+      class AppStoreAppPolicyDeclaration
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the policy declaration.
+        # Corresponds to the JSON property `declarationId`
+        # @return [String]
+        attr_accessor :declaration_id
+      
+        # Required. Responses provided for this declaration.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::AndroidpublisherV3::PolicyResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @declaration_id = args[:declaration_id] if args.key?(:declaration_id)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
+      # A localized store listing. These are the details about the app as shown in
+      # your app store.
+      class AppStoreAppStoreListing
+        include Google::Apis::Core::Hashable
+      
+        # Required. Image ID generated from UploadImage for the main app icon.
+        # Corresponds to the JSON property `appIconId`
+        # @return [String]
+        attr_accessor :app_icon_id
+      
+        # Required. The title of the app.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # Required. Comprehensive description text about the app.
+        # Corresponds to the JSON property `fullDescription`
+        # @return [String]
+        attr_accessor :full_description
+      
+        # Required. Language code (e.g., "en-US") of the listing.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Required. Multiple image IDs for screenshot galleries.
+        # Corresponds to the JSON property `screenshotId`
+        # @return [Array<String>]
+        attr_accessor :screenshot_id
+      
+        # Optional. Quick summary about the app.
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # Optional. Link to a video about the app.
+        # Corresponds to the JSON property `videoLink`
+        # @return [String]
+        attr_accessor :video_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_icon_id = args[:app_icon_id] if args.key?(:app_icon_id)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @full_description = args[:full_description] if args.key?(:full_description)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @screenshot_id = args[:screenshot_id] if args.key?(:screenshot_id)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @video_link = args[:video_link] if args.key?(:video_link)
         end
       end
       
@@ -1891,6 +2088,395 @@ module Google
         end
       end
       
+      # LINT.IfChange A view of a Google Play app within the Catalog Export for app
+      # stores.
+      class CatalogAppView
+        include Google::Apis::Core::Hashable
+      
+        # Active versions of the app mapped from `android:versionName` manifest
+        # attributes.
+        # Corresponds to the JSON property `activeVersionNames`
+        # @return [Array<String>]
+        attr_accessor :active_version_names
+      
+        # The category of the app.
+        # Corresponds to the JSON property `appCategory`
+        # @return [String]
+        attr_accessor :app_category
+      
+        # Contact information for the app.
+        # Corresponds to the JSON property `appContactInformation`
+        # @return [Google::Apis::AndroidpublisherV3::AppContactInformation]
+        attr_accessor :app_contact_information
+      
+        # The subcategory of the app e.g. "GAME_ACTION".
+        # Corresponds to the JSON property `appSubcategory`
+        # @return [String]
+        attr_accessor :app_subcategory
+      
+        # The token used for delivery of the app with the Google Play Inline Install API.
+        # Corresponds to the JSON property `deliveryToken`
+        # @return [String]
+        attr_accessor :delivery_token
+      
+        # The developer details of a Google Play app.
+        # Corresponds to the JSON property `developerDetails`
+        # @return [Google::Apis::AndroidpublisherV3::DeveloperDetails]
+        attr_accessor :developer_details
+      
+        # The app may specify multiple sets of device compatibility requirements, and a
+        # device is considered compatible with the app if it satisfies at least one of `
+        # DeviceCompatibilityRequirements`.
+        # Corresponds to the JSON property `deviceCompatibilityRequirements`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceCompatibilityRequirements>]
+        attr_accessor :device_compatibility_requirements
+      
+        # List of devices excluded from the app's distribution even if they are
+        # otherwise compatible with the requirements from
+        # device_compatibility_requirements. These are OR-ed, i.e. a device is excluded
+        # if it matches any of the identifiers.
+        # Corresponds to the JSON property `excludedDevicesByIdentifier`
+        # @return [Array<Google::Apis::AndroidpublisherV3::DeviceIdentifier>]
+        attr_accessor :excluded_devices_by_identifier
+      
+        # List of devices excluded from the app's distribution even if they are
+        # otherwise compatible with the requirements from
+        # device_compatibility_requirements. A device is excluded if it matches any of
+        # given the selectors.
+        # Corresponds to the JSON property `excludedDevicesBySelector`
+        # @return [Array<Google::Apis::AndroidpublisherV3::CatalogDeviceSelector>]
+        attr_accessor :excluded_devices_by_selector
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `firstReleaseDate`
+        # @return [Google::Apis::AndroidpublisherV3::Date]
+        attr_accessor :first_release_date
+      
+        # Whether the app has ads.
+        # Corresponds to the JSON property `hasInAppAds`
+        # @return [Boolean]
+        attr_accessor :has_in_app_ads
+        alias_method :has_in_app_ads?, :has_in_app_ads
+      
+        # Whether the app has in-app purchases through Google Play.
+        # Corresponds to the JSON property `hasInAppPurchases`
+        # @return [Boolean]
+        attr_accessor :has_in_app_purchases
+        alias_method :has_in_app_purchases?, :has_in_app_purchases
+      
+        # The IARC certificate ID for the app.
+        # Corresponds to the JSON property `iarcCertificateId`
+        # @return [String]
+        attr_accessor :iarc_certificate_id
+      
+        # Whether the app is targeted to an adult-only (18+) audience.
+        # Corresponds to the JSON property `isAdultOnlyAudience`
+        # @return [Boolean]
+        attr_accessor :is_adult_only_audience
+        alias_method :is_adult_only_audience?, :is_adult_only_audience
+      
+        # The timestamp when the app was last published.
+        # Corresponds to the JSON property `lastPublishTime`
+        # @return [String]
+        attr_accessor :last_publish_time
+      
+        # The localized store listings of an app.
+        # Corresponds to the JSON property `localizedStoreListings`
+        # @return [Google::Apis::AndroidpublisherV3::LocalizedStoreListings]
+        attr_accessor :localized_store_listings
+      
+        # The package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required permissions declared by the app which apply for all Android SDK
+        # versions.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::CatalogPermission>]
+        attr_accessor :permissions
+      
+        # Required permissions declared by the app which apply for Android SDK versions
+        # SDK 23 and above.
+        # Corresponds to the JSON property `permissionsSdk23`
+        # @return [Array<Google::Apis::AndroidpublisherV3::CatalogPermission>]
+        attr_accessor :permissions_sdk23
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `priceInTheUnitedStates`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :price_in_the_united_states
+      
+        # The URL of the app's privacy policy.
+        # Corresponds to the JSON property `privacyPolicyUrl`
+        # @return [String]
+        attr_accessor :privacy_policy_url
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `salePriceInTheUnitedStates`
+        # @return [Google::Apis::AndroidpublisherV3::Money]
+        attr_accessor :sale_price_in_the_united_states
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_version_names = args[:active_version_names] if args.key?(:active_version_names)
+          @app_category = args[:app_category] if args.key?(:app_category)
+          @app_contact_information = args[:app_contact_information] if args.key?(:app_contact_information)
+          @app_subcategory = args[:app_subcategory] if args.key?(:app_subcategory)
+          @delivery_token = args[:delivery_token] if args.key?(:delivery_token)
+          @developer_details = args[:developer_details] if args.key?(:developer_details)
+          @device_compatibility_requirements = args[:device_compatibility_requirements] if args.key?(:device_compatibility_requirements)
+          @excluded_devices_by_identifier = args[:excluded_devices_by_identifier] if args.key?(:excluded_devices_by_identifier)
+          @excluded_devices_by_selector = args[:excluded_devices_by_selector] if args.key?(:excluded_devices_by_selector)
+          @first_release_date = args[:first_release_date] if args.key?(:first_release_date)
+          @has_in_app_ads = args[:has_in_app_ads] if args.key?(:has_in_app_ads)
+          @has_in_app_purchases = args[:has_in_app_purchases] if args.key?(:has_in_app_purchases)
+          @iarc_certificate_id = args[:iarc_certificate_id] if args.key?(:iarc_certificate_id)
+          @is_adult_only_audience = args[:is_adult_only_audience] if args.key?(:is_adult_only_audience)
+          @last_publish_time = args[:last_publish_time] if args.key?(:last_publish_time)
+          @localized_store_listings = args[:localized_store_listings] if args.key?(:localized_store_listings)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @permissions_sdk23 = args[:permissions_sdk23] if args.key?(:permissions_sdk23)
+          @price_in_the_united_states = args[:price_in_the_united_states] if args.key?(:price_in_the_united_states)
+          @privacy_policy_url = args[:privacy_policy_url] if args.key?(:privacy_policy_url)
+          @sale_price_in_the_united_states = args[:sale_price_in_the_united_states] if args.key?(:sale_price_in_the_united_states)
+        end
+      end
+      
+      # Defines a device selector for a device. A device is considered matched if it
+      # matches any of given the selectors.
+      class CatalogDeviceSelector
+        include Google::Apis::Core::Hashable
+      
+        # The device type selector.
+        # Corresponds to the JSON property `deviceTypeSelector`
+        # @return [String]
+        attr_accessor :device_type_selector
+      
+        # Defines a RAM selector for a device.
+        # Corresponds to the JSON property `ramSelector`
+        # @return [Google::Apis::AndroidpublisherV3::RamSelector]
+        attr_accessor :ram_selector
+      
+        # The SOC selectors. A device matches the device selector if it matches any of
+        # the SOC selectors.
+        # Corresponds to the JSON property `socSelectors`
+        # @return [Array<Google::Apis::AndroidpublisherV3::SocSelector>]
+        attr_accessor :soc_selectors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_type_selector = args[:device_type_selector] if args.key?(:device_type_selector)
+          @ram_selector = args[:ram_selector] if args.key?(:ram_selector)
+          @soc_selectors = args[:soc_selectors] if args.key?(:soc_selectors)
+        end
+      end
+      
+      # A permission declared by an app.
+      class CatalogPermission
+        include Google::Apis::Core::Hashable
+      
+        # The `maxSdkVersion` attribute indicating up to which Android SDK version the
+        # permission is requested.
+        # Corresponds to the JSON property `maxSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :max_sdk_version
+      
+        # The `name` attribute indicating the permission name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines a range of SDK versions. A device is considered compatible uf its\ SDK
+      # version falls within the min_sdk_version and max_sdk_version range.
+      class CatalogSdkVersion
+        include Google::Apis::Core::Hashable
+      
+        # The maximum SDK version required for the app (inclusive).
+        # Corresponds to the JSON property `maxSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :max_sdk_version
+      
+        # The minimum SDK version required for the app (inclusive).
+        # Corresponds to the JSON property `minSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :min_sdk_version
+      
+        # The target SDK version for the app.
+        # Corresponds to the JSON property `targetSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :target_sdk_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_sdk_version = args[:max_sdk_version] if args.key?(:max_sdk_version)
+          @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
+          @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
+        end
+      end
+      
+      # Hash digests of a certificate.
+      class CertificateHashes
+        include Google::Apis::Core::Hashable
+      
+        # Hex-encoded MD5 hash of the certificate. example: `43:51:43:A1:B5:FC:8B:B7:0A:
+        # 3A:A9:B1:0F:66:73:A8`
+        # Corresponds to the JSON property `certificateHashMd5`
+        # @return [String]
+        attr_accessor :certificate_hash_md5
+      
+        # Hex-encoded SHA1 hash of the certificate. example: `86:61:97:1A:D5:EF:E5:74:1E:
+        # A7:5B:84:7C:68:37:65:CD:94:16:DE`
+        # Corresponds to the JSON property `certificateHashSha1`
+        # @return [String]
+        attr_accessor :certificate_hash_sha1
+      
+        # Hex-encoded SHA256 hash of the certificate. example: `94:49:C7:F3:A9:3C:F0:C5:
+        # 5A:67:5D:DF:1C:83:73:2D:87:D5:62:55:E7:0B:15:0D:9E:6F:3C:F8:63:BB:7F:C1`
+        # Corresponds to the JSON property `certificateHashSha256`
+        # @return [String]
+        attr_accessor :certificate_hash_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_hash_md5 = args[:certificate_hash_md5] if args.key?(:certificate_hash_md5)
+          @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
+          @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
+        end
+      end
+      
+      # Reference to a private key hosted in developer-managed Google Cloud KMS.
+      class CloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource identifier of the private key hosted in Google Cloud KMS.
+        # The Google Play service account must be granted Decrypt and Sign permissions
+        # on this resource. Format: projects//locations//keyRings//cryptoKeys//
+        # cryptoKeyVersions/
+        # Corresponds to the JSON property `cryptoKeyVersionResource`
+        # @return [String]
+        attr_accessor :crypto_key_version_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_version_resource = args[:crypto_key_version_resource] if args.key?(:crypto_key_version_resource)
+        end
+      end
+      
+      # Cloud KMS key and the certificate associated with the key.
+      class CloudKmsKeyAndCert
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        # Required. Certificate associated with the key. The bytes must contain the
+        # certificate in PEM format.
+        # Corresponds to the JSON property `pemCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
+      # Coarse Geographic location details for where the consumption happened.
+      class CoarseLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Highest administrative subdivision which is used for postal
+        # addresses of a country or region. For example, this can be a state, a province,
+        # an oblast, or a prefecture. For Spain, this is the province and not the
+        # autonomous community (for example, "Barcelona" and not "Catalonia"). Many
+        # countries don't use an administrative area in postal addresses. For example,
+        # in Switzerland, this should be left unpopulated.
+        # Corresponds to the JSON property `administrativeArea`
+        # @return [String]
+        attr_accessor :administrative_area
+      
+        # Optional. Generally refers to the city or town portion of the address.
+        # Examples: US city, IT comune, UK post town. In regions of the world where
+        # localities are not well defined or do not fit into this structure well, leave `
+        # locality` empty.
+        # Corresponds to the JSON property `locality`
+        # @return [String]
+        attr_accessor :locality
+      
+        # Required. [CLDR region code](https://cldr.unicode.org/) of the country/region
+        # of the address. This value is never inferred and you must ensure the value is
+        # correct. Example: "CH" for Switzerland.
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Optional. Sublocality of the address. For example, this can be a neighborhood,
+        # borough, or district. For most addresses, you can omit this.
+        # Corresponds to the JSON property `sublocality`
+        # @return [String]
+        attr_accessor :sublocality
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @administrative_area = args[:administrative_area] if args.key?(:administrative_area)
+          @locality = args[:locality] if args.key?(:locality)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @sublocality = args[:sublocality] if args.key?(:sublocality)
+        end
+      end
+      
       # An entry of conversation between user and developer.
       class Comment
         include Google::Apis::Core::Hashable
@@ -1913,6 +2499,89 @@ module Google
         def update!(**args)
           @developer_comment = args[:developer_comment] if args.key?(:developer_comment)
           @user_comment = args[:user_comment] if args.key?(:user_comment)
+        end
+      end
+      
+      # Compatible screens as listed in the `compatible-screens` Manifest tag.
+      class CompatibleScreen
+        include Google::Apis::Core::Hashable
+      
+        # Screen density.
+        # Corresponds to the JSON property `density`
+        # @return [String]
+        attr_accessor :density
+      
+        # The screen size.
+        # Corresponds to the JSON property `screenSize`
+        # @return [String]
+        attr_accessor :screen_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @density = args[:density] if args.key?(:density)
+          @screen_size = args[:screen_size] if args.key?(:screen_size)
+        end
+      end
+      
+      # List of events, each representing an instance where the user consumed or used
+      # the purchased item or service.
+      class ConsumptionUsageEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Free form text that allows developers to provide more info on the
+        # item consumed. Maximum length is 5000 characters.
+        # Corresponds to the JSON property `consumptionItemDescription`
+        # @return [String]
+        attr_accessor :consumption_item_description
+      
+        # Optional. Time when the user consumed, used, downloaded, opened, or streamed
+        # the content.
+        # Corresponds to the JSON property `consumptionTime`
+        # @return [String]
+        attr_accessor :consumption_time
+      
+        # Optional. The IP address from which the consumption occurred.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Coarse Geographic location details for where the consumption happened.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::AndroidpublisherV3::CoarseLocation]
+        attr_accessor :location
+      
+        # Optional. Obfuscated string that is uniquely associated with the purchaser's
+        # user account in the app. https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setObfuscatedAccountId(java.lang.
+        # String)
+        # Corresponds to the JSON property `obfuscatedAccountId`
+        # @return [String]
+        attr_accessor :obfuscated_account_id
+      
+        # Optional. Obfuscated string that is uniquely associated with the purchaser's
+        # user profile in the app. https://developer.android.com/reference/com/android/
+        # billingclient/api/BillingFlowParams.Builder#setObfuscatedProfileId(java.lang.
+        # String)
+        # Corresponds to the JSON property `obfuscatedProfileId`
+        # @return [String]
+        attr_accessor :obfuscated_profile_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_item_description = args[:consumption_item_description] if args.key?(:consumption_item_description)
+          @consumption_time = args[:consumption_time] if args.key?(:consumption_time)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @location = args[:location] if args.key?(:location)
+          @obfuscated_account_id = args[:obfuscated_account_id] if args.key?(:obfuscated_account_id)
+          @obfuscated_profile_id = args[:obfuscated_profile_id] if args.key?(:obfuscated_profile_id)
         end
       end
       
@@ -2060,6 +2729,38 @@ module Google
         end
       end
       
+      # Request to create a new app record for an app store hosted app.
+      class CreateAppStoreHostedAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+        end
+      end
+      
+      # Response for creating a new app record for an app store hosted app.
+      class CreateAppStoreHostedAppResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for CreateDraftAppRecovery.
       class CreateDraftAppRecoveryRequest
         include Google::Apis::Core::Hashable
@@ -2083,6 +2784,47 @@ module Google
         def update!(**args)
           @remote_in_app_update = args[:remote_in_app_update] if args.key?(:remote_in_app_update)
           @targeting = args[:targeting] if args.key?(:targeting)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -2573,6 +3315,49 @@ module Google
         end
       end
       
+      # The developer details of a Google Play app.
+      class DeveloperDetails
+        include Google::Apis::Core::Hashable
+      
+        # The physical address of the developer.
+        # Corresponds to the JSON property `address`
+        # @return [String]
+        attr_accessor :address
+      
+        # The contact email of the developer.
+        # Corresponds to the JSON property `contactEmail`
+        # @return [String]
+        attr_accessor :contact_email
+      
+        # The developer name of the app.
+        # Corresponds to the JSON property `developerName`
+        # @return [String]
+        attr_accessor :developer_name
+      
+        # The phone number of the developer.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # The website of the developer.
+        # Corresponds to the JSON property `website`
+        # @return [String]
+        attr_accessor :website
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @contact_email = args[:contact_email] if args.key?(:contact_email)
+          @developer_name = args[:developer_name] if args.key?(:developer_name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @website = args[:website] if args.key?(:website)
+        end
+      end
+      
       # Information specific to cancellations initiated by developers.
       class DeveloperInitiatedCancellation
         include Google::Apis::Core::Hashable
@@ -2583,6 +3368,99 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Defines a set of device compatibility requirements for the app. A device must
+      # satisfy all of the requirements in a set to be considered compatible with the
+      # app.
+      class DeviceCompatibilityRequirements
+        include Google::Apis::Core::Hashable
+      
+        # Compatible screens as listed in the `compatible-screens` Manifest tag.
+        # Corresponds to the JSON property `compatibleScreens`
+        # @return [Array<Google::Apis::AndroidpublisherV3::CompatibleScreen>]
+        attr_accessor :compatible_screens
+      
+        # Required version of OpenGL ES.
+        # Corresponds to the JSON property `glEsVersion`
+        # @return [Fixnum]
+        attr_accessor :gl_es_version
+      
+        # Specifies if the app requires a screen.
+        # Corresponds to the JSON property `isScreenRequired`
+        # @return [Boolean]
+        attr_accessor :is_screen_required
+        alias_method :is_screen_required?, :is_screen_required
+      
+        # List of required ABIs (Application Binary Interface), e.g. `armeabi` or `x86`.
+        # Corresponds to the JSON property `nativePlatforms`
+        # @return [Array<String>]
+        attr_accessor :native_platforms
+      
+        # List of required libraries as declared in the `uses-library` manifest tag.
+        # Corresponds to the JSON property `requiredSoftwareLibraries`
+        # @return [Array<String>]
+        attr_accessor :required_software_libraries
+      
+        # The system features that the app requires. A device must have all of the
+        # system features to be considered compatible with the app.
+        # Corresponds to the JSON property `requiredSystemFeatures`
+        # @return [Array<String>]
+        attr_accessor :required_system_features
+      
+        # Specifies the minimum smallest width required of the screen.
+        # Corresponds to the JSON property `requiresSmallestWidthDp`
+        # @return [Fixnum]
+        attr_accessor :requires_smallest_width_dp
+      
+        # Defines a range of SDK versions. A device is considered compatible uf its\ SDK
+        # version falls within the min_sdk_version and max_sdk_version range.
+        # Corresponds to the JSON property `sdkVersion`
+        # @return [Google::Apis::AndroidpublisherV3::CatalogSdkVersion]
+        attr_accessor :sdk_version
+      
+        # Supported gl textures as specified by the `supported-gl-texture` Manifest tag.
+        # Corresponds to the JSON property `supportedGlTextures`
+        # @return [Array<String>]
+        attr_accessor :supported_gl_textures
+      
+        # Compatible screens as listed in the `supports-screens` Manifest tag.
+        # Corresponds to the JSON property `supportedScreens`
+        # @return [Array<String>]
+        attr_accessor :supported_screens
+      
+        # Value of `android:use32BitAbi` flag retrieved from the Manifest.
+        # Corresponds to the JSON property `use32BitAbi`
+        # @return [String]
+        attr_accessor :use32_bit_abi
+      
+        # Lists all configurations marked as required by use of the `uses-configuration`
+        # manifest tag. Each instance of this proto represents a single `uses-
+        # configuration` entry. See http://developer.android.com/guide/topics/manifest/
+        # uses-configuration-element.html
+        # Corresponds to the JSON property `usesConfigurations`
+        # @return [Array<Google::Apis::AndroidpublisherV3::UsesConfiguration>]
+        attr_accessor :uses_configurations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatible_screens = args[:compatible_screens] if args.key?(:compatible_screens)
+          @gl_es_version = args[:gl_es_version] if args.key?(:gl_es_version)
+          @is_screen_required = args[:is_screen_required] if args.key?(:is_screen_required)
+          @native_platforms = args[:native_platforms] if args.key?(:native_platforms)
+          @required_software_libraries = args[:required_software_libraries] if args.key?(:required_software_libraries)
+          @required_system_features = args[:required_system_features] if args.key?(:required_system_features)
+          @requires_smallest_width_dp = args[:requires_smallest_width_dp] if args.key?(:requires_smallest_width_dp)
+          @sdk_version = args[:sdk_version] if args.key?(:sdk_version)
+          @supported_gl_textures = args[:supported_gl_textures] if args.key?(:supported_gl_textures)
+          @supported_screens = args[:supported_screens] if args.key?(:supported_screens)
+          @use32_bit_abi = args[:use32_bit_abi] if args.key?(:use32_bit_abi)
+          @uses_configurations = args[:uses_configurations] if args.key?(:uses_configurations)
         end
       end
       
@@ -2680,6 +3558,31 @@ module Google
         def update!(**args)
           @build_brand = args[:build_brand] if args.key?(:build_brand)
           @build_device = args[:build_device] if args.key?(:build_device)
+        end
+      end
+      
+      # Defines a device identifier for a device.
+      class DeviceIdentifier
+        include Google::Apis::Core::Hashable
+      
+        # The brand of the device.
+        # Corresponds to the JSON property `deviceBrand`
+        # @return [String]
+        attr_accessor :device_brand
+      
+        # The model of the device.
+        # Corresponds to the JSON property `deviceModel`
+        # @return [String]
+        attr_accessor :device_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_brand = args[:device_brand] if args.key?(:device_brand)
+          @device_model = args[:device_model] if args.key?(:device_model)
         end
       end
       
@@ -2976,6 +3879,102 @@ module Google
         end
       end
       
+      # Request to enroll an app into Play App Signing using a self-hosted Cloud KMS
+      # key.
+      class EnrollAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Enroll an existing app into Play signing.
+        # Corresponds to the JSON property `enrollExistingApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollExistingApp]
+        attr_accessor :enroll_existing_app
+      
+        # Enroll a new app into Play signing.
+        # Corresponds to the JSON property `enrollNewApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollNewApp]
+        attr_accessor :enroll_new_app
+      
+        # The certificate associated with the upload key, in PEM format.
+        # Corresponds to the JSON property `pemUploadCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enroll_existing_app = args[:enroll_existing_app] if args.key?(:enroll_existing_app)
+          @enroll_new_app = args[:enroll_new_app] if args.key?(:enroll_new_app)
+          @pem_upload_certificate = args[:pem_upload_certificate] if args.key?(:pem_upload_certificate)
+        end
+      end
+      
+      # Response to enroll an app into Play signing.
+      class EnrollAppResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `signingCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :signing_certificate
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `uploadCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signing_certificate = args[:signing_certificate] if args.key?(:signing_certificate)
+          @upload_certificate = args[:upload_certificate] if args.key?(:upload_certificate)
+        end
+      end
+      
+      # Enroll an existing app into Play signing.
+      class EnrollExistingApp
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+        end
+      end
+      
+      # Enroll a new app into Play signing.
+      class EnrollNewApp
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
+        end
+      end
+      
       # An expansion file. The resource for ExpansionFilesService.
       class ExpansionFile
         include Google::Apis::Core::Hashable
@@ -3107,6 +4106,40 @@ module Google
         end
       end
       
+      # Reporting details unique to the external content link program.
+      class ExternalContentLinkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The category of the downlaoded app. This must match the category
+        # provided in Play Console during the external app verification process. Only
+        # required for app installs.
+        # Corresponds to the JSON property `externalAppCategory`
+        # @return [String]
+        attr_accessor :external_app_category
+      
+        # Optional. The package name of the app downloaded through this transaction.
+        # Only required for app installs.
+        # Corresponds to the JSON property `installedAppPackage`
+        # @return [String]
+        attr_accessor :installed_app_package
+      
+        # Required. The type content being reported by this transaction.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_app_category = args[:external_app_category] if args.key?(:external_app_category)
+          @installed_app_package = args[:installed_app_package] if args.key?(:installed_app_package)
+          @link_type = args[:link_type] if args.key?(:link_type)
+        end
+      end
+      
       # Reporting details unique to the external offers program.
       class ExternalOfferDetails
         include Google::Apis::Core::Hashable
@@ -3190,6 +4223,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
       
+        # Reporting details unique to the external content link program.
+        # Corresponds to the JSON property `externalContentLinkDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails]
+        attr_accessor :external_content_link_details
+      
         # Reporting details unique to the external offers program.
         # Corresponds to the JSON property `externalOfferDetails`
         # @return [Google::Apis::AndroidpublisherV3::ExternalOfferDetails]
@@ -3270,6 +4308,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_content_link_details = args[:external_content_link_details] if args.key?(:external_content_link_details)
           @external_offer_details = args[:external_offer_details] if args.key?(:external_offer_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
@@ -3847,6 +4886,25 @@ module Google
         end
       end
       
+      # A group of responses.
+      class Group
+        include Google::Apis::Core::Hashable
+      
+        # Required. Responses within a group.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::AndroidpublisherV3::NestedPolicyResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @responses = args[:responses] if args.key?(:responses)
+        end
+      end
+      
       # An uploaded image. The resource for ImagesService.
       class Image
         include Google::Apis::Core::Hashable
@@ -3887,6 +4945,25 @@ module Google
           @sha1 = args[:sha1] if args.key?(:sha1)
           @sha256 = args[:sha256] if args.key?(:sha256)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # An image asset.
+      class ImageAsset
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the image asset.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_url = args[:image_url] if args.key?(:image_url)
         end
       end
       
@@ -4470,50 +5547,6 @@ module Google
         end
       end
       
-      # Contains the introductory price information for a subscription.
-      class IntroductoryPriceInfo
-        include Google::Apis::Core::Hashable
-      
-        # Introductory price of the subscription, not including tax. The currency is the
-        # same as price_currency_code. Price is expressed in micro-units, where 1,000,
-        # 000 micro-units represents one unit of the currency. For example, if the
-        # subscription price is €1.99, price_amount_micros is 1990000.
-        # Corresponds to the JSON property `introductoryPriceAmountMicros`
-        # @return [Fixnum]
-        attr_accessor :introductory_price_amount_micros
-      
-        # ISO 4217 currency code for the introductory subscription price. For example,
-        # if the price is specified in British pounds sterling, price_currency_code is "
-        # GBP".
-        # Corresponds to the JSON property `introductoryPriceCurrencyCode`
-        # @return [String]
-        attr_accessor :introductory_price_currency_code
-      
-        # The number of billing period to offer introductory pricing.
-        # Corresponds to the JSON property `introductoryPriceCycles`
-        # @return [Fixnum]
-        attr_accessor :introductory_price_cycles
-      
-        # Introductory price period, specified in ISO 8601 format. Common values are (
-        # but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three months),
-        # "P6M" (six months), and "P1Y" (one year).
-        # Corresponds to the JSON property `introductoryPricePeriod`
-        # @return [String]
-        attr_accessor :introductory_price_period
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @introductory_price_amount_micros = args[:introductory_price_amount_micros] if args.key?(:introductory_price_amount_micros)
-          @introductory_price_currency_code = args[:introductory_price_currency_code] if args.key?(:introductory_price_currency_code)
-          @introductory_price_cycles = args[:introductory_price_cycles] if args.key?(:introductory_price_cycles)
-          @introductory_price_period = args[:introductory_price_period] if args.key?(:introductory_price_period)
-        end
-      end
-      
       # Details about introductory price offer phase.
       class IntroductoryPriceOfferPhase
         include Google::Apis::Core::Hashable
@@ -4586,6 +5619,31 @@ module Google
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @replacement_mode = args[:replacement_mode] if args.key?(:replacement_mode)
+        end
+      end
+      
+      # A group of responses, with a key.
+      class KeyedGroup
+        include Google::Apis::Core::Hashable
+      
+        # Required. Key for this group.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Required. Responses in this group.
+        # Corresponds to the JSON property `responses`
+        # @return [Array<Google::Apis::AndroidpublisherV3::NestedPolicyResponse>]
+        attr_accessor :responses
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @responses = args[:responses] if args.key?(:responses)
         end
       end
       
@@ -4775,6 +5833,32 @@ module Google
         end
       end
       
+      # Response message for ListRecentUpdateEvents.
+      class ListRecentUpdateEventsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of recent update events.
+        # Corresponds to the JSON property `recentUpdateEvents`
+        # @return [Array<Google::Apis::AndroidpublisherV3::RecentUpdateEvent>]
+        attr_accessor :recent_update_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @recent_update_events = args[:recent_update_events] if args.key?(:recent_update_events)
+        end
+      end
+      
       # Response listing all releases for a given track that are either ready to be
       # sent for review, in review, approved, not approved or available.
       class ListReleaseSummariesResponse
@@ -4939,6 +6023,106 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @listings = args[:listings] if args.key?(:listings)
+        end
+      end
+      
+      # A localized store listings of the app.
+      class LocalizedStoreListing
+        include Google::Apis::Core::Hashable
+      
+        # The name of the app in this localization.
+        # Corresponds to the JSON property `appName`
+        # @return [String]
+        attr_accessor :app_name
+      
+        # An image asset.
+        # Corresponds to the JSON property `featureGraphic`
+        # @return [Google::Apis::AndroidpublisherV3::ImageAsset]
+        attr_accessor :feature_graphic
+      
+        # A longer description of the app in this localization.
+        # Corresponds to the JSON property `fullDescription`
+        # @return [String]
+        attr_accessor :full_description
+      
+        # An image asset.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::AndroidpublisherV3::ImageAsset]
+        attr_accessor :icon
+      
+        # The BCP-47 language code for this localization.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # A set of screenshots.
+        # Corresponds to the JSON property `phoneScreenshots`
+        # @return [Google::Apis::AndroidpublisherV3::ScreenshotSet]
+        attr_accessor :phone_screenshots
+      
+        # A short description of the app in this localization.
+        # Corresponds to the JSON property `shortDescription`
+        # @return [String]
+        attr_accessor :short_description
+      
+        # A set of screenshots.
+        # Corresponds to the JSON property `tabletRegularScreenshots`
+        # @return [Google::Apis::AndroidpublisherV3::ScreenshotSet]
+        attr_accessor :tablet_regular_screenshots
+      
+        # A set of screenshots.
+        # Corresponds to the JSON property `tabletSmallScreenshots`
+        # @return [Google::Apis::AndroidpublisherV3::ScreenshotSet]
+        attr_accessor :tablet_small_screenshots
+      
+        # A video asset.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::AndroidpublisherV3::VideoAsset]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_name = args[:app_name] if args.key?(:app_name)
+          @feature_graphic = args[:feature_graphic] if args.key?(:feature_graphic)
+          @full_description = args[:full_description] if args.key?(:full_description)
+          @icon = args[:icon] if args.key?(:icon)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @phone_screenshots = args[:phone_screenshots] if args.key?(:phone_screenshots)
+          @short_description = args[:short_description] if args.key?(:short_description)
+          @tablet_regular_screenshots = args[:tablet_regular_screenshots] if args.key?(:tablet_regular_screenshots)
+          @tablet_small_screenshots = args[:tablet_small_screenshots] if args.key?(:tablet_small_screenshots)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # The localized store listings of an app.
+      class LocalizedStoreListings
+        include Google::Apis::Core::Hashable
+      
+        # The default language code of the app. If a localized store listing is not
+        # available for a given language, assets from the default language are used
+        # instead.
+        # Corresponds to the JSON property `defaultLanguageCode`
+        # @return [String]
+        attr_accessor :default_language_code
+      
+        # 
+        # Corresponds to the JSON property `localizedStoreListings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::LocalizedStoreListing>]
+        attr_accessor :localized_store_listings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_language_code = args[:default_language_code] if args.key?(:default_language_code)
+          @localized_store_listings = args[:localized_store_listings] if args.key?(:localized_store_listings)
         end
       end
       
@@ -5240,6 +6424,57 @@ module Google
         def update!(**args)
           @alternatives = args[:alternatives] if args.key?(:alternatives)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An individual nested response to a policy question about an app. Nested
+      # responses are like regular responses but without groups.
+      class NestedPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Responses that will only ever be a boolean.
+        # Corresponds to the JSON property `booleanResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyBooleanResponse]
+        attr_accessor :boolean_response
+      
+        # An uploaded document. Must be a single logical document (e.g. a financial
+        # license).
+        # Corresponds to the JSON property `documentResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyDocumentResponse]
+        attr_accessor :document_response
+      
+        # Any response where multiple options can be chosen from several possibilities.
+        # Corresponds to the JSON property `multipleChoiceResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyMultipleChoiceResponse]
+        attr_accessor :multiple_choice_response
+      
+        # Required. ID of the question being answered.
+        # Corresponds to the JSON property `questionId`
+        # @return [String]
+        attr_accessor :question_id
+      
+        # Any response where a single option is chosen from several possibilities.
+        # Corresponds to the JSON property `singleChoiceResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicySingleChoiceResponse]
+        attr_accessor :single_choice_response
+      
+        # Any response best encoded as a string. Includes URLs and multiline text fields.
+        # Corresponds to the JSON property `stringResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyStringResponse]
+        attr_accessor :string_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boolean_response = args[:boolean_response] if args.key?(:boolean_response)
+          @document_response = args[:document_response] if args.key?(:document_response)
+          @multiple_choice_response = args[:multiple_choice_response] if args.key?(:multiple_choice_response)
+          @question_id = args[:question_id] if args.key?(:question_id)
+          @single_choice_response = args[:single_choice_response] if args.key?(:single_choice_response)
+          @string_response = args[:string_response] if args.key?(:string_response)
         end
       end
       
@@ -5561,6 +6796,27 @@ module Google
         end
       end
       
+      # Configuration specific to game reward offers.
+      class OneTimeProductGameRewardOffer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of times this offer can be redeemed. If unset or set to 0,
+        # allows for unlimited offer redemptions. Otherwise must be a number between 1
+        # and 50 inclusive.
+        # Corresponds to the JSON property `redemptionLimit`
+        # @return [Fixnum]
+        attr_accessor :redemption_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redemption_limit = args[:redemption_limit] if args.key?(:redemption_limit)
+        end
+      end
+      
       # Regional store listing for a one-time product.
       class OneTimeProductListing
         include Google::Apis::Core::Hashable
@@ -5602,6 +6858,11 @@ module Google
         # Corresponds to the JSON property `discountedOffer`
         # @return [Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer]
         attr_accessor :discounted_offer
+      
+        # Configuration specific to game reward offers.
+        # Corresponds to the JSON property `gameRewardOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer]
+        attr_accessor :game_reward_offer
       
         # Required. Immutable. The ID of this product offer. Must be unique within the
         # purchase option. It must start with a number or lower-case letter, and can
@@ -5662,6 +6923,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discounted_offer = args[:discounted_offer] if args.key?(:discounted_offer)
+          @game_reward_offer = args[:game_reward_offer] if args.key?(:game_reward_offer)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
           @package_name = args[:package_name] if args.key?(:package_name)
@@ -6199,6 +7461,57 @@ module Google
         end
       end
       
+      # Request for the orders.reviewrefund API.
+      class OrdersReviewRefundRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Percentage of the In-App purchase the customer consumed, in
+        # milliunits. Minimum: 0 Maximum: 100,000. For paid apps, this can be omitted.
+        # Example : 45200 represents 45.2%.
+        # Corresponds to the JSON property `consumptionPercentageMilliunits`
+        # @return [Fixnum]
+        attr_accessor :consumption_percentage_milliunits
+      
+        # Optional. List of events, each representing an instance where the user
+        # consumed or used the purchased item or service. Lists with over 1000 items
+        # will be rejected.
+        # Corresponds to the JSON property `consumptionUsageEvents`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ConsumptionUsageEvent>]
+        attr_accessor :consumption_usage_events
+      
+        # Required. The pending refund token included in the pending refund review
+        # notification.
+        # Corresponds to the JSON property `pendingRefundToken`
+        # @return [String]
+        attr_accessor :pending_refund_token
+      
+        # Required. Indicates your preference, based on your operational logic, as to
+        # whether the Play Store should grant the refund.
+        # Corresponds to the JSON property `refundPreference`
+        # @return [String]
+        attr_accessor :refund_preference
+      
+        # Required. Indicates whether you provided a free sample, trial, or information
+        # about the functionality prior to the purchase.
+        # Corresponds to the JSON property `sampleContentProvided`
+        # @return [Boolean]
+        attr_accessor :sample_content_provided
+        alias_method :sample_content_provided?, :sample_content_provided
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumption_percentage_milliunits = args[:consumption_percentage_milliunits] if args.key?(:consumption_percentage_milliunits)
+          @consumption_usage_events = args[:consumption_usage_events] if args.key?(:consumption_usage_events)
+          @pending_refund_token = args[:pending_refund_token] if args.key?(:pending_refund_token)
+          @refund_preference = args[:refund_preference] if args.key?(:refund_preference)
+          @sample_content_provided = args[:sample_content_provided] if args.key?(:sample_content_provided)
+        end
+      end
+      
       # Details of a recurring external transaction product which doesn't belong to
       # any other more specific category.
       class OtherRecurringProduct
@@ -6567,6 +7880,224 @@ module Google
           @points_discount_rate_micros = args[:points_discount_rate_micros] if args.key?(:points_discount_rate_micros)
           @points_offer_id = args[:points_offer_id] if args.key?(:points_offer_id)
           @points_spent = args[:points_spent] if args.key?(:points_spent)
+        end
+      end
+      
+      # Responses that will only ever be a boolean.
+      class PolicyBooleanResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Provided boolean value.
+        # Corresponds to the JSON property `value`
+        # @return [Boolean]
+        attr_accessor :value
+        alias_method :value?, :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # An uploaded document. Must be a single logical document (e.g. a financial
+      # license).
+      class PolicyDocumentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the uploaded document.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `expiryDate`
+        # @return [Google::Apis::AndroidpublisherV3::Date]
+        attr_accessor :expiry_date
+      
+        # Optional. True if confirmed that the document does not have an expiry date.
+        # Corresponds to the JSON property `nonExpiring`
+        # @return [Boolean]
+        attr_accessor :non_expiring
+        alias_method :non_expiring?, :non_expiring
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @expiry_date = args[:expiry_date] if args.key?(:expiry_date)
+          @non_expiring = args[:non_expiring] if args.key?(:non_expiring)
+        end
+      end
+      
+      # A repeated group of responses.
+      class PolicyGroupResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Groups of responses to questions.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Group>]
+        attr_accessor :groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups = args[:groups] if args.key?(:groups)
+        end
+      end
+      
+      # A group of responses each identified by a distinct key within an allowed set.
+      class PolicyKeyedGroupResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Groups of responses to questions. Each KeyedGroup.key must be unique
+        # within this list.
+        # Corresponds to the JSON property `groups`
+        # @return [Array<Google::Apis::AndroidpublisherV3::KeyedGroup>]
+        attr_accessor :groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @groups = args[:groups] if args.key?(:groups)
+        end
+      end
+      
+      # Any response where multiple options can be chosen from several possibilities.
+      class PolicyMultipleChoiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provided values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # An individual response (answer) to a policy question about an app.
+      class PolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Responses that will only ever be a boolean.
+        # Corresponds to the JSON property `booleanResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyBooleanResponse]
+        attr_accessor :boolean_response
+      
+        # An uploaded document. Must be a single logical document (e.g. a financial
+        # license).
+        # Corresponds to the JSON property `documentResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyDocumentResponse]
+        attr_accessor :document_response
+      
+        # A repeated group of responses.
+        # Corresponds to the JSON property `groupResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyGroupResponse]
+        attr_accessor :group_response
+      
+        # A group of responses each identified by a distinct key within an allowed set.
+        # Corresponds to the JSON property `keyedGroupResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyKeyedGroupResponse]
+        attr_accessor :keyed_group_response
+      
+        # Any response where multiple options can be chosen from several possibilities.
+        # Corresponds to the JSON property `multipleChoiceResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyMultipleChoiceResponse]
+        attr_accessor :multiple_choice_response
+      
+        # Required. ID of the question being answered.
+        # Corresponds to the JSON property `questionId`
+        # @return [String]
+        attr_accessor :question_id
+      
+        # Any response where a single option is chosen from several possibilities.
+        # Corresponds to the JSON property `singleChoiceResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicySingleChoiceResponse]
+        attr_accessor :single_choice_response
+      
+        # Any response best encoded as a string. Includes URLs and multiline text fields.
+        # Corresponds to the JSON property `stringResponse`
+        # @return [Google::Apis::AndroidpublisherV3::PolicyStringResponse]
+        attr_accessor :string_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boolean_response = args[:boolean_response] if args.key?(:boolean_response)
+          @document_response = args[:document_response] if args.key?(:document_response)
+          @group_response = args[:group_response] if args.key?(:group_response)
+          @keyed_group_response = args[:keyed_group_response] if args.key?(:keyed_group_response)
+          @multiple_choice_response = args[:multiple_choice_response] if args.key?(:multiple_choice_response)
+          @question_id = args[:question_id] if args.key?(:question_id)
+          @single_choice_response = args[:single_choice_response] if args.key?(:single_choice_response)
+          @string_response = args[:string_response] if args.key?(:string_response)
+        end
+      end
+      
+      # Any response where a single option is chosen from several possibilities.
+      class PolicySingleChoiceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Provided value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Any response best encoded as a string. Includes URLs and multiline text fields.
+      class PolicyStringResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. Provided string value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -7141,6 +8672,77 @@ module Google
         # Update properties of this object
         def update!(**args)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
+        end
+      end
+      
+      # Defines a RAM selector for a device.
+      class RamSelector
+        include Google::Apis::Core::Hashable
+      
+        # This will match any device that has less than or equal
+        # ram_mb_less_than_or_equal mb of RAM.
+        # Corresponds to the JSON property `ramMbLessThanOrEqual`
+        # @return [Fixnum]
+        attr_accessor :ram_mb_less_than_or_equal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ram_mb_less_than_or_equal = args[:ram_mb_less_than_or_equal] if args.key?(:ram_mb_less_than_or_equal)
+        end
+      end
+      
+      # Metadata about a recently updated app.
+      class RecentAppView
+        include Google::Apis::Core::Hashable
+      
+        # LINT.IfChange A view of a Google Play app within the Catalog Export for app
+        # stores.
+        # Corresponds to the JSON property `appView`
+        # @return [Google::Apis::AndroidpublisherV3::CatalogAppView]
+        attr_accessor :app_view
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_view = args[:app_view] if args.key?(:app_view)
+        end
+      end
+      
+      # A recent update event.
+      class RecentUpdateEvent
+        include Google::Apis::Core::Hashable
+      
+        # The timestamp of the update.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The package name of the app.
+        # Corresponds to the JSON property `playAppPackageName`
+        # @return [String]
+        attr_accessor :play_app_package_name
+      
+        # The type of the update event.
+        # Corresponds to the JSON property `updateType`
+        # @return [String]
+        attr_accessor :update_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @play_app_package_name = args[:play_app_package_name] if args.key?(:play_app_package_name)
+          @update_type = args[:update_type] if args.key?(:update_type)
         end
       end
       
@@ -8046,6 +9648,79 @@ module Google
         end
       end
       
+      # Request to rotate an app's signing key.
+      class RotateAppSigningKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Reason for rotating the app key.
+        # Corresponds to the JSON property `keyRotationReason`
+        # @return [String]
+        attr_accessor :key_rotation_reason
+      
+        # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+        # its associated proof of rotation.
+        # Corresponds to the JSON property `rotatedCloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey]
+        attr_accessor :rotated_cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_rotation_reason = args[:key_rotation_reason] if args.key?(:key_rotation_reason)
+          @rotated_cloud_kms_key = args[:rotated_cloud_kms_key] if args.key?(:rotated_cloud_kms_key)
+        end
+      end
+      
+      # Response to rotate an app's signing key.
+      class RotateAppSigningKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `rotatedKeyCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :rotated_key_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotated_key_certificate = args[:rotated_key_certificate] if args.key?(:rotated_key_certificate)
+        end
+      end
+      
+      # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+      # its associated proof of rotation.
+      class RotatedCloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        # Required. Proof-of-rotation. See [creating signing certificate lineages](https:
+        # //developer.android.com/studio/command-line/apksigner#rotate_signing_keys_2).
+        # Corresponds to the JSON property `signingCertificateLineage`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signing_certificate_lineage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
+          @signing_certificate_lineage = args[:signing_certificate_lineage] if args.key?(:signing_certificate_lineage)
+        end
+      end
+      
       # Request to update Safety Labels of an app.
       class SafetyLabelsUpdateRequest
         include Google::Apis::Core::Hashable
@@ -8134,6 +9809,25 @@ module Google
         end
       end
       
+      # A set of screenshots.
+      class ScreenshotSet
+        include Google::Apis::Core::Hashable
+      
+        # The image assets of the screenshots.
+        # Corresponds to the JSON property `screenshots`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ImageAsset>]
+        attr_accessor :screenshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screenshots = args[:screenshots] if args.key?(:screenshots)
+        end
+      end
+      
       # Represents an sdk version.
       class SdkVersion
         include Google::Apis::Core::Hashable
@@ -8201,6 +9895,32 @@ module Google
         def update!(**args)
           @one_time_code = args[:one_time_code] if args.key?(:one_time_code)
           @vanity_code = args[:vanity_code] if args.key?(:vanity_code)
+        end
+      end
+      
+      # Defines a SOC selector for a device. This will match any device whose SoC (
+      # System on Chip) matches all fields in the selector.
+      class SocSelector
+        include Google::Apis::Core::Hashable
+      
+        # The manufacturer of the SoC.
+        # Corresponds to the JSON property `socMake`
+        # @return [String]
+        attr_accessor :soc_make
+      
+        # The model of the SoC.
+        # Corresponds to the JSON property `socModel`
+        # @return [String]
+        attr_accessor :soc_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @soc_make = args[:soc_make] if args.key?(:soc_make)
+          @soc_model = args[:soc_model] if args.key?(:soc_model)
         end
       end
       
@@ -8387,35 +10107,6 @@ module Google
           @product_id = args[:product_id] if args.key?(:product_id)
           @restricted_payment_countries = args[:restricted_payment_countries] if args.key?(:restricted_payment_countries)
           @tax_and_compliance_settings = args[:tax_and_compliance_settings] if args.key?(:tax_and_compliance_settings)
-        end
-      end
-      
-      # Information provided by the user when they complete the subscription
-      # cancellation flow (cancellation reason survey).
-      class SubscriptionCancelSurveyResult
-        include Google::Apis::Core::Hashable
-      
-        # The cancellation reason the user chose in the survey. Possible values are: 0.
-        # Other 1. I don't use this service enough 2. Technical issues 3. Cost-related
-        # reasons 4. I found a better app
-        # Corresponds to the JSON property `cancelSurveyReason`
-        # @return [Fixnum]
-        attr_accessor :cancel_survey_reason
-      
-        # The customized input cancel reason from the user. Only present when
-        # cancelReason is 0.
-        # Corresponds to the JSON property `userInputCancelReason`
-        # @return [String]
-        attr_accessor :user_input_cancel_reason
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cancel_survey_reason = args[:cancel_survey_reason] if args.key?(:cancel_survey_reason)
-          @user_input_cancel_reason = args[:user_input_cancel_reason] if args.key?(:user_input_cancel_reason)
         end
       end
       
@@ -8735,281 +10426,6 @@ module Google
         end
       end
       
-      # Contains the price change information for a subscription that can be used to
-      # control the user journey for the price change in the app. This can be in the
-      # form of seeking confirmation from the user or tailoring the experience for a
-      # successful conversion.
-      class SubscriptionPriceChange
-        include Google::Apis::Core::Hashable
-      
-        # Definition of a price, i.e. currency and units.
-        # Corresponds to the JSON property `newPrice`
-        # @return [Google::Apis::AndroidpublisherV3::Price]
-        attr_accessor :new_price
-      
-        # The current state of the price change. Possible values are: 0. Outstanding:
-        # State for a pending price change waiting for the user to agree. In this state,
-        # you can optionally seek confirmation from the user using the In-App API. 1.
-        # Accepted: State for an accepted price change that the subscription will renew
-        # with unless it's canceled. The price change takes effect on a future date when
-        # the subscription renews. Note that the change might not occur when the
-        # subscription is renewed next.
-        # Corresponds to the JSON property `state`
-        # @return [Fixnum]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @new_price = args[:new_price] if args.key?(:new_price)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # Deprecated: Use SubscriptionPurchaseV2 instead. A SubscriptionPurchase
-      # resource indicates the status of a user's subscription purchase.
-      class SubscriptionPurchase
-        include Google::Apis::Core::Hashable
-      
-        # The acknowledgement state of the subscription product. Possible values are: 0.
-        # Yet to be acknowledged 1. Acknowledged
-        # Corresponds to the JSON property `acknowledgementState`
-        # @return [Fixnum]
-        attr_accessor :acknowledgement_state
-      
-        # Whether the subscription will automatically be renewed when it reaches its
-        # current expiry time.
-        # Corresponds to the JSON property `autoRenewing`
-        # @return [Boolean]
-        attr_accessor :auto_renewing
-        alias_method :auto_renewing?, :auto_renewing
-      
-        # Time at which the subscription will be automatically resumed, in milliseconds
-        # since the Epoch. Only present if the user has requested to pause the
-        # subscription.
-        # Corresponds to the JSON property `autoResumeTimeMillis`
-        # @return [Fixnum]
-        attr_accessor :auto_resume_time_millis
-      
-        # The reason why a subscription was canceled or is not auto-renewing. Possible
-        # values are: 0. User canceled the subscription 1. Subscription was canceled by
-        # the system, for example because of a billing problem 2. Subscription was
-        # replaced with a new subscription 3. Subscription was canceled by the developer
-        # Corresponds to the JSON property `cancelReason`
-        # @return [Fixnum]
-        attr_accessor :cancel_reason
-      
-        # Information provided by the user when they complete the subscription
-        # cancellation flow (cancellation reason survey).
-        # Corresponds to the JSON property `cancelSurveyResult`
-        # @return [Google::Apis::AndroidpublisherV3::SubscriptionCancelSurveyResult]
-        attr_accessor :cancel_survey_result
-      
-        # ISO 3166-1 alpha-2 billing country/region code of the user at the time the
-        # subscription was granted.
-        # Corresponds to the JSON property `countryCode`
-        # @return [String]
-        attr_accessor :country_code
-      
-        # A developer-specified string that contains supplemental information about an
-        # order.
-        # Corresponds to the JSON property `developerPayload`
-        # @return [String]
-        attr_accessor :developer_payload
-      
-        # The email address of the user when the subscription was purchased. Only
-        # present for purchases made with 'Subscribe with Google'.
-        # Corresponds to the JSON property `emailAddress`
-        # @return [String]
-        attr_accessor :email_address
-      
-        # Time at which the subscription will expire, in milliseconds since the Epoch.
-        # Corresponds to the JSON property `expiryTimeMillis`
-        # @return [Fixnum]
-        attr_accessor :expiry_time_millis
-      
-        # User account identifier in the third-party service. Only present if account
-        # linking happened as part of the subscription purchase flow.
-        # Corresponds to the JSON property `externalAccountId`
-        # @return [String]
-        attr_accessor :external_account_id
-      
-        # The family name of the user when the subscription was purchased. Only present
-        # for purchases made with 'Subscribe with Google'.
-        # Corresponds to the JSON property `familyName`
-        # @return [String]
-        attr_accessor :family_name
-      
-        # The given name of the user when the subscription was purchased. Only present
-        # for purchases made with 'Subscribe with Google'.
-        # Corresponds to the JSON property `givenName`
-        # @return [String]
-        attr_accessor :given_name
-      
-        # Contains the introductory price information for a subscription.
-        # Corresponds to the JSON property `introductoryPriceInfo`
-        # @return [Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo]
-        attr_accessor :introductory_price_info
-      
-        # This kind represents a subscriptionPurchase object in the androidpublisher
-        # service.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The purchase token of the originating purchase if this subscription is one of
-        # the following: 0. Re-signup of a canceled but non-lapsed subscription 1.
-        # Upgrade/downgrade from a previous subscription For example, suppose a user
-        # originally signs up and you receive purchase token X, then the user cancels
-        # and goes through the resignup flow (before their subscription lapses) and you
-        # receive purchase token Y, and finally the user upgrades their subscription and
-        # you receive purchase token Z. If you call this API with purchase token Z, this
-        # field will be set to Y. If you call this API with purchase token Y, this field
-        # will be set to X. If you call this API with purchase token X, this field will
-        # not be set.
-        # Corresponds to the JSON property `linkedPurchaseToken`
-        # @return [String]
-        attr_accessor :linked_purchase_token
-      
-        # An obfuscated version of the id that is uniquely associated with the user's
-        # account in your app. Present for the following purchases: * If account linking
-        # happened as part of the subscription purchase flow. * It was specified using
-        # https://developer.android.com/reference/com/android/billingclient/api/
-        # BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made.
-        # Corresponds to the JSON property `obfuscatedExternalAccountId`
-        # @return [String]
-        attr_accessor :obfuscated_external_account_id
-      
-        # An obfuscated version of the id that is uniquely associated with the user's
-        # profile in your app. Only present if specified using https://developer.android.
-        # com/reference/com/android/billingclient/api/BillingFlowParams.Builder#
-        # setobfuscatedprofileid when the purchase was made.
-        # Corresponds to the JSON property `obfuscatedExternalProfileId`
-        # @return [String]
-        attr_accessor :obfuscated_external_profile_id
-      
-        # The order id of the latest recurring order associated with the purchase of the
-        # subscription. If the subscription was canceled because payment was declined,
-        # this will be the order id from the payment declined order.
-        # Corresponds to the JSON property `orderId`
-        # @return [String]
-        attr_accessor :order_id
-      
-        # The payment state of the subscription. Possible values are: 0. Payment pending
-        # 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not
-        # present for canceled, expired subscriptions.
-        # Corresponds to the JSON property `paymentState`
-        # @return [Fixnum]
-        attr_accessor :payment_state
-      
-        # Price of the subscription, For tax exclusive countries, the price doesn't
-        # include tax. For tax inclusive countries, the price includes tax. Price is
-        # expressed in micro-units, where 1,000,000 micro-units represents one unit of
-        # the currency. For example, if the subscription price is €1.99,
-        # price_amount_micros is 1990000.
-        # Corresponds to the JSON property `priceAmountMicros`
-        # @return [Fixnum]
-        attr_accessor :price_amount_micros
-      
-        # Contains the price change information for a subscription that can be used to
-        # control the user journey for the price change in the app. This can be in the
-        # form of seeking confirmation from the user or tailoring the experience for a
-        # successful conversion.
-        # Corresponds to the JSON property `priceChange`
-        # @return [Google::Apis::AndroidpublisherV3::SubscriptionPriceChange]
-        attr_accessor :price_change
-      
-        # ISO 4217 currency code for the subscription price. For example, if the price
-        # is specified in British pounds sterling, price_currency_code is "GBP".
-        # Corresponds to the JSON property `priceCurrencyCode`
-        # @return [String]
-        attr_accessor :price_currency_code
-      
-        # The Google profile id of the user when the subscription was purchased. Only
-        # present for purchases made with 'Subscribe with Google'.
-        # Corresponds to the JSON property `profileId`
-        # @return [String]
-        attr_accessor :profile_id
-      
-        # The profile name of the user when the subscription was purchased. Only present
-        # for purchases made with 'Subscribe with Google'.
-        # Corresponds to the JSON property `profileName`
-        # @return [String]
-        attr_accessor :profile_name
-      
-        # The promotion code applied on this purchase. This field is only set if a
-        # vanity code promotion is applied when the subscription was purchased.
-        # Corresponds to the JSON property `promotionCode`
-        # @return [String]
-        attr_accessor :promotion_code
-      
-        # The type of promotion applied on this purchase. This field is only set if a
-        # promotion is applied when the subscription was purchased. Possible values are:
-        # 0. One time code 1. Vanity code
-        # Corresponds to the JSON property `promotionType`
-        # @return [Fixnum]
-        attr_accessor :promotion_type
-      
-        # The type of purchase of the subscription. This field is only set if this
-        # purchase was not made using the standard in-app billing flow. Possible values
-        # are: 0. Test (i.e. purchased from a license testing account) 1. Promo (i.e.
-        # purchased using a promo code)
-        # Corresponds to the JSON property `purchaseType`
-        # @return [Fixnum]
-        attr_accessor :purchase_type
-      
-        # Time at which the subscription was granted, in milliseconds since the Epoch.
-        # Corresponds to the JSON property `startTimeMillis`
-        # @return [Fixnum]
-        attr_accessor :start_time_millis
-      
-        # The time at which the subscription was canceled by the user, in milliseconds
-        # since the epoch. Only present if cancelReason is 0.
-        # Corresponds to the JSON property `userCancellationTimeMillis`
-        # @return [Fixnum]
-        attr_accessor :user_cancellation_time_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @acknowledgement_state = args[:acknowledgement_state] if args.key?(:acknowledgement_state)
-          @auto_renewing = args[:auto_renewing] if args.key?(:auto_renewing)
-          @auto_resume_time_millis = args[:auto_resume_time_millis] if args.key?(:auto_resume_time_millis)
-          @cancel_reason = args[:cancel_reason] if args.key?(:cancel_reason)
-          @cancel_survey_result = args[:cancel_survey_result] if args.key?(:cancel_survey_result)
-          @country_code = args[:country_code] if args.key?(:country_code)
-          @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
-          @email_address = args[:email_address] if args.key?(:email_address)
-          @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
-          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
-          @family_name = args[:family_name] if args.key?(:family_name)
-          @given_name = args[:given_name] if args.key?(:given_name)
-          @introductory_price_info = args[:introductory_price_info] if args.key?(:introductory_price_info)
-          @kind = args[:kind] if args.key?(:kind)
-          @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
-          @obfuscated_external_account_id = args[:obfuscated_external_account_id] if args.key?(:obfuscated_external_account_id)
-          @obfuscated_external_profile_id = args[:obfuscated_external_profile_id] if args.key?(:obfuscated_external_profile_id)
-          @order_id = args[:order_id] if args.key?(:order_id)
-          @payment_state = args[:payment_state] if args.key?(:payment_state)
-          @price_amount_micros = args[:price_amount_micros] if args.key?(:price_amount_micros)
-          @price_change = args[:price_change] if args.key?(:price_change)
-          @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
-          @profile_id = args[:profile_id] if args.key?(:profile_id)
-          @profile_name = args[:profile_name] if args.key?(:profile_name)
-          @promotion_code = args[:promotion_code] if args.key?(:promotion_code)
-          @promotion_type = args[:promotion_type] if args.key?(:promotion_type)
-          @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
-          @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
-          @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)
-        end
-      end
-      
       # Item-level info for a subscription purchase.
       class SubscriptionPurchaseLineItem
         include Google::Apis::Core::Hashable
@@ -9130,16 +10546,6 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Deprecated: Use line_items.latest_successful_order_id instead. The order id of
-        # the latest order associated with the purchase of the subscription. For
-        # autoRenewing subscription, this is the order id of signup order if it is not
-        # renewed yet, or the last recurring order id (success, pending, or declined
-        # order). For prepaid subscription, this is the order id associated with the
-        # queried purchase token.
-        # Corresponds to the JSON property `latestOrderId`
-        # @return [String]
-        attr_accessor :latest_order_id
-      
         # Item-level info for a subscription purchase. The items in the same purchase
         # should be either all with AutoRenewingPlan or all with PrepaidPlan.
         # Corresponds to the JSON property `lineItems`
@@ -9209,7 +10615,6 @@ module Google
           @external_account_identifiers = args[:external_account_identifiers] if args.key?(:external_account_identifiers)
           @in_grace_period_state_context = args[:in_grace_period_state_context] if args.key?(:in_grace_period_state_context)
           @kind = args[:kind] if args.key?(:kind)
-          @latest_order_id = args[:latest_order_id] if args.key?(:latest_order_id)
           @line_items = args[:line_items] if args.key?(:line_items)
           @linked_purchase_token = args[:linked_purchase_token] if args.key?(:linked_purchase_token)
           @on_hold_state_context = args[:on_hold_state_context] if args.key?(:on_hold_state_context)
@@ -9998,6 +11403,96 @@ module Google
         end
       end
       
+      # Request to update the publish status of an app store hosted app. The default
+      # state for any app with an update is PUBLISHED. It is not necessary to call
+      # this RPC explicitly to set an app to PUBLISHED.
+      class UpdateAppStoreHostedAppPublishStatusRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new publish state for the hosted app.
+        # Corresponds to the JSON property `publishState`
+        # @return [String]
+        attr_accessor :publish_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_state = args[:publish_state] if args.key?(:publish_state)
+        end
+      end
+      
+      # Response for updating the publish status of an app store hosted app.
+      class UpdateAppStoreHostedAppPublishStatusResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request to update an app record for an app store hosted app.
+      class UpdateAppStoreHostedAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Information about active APKs of an app store hosted app.
+        # Corresponds to the JSON property `activeApks`
+        # @return [Google::Apis::AndroidpublisherV3::AppStoreAppActiveApks]
+        attr_accessor :active_apks
+      
+        # Required. Localized store listings details of the update.
+        # Corresponds to the JSON property `activeLocalizedStoreListings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::AppStoreAppStoreListing>]
+        attr_accessor :active_localized_store_listings
+      
+        # Details about the app.
+        # Corresponds to the JSON property `appDetails`
+        # @return [Google::Apis::AndroidpublisherV3::AppStoreAppDetails]
+        attr_accessor :app_details
+      
+        # Required. Package name of the app.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # Required. Policy declarations provided for the app.
+        # Corresponds to the JSON property `policyDeclarations`
+        # @return [Array<Google::Apis::AndroidpublisherV3::AppStoreAppPolicyDeclaration>]
+        attr_accessor :policy_declarations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_apks = args[:active_apks] if args.key?(:active_apks)
+          @active_localized_store_listings = args[:active_localized_store_listings] if args.key?(:active_localized_store_listings)
+          @app_details = args[:app_details] if args.key?(:app_details)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @policy_declarations = args[:policy_declarations] if args.key?(:policy_declarations)
+        end
+      end
+      
+      # Response for updating an app record for an app store hosted app.
+      class UpdateAppStoreHostedAppResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message to update the state of a subscription base plan.
       class UpdateBasePlanStateRequest
         include Google::Apis::Core::Hashable
@@ -10329,6 +11824,108 @@ module Google
         end
       end
       
+      # Request to upload an APK.
+      class UploadApkRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for uploading an APK.
+      class UploadApkResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the uploaded APK.
+        # Corresponds to the JSON property `apkId`
+        # @return [String]
+        attr_accessor :apk_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apk_id = args[:apk_id] if args.key?(:apk_id)
+        end
+      end
+      
+      # Request to upload a policy declaration file.
+      class UploadAppStoreAppPolicyDeclarationFileRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Type of the policy declaration file.
+        # Corresponds to the JSON property `fileType`
+        # @return [String]
+        attr_accessor :file_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_type = args[:file_type] if args.key?(:file_type)
+        end
+      end
+      
+      # Response for uploading a policy declaration file.
+      class UploadAppStoreAppPolicyDeclarationFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the uploaded file.
+        # Corresponds to the JSON property `fileId`
+        # @return [String]
+        attr_accessor :file_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file_id = args[:file_id] if args.key?(:file_id)
+        end
+      end
+      
+      # Request to upload an image.
+      class UploadImageRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response for uploading an image.
+      class UploadImageResponse
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the uploaded image.
+        # Corresponds to the JSON property `imageId`
+        # @return [String]
+        attr_accessor :image_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_id = args[:image_id] if args.key?(:image_id)
+        end
+      end
+      
       # A user resource.
       class User
         include Google::Apis::Core::Hashable
@@ -10568,6 +12165,52 @@ module Google
         end
       end
       
+      # Represents all configurations marked as required by use of the uses-
+      # configuration manifest tag.
+      class UsesConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The type of keyboard required.
+        # Corresponds to the JSON property `requiredKeyboardType`
+        # @return [String]
+        attr_accessor :required_keyboard_type
+      
+        # The navigation device required.
+        # Corresponds to the JSON property `requiredNavigationType`
+        # @return [String]
+        attr_accessor :required_navigation_type
+      
+        # The type of touchscreen required.
+        # Corresponds to the JSON property `requiredTouchscreenType`
+        # @return [String]
+        attr_accessor :required_touchscreen_type
+      
+        # Whether or not the application requires a five-way navigation control.
+        # Corresponds to the JSON property `requiresFiveWayNavigation`
+        # @return [Boolean]
+        attr_accessor :requires_five_way_navigation
+        alias_method :requires_five_way_navigation?, :requires_five_way_navigation
+      
+        # Whether or not the application requires a hardware keyboard.
+        # Corresponds to the JSON property `requiresHardwareKeyboard`
+        # @return [Boolean]
+        attr_accessor :requires_hardware_keyboard
+        alias_method :requires_hardware_keyboard?, :requires_hardware_keyboard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @required_keyboard_type = args[:required_keyboard_type] if args.key?(:required_keyboard_type)
+          @required_navigation_type = args[:required_navigation_type] if args.key?(:required_navigation_type)
+          @required_touchscreen_type = args[:required_touchscreen_type] if args.key?(:required_touchscreen_type)
+          @requires_five_way_navigation = args[:requires_five_way_navigation] if args.key?(:requires_five_way_navigation)
+          @requires_hardware_keyboard = args[:requires_hardware_keyboard] if args.key?(:requires_hardware_keyboard)
+        end
+      end
+      
       # A permission used by this APK.
       class UsesPermission
         include Google::Apis::Core::Hashable
@@ -10684,6 +12327,25 @@ module Google
           @screen_density_targeting = args[:screen_density_targeting] if args.key?(:screen_density_targeting)
           @sdk_version_targeting = args[:sdk_version_targeting] if args.key?(:sdk_version_targeting)
           @texture_compression_format_targeting = args[:texture_compression_format_targeting] if args.key?(:texture_compression_format_targeting)
+        end
+      end
+      
+      # A video asset.
+      class VideoAsset
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the video asset.
+        # Corresponds to the JSON property `videoUrl`
+        # @return [String]
+        attr_accessor :video_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @video_url = args[:video_url] if args.key?(:video_url)
         end
       end
       

@@ -442,6 +442,12 @@ module Google
       class ConfigurationDetail
         include Google::Apis::Core::Hashable
       
+        # CustomThreatScenarioConfig represents a user-defined threat scenario
+        # configuration.
+        # Corresponds to the JSON property `customThreatScenario`
+        # @return [Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig]
+        attr_accessor :custom_threat_scenario
+      
         # CustomerProfileConfig is the configuration for the customer profile.
         # Corresponds to the JSON property `customerProfile`
         # @return [Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig]
@@ -452,6 +458,11 @@ module Google
         # Corresponds to the JSON property `detailType`
         # @return [String]
         attr_accessor :detail_type
+      
+        # Configuration holding settings for one or more monitored domains.
+        # Corresponds to the JSON property `domainConfiguration`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainConfiguration]
+        attr_accessor :domain_configuration
       
         # TechnologyWatchListConfig is the configuration for the technology watchlist.
         # Corresponds to the JSON property `technologyWatchlist`
@@ -464,8 +475,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_threat_scenario = args[:custom_threat_scenario] if args.key?(:custom_threat_scenario)
           @customer_profile = args[:customer_profile] if args.key?(:customer_profile)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @domain_configuration = args[:domain_configuration] if args.key?(:domain_configuration)
           @technology_watchlist = args[:technology_watchlist] if args.key?(:technology_watchlist)
         end
       end
@@ -501,6 +514,45 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
+        end
+      end
+      
+      # CustomThreatScenarioConfig represents a user-defined threat scenario
+      # configuration.
+      class CustomThreatScenarioConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The compiled Lucene query string.
+        # Corresponds to the JSON property `compiledLuceneQuery`
+        # @return [String]
+        attr_accessor :compiled_lucene_query
+      
+        # Required. The condition driving the scenario, stored as a stringified JSON.
+        # This is used to query/filter documents.
+        # Corresponds to the JSON property `documentCondition`
+        # @return [String]
+        attr_accessor :document_condition
+      
+        # Represents a query to match documents.
+        # Corresponds to the JSON property `documentQuery`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DocumentQuery]
+        attr_accessor :document_query
+      
+        # Legacy metadata associated with this scenario/monitor.
+        # Corresponds to the JSON property `legacyMonitorMetadata`
+        # @return [Google::Apis::ThreatintelligenceV1beta::LegacyMetadata]
+        attr_accessor :legacy_monitor_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compiled_lucene_query = args[:compiled_lucene_query] if args.key?(:compiled_lucene_query)
+          @document_condition = args[:document_condition] if args.key?(:document_condition)
+          @document_query = args[:document_query] if args.key?(:document_query)
+          @legacy_monitor_metadata = args[:legacy_monitor_metadata] if args.key?(:legacy_monitor_metadata)
         end
       end
       
@@ -1061,6 +1113,107 @@ module Google
         end
       end
       
+      # Represents a query to match documents.
+      class DocumentQuery
+        include Google::Apis::Core::Hashable
+      
+        # Required. The data model to query against.
+        # Corresponds to the JSON property `dataModel`
+        # @return [String]
+        attr_accessor :data_model
+      
+        # Required. The query string.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # Required. The type of query.
+        # Corresponds to the JSON property `queryType`
+        # @return [String]
+        attr_accessor :query_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_model = args[:data_model] if args.key?(:data_model)
+          @query = args[:query] if args.key?(:query)
+          @query_type = args[:query_type] if args.key?(:query_type)
+        end
+      end
+      
+      # Configuration holding settings for one or more monitored domains.
+      class DomainConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of settings for individual domains.
+        # Corresponds to the JSON property `domainSettings`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DomainSetting>]
+        attr_accessor :domain_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_settings = args[:domain_settings] if args.key?(:domain_settings)
+        end
+      end
+      
+      # Specific configuration for the Domain Monitoring feature.
+      class DomainMonitoringFeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the Domain Monitoring feature is disabled for the domain.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # Feature settings and toggles for a single specific domain.
+      class DomainSetting
+        include Google::Apis::Core::Hashable
+      
+        # Required. The domain name to match against.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Specific configuration for the Domain Monitoring feature.
+        # Corresponds to the JSON property `domainMonitoringConfig`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig]
+        attr_accessor :domain_monitoring_config
+      
+        # Output only. The verification state of the domain.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @domain_monitoring_config = args[:domain_monitoring_config] if args.key?(:domain_monitoring_config)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Response message for EnumerateAlertFacets.
       class EnumerateAlertFacetsResponse
         include Google::Apis::Core::Hashable
@@ -1349,6 +1502,25 @@ module Google
         end
       end
       
+      # Response message for GetPassword.
+      class GetPasswordResponse
+        include Google::Apis::Core::Hashable
+      
+        # The decrypted cleartext password for the compromised credential.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @password = args[:password] if args.key?(:password)
+        end
+      end
+      
       # Captures the specific details of InitialAccessBroker (IAB) alert.
       class InitialAccessBrokerAlertDetail
         include Google::Apis::Core::Hashable
@@ -1471,6 +1643,121 @@ module Google
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Legacy metadata associated with this scenario/monitor.
+      class LegacyMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether aggregation is enabled for alerts from this monitor.
+        # Corresponds to the JSON property `aggregationEnabled`
+        # @return [Boolean]
+        attr_accessor :aggregation_enabled
+        alias_method :aggregation_enabled?, :aggregation_enabled
+      
+        # Output only. Similarity threshold for aggregation.
+        # Corresponds to the JSON property `aggregationSimilarity`
+        # @return [Float]
+        attr_accessor :aggregation_similarity
+      
+        # Output only. Version of the condition schema.
+        # Corresponds to the JSON property `conditionVersion`
+        # @return [Fixnum]
+        attr_accessor :condition_version
+      
+        # Output only. User ID who created the monitor.
+        # Corresponds to the JSON property `creatorUserId`
+        # @return [String]
+        attr_accessor :creator_user_id
+      
+        # Output only. Description of the legacy monitor.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Code indicating why the monitor is disabled (if applicable).
+        # Corresponds to the JSON property `disabledCode`
+        # @return [String]
+        attr_accessor :disabled_code
+      
+        # Output only. Reason why the monitor is disabled (if applicable).
+        # Corresponds to the JSON property `disabledReason`
+        # @return [String]
+        attr_accessor :disabled_reason
+      
+        # Output only. Name of the legacy monitor.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Deprecated: Whether email notifications are enabled. This field
+        # will not be used as email notifications are handled through the GTI Mail Hub.
+        # Corresponds to the JSON property `emailNotificationEnabled`
+        # @return [Boolean]
+        attr_accessor :email_notification_enabled
+        alias_method :email_notification_enabled?, :email_notification_enabled
+      
+        # Output only. Deprecated: Whether email notifications are intermediate/
+        # immediate. This field will not be used as email notifications are handled
+        # through the GTI Mail Hub.
+        # Corresponds to the JSON property `emailNotificationImmediate`
+        # @return [Boolean]
+        attr_accessor :email_notification_immediate
+        alias_method :email_notification_immediate?, :email_notification_immediate
+      
+        # Output only. Unique identifier of the legacy monitor.
+        # Corresponds to the JSON property `legacyMonitorId`
+        # @return [String]
+        attr_accessor :legacy_monitor_id
+      
+        # Output only. Time the legacy monitor was considered stale.
+        # Corresponds to the JSON property `staleTime`
+        # @return [String]
+        attr_accessor :stale_time
+      
+        # Output only. ID of the template this monitor was created from.
+        # Corresponds to the JSON property `templateId`
+        # @return [String]
+        attr_accessor :template_id
+      
+        # Output only. ID of the tenant owning the monitor.
+        # Corresponds to the JSON property `tenantId`
+        # @return [String]
+        attr_accessor :tenant_id
+      
+        # Output only. User ID who last updated the monitor.
+        # Corresponds to the JSON property `updaterUserId`
+        # @return [String]
+        attr_accessor :updater_user_id
+      
+        # Output only. Version of the monitor configuration.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregation_enabled = args[:aggregation_enabled] if args.key?(:aggregation_enabled)
+          @aggregation_similarity = args[:aggregation_similarity] if args.key?(:aggregation_similarity)
+          @condition_version = args[:condition_version] if args.key?(:condition_version)
+          @creator_user_id = args[:creator_user_id] if args.key?(:creator_user_id)
+          @description = args[:description] if args.key?(:description)
+          @disabled_code = args[:disabled_code] if args.key?(:disabled_code)
+          @disabled_reason = args[:disabled_reason] if args.key?(:disabled_reason)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email_notification_enabled = args[:email_notification_enabled] if args.key?(:email_notification_enabled)
+          @email_notification_immediate = args[:email_notification_immediate] if args.key?(:email_notification_immediate)
+          @legacy_monitor_id = args[:legacy_monitor_id] if args.key?(:legacy_monitor_id)
+          @stale_time = args[:stale_time] if args.key?(:stale_time)
+          @template_id = args[:template_id] if args.key?(:template_id)
+          @tenant_id = args[:tenant_id] if args.key?(:tenant_id)
+          @updater_user_id = args[:updater_user_id] if args.key?(:updater_user_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

@@ -32,6 +32,9 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud Asset data and see the email address for your Google Account
+      AUTH_CLOUDASSET = 'https://www.googleapis.com/auth/cloudasset'
     end
   end
 end

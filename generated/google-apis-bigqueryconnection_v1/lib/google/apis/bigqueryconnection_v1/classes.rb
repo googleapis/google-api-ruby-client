@@ -601,15 +601,21 @@ module Google
         # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationNetwork]
         attr_accessor :network
       
-        # Optional. A map of name-value pairs for connector-specific parameters. Extra
-        # configuration parameters, that are not standardized in configuration sections.
-        # To update a single parameter value call ConnectionService.UpdateConnection
-        # with `update_mask` set to `configuration.parameters.parameter_id`. If
-        # parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should be escaped with
-        # backticks - for example ``configuration.parameters.`parameter id` ``.
+        # Optional. A map of name-value pairs for connector-specific parameters. These
+        # extra configuration parameters aren't standardized in the configuration
+        # sections. To update a single parameter value, call ConnectionService.
+        # UpdateConnection with `update_mask` set to `configuration.parameters.
+        # parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``
+        # parameter_id`` should be escaped with backticks—for example, ``configuration.
+        # parameters.`parameter id` ``.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue>]
         attr_accessor :parameters
+      
+        # TLS configuration options.
+        # Corresponds to the JSON property `tls`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTls]
+        attr_accessor :tls
       
         def initialize(**args)
            update!(**args)
@@ -623,6 +629,7 @@ module Google
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @network = args[:network] if args.key?(:network)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @tls = args[:tls] if args.key?(:tls)
         end
       end
       
@@ -658,12 +665,12 @@ module Google
       class ConnectorConfigurationAuthentication
         include Google::Apis::Core::Hashable
       
-        # Optional. A map of name-value pairs for authentication-specific parameters.
-        # Extra configuration parameters, that are not standardized in authentication.
-        # To update a single parameter value call ConnectionService.UpdateConnection
-        # with `update_mask` set to `configuration.authentication.parameters.
-        # parameter_id`. If parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should
-        # be escaped with backticks - for example ``configuration.authentication.
+        # Optional. A map of name-value pairs for connector-specific parameters. These
+        # extra configuration parameters aren't standardized in the configuration
+        # sections. To update a single parameter value, call ConnectionService.
+        # UpdateConnection with `update_mask` set to `configuration.parameters.
+        # parameter_id`. If ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``
+        # parameter_id`` should be escaped with backticks—for example, ``configuration.
         # parameters.`parameter id` ``.
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Google::Apis::BigqueryconnectionV1::ConnectorConfigurationParameterValue>]
@@ -821,6 +828,69 @@ module Google
         def update!(**args)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
           @secret_type = args[:secret_type] if args.key?(:secret_type)
+        end
+      end
+      
+      # TLS configuration options.
+      class ConnectorConfigurationTls
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The mode of TLS configuration.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Private PKI.
+        # Corresponds to the JSON property `privatePki`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsPrivatePki]
+        attr_accessor :private_pki
+      
+        # Web PKI.
+        # Corresponds to the JSON property `webPki`
+        # @return [Google::Apis::BigqueryconnectionV1::ConnectorConfigurationTlsWebPki]
+        attr_accessor :web_pki
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @private_pki = args[:private_pki] if args.key?(:private_pki)
+          @web_pki = args[:web_pki] if args.key?(:web_pki)
+        end
+      end
+      
+      # Private PKI.
+      class ConnectorConfigurationTlsPrivatePki
+        include Google::Apis::Core::Hashable
+      
+        # Optional. a PEM-encoded list of certificates to trust
+        # Corresponds to the JSON property `trustedCertificatesPem`
+        # @return [String]
+        attr_accessor :trusted_certificates_pem
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trusted_certificates_pem = args[:trusted_certificates_pem] if args.key?(:trusted_certificates_pem)
+        end
+      end
+      
+      # Web PKI.
+      class ConnectorConfigurationTlsWebPki
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

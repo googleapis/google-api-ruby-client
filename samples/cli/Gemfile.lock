@@ -1,0 +1,154 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.9.0)
+      public_suffix (>= 2.0.2, < 8.0)
+    base64 (0.3.0)
+    declarative (0.0.20)
+    dotenv (3.2.0)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-follow_redirects (0.5.0)
+      faraday (>= 1, < 3)
+    faraday-net_http (3.4.4)
+      net-http (~> 0.5)
+    google-apis-adsense_v1_4 (0.6.0)
+      google-apis-core (>= 0.4, < 2.a)
+    google-apis-analytics_v3 (0.17.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-androidpublisher_v3 (0.106.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-bigquery_v2 (0.106.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-calendar_v3 (0.57.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-core (1.2.5)
+      addressable (~> 2.9)
+      faraday (~> 2.13)
+      faraday-follow_redirects (~> 0.3)
+      googleauth (~> 1.14)
+      mini_mime (~> 1.1)
+      multi_json (~> 1.11)
+      representable (~> 3.0)
+      retriable (>= 3.1, < 5.0)
+    google-apis-drive_v3 (0.84.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-gmail_v1 (0.52.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-pubsub_v1 (0.70.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-sheets_v4 (0.48.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-translate_v2 (0.18.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-vision_v1 (0.38.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-apis-youtube_v3 (0.67.0)
+      google-apis-core (>= 0.15.0, < 2.a)
+    google-cloud-env (2.4.0)
+      base64 (~> 0.2)
+      faraday (>= 1.0, < 3.a)
+    google-logging-utils (0.2.0)
+    googleauth (1.17.3)
+      faraday (>= 1.0, < 3.a)
+      google-cloud-env (~> 2.2)
+      google-logging-utils (~> 0.1)
+      jwt (>= 1.4, < 4.0)
+      os (>= 0.9, < 2.0)
+      pstore (~> 0.1)
+      signet (>= 0.16, < 2.a)
+    json (2.21.2)
+    jwt (3.2.0)
+      base64
+    logger (1.7.0)
+    mini_mime (1.1.5)
+    multi_json (1.21.1)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
+    os (0.9.6)
+    pstore (0.2.1)
+    public_suffix (7.0.5)
+    representable (3.2.0)
+      declarative (< 0.1.0)
+      trailblazer-option (>= 0.1.1, < 0.2.0)
+      uber (< 0.2.0)
+    retriable (4.2.0)
+    rmail (1.1.4)
+    signet (0.22.0)
+      addressable (~> 2.8)
+      faraday (>= 0.17.5, < 3.a)
+      jwt (>= 1.5, < 4.0)
+    thor (1.5.0)
+    trailblazer-option (0.1.2)
+    uber (0.1.0)
+    uri (1.1.1)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  dotenv
+  google-apis-adsense_v1_4 (~> 0.1)
+  google-apis-analytics_v3 (~> 0.1)
+  google-apis-androidpublisher_v3 (~> 0.1)
+  google-apis-bigquery_v2 (~> 0.1)
+  google-apis-calendar_v3 (~> 0.1)
+  google-apis-drive_v3 (~> 0.1)
+  google-apis-gmail_v1 (~> 0.1)
+  google-apis-pubsub_v1 (~> 0.1)
+  google-apis-sheets_v4 (~> 0.1)
+  google-apis-translate_v2 (~> 0.1)
+  google-apis-vision_v1 (~> 0.1)
+  google-apis-youtube_v3 (~> 0.1)
+  os (~> 0.9)
+  rmail (~> 1.1)
+  thor (~> 1.0)
+
+CHECKSUMS
+  addressable (2.9.0) sha256=7fdf6ac3660f7f4e867a0838be3f6cf722ace541dd97767fa42bc6cfa980c7af
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
+  bundler (4.0.14) sha256=d09a0a965cf772266a7e49e83610be7c2f4e49e61134c42a56804bb383cc24b8
+  declarative (0.0.20) sha256=8021dd6cb17ab2b61233c56903d3f5a259c5cf43c80ff332d447d395b17d9ff9
+  dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
+  faraday (2.14.3) sha256=1882247e6766615c8220b4392bf1d27f6ebb63d8e28267587cef1fb0bf37f278
+  faraday-follow_redirects (0.5.0) sha256=5cde93c894b30943a5d2b93c2fe9284216a6b756f7af406a1e55f211d97d10ad
+  faraday-net_http (3.4.4) sha256=0e78af151747ed1b00f33e25973b4bc220d7f16c00c39676817c8b12331eb588
+  google-apis-adsense_v1_4 (0.6.0) sha256=f08926089d9f00f5998c98b4be5489d0a08a5621c34d775ec68f787520eb4c9c
+  google-apis-analytics_v3 (0.17.0) sha256=fbb386361ed521a3a68238a22cc3196d2127c112bba5ea5474b12660ef6fcaef
+  google-apis-androidpublisher_v3 (0.106.0) sha256=b90b5312b70f8f731def88f24a2b8fb791fe1b979a7c2c14a905cb6cae19cf3f
+  google-apis-bigquery_v2 (0.106.0) sha256=a0f4243b634a0c79c29b7dacdd79233bd9c9ba2eda6fde9c2b19414fd165dd93
+  google-apis-calendar_v3 (0.57.0) sha256=85a1836d1b5e3745720c28f219d8f599564b9cdd4a72f97b8a4e61ce67498cb7
+  google-apis-core (1.2.5) sha256=e21562b5627a0fc6a0c3165e429c3afed0f6a628eaa514e83f7204dda1adff69
+  google-apis-drive_v3 (0.84.0) sha256=5ac9bf4ec4a61ce56aec7b07c1cdfd2dd260e1bb22c509eed7ad0e5c16848875
+  google-apis-gmail_v1 (0.52.0) sha256=94efe9b6f323e5e5e58ba126fb2c0105642874906b3375cf7e887562398652ff
+  google-apis-pubsub_v1 (0.70.0) sha256=af3bc2dcfb72a4de6bcdb45158256644d1460433b2ea12155aa885527711ff17
+  google-apis-sheets_v4 (0.48.0) sha256=ef76dfa6e8c9d322add2e3faeb2c320ffa82d2d1130aa31d78ad65f3da9ab7e3
+  google-apis-translate_v2 (0.18.0) sha256=832b5fa1ce50d416d07a8ce25bb8ed17ffe25ce2ab351441d79242c56d515639
+  google-apis-vision_v1 (0.38.0) sha256=23c13ddc5995298709fa1877ee3a181548fe225ee9196954b24a5833177443f5
+  google-apis-youtube_v3 (0.67.0) sha256=76ef64d38dd915c26232ba7a4c455636642a27b6ac7d8e4d9ce0e5d3a494c064
+  google-cloud-env (2.4.0) sha256=01cb35ecee5d1c4d1cd4deaed8bb5bddc838e296bcc2a35c5d1ddd07ce40d28d
+  google-logging-utils (0.2.0) sha256=675462b4ea5affa825a3442694ca2d75d0069455a1d0956127207498fca3df7b
+  googleauth (1.17.3) sha256=9a655455885c0c17a8b70537acd2a992a7c7842c43c06c6612dfb0d93e755d58
+  json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
+  jwt (3.2.0) sha256=5419b1fe37b1da0982bd07051f573a8b8789ab724c2aa7e785e4784a3ed217d7
+  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
+  mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
+  multi_json (1.21.1) sha256=e6126a31808e3b4d19f483c775ceac34df190dffa62adfb63a165ee14ba68080
+  net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
+  os (0.9.6) sha256=bf7a387eed04790758ef4cf53da2dad6ad65f394aca8927b7b8f4bf106479bd2
+  pstore (0.2.1) sha256=03904d0f2c66579e96d1e6704cdabc0c88df7ea8ed8782d9f3569f6f6c702c1a
+  public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
+  representable (3.2.0) sha256=cc29bf7eebc31653586849371a43ffe36c60b54b0a6365b5f7d95ec34d1ebace
+  retriable (4.2.0) sha256=90c3b257472a1c02f2a3dfa64dd35a420f7a624cef1a5981e20fdac5730f8cdc
+  rmail (1.1.4) sha256=11338a9834b207a6989826bb3d9c5505a339dcd3eacbcf8b389598b3ebbcb654
+  signet (0.22.0) sha256=b76d495ccb07ad35dbc89f3e920665a9d8ed717141955034005d7843dcfe4780
+  thor (1.5.0) sha256=e3a9e55fe857e44859ce104a84675ab6e8cd59c650a49106a05f55f136425e73
+  trailblazer-option (0.1.2) sha256=20e4f12ea4e1f718c8007e7944ca21a329eee4eed9e0fa5dde6e8ad8ac4344a3
+  uber (0.1.0) sha256=5beeb407ff807b5db994f82fa9ee07cfceaa561dad8af20be880bc67eba935dc
+  uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
+
+BUNDLED WITH
+  4.0.14

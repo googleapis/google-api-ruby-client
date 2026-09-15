@@ -64,7 +64,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Agent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentAnomaly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentDataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AgentSession
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -347,6 +365,12 @@ module Google
       end
       
       class Detection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DetectorReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,7 +736,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2Agent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentAnomaly
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2AgentDataAccessEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentSession
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -976,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV2DetectorReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV2DiscoveredWorkload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1103,6 +1151,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2InfoType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2InvocationReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1648,6 +1702,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InvocationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2107,6 +2167,25 @@ module Google
         end
       end
       
+      class Agent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class AgentAnomaly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          collection :detector_references, as: 'detectorReferences', class: Google::Apis::SecuritycenterV1beta1::DetectorReference, decorator: Google::Apis::SecuritycenterV1beta1::DetectorReference::Representation
+      
+          collection :invocation_references, as: 'invocationReferences', class: Google::Apis::SecuritycenterV1beta1::InvocationReference, decorator: Google::Apis::SecuritycenterV1beta1::InvocationReference::Representation
+      
+        end
+      end
+      
       class AgentDataAccessEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2114,6 +2193,13 @@ module Google
           property :event_time, as: 'eventTime'
           property :operation, as: 'operation'
           property :principal_subject, as: 'principalSubject'
+        end
+      end
+      
+      class AgentSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_id, as: 'sessionId'
         end
       end
       
@@ -2588,6 +2674,17 @@ module Google
         end
       end
       
+      class DetectorReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detector_id, as: 'detectorId'
+          property :display_name, as: 'displayName'
+          property :explanation, as: 'explanation'
+          property :recommendation, as: 'recommendation'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class DiscoveredWorkload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2739,7 +2836,13 @@ module Google
       
           property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1beta1::AffectedResources, decorator: Google::Apis::SecuritycenterV1beta1::AffectedResources::Representation
       
+          property :agent, as: 'agent', class: Google::Apis::SecuritycenterV1beta1::Agent, decorator: Google::Apis::SecuritycenterV1beta1::Agent::Representation
+      
+          property :agent_anomaly, as: 'agentAnomaly', class: Google::Apis::SecuritycenterV1beta1::AgentAnomaly, decorator: Google::Apis::SecuritycenterV1beta1::AgentAnomaly::Representation
+      
           collection :agent_data_access_events, as: 'agentDataAccessEvents', class: Google::Apis::SecuritycenterV1beta1::AgentDataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta1::AgentDataAccessEvent::Representation
+      
+          collection :agent_sessions, as: 'agentSessions', class: Google::Apis::SecuritycenterV1beta1::AgentSession, decorator: Google::Apis::SecuritycenterV1beta1::AgentSession::Representation
       
           property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta1::AiModel, decorator: Google::Apis::SecuritycenterV1beta1::AiModel::Representation
       
@@ -3354,6 +3457,25 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2Agent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentAnomaly
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence_score, as: 'confidenceScore'
+          collection :detector_references, as: 'detectorReferences', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DetectorReference, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2DetectorReference::Representation
+      
+          collection :invocation_references, as: 'invocationReferences', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2InvocationReference, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2InvocationReference::Representation
+      
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2AgentDataAccessEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3361,6 +3483,13 @@ module Google
           property :event_time, as: 'eventTime'
           property :operation, as: 'operation'
           property :principal_subject, as: 'principalSubject'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2AgentSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_id, as: 'sessionId'
         end
       end
       
@@ -3806,6 +3935,17 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2DetectorReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detector_id, as: 'detectorId'
+          property :display_name, as: 'displayName'
+          property :explanation, as: 'explanation'
+          property :recommendation, as: 'recommendation'
+          property :severity, as: 'severity'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2DiscoveredWorkload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3944,7 +4084,13 @@ module Google
       
           property :affected_resources, as: 'affectedResources', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AffectedResources, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AffectedResources::Representation
       
+          property :agent, as: 'agent', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Agent, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2Agent::Representation
+      
+          property :agent_anomaly, as: 'agentAnomaly', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentAnomaly, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentAnomaly::Representation
+      
           collection :agent_data_access_events, as: 'agentDataAccessEvents', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentDataAccessEvent, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentDataAccessEvent::Representation
+      
+          collection :agent_sessions, as: 'agentSessions', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentSession, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AgentSession::Representation
       
           property :ai_model, as: 'aiModel', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AiModel, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2AiModel::Representation
       
@@ -4149,6 +4295,13 @@ module Google
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SensitivityScore, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2SensitivityScore::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV2InvocationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invocation_id, as: 'invocationId'
         end
       end
       
@@ -5072,6 +5225,13 @@ module Google
           property :sensitivity_score, as: 'sensitivityScore', class: Google::Apis::SecuritycenterV1beta1::SensitivityScore, decorator: Google::Apis::SecuritycenterV1beta1::SensitivityScore::Representation
       
           property :version, as: 'version'
+        end
+      end
+      
+      class InvocationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :invocation_id, as: 'invocationId'
         end
       end
       

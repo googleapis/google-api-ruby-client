@@ -1190,7 +1190,9 @@ module Google
       class MetricRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :agentic_metric_costs, as: 'agenticMetricCosts'
           hash :metric_costs, as: 'metricCosts'
+          hash :nonagentic_metric_costs, as: 'nonagenticMetricCosts'
           property :selector, as: 'selector'
         end
       end
@@ -1338,6 +1340,7 @@ module Google
           property :max_limit, :numeric_string => true, as: 'maxLimit'
           property :metric, as: 'metric'
           property :name, as: 'name'
+          property :traffic_source, as: 'trafficSource'
           property :unit, as: 'unit'
           hash :values, as: 'values'
         end

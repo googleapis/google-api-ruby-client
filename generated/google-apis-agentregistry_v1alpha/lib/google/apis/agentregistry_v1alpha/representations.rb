@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArchiveUploadSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuthProviderBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Frontmatter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Interface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -136,7 +154,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPublishersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSkillRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSkillsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Publisher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchAgentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,7 +244,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchSkillsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Skill
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkillRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -284,6 +344,13 @@ module Google
         end
       end
       
+      class ArchiveUploadSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_content, :base64 => true, as: 'archiveContent'
+        end
+      end
+      
       class AuthProviderBinding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -362,6 +429,25 @@ module Google
         end
       end
       
+      class Frontmatter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility, as: 'compatibility'
+          property :description, as: 'description'
+          property :license, as: 'license'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation, :numeric_string => true, as: 'generation'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Interface
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -425,12 +511,40 @@ module Google
         end
       end
       
+      class ListPublishersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :publishers, as: 'publishers', class: Google::Apis::AgentregistryV1alpha::Publisher, decorator: Google::Apis::AgentregistryV1alpha::Publisher::Representation
+      
+        end
+      end
+      
       class ListServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::AgentregistryV1alpha::Service, decorator: Google::Apis::AgentregistryV1alpha::Service::Representation
       
+        end
+      end
+      
+      class ListSkillRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skill_revisions, as: 'skillRevisions', class: Google::Apis::AgentregistryV1alpha::SkillRevision, decorator: Google::Apis::AgentregistryV1alpha::SkillRevision::Representation
+      
+        end
+      end
+      
+      class ListSkillsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1alpha::Skill, decorator: Google::Apis::AgentregistryV1alpha::Skill::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -505,6 +619,18 @@ module Google
         end
       end
       
+      class Publisher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :documentation_uri, as: 'documentationUri'
+          property :name, as: 'name'
+          property :publisher_tier, as: 'publisherTier'
+          property :support_uri, as: 'supportUri'
+          property :verified_prefix, as: 'verifiedPrefix'
+        end
+      end
+      
       class SearchAgentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -541,6 +667,15 @@ module Google
         end
       end
       
+      class SearchSkillsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1alpha::Skill, decorator: Google::Apis::AgentregistryV1alpha::Skill::Representation
+      
+        end
+      end
+      
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -558,6 +693,46 @@ module Google
           property :name, as: 'name'
           property :registry_resource, as: 'registryResource'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Skill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :default_revision, as: 'defaultRevision'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :frontmatter, as: 'frontmatter', class: Google::Apis::AgentregistryV1alpha::Frontmatter, decorator: Google::Apis::AgentregistryV1alpha::Frontmatter::Representation
+      
+          property :initial_revision, as: 'initialRevision', class: Google::Apis::AgentregistryV1alpha::SkillRevision, decorator: Google::Apis::AgentregistryV1alpha::SkillRevision::Representation
+      
+          property :name, as: 'name'
+          property :publisher, as: 'publisher'
+          property :skill_id, as: 'skillId'
+          property :state, as: 'state'
+          property :target_state, as: 'targetState'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SkillRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_upload_source, as: 'archiveUploadSource', class: Google::Apis::AgentregistryV1alpha::ArchiveUploadSource, decorator: Google::Apis::AgentregistryV1alpha::ArchiveUploadSource::Representation
+      
+          property :create_time, as: 'createTime'
+          property :frontmatter, as: 'frontmatter', class: Google::Apis::AgentregistryV1alpha::Frontmatter, decorator: Google::Apis::AgentregistryV1alpha::Frontmatter::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::AgentregistryV1alpha::GcsSource, decorator: Google::Apis::AgentregistryV1alpha::GcsSource::Representation
+      
+          property :name, as: 'name'
+          property :sha256_hash, as: 'sha256Hash'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
         end
       end
       

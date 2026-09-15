@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CompanionClickThroughOverride
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1306,6 +1312,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReportDataQueryRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReportDataRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReportList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1397,6 +1421,12 @@ module Google
       end
       
       class SkippableSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SortBy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2250,6 +2280,14 @@ module Google
         end
       end
       
+      class ColumnHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
+        end
+      end
+      
       class CompanionClickThroughOverride
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2556,6 +2594,7 @@ module Google
           property :studio_creative_id, :numeric_string => true, as: 'studioCreativeId'
           property :studio_trafficked_creative_id, :numeric_string => true, as: 'studioTraffickedCreativeId'
           property :subaccount_id, :numeric_string => true, as: 'subaccountId'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :third_party_backup_image_impressions_url, as: 'thirdPartyBackupImageImpressionsUrl'
           property :third_party_rich_media_impressions_url, as: 'thirdPartyRichMediaImpressionsUrl'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DfareportingV5::ThirdPartyTrackingUrl, decorator: Google::Apis::DfareportingV5::ThirdPartyTrackingUrl::Representation
@@ -4527,6 +4566,42 @@ module Google
         end
       end
       
+      class ReportDataQueryRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_range, as: 'dateRange', class: Google::Apis::DfareportingV5::DateRange, decorator: Google::Apis::DfareportingV5::DateRange::Representation
+      
+          collection :dimension_filters, as: 'dimensionFilters', class: Google::Apis::DfareportingV5::DimensionValue, decorator: Google::Apis::DfareportingV5::DimensionValue::Representation
+      
+          collection :dimension_names, as: 'dimensionNames'
+          property :max_results, as: 'maxResults'
+          collection :metric_names, as: 'metricNames'
+          property :page_token, as: 'pageToken'
+          collection :sort_bys, as: 'sortBys', class: Google::Apis::DfareportingV5::SortBy, decorator: Google::Apis::DfareportingV5::SortBy::Representation
+      
+        end
+      end
+      
+      class ReportDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :column_headers, as: 'columnHeaders', class: Google::Apis::DfareportingV5::ColumnHeader, decorator: Google::Apis::DfareportingV5::ColumnHeader::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::DfareportingV5::ReportDataRow, decorator: Google::Apis::DfareportingV5::ReportDataRow::Representation
+      
+          property :total_row, as: 'totalRow', class: Google::Apis::DfareportingV5::ReportDataRow, decorator: Google::Apis::DfareportingV5::ReportDataRow::Representation
+      
+        end
+      end
+      
+      class ReportDataRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
       class ReportList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4715,6 +4790,14 @@ module Google
           property :skip_offset, as: 'skipOffset', class: Google::Apis::DfareportingV5::VideoOffset, decorator: Google::Apis::DfareportingV5::VideoOffset::Representation
       
           property :skippable, as: 'skippable'
+        end
+      end
+      
+      class SortBy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sort_order, as: 'sortOrder'
         end
       end
       

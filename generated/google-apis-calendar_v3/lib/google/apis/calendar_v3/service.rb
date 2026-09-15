@@ -503,6 +503,10 @@ module Google
         #   default is False.
         # @param [Boolean] show_hidden
         #   Whether to show hidden entries. Optional. The default is False.
+        # @param [Boolean] show_own_organization_only
+        #   Whether to show only entries for calendars from the organization. This
+        #   parameter is only applicable to Google Workspace users. Optional. The default
+        #   is False.
         # @param [String] sync_token
         #   Token obtained from the nextSyncToken field returned on the last page of
         #   results from the previous list request. It makes the result of this list
@@ -511,8 +515,8 @@ module Google
         #   returned. All entries deleted and hidden since the previous list request will
         #   always be in the result set and it is not allowed to set showDeleted neither
         #   showHidden to False.
-        #   To ensure client state consistency minAccessRole query parameter cannot be
-        #   specified together with nextSyncToken.
+        #   To ensure client state consistency minAccessRole and showOwnOrganizationOnly
+        #   query parameters cannot be specified together with nextSyncToken.
         #   If the syncToken expires, the server will respond with a 410 GONE response
         #   code and the client should clear its storage and perform a full
         #   synchronization without any syncToken.
@@ -537,7 +541,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_calendar_lists(max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_calendar_lists(max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, show_own_organization_only: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'users/me/calendarList', options)
           command.response_representation = Google::Apis::CalendarV3::CalendarList::Representation
           command.response_class = Google::Apis::CalendarV3::CalendarList
@@ -546,6 +550,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['showHidden'] = show_hidden unless show_hidden.nil?
+          command.query['showOwnOrganizationOnly'] = show_own_organization_only unless show_own_organization_only.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -657,6 +662,10 @@ module Google
         #   default is False.
         # @param [Boolean] show_hidden
         #   Whether to show hidden entries. Optional. The default is False.
+        # @param [Boolean] show_own_organization_only
+        #   Whether to show only entries for calendars from the organization. This
+        #   parameter is only applicable to Google Workspace users. Optional. The default
+        #   is False.
         # @param [String] sync_token
         #   Token obtained from the nextSyncToken field returned on the last page of
         #   results from the previous list request. It makes the result of this list
@@ -665,8 +674,8 @@ module Google
         #   returned. All entries deleted and hidden since the previous list request will
         #   always be in the result set and it is not allowed to set showDeleted neither
         #   showHidden to False.
-        #   To ensure client state consistency minAccessRole query parameter cannot be
-        #   specified together with nextSyncToken.
+        #   To ensure client state consistency minAccessRole and showOwnOrganizationOnly
+        #   query parameters cannot be specified together with nextSyncToken.
         #   If the syncToken expires, the server will respond with a 410 GONE response
         #   code and the client should clear its storage and perform a full
         #   synchronization without any syncToken.
@@ -691,7 +700,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_calendar_list(channel_object = nil, max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_calendar_list(channel_object = nil, max_results: nil, min_access_role: nil, page_token: nil, show_deleted: nil, show_hidden: nil, show_own_organization_only: nil, sync_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'users/me/calendarList/watch', options)
           command.request_representation = Google::Apis::CalendarV3::Channel::Representation
           command.request_object = channel_object
@@ -702,6 +711,7 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['showDeleted'] = show_deleted unless show_deleted.nil?
           command.query['showHidden'] = show_hidden unless show_hidden.nil?
+          command.query['showOwnOrganizationOnly'] = show_own_organization_only unless show_own_organization_only.nil?
           command.query['syncToken'] = sync_token unless sync_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -885,6 +895,53 @@ module Google
           command.response_representation = Google::Apis::CalendarV3::Calendar::Representation
           command.response_class = Google::Apis::CalendarV3::Calendar
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Transfers a secondary calendar between users within a Google Workspace
+        # organization. Requires user authentication with Manage Calendars administrator
+        # privilege, and one of the following authorization scopes:
+        # - https://www.googleapis.com/auth/calendar
+        # - https://www.googleapis.com/auth/calendar.calendars In the request, set
+        # useAdminAccess to true. The secondary calendar must be active to be
+        # transferred. Transferring disabled or deleted calendars isn't supported.
+        # @param [String] calendar_id
+        #   Calendar identifier. To retrieve calendar IDs, call the calendarList.list
+        #   method.
+        # @param [String] new_data_owner
+        #   The email address of a user who will become the data owner of the calendar.
+        # @param [Boolean] use_admin_access
+        #   When true, the method runs using the user's Google Workspace administrator
+        #   privileges. The calling user must be a Google Workspace administrator with the
+        #   Manage Calendars privilege. This method currently only supports admin access,
+        #   thus only true is accepted for this field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def transfer_calendar_ownership(calendar_id, new_data_owner, use_admin_access, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'calendars/{calendarId}/transferOwnership', options)
+          command.params['calendarId'] = calendar_id unless calendar_id.nil?
+          command.query['newDataOwner'] = new_data_owner unless new_data_owner.nil?
+          command.query['useAdminAccess'] = use_admin_access unless use_admin_access.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1104,6 +1161,12 @@ module Google
         #   body. Version 1 enables support for copying of ConferenceData as well as for
         #   creating new conferences using the createRequest field of conferenceData. The
         #   default is 0.
+        # @param [Fixnum] event_label_version
+        #   Version number of the event label feature supported by the API client. Version
+        #   0 assumes no event label support and processes the colorId field for color
+        #   management. Version 1 enables support for event labels, and processes the
+        #   eventLabelId in the event's body. In this case, the colorId field is ignored.
+        #   The default is 0.
         # @param [Boolean] supports_attachments
         #   Whether API client performing operation supports event attachments. Optional.
         #   The default is False.
@@ -1126,7 +1189,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def import_event(calendar_id, event_object = nil, conference_data_version: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def import_event(calendar_id, event_object = nil, conference_data_version: nil, event_label_version: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'calendars/{calendarId}/events/import', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
@@ -1134,6 +1197,7 @@ module Google
           command.response_class = Google::Apis::CalendarV3::Event
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['conferenceDataVersion'] = conference_data_version unless conference_data_version.nil?
+          command.query['eventLabelVersion'] = event_label_version unless event_label_version.nil?
           command.query['supportsAttachments'] = supports_attachments unless supports_attachments.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1153,6 +1217,12 @@ module Google
         #   body. Version 1 enables support for copying of ConferenceData as well as for
         #   creating new conferences using the createRequest field of conferenceData. The
         #   default is 0.
+        # @param [Fixnum] event_label_version
+        #   Version number of the event label feature supported by the API client. Version
+        #   0 assumes no event label support and processes the colorId field for color
+        #   management. Version 1 enables support for event labels, and processes the
+        #   eventLabelId in the event's body. In this case, the colorId field is ignored.
+        #   The default is 0.
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
         #   than the specified number of attendees, only the participant is returned.
@@ -1187,7 +1257,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_event(calendar_id, event_object = nil, conference_data_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_event(calendar_id, event_object = nil, conference_data_version: nil, event_label_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'calendars/{calendarId}/events', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
@@ -1195,6 +1265,7 @@ module Google
           command.response_class = Google::Apis::CalendarV3::Event
           command.params['calendarId'] = calendar_id unless calendar_id.nil?
           command.query['conferenceDataVersion'] = conference_data_version unless conference_data_version.nil?
+          command.query['eventLabelVersion'] = event_label_version unless event_label_version.nil?
           command.query['maxAttendees'] = max_attendees unless max_attendees.nil?
           command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['sendUpdates'] = send_updates unless send_updates.nil?
@@ -1510,6 +1581,12 @@ module Google
         #   body. Version 1 enables support for copying of ConferenceData as well as for
         #   creating new conferences using the createRequest field of conferenceData. The
         #   default is 0.
+        # @param [Fixnum] event_label_version
+        #   Version number of the event label feature supported by the API client. Version
+        #   0 assumes no event label support and processes the colorId field for color
+        #   management. Version 1 enables support for event labels, and processes the
+        #   eventLabelId in the event's body. In this case, the colorId field is ignored.
+        #   The default is 0.
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
         #   than the specified number of attendees, only the participant is returned.
@@ -1544,7 +1621,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_event(calendar_id, event_id, event_object = nil, always_include_email: nil, conference_data_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_event(calendar_id, event_id, event_object = nil, always_include_email: nil, conference_data_version: nil, event_label_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'calendars/{calendarId}/events/{eventId}', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
@@ -1554,6 +1631,7 @@ module Google
           command.params['eventId'] = event_id unless event_id.nil?
           command.query['alwaysIncludeEmail'] = always_include_email unless always_include_email.nil?
           command.query['conferenceDataVersion'] = conference_data_version unless conference_data_version.nil?
+          command.query['eventLabelVersion'] = event_label_version unless event_label_version.nil?
           command.query['maxAttendees'] = max_attendees unless max_attendees.nil?
           command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['sendUpdates'] = send_updates unless send_updates.nil?
@@ -1629,6 +1707,12 @@ module Google
         #   body. Version 1 enables support for copying of ConferenceData as well as for
         #   creating new conferences using the createRequest field of conferenceData. The
         #   default is 0.
+        # @param [Fixnum] event_label_version
+        #   Version number of the event label feature supported by the API client. Version
+        #   0 assumes no event label support and processes the colorId field for color
+        #   management. Version 1 enables support for event labels, and processes the
+        #   eventLabelId in the event's body. In this case, the colorId field is ignored.
+        #   The default is 0.
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
         #   than the specified number of attendees, only the participant is returned.
@@ -1663,7 +1747,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_event(calendar_id, event_id, event_object = nil, always_include_email: nil, conference_data_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_event(calendar_id, event_id, event_object = nil, always_include_email: nil, conference_data_version: nil, event_label_version: nil, max_attendees: nil, send_notifications: nil, send_updates: nil, supports_attachments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:put, 'calendars/{calendarId}/events/{eventId}', options)
           command.request_representation = Google::Apis::CalendarV3::Event::Representation
           command.request_object = event_object
@@ -1673,6 +1757,7 @@ module Google
           command.params['eventId'] = event_id unless event_id.nil?
           command.query['alwaysIncludeEmail'] = always_include_email unless always_include_email.nil?
           command.query['conferenceDataVersion'] = conference_data_version unless conference_data_version.nil?
+          command.query['eventLabelVersion'] = event_label_version unless event_label_version.nil?
           command.query['maxAttendees'] = max_attendees unless max_attendees.nil?
           command.query['sendNotifications'] = send_notifications unless send_notifications.nil?
           command.query['sendUpdates'] = send_updates unless send_updates.nil?

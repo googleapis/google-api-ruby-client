@@ -16,13 +16,13 @@ module Google
   module Apis
     module BeyondcorpV1
       # Version of the google-apis-beyondcorp_v1 gem
-      GEM_VERSION = "0.51.0"
+      GEM_VERSION = "0.52.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260429"
+      REVISION = "20260722"
     end
   end
 end

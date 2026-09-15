@@ -22,6 +22,18 @@ module Google
   module Apis
     module ChatV1
       
+      class AccessPermissionSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AccessPermissionSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +89,12 @@ module Google
       end
       
       class AttachmentDataRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Audience
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -640,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMessagePinsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -796,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MessagePin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MessageUpdatedEventData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -850,6 +880,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Principal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QuotedMessageMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -893,6 +929,30 @@ module Google
       end
       
       class RichLinkMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchMessageResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchMessagesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchMessagesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSpaceResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1078,9 +1138,29 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessPermissionSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :principals, as: 'principals', class: Google::Apis::ChatV1::Principal, decorator: Google::Apis::ChatV1::Principal::Representation
+      
+        end
+      end
+      
+      class AccessPermissionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :discover_space_setting, as: 'discoverSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
+          property :join_space_setting, as: 'joinSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
+        end
+      end
+      
       class AccessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_permission_settings, as: 'accessPermissionSettings', class: Google::Apis::ChatV1::AccessPermissionSettings, decorator: Google::Apis::ChatV1::AccessPermissionSettings::Representation
+      
           property :access_state, as: 'accessState'
           property :audience, as: 'audience'
         end
@@ -1175,6 +1255,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_upload_token, as: 'attachmentUploadToken'
           property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class Audience
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       
@@ -2205,6 +2292,15 @@ module Google
         end
       end
       
+      class ListMessagePinsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_pins, as: 'messagePins', class: Google::Apis::ChatV1::MessagePin, decorator: Google::Apis::ChatV1::MessagePin::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2404,6 +2500,7 @@ module Google
           property :fallback_text, as: 'fallbackText'
           property :formatted_text, as: 'formattedText'
           property :last_update_time, as: 'lastUpdateTime'
+          property :markup_syntax, as: 'markupSyntax'
           property :matched_url, as: 'matchedUrl', class: Google::Apis::ChatV1::MatchedUrl, decorator: Google::Apis::ChatV1::MatchedUrl::Representation
       
           property :name, as: 'name'
@@ -2462,6 +2559,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
       
+        end
+      end
+      
+      class MessagePin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :name, as: 'name'
         end
       end
       
@@ -2552,6 +2657,14 @@ module Google
         end
       end
       
+      class Principal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience', class: Google::Apis::ChatV1::Audience, decorator: Google::Apis::ChatV1::Audience::Representation
+      
+        end
+      end
+      
       class QuotedMessageMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2637,10 +2750,51 @@ module Google
         end
       end
       
+      class SearchMessageResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
+      
+          property :read, as: 'read'
+          property :space_mute_setting, as: 'spaceMuteSetting'
+        end
+      end
+      
+      class SearchMessagesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :markup_syntax, as: 'markupSyntax'
+          property :order_by, as: 'orderBy'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :view, as: 'view'
+        end
+      end
+      
+      class SearchMessagesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::ChatV1::SearchMessageResult, decorator: Google::Apis::ChatV1::SearchMessageResult::Representation
+      
+        end
+      end
+      
+      class SearchSpaceResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
+      
+        end
+      end
+      
       class SearchSpacesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
+          collection :results, as: 'results', class: Google::Apis::ChatV1::SearchSpaceResult, decorator: Google::Apis::ChatV1::SearchSpaceResult::Representation
+      
           collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
           property :total_size, as: 'totalSize'

@@ -2658,6 +2658,15 @@ module Google
       class MetricRule
         include Google::Apis::Core::Hashable
       
+        # Optional. Metrics to update when the selected methods are called, and the
+        # associated cost applied to each metric, iff the source of the call is an agent.
+        # The key of the map is the metric name, and the values are the amount
+        # increased for the metric against which the quota limits are defined. The value
+        # must not be negative.
+        # Corresponds to the JSON property `agenticMetricCosts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :agentic_metric_costs
+      
         # Metrics to update when the selected methods are called, and the associated
         # cost applied to each metric. The key of the map is the metric name, and the
         # values are the amount increased for the metric against which the quota limits
@@ -2665,6 +2674,15 @@ module Google
         # Corresponds to the JSON property `metricCosts`
         # @return [Hash<String,Fixnum>]
         attr_accessor :metric_costs
+      
+        # Optional. Metrics to update when the selected methods are called, and the
+        # associated cost applied to each metric, iff the source of the call is not an
+        # agent. The key of the map is the metric name, and the values are the amount
+        # increased for the metric against which the quota limits are defined. The value
+        # must not be negative.
+        # Corresponds to the JSON property `nonagenticMetricCosts`
+        # @return [Hash<String,Fixnum>]
+        attr_accessor :nonagentic_metric_costs
       
         # Selects the methods to which this rule applies. Refer to selector for syntax
         # details.
@@ -2678,7 +2696,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agentic_metric_costs = args[:agentic_metric_costs] if args.key?(:agentic_metric_costs)
           @metric_costs = args[:metric_costs] if args.key?(:metric_costs)
+          @nonagentic_metric_costs = args[:nonagentic_metric_costs] if args.key?(:nonagentic_metric_costs)
           @selector = args[:selector] if args.key?(:selector)
         end
       end
@@ -3371,6 +3391,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. This is only informational, the logic to allocate the quota to the
+        # correct metric (such as in `metric_rules`) should identify which quota metrics
+        # to allocate to.
+        # Corresponds to the JSON property `trafficSource`
+        # @return [String]
+        attr_accessor :traffic_source
+      
         # Specify the unit of the quota limit. It uses the same syntax as
         # MetricDescriptor.unit. The supported unit kinds are determined by the quota
         # backend system. Here are some examples: * "1/min/`project`" for quota per
@@ -3401,6 +3428,7 @@ module Google
           @max_limit = args[:max_limit] if args.key?(:max_limit)
           @metric = args[:metric] if args.key?(:metric)
           @name = args[:name] if args.key?(:name)
+          @traffic_source = args[:traffic_source] if args.key?(:traffic_source)
           @unit = args[:unit] if args.key?(:unit)
           @values = args[:values] if args.key?(:values)
         end
@@ -4192,6 +4220,14 @@ module Google
         # @return [String]
         attr_accessor :resource
       
+        # Output only. The resource name of the tenant project from which this active
+        # regional tenant project was migrated. This field is only set for active
+        # regional migrated mapping tenant projects. Format: `services//`collection_id`/`
+        # RESOURCE_ID`/locations/`LOCATION`/tenantProjects/`TENANT_ID``.
+        # Corresponds to the JSON property `sourceTenantProject`
+        # @return [String]
+        attr_accessor :source_tenant_project
+      
         # Status of tenant resource.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -4210,6 +4246,7 @@ module Google
         def update!(**args)
           @migrated_tenant_project = args[:migrated_tenant_project] if args.key?(:migrated_tenant_project)
           @resource = args[:resource] if args.key?(:resource)
+          @source_tenant_project = args[:source_tenant_project] if args.key?(:source_tenant_project)
           @status = args[:status] if args.key?(:status)
           @tag = args[:tag] if args.key?(:tag)
         end

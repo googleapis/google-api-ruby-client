@@ -430,6 +430,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RapidCache
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RapidCacheConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RapidCachePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RapidCaches
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelocateBucketRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -1074,6 +1098,8 @@ module Google
           property :kind, as: 'kind'
           property :metageneration, :numeric_string => true, as: 'metageneration'
           property :name, as: 'name'
+          property :rapid_cache_config, as: 'rapidCacheConfig', class: Google::Apis::StorageV1::RapidCacheConfig, decorator: Google::Apis::StorageV1::RapidCacheConfig::Representation
+      
           property :self_link, as: 'selfLink'
           property :update_time, as: 'updateTime', type: DateTime
       
@@ -1283,6 +1309,54 @@ module Google
             collection :members, as: 'members'
             property :role, as: 'role'
           end
+        end
+      end
+      
+      class RapidCache
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admission_policy, as: 'admissionPolicy'
+          property :bucket, as: 'bucket'
+          property :cache_type, as: 'cacheType'
+          property :create_time, as: 'createTime', type: DateTime
+      
+          property :id, as: 'id'
+          property :ingest_on_write, as: 'ingestOnWrite'
+          property :kind, as: 'kind'
+          property :pending_update, as: 'pendingUpdate'
+          property :rapid_cache_id, as: 'rapidCacheId'
+          property :self_link, as: 'selfLink'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+          property :update_time, as: 'updateTime', type: DateTime
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class RapidCacheConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :policies, as: 'policies', class: Google::Apis::StorageV1::RapidCachePolicy, decorator: Google::Apis::StorageV1::RapidCachePolicy::Representation
+      
+        end
+      end
+      
+      class RapidCachePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ingest_on_write, as: 'ingestOnWrite'
+          property :rapid_cache_id, as: 'rapidCacheId'
+        end
+      end
+      
+      class RapidCaches
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::StorageV1::RapidCache, decorator: Google::Apis::StorageV1::RapidCache::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

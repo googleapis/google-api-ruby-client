@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingSchedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoscalingSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,18 @@ module Google
       end
       
       class ConcatPosition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigStoreSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigStoreSettingValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +251,12 @@ module Google
       end
       
       class DynamicSourceSplit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -490,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListConfigStoreSettingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListJobMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -604,6 +634,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Parameters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartialGroupByKeyInstruction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -683,6 +719,18 @@ module Google
       end
       
       class ReportedParallelism
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveConfigStoreSettingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveConfigStoreSettingResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1232,6 +1280,20 @@ module Google
         end
       end
       
+      class AutoscalingSchedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crontab, as: 'crontab'
+          property :duration, as: 'duration'
+          property :name, as: 'name'
+          property :parameters, as: 'parameters', class: Google::Apis::DataflowV1b3::Parameters, decorator: Google::Apis::DataflowV1b3::Parameters::Representation
+      
+          property :priority, :numeric_string => true, as: 'priority'
+          property :time_zone, as: 'timeZone'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AutoscalingSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1345,6 +1407,23 @@ module Google
           property :index, as: 'index'
           property :position, as: 'position', class: Google::Apis::DataflowV1b3::Position, decorator: Google::Apis::DataflowV1b3::Position::Representation
       
+        end
+      end
+      
+      class ConfigStoreSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::DataflowV1b3::ConfigStoreSettingValue, decorator: Google::Apis::DataflowV1b3::ConfigStoreSettingValue::Representation
+      
+        end
+      end
+      
+      class ConfigStoreSettingValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :string_value, as: 'stringValue'
         end
       end
       
@@ -1583,6 +1662,12 @@ module Google
       
           property :residual, as: 'residual', class: Google::Apis::DataflowV1b3::DerivedSource, decorator: Google::Apis::DataflowV1b3::DerivedSource::Representation
       
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2065,6 +2150,15 @@ module Google
         end
       end
       
+      class ListConfigStoreSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :config_store_settings, as: 'configStoreSettings', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListJobMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2280,6 +2374,16 @@ module Google
         end
       end
       
+      class Parameters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_utilization_target, as: 'cpuUtilizationTarget'
+          property :latency_target, as: 'latencyTarget'
+          property :max_worker_count, as: 'maxWorkerCount'
+          property :min_worker_count, as: 'minWorkerCount'
+        end
+      end
+      
       class PartialGroupByKeyInstruction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2424,6 +2528,22 @@ module Google
         end
       end
       
+      class ResolveConfigStoreSettingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResolveConfigStoreSettingResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :choices, as: 'choices', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
+          property :setting, as: 'setting', class: Google::Apis::DataflowV1b3::ConfigStoreSetting, decorator: Google::Apis::DataflowV1b3::ConfigStoreSetting::Representation
+      
+        end
+      end
+      
       class ResourceUtilizationReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2487,6 +2607,8 @@ module Google
           property :latency_tier, as: 'latencyTier'
           property :max_num_workers, as: 'maxNumWorkers'
           property :min_num_workers, as: 'minNumWorkers'
+          collection :schedules, as: 'schedules', class: Google::Apis::DataflowV1b3::AutoscalingSchedule, decorator: Google::Apis::DataflowV1b3::AutoscalingSchedule::Representation
+      
           property :worker_utilization_hint, as: 'workerUtilizationHint'
         end
       end

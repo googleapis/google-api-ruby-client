@@ -190,11 +190,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :owner_emails
       
-        # Input only. If set to true, welcome email will not be sent to the customer. It
-        # is recommended to skip the welcome email if devices will be claimed with
-        # additional DEVICE_PROTECTION service, as the customer will receive separate
-        # emails at device claim time. This field is ignored if this is not a Zero-touch
-        # customer.
+        # Input only. Deprecated: This field is no longer supported and is ignored by
+        # the server.
         # Corresponds to the JSON property `skipWelcomeEmail`
         # @return [Boolean]
         attr_accessor :skip_welcome_email

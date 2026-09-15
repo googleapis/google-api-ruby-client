@@ -64,12 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,12 +154,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1LimitedUseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1ListDebugTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +197,18 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1MintAppCheckTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1MintAppCheckTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -263,12 +269,6 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1ResourcePolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleFirebaseAppcheckV1SafetyNetConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -350,14 +350,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaV3Config, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1RecaptchaV3Config::Representation
-      
-        end
-      end
-      
-      class GoogleFirebaseAppcheckV1BatchGetSafetyNetConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :configs, as: 'configs', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1SafetyNetConfig::Representation
       
         end
       end
@@ -451,6 +443,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :custom_token, as: 'customToken'
+          property :jti, as: 'jti'
           property :limited_use, as: 'limitedUse'
         end
       end
@@ -495,13 +488,6 @@ module Google
         end
       end
       
-      class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :safety_net_token, as: 'safetyNetToken'
-        end
-      end
-      
       class GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -530,6 +516,13 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1LimitedUseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jti, as: 'jti'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1ListDebugTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -554,6 +547,23 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1Service, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1Service::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1MintAppCheckTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use_config, as: 'limitedUseConfig', class: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1LimitedUseConfig, decorator: Google::Apis::FirebaseappcheckV1::GoogleFirebaseAppcheckV1LimitedUseConfig::Representation
+      
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1MintAppCheckTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token'
+          property :ttl, as: 'ttl'
         end
       end
       
@@ -649,14 +659,6 @@ module Google
           property :name, as: 'name'
           property :target_resource, as: 'targetResource'
           property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleFirebaseAppcheckV1SafetyNetConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :token_ttl, as: 'tokenTtl'
         end
       end
       

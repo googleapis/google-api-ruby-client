@@ -887,7 +887,7 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3DocumentIdGcsManagedDocumentId
         include Google::Apis::Core::Hashable
       
-        # Id of the document (indexed) managed by Content Warehouse.
+        # ID of the document (indexed) managed by Content Warehouse.
         # Corresponds to the JSON property `cwDocId`
         # @return [String]
         attr_accessor :cw_doc_id
@@ -913,7 +913,7 @@ module Google
       class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId
         include Google::Apis::Core::Hashable
       
-        # Required. The id of the document.
+        # Required. The ID of the document.
         # Corresponds to the JSON property `docId`
         # @return [String]
         attr_accessor :doc_id
@@ -942,7 +942,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Document level prompt provided by the user. This custom text is
+        # Optional. Document-level prompt provided by the user. This custom text is
         # injected into the AI model's prompt to provide extra, document-wide guidance
         # for processing.
         # Corresponds to the JSON property `documentPrompt`
@@ -1012,7 +1012,7 @@ module Google
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
-        # example `line_item/amount`. This convention is deprecated, but will still be
+        # example, `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1827,7 +1827,7 @@ module Google
       
         # Optional. SchemaVersion used by the Processor. It is the same as Processor's
         # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
-        # /schemas/`schema`/schemaVersions/`schema_version`
+        # /schemas/`schema`/schemaVersions/`schema_version`.
         # Corresponds to the JSON property `activeSchemaVersion`
         # @return [String]
         attr_accessor :active_schema_version
@@ -3298,7 +3298,7 @@ module Google
       
         # Optional. The blob assets in this document. This is used to store the content
         # of the inline blobs in this document, for example, image bytes, such that it
-        # can be referenced by other fields in the document via asset id.
+        # can be referenced by other fields in the document via asset ID.
         # Corresponds to the JSON property `blobAssets`
         # @return [Array<Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentBlobAsset>]
         attr_accessor :blob_assets
@@ -3334,10 +3334,10 @@ module Google
         attr_accessor :entities
       
         # The entity revision ID that `document.entities` field is based on. If this
-        # field is set and `entities_revisions` is not empty, the entities in `document.
-        # entities` field are the entities in the entity revision with this id and `
-        # document.entity_validation_output` field is the `entity_validation_output`
-        # field in this entity revision.
+        # field and `entities_revisions` are set, the entities in `document.entities`
+        # are the entities in the entity revision with this ID. The `document.
+        # entity_validation_output` field is the `entity_validation_output` field in
+        # this entity revision.
         # Corresponds to the JSON property `entitiesRevisionId`
         # @return [String]
         attr_accessor :entities_revision_id
@@ -3469,7 +3469,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentBlobAsset
         include Google::Apis::Core::Hashable
       
-        # Optional. The id of the blob asset.
+        # Optional. The ID of the blob asset.
         # Corresponds to the JSON property `assetId`
         # @return [String]
         attr_accessor :asset_id
@@ -3682,20 +3682,20 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations]
         attr_accessor :annotations
       
-        # Optional. Asset id of the inline image. If set, find the image content in the
+        # Optional. Asset ID of the inline image. If set, find the image content in the
         # blob_assets field.
         # Corresponds to the JSON property `blobAssetId`
         # @return [String]
         attr_accessor :blob_asset_id
       
-        # Optional. Data uri of the image. It is composed of four parts: a prefix (data:)
+        # Optional. Data URI of the image. It is composed of four parts: a prefix (data:)
         # , a MIME type indicating the type of data, an optional base64 token if non-
         # textual, and the data itself: data:,
         # Corresponds to the JSON property `dataUri`
         # @return [String]
         attr_accessor :data_uri
       
-        # Optional. Google Cloud Storage uri of the image.
+        # Optional. Google Cloud Storage URI of the image.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -3817,20 +3817,20 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentAnnotations]
         attr_accessor :annotations
       
-        # Optional. Asset id of the inline image. If set, find the image content in the
+        # Optional. Asset ID of the inline image. If set, find the image content in the
         # blob_assets field.
         # Corresponds to the JSON property `blobAssetId`
         # @return [String]
         attr_accessor :blob_asset_id
       
-        # Optional. Data uri of the image. It is composed of four parts: a prefix (data:)
+        # Optional. Data URI of the image. It is composed of four parts: a prefix (data:)
         # , a MIME type indicating the type of data, an optional base64 token if non-
         # textual, and the data itself: data:,
         # Corresponds to the JSON property `dataUri`
         # @return [String]
         attr_accessor :data_uri
       
-        # Optional. Google Cloud Storage uri of the image.
+        # Optional. Google Cloud Storage URI of the image.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
         attr_accessor :gcs_uri
@@ -4261,8 +4261,8 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleTypeMoney]
         attr_accessor :money_value
       
-        # A signature - a graphical representation of a person's name, often used to
-        # sign a document.
+        # A signature, which is a graphical representation of a person's name, often
+        # used to sign a document.
         # Corresponds to the JSON property `signatureValue`
         # @return [Boolean]
         attr_accessor :signature_value
@@ -5515,7 +5515,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentProvenance
         include Google::Apis::Core::Hashable
       
-        # The Id of this operation. Needs to be unique within the scope of the revision.
+        # The ID of this operation. Needs to be unique within the scope of the revision.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -5553,7 +5553,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentProvenanceParent
         include Google::Apis::Core::Hashable
       
-        # The id of the parent provenance.
+        # The ID of the parent provenance.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
         attr_accessor :id
@@ -5585,7 +5585,7 @@ module Google
       class GoogleCloudDocumentaiV1DocumentRevision
         include Google::Apis::Core::Hashable
       
-        # If the change was made by a person specify the name or id of that person.
+        # If the change was made by a person specify the name or ID of that person.
         # Corresponds to the JSON property `agent`
         # @return [String]
         attr_accessor :agent
@@ -5601,7 +5601,7 @@ module Google
         # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1DocumentRevisionHumanReview]
         attr_accessor :human_review
       
-        # Id of the revision, internally generated by doc proto storage. Unique within
+        # ID of the revision, internally generated by doc proto storage. Unique within
         # the context of the document.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -5683,7 +5683,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Document level prompt provided by the user. This custom text is
+        # Optional. Document-level prompt provided by the user. This custom text is
         # injected into the AI model's prompt to provide extra, document-wide guidance
         # for processing.
         # Corresponds to the JSON property `documentPrompt`
@@ -5742,7 +5742,7 @@ module Google
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
-        # example `line_item/amount`. This convention is deprecated, but will still be
+        # example, `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -7455,7 +7455,7 @@ module Google
       
         # Optional. SchemaVersion used by the Processor. It is the same as Processor's
         # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
-        # /schemas/`schema`/schemaVersions/`schema_version`
+        # /schemas/`schema`/schemaVersions/`schema_version`.
         # Corresponds to the JSON property `activeSchemaVersion`
         # @return [String]
         attr_accessor :active_schema_version
@@ -8315,7 +8315,7 @@ module Google
         # @return [Float]
         attr_accessor :learning_rate_multiplier
       
-        # Optional. Resource name of a previously fine tuned version id to copy the
+        # Optional. Resource name of a previously fine tuned version ID to copy the
         # overwritten configs from. The base_processor_version should be newer than the
         # base processor version used to fine tune this provided processor version.
         # Format: `projects/`project`/locations/`location`/processors/`processor`/
@@ -8949,7 +8949,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentIdGcsManagedDocumentId
         include Google::Apis::Core::Hashable
       
-        # Id of the document (indexed) managed by Content Warehouse.
+        # ID of the document (indexed) managed by Content Warehouse.
         # Corresponds to the JSON property `cwDocId`
         # @return [String]
         attr_accessor :cw_doc_id
@@ -8975,7 +8975,7 @@ module Google
       class GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId
         include Google::Apis::Core::Hashable
       
-        # Required. The id of the document.
+        # Required. The ID of the document.
         # Corresponds to the JSON property `docId`
         # @return [String]
         attr_accessor :doc_id
@@ -9004,7 +9004,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Document level prompt provided by the user. This custom text is
+        # Optional. Document-level prompt provided by the user. This custom text is
         # injected into the AI model's prompt to provide extra, document-wide guidance
         # for processing.
         # Corresponds to the JSON property `documentPrompt`
@@ -9074,7 +9074,7 @@ module Google
         # a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         # compatibility, internal infrastructure and tooling can handle any ASCII
         # character.) - The `/` is sometimes used to denote a property of a type. For
-        # example `line_item/amount`. This convention is deprecated, but will still be
+        # example, `line_item/amount`. This convention is deprecated, but will still be
         # honored for backward compatibility.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -9665,7 +9665,7 @@ module Google
       
         # Optional. SchemaVersion used by the Processor. It is the same as Processor's
         # DatasetSchema.schema_version Format is `projects/`project`/locations/`location`
-        # /schemas/`schema`/schemaVersions/`schema_version`
+        # /schemas/`schema`/schemaVersions/`schema_version`.
         # Corresponds to the JSON property `activeSchemaVersion`
         # @return [String]
         attr_accessor :active_schema_version

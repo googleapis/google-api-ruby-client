@@ -82,6 +82,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArrowRecordBatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArrowSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArrowSerializationOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -886,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectStorageStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ParquetOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1504,6 +1528,8 @@ module Google
           property :is_aggregate, as: 'isAggregate'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :table_type, as: 'tableType', class: Google::Apis::BigqueryV2::StandardSqlTableType, decorator: Google::Apis::BigqueryV2::StandardSqlTableType::Representation
+      
         end
       end
       
@@ -1591,6 +1617,28 @@ module Google
           collection :seasonal_periods, as: 'seasonalPeriods'
           property :time_series_id, as: 'timeSeriesId'
           collection :time_series_ids, as: 'timeSeriesIds'
+        end
+      end
+      
+      class ArrowRecordBatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serialized_record_batch, :base64 => true, as: 'serializedRecordBatch'
+        end
+      end
+      
+      class ArrowSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :serialized_schema, :base64 => true, as: 'serializedSchema'
+        end
+      end
+      
+      class ArrowSerializationOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buffer_compression, as: 'bufferCompression'
+          property :picos_timestamp_precision, as: 'picosTimestampPrecision'
         end
       end
       
@@ -2924,9 +2972,12 @@ module Google
           property :extract, as: 'extract', class: Google::Apis::BigqueryV2::JobStatistics4, decorator: Google::Apis::BigqueryV2::JobStatistics4::Representation
       
           property :final_execution_duration_ms, :numeric_string => true, as: 'finalExecutionDurationMs'
+          collection :global_query_remote_regions, as: 'globalQueryRemoteRegions'
           property :load, as: 'load', class: Google::Apis::BigqueryV2::JobStatistics3, decorator: Google::Apis::BigqueryV2::JobStatistics3::Representation
       
           property :num_child_jobs, :numeric_string => true, as: 'numChildJobs'
+          property :parent_global_query_job, as: 'parentGlobalQueryJob', class: Google::Apis::BigqueryV2::JobReference, decorator: Google::Apis::BigqueryV2::JobReference::Representation
+      
           property :parent_job_id, as: 'parentJobId'
           property :query, as: 'query', class: Google::Apis::BigqueryV2::JobStatistics2, decorator: Google::Apis::BigqueryV2::JobStatistics2::Representation
       
@@ -3006,6 +3057,8 @@ module Google
           property :model_training_current_iteration, as: 'modelTrainingCurrentIteration'
           property :model_training_expected_total_iteration, :numeric_string => true, as: 'modelTrainingExpectedTotalIteration'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
+          collection :object_storage_stats, as: 'objectStorageStats', class: Google::Apis::BigqueryV2::ObjectStorageStats, decorator: Google::Apis::BigqueryV2::ObjectStorageStats::Representation
+      
           property :performance_insights, as: 'performanceInsights', class: Google::Apis::BigqueryV2::PerformanceInsights, decorator: Google::Apis::BigqueryV2::PerformanceInsights::Representation
       
           property :query_info, as: 'queryInfo', class: Google::Apis::BigqueryV2::QueryInfo, decorator: Google::Apis::BigqueryV2::QueryInfo::Representation
@@ -3079,6 +3132,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :copied_logical_bytes, :numeric_string => true, as: 'copiedLogicalBytes'
           property :copied_rows, :numeric_string => true, as: 'copiedRows'
+          property :remote_destination_region, as: 'remoteDestinationRegion'
         end
       end
       
@@ -3319,6 +3373,15 @@ module Google
         end
       end
       
+      class ObjectStorageStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_bytes_read, :numeric_string => true, as: 'cacheBytesRead'
+          property :cloud_provider, as: 'cloudProvider'
+          property :object_storage_bytes_read, :numeric_string => true, as: 'objectStorageBytesRead'
+        end
+      end
+      
       class ParquetOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3513,6 +3576,8 @@ module Google
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arrow_serialization_options, as: 'arrowSerializationOptions', class: Google::Apis::BigqueryV2::ArrowSerializationOptions, decorator: Google::Apis::BigqueryV2::ArrowSerializationOptions::Representation
+      
           collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
       
           property :continuous, as: 'continuous'
@@ -3537,6 +3602,7 @@ module Google
           property :query, as: 'query'
           collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
+          property :query_results_format, as: 'queryResultsFormat'
           property :request_id, as: 'requestId'
           property :reservation, as: 'reservation'
           property :timeout_ms, as: 'timeoutMs'
@@ -3549,6 +3615,10 @@ module Google
       class QueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arrow_record_batch, as: 'arrowRecordBatch', class: Google::Apis::BigqueryV2::ArrowRecordBatch, decorator: Google::Apis::BigqueryV2::ArrowRecordBatch::Representation
+      
+          property :arrow_schema, as: 'arrowSchema', class: Google::Apis::BigqueryV2::ArrowSchema, decorator: Google::Apis::BigqueryV2::ArrowSchema::Representation
+      
           property :cache_hit, as: 'cacheHit'
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :dml_stats, as: 'dmlStats', class: Google::Apis::BigqueryV2::DmlStatistics, decorator: Google::Apis::BigqueryV2::DmlStatistics::Representation
@@ -3564,6 +3634,7 @@ module Google
           property :kind, as: 'kind'
           property :location, as: 'location'
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
+          property :page_row_count, :numeric_string => true, as: 'pageRowCount'
           property :page_token, as: 'pageToken'
           property :query_id, as: 'queryId'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::TableRow, decorator: Google::Apis::BigqueryV2::TableRow::Representation
@@ -3573,6 +3644,7 @@ module Google
           property :session_info, as: 'sessionInfo', class: Google::Apis::BigqueryV2::SessionInfo, decorator: Google::Apis::BigqueryV2::SessionInfo::Representation
       
           property :start_time, :numeric_string => true, as: 'startTime'
+          property :statement_type, as: 'statementType'
           property :total_bytes_billed, :numeric_string => true, as: 'totalBytesBilled'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_rows, :numeric_string => true, as: 'totalRows'
@@ -3836,6 +3908,9 @@ module Google
       class SkewSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_bytes_max, :numeric_string => true, as: 'outputBytesMax'
+          property :output_bytes_median, :numeric_string => true, as: 'outputBytesMedian'
+          property :output_bytes_p95, :numeric_string => true, as: 'outputBytesP95'
           property :stage_id, :numeric_string => true, as: 'stageId'
         end
       end

@@ -1745,9 +1745,10 @@ module Google
       class PretargetingConfig
         include Google::Apis::Core::Hashable
       
-        # Targeting modes included by this config. A bid request must allow all the
-        # specified targeting modes. An unset value allows all bid requests to be sent,
-        # regardless of which targeting modes they allow.
+        # Deprecated: The value of this field no longer has any effect. Targeting modes
+        # included by this config. A bid request must allow all the specified targeting
+        # modes. An unset value allows all bid requests to be sent, regardless of which
+        # targeting modes they allow.
         # Corresponds to the JSON property `allowedUserTargetingModes`
         # @return [Array<String>]
         attr_accessor :allowed_user_targeting_modes

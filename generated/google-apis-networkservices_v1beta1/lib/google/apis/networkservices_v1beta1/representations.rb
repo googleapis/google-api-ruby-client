@@ -22,6 +22,12 @@ module Google
   module Apis
     module NetworkservicesV1beta1
       
+      class AgentConnectivityTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgentGateway
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,12 +64,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AgentGatewaySelfManaged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +82,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CdnEdgeExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CdnEdgeExtensionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsPeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EgressNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +119,60 @@ module Google
       end
       
       class EndpointPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchConditionHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchConditionStringMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchConditionTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchConditionToDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingMatchConditionToDestinationHeaderSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtensionBindingTargetScope
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAgentConnectivityTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAgentGatewaysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,7 +436,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListCdnEdgeExtensionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListEndpointPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListExtensionBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -425,6 +521,12 @@ module Google
       end
       
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProducerExtensionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -509,6 +611,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProducerExtension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ProducerExtensionExtensionSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -652,9 +766,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentConnectivityTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_path, as: 'accessPath'
+          collection :access_types, as: 'accessTypes'
+          property :agent_compute, as: 'agentCompute'
+          property :create_time, as: 'createTime'
+          property :deployment_model, as: 'deploymentModel'
+          property :description, as: 'description'
+          property :egress_network_config, as: 'egressNetworkConfig', class: Google::Apis::NetworkservicesV1beta1::EgressNetworkConfig, decorator: Google::Apis::NetworkservicesV1beta1::EgressNetworkConfig::Representation
+      
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AgentGateway
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_connectivity_template, as: 'agentConnectivityTemplate'
           property :agent_gateway_card, as: 'agentGatewayCard', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayAgentGatewayOutputCard, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayAgentGatewayOutputCard::Representation
       
           property :create_time, as: 'createTime'
@@ -713,15 +846,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_attachment, as: 'networkAttachment'
-          property :trust_config, as: 'trustConfig', class: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig, decorator: Google::Apis::NetworkservicesV1beta1::AgentGatewayNetworkConfigEgressTrustConfig::Representation
-      
-        end
-      end
-      
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :pem_certificates, as: 'pemCertificates'
         end
       end
       
@@ -729,6 +853,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_uri, as: 'resourceUri'
+          collection :resource_uris, as: 'resourceUris'
         end
       end
       
@@ -755,6 +880,47 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CdnEdgeExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :extension_chains, as: 'extensionChains', class: Google::Apis::NetworkservicesV1beta1::ExtensionChain, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionChain::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :target, as: 'target', class: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtensionTarget, decorator: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtensionTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class CdnEdgeExtensionTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
+      end
+      
+      class DnsPeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :target_network, as: 'targetNetwork'
+        end
+      end
+      
+      class EgressNetworkConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_peering_config, as: 'dnsPeeringConfig', class: Google::Apis::NetworkservicesV1beta1::DnsPeeringConfig, decorator: Google::Apis::NetworkservicesV1beta1::DnsPeeringConfig::Representation
+      
+          property :network_attachment, as: 'networkAttachment'
+          property :trust_config, as: 'trustConfig'
+          property :vpc_egress, as: 'vpcEgress'
         end
       end
       
@@ -789,6 +955,103 @@ module Google
       
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ExtensionBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :fail_open, as: 'failOpen'
+          hash :labels, as: 'labels'
+          collection :match_conditions, as: 'matchConditions', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchCondition, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchCondition::Representation
+      
+          property :name, as: 'name'
+          property :priority, as: 'priority'
+          property :producer_extension, as: 'producerExtension'
+          hash :producer_metadata, as: 'producerMetadata'
+          property :target, as: 'target', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingTarget, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ExtensionBindingMatchCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :to, as: 'to', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionTo, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionTo::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingMatchConditionHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingMatchConditionStringMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains, as: 'contains'
+          property :exact, as: 'exact'
+          property :ignore_case, as: 'ignoreCase'
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+        end
+      end
+      
+      class ExtensionBindingMatchConditionTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestination, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestination::Representation
+      
+          property :not_destination, as: 'notDestination', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestination, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestination::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingMatchConditionToDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_set, as: 'headerSet', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestinationHeaderSet, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionToDestinationHeaderSet::Representation
+      
+          collection :hosts, as: 'hosts', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch::Representation
+      
+          collection :paths, as: 'paths', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch::Representation
+      
+          collection :resources, as: 'resources', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionStringMatch::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingMatchConditionToDestinationHeaderSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionHeaderMatch, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionHeaderMatch::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+          property :scope, as: 'scope', class: Google::Apis::NetworkservicesV1beta1::ExtensionBindingTargetScope, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBindingTargetScope::Representation
+      
+        end
+      end
+      
+      class ExtensionBindingTargetScope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       
@@ -1269,6 +1532,16 @@ module Google
         end
       end
       
+      class ListAgentConnectivityTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_connectivity_templates, as: 'agentConnectivityTemplates', class: Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate, decorator: Google::Apis::NetworkservicesV1beta1::AgentConnectivityTemplate::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListAgentGatewaysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1289,10 +1562,30 @@ module Google
         end
       end
       
+      class ListCdnEdgeExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cdn_edge_extensions, as: 'cdnEdgeExtensions', class: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension, decorator: Google::Apis::NetworkservicesV1beta1::CdnEdgeExtension::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListEndpointPoliciesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :endpoint_policies, as: 'endpointPolicies', class: Google::Apis::NetworkservicesV1beta1::EndpointPolicy, decorator: Google::Apis::NetworkservicesV1beta1::EndpointPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListExtensionBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :extension_bindings, as: 'extensionBindings', class: Google::Apis::NetworkservicesV1beta1::ExtensionBinding, decorator: Google::Apis::NetworkservicesV1beta1::ExtensionBinding::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1413,6 +1706,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::NetworkservicesV1beta1::Operation, decorator: Google::Apis::NetworkservicesV1beta1::Operation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListProducerExtensionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :producer_extensions, as: 'producerExtensions', class: Google::Apis::NetworkservicesV1beta1::ProducerExtension, decorator: Google::Apis::NetworkservicesV1beta1::ProducerExtension::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1560,6 +1863,31 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class ProducerExtension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :extension_settings, as: 'extensionSettings', class: Google::Apis::NetworkservicesV1beta1::ProducerExtensionExtensionSettings, decorator: Google::Apis::NetworkservicesV1beta1::ProducerExtensionExtensionSettings::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :phase, as: 'phase'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ProducerExtensionExtensionSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
+          property :observability_mode, as: 'observabilityMode'
+          property :service, as: 'service'
+          collection :supported_events, as: 'supportedEvents'
         end
       end
       

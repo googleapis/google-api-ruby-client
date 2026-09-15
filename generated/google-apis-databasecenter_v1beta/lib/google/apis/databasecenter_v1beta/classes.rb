@@ -1567,6 +1567,12 @@ module Google
         # @return [Array<Google::Apis::DatabasecenterV1beta::SignalFilter>]
         attr_accessor :signal_filters
       
+        # Optional. Filters based on signal and product. The filter list will be ORed
+        # across pairs and ANDed within a signal and products pair.
+        # Corresponds to the JSON property `signalProductsFilters`
+        # @return [Array<Google::Apis::DatabasecenterV1beta::SignalProductsFilters>]
+        attr_accessor :signal_products_filters
+      
         # Optional. Groups of signal types that are requested.
         # Corresponds to the JSON property `signalTypeGroups`
         # @return [Array<Google::Apis::DatabasecenterV1beta::SignalTypeGroup>]
@@ -1584,6 +1590,7 @@ module Google
           @page_token = args[:page_token] if args.key?(:page_token)
           @parent = args[:parent] if args.key?(:parent)
           @signal_filters = args[:signal_filters] if args.key?(:signal_filters)
+          @signal_products_filters = args[:signal_products_filters] if args.key?(:signal_products_filters)
           @signal_type_groups = args[:signal_type_groups] if args.key?(:signal_type_groups)
         end
       end

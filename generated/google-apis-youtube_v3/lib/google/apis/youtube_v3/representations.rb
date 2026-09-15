@@ -130,7 +130,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvailabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigGlobalConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigRegionsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityConfigRegionsConfigRegionInterval
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchGetStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BrandPartner
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -443,6 +473,12 @@ module Google
       end
       
       class IngestionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1465,6 +1501,42 @@ module Google
         end
       end
       
+      class AvailabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_config, as: 'globalConfig', class: Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig::Representation
+      
+          property :regions_config, as: 'regionsConfig', class: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigGlobalConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_region_codes, as: 'excludedRegionCodes'
+          property :interval, as: 'interval', class: Google::Apis::YoutubeV3::Interval, decorator: Google::Apis::YoutubeV3::Interval::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigRegionsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :region_intervals, as: 'regionIntervals', class: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval, decorator: Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval::Representation
+      
+        end
+      end
+      
+      class AvailabilityConfigRegionsConfigRegionInterval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::YoutubeV3::Interval, decorator: Google::Apis::YoutubeV3::Interval::Representation
+      
+          property :region_code, as: 'regionCode'
+        end
+      end
+      
       class BatchGetStatsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1472,6 +1544,14 @@ module Google
           collection :items, as: 'items', class: Google::Apis::YoutubeV3::VideoStat, decorator: Google::Apis::YoutubeV3::VideoStat::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class BrandPartner
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_handle, as: 'channelHandle'
+          property :channel_id, as: 'channelId'
         end
       end
       
@@ -2178,6 +2258,14 @@ module Google
         end
       end
       
+      class Interval
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class InvideoBranding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2244,6 +2332,8 @@ module Google
       class LiveBroadcastContentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_config, as: 'availabilityConfig', class: Google::Apis::YoutubeV3::AvailabilityConfig, decorator: Google::Apis::YoutubeV3::AvailabilityConfig::Representation
+      
           property :bound_stream_id, as: 'boundStreamId'
           property :bound_stream_last_update_time_ms, as: 'boundStreamLastUpdateTimeMs', type: DateTime
       
@@ -2299,6 +2389,7 @@ module Google
       
           property :actual_start_time, as: 'actualStartTime', type: DateTime
       
+          property :category_id, as: 'categoryId'
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_broadcast, as: 'isDefaultBroadcast'
@@ -3300,13 +3391,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :default, as: 'default', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
+          property :fhd, as: 'fhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
           property :high, as: 'high', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
           property :maxres, as: 'maxres', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
           property :medium, as: 'medium', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
+          property :qhd, as: 'qhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
           property :standard, as: 'standard', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
+      
+          property :uhd, as: 'uhd', class: Google::Apis::YoutubeV3::Thumbnail, decorator: Google::Apis::YoutubeV3::Thumbnail::Representation
       
         end
       end
@@ -3333,6 +3430,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :age_gating, as: 'ageGating', class: Google::Apis::YoutubeV3::VideoAgeGating, decorator: Google::Apis::YoutubeV3::VideoAgeGating::Representation
+      
+          property :brand_partner, as: 'brandPartner', class: Google::Apis::YoutubeV3::BrandPartner, decorator: Google::Apis::YoutubeV3::BrandPartner::Representation
       
           property :content_details, as: 'contentDetails', class: Google::Apis::YoutubeV3::VideoContentDetails, decorator: Google::Apis::YoutubeV3::VideoContentDetails::Representation
       

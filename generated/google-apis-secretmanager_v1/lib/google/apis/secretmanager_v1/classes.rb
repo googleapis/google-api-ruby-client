@@ -282,6 +282,39 @@ module Google
         end
       end
       
+      # These are the credentials required for Cloud SQL DB for Single user Managed
+      # Rotation.
+      class CloudSqlSingleUserCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. Instance ID of the Cloud SQL instance.
+        # Corresponds to the JSON property `instanceId`
+        # @return [String]
+        attr_accessor :instance_id
+      
+        # Optional. Password of the Cloud SQL instance. If this is not provided, a
+        # random password will be generated.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # Required. Username of the Cloud SQL instance.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
+        end
+      end
+      
       # Configuration for encrypting secret payloads using customer-managed encryption
       # keys (CMEK).
       class CustomerManagedEncryption
@@ -383,6 +416,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for SecretManagerService.EnableManagedRotation.
+      class EnableManagedRotationRequest
+        include Google::Apis::Core::Hashable
+      
+        # These are the credentials required for Cloud SQL DB for Single user Managed
+        # Rotation.
+        # Corresponds to the JSON property `cloudSqlSingleUserCredentials`
+        # @return [Google::Apis::SecretmanagerV1::CloudSqlSingleUserCredentials]
+        attr_accessor :cloud_sql_single_user_credentials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql_single_user_credentials = args[:cloud_sql_single_user_credentials] if args.key?(:cloud_sql_single_user_credentials)
         end
       end
       
@@ -596,6 +649,38 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents the status of a managed rotation. This is applicable only to Typed
+      # Secrets. It indicates whether the rotation is active and any errors that may
+      # have occurred during the asynchronous managed rotation.
+      class ManagedRotationStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::SecretmanagerV1::Status]
+        attr_accessor :error
+      
+        # Output only. Indicates whether the Managed Rotation is active or not.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -962,11 +1047,65 @@ module Google
         end
       end
       
+      # Output-only policy member strings of a Google Cloud resource's built-in
+      # identity.
+      class ResourcePolicyMember
+        include Google::Apis::Core::Hashable
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # user-assigned name (https://google.aip.dev/122). If a resource is deleted and
+        # recreated with the same name, the binding will be applicable to the new
+        # resource. Example: `principal://parametermanager.googleapis.com/projects/12345/
+        # name/locations/us-central1-a/parameters/my-parameter`
+        # Corresponds to the JSON property `iamPolicyNamePrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_name_principal
+      
+        # Output only. IAM policy binding member referring to a Google Cloud resource by
+        # system-assigned unique identifier (https://google.aip.dev/148#uid). If a
+        # resource is deleted and recreated with the same name, the binding will not be
+        # applicable to the new resource Example: `principal://parametermanager.
+        # googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+        # Corresponds to the JSON property `iamPolicyUidPrincipal`
+        # @return [String]
+        attr_accessor :iam_policy_uid_principal
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_policy_name_principal = args[:iam_policy_name_principal] if args.key?(:iam_policy_name_principal)
+          @iam_policy_uid_principal = args[:iam_policy_uid_principal] if args.key?(:iam_policy_uid_principal)
+        end
+      end
+      
+      # Request message for SecretManagerService.RotateSecret.
+      class RotateSecretRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The rotation time and period for a Secret. At next_rotation_time, Secret
       # Manager will send a Pub/Sub notification to the topics configured on the
       # Secret. Secret.topics must be set to configure rotation.
       class Rotation
         include Google::Apis::Core::Hashable
+      
+        # Represents the status of a managed rotation. This is applicable only to Typed
+        # Secrets. It indicates whether the rotation is active and any errors that may
+        # have occurred during the asynchronous managed rotation.
+        # Corresponds to the JSON property `managedRotationStatus`
+        # @return [Google::Apis::SecretmanagerV1::ManagedRotationStatus]
+        attr_accessor :managed_rotation_status
       
         # Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot
         # be set to less than 300s (5 min) in the future and at most 3153600000s (100
@@ -990,6 +1129,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @managed_rotation_status = args[:managed_rotation_status] if args.key?(:managed_rotation_status)
           @next_rotation_time = args[:next_rotation_time] if args.key?(:next_rotation_time)
           @rotation_period = args[:rotation_period] if args.key?(:rotation_period)
         end
@@ -1050,6 +1190,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output-only policy member strings of a Google Cloud resource's built-in
+        # identity.
+        # Corresponds to the JSON property `policyMember`
+        # @return [Google::Apis::SecretmanagerV1::ResourcePolicyMember]
+        attr_accessor :policy_member
+      
         # A policy that defines the replication and encryption configuration of data.
         # Corresponds to the JSON property `replication`
         # @return [Google::Apis::SecretmanagerV1::Replication]
@@ -1061,6 +1207,13 @@ module Google
         # Corresponds to the JSON property `rotation`
         # @return [Google::Apis::SecretmanagerV1::Rotation]
         attr_accessor :rotation
+      
+        # Optional. Immutable. This defines the type of the secret. Enforces certain
+        # structural requirements on the SecretVersions. For secret of type UNSPECIFIED,
+        # the SecretVersions can be of any type.
+        # Corresponds to the JSON property `secretType`
+        # @return [String]
+        attr_accessor :secret_type
       
         # Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to
         # this resource. For example: "123/environment": "production", "123/costCenter":
@@ -1114,8 +1267,10 @@ module Google
           @expire_time = args[:expire_time] if args.key?(:expire_time)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @policy_member = args[:policy_member] if args.key?(:policy_member)
           @replication = args[:replication] if args.key?(:replication)
           @rotation = args[:rotation] if args.key?(:rotation)
+          @secret_type = args[:secret_type] if args.key?(:secret_type)
           @tags = args[:tags] if args.key?(:tags)
           @topics = args[:topics] if args.key?(:topics)
           @ttl = args[:ttl] if args.key?(:ttl)

@@ -198,6 +198,31 @@ module Google
         end
       end
       
+      # Adds a request header to the API.
+      class AddRequestHeader
+        include Google::Apis::Core::Hashable
+      
+        # HTTP header key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # HTTP header value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Identification for an API Operation.
       class ApiOperation
         include Google::Apis::Core::Hashable
@@ -538,6 +563,12 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::Application]
         attr_accessor :restricted_client_application
       
+        # A Google Cloud project which contains applications and resources that users
+        # can access.
+        # Corresponds to the JSON property `restrictedProject`
+        # @return [Google::Apis::AccesscontextmanagerV1::Project]
+        attr_accessor :restricted_project
+      
         def initialize(**args)
            update!(**args)
         end
@@ -545,6 +576,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @restricted_client_application = args[:restricted_client_application] if args.key?(:restricted_client_application)
+          @restricted_project = args[:restricted_project] if args.key?(:restricted_project)
         end
       end
       
@@ -892,6 +924,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the Private Service Connect endpoint that an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource from the service perimeter that you want to allow to
         # access data outside the perimeter. This field supports only projects. The
         # project format is `projects/`project_number``. You can't use `*` in this field
@@ -907,6 +944,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1075,16 +1113,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. A list of applications that are subject to this binding's
-        # restrictions. If the list is empty, the binding restrictions will universally
-        # apply to all applications.
-        # Corresponds to the JSON property `restrictedClientApplications`
-        # @return [Array<Google::Apis::AccesscontextmanagerV1::Application>]
-        attr_accessor :restricted_client_applications
+        # The comprehensive identity container supporting identities including groups,
+        # service accounts, and federated identities. Only one of them can be set to
+        # create an access binding.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::AccesscontextmanagerV1::Principal]
+        attr_accessor :principal
       
         # Optional. A list of scoped access settings that set this binding's
-        # restrictions on a subset of applications. This field cannot be set if
-        # restricted_client_applications is set.
+        # restrictions on a subset of applications.
         # Corresponds to the JSON property `scopedAccessSettings`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings>]
         attr_accessor :scoped_access_settings
@@ -1106,7 +1143,7 @@ module Google
           @dry_run_access_levels = args[:dry_run_access_levels] if args.key?(:dry_run_access_levels)
           @group_key = args[:group_key] if args.key?(:group_key)
           @name = args[:name] if args.key?(:name)
-          @restricted_client_applications = args[:restricted_client_applications] if args.key?(:restricted_client_applications)
+          @principal = args[:principal] if args.key?(:principal)
           @scoped_access_settings = args[:scoped_access_settings] if args.key?(:scoped_access_settings)
           @session_settings = args[:session_settings] if args.key?(:session_settings)
         end
@@ -1277,6 +1314,11 @@ module Google
         # @return [String]
         attr_accessor :access_level
       
+        # Specifies the Private Service Connect endpoint that an API call refers to.
+        # Corresponds to the JSON property `pscEndpoint`
+        # @return [Google::Apis::AccesscontextmanagerV1::PrivateServiceConnectEndpoint]
+        attr_accessor :psc_endpoint
+      
         # A Google Cloud resource that is allowed to ingress the perimeter. Requests
         # from these resources will be allowed to access perimeter data. Currently only
         # projects and VPCs are allowed. Project format: `projects/`project_number`` VPC
@@ -1295,6 +1337,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_level = args[:access_level] if args.key?(:access_level)
+          @psc_endpoint = args[:psc_endpoint] if args.key?(:psc_endpoint)
           @resource = args[:resource] if args.key?(:resource)
         end
       end
@@ -1553,6 +1596,49 @@ module Google
         end
       end
       
+      # A configured service perimeter returned by Access Context Manager.
+      class LookupConfiguredServicePerimeterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
+        # restricted by the enforced perimeter.
+        # Corresponds to the JSON property `restrictedResource`
+        # @return [String]
+        attr_accessor :restricted_resource
+      
+        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
+        # restricted by the dry-run perimeter.
+        # Corresponds to the JSON property `restrictedResourceDryRun`
+        # @return [String]
+        attr_accessor :restricted_resource_dry_run
+      
+        # Fully qualified name of the configured enforced perimeter. Format: `
+        # accessPolicies/`policy_id`/servicePerimeters/`perimeter_name`` This field is
+        # empty if no enforced perimeter applies.
+        # Corresponds to the JSON property `servicePerimeter`
+        # @return [String]
+        attr_accessor :service_perimeter
+      
+        # Fully qualified name of the configured dry-run perimeter. Format: `
+        # accessPolicies/`policy_id`/servicePerimeters/`perimeter_name`` This field is
+        # empty if no dry-run perimeter configuration applies.
+        # Corresponds to the JSON property `servicePerimeterDryRun`
+        # @return [String]
+        attr_accessor :service_perimeter_dry_run
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restricted_resource = args[:restricted_resource] if args.key?(:restricted_resource)
+          @restricted_resource_dry_run = args[:restricted_resource_dry_run] if args.key?(:restricted_resource_dry_run)
+          @service_perimeter = args[:service_perimeter] if args.key?(:service_perimeter)
+          @service_perimeter_dry_run = args[:service_perimeter_dry_run] if args.key?(:service_perimeter_dry_run)
+        end
+      end
+      
       # An allowed method or permission of a service specified in ApiOperation.
       class MethodSelector
         include Google::Apis::Core::Hashable
@@ -1578,6 +1664,25 @@ module Google
         def update!(**args)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @permission = args[:permission] if args.key?(:permission)
+        end
+      end
+      
+      # Modifier to apply to the API requests.
+      class Modifier
+        include Google::Apis::Core::Hashable
+      
+        # Adds a request header to the API.
+        # Corresponds to the JSON property `addRequestHeader`
+        # @return [Google::Apis::AccesscontextmanagerV1::AddRequestHeader]
+        attr_accessor :add_request_header
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_request_header = args[:add_request_header] if args.key?(:add_request_header)
         end
       end
       
@@ -1775,6 +1880,98 @@ module Google
         end
       end
       
+      # The comprehensive identity container supporting identities including groups,
+      # service accounts, and federated identities. Only one of them can be set to
+      # create an access binding.
+      class Principal
+        include Google::Apis::Core::Hashable
+      
+        # Immutable. The IAM principal identifier of the federated workforce or workload
+        # to assign the policy to. Examples include the following: * Single principal: `
+        # principal://iam.googleapis.com/projects/`project_number`/locations/global/
+        # workloadIdentityPools/`pool_id`/subject/`subject_attribute_value`` * All
+        # workloads in a workload identity pool: `principalSet://iam.googleapis.com/
+        # projects/`project_number`/locations/global/workloadIdentityPools/`pool_id`/*` *
+        # All Workforce Pools in a Google Cloud organization: `principalSet://
+        # cloudresourcemanager.googleapis.com/organizations/`organization_id`/type/
+        # WorkforcePool` Bindings created for all Workforce Pools in a Google Cloud
+        # organization support only `scoped_access_settings` with the `
+        # restricted_project` client scope and active `session_settings`. No other
+        # configurations are allowed.
+        # Corresponds to the JSON property `federatedPrincipal`
+        # @return [String]
+        attr_accessor :federated_principal
+      
+        # Immutable. Service account email used to assign policies to a specific service
+        # account. If a service account is subject to multiple policies (e.g., if there
+        # is a policy for all service accounts in a project and a policy for the service
+        # account), the closest (i.e. the most specific) dry-run policy will be used for
+        # the dry-run functionality and the closest enforcement policy will be used for
+        # the enforcement.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Immutable. Cloud project number used to assign policies to all service
+        # accounts owned by the project.
+        # Corresponds to the JSON property `serviceAccountProjectNumber`
+        # @return [String]
+        attr_accessor :service_account_project_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @federated_principal = args[:federated_principal] if args.key?(:federated_principal)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @service_account_project_number = args[:service_account_project_number] if args.key?(:service_account_project_number)
+        end
+      end
+      
+      # Specifies the Private Service Connect endpoint that an API call refers to.
+      class PrivateServiceConnectEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the global forwarding rule that identifies a Private
+        # Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/
+        # projects/`PROJECT_ID`/global/forwardingRules/`FORWARDING_RULE_ID``.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+        end
+      end
+      
+      # A Google Cloud project which contains applications and resources that users
+      # can access.
+      class Project
+        include Google::Apis::Core::Hashable
+      
+        # The Google Cloud project resource name. Format: `projects/`project_number``.
+        # Only the project number is supported. Example: `projects/1234567890`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A request to replace all existing Access Levels in an Access Policy with the
       # Access Levels provided. This is done atomically.
       class ReplaceAccessLevelsRequest
@@ -1910,6 +2107,39 @@ module Google
           @active_settings = args[:active_settings] if args.key?(:active_settings)
           @dry_run_settings = args[:dry_run_settings] if args.key?(:dry_run_settings)
           @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Service patterns used to allow access.
+      class ServicePattern
+        include Google::Apis::Core::Hashable
+      
+        # Modifiers to apply to the requests that match the URL pattern.
+        # Corresponds to the JSON property `modifiers`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::Modifier>]
+        attr_accessor :modifiers
+      
+        # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
+        # com//*" and "*.appspot.com/* forms are supported, where should be an
+        # alphanumeric name.
+        # Corresponds to the JSON property `pattern`
+        # @return [String]
+        attr_accessor :pattern
+      
+        # Supported service to allow.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @modifiers = args[:modifiers] if args.key?(:modifiers)
+          @pattern = args[:pattern] if args.key?(:pattern)
+          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -2081,17 +2311,20 @@ module Google
         # @return [String]
         attr_accessor :max_inactivity
       
-        # Optional. The session length. Setting this field to zero is equal to disabling
-        # session. Also can set infinite session by flipping the enabled bit to false
-        # below. If use_oidc_max_age is true, for OIDC apps, the session length will be
-        # the minimum of this field and OIDC max_age param.
+        # Optional. The session length. Setting this field to zero allows for sessions
+        # that are active indefinitely. Also, setting `session_length_enabled` to `false`
+        # disregards session limits, which means that sessions never expire. If `
+        # use_oidc_max_age` is `true`, for OIDC apps, the session length will be the
+        # minimum of this field and the OIDC `max_age` param. If this field is set to
+        # zero, `session_length_enabled` must be set to `false` or left unset.
         # Corresponds to the JSON property `sessionLength`
         # @return [String]
         attr_accessor :session_length
       
         # Optional. This field enables or disables Google Cloud session length. When
         # false, all fields set above will be disregarded and the session length is
-        # basically infinite.
+        # basically infinite. If `session_length` is set to zero, this field must be set
+        # to false.
         # Corresponds to the JSON property `sessionLengthEnabled`
         # @return [Boolean]
         attr_accessor :session_length_enabled
@@ -2324,6 +2557,12 @@ module Google
       class VpcAccessibleServices
         include Google::Apis::Core::Hashable
       
+        # Specifies which Google services are allowed to be accessed from VPC networks
+        # in the service perimeter.
+        # Corresponds to the JSON property `allowedServicePatterns`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePattern>]
+        attr_accessor :allowed_service_patterns
+      
         # The list of APIs usable within the Service Perimeter. Must be empty unless '
         # enable_restriction' is True. You can specify a list of individual services, as
         # well as include the 'RESTRICTED-SERVICES' value, which automatically includes
@@ -2339,14 +2578,21 @@ module Google
         attr_accessor :enable_restriction
         alias_method :enable_restriction?, :enable_restriction
       
+        # Defines the enforcement scopes of service patterns.
+        # Corresponds to the JSON property `servicePatternsEnforcementScopes`
+        # @return [Array<String>]
+        attr_accessor :service_patterns_enforcement_scopes
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @allowed_service_patterns = args[:allowed_service_patterns] if args.key?(:allowed_service_patterns)
           @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
           @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
+          @service_patterns_enforcement_scopes = args[:service_patterns_enforcement_scopes] if args.key?(:service_patterns_enforcement_scopes)
         end
       end
       

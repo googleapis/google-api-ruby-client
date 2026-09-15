@@ -213,9 +213,14 @@ module Google
       end
       
       # Log entry for Backup and Restore Job for resources using BackupPlan based
-      # protection. Next Id: 25
+      # protection. Next Id: 27
       class BdrBackupRestoreJobLog
         include Google::Apis::Core::Hashable
+      
+        # The auto-protection policy that created the backup.
+        # Corresponds to the JSON property `autoProtectionPolicy`
+        # @return [String]
+        attr_accessor :auto_protection_policy
       
         # Backup consistency time.
         # Corresponds to the JSON property `backupConsistencyTime`
@@ -335,6 +340,11 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The storage tier associated with the backup.
+        # Corresponds to the JSON property `storageTier`
+        # @return [String]
+        attr_accessor :storage_tier
+      
         # The target resource type for restore jobs.
         # Corresponds to the JSON property `targetResourceType`
         # @return [String]
@@ -346,6 +356,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_protection_policy = args[:auto_protection_policy] if args.key?(:auto_protection_policy)
           @backup_consistency_time = args[:backup_consistency_time] if args.key?(:backup_consistency_time)
           @backup_name = args[:backup_name] if args.key?(:backup_name)
           @backup_plan_name = args[:backup_plan_name] if args.key?(:backup_plan_name)
@@ -369,6 +380,7 @@ module Google
           @source_resource_location = args[:source_resource_location] if args.key?(:source_resource_location)
           @source_resource_name = args[:source_resource_name] if args.key?(:source_resource_name)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @storage_tier = args[:storage_tier] if args.key?(:storage_tier)
           @target_resource_type = args[:target_resource_type] if args.key?(:target_resource_type)
         end
       end
@@ -1173,6 +1185,11 @@ module Google
         # @return [String]
         attr_accessor :rule_name
       
+        # The storage tier of the BackupRule.
+        # Corresponds to the JSON property `storageTier`
+        # @return [String]
+        attr_accessor :storage_tier
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1185,6 +1202,7 @@ module Google
           @recurrence_schedule = args[:recurrence_schedule] if args.key?(:recurrence_schedule)
           @retention_days = args[:retention_days] if args.key?(:retention_days)
           @rule_name = args[:rule_name] if args.key?(:rule_name)
+          @storage_tier = args[:storage_tier] if args.key?(:storage_tier)
         end
       end
       

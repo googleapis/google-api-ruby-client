@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsAutomationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +395,12 @@ module Google
       end
       
       class PscInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PscInstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -984,9 +996,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authproxy_pooler_count, as: 'authproxyPoolerCount'
+          property :authproxy_pooler_scaling_type, as: 'authproxyPoolerScalingType'
           property :enabled, as: 'enabled'
           hash :flags, as: 'flags'
           property :pooler_count, as: 'poolerCount'
+          property :pooler_scaling_type, as: 'poolerScalingType'
         end
       end
       
@@ -1056,6 +1070,14 @@ module Google
       
           property :time, as: 'time', class: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1::GoogleTypeTimeOfDay::Representation
       
+        end
+      end
+      
+      class DnsAutomationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fully_qualified_domain_name, as: 'fullyQualifiedDomainName'
+          property :state, as: 'state'
         end
       end
       
@@ -1216,6 +1238,8 @@ module Google
       
           collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1::PscInstanceConfig, decorator: Google::Apis::AlloydbV1::PscInstanceConfig::Representation
+      
+          property :psc_instance_info, as: 'pscInstanceInfo', class: Google::Apis::AlloydbV1::PscInstanceInfo, decorator: Google::Apis::AlloydbV1::PscInstanceInfo::Representation
       
           property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1::QueryInsightsInstanceConfig::Representation
@@ -1445,7 +1469,11 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
+          collection :dns_automation_infos, as: 'dnsAutomationInfos', class: Google::Apis::AlloydbV1::DnsAutomationInfo, decorator: Google::Apis::AlloydbV1::DnsAutomationInfo::Representation
+      
           property :ip_address, as: 'ipAddress'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
+          property :service_connection_policy_creation_state, as: 'serviceConnectionPolicyCreationState'
           property :status, as: 'status'
         end
       end
@@ -1462,12 +1490,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_consumer_projects, as: 'allowedConsumerProjects'
+          property :psc_auto_connection_policy_state, as: 'pscAutoConnectionPolicyState'
           collection :psc_auto_connections, as: 'pscAutoConnections', class: Google::Apis::AlloydbV1::PscAutoConnectionConfig, decorator: Google::Apis::AlloydbV1::PscAutoConnectionConfig::Representation
       
+          property :psc_auto_dns_state, as: 'pscAutoDnsState'
           property :psc_dns_name, as: 'pscDnsName'
           collection :psc_interface_configs, as: 'pscInterfaceConfigs', class: Google::Apis::AlloydbV1::PscInterfaceConfig, decorator: Google::Apis::AlloydbV1::PscInterfaceConfig::Representation
       
           property :service_attachment_link, as: 'serviceAttachmentLink'
+        end
+      end
+      
+      class PscInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_psc_auto_connection_policy, as: 'effectivePscAutoConnectionPolicy'
+          property :effective_psc_auto_dns_enabled, as: 'effectivePscAutoDnsEnabled'
+          collection :psc_auto_dns_names, as: 'pscAutoDnsNames'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
         end
       end
       
@@ -2038,6 +2078,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_values, as: 'allowedValues'
+          property :case_agnostic, as: 'caseAgnostic'
         end
       end
       

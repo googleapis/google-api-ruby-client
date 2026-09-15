@@ -581,6 +581,11 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Profile for connecting to a Workday source.
+        # Corresponds to the JSON property `workdayProfile`
+        # @return [Google::Apis::DatastreamV1::WorkdayProfile]
+        attr_accessor :workday_profile
+      
         def initialize(**args)
            update!(**args)
         end
@@ -609,6 +614,7 @@ module Google
           @sql_server_profile = args[:sql_server_profile] if args.key?(:sql_server_profile)
           @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @workday_profile = args[:workday_profile] if args.key?(:workday_profile)
         end
       end
       
@@ -1100,7 +1106,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # The reason of the error. This is a constant value that identifies the
+        # The reason for the error. This is a constant value that identifies the
         # proximate cause of the error. Error reasons are unique within a particular
         # domain of errors. This should be at most 63 characters and match a regular
         # expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -1199,7 +1205,7 @@ module Google
         # @return [Google::Apis::DatastreamV1::LocalizedMessage]
         attr_accessor :localized_message
       
-        # The reason of the field-level error. This is a constant value that identifies
+        # The reason for the field-level error. This is a constant value that identifies
         # the proximate cause of the field-level error. It should uniquely identify the
         # type of the FieldViolation within the scope of the google.rpc.ErrorInfo.domain.
         # This should be at most 63 characters and match a regular expression of `A-Z+[
@@ -2628,6 +2634,32 @@ module Google
         def update!(**args)
           @client_id = args[:client_id] if args.key?(:client_id)
           @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
+      # OAuth Refresh Token Credentials.
+      class OauthRefreshTokenCredentials
+        include Google::Apis::Core::Hashable
+      
+        # OAuth Client Credentials.
+        # Corresponds to the JSON property `oauthClientCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthClientCredentials]
+        attr_accessor :oauth_client_credentials
+      
+        # A confidential piece of information where the actual value is either directly
+        # specified in the message as a raw string or stored in GCP secret manager.
+        # Corresponds to the JSON property `refreshToken`
+        # @return [Google::Apis::DatastreamV1::Secret]
+        attr_accessor :refresh_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_client_credentials = args[:oauth_client_credentials] if args.key?(:oauth_client_credentials)
+          @refresh_token = args[:refresh_token] if args.key?(:refresh_token)
         end
       end
       
@@ -4509,6 +4541,11 @@ module Google
         # @return [Google::Apis::DatastreamV1::SqlServerSourceConfig]
         attr_accessor :sql_server_source_config
       
+        # Configuration for syncing data from a Workday source.
+        # Corresponds to the JSON property `workdaySourceConfig`
+        # @return [Google::Apis::DatastreamV1::WorkdaySourceConfig]
+        attr_accessor :workday_source_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4526,6 +4563,7 @@ module Google
           @source_connection_profile = args[:source_connection_profile] if args.key?(:source_connection_profile)
           @spanner_source_config = args[:spanner_source_config] if args.key?(:spanner_source_config)
           @sql_server_source_config = args[:sql_server_source_config] if args.key?(:sql_server_source_config)
+          @workday_source_config = args[:workday_source_config] if args.key?(:workday_source_config)
         end
       end
       
@@ -5884,6 +5922,71 @@ module Google
         def update!(**args)
           @subnet = args[:subnet] if args.key?(:subnet)
           @vpc = args[:vpc] if args.key?(:vpc)
+        end
+      end
+      
+      # Profile for connecting to a Workday source.
+      class WorkdayProfile
+        include Google::Apis::Core::Hashable
+      
+        # Required. Host for the Workday connection. Must be a valid hostname (e.g., `
+        # wd3-impl-services1.workday.com`).
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # OAuth Refresh Token Credentials.
+        # Corresponds to the JSON property `oauthRefreshTokenCredentials`
+        # @return [Google::Apis::DatastreamV1::OauthRefreshTokenCredentials]
+        attr_accessor :oauth_refresh_token_credentials
+      
+        # Required. Tenant for the Workday connection (e.g., `google12`).
+        # Corresponds to the JSON property `tenant`
+        # @return [String]
+        attr_accessor :tenant
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @oauth_refresh_token_credentials = args[:oauth_refresh_token_credentials] if args.key?(:oauth_refresh_token_credentials)
+          @tenant = args[:tenant] if args.key?(:tenant)
+        end
+      end
+      
+      # Configuration for syncing data from a Workday source.
+      class WorkdaySourceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Source catalog.
+        # Corresponds to the JSON property `excludeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :exclude_objects
+      
+        # Source catalog.
+        # Corresponds to the JSON property `includeObjects`
+        # @return [Google::Apis::DatastreamV1::SourceCatalog]
+        attr_accessor :include_objects
+      
+        # Required. Incremental sync polling interval for all objects. If not set, a
+        # default value of `5 minutes` is used. The duration must be from `5 minutes` to
+        # `24 hours`, inclusive.
+        # Corresponds to the JSON property `pollingInterval`
+        # @return [String]
+        attr_accessor :polling_interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exclude_objects = args[:exclude_objects] if args.key?(:exclude_objects)
+          @include_objects = args[:include_objects] if args.key?(:include_objects)
+          @polling_interval = args[:polling_interval] if args.key?(:polling_interval)
         end
       end
     end

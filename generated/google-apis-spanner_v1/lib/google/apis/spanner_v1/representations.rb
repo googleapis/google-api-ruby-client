@@ -1421,8 +1421,10 @@ module Google
           property :commit_stats, as: 'commitStats', class: Google::Apis::SpannerV1::CommitStats, decorator: Google::Apis::SpannerV1::CommitStats::Representation
       
           property :commit_timestamp, as: 'commitTimestamp'
+          property :isolation_level, as: 'isolationLevel'
           property :precommit_token, as: 'precommitToken', class: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken, decorator: Google::Apis::SpannerV1::MultiplexedSessionPrecommitToken::Representation
       
+          property :read_lock_mode, as: 'readLockMode'
           property :snapshot_timestamp, as: 'snapshotTimestamp'
         end
       end

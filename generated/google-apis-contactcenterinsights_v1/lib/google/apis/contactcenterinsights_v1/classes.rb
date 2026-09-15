@@ -179,6 +179,11 @@ module Google
       class GoogleCloudCesV1mainImage
         include Google::Apis::Core::Hashable
       
+        # Optional. The alternative text for the image.
+        # Corresponds to the JSON property `altText`
+        # @return [String]
+        attr_accessor :alt_text
+      
         # Required. Raw bytes of the image.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -197,6 +202,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alt_text = args[:alt_text] if args.key?(:alt_text)
           @data = args[:data] if args.key?(:data)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
@@ -287,6 +293,12 @@ module Google
       class GoogleCloudCesV1mainToolCall
         include Google::Apis::Core::Hashable
       
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
         # Optional. The input parameters and values for the tool in JSON object format.
         # Corresponds to the JSON property `args`
         # @return [Hash<String,Object>]
@@ -302,6 +314,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Optional. The name of the tool to execute. Format: `projects/`project`/
         # locations/`location`/apps/`app`/tools/`tool``
@@ -320,9 +340,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @args = args[:args] if args.key?(:args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
         end
@@ -331,6 +353,12 @@ module Google
       # The execution result of a specific tool from the client or the agent.
       class GoogleCloudCesV1mainToolResponse
         include Google::Apis::Core::Hashable
+      
+        # Output only. Human-readable name of the agent that issued this call, e.g. "
+        # Contract Architect". Empty when the root agent issued it.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
       
         # Output only. Display name of the tool.
         # Corresponds to the JSON property `displayName`
@@ -341,6 +369,14 @@ module Google
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
+      
+        # Output only. The id of the tool call that caused this one, when it was issued
+        # by a sub-agent working on behalf of a parent call. Empty for top-level calls.
+        # Lets a client group a sub-agent's work under the call that started it instead
+        # of rendering every step as a sibling.
+        # Corresponds to the JSON property `parentToolCallId`
+        # @return [String]
+        attr_accessor :parent_tool_call_id
       
         # Required. The tool execution result in JSON object format. Use "output" key to
         # specify tool response and "error" key to specify error details (if any). If "
@@ -367,8 +403,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
+          @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @response = args[:response] if args.key?(:response)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
@@ -1022,6 +1060,112 @@ module Google
           @name = args[:name] if args.key?(:name)
           @sample_rule = args[:sample_rule] if args.key?(:sample_rule)
           @schedule_info = args[:schedule_info] if args.key?(:schedule_info)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A chunk of data in an assistant message.
+      class GoogleCloudContactcenterinsightsV1AssistantChunk
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Text data.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A message in an assistant session.
+      class GoogleCloudContactcenterinsightsV1AssistantMessage
+        include Google::Apis::Core::Hashable
+      
+        # Required. Content of the message.
+        # Corresponds to the JSON property `chunks`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk>]
+        attr_accessor :chunks
+      
+        # Required. Timestamp when the message was sent or received.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Required. Role within the conversation.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunks = args[:chunks] if args.key?(:chunks)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Represents a conversation session with the Assistant Agent.
+      class GoogleCloudContactcenterinsightsV1AssistantSession
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time the session was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The display name of the session.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. History of messages in the session.
+        # Corresponds to the JSON property `messages`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantMessage>]
+        attr_accessor :messages
+      
+        # Identifier. Resource name of the session. Format: projects/`project`/locations/
+        # `location`/assistantSessions/`assistant_session`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The user who initiated the session.
+        # Corresponds to the JSON property `requester`
+        # @return [String]
+        attr_accessor :requester
+      
+        # Output only. The status of the session.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The time the session was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @messages = args[:messages] if args.key?(:messages)
+          @name = args[:name] if args.key?(:name)
+          @requester = args[:requester] if args.key?(:requester)
+          @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -3113,6 +3257,11 @@ module Google
         # @return [String]
         attr_accessor :message_time
       
+        # Optional. The structured parts that make up this transcript segment.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>]
+        attr_accessor :parts
+      
         # The call participant speaking for a given utterance.
         # Corresponds to the JSON property `segmentParticipant`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationParticipant]
@@ -3149,6 +3298,7 @@ module Google
           @dialogflow_segment_metadata = args[:dialogflow_segment_metadata] if args.key?(:dialogflow_segment_metadata)
           @language_code = args[:language_code] if args.key?(:language_code)
           @message_time = args[:message_time] if args.key?(:message_time)
+          @parts = args[:parts] if args.key?(:parts)
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
@@ -3175,6 +3325,441 @@ module Google
         # Update properties of this object
         def update!(**args)
           @smart_reply_allowlist_covered = args[:smart_reply_allowlist_covered] if args.key?(:smart_reply_allowlist_covered)
+        end
+      end
+      
+      # A structured component/part of a transcript segment.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart
+        include Google::Apis::Core::Hashable
+      
+        # A citation part.
+        # Corresponds to the JSON property `citation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart]
+        attr_accessor :citation
+      
+        # A custom payload part.
+        # Corresponds to the JSON property `customPayload`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart]
+        attr_accessor :custom_payload
+      
+        # A media part.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :image
+      
+        # A link part.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart]
+        attr_accessor :link
+      
+        # A list part.
+        # Corresponds to the JSON property `list`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart]
+        attr_accessor :list
+      
+        # A product collection part.
+        # Corresponds to the JSON property `productCollection`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart]
+        attr_accessor :product_collection
+      
+        # A suggestion chips part.
+        # Corresponds to the JSON property `suggestionChips`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart]
+        attr_accessor :suggestion_chips
+      
+        # A table part.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart]
+        attr_accessor :table
+      
+        # A text part.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart]
+        attr_accessor :text
+      
+        # A thought part.
+        # Corresponds to the JSON property `thought`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart]
+        attr_accessor :thought
+      
+        # A media part.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation = args[:citation] if args.key?(:citation)
+          @custom_payload = args[:custom_payload] if args.key?(:custom_payload)
+          @image = args[:image] if args.key?(:image)
+          @link = args[:link] if args.key?(:link)
+          @list = args[:list] if args.key?(:list)
+          @product_collection = args[:product_collection] if args.key?(:product_collection)
+          @suggestion_chips = args[:suggestion_chips] if args.key?(:suggestion_chips)
+          @table = args[:table] if args.key?(:table)
+          @text = args[:text] if args.key?(:text)
+          @thought = args[:thought] if args.key?(:thought)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # A suggestion chip.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional action or destination URI triggered by the chip.
+        # Corresponds to the JSON property `actionUri`
+        # @return [String]
+        attr_accessor :action_uri
+      
+        # Optional. The chip label or text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_uri = args[:action_uri] if args.key?(:action_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A citation part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Snippet of the cited text.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # Optional. The cited source title.
+        # Corresponds to the JSON property `sourceTitle`
+        # @return [String]
+        attr_accessor :source_title
+      
+        # Optional. The cited source URI.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @source_title = args[:source_title] if args.key?(:source_title)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+        end
+      end
+      
+      # A custom payload part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arbitrary structured payload.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Optional. Type identifier for the payload.
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+        end
+      end
+      
+      # A link part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Anchor or display text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Optional. Target URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An item in a list.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Nested sub-items.
+        # Corresponds to the JSON property `subItems`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :sub_items
+      
+        # Optional. The text of the list item.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sub_items = args[:sub_items] if args.key?(:sub_items)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A list part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :items
+      
+        # Optional. The type of list.
+        # Corresponds to the JSON property `listType`
+        # @return [String]
+        attr_accessor :list_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @list_type = args[:list_type] if args.key?(:list_type)
+        end
+      end
+      
+      # A media part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Alternative text description.
+        # Corresponds to the JSON property `alternativeText`
+        # @return [String]
+        attr_accessor :alternative_text
+      
+        # Optional. URI or URL to the media.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_text = args[:alternative_text] if args.key?(:alternative_text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product in a product collection.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Product description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Product display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Product ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Product image URLs.
+        # Corresponds to the JSON property `imageUris`
+        # @return [Array<String>]
+        attr_accessor :image_uris
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeMoney]
+        attr_accessor :price
+      
+        # Optional. Product URL or deep link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @image_uris = args[:image_uris] if args.key?(:image_uris)
+          @price = args[:price] if args.key?(:price)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product collection part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # A suggestion chips part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of suggestion chips.
+        # Corresponds to the JSON property `chips`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>]
+        attr_accessor :chips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chips = args[:chips] if args.key?(:chips)
+        end
+      end
+      
+      # A table part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Table column headers.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Optional. Table rows.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>]
+        attr_accessor :rows
+      
+        # Optional. Optional title for the table.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @rows = args[:rows] if args.key?(:rows)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A row in a table.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The cell values in the row.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<String>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # A text part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A thought part.
+      class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The thought or reasoning text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -4805,10 +5390,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -4823,6 +5416,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
@@ -6422,6 +7016,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assessments = args[:assessments] if args.key?(:assessments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response to list assistant sessions.
+      class GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The assistant sessions.
+        # Corresponds to the JSON property `assistantSessions`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantSession>]
+        attr_accessor :assistant_sessions
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assistant_sessions = args[:assistant_sessions] if args.key?(:assistant_sessions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -9425,6 +10044,12 @@ module Google
         # @return [String]
         attr_accessor :signed_gcs_audio_uri
       
+        # Output only. The signed URIs for the audio from the Cloud Storage conversation
+        # source when multiple audio files exist (e.g. multi-leg conversations).
+        # Corresponds to the JSON property `signedGcsAudioUris`
+        # @return [Array<String>]
+        attr_accessor :signed_gcs_audio_uris
+      
         # The signed URI for the audio corresponding to each turn in the conversation.
         # Corresponds to the JSON property `signedTurnLevelAudios`
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>]
@@ -9438,6 +10063,7 @@ module Google
         def update!(**args)
           @signed_dialogflow_audio_uri = args[:signed_dialogflow_audio_uri] if args.key?(:signed_dialogflow_audio_uri)
           @signed_gcs_audio_uri = args[:signed_gcs_audio_uri] if args.key?(:signed_gcs_audio_uri)
+          @signed_gcs_audio_uris = args[:signed_gcs_audio_uris] if args.key?(:signed_gcs_audio_uris)
           @signed_turn_level_audios = args[:signed_turn_level_audios] if args.key?(:signed_turn_level_audios)
         end
       end
@@ -9565,6 +10191,62 @@ module Google
         def update!(**args)
           @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
+        end
+      end
+      
+      # Request to stream chat.
+      class GoogleCloudContactcenterinsightsV1StreamChatRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The message to send to the assistant.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response from streaming chat.
+      class GoogleCloudContactcenterinsightsV1StreamChatResponse
+        include Google::Apis::Core::Hashable
+      
+        # A chunk of data in an assistant message.
+        # Corresponds to the JSON property `chunk`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk]
+        attr_accessor :chunk
+      
+        # The unique ID of the event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # The time when the event occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # A status message.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chunk = args[:chunk] if args.key?(:chunk)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @status_message = args[:status_message] if args.key?(:status_message)
         end
       end
       
@@ -11826,6 +12508,11 @@ module Google
         # @return [String]
         attr_accessor :message_time
       
+        # Optional. The structured parts that make up this transcript segment.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPart>]
+        attr_accessor :parts
+      
         # The call participant speaking for a given utterance.
         # Corresponds to the JSON property `segmentParticipant`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant]
@@ -11862,6 +12549,7 @@ module Google
           @dialogflow_segment_metadata = args[:dialogflow_segment_metadata] if args.key?(:dialogflow_segment_metadata)
           @language_code = args[:language_code] if args.key?(:language_code)
           @message_time = args[:message_time] if args.key?(:message_time)
+          @parts = args[:parts] if args.key?(:parts)
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
@@ -11888,6 +12576,441 @@ module Google
         # Update properties of this object
         def update!(**args)
           @smart_reply_allowlist_covered = args[:smart_reply_allowlist_covered] if args.key?(:smart_reply_allowlist_covered)
+        end
+      end
+      
+      # A structured component/part of a transcript segment.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPart
+        include Google::Apis::Core::Hashable
+      
+        # A citation part.
+        # Corresponds to the JSON property `citation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart]
+        attr_accessor :citation
+      
+        # A custom payload part.
+        # Corresponds to the JSON property `customPayload`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart]
+        attr_accessor :custom_payload
+      
+        # A media part.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :image
+      
+        # A link part.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart]
+        attr_accessor :link
+      
+        # A list part.
+        # Corresponds to the JSON property `list`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListPart]
+        attr_accessor :list
+      
+        # A product collection part.
+        # Corresponds to the JSON property `productCollection`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart]
+        attr_accessor :product_collection
+      
+        # A suggestion chips part.
+        # Corresponds to the JSON property `suggestionChips`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart]
+        attr_accessor :suggestion_chips
+      
+        # A table part.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart]
+        attr_accessor :table
+      
+        # A text part.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart]
+        attr_accessor :text
+      
+        # A thought part.
+        # Corresponds to the JSON property `thought`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart]
+        attr_accessor :thought
+      
+        # A media part.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation = args[:citation] if args.key?(:citation)
+          @custom_payload = args[:custom_payload] if args.key?(:custom_payload)
+          @image = args[:image] if args.key?(:image)
+          @link = args[:link] if args.key?(:link)
+          @list = args[:list] if args.key?(:list)
+          @product_collection = args[:product_collection] if args.key?(:product_collection)
+          @suggestion_chips = args[:suggestion_chips] if args.key?(:suggestion_chips)
+          @table = args[:table] if args.key?(:table)
+          @text = args[:text] if args.key?(:text)
+          @thought = args[:thought] if args.key?(:thought)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # A suggestion chip.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartChip
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional action or destination URI triggered by the chip.
+        # Corresponds to the JSON property `actionUri`
+        # @return [String]
+        attr_accessor :action_uri
+      
+        # Optional. The chip label or text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_uri = args[:action_uri] if args.key?(:action_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A citation part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Snippet of the cited text.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # Optional. The cited source title.
+        # Corresponds to the JSON property `sourceTitle`
+        # @return [String]
+        attr_accessor :source_title
+      
+        # Optional. The cited source URI.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @source_title = args[:source_title] if args.key?(:source_title)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+        end
+      end
+      
+      # A custom payload part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arbitrary structured payload.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Optional. Type identifier for the payload.
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+        end
+      end
+      
+      # A link part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Anchor or display text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Optional. Target URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An item in a list.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Nested sub-items.
+        # Corresponds to the JSON property `subItems`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :sub_items
+      
+        # Optional. The text of the list item.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sub_items = args[:sub_items] if args.key?(:sub_items)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A list part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :items
+      
+        # Optional. The type of list.
+        # Corresponds to the JSON property `listType`
+        # @return [String]
+        attr_accessor :list_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @list_type = args[:list_type] if args.key?(:list_type)
+        end
+      end
+      
+      # A media part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Alternative text description.
+        # Corresponds to the JSON property `alternativeText`
+        # @return [String]
+        attr_accessor :alternative_text
+      
+        # Optional. URI or URL to the media.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_text = args[:alternative_text] if args.key?(:alternative_text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product in a product collection.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProduct
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Product description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Product display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Product ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Product image URLs.
+        # Corresponds to the JSON property `imageUris`
+        # @return [Array<String>]
+        attr_accessor :image_uris
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeMoney]
+        attr_accessor :price
+      
+        # Optional. Product URL or deep link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @image_uris = args[:image_uris] if args.key?(:image_uris)
+          @price = args[:price] if args.key?(:price)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product collection part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # A suggestion chips part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of suggestion chips.
+        # Corresponds to the JSON property `chips`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartChip>]
+        attr_accessor :chips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chips = args[:chips] if args.key?(:chips)
+        end
+      end
+      
+      # A table part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Table column headers.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Optional. Table rows.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>]
+        attr_accessor :rows
+      
+        # Optional. Optional title for the table.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @rows = args[:rows] if args.key?(:rows)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A row in a table.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The cell values in the row.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<String>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # A text part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A thought part.
+      class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The thought or reasoning text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -13246,10 +14369,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1alpha1GcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -13264,6 +14395,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
@@ -18261,6 +19393,11 @@ module Google
         # @return [String]
         attr_accessor :message_time
       
+        # Optional. The structured parts that make up this transcript segment.
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPart>]
+        attr_accessor :parts
+      
         # The call participant speaking for a given utterance.
         # Corresponds to the JSON property `segmentParticipant`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationParticipant]
@@ -18297,6 +19434,7 @@ module Google
           @dialogflow_segment_metadata = args[:dialogflow_segment_metadata] if args.key?(:dialogflow_segment_metadata)
           @language_code = args[:language_code] if args.key?(:language_code)
           @message_time = args[:message_time] if args.key?(:message_time)
+          @parts = args[:parts] if args.key?(:parts)
           @segment_participant = args[:segment_participant] if args.key?(:segment_participant)
           @sentiment = args[:sentiment] if args.key?(:sentiment)
           @text = args[:text] if args.key?(:text)
@@ -18323,6 +19461,441 @@ module Google
         # Update properties of this object
         def update!(**args)
           @smart_reply_allowlist_covered = args[:smart_reply_allowlist_covered] if args.key?(:smart_reply_allowlist_covered)
+        end
+      end
+      
+      # A structured component/part of a transcript segment.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPart
+        include Google::Apis::Core::Hashable
+      
+        # A citation part.
+        # Corresponds to the JSON property `citation`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCitationPart]
+        attr_accessor :citation
+      
+        # A custom payload part.
+        # Corresponds to the JSON property `customPayload`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart]
+        attr_accessor :custom_payload
+      
+        # A media part.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :image
+      
+        # A link part.
+        # Corresponds to the JSON property `link`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartLinkPart]
+        attr_accessor :link
+      
+        # A list part.
+        # Corresponds to the JSON property `list`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListPart]
+        attr_accessor :list
+      
+        # A product collection part.
+        # Corresponds to the JSON property `productCollection`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart]
+        attr_accessor :product_collection
+      
+        # A suggestion chips part.
+        # Corresponds to the JSON property `suggestionChips`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart]
+        attr_accessor :suggestion_chips
+      
+        # A table part.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTablePart]
+        attr_accessor :table
+      
+        # A text part.
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTextPart]
+        attr_accessor :text
+      
+        # A thought part.
+        # Corresponds to the JSON property `thought`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart]
+        attr_accessor :thought
+      
+        # A media part.
+        # Corresponds to the JSON property `video`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart]
+        attr_accessor :video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation = args[:citation] if args.key?(:citation)
+          @custom_payload = args[:custom_payload] if args.key?(:custom_payload)
+          @image = args[:image] if args.key?(:image)
+          @link = args[:link] if args.key?(:link)
+          @list = args[:list] if args.key?(:list)
+          @product_collection = args[:product_collection] if args.key?(:product_collection)
+          @suggestion_chips = args[:suggestion_chips] if args.key?(:suggestion_chips)
+          @table = args[:table] if args.key?(:table)
+          @text = args[:text] if args.key?(:text)
+          @thought = args[:thought] if args.key?(:thought)
+          @video = args[:video] if args.key?(:video)
+        end
+      end
+      
+      # A suggestion chip.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartChip
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional action or destination URI triggered by the chip.
+        # Corresponds to the JSON property `actionUri`
+        # @return [String]
+        attr_accessor :action_uri
+      
+        # Optional. The chip label or text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action_uri = args[:action_uri] if args.key?(:action_uri)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A citation part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCitationPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Snippet of the cited text.
+        # Corresponds to the JSON property `snippet`
+        # @return [String]
+        attr_accessor :snippet
+      
+        # Optional. The cited source title.
+        # Corresponds to the JSON property `sourceTitle`
+        # @return [String]
+        attr_accessor :source_title
+      
+        # Optional. The cited source URI.
+        # Corresponds to the JSON property `sourceUri`
+        # @return [String]
+        attr_accessor :source_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @source_title = args[:source_title] if args.key?(:source_title)
+          @source_uri = args[:source_uri] if args.key?(:source_uri)
+        end
+      end
+      
+      # A custom payload part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arbitrary structured payload.
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # Optional. Type identifier for the payload.
+        # Corresponds to the JSON property `payloadType`
+        # @return [String]
+        attr_accessor :payload_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @payload = args[:payload] if args.key?(:payload)
+          @payload_type = args[:payload_type] if args.key?(:payload_type)
+        end
+      end
+      
+      # A link part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartLinkPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Anchor or display text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # Optional. Target URI.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # An item in a list.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Nested sub-items.
+        # Corresponds to the JSON property `subItems`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :sub_items
+      
+        # Optional. The text of the list item.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sub_items = args[:sub_items] if args.key?(:sub_items)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A list part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List items.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem>]
+        attr_accessor :items
+      
+        # Optional. The type of list.
+        # Corresponds to the JSON property `listType`
+        # @return [String]
+        attr_accessor :list_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @list_type = args[:list_type] if args.key?(:list_type)
+        end
+      end
+      
+      # A media part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Alternative text description.
+        # Corresponds to the JSON property `alternativeText`
+        # @return [String]
+        attr_accessor :alternative_text
+      
+        # Optional. URI or URL to the media.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alternative_text = args[:alternative_text] if args.key?(:alternative_text)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product in a product collection.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProduct
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Product description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Product display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Product ID.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Optional. Product image URLs.
+        # Corresponds to the JSON property `imageUris`
+        # @return [Array<String>]
+        attr_accessor :image_uris
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `price`
+        # @return [Google::Apis::ContactcenterinsightsV1::GoogleTypeMoney]
+        attr_accessor :price
+      
+        # Optional. Product URL or deep link.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
+          @image_uris = args[:image_uris] if args.key?(:image_uris)
+          @price = args[:price] if args.key?(:price)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # A product collection part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of products.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProduct>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @products = args[:products] if args.key?(:products)
+        end
+      end
+      
+      # A suggestion chips part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of suggestion chips.
+        # Corresponds to the JSON property `chips`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartChip>]
+        attr_accessor :chips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chips = args[:chips] if args.key?(:chips)
+        end
+      end
+      
+      # A table part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTablePart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Table column headers.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Optional. Table rows.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTableRow>]
+        attr_accessor :rows
+      
+        # Optional. Optional title for the table.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @rows = args[:rows] if args.key?(:rows)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A row in a table.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTableRow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The cell values in the row.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<String>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
+      # A text part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTextPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The text content.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # A thought part.
+      class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The thought or reasoning text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -19681,10 +21254,18 @@ module Google
       class GoogleCloudContactcenterinsightsV1mainGcsSource
         include Google::Apis::Core::Hashable
       
-        # Cloud Storage URI that points to a file that contains the conversation audio.
+        # Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points
+        # to a file that contains the conversation audio.
         # Corresponds to the JSON property `audioUri`
         # @return [String]
         attr_accessor :audio_uri
+      
+        # Immutable. Cloud Storage URIs that point to files that contain the
+        # conversation audio. Supports both single audio files and multi-leg session
+        # recordings (e.g., call transfers, rolling recording buffers).
+        # Corresponds to the JSON property `audioUris`
+        # @return [Array<String>]
+        attr_accessor :audio_uris
       
         # Immutable. Cloud Storage URI that points to a file that contains the
         # conversation transcript.
@@ -19699,6 +21280,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_uri = args[:audio_uri] if args.key?(:audio_uri)
+          @audio_uris = args[:audio_uris] if args.key?(:audio_uris)
           @transcript_uri = args[:transcript_uri] if args.key?(:transcript_uri)
         end
       end
@@ -23420,6 +25002,42 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class GoogleTypeMoney
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
     end

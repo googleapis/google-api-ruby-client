@@ -214,6 +214,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Standardized resource metadata common to all compute resources.
+        # Corresponds to the JSON property `resourceMetadata`
+        # @return [Google::Apis::ComputeV1::ResourceMetadata]
+        attr_accessor :resource_metadata
+      
         # Output only. [Output Only] Server-defined, fully qualified URL for this
         # resource.
         # Corresponds to the JSON property `selfLink`
@@ -241,6 +246,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @maximum_cards_per_instance = args[:maximum_cards_per_instance] if args.key?(:maximum_cards_per_instance)
           @name = args[:name] if args.key?(:name)
+          @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
           @self_link = args[:self_link] if args.key?(:self_link)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -324,7 +330,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -449,7 +455,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AcceleratorTypeList::Warning::Datum>]
           attr_accessor :data
@@ -546,7 +552,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AcceleratorTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -750,21 +756,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Reference to the source of external IPv4 addresses,
-        # like a PublicDelegatedPrefix (PDP) for BYOIP.
-        # The PDP must support enhanced IPv4 allocations.
-        # Use one of the following formats to specify a PDP when reserving an
-        # external IPv4 address using BYOIP.
+        # Reference to the source of IP addresses.
+        # It supports the following cases:
         # 
         # -
-        # Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/
-        # projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # Case 1: PublicDelegatedPrefix (PDP) for BYOIP external
+        # addresses. If an IPv4 PDP is used, the PDP must support enhanced IPv4
+        # allocations. If an IPv6 PDP is used, the PDP must be in
+        # EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         # -
-        # Partial URL, as in
+        # Case 2: Internal Range for global internal addresses.
+        # Use one of the following formats to specify the resource:
+        # For a Public Delegated Prefix:
         # 
-        # 
+        # -
+        # Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/
+        # regions/region/publicDelegatedPrefixes/pdp
+        # - Partial URL:
         # - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
         # - regions/region/publicDelegatedPrefixes/pdp-name
+        # 
+        # For an Internal Range:
+        # 
+        # - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/
+        # locations/global/internalRanges/internal-range
+        # - Partial URL:projects/project/locations/global/internalRanges/internal-
+        # range
         # Corresponds to the JSON property `ipCollection`
         # @return [String]
         attr_accessor :ip_collection
@@ -865,6 +882,12 @@ module Google
         # - `PRIVATE_SERVICE_CONNECT` for a private network address that is
         # used to configure Private Service Connect. Only global internal addresses
         # can use this purpose.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0` for addresses
+        # that can only be assigned to global external Passthrough Network Load
+        # Balancer forwarding rules, as an Availability Group 0 address.
+        # - `PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1` for addresses that
+        # can only be assigned to global external Passthrough Network Load Balancer
+        # forwarding rules, as an Availability Group 1 address.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -1013,7 +1036,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AddressAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -1138,7 +1161,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AddressList::Warning::Datum>]
           attr_accessor :data
@@ -1235,7 +1258,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AddressesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -1943,7 +1966,42 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Specifies the disk type used for the boot disk or an additional data
+        # disk. For valid disk type values, see
+        # Supported types for Hyperdisk volumes and
+        # Persistent Disk type variables.
+        # When creating a single instance, you must provide either the full or
+        # partial URL of the disk type. For example, the following values are
+        # valid:
         # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone/
+        # diskTypes/diskType
+        # - projects/project/zones/zone/diskTypes/diskType
+        # - zones/zone/diskTypes/diskType
+        # When creating an instance template, instance flexibility policy, or when
+        # creating or updating an all-instances configuration, you specify the
+        # disk type without a URL, for example, hyperdisk-balanced.
+        # If you omit this field for a disk, the default disk type depends on
+        # the instance's machine series, as follows.
+        # 
+        # 
+        # - For first- and second-generation machine series like N1, N2, T2, and
+        # M1, the
+        # default disk type is Standard Persistent Disk
+        # (pd-standard).
+        # - For C3, C3D, and M3 the default is Balanced Persistent Disk
+        # (pd-balanced).
+        # - For other third-generation machine
+        # series like A3, H3, Z3, all
+        # fourth-generation types like C4, N4, M4, and newer machine series,
+        # the default is Hyperdisk Balanced
+        # (hyperdisk-balanced).
+        # The disk type you specify must be compatible with the instance's machine
+        # series. For a list of machine series that support Persistent Disk, see Machine
+        # series support for Persistent Disk.
+        # For a list of machine series that support Hyperdisk, seeMachine
+        # series support for Hyperdisk.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -2446,7 +2504,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AutoscalerAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -2571,7 +2629,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AutoscalerList::Warning::Datum>]
           attr_accessor :data
@@ -2744,7 +2802,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::AutoscalersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -3171,7 +3229,8 @@ module Google
         # Specifies how to determine whether the backend of a load balancer can
         # handle additional traffic or is fully loaded. For usage guidelines, see
         # Connection balancing mode.
-        # Backends must use compatible balancing modes. For more information, see
+        # Backends must use compatible balancing modes. Backends of a backend
+        # service may use different balancing modes. For more information, see
         # Supported balancing modes and target capacity settings and
         # Restrictions and guidance for instance groups.
         # Note: Currently, if you use the API to configure incompatible balancing
@@ -3214,6 +3273,8 @@ module Google
       
         # This field designates whether this is a failover backend. More than one
         # failover backend can be configured for a given BackendService.
+        # This field can only be used for a regional external Passthrough Network
+        # Load Balancer or a regional internal Passthrough Network Load Balancer.
         # Corresponds to the JSON property `failover`
         # @return [Boolean]
         attr_accessor :failover
@@ -3331,6 +3392,12 @@ module Google
         # capacity, backends in this layer would be used and traffic would be
         # assigned based on the load balancing algorithm you use. This is the
         # default
+        # For global external Passthrough Network Load Balancers, the following
+        # restrictions apply:
+        # 
+        # - At most one backend can be marked as PREFERRED.
+        # - PREFERRED and DEFAULT backends cannot reside
+        # in the same Cloud region.
         # Corresponds to the JSON property `preference`
         # @return [String]
         attr_accessor :preference
@@ -3587,7 +3654,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendBucketAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -3659,16 +3726,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -3967,7 +4035,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendBucketList::Warning::Datum>]
           attr_accessor :data
@@ -4093,7 +4161,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendBucketListUsable::Warning::Datum>]
           attr_accessor :data
@@ -4240,7 +4308,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendBucketsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -4531,8 +4599,10 @@ module Google
         # haPolicy requires customers to be responsible for tracking backend
         # endpoint health and electing a leader among the healthy endpoints.
         # Therefore, haPolicy cannot be specified with healthChecks.
-        # haPolicy can only be specified for External Passthrough Network Load
-        # Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy can only be specified for External Passthrough
+        # Network Load Balancers and Internal Passthrough Network Load Balancers.
+        # haPolicy cannot be used by global external Passthrough Network
+        # Load Balancers.
         # Corresponds to the JSON property `haPolicy`
         # @return [Google::Apis::ComputeV1::BackendServiceHaPolicy]
         attr_accessor :ha_policy
@@ -4602,8 +4672,8 @@ module Google
       
         # Specifies the load balancer type. A backend service
         # created for one type of load balancer cannot be used with another.
-        # For more information, refer toChoosing
-        # a load balancer.
+        # For more information, refer to
+        # Backend services product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -4651,27 +4721,32 @@ module Google
         # HTTP response header field Endpoint-Load-Metrics. The reported
         # metrics to use for computing the weights are specified via thecustomMetrics
         # field.
-        # 
+        # - WEIGHTED_MAGLEV: Per-endpoint weighted load balancing via
+        # health check reported weights. If set, the backend service must configure
+        # an HTTP-based Health Check, and health check replies are expected to
+        # contain the non-standard HTTP response header fieldX-Load-Balancing-
+        # Endpoint-Weight to specify the per-endpoint
+        # weights. If set, load balancing is weighted based on the per-endpoint
+        # weights reported in the last processed health check replies, as long as
+        # every instance either reported a valid weight or had UNAVAILABLE_WEIGHT.
+        # Otherwise, load balancing remains equal-weight.
         # This field is applicable to either:
+        # 
         # - A regional backend service with the service protocol set to HTTP,
         # HTTPS, HTTP2 or H2C, and load_balancing_scheme set to
         # INTERNAL_MANAGED.
         # - A global backend service with the
         # load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or
         # EXTERNAL_MANAGED.
-        # 
-        # 
         # If sessionAffinity is not configured—that is, if session
         # affinity remains at the default value of NONE—then the
         # default value for localityLbPolicy
         # is ROUND_ROBIN. If session affinity is set to a value other
         # than NONE,
         # then the default value for localityLbPolicy isMAGLEV.
-        # 
         # Only ROUND_ROBIN and RING_HASH are supported
         # when the backend service is referenced by a URL map that is bound to
         # target gRPC proxy that has validateForProxyless field set to true.
-        # 
         # localityLbPolicy cannot be specified with haPolicy.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
@@ -4763,12 +4838,12 @@ module Google
         # @return [String]
         attr_accessor :port_name
       
-        # The protocol this BackendService uses to communicate
-        # with backends.
-        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP or GRPC.
-        # depending on the chosen load balancer or Traffic Director configuration.
-        # Refer to the documentation for the load balancers or for Traffic Director
-        # for more information.
+        # The protocol this BackendService uses to communicate with backends.
+        # Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP, GRPC, or
+        # UNSPECIFIED, depending on the chosen load balancer or Traffic Director
+        # configuration.
+        # Refer to
+        # Load balancing features for more information.
         # Must be set to GRPC when the backend service is referenced by a URL map
         # that is bound to target gRPC proxy.
         # Corresponds to the JSON property `protocol`
@@ -4809,7 +4884,11 @@ module Google
       
         # URL to networkservices.ServiceLbPolicy resource.
         # Can only be set if load balancing scheme is EXTERNAL_MANAGED,
-        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
+        # INTERNAL_MANAGED or INTERNAL_SELF_MANAGED for a global backend service, and
+        # EXTERNAL_MANAGED or INTERNAL_MANAGED for a regional backend service. For a
+        # global backend service, the service lb policy must be global. For a
+        # regional backend service, the service lb policy must be regional and in the
+        # same region.
         # Corresponds to the JSON property `serviceLbPolicy`
         # @return [String]
         attr_accessor :service_lb_policy
@@ -5002,7 +5081,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -5074,16 +5153,17 @@ module Google
         attr_accessor :cache_key_policy
       
         # Specifies the cache setting for all responses from this backend.
-        # The possible values are:USE_ORIGIN_HEADERS Requires the origin to set valid
-        # caching
+        # The possible values are:
+        # USE_ORIGIN_HEADERS Requires the origin to set valid caching
         # headers to cache content. Responses without these headers will not be
         # cached at Google's edge, and will require a full trip to the origin on
         # every request, potentially impacting performance and increasing load on
-        # the origin server.FORCE_CACHE_ALL Cache all content, ignoring any "private",
+        # the origin server.
+        # FORCE_CACHE_ALL Cache all content, ignoring any "private",
         # "no-store" or "no-cache" directives in Cache-Control response headers.
         # Warning: this may result in Cloud CDN caching private,
-        # per-user (user identifiable) content.CACHE_ALL_STATIC Automatically cache
-        # static content,
+        # per-user (user identifiable) content.
+        # CACHE_ALL_STATIC Automatically cache static content,
         # including common image formats, media (video and audio), and web assets
         # (JavaScript and CSS). Requests and responses that are marked as
         # uncacheable, as well as dynamic content (including HTML), will not be
@@ -5817,7 +5897,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendServiceList::Warning::Datum>]
           attr_accessor :data
@@ -5943,7 +6023,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendServiceListUsable::Warning::Datum>]
           attr_accessor :data
@@ -6314,6 +6394,39 @@ module Google
         # @return [String]
         attr_accessor :authentication_config
       
+        # Assigns the Managed Identity for the BackendService Workload.
+        # Use this property to configure the load balancer back-end to use
+        # certificates and roots of trust provisioned by the Managed Workload
+        # Identity system.
+        # The `identity` property is the
+        # fully-specified SPIFFE ID to use in the SVID presented by the Load
+        # Balancer Workload.
+        # The SPIFFE ID must be a resource starting with the
+        # `trustDomain` property value, followed by the path to the Managed
+        # Workload Identity.
+        # Supported SPIFFE ID format:
+        # 
+        # - //<trust_domain>/ns/<namespace>/sa/<subject>
+        # The Trust Domain within the Managed Identity must refer to a valid
+        # Workload Identity Pool. The TrustConfig and CertificateIssuanceConfig
+        # will be inherited from the Workload Identity Pool.
+        # Restrictions:
+        # 
+        # - If you set the `identity` property, you cannot manually set
+        # the following fields:
+        # - tlsSettings.sni
+        # - tlsSettings.subjectAltNames
+        # - tlsSettings.authenticationConfig
+        # 
+        # When defining a `identity` for a RegionBackendServices, the
+        # corresponding Workload Identity Pool must have a ca_pool
+        # configured in the same region.
+        # The system will set up a read-onlytlsSettings.authenticationConfig for the
+        # Managed Identity.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
         # Server Name Indication - see RFC3546 section 3.1. If set, the load
         # balancer sends this string as the SNI hostname in the TLS connection to
         # the backend, and requires that this string match a Subject Alternative
@@ -6345,6 +6458,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authentication_config = args[:authentication_config] if args.key?(:authentication_config)
+          @identity = args[:identity] if args.key?(:identity)
           @sni = args[:sni] if args.key?(:sni)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
         end
@@ -6441,7 +6555,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::BackendServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -8051,7 +8165,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CommitmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -8176,7 +8290,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CommitmentList::Warning::Datum>]
           attr_accessor :data
@@ -8320,7 +8434,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CommitmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -8563,7 +8677,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CompositeHealthCheckAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -8721,7 +8835,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CompositeHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -8843,7 +8957,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CompositeHealthChecksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -9244,7 +9358,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::CrossSiteNetworkList::Warning::Datum>]
           attr_accessor :data
@@ -9432,6 +9546,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_service_account
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies a 256-bit customer-supplied
         # encryption key, encoded in RFC
         # 4648 base64 to either encrypt or decrypt this resource. You can
@@ -9443,6 +9558,7 @@ module Google
         # @return [String]
         attr_accessor :raw_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
         # customer-supplied encryption key to either encrypt or decrypt this
         # resource. You can provide either the rawKey or thersaEncryptedKey.
@@ -9464,6 +9580,7 @@ module Google
         # @return [String]
         attr_accessor :rsa_encrypted_key
       
+        # [DEPRECATED] CSEK is no longer supported. Use CMEK instead.
         # [Output only] TheRFC
         # 4648 base64 encoded SHA-256 hash of the customer-supplied
         # encryption key that protects this resource.
@@ -10312,7 +10429,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -10569,7 +10686,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskList::Warning::Datum>]
           attr_accessor :data
@@ -10903,7 +11020,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -11028,7 +11145,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskTypeList::Warning::Datum>]
           attr_accessor :data
@@ -11125,7 +11242,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DiskTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -11308,7 +11425,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::DisksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -11729,7 +11846,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning::Datum>]
           attr_accessor :data
@@ -12081,7 +12198,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ExternalVpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -12546,7 +12663,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FirewallList::Warning::Datum>]
           attr_accessor :data
@@ -12729,7 +12846,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FirewallPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -13054,7 +13171,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FirewallPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -13115,7 +13232,9 @@ module Google
       
         # The Action to perform when the client connection triggers the rule.
         # Valid actions for firewall rules are: "allow", "deny",
-        # "apply_security_profile_group" and "goto_next".
+        # "apply_security_profile_group" and "goto_next" (
+        # "apply_security_profile_group" can be specified only for global
+        # network firewall policies or hierarchical firewall policies).
         # Valid actions for packet mirroring rules are: "mirror", "do_not_mirror"
         # and "goto_next".
         # Corresponds to the JSON property `action`
@@ -13184,12 +13303,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :rule_tuple_count
       
-        # A fully-qualified URL of a SecurityProfile resource instance.
+        # A fully-qualified URL of a SecurityProfileGroup resource instance.
         # Example:
         # https://networksecurity.googleapis.com/v1/projects/`project`/locations/`
         # location`/securityProfileGroups/my-security-profile-group
         # Must be specified if action is one of 'apply_security_profile_group' or
-        # 'mirror'. Cannot be specified for other actions.
+        # 'mirror'. Cannot be specified for other actions. Can be specified only
+        # for global network firewall policies or hierarchical firewall policies.
         # Corresponds to the JSON property `securityProfileGroup`
         # @return [String]
         attr_accessor :security_profile_group
@@ -13622,6 +13742,7 @@ module Google
         # - regions/region/addresses/address-name
         # - global/addresses/address-name
         # - address-name
+        # The IP address can only be set at creation. Once set, it cannot be updated.
         # The forwarding rule's target or backendService,
         # and in most cases, also the loadBalancingScheme, determine the
         # type of IP address that you can use. For detailed information, see
@@ -13630,6 +13751,11 @@ module Google
         # concepts#ip_address_specifications).
         # When reading an IPAddress, the API always returns the IP
         # address number.
+        # When creating a global external Passthrough Network Load Balancer
+        # forwarding rule (a parent forwarding rule), you must use theIPAddresses field,
+        # but the Google Cloud generated child
+        # forwarding rules set the IPAddress field instead. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -13691,8 +13817,14 @@ module Google
         attr_accessor :attached_extensions
       
         # Identifies the backend service to which the forwarding rule sends traffic.
-        # Required for internal and external passthrough Network Load Balancers;
-        # must be omitted for all other load balancer types.
+        # It is a required field for the following load balancers:
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
+        # It cannot be set by other load balancer types and protocol forwarding
+        # rules.
         # Corresponds to the JSON property `backendService`
         # @return [String]
         attr_accessor :backend_service
@@ -13824,8 +13956,8 @@ module Google
         attr_accessor :labels
       
         # Specifies the forwarding rule type.
-        # For more information about forwarding rules, refer to
-        # Forwarding rule concepts.
+        # For more information, refer to
+        # Forwarding rule product and scheme table.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -13865,6 +13997,13 @@ module Google
         # For Private Service Connect forwarding rules that forward traffic to Google
         # APIs, the forwarding rule name must be a 1-20 characters string with
         # lowercase letters and numbers and must start with a letter.
+        # For global external Passthrough Network Load Balancer forwarding rules, the
+        # forwarding rule name must be 1-43 characters long. For each global external
+        # Passthrough Network Load Balancer forwarding rule (a parent forwarding
+        # rule) that you create, Google Cloud generates two output-only child
+        # forwarding rules that are named by concatenating the parent forwarding rule
+        # name with the `-ag0` and `-ag1` suffixes, respectively. Refer to
+        # theavailabilityGroup field for further details.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -13916,7 +14055,9 @@ module Google
         # - Some products have restrictions on what ports can be used. See
         # port specifications for details.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair, and cannot have overlappingportRanges.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they have overlapping portRanges.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair, and cannot have overlapping portRanges.
@@ -13939,8 +14080,9 @@ module Google
         # - You can specify a list of up to five ports by number, separated by
         # commas. The ports can be contiguous or discontiguous.
         # For external forwarding rules, two or more forwarding rules cannot use the
-        # same [IPAddress, IPProtocol] pair if they share at least one
-        # port number.
+        # same [IPAddress, IPProtocol] pair (specified inIPAddress, IPAddresses,
+        # IPProtocol
+        # fields) if they share at least one port number.
         # For internal forwarding rules within the same VPC network, two or more
         # forwarding rules cannot use the same [IPAddress, IPProtocol]
         # pair if they share at least one port number.
@@ -14048,6 +14190,13 @@ module Google
         # -  For Private Service Connect forwarding rules that forward traffic to
         # managed services, the target must be a service attachment. The target is not
         # mutable once set as a service attachment.
+        # The following load balancers cannot set the target field (they should set the
+        # backendService field instead):
+        # 
+        # - Internal passthrough Network Load Balancers
+        # - Backend service-based regional external passthrough Network Load
+        # Balancers
+        # - Global external passthrough Network Load Balancers
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -14177,7 +14326,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -14320,7 +14469,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ForwardingRuleList::Warning::Datum>]
           attr_accessor :data
@@ -14472,7 +14621,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ForwardingRulesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -14658,6 +14807,18 @@ module Google
         # @return [String]
         attr_accessor :reservation_name
       
+        # Standardized resource metadata common to all compute resources.
+        # Corresponds to the JSON property `resourceMetadata`
+        # @return [Google::Apis::ComputeV1::ResourceMetadata]
+        attr_accessor :resource_metadata
+      
+        # Name of the resource intended to be delivered. Name should conform to
+        # RFC1035. This will be the name of storage pool or Exapool for persistent
+        # disk FRs.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
         # Maintenance information for this reservation
         # Corresponds to the JSON property `schedulingType`
         # @return [String]
@@ -14699,6 +14860,11 @@ module Google
         # @return [Google::Apis::ComputeV1::FutureReservationStatus]
         attr_accessor :status
       
+        # Storage pool properties for the future reservation.
+        # Corresponds to the JSON property `storagePoolProperties`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProperties]
+        attr_accessor :storage_pool_properties
+      
         # Time window for this Future Reservation.
         # Corresponds to the JSON property `timeWindow`
         # @return [Google::Apis::ComputeV1::FutureReservationTimeWindow]
@@ -14734,6 +14900,8 @@ module Google
           @planning_status = args[:planning_status] if args.key?(:planning_status)
           @reservation_mode = args[:reservation_mode] if args.key?(:reservation_mode)
           @reservation_name = args[:reservation_name] if args.key?(:reservation_name)
+          @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
           @scheduling_type = args[:scheduling_type] if args.key?(:scheduling_type)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
@@ -14741,6 +14909,7 @@ module Google
           @specific_reservation_required = args[:specific_reservation_required] if args.key?(:specific_reservation_required)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
           @status = args[:status] if args.key?(:status)
+          @storage_pool_properties = args[:storage_pool_properties] if args.key?(:storage_pool_properties)
           @time_window = args[:time_window] if args.key?(:time_window)
           @zone = args[:zone] if args.key?(:zone)
         end
@@ -14856,6 +15025,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_created_reservations
       
+        # Exapool provisioned capacities for each SKU type
+        # Corresponds to the JSON property `exapoolProvisionedCapacityGb`
+        # @return [Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb]
+        attr_accessor :exapool_provisioned_capacity_gb
+      
         # [Output Only] Represents the existing matching usage for the future
         # reservation.
         # Corresponds to the JSON property `existingMatchingUsageInfo`
@@ -14895,6 +15069,11 @@ module Google
         # @return [Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties]
         attr_accessor :specific_sku_properties
       
+        # Storage pool provisioned capacities for each SKU type.
+        # Corresponds to the JSON property `storagePoolProvisionedCapacity`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity]
+        attr_accessor :storage_pool_provisioned_capacity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -14903,12 +15082,14 @@ module Google
         def update!(**args)
           @amendment_status = args[:amendment_status] if args.key?(:amendment_status)
           @auto_created_reservations = args[:auto_created_reservations] if args.key?(:auto_created_reservations)
+          @exapool_provisioned_capacity_gb = args[:exapool_provisioned_capacity_gb] if args.key?(:exapool_provisioned_capacity_gb)
           @existing_matching_usage_info = args[:existing_matching_usage_info] if args.key?(:existing_matching_usage_info)
           @fulfilled_count = args[:fulfilled_count] if args.key?(:fulfilled_count)
           @last_known_good_state = args[:last_known_good_state] if args.key?(:last_known_good_state)
           @lock_time = args[:lock_time] if args.key?(:lock_time)
           @procurement_status = args[:procurement_status] if args.key?(:procurement_status)
           @specific_sku_properties = args[:specific_sku_properties] if args.key?(:specific_sku_properties)
+          @storage_pool_provisioned_capacity = args[:storage_pool_provisioned_capacity] if args.key?(:storage_pool_provisioned_capacity)
         end
       end
       
@@ -15047,6 +15228,70 @@ module Google
         end
       end
       
+      # Storage pool properties for the future reservation.
+      class FutureReservationStoragePoolProperties
+        include Google::Apis::Core::Hashable
+      
+        # Exapool provisioned capacities for each SKU type
+        # Corresponds to the JSON property `requestedExapoolProvisionedCapacityGb`
+        # @return [Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb]
+        attr_accessor :requested_exapool_provisioned_capacity_gb
+      
+        # Storage pool provisioned capacities for each SKU type.
+        # Corresponds to the JSON property `requestedStoragePoolProvisionedCapacity`
+        # @return [Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity]
+        attr_accessor :requested_storage_pool_provisioned_capacity
+      
+        # Type of the storage pool.
+        # Corresponds to the JSON property `storagePoolType`
+        # @return [String]
+        attr_accessor :storage_pool_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_exapool_provisioned_capacity_gb = args[:requested_exapool_provisioned_capacity_gb] if args.key?(:requested_exapool_provisioned_capacity_gb)
+          @requested_storage_pool_provisioned_capacity = args[:requested_storage_pool_provisioned_capacity] if args.key?(:requested_storage_pool_provisioned_capacity)
+          @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
+        end
+      end
+      
+      # Storage pool provisioned capacities for each SKU type.
+      class FutureReservationStoragePoolProvisionedCapacity
+        include Google::Apis::Core::Hashable
+      
+        # Size of the storage pool in GiB.
+        # Corresponds to the JSON property `poolProvisionedCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_capacity_gb
+      
+        # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+        # type is hyperdisk-balanced.
+        # Corresponds to the JSON property `poolProvisionedIops`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_iops
+      
+        # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+        # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        # Corresponds to the JSON property `poolProvisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :pool_provisioned_throughput
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pool_provisioned_capacity_gb = args[:pool_provisioned_capacity_gb] if args.key?(:pool_provisioned_capacity_gb)
+          @pool_provisioned_iops = args[:pool_provisioned_iops] if args.key?(:pool_provisioned_iops)
+          @pool_provisioned_throughput = args[:pool_provisioned_throughput] if args.key?(:pool_provisioned_throughput)
+        end
+      end
+      
       # 
       class FutureReservationTimeWindow
         include Google::Apis::Core::Hashable
@@ -15166,7 +15411,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -15305,7 +15550,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FutureReservationsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -15402,7 +15647,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::FutureReservationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -15863,6 +16108,68 @@ module Google
           @grpc_service_name = args[:grpc_service_name] if args.key?(:grpc_service_name)
           @port = args[:port] if args.key?(:port)
           @port_specification = args[:port_specification] if args.key?(:port_specification)
+        end
+      end
+      
+      # Metadata for GetHealth operations.
+      class GetHealthOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Health information.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo]
+        attr_accessor :health_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
+        end
+      end
+      
+      # Health information.
+      class GetHealthOperationMetadataHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability SLO status.
+        # Corresponds to the JSON property `availabilitySloStatus`
+        # @return [String]
+        attr_accessor :availability_slo_status
+      
+        # Output only. The health status.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # Output only. The repair category.
+        # Corresponds to the JSON property `repairCategory`
+        # @return [String]
+        attr_accessor :repair_category
+      
+        # Output only. The reason for unhealthy status.
+        # Corresponds to the JSON property `unhealthyReason`
+        # @return [String]
+        attr_accessor :unhealthy_reason
+      
+        # Output only. The time when health info was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_slo_status = args[:availability_slo_status] if args.key?(:availability_slo_status)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @repair_category = args[:repair_category] if args.key?(:repair_category)
+          @unhealthy_reason = args[:unhealthy_reason] if args.key?(:unhealthy_reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -16479,7 +16786,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::GlobalVmExtensionPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -16902,6 +17209,7 @@ module Google
         # - IDPF
         # - SNP_SVSM_CAPABLE
         # - CCA_CAPABLE
+        # - SUSPEND_SAFE_FPR
         # For more information, see
         # Enabling guest operating system features.
         # Corresponds to the JSON property `type`
@@ -17234,7 +17542,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthAggregationPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -17499,7 +17807,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -17625,7 +17933,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthAggregationPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -17797,7 +18105,7 @@ module Google
         # on what other health check fields are supported and what other resources
         # can use this health check:
         # 
-        # - SSL, HTTP2, and GRPC protocols are not supported.
+        # - SSL, HTTP2, GRPC, and GRPC_WITH_TLS protocols are not supported.
         # - The TCP request field is not supported.
         # - The proxyHeader field for HTTP, HTTPS, and TCP is not
         # supported.
@@ -17825,10 +18133,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :timeout_sec
       
-        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2 or
-        # GRPC. Exactly one of the
-        # protocol-specific health check fields must be specified, which must matchtype
-        # field.
+        # Specifies the type of the healthCheck, either TCP,SSL, HTTP, HTTPS,HTTP2, GRPC
+        # or GRPC_WITH_TLS.
+        # Exactly one of the protocol-specific health check fields must be specified,
+        # which must match type field.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -17939,7 +18247,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -18255,7 +18563,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthCheckServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -18409,7 +18717,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthCheckServicesList::Warning::Datum>]
           attr_accessor :data
@@ -18506,7 +18814,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthCheckServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -18636,7 +18944,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -18733,7 +19041,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthChecksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -18983,7 +19291,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthSourceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -19140,7 +19448,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthSourceList::Warning::Datum>]
           attr_accessor :data
@@ -19306,7 +19614,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HealthSourcesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -19556,6 +19864,126 @@ module Google
         end
       end
       
+      # Represents a host resource.
+      class Host
+        include Google::Apis::Core::Hashable
+      
+        # Output only. All aliases for this resource.
+        # e.g.
+        # projects/123/zones/us-centra1-a/reservation/r1/reservationBlock/b1/hosts/h1
+        # Corresponds to the JSON property `aliasLinks`
+        # @return [Array<String>]
+        attr_accessor :alias_links
+      
+        # Output only. The creation timestamp, formatted asRFC3339 text.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The unique identifier for this resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. The type of resource. Alwayscompute#host for hosts.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Output only. The name of the host.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The self link of the host.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. The self link with id of the host.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # Output only. The state of the host.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The status of the host
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeV1::HostStatus]
+        attr_accessor :status
+      
+        # Output only. The zone in which the host resides.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alias_links = args[:alias_links] if args.key?(:alias_links)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @state = args[:state] if args.key?(:state)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # 
+      class HostPhysicalTopology
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the capacity block within the cluster.
+        # Corresponds to the JSON property `block`
+        # @return [String]
+        attr_accessor :block
+      
+        # The cluster name of the reservation sub-block.
+        # Corresponds to the JSON property `cluster`
+        # @return [String]
+        attr_accessor :cluster
+      
+        # The unique identifier of the capacity host within the capacity sub-block.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # The unique identifier of the capacity sub-block within the capacity
+        # block.
+        # Corresponds to the JSON property `subBlock`
+        # @return [String]
+        attr_accessor :sub_block
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @block = args[:block] if args.key?(:block)
+          @cluster = args[:cluster] if args.key?(:cluster)
+          @host = args[:host] if args.key?(:host)
+          @sub_block = args[:sub_block] if args.key?(:sub_block)
+        end
+      end
+      
       # UrlMaps
       # A host-matching rule for a URL. If matched, will use the namedPathMatcher to
       # select the BackendService.
@@ -19596,6 +20024,188 @@ module Google
           @description = args[:description] if args.key?(:description)
           @hosts = args[:hosts] if args.key?(:hosts)
           @path_matcher = args[:path_matcher] if args.key?(:path_matcher)
+        end
+      end
+      
+      # 
+      class HostStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The physical topology of the reservation sub-block, if
+        # present
+        # Corresponds to the JSON property `physicalTopology`
+        # @return [Google::Apis::ComputeV1::HostPhysicalTopology]
+        attr_accessor :physical_topology
+      
+        # Output only. The URIs of the instances currently running on this host.
+        # Corresponds to the JSON property `runningInstances`
+        # @return [Array<String>]
+        attr_accessor :running_instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
+          @running_instances = args[:running_instances] if args.key?(:running_instances)
+        end
+      end
+      
+      # 
+      class HostsGetVersionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The SBOM selection to return. Duplicate values in the list will be ignored.
+        # Corresponds to the JSON property `sbomSelections`
+        # @return [Array<String>]
+        attr_accessor :sbom_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sbom_selections = args[:sbom_selections] if args.key?(:sbom_selections)
+        end
+      end
+      
+      # 
+      class HostsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of host resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::Host>]
+        attr_accessor :items
+      
+        # The type of resource. Always compute#host for a list of hosts.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Unreachable resources.
+        # end_interface: MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # An informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::HostsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # An informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::HostsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -20060,7 +20670,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HttpHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -20823,7 +21433,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::HttpsHealthCheckList::Warning::Datum>]
           attr_accessor :data
@@ -21347,7 +21957,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ImageList::Warning::Datum>]
           attr_accessor :data
@@ -21615,6 +22225,12 @@ module Google
         # @return [String]
         attr_accessor :last_suspended_timestamp
       
+        # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
+      
         # Full or partial URL of the machine type resource to use for this instance,
         # in the format:zones/zone/machineTypes/machine-type. This is provided by the
         # client
@@ -21825,6 +22441,7 @@ module Google
           @last_start_timestamp = args[:last_start_timestamp] if args.key?(:last_start_timestamp)
           @last_stop_timestamp = args[:last_stop_timestamp] if args.key?(:last_stop_timestamp)
           @last_suspended_timestamp = args[:last_suspended_timestamp] if args.key?(:last_suspended_timestamp)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -21932,7 +22549,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -22100,6 +22717,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :machine_types
       
+        # Name of the minimum CPU platform to be used by this instance selection.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Rank when prioritizing the shape flexibilities.
         # The instance selections with rank are considered
         # first, in the ascending order of the rank.
@@ -22116,6 +22739,7 @@ module Google
         def update!(**args)
           @disks = args[:disks] if args.key?(:disks)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @rank = args[:rank] if args.key?(:rank)
         end
       end
@@ -22330,7 +22954,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -22457,7 +23081,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupList::Warning::Datum>]
           attr_accessor :data
@@ -22991,7 +23615,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -23306,7 +23930,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerList::Warning::Datum>]
           attr_accessor :data
@@ -23386,6 +24010,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
+        # The names of instances to be created by this resize request. The number of
+        # names specified determines the number of instances to create. The group's
+        # target size will be increased by this number. This field cannot be used
+        # together with 'resize_by'.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :instances
+      
         # Output only. The resource type, which is alwayscompute#
         # instanceGroupManagerResizeRequest for resize requests.
         # Corresponds to the JSON property `kind`
@@ -23456,6 +24088,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
+          @instances = args[:instances] if args.key?(:instances)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @region = args[:region] if args.key?(:region)
@@ -23528,7 +24161,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -23569,7 +24203,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -23668,7 +24303,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -23709,7 +24345,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -23843,7 +24480,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -24108,7 +24745,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -24149,7 +24787,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -24311,7 +24950,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -24352,7 +24992,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -24773,7 +25414,7 @@ module Google
       class InstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
@@ -24915,15 +25556,15 @@ module Google
       class InstanceGroupManagersListErrorsResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output Only] The list of errors of the managed instance group.
+        # Output only. The list of errors of the managed instance group.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeV1::InstanceManagedByIgmError>]
         attr_accessor :items
       
-        # Output only. [Output Only] This token allows you to get the next page of
-        # results for
-        # list requests. If the number of results is larger thanmaxResults, use the
-        # nextPageToken as a value for
+        # Output only. This token allows you to get the next page of results for list
+        # requests.
+        # If the number of results is larger than maxResults
+        # , then use the nextPageToken as a value for
         # the query parameter pageToken in the next list request.
         # Subsequent list requests will have their own nextPageToken to
         # continue paging through the results.
@@ -25026,7 +25667,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Datum>]
           attr_accessor :data
@@ -25187,7 +25828,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupManagersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -25488,7 +26129,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupsListInstances::Warning::Datum>]
           attr_accessor :data
@@ -25626,7 +26267,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -25784,7 +26425,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceList::Warning::Datum>]
           attr_accessor :data
@@ -25909,7 +26550,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceListReferrers::Warning::Datum>]
           attr_accessor :data
@@ -26191,6 +26832,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
+        # Corresponds to the JSON property `localSsdEncryptionMode`
+        # @return [String]
+        attr_accessor :local_ssd_encryption_mode
+      
         # The machine type to use for instances that are created from these
         # properties.
         # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -26299,6 +26946,7 @@ module Google
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @key_revocation_action_type = args[:key_revocation_action_type] if args.key?(:key_revocation_action_type)
           @labels = args[:labels] if args.key?(:labels)
+          @local_ssd_encryption_mode = args[:local_ssd_encryption_mode] if args.key?(:local_ssd_encryption_mode)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -26619,7 +27267,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceTemplateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -26745,7 +27393,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceTemplateList::Warning::Datum>]
           attr_accessor :data
@@ -26843,7 +27491,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstanceTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -27168,7 +27816,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstancesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -27704,7 +28352,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -28012,7 +28660,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstantSnapshotList::Warning::Datum>]
           attr_accessor :data
@@ -28154,7 +28802,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InstantSnapshotsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -28510,6 +29158,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Output only. Server-defined URL for this resource with the resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
         # Output only. [Output Only] The current state of Interconnect functionality,
         # which can
         # take one of the following values:
@@ -28578,6 +29231,7 @@ module Google
           @requested_link_count = args[:requested_link_count] if args.key?(:requested_link_count)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
           @subzone = args[:subzone] if args.key?(:subzone)
           @wire_groups = args[:wire_groups] if args.key?(:wire_groups)
@@ -29265,7 +29919,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -29887,7 +30541,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentGroupsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -30253,7 +30907,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -30441,7 +31095,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -31423,7 +32077,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectGroupsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -31639,7 +32293,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectList::Warning::Datum>]
           attr_accessor :data
@@ -31889,6 +32543,19 @@ module Google
         # @return [String]
         attr_accessor :city
       
+        # Output only. The maximum unmetered bandwidth for dynamic paths allowable per
+        # WireGroup for this metro.
+        # Corresponds to the JSON property `maxDynamicPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_dynamic_path_bandwidth_gbps
+      
+        # Output only. The maximum unmetered bandwidth for fixed paths allowable per
+        # WireGroup
+        # for this metro.
+        # Corresponds to the JSON property `maxFixedPathBandwidthGbps`
+        # @return [Fixnum]
+        attr_accessor :max_fixed_path_bandwidth_gbps
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31896,6 +32563,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @city = args[:city] if args.key?(:city)
+          @max_dynamic_path_bandwidth_gbps = args[:max_dynamic_path_bandwidth_gbps] if args.key?(:max_dynamic_path_bandwidth_gbps)
+          @max_fixed_path_bandwidth_gbps = args[:max_fixed_path_bandwidth_gbps] if args.key?(:max_fixed_path_bandwidth_gbps)
         end
       end
       
@@ -31971,7 +32640,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectLocationList::Warning::Datum>]
           attr_accessor :data
@@ -32664,7 +33333,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::InterconnectRemoteLocationList::Warning::Datum>]
           attr_accessor :data
@@ -33297,7 +33966,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::LicensesListResponse::Warning::Datum>]
           attr_accessor :data
@@ -33434,7 +34103,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ListInstantSnapshotGroups::Warning::Datum>]
           attr_accessor :data
@@ -33924,7 +34593,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::MachineImageList::Warning::Datum>]
           attr_accessor :data
@@ -34235,7 +34904,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::MachineTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -34360,7 +35029,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::MachineTypeList::Warning::Datum>]
           attr_accessor :data
@@ -34457,7 +35126,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::MachineTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -34604,6 +35273,25 @@ module Google
         # @return [Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy]
         attr_accessor :properties_from_flexibility_policy
       
+        # Output only. Information about the termination timestamp of the instance, if
+        # applicable.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeV1::ManagedInstanceScheduling]
+        attr_accessor :scheduling
+      
+        # Output only. Specifies the graceful shutdown details if the instance is in
+        # `PENDING_STOP` state or there is a programmed stop scheduled.
+        # Corresponds to the JSON property `shutdownDetails`
+        # @return [Google::Apis::ComputeV1::ManagedInstanceShutdownDetails]
+        attr_accessor :shutdown_details
+      
+        # Output only. The eventual status of the instance. The instance group
+        # manager will not be identified as stable till each managed instance reaches
+        # its targetStatus.
+        # Corresponds to the JSON property `targetStatus`
+        # @return [String]
+        attr_accessor :target_status
+      
         # Output only. [Output Only] Intended version of this instance.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::ComputeV1::ManagedInstanceVersion]
@@ -34625,6 +35313,9 @@ module Google
           @preserved_state_from_config = args[:preserved_state_from_config] if args.key?(:preserved_state_from_config)
           @preserved_state_from_policy = args[:preserved_state_from_policy] if args.key?(:preserved_state_from_policy)
           @properties_from_flexibility_policy = args[:properties_from_flexibility_policy] if args.key?(:properties_from_flexibility_policy)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
+          @target_status = args[:target_status] if args.key?(:target_status)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -34697,7 +35388,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -34738,7 +35430,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -34816,6 +35509,67 @@ module Google
         # Update properties of this object
         def update!(**args)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+        end
+      end
+      
+      # 
+      class ManagedInstanceScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp at which the underlying instance will be
+        # triggered for graceful shutdown if it is configured. This is in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `gracefulShutdownTimestamp`
+        # @return [String]
+        attr_accessor :graceful_shutdown_timestamp
+      
+        # Output only. The timestamp at which the managed instance will be terminated.
+        # This is
+        # in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
+        end
+      end
+      
+      # 
+      class ManagedInstanceShutdownDetails
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_duration
+      
+        # Output only. Past timestamp indicating the beginning of `PENDING_STOP` state
+        # of
+        # instance in RFC3339
+        # text format.
+        # Corresponds to the JSON property `requestTimestamp`
+        # @return [String]
+        attr_accessor :request_timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
         end
       end
       
@@ -35021,6 +35775,59 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # 
+      class NamedSet
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of named set.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # CEL expressions that are comparable to constructs of this set's type
+        # (see Policy Language).
+        # Corresponds to the JSON property `elements`
+        # @return [Array<Google::Apis::ComputeV1::Expr>]
+        attr_accessor :elements
+      
+        # A fingerprint for the Named Set being applied to this Router, which is
+        # essentially a hash of the Named Set used for optimistic locking.
+        # The fingerprint is initially generated by Compute Engine and changes
+        # after every request to modify or update the Named Set. You must always
+        # provide an up-to-date fingerprint hash in order to update or change
+        # labels.
+        # To see the latest fingerprint, make a getNamedSet() request
+        # to retrieve a Named Set.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # This set's name, which must be a resource ID segment and unique within all
+        # named sets owned by the Router. Name should conform to RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # This named set's type
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @elements = args[:elements] if args.key?(:elements)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -35355,14 +36162,16 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Projects that are allowed to connect to this network attachment.
-        # The project can be specified using its id or number.
+        # Projects or service class ids that are allowed to connect to this network
+        # attachment. The project can be specified using its id or number. Service
+        # class id can be specified as "serviceclasses/`service_class_id`".
         # Corresponds to the JSON property `producerAcceptLists`
         # @return [Array<String>]
         attr_accessor :producer_accept_lists
       
-        # Projects that are not allowed to connect to this network attachment.
-        # The project can be specified using its id or number.
+        # Projects or service class ids that are not allowed to connect to this
+        # network attachment. The project can be specified using its id or number.
+        # Service class id can be specified as "serviceclasses/`service_class_id`".
         # Corresponds to the JSON property `producerRejectLists`
         # @return [Array<String>]
         attr_accessor :producer_reject_lists
@@ -35487,7 +36296,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -35679,7 +36488,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -35776,7 +36585,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -36011,7 +36820,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEdgeSecurityServiceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -36108,7 +36917,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEdgeSecurityServicesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -36506,7 +37315,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -36777,7 +37586,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupList::Warning::Datum>]
           attr_accessor :data
@@ -37002,7 +37811,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Warning::Datum>]
           attr_accessor :data
@@ -37102,7 +37911,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkEndpointGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -37261,7 +38070,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -37599,7 +38408,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkList::Warning::Datum>]
           attr_accessor :data
@@ -38451,7 +39260,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NetworkProfilesListResponse::Warning::Datum>]
           attr_accessor :data
@@ -39007,7 +39816,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeGroupAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -39166,7 +39975,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeGroupList::Warning::Datum>]
           attr_accessor :data
@@ -39461,7 +40270,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeGroupsListNodes::Warning::Datum>]
           attr_accessor :data
@@ -39583,7 +40392,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeGroupsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -39890,7 +40699,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTemplateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -40015,7 +40824,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTemplateList::Warning::Datum>]
           attr_accessor :data
@@ -40143,7 +40952,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTemplatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -40378,7 +41187,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -40503,7 +41312,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTypeList::Warning::Datum>]
           attr_accessor :data
@@ -40600,7 +41409,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NodeTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -40812,7 +41621,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NotificationEndpointAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -40990,7 +41799,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NotificationEndpointList::Warning::Datum>]
           attr_accessor :data
@@ -41087,7 +41896,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::NotificationEndpointsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -41193,6 +42002,11 @@ module Google
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ComputeV1::Operation::Error]
         attr_accessor :error
+      
+        # Metadata for GetHealth operations.
+        # Corresponds to the JSON property `getHealthOperationMetadata`
+        # @return [Google::Apis::ComputeV1::GetHealthOperationMetadata]
+        attr_accessor :get_health_operation_metadata
       
         # 
         # Corresponds to the JSON property `getVersionOperationMetadata`
@@ -41346,6 +42160,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
+          @get_health_operation_metadata = args[:get_health_operation_metadata] if args.key?(:get_health_operation_metadata)
           @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
@@ -41390,7 +42205,8 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an
+          # operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -41431,7 +42247,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -41509,7 +42326,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::Operation::Warning::Datum>]
           attr_accessor :data
@@ -41642,7 +42459,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::OperationAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -41769,7 +42586,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::OperationList::Warning::Datum>]
           attr_accessor :data
@@ -41866,7 +42683,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::OperationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -42311,7 +43128,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -42505,7 +43322,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PacketMirroringList::Warning::Datum>]
           attr_accessor :data
@@ -42721,7 +43538,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -43519,7 +44336,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PreviewFeatureList::Warning::Datum>]
           attr_accessor :data
@@ -44167,7 +44984,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Warning::Datum>]
           attr_accessor :data
@@ -44515,7 +45332,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -44641,7 +45458,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixList::Warning::Datum>]
           attr_accessor :data
@@ -44827,7 +45644,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -45012,6 +45829,56 @@ module Google
         end
       end
       
+      # The spec for modifying the path using a regular expression.
+      class RegexRewrite
+        include Google::Apis::Core::Hashable
+      
+        # Required. The regular expression used to match against the URL path.
+        # It uses RE2 syntax with the following constraints:
+        # 
+        # 
+        # - Any single character operators
+        # - Groups are allowed to have only submatch operator inside
+        # - Groups are allowed only without any char repetition, e.g.
+        # .*
+        # - Any char repetition, e.g. .*, is
+        # only allowed to be used in a single regex together with:
+        # 
+        # 
+        # - Empty string operators
+        # - Other repetitions
+        # - Ranges
+        # - Repetitions of ranges
+        # 
+        # 
+        # - Ranges are only allowed to have:
+        # 
+        # 
+        # - Character range
+        # - Digits range
+        # - Symbols listed in characters allowed for ranges
+        # Corresponds to the JSON property `pathPattern`
+        # @return [String]
+        attr_accessor :path_pattern
+      
+        # Required. Required when path pattern is specified. Used to rewrite matching
+        # parts of
+        # the path.
+        # Corresponds to the JSON property `pathSubstitution`
+        # @return [String]
+        attr_accessor :path_substitution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_pattern = args[:path_pattern] if args.key?(:path_pattern)
+          @path_substitution = args[:path_substitution] if args.key?(:path_substitution)
+        end
+      end
+      
       # Represents a Region resource.
       # A region is a geographical area where a resource is located. For more
       # information, readRegions
@@ -45125,7 +45992,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::Region::QuotaStatusWarning::Datum>]
           attr_accessor :data
@@ -45282,7 +46149,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionAutoscalerList::Warning::Datum>]
           attr_accessor :data
@@ -45407,7 +46274,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionDiskTypeList::Warning::Datum>]
           attr_accessor :data
@@ -45660,7 +46527,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupList::Warning::Datum>]
           attr_accessor :data
@@ -45806,7 +46673,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupManagerList::Warning::Datum>]
           attr_accessor :data
@@ -45965,7 +46832,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupManagerResizeRequestsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -46063,7 +46930,7 @@ module Google
       class RegionInstanceGroupManagersApplyUpdatesRequest
         include Google::Apis::Core::Hashable
       
-        # Flag to update all instances instead of specified list of “instances”.
+        # Flag to update all instances instead of specified list of "instances".
         # If the flag is set to true then the instances may not be specified
         # in the request.
         # Corresponds to the JSON property `allInstances`
@@ -46263,7 +47130,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Datum>]
           attr_accessor :data
@@ -46586,7 +47453,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionInstanceGroupsListInstances::Warning::Datum>]
           attr_accessor :data
@@ -46772,7 +47639,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RegionList::Warning::Datum>]
           attr_accessor :data
@@ -47165,6 +48032,210 @@ module Google
         end
       end
       
+      # Represents a ReliabilityRisk resource.
+      class ReliabilityRisk
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339
+        # text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional textual description of the resource; provided when the
+        # resource is created.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Detailed insights and metrics about a detected reliability risk.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::ComputeV1::RiskDetails]
+        attr_accessor :details
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. [Output Only] Type of resource. Always compute#reliabilityRisk
+        # for reliability risks.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. The name must be 1-63 characters long and
+        # comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Recommendation for mitigating a reliability risk, including a reference URL.
+        # Corresponds to the JSON property `recommendation`
+        # @return [Google::Apis::ComputeV1::RiskRecommendation]
+        attr_accessor :recommendation
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Server-defined URL for this resource with the
+        # resource id.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+        end
+      end
+      
+      # Response message for the List method of ReliabilityRisksService.
+      class ReliabilityRisksListResponse
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] An ETag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ReliabilityRisk resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::ReliabilityRisk>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # end_interface: MixerListResponseWithEtagBuilder
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A policy that specifies how requests intended for the route's backends
       # are shadowed to a separate mirrored backend service. The load balancer
       # doesn't wait for responses from the shadow service. Before sending traffic
@@ -47327,6 +48398,11 @@ module Google
         # @return [Google::Apis::ComputeV1::AllocationReservationSharingPolicy]
         attr_accessor :reservation_sharing_policy
       
+        # Standardized resource metadata common to all compute resources.
+        # Corresponds to the JSON property `resourceMetadata`
+        # @return [Google::Apis::ComputeV1::ResourceMetadata]
+        attr_accessor :resource_metadata
+      
         # Resource policies to be added to this reservation. The key is defined by
         # user, and the value is resource policy url. This is to define placement
         # policy with reservation.
@@ -47418,6 +48494,7 @@ module Google
           @params = args[:params] if args.key?(:params)
           @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @reservation_sharing_policy = args[:reservation_sharing_policy] if args.key?(:reservation_sharing_policy)
+          @resource_metadata = args[:resource_metadata] if args.key?(:resource_metadata)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -47567,7 +48644,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -47956,7 +49033,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationBlocksListResponse::Warning::Datum>]
           attr_accessor :data
@@ -48082,7 +49159,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationList::Warning::Datum>]
           attr_accessor :data
@@ -48423,7 +49500,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationSlotsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -48779,7 +49856,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationSubBlocksListResponse::Warning::Datum>]
           attr_accessor :data
@@ -48990,7 +50067,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ReservationsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -49114,6 +50191,34 @@ module Google
         end
       end
       
+      # Standardized resource metadata common to all compute resources.
+      class ResourceMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The version of the API interface that this resource was retrieved through.
+        # For example, `"2025-01-01"` or `"2025-01-01-preview"`.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The canonical resource type name in the format of a resource type
+        # as defined by [AIP-123](https://google.aip.dev/123).
+        # For example, `"compute.googleapis.com/Instance"`.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
+        end
+      end
+      
       # 
       class ResourcePoliciesScopedList
         include Google::Apis::Core::Hashable
@@ -49157,7 +50262,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ResourcePoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -49412,7 +50517,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -49743,7 +50848,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ResourcePolicyList::Warning::Datum>]
           attr_accessor :data
@@ -50110,6 +51215,12 @@ module Google
         # @return [Google::Apis::ComputeV1::ResourceStatusScheduling]
         attr_accessor :scheduling
       
+        # Specifies if the instance is in `PENDING_STOP` state or there is a
+        # programmed stop scheduled.
+        # Corresponds to the JSON property `shutdownDetails`
+        # @return [Google::Apis::ComputeV1::ResourceStatusShutdownDetails]
+        attr_accessor :shutdown_details
+      
         # Upcoming Maintenance notification information.
         # Corresponds to the JSON property `upcomingMaintenance`
         # @return [Google::Apis::ComputeV1::UpcomingMaintenance]
@@ -50126,6 +51237,7 @@ module Google
           @physical_host_topology = args[:physical_host_topology] if args.key?(:physical_host_topology)
           @reservation_consumption_info = args[:reservation_consumption_info] if args.key?(:reservation_consumption_info)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+          @shutdown_details = args[:shutdown_details] if args.key?(:shutdown_details)
           @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
         end
       end
@@ -50288,6 +51400,20 @@ module Google
         # @return [String]
         attr_accessor :consumed_reservation
       
+        # Output only. [Output Only] The full resource name of the reservation block
+        # that this
+        # instance is consuming from.
+        # Corresponds to the JSON property `consumedReservationBlock`
+        # @return [String]
+        attr_accessor :consumed_reservation_block
+      
+        # Output only. [Output Only] The full resource name of the reservation sub-block
+        # that
+        # this instance is consuming from.
+        # Corresponds to the JSON property `consumedReservationSubBlock`
+        # @return [String]
+        attr_accessor :consumed_reservation_sub_block
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50295,6 +51421,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumed_reservation = args[:consumed_reservation] if args.key?(:consumed_reservation)
+          @consumed_reservation_block = args[:consumed_reservation_block] if args.key?(:consumed_reservation_block)
+          @consumed_reservation_sub_block = args[:consumed_reservation_sub_block] if args.key?(:consumed_reservation_sub_block)
         end
       end
       
@@ -50309,6 +51437,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # Output only. Specifies the timestamp, when the instance will start graceful
+        # shutdown
+        # process, in RFC3339 text format.
+        # Corresponds to the JSON property `gracefulShutdownTimestamp`
+        # @return [String]
+        attr_accessor :graceful_shutdown_timestamp
+      
+        # Time in future when the instance will be terminated inRFC3339 text format.
+        # Corresponds to the JSON property `terminationTimestamp`
+        # @return [String]
+        attr_accessor :termination_timestamp
+      
         def initialize(**args)
            update!(**args)
         end
@@ -50316,6 +51456,157 @@ module Google
         # Update properties of this object
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
+          @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
+        end
+      end
+      
+      # Specifies if the instance is in `PENDING_STOP` state or there is a
+      # programmed stop scheduled.
+      class ResourceStatusShutdownDetails
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_duration
+      
+        # Past timestamp indicating the beginning of current `stopState` in RFC3339 text
+        # format.
+        # Corresponds to the JSON property `requestTimestamp`
+        # @return [String]
+        attr_accessor :request_timestamp
+      
+        # Current stopping state of the instance.
+        # Corresponds to the JSON property `stopState`
+        # @return [String]
+        attr_accessor :stop_state
+      
+        # Target instance state.
+        # Corresponds to the JSON property `targetState`
+        # @return [String]
+        attr_accessor :target_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
+          @request_timestamp = args[:request_timestamp] if args.key?(:request_timestamp)
+          @stop_state = args[:stop_state] if args.key?(:stop_state)
+          @target_state = args[:target_state] if args.key?(:target_state)
+        end
+      end
+      
+      # Detailed insights and metrics about a detected reliability risk.
+      class RiskDetails
+        include Google::Apis::Core::Hashable
+      
+        # The duration of the risk since it was detected.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Detailed insights for a global DNS reliability risk.
+        # Corresponds to the JSON property `globalDnsInsight`
+        # @return [Google::Apis::ComputeV1::RiskDetailsGlobalDnsInsight]
+        attr_accessor :global_dns_insight
+      
+        # The last time the risk was updated.
+        # Corresponds to the JSON property `lastUpdateTimestamp`
+        # @return [String]
+        attr_accessor :last_update_timestamp
+      
+        # The severity of the risk.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The type of risk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration = args[:duration] if args.key?(:duration)
+          @global_dns_insight = args[:global_dns_insight] if args.key?(:global_dns_insight)
+          @last_update_timestamp = args[:last_update_timestamp] if args.key?(:last_update_timestamp)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Detailed insights for a global DNS reliability risk.
+      class RiskDetailsGlobalDnsInsight
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the project's default DNS setting is global DNS.
+        # Corresponds to the JSON property `projectDefaultIsGlobalDns`
+        # @return [Boolean]
+        attr_accessor :project_default_is_global_dns
+        alias_method :project_default_is_global_dns?, :project_default_is_global_dns
+      
+        # The observation window for the query counts.
+        # Corresponds to the JSON property `queryObservationWindow`
+        # @return [String]
+        attr_accessor :query_observation_window
+      
+        # The number of queries that are risky. This is always less than or
+        # equal to total_query_count.
+        # Corresponds to the JSON property `riskyQueryCount`
+        # @return [Fixnum]
+        attr_accessor :risky_query_count
+      
+        # The total number of queries in the observation window.
+        # Corresponds to the JSON property `totalQueryCount`
+        # @return [Fixnum]
+        attr_accessor :total_query_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_default_is_global_dns = args[:project_default_is_global_dns] if args.key?(:project_default_is_global_dns)
+          @query_observation_window = args[:query_observation_window] if args.key?(:query_observation_window)
+          @risky_query_count = args[:risky_query_count] if args.key?(:risky_query_count)
+          @total_query_count = args[:total_query_count] if args.key?(:total_query_count)
+        end
+      end
+      
+      # Recommendation for mitigating a reliability risk, including a reference URL.
+      class RiskRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Mitigation guide for the risk.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # URL referencing a more detailed mitigation guide.
+        # Corresponds to the JSON property `referenceUrl`
+        # @return [String]
+        attr_accessor :reference_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @reference_url = args[:reference_url] if args.key?(:reference_url)
         end
       end
       
@@ -50867,7 +52158,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RolloutPlansListResponse::Warning::Datum>]
           attr_accessor :data
@@ -51176,7 +52467,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RolloutsListResponse::Warning::Datum>]
           attr_accessor :data
@@ -51499,7 +52790,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::Route::Warning::Datum>]
           attr_accessor :data
@@ -51659,7 +52950,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RouteList::Warning::Datum>]
           attr_accessor :data
@@ -52087,7 +53378,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RouterAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -52687,7 +53978,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RouterList::Warning::Datum>]
           attr_accessor :data
@@ -53578,6 +54869,31 @@ module Google
       end
       
       # 
+      class RoutersGetNamedSetResponse
+        include Google::Apis::Core::Hashable
+      
+        # end_interface: MixerGetResponseWithEtagBuilder
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # 
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputeV1::NamedSet]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
       class RoutersGetRoutePolicyResponse
         include Google::Apis::Core::Hashable
       
@@ -53680,9 +54996,147 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class RoutersListNamedSets
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. [Output Only] Type of resource. Alwayscompute#
+        # routersListNamedSets for lists of named sets.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] A list of named sets.
+        # Corresponds to the JSON property `result`
+        # @return [Array<Google::Apis::ComputeV1::NamedSet>]
+        attr_accessor :result
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::RoutersListNamedSets::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @result = args[:result] if args.key?(:result)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum>]
           attr_accessor :data
         
           # [Output Only] A human-readable description of the warning code.
@@ -53818,7 +55272,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RoutersListRoutePolicies::Warning::Datum>]
           attr_accessor :data
@@ -53936,7 +55390,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::RoutersScopedList::Warning::Datum>]
           attr_accessor :data
@@ -54312,6 +55766,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # The configuration for gracefully shutting down the instance.
+        # Corresponds to the JSON property `gracefulShutdown`
+        # @return [Google::Apis::ComputeV1::SchedulingGracefulShutdown]
+        attr_accessor :graceful_shutdown
+      
         # Specify the time in seconds for host error detection, the value must be
         # within the range of [90, 330] with the increment of 30, if unset, the
         # default behavior of host error recovery will be used.
@@ -54385,6 +55844,14 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `preemptionNoticeDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :preemption_notice_duration
+      
         # Specifies the provisioning model of the instance.
         # Corresponds to the JSON property `provisioningModel`
         # @return [String]
@@ -54413,6 +55880,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @graceful_shutdown = args[:graceful_shutdown] if args.key?(:graceful_shutdown)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
           @local_ssd_recovery_timeout = args[:local_ssd_recovery_timeout] if args.key?(:local_ssd_recovery_timeout)
@@ -54423,9 +55891,39 @@ module Google
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @preemption_notice_duration = args[:preemption_notice_duration] if args.key?(:preemption_notice_duration)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
+        end
+      end
+      
+      # The configuration for gracefully shutting down the instance.
+      class SchedulingGracefulShutdown
+        include Google::Apis::Core::Hashable
+      
+        # Opts-in for graceful shutdown.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # A Duration represents a fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". Range is approximately 10,000 years.
+        # Corresponds to the JSON property `maxDuration`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :max_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_duration = args[:max_duration] if args.key?(:max_duration)
         end
       end
       
@@ -54594,7 +56092,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SecurityPoliciesAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -54710,7 +56208,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SecurityPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -55395,7 +56893,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SecurityPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -56054,6 +57552,8 @@ module Google
         # which is resolved based on "userIpRequestHeaders" configured with the
         # security policy. If there is no "userIpRequestHeaders" configuration or
         # an IP address cannot be resolved from it, the key type defaults toIP.
+        # - ASN: The autonomous system number of the originating
+        # client. If not available, the key type defaults toALL.
         # - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
         # client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
         # key type defaults to ALL.
@@ -56173,6 +57673,8 @@ module Google
         # which is resolved based on "userIpRequestHeaders" configured with the
         # security policy. If there is no "userIpRequestHeaders" configuration
         # or an IP address cannot be resolved from it, the key type defaults toIP.
+        # - ASN: The autonomous system number of the originating
+        # client. If not available, the key type defaults toALL.
         # - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the
         # client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the
         # key type defaults to ALL.
@@ -56750,7 +58252,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -56970,7 +58472,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ServiceAttachmentList::Warning::Datum>]
           attr_accessor :data
@@ -57067,7 +58569,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ServiceAttachmentsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -57858,7 +59360,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SnapshotList::Warning::Datum>]
           attr_accessor :data
@@ -58483,7 +59985,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -58607,7 +60109,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslCertificateList::Warning::Datum>]
           attr_accessor :data
@@ -58768,7 +60270,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslCertificatesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -58905,7 +60407,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslPoliciesAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -59032,7 +60534,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslPoliciesList::Warning::Datum>]
           attr_accessor :data
@@ -59148,7 +60650,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -59358,7 +60860,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SslPolicy::Warning::Datum>]
           attr_accessor :data
@@ -59416,8 +60918,7 @@ module Google
       class SslPolicyReference
         include Google::Apis::Core::Hashable
       
-        # URL of the SSL policy resource. Set this to empty string to clear any
-        # existing SSL policy associated with the target proxy resource.
+        # 
         # Corresponds to the JSON property `sslPolicy`
         # @return [String]
         attr_accessor :ssl_policy
@@ -59688,6 +61189,11 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
+        # Share settings for the storage pool.
+        # Corresponds to the JSON property `shareSettings`
+        # @return [Google::Apis::ComputeV1::StoragePoolShareSettings]
+        attr_accessor :share_settings
+      
         # Output only. [Output Only] The status of storage pool creation.
         # 
         # 
@@ -59740,6 +61246,7 @@ module Google
           @resource_status = args[:resource_status] if args.key?(:resource_status)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @share_settings = args[:share_settings] if args.key?(:share_settings)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @storage_pool_type = args[:storage_pool_type] if args.key?(:storage_pool_type)
@@ -59831,7 +61338,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -60082,7 +61589,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolList::Warning::Datum>]
           attr_accessor :data
@@ -60223,7 +61730,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolListDisks::Warning::Datum>]
           attr_accessor :data
@@ -60410,6 +61917,45 @@ module Google
           @total_provisioned_disk_capacity_gb = args[:total_provisioned_disk_capacity_gb] if args.key?(:total_provisioned_disk_capacity_gb)
           @total_provisioned_disk_iops = args[:total_provisioned_disk_iops] if args.key?(:total_provisioned_disk_iops)
           @total_provisioned_disk_throughput = args[:total_provisioned_disk_throughput] if args.key?(:total_provisioned_disk_throughput)
+        end
+      end
+      
+      # Share settings for the storage pool.
+      class StoragePoolShareSettings
+        include Google::Apis::Core::Hashable
+      
+        # A map of project id and project config.
+        # Corresponds to the JSON property `projectMap`
+        # @return [Hash<String,Google::Apis::ComputeV1::StoragePoolShareSettingsProjectConfig>]
+        attr_accessor :project_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_map = args[:project_map] if args.key?(:project_map)
+        end
+      end
+      
+      # Config for each project in the share settings.
+      class StoragePoolShareSettingsProjectConfig
+        include Google::Apis::Core::Hashable
+      
+        # The project ID, should be same as the key of this project config in the
+        # parent map.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_id = args[:project_id] if args.key?(:project_id)
         end
       end
       
@@ -60606,7 +62152,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolTypeAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -60731,7 +62277,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolTypeList::Warning::Datum>]
           attr_accessor :data
@@ -60828,7 +62374,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolTypesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -60925,7 +62471,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::StoragePoolsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -61380,7 +62926,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SubnetworkAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -61505,7 +63051,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SubnetworkList::Warning::Datum>]
           attr_accessor :data
@@ -61683,6 +63229,22 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # Reference to a Public Delegated Prefix (PDP) for BYOIP.
+        # This field should be specified for configuring BYOGUA internal IPv6
+        # secondary range.
+        # When specified along with the ip_cidr_range, the ip_cidr_range must lie
+        # within the PDP referenced by the `ipCollection` field.
+        # When specified without the ip_cidr_range, the range is auto-allocated
+        # from the PDP referenced by the `ipCollection` field.
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
+        # 
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
         # The name associated with this subnetwork secondary range, used when adding
         # an alias IP/IPv6 range to a VM instance.
         # The name must be 1-63 characters long, and comply withRFC1035.
@@ -61703,6 +63265,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
           @range_name = args[:range_name] if args.key?(:range_name)
           @reserved_internal_range = args[:reserved_internal_range] if args.key?(:reserved_internal_range)
         end
@@ -61868,7 +63432,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SubnetworksScopedList::Warning::Datum>]
           attr_accessor :data
@@ -61963,7 +63527,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::SubnetworksScopedWarning::Warning::Datum>]
           attr_accessor :data
@@ -62350,7 +63914,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetGrpcProxyList::Warning::Datum>]
           attr_accessor :data
@@ -62447,7 +64011,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -62754,7 +64318,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetHttpProxyList::Warning::Datum>]
           attr_accessor :data
@@ -62851,7 +64415,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -63293,7 +64857,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -63418,7 +64982,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetHttpsProxyList::Warning::Datum>]
           attr_accessor :data
@@ -63657,7 +65221,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetInstanceAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -63781,7 +65345,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetInstanceList::Warning::Datum>]
           attr_accessor :data
@@ -63878,7 +65442,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetInstancesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -63943,7 +65507,8 @@ module Google
         # The server-defined URL for the resource. This field is applicable only when
         # the containing target pool is serving a forwarding rule as the primary
         # pool, and its failoverRatio field is properly set to a value
-        # between [0, 1].backupPool and failoverRatio together define
+        # between [0, 1].
+        # backupPool and failoverRatio together define
         # the fallback behavior of the primary target pool: if the ratio of the
         # healthy instances in the primary pool is at or belowfailoverRatio, traffic
         # arriving at the load-balanced
@@ -64152,7 +65717,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetPoolAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -64304,7 +65869,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetPoolList::Warning::Datum>]
           attr_accessor :data
@@ -64489,7 +66054,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetPoolsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -64819,7 +66384,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetSslProxyList::Warning::Datum>]
           attr_accessor :data
@@ -64916,7 +66481,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetTcpProxiesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -65193,7 +66758,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetTcpProxyAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -65317,7 +66882,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetTcpProxyList::Warning::Datum>]
           attr_accessor :data
@@ -65579,7 +67144,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -65704,7 +67269,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetVpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -65833,7 +67398,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::TargetVpnGatewaysScopedList::Warning::Datum>]
           attr_accessor :data
@@ -66366,7 +67931,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::UrlMapList::Warning::Datum>]
           attr_accessor :data
@@ -66659,7 +68224,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -66756,7 +68321,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::UrlMapsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -66936,6 +68501,11 @@ module Google
         # @return [String]
         attr_accessor :path_template_rewrite
       
+        # The spec for modifying the path using a regular expression.
+        # Corresponds to the JSON property `regexRewrite`
+        # @return [Google::Apis::ComputeV1::RegexRewrite]
+        attr_accessor :regex_rewrite
+      
         def initialize(**args)
            update!(**args)
         end
@@ -66945,6 +68515,7 @@ module Google
           @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
           @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
           @path_template_rewrite = args[:path_template_rewrite] if args.key?(:path_template_rewrite)
+          @regex_rewrite = args[:regex_rewrite] if args.key?(:regex_rewrite)
         end
       end
       
@@ -67156,7 +68727,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -67471,7 +69042,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VmEndpointNatMappingsList::Warning::Datum>]
           attr_accessor :data
@@ -67568,7 +69139,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VmExtensionPoliciesScopedList::Warning::Datum>]
           attr_accessor :data
@@ -67831,7 +69402,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VmExtensionPolicyAggregatedListResponse::Warning::Datum>]
           attr_accessor :data
@@ -68049,7 +69620,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VmExtensionPolicyList::Warning::Datum>]
           attr_accessor :data
@@ -68310,7 +69881,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -68435,7 +70006,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnGatewayList::Warning::Datum>]
           attr_accessor :data
@@ -68769,7 +70340,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnGatewaysScopedList::Warning::Datum>]
           attr_accessor :data
@@ -69157,7 +70728,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnTunnelAggregatedList::Warning::Datum>]
           attr_accessor :data
@@ -69307,7 +70878,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnTunnelList::Warning::Datum>]
           attr_accessor :data
@@ -69504,7 +71075,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::VpnTunnelsScopedList::Warning::Datum>]
           attr_accessor :data
@@ -70022,7 +71593,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::WireGroupList::Warning::Datum>]
           attr_accessor :data
@@ -70264,7 +71835,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::XpnHostList::Warning::Datum>]
           attr_accessor :data
@@ -70508,7 +72079,7 @@ module Google
           # `
           # "key": "scope",
           # "value": "zones/us-east1-d"
-          # `
+          # `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::ComputeV1::ZoneList::Warning::Datum>]
           attr_accessor :data

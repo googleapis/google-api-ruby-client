@@ -1402,7 +1402,7 @@ module Google
         # Filepath that specifies the Linux network namespace this socket will be
         # created in (see ``man 7 network_namespaces``). If this field is set, Envoy
         # will create the socket in the specified network namespace. .. note:: Setting
-        # this parameter requires Envoy to run with the ``CAP_NET_ADMIN`` capability. ..
+        # this parameter requires Envoy to run with the ``CAP_SYS_ADMIN`` capability. ..
         # attention:: Network namespaces are only configurable on Linux. Otherwise, this
         # field has no effect.
         # Corresponds to the JSON property `networkNamespaceFilepath`

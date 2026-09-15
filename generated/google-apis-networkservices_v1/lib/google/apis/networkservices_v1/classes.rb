@@ -22,9 +22,103 @@ module Google
   module Apis
     module NetworkservicesV1
       
+      # AgentConnectivityTemplate represents a reusable network configuration.
+      class AgentConnectivityTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The path of the access. Maps roughly to ingress/egress,
+        # though we keep CLIENT_TO_AGENT and AGENT_TO_ANYWHERE as carryovers from Agent
+        # Gateway's original resource model. The path is immutable once set. Exactly one
+        # path can be set.
+        # Corresponds to the JSON property `accessPath`
+        # @return [String]
+        attr_accessor :access_path
+      
+        # Optional. The types of network access provided to the gateway. Both PUBLIC and
+        # PRIVATE can be configured.
+        # Corresponds to the JSON property `accessTypes`
+        # @return [Array<String>]
+        attr_accessor :access_types
+      
+        # Optional. The compute environment where the agent is hosted. Exactly one type
+        # of compute must be chosen.
+        # Corresponds to the JSON property `agentCompute`
+        # @return [String]
+        attr_accessor :agent_compute
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The deployment model for the gateway.
+        # Corresponds to the JSON property `deploymentModel`
+        # @return [String]
+        attr_accessor :deployment_model
+      
+        # Optional. A free-text description of the resource. Max length 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Configuration for egress network traffic.
+        # Corresponds to the JSON property `egressNetworkConfig`
+        # @return [Google::Apis::NetworkservicesV1::EgressNetworkConfig]
+        attr_accessor :egress_network_config
+      
+        # Optional. Etag of the resource. If this is provided, it must match the server'
+        # s etag. If the provided etag does not match the server's etag, the request
+        # will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Set of label tags associated with the AgentConnectivityTemplate
+        # resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the AgentConnectivityTemplate resource. It matches pattern
+        # `projects/*/locations/*/agentConnectivityTemplates/`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_path = args[:access_path] if args.key?(:access_path)
+          @access_types = args[:access_types] if args.key?(:access_types)
+          @agent_compute = args[:agent_compute] if args.key?(:agent_compute)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_model = args[:deployment_model] if args.key?(:deployment_model)
+          @description = args[:description] if args.key?(:description)
+          @egress_network_config = args[:egress_network_config] if args.key?(:egress_network_config)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # AgentGateway represents the agent gateway resource.
       class AgentGateway
         include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the AgentConnectivityTemplate. Format: projects/
+        # `project`/locations/`location`/agentConnectivityTemplates/`template`
+        # Corresponds to the JSON property `agentConnectivityTemplate`
+        # @return [String]
+        attr_accessor :agent_connectivity_template
       
         # AgentGatewayOutputCard contains informational output-only fields
         # Corresponds to the JSON property `agentGatewayCard`
@@ -78,7 +172,7 @@ module Google
         # Optional. A list of Agent registries containing the agents, MCP servers and
         # tools governed by the Agent Gateway. Note: Currently limited to project-scoped
         # registries Must be of format `//agentregistry.googleapis.com/projects/`project`
-        # /locations/`location`/
+        # /locations/`location`/`
         # Corresponds to the JSON property `registries`
         # @return [Array<String>]
         attr_accessor :registries
@@ -100,6 +194,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_connectivity_template = args[:agent_connectivity_template] if args.key?(:agent_connectivity_template)
           @agent_gateway_card = args[:agent_gateway_card] if args.key?(:agent_gateway_card)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -235,11 +330,6 @@ module Google
         # @return [String]
         attr_accessor :network_attachment
       
-        # TrustConfig defines the trust configuration for egress.
-        # Corresponds to the JSON property `trustConfig`
-        # @return [Google::Apis::NetworkservicesV1::AgentGatewayNetworkConfigEgressTrustConfig]
-        attr_accessor :trust_config
-      
         def initialize(**args)
            update!(**args)
         end
@@ -247,27 +337,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
-          @trust_config = args[:trust_config] if args.key?(:trust_config)
-        end
-      end
-      
-      # TrustConfig defines the trust configuration for egress.
-      class AgentGatewayNetworkConfigEgressTrustConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. PEM encoded root certificates used to validate the identity of the
-        # upstream servers/destinations during egress connections.
-        # Corresponds to the JSON property `pemCertificates`
-        # @return [Array<String>]
-        attr_accessor :pem_certificates
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pem_certificates = args[:pem_certificates] if args.key?(:pem_certificates)
         end
       end
       
@@ -282,6 +351,12 @@ module Google
         # @return [String]
         attr_accessor :resource_uri
       
+        # Optional. List of supported Google Cloud networking proxies in the Project and
+        # Location. resource_uris is mutually exclusive with resource_uri.
+        # Corresponds to the JSON property `resourceUris`
+        # @return [Array<String>]
+        attr_accessor :resource_uris
+      
         def initialize(**args)
            update!(**args)
         end
@@ -289,6 +364,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+          @resource_uris = args[:resource_uris] if args.key?(:resource_uris)
         end
       end
       
@@ -370,7 +446,7 @@ module Google
       
         # Optional. The `:authority` header in the gRPC request sent from Envoy to the
         # extension service. It is required when the `service` field points to a backend
-        # service or a wasm plugin.
+        # service.
         # Corresponds to the JSON property `authority`
         # @return [String]
         attr_accessor :authority
@@ -425,11 +501,11 @@ module Google
         attr_accessor :labels
       
         # Optional. All backend services and forwarding rules referenced by this
-        # extension must share the same load balancing scheme. Supported values: `
-        # INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for AuthzExtensions that
-        # do not reference a backend service. For more information, refer to [Backend
-        # services overview](https://cloud.google.com/load-balancing/docs/backend-
-        # service).
+        # extension must share the same load balancing scheme. The supported values are `
+        # INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. You can omit this field for `
+        # AuthzExtensions` resources that don't reference a backend service. For more
+        # information, see [Backend services overview](https://cloud.google.com/load-
+        # balancing/docs/backend-service).
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -452,12 +528,19 @@ module Google
         attr_accessor :name
       
         # Required. The reference to the service that runs the extension. To configure a
-        # callout extension, `service` must be a fully-qualified reference to a [backend
-        # service](https://cloud.google.com/compute/docs/reference/rest/v1/
-        # backendServices) in the format: `https://www.googleapis.com/compute/v1/
-        # projects/`project`/regions/`region`/backendServices/`backendService`` or `
-        # https://www.googleapis.com/compute/v1/projects/`project`/global/
-        # backendServices/`backendService``.
+        # callout extension: For global AuthzExtension, `service` must be a fully-
+        # qualified reference to a [backend service](https://cloud.google.com/compute/
+        # docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.
+        # com/compute/v1/projects/`project`/global/backendServices/`backendService``.
+        # For regional AuthzExtension, `service` must be a fully-qualified reference to
+        # one of the following: * a [backend service](https://cloud.google.com/compute/
+        # docs/reference/rest/v1/backendServices) in the format: `https://www.googleapis.
+        # com/compute/v1/projects/`project`/regions/`region`/backendServices/`
+        # backendService``. * a fully qualified domain name that can be resolved by the
+        # Google Cloud DNS. * `iap.googleapis.com` and it can only be referenced by an
+        # AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. * `modelarmor..rep.
+        # googleapis.com` and it can only be referenced by an AuthzPolicy with the
+        # policyProfile set to CONTENT_AUTHZ.
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
@@ -618,6 +701,71 @@ module Google
         end
       end
       
+      # DNS Peering configuration.
+      class DnsPeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The domain to peer.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. The target network resource name for DNS peering. Format: projects/`
+        # project`/global/networks/`network_id`
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [String]
+        attr_accessor :target_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @target_network = args[:target_network] if args.key?(:target_network)
+        end
+      end
+      
+      # 
+      class EgressNetworkConfig
+        include Google::Apis::Core::Hashable
+      
+        # DNS Peering configuration.
+        # Corresponds to the JSON property `dnsPeeringConfig`
+        # @return [Google::Apis::NetworkservicesV1::DnsPeeringConfig]
+        attr_accessor :dns_peering_config
+      
+        # Optional. The network attachment resource name. Format: projects/`project`/
+        # regions/`region`/networkAttachments/`network_attachment_id`
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        # Optional. Deprecated: Use tls_config instead. The trust config resource name.
+        # Format: projects/`project`/locations/`location`/trustConfigs/`trust_config`
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        # Optional. The VPC egress setting.
+        # Corresponds to the JSON property `vpcEgress`
+        # @return [String]
+        attr_accessor :vpc_egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
+          @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -733,14 +881,15 @@ module Google
         # @return [String]
         attr_accessor :authorization_policy
       
-        # Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can
-        # be set to specify the authentication for traffic from the proxy to the actual
-        # endpoints. More specifically, it is applied to the outgoing traffic from the
-        # proxy to the endpoint. This is typically used for sidecar model where the
-        # proxy identifies itself as endpoint to the control plane, with the connection
-        # between sidecar and endpoint requiring authentication. If this field is not
-        # set, authentication is disabled(open). Applicable only when EndpointPolicyType
-        # is SIDECAR_PROXY.
+        # Optional. Deprecated: This field is not used and is a no-op. A URL referring
+        # to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the
+        # authentication for traffic from the proxy to the actual endpoints. More
+        # specifically, it is applied to the outgoing traffic from the proxy to the
+        # endpoint. This is typically used for sidecar model where the proxy identifies
+        # itself as endpoint to the control plane, with the connection between sidecar
+        # and endpoint requiring authentication. If this field is not set,
+        # authentication is disabled(open). Applicable only when EndpointPolicyType is
+        # SIDECAR_PROXY.
         # Corresponds to the JSON property `clientTlsPolicy`
         # @return [String]
         attr_accessor :client_tls_policy
@@ -867,6 +1016,350 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # `ExtensionBinding` is a resource representing the attachment of an extension
+      # to a service.
+      class ExtensionBinding
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Etag of the resource. If provided, it must match the server's etag.
+        # If the provided etag does not match the server's etag, the request will fail
+        # with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Determines the behavior of the extension binding when the call to
+        # the extension fails or times out. Default value is `FALSE`. When set to `TRUE`,
+        # failures of the extension are silently ignored.
+        # Corresponds to the JSON property `failOpen`
+        # @return [Boolean]
+        attr_accessor :fail_open
+        alias_method :fail_open?, :fail_open
+      
+        # Optional. Set of labels associated with the `ExtensionBinding` resource. The
+        # format must comply with [the following requirements](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Optional. A list of match conditions to match against the incoming request.
+        # The extension will be invoked if at least one condition matches the request,
+        # or if no match conditions are specified. Limited to 5 conditions.
+        # Corresponds to the JSON property `matchConditions`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchCondition>]
+        attr_accessor :match_conditions
+      
+        # Identifier. Name of the `ExtensionBinding` resource in the following format: `
+        # projects/`project`/locations/`location`/extensionBindings/`extension_binding``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Priority of the extension binding. Lower numbers indicate higher
+        # priority. Priority of extension bindings are used to determine the order in
+        # which extension bindings are applied to a request.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Required. The name of the extension that this binding should attach to target
+        # resources. Format: For Google-provided extensions, specify the service
+        # endpoint (see [Model Armor integration](https://docs.cloud.google.com/model-
+        # armor/integrations))
+        # Corresponds to the JSON property `producerExtension`
+        # @return [String]
+        attr_accessor :producer_extension
+      
+        # Optional. Additional metadata that should be passed to the attached extension
+        # with each request.
+        # Corresponds to the JSON property `producerMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :producer_metadata
+      
+        # Specifies a list of targets to which this `ExtensionBinding` should attach.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingTarget]
+        attr_accessor :target
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @fail_open = args[:fail_open] if args.key?(:fail_open)
+          @labels = args[:labels] if args.key?(:labels)
+          @match_conditions = args[:match_conditions] if args.key?(:match_conditions)
+          @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
+          @producer_extension = args[:producer_extension] if args.key?(:producer_extension)
+          @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
+          @target = args[:target] if args.key?(:target)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Conditions to match against the incoming request.
+      class ExtensionBindingMatchCondition
+        include Google::Apis::Core::Hashable
+      
+        # Describes properties of one or more destinations of a request.
+        # Corresponds to the JSON property `to`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionTo]
+        attr_accessor :to
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @to = args[:to] if args.key?(:to)
+        end
+      end
+      
+      # Determines how an HTTP header should be matched.
+      class ExtensionBindingMatchConditionHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the name of the header in the request.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies matching logic for string values.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionStringMatch]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Specifies matching logic for string values.
+      class ExtensionBindingMatchConditionStringMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The input string must have the substring specified here. Note: empty
+        # contains match is not allowed, please use regex instead. Examples: * ``abc``
+        # matches the value ``xyz.abc.def``
+        # Corresponds to the JSON property `contains`
+        # @return [String]
+        attr_accessor :contains
+      
+        # Optional. The input string must match exactly the string specified here.
+        # Examples: * ``abc`` only matches the value ``abc``.
+        # Corresponds to the JSON property `exact`
+        # @return [String]
+        attr_accessor :exact
+      
+        # Optional. If true, indicates the exact/prefix/suffix/contains matching should
+        # be case insensitive. For example, the matcher ``data`` will match both input
+        # string ``Data`` and ``data`` if set to true.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # Optional. The input string must have the prefix specified here. Note: empty
+        # prefix is not allowed. Examples: * ``abc`` matches the value ``abc.xyz``
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        # Optional. The input string must have the suffix specified here. Note: empty
+        # prefix is not allowed, please use regex instead. Examples: * ``abc`` matches
+        # the value ``xyz.abc``
+        # Corresponds to the JSON property `suffix`
+        # @return [String]
+        attr_accessor :suffix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains = args[:contains] if args.key?(:contains)
+          @exact = args[:exact] if args.key?(:exact)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @prefix = args[:prefix] if args.key?(:prefix)
+          @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
+      # Describes properties of one or more destinations of a request.
+      class ExtensionBindingMatchConditionTo
+        include Google::Apis::Core::Hashable
+      
+        # Describes properties of a single destination.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionToDestination]
+        attr_accessor :destination
+      
+        # Describes properties of a single destination.
+        # Corresponds to the JSON property `notDestination`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionToDestination]
+        attr_accessor :not_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @not_destination = args[:not_destination] if args.key?(:not_destination)
+        end
+      end
+      
+      # Describes properties of a single destination.
+      class ExtensionBindingMatchConditionToDestination
+        include Google::Apis::Core::Hashable
+      
+        # Describes a set of HTTP headers to match against.
+        # Corresponds to the JSON property `headerSet`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionToDestinationHeaderSet]
+        attr_accessor :header_set
+      
+        # Optional. A list of HTTP Hosts to match against. Limited to 10 hosts. If not
+        # specified, any host is allowed. If specified, a match occurs if any of the
+        # hosts matches the host value in the request.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionStringMatch>]
+        attr_accessor :hosts
+      
+        # Optional. A list of paths to match against. Limited to 10 paths. If not
+        # specified, any path is allowed. Note that this path match includes the query
+        # parameters. For gRPC services, this should be a fully-qualified name of the
+        # form /package.service/method.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionStringMatch>]
+        attr_accessor :paths
+      
+        # Optional. A list of non-empty strings whose value is matched against the
+        # resource to which a request is sent (e.g., an Agent in AiApplication). If not
+        # specified, any resource is allowed. If specified, a match occurs if any of the
+        # resources matches the resource value in the request. Limited to 5 resources.
+        # When matching against resources in the AgentRegistry, use the URNs of the
+        # registry resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionStringMatch>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_set = args[:header_set] if args.key?(:header_set)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @paths = args[:paths] if args.key?(:paths)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # Describes a set of HTTP headers to match against.
+      class ExtensionBindingMatchConditionToDestinationHeaderSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of headers to match against in http header. If multiple
+        # header matches are provided, they will be evaluated as an AND, i.e. all header
+        # matches must match for the request to match.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionHeaderMatch>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # Specifies a list of targets to which this `ExtensionBinding` should attach.
+      class ExtensionBindingTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The reference to the target resource, to which this binding should
+        # attach. Exactly one of `resources` or `scope` must be set.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        # Specifies the scope of resources to which this binding should attach.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::NetworkservicesV1::ExtensionBindingTargetScope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
+      # Specifies the scope of resources to which this binding should attach.
+      class ExtensionBindingTargetScope
+        include Google::Apis::Core::Hashable
+      
+        # Required. Parent resource name specification, in the format: `projects/`
+        # project_number``.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Required. Type of the resource to which the binding should attach. Limited to
+        # 1 resource type.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       
@@ -2957,6 +3450,41 @@ module Google
         end
       end
       
+      # Response returned by the ListAgentConnectivityTemplates method.
+      class ListAgentConnectivityTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of AgentConnectivityTemplate resources.
+        # Corresponds to the JSON property `agentConnectivityTemplates`
+        # @return [Array<Google::Apis::NetworkservicesV1::AgentConnectivityTemplate>]
+        attr_accessor :agent_connectivity_templates
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable resources. Populated when the request attempts to
+        # list all resources across all supported locations, while some locations are
+        # temporarily unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_connectivity_templates = args[:agent_connectivity_templates] if args.key?(:agent_connectivity_templates)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListAgentGateways method.
       class ListAgentGatewaysResponse
         include Google::Apis::Core::Hashable
@@ -3053,6 +3581,42 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint_policies = args[:endpoint_policies] if args.key?(:endpoint_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response returned by the `ListExtensionBindings` method.
+      class ListExtensionBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of `ExtensionBinding` resources.
+        # Corresponds to the JSON property `extensionBindings`
+        # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBinding>]
+        attr_accessor :extension_bindings
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Unreachable resources. Populated when the request attempts to
+        # list all resources across all supported locations, while some locations are
+        # temporarily unavailable. The resource names are in the format `projects/`
+        # project`/locations/`location`/extensionBindings/`extension_binding``.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension_bindings = args[:extension_bindings] if args.key?(:extension_bindings)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
@@ -3474,6 +4038,42 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response returned by the `ListProducerExtensions` method.
+      class ListProducerExtensionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of `ProducerExtension` resources.
+        # Corresponds to the JSON property `producerExtensions`
+        # @return [Array<Google::Apis::NetworkservicesV1::ProducerExtension>]
+        attr_accessor :producer_extensions
+      
+        # Unordered list. Unreachable resources. Populated when the request attempts to
+        # list all resources across all supported locations, while some locations are
+        # temporarily unavailable. The resource names are in the format: `projects/`
+        # project`/locations/`location`/producerExtensions/`producer_extension``.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @producer_extensions = args[:producer_extensions] if args.key?(:producer_extensions)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -4318,6 +4918,112 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # `ProducerExtension` is a resource representing producer defined configuration
+      # for their service extension.
+      class ProducerExtension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Etag of the resource. If this is provided, it must match the server'
+        # s etag. If the provided etag does not match the server's etag, the request
+        # will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The configuration for the service that this `ProducerExtension` offers.
+        # Corresponds to the JSON property `extensionSettings`
+        # @return [Google::Apis::NetworkservicesV1::ProducerExtensionExtensionSettings]
+        attr_accessor :extension_settings
+      
+        # Optional. Set of labels associated with the `ProducerExtension` resource. The
+        # format must comply with [the following requirements](https://cloud.google.com/
+        # compute/docs/labeling-resources#requirements).
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the `ProducerExtension` resource in the following format: `
+        # projects/`project`/locations/`location`/producerExtensions/`producer_extension`
+        # `.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The phase in which this `ProducerExtension` should execute.
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        # Output only. The timestamp when the resource was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @extension_settings = args[:extension_settings] if args.key?(:extension_settings)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @phase = args[:phase] if args.key?(:phase)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # The configuration for the service that this `ProducerExtension` offers.
+      class ProducerExtensionExtensionSettings
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The `:authority` header in the request sent to the extension service.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        # Optional. Whether the extension should function in observability mode.
+        # Corresponds to the JSON property `observabilityMode`
+        # @return [Boolean]
+        attr_accessor :observability_mode
+        alias_method :observability_mode?, :observability_mode
+      
+        # Required. URI of the PSC attachment.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Required. The event types supported by the extension.
+        # Corresponds to the JSON property `supportedEvents`
+        # @return [Array<String>]
+        attr_accessor :supported_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
+          @observability_mode = args[:observability_mode] if args.key?(:observability_mode)
+          @service = args[:service] if args.key?(:service)
+          @supported_events = args[:supported_events] if args.key?(:supported_events)
         end
       end
       
@@ -5213,21 +5919,22 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Non-empty default. Specifies the lowest level of the plugin logs that are
-        # exported to Cloud Logging. This setting relates to the logs generated by using
-        # logging statements in your Wasm code. This field is can be set only if logging
-        # is enabled for the plugin. If the field is not provided when logging is
-        # enabled, it is set to `INFO` by default.
+        # Optional. Non-empty default. Specifies the lowest level of the plugin logs
+        # that are exported to Cloud Logging. This setting relates to the logs generated
+        # by using logging statements in your Wasm code. This field is can be set only
+        # if logging is enabled for the plugin. If the field is not provided when
+        # logging is enabled, it is set to `INFO` by default.
         # Corresponds to the JSON property `minLogLevel`
         # @return [String]
         attr_accessor :min_log_level
       
-        # Non-empty default. Configures the sampling rate of activity logs, where `1.0`
-        # means all logged activity is reported and `0.0` means no activity is reported.
-        # A floating point value between `0.0` and `1.0` indicates that a percentage of
-        # log messages is stored. The default value when logging is enabled is `1.0`.
-        # The value of the field must be between `0` and `1` (inclusive). This field can
-        # be specified only if logging is enabled for this plugin.
+        # Optional. Non-empty default. Configures the sampling rate of activity logs,
+        # where `1.0` means all logged activity is reported and `0.0` means no activity
+        # is reported. A floating point value between `0.0` and `1.0` indicates that a
+        # percentage of log messages is stored. The default value when logging is
+        # enabled is `1.0`. The value of the field must be between `0` and `1` (
+        # inclusive). This field can be specified only if logging is enabled for this
+        # plugin.
         # Corresponds to the JSON property `sampleRate`
         # @return [Float]
         attr_accessor :sample_rate

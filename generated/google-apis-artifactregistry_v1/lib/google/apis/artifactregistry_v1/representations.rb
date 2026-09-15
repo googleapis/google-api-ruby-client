@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NoCacheFetching
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NpmPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1425,6 +1431,12 @@ module Google
         end
       end
       
+      class NoCacheFetching
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class NpmPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1583,6 +1595,8 @@ module Google
       
           property :maven_repository, as: 'mavenRepository', class: Google::Apis::ArtifactregistryV1::MavenRepository, decorator: Google::Apis::ArtifactregistryV1::MavenRepository::Representation
       
+          property :no_cache, as: 'noCache', class: Google::Apis::ArtifactregistryV1::NoCacheFetching, decorator: Google::Apis::ArtifactregistryV1::NoCacheFetching::Representation
+      
           property :npm_repository, as: 'npmRepository', class: Google::Apis::ArtifactregistryV1::NpmRepository, decorator: Google::Apis::ArtifactregistryV1::NpmRepository::Representation
       
           property :python_repository, as: 'pythonRepository', class: Google::Apis::ArtifactregistryV1::PythonRepository, decorator: Google::Apis::ArtifactregistryV1::PythonRepository::Representation
@@ -1724,6 +1738,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_id, as: 'fileId'
+          property :file_type, as: 'fileType'
         end
       end
       
@@ -1746,6 +1761,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filename, as: 'filename'
           property :package_id, as: 'packageId'
+          hash :version_annotations, as: 'versionAnnotations'
           property :version_id, as: 'versionId'
         end
       end

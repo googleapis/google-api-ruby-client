@@ -163,6 +163,8 @@ module Google
         # hence the only supported value for location is `global`.
         # @param [String] name
         #   Required. The resource name of the API key to be deleted.
+        # @param [String] check_existing_usage
+        #   Optional. Defines the behavior for checking existing usage when deleting a key.
         # @param [String] etag
         #   Optional. The etag known to the client for the expected state of the key. This
         #   is to be used for optimistic concurrency.
@@ -183,11 +185,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_key(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_key(name, check_existing_usage: nil, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2/{+name}', options)
           command.response_representation = Google::Apis::ApikeysV2::Operation::Representation
           command.response_class = Google::Apis::ApikeysV2::Operation
           command.params['name'] = name unless name.nil?
+          command.query['checkExistingUsage'] = check_existing_usage unless check_existing_usage.nil?
           command.query['etag'] = etag unless etag.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -309,6 +312,8 @@ module Google
         #   keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource;
         #   hence the only supported value for location is `global`.
         # @param [Google::Apis::ApikeysV2::V2Key] v2_key_object
+        # @param [String] check_existing_usage
+        #   Optional. Defines the behavior for checking existing usage when updating a key.
         # @param [String] update_mask
         #   The field mask specifies which fields to be updated as part of this request.
         #   All other fields are ignored. Mutable fields are: `display_name`, `
@@ -333,13 +338,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_key(name, v2_key_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_key(name, v2_key_object = nil, check_existing_usage: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2/{+name}', options)
           command.request_representation = Google::Apis::ApikeysV2::V2Key::Representation
           command.request_object = v2_key_object
           command.response_representation = Google::Apis::ApikeysV2::Operation::Representation
           command.response_class = Google::Apis::ApikeysV2::Operation
           command.params['name'] = name unless name.nil?
+          command.query['checkExistingUsage'] = check_existing_usage unless check_existing_usage.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

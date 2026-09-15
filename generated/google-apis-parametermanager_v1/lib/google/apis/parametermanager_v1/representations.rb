@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTemplateVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTemplatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,7 +88,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RenderTemplateVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Template
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TemplateVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TemplateVersionPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +148,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :parameters, as: 'parameters', class: Google::Apis::ParametermanagerV1::Parameter, decorator: Google::Apis::ParametermanagerV1::Parameter::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListTemplateVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :template_versions, as: 'templateVersions', class: Google::Apis::ParametermanagerV1::TemplateVersion, decorator: Google::Apis::ParametermanagerV1::TemplateVersion::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListTemplatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :templates, as: 'templates', class: Google::Apis::ParametermanagerV1::Template, decorator: Google::Apis::ParametermanagerV1::Template::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -172,11 +228,53 @@ module Google
         end
       end
       
+      class RenderTemplateVersionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parameter_version, as: 'parameterVersion'
+          property :payload, as: 'payload', class: Google::Apis::ParametermanagerV1::TemplateVersionPayload, decorator: Google::Apis::ParametermanagerV1::TemplateVersionPayload::Representation
+      
+          property :rendered_payload, :base64 => true, as: 'renderedPayload'
+          property :template_format, as: 'templateFormat'
+          property :template_version, as: 'templateVersion'
+        end
+      end
+      
       class ResourcePolicyMember
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :iam_policy_name_principal, as: 'iamPolicyNamePrincipal'
           property :iam_policy_uid_principal, as: 'iamPolicyUidPrincipal'
+        end
+      end
+      
+      class Template
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :format, as: 'format'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TemplateVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :disabled, as: 'disabled'
+          property :name, as: 'name'
+          property :payload, as: 'payload', class: Google::Apis::ParametermanagerV1::TemplateVersionPayload, decorator: Google::Apis::ParametermanagerV1::TemplateVersionPayload::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TemplateVersionPayload
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, :base64 => true, as: 'data'
         end
       end
     end

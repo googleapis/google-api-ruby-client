@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AllowlistedDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,6 +251,12 @@ module Google
       end
       
       class ExpiryDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -467,6 +479,12 @@ module Google
       end
       
       class IsInvitableUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAllowlistedDomainsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -846,6 +864,14 @@ module Google
         end
       end
       
+      class AllowlistedDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :name, as: 'name'
+        end
+      end
+      
       class AndroidAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1215,6 +1241,14 @@ module Google
         end
       end
       
+      class ExternalId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :namespace, as: 'namespace'
+        end
+      end
+      
       class GetMembershipGraphResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1525,6 +1559,8 @@ module Google
           property :display_name, as: 'displayName'
           property :dynamic_group_metadata, as: 'dynamicGroupMetadata', class: Google::Apis::CloudidentityV1beta1::DynamicGroupMetadata, decorator: Google::Apis::CloudidentityV1beta1::DynamicGroupMetadata::Representation
       
+          collection :external_ids, as: 'externalIds', class: Google::Apis::CloudidentityV1beta1::ExternalId, decorator: Google::Apis::CloudidentityV1beta1::ExternalId::Representation
+      
           property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1beta1::EntityKey, decorator: Google::Apis::CloudidentityV1beta1::EntityKey::Representation
       
           hash :labels, as: 'labels'
@@ -1610,6 +1646,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_invitable_user, as: 'isInvitableUser'
+        end
+      end
+      
+      class ListAllowlistedDomainsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowlisted_domains, as: 'allowlistedDomains', class: Google::Apis::CloudidentityV1beta1::AllowlistedDomain, decorator: Google::Apis::CloudidentityV1beta1::AllowlistedDomain::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

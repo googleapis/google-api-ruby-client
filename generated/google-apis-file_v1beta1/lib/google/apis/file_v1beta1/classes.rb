@@ -151,6 +151,13 @@ module Google
         # @return [String]
         attr_accessor :source_instance_tier
       
+        # Optional. The resource name of the Filestore volume that the backup is created
+        # from. Should be in the format: projects/`project_id`/locations/`location_id`/
+        # volumePools/`volume_pool_id`/volumes/`volume_id`
+        # Corresponds to the JSON property `sourceVolume`
+        # @return [String]
+        attr_accessor :source_volume
+      
         # Output only. The backup state.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -192,6 +199,7 @@ module Google
           @source_file_share = args[:source_file_share] if args.key?(:source_file_share)
           @source_instance = args[:source_instance] if args.key?(:source_instance)
           @source_instance_tier = args[:source_instance_tier] if args.key?(:source_instance_tier)
+          @source_volume = args[:source_volume] if args.key?(:source_volume)
           @state = args[:state] if args.key?(:state)
           @storage_bytes = args[:storage_bytes] if args.key?(:storage_bytes)
           @tags = args[:tags] if args.key?(:tags)
@@ -391,6 +399,11 @@ module Google
         # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
         attr_accessor :nfs_export_options
       
+        # Optional configuration for restore backup operations.
+        # Corresponds to the JSON property `restoreConfig`
+        # @return [Google::Apis::FileV1beta1::RestoreConfig]
+        attr_accessor :restore_config
+      
         # The resource name of the backup, in the format `projects/`project_id`/
         # locations/`location_id`/backups/`backup_id``, that this file share has been
         # restored from.
@@ -414,6 +427,7 @@ module Google
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
           @name = args[:name] if args.key?(:name)
           @nfs_export_options = args[:nfs_export_options] if args.key?(:nfs_export_options)
+          @restore_config = args[:restore_config] if args.key?(:restore_config)
           @source_backup = args[:source_backup] if args.key?(:source_backup)
           @source_backupdr_backup = args[:source_backupdr_backup] if args.key?(:source_backupdr_backup)
         end
@@ -1368,6 +1382,71 @@ module Google
         end
       end
       
+      # ListVolumePoolsResponse is the result of ListVolumePoolsRequest.
+      class ListVolumePoolsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The token you can use to retrieve the next page of results. Not
+        # returned if there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # Unordered list. A list of volume pools in the project for the specified
+        # location.
+        # Corresponds to the JSON property `volumePools`
+        # @return [Array<Google::Apis::FileV1beta1::VolumePool>]
+        attr_accessor :volume_pools
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @volume_pools = args[:volume_pools] if args.key?(:volume_pools)
+        end
+      end
+      
+      # ListVolumesResponse is the result of ListVolumesRequest.
+      class ListVolumesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The token you can use to retrieve the next page of results. Not
+        # returned if there are no more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        # Unordered list. A list of volumes in the project for the specified volume pool.
+        # Corresponds to the JSON property `volumes`
+        # @return [Array<Google::Apis::FileV1beta1::Volume>]
+        attr_accessor :volumes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+          @volumes = args[:volumes] if args.key?(:volumes)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -1528,6 +1607,33 @@ module Google
         def update!(**args)
           @computer = args[:computer] if args.key?(:computer)
           @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
+      # Mount details for a volume.
+      class MountPoint
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The IP address of the physical Filestore instance hosting the
+        # volume.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Output only. The mount name of the volume. Must be 63 characters or less and
+        # consist of uppercase or lowercase letters, numbers, and underscores.
+        # Corresponds to the JSON property `mountName`
+        # @return [String]
+        attr_accessor :mount_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @mount_name = args[:mount_name] if args.key?(:mount_name)
         end
       end
       
@@ -1907,6 +2013,15 @@ module Google
         # @return [String]
         attr_accessor :endpoint_project
       
+        # Optional. Immutable. Optional: The desired IP address for the instance. If not
+        # specified, an IP will be automatically allocated. The IP must be from the
+        # subnetwork range configured in the Service Connection Policy. This effective
+        # ip address is set in the ip_addresses field. use 3 instead of 2 to avoid
+        # conflict with the reserved_ip_range field.
+        # Corresponds to the JSON property `requestedIpAddress`
+        # @return [String]
+        attr_accessor :requested_ip_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1914,6 +2029,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
+          @requested_ip_address = args[:requested_ip_address] if args.key?(:requested_ip_address)
         end
       end
       
@@ -2025,6 +2141,28 @@ module Google
         def update!(**args)
           @replicas = args[:replicas] if args.key?(:replicas)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Optional configuration for restore backup operations.
+      class RestoreConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path
+        # pattern must be `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`,
+        # the path pattern must be `/dir1`. Currently only single path is supported,
+        # Glob patterns are not supported.
+        # Corresponds to the JSON property `pathPatterns`
+        # @return [Array<String>]
+        attr_accessor :path_patterns
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path_patterns = args[:path_patterns] if args.key?(:path_patterns)
         end
       end
       
@@ -2144,11 +2282,18 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
-        # Must be greater than 0.
+        # Optional. File share capacity in gigabytes (GB). Filestore defines 1 GB as
+        # 1024^3 bytes. Must be greater than 0. Exactly one of capacity_gb or
+        # capacity_mb must be specified.
         # Corresponds to the JSON property `capacityGb`
         # @return [Fixnum]
         attr_accessor :capacity_gb
+      
+        # Optional. File share capacity in Megabytes (MB). Must be greater than 0.
+        # Exactly one of capacity_gb or capacity_mb must be specified.
+        # Corresponds to the JSON property `capacityMb`
+        # @return [Fixnum]
+        attr_accessor :capacity_mb
       
         # Output only. The time when the share was created.
         # Corresponds to the JSON property `createTime`
@@ -2196,6 +2341,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @capacity_gb = args[:capacity_gb] if args.key?(:capacity_gb)
+          @capacity_mb = args[:capacity_mb] if args.key?(:capacity_mb)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @labels = args[:labels] if args.key?(:labels)
@@ -2385,6 +2531,114 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @deny_maintenance_periods = args[:deny_maintenance_periods] if args.key?(:deny_maintenance_periods)
           @window = args[:window] if args.key?(:window)
+        end
+      end
+      
+      # Volume representation of a Cloud Filestore volume.
+      class Volume
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the volume was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of the volume with 2048 characters or less. Requests
+        # with longer descriptions will be rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Mount details for a volume.
+        # Corresponds to the JSON property `mountPoint`
+        # @return [Google::Apis::FileV1beta1::MountPoint]
+        attr_accessor :mount_point
+      
+        # Identifier. The resource name of the volume, in the format `projects/`project`/
+        # locations/`location`/volumePools/`volume_pool`/volumes/`volume``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @mount_point = args[:mount_point] if args.key?(:mount_point)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # VolumePool representation of a Cloud Filestore volume pool.
+      class VolumePool
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of IOPs provisioned per active volume.
+        # Corresponds to the JSON property `activeVolumeIops`
+        # @return [Fixnum]
+        attr_accessor :active_volume_iops
+      
+        # Output only. The time when the volume pool was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The default quota per volume in MiB. Default: 1024 MiB.
+        # Corresponds to the JSON property `defaultVolumeQuotaMib`
+        # @return [Fixnum]
+        attr_accessor :default_volume_quota_mib
+      
+        # Optional. A description of the volume pool with 2048 characters or less.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Resource labels to represent user provided metadata.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the volume pool, in the format `projects/`
+        # project`/locations/`location`/volumePools/`volume_pool``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The VPC network to which the VolumePool should be attached. Only
+        # Private Service Connect (PSC) is supported.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. System-assigned unique identifier for the volume pool.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active_volume_iops = args[:active_volume_iops] if args.key?(:active_volume_iops)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @default_volume_quota_mib = args[:default_volume_quota_mib] if args.key?(:default_volume_quota_mib)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

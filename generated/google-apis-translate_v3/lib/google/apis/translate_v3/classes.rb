@@ -191,6 +191,11 @@ module Google
         # @return [Google::Apis::TranslateV3::GlossaryConfig]
         attr_accessor :glossary_config
       
+        # The format of the source text. Currently only text/plain is supported.
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
         # Message of caller-provided reference configuration.
         # Corresponds to the JSON property `referenceSentenceConfig`
         # @return [Google::Apis::TranslateV3::ReferenceSentenceConfig]
@@ -205,6 +210,7 @@ module Google
           @content = args[:content] if args.key?(:content)
           @dataset = args[:dataset] if args.key?(:dataset)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
           @reference_sentence_config = args[:reference_sentence_config] if args.key?(:reference_sentence_config)
         end
       end

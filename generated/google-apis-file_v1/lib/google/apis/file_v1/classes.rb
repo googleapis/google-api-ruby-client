@@ -1754,6 +1754,15 @@ module Google
         # @return [String]
         attr_accessor :endpoint_project
       
+        # Optional. Immutable. Optional: The desired IP address for the instance. If not
+        # specified, an IP will be automatically allocated. The IP must be from the
+        # subnetwork range configured in the Service Connection Policy. This effective
+        # ip address is set in the ip_addresses field. use 3 instead of 2 to avoid
+        # conflict with the reserved_ip_range field.
+        # Corresponds to the JSON property `requestedIpAddress`
+        # @return [String]
+        attr_accessor :requested_ip_address
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1761,6 +1770,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @endpoint_project = args[:endpoint_project] if args.key?(:endpoint_project)
+          @requested_ip_address = args[:requested_ip_address] if args.key?(:requested_ip_address)
         end
       end
       

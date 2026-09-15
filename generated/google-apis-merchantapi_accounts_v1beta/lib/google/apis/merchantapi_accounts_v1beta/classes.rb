@@ -3353,8 +3353,8 @@ module Google
       # com/merchants/answer/13889434) program, which enables products from a business'
       # s store to be shown across Google for free. The following list is the
       # available set of program resource IDs accessible through the API: * `checkout`
-      # * `free-listings` * `product-ratings` * `shopping-ads` * `youtube-affiliate` *
-      # `youtube-shopping-checkout`
+      # * `free-listings` * `product-ratings` * `shopping-ads` * `ucp-integration` (
+      # limited access) * `youtube-affiliate` * `youtube-shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       

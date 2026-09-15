@@ -166,7 +166,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FieldWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GcpWrappedKeyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleUserIdData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -226,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IngestGoogleUserIdDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IngestMobileDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -233,6 +251,12 @@ module Google
       end
       
       class IngestPairDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestPartnerProvidedIdDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartnerProvidedIdData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PpidData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +419,24 @@ module Google
       end
       
       class PseudonymousIdInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAllAudienceMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAllAudienceMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveAllAudienceMembersStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveGoogleUserIdDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RemoveMobileDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -425,6 +479,12 @@ module Google
       end
       
       class RemovePairDataStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemovePartnerProvidedIdDataStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -655,6 +715,9 @@ module Google
       class AddressInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_line, as: 'addressLine'
+          property :administrative_area, as: 'administrativeArea'
+          property :city, as: 'city'
           property :family_name, as: 'familyName'
           property :given_name, as: 'givenName'
           property :postal_code, as: 'postalCode'
@@ -670,9 +733,13 @@ module Google
           property :consent, as: 'consent', class: Google::Apis::DatamanagerV1::Consent, decorator: Google::Apis::DatamanagerV1::Consent::Representation
       
           collection :destination_references, as: 'destinationReferences'
+          property :google_user_id_data, as: 'googleUserIdData', class: Google::Apis::DatamanagerV1::GoogleUserIdData, decorator: Google::Apis::DatamanagerV1::GoogleUserIdData::Representation
+      
           property :mobile_data, as: 'mobileData', class: Google::Apis::DatamanagerV1::MobileData, decorator: Google::Apis::DatamanagerV1::MobileData::Representation
       
           property :pair_data, as: 'pairData', class: Google::Apis::DatamanagerV1::PairData, decorator: Google::Apis::DatamanagerV1::PairData::Representation
+      
+          property :partner_provided_id_data, as: 'partnerProvidedIdData', class: Google::Apis::DatamanagerV1::PartnerProvidedIdData, decorator: Google::Apis::DatamanagerV1::PartnerProvidedIdData::Representation
       
           property :ppid_data, as: 'ppidData', class: Google::Apis::DatamanagerV1::PpidData, decorator: Google::Apis::DatamanagerV1::PpidData::Representation
       
@@ -909,6 +976,15 @@ module Google
         end
       end
       
+      class FieldWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :field, as: 'field'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class GcpWrappedKeyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -916,6 +992,13 @@ module Google
           property :kek_uri, as: 'kekUri'
           property :key_type, as: 'keyType'
           property :wip_provider, as: 'wipProvider'
+        end
+      end
+      
+      class GoogleUserIdData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :google_user_ids, as: 'googleUserIds'
         end
       end
       
@@ -957,6 +1040,8 @@ module Google
       class IngestAudienceMembersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_warnings, as: 'fieldWarnings', class: Google::Apis::DatamanagerV1::FieldWarning, decorator: Google::Apis::DatamanagerV1::FieldWarning::Representation
+      
           property :request_id, as: 'requestId'
         end
       end
@@ -966,9 +1051,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :composite_data_ingestion_status, as: 'compositeDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::IngestCompositeDataStatus::Representation
       
+          property :google_user_id_data_ingestion_status, as: 'googleUserIdDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestGoogleUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::IngestGoogleUserIdDataStatus::Representation
+      
           property :mobile_data_ingestion_status, as: 'mobileDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestMobileDataStatus, decorator: Google::Apis::DatamanagerV1::IngestMobileDataStatus::Representation
       
           property :pair_data_ingestion_status, as: 'pairDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPairDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPairDataStatus::Representation
+      
+          property :partner_provided_id_data_ingestion_status, as: 'partnerProvidedIdDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPartnerProvidedIdDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPartnerProvidedIdDataStatus::Representation
       
           property :ppid_data_ingestion_status, as: 'ppidDataIngestionStatus', class: Google::Apis::DatamanagerV1::IngestPpidDataStatus, decorator: Google::Apis::DatamanagerV1::IngestPpidDataStatus::Representation
       
@@ -1008,6 +1097,8 @@ module Google
       class IngestEventsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_warnings, as: 'fieldWarnings', class: Google::Apis::DatamanagerV1::FieldWarning, decorator: Google::Apis::DatamanagerV1::FieldWarning::Representation
+      
           property :request_id, as: 'requestId'
         end
       end
@@ -1015,6 +1106,14 @@ module Google
       class IngestEventsStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestGoogleUserIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_user_id_count, :numeric_string => true, as: 'googleUserIdCount'
           property :record_count, :numeric_string => true, as: 'recordCount'
         end
       end
@@ -1031,6 +1130,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pair_id_count, :numeric_string => true, as: 'pairIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class IngestPartnerProvidedIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_provided_id_count, :numeric_string => true, as: 'partnerProvidedIdCount'
           property :record_count, :numeric_string => true, as: 'recordCount'
         end
       end
@@ -1261,6 +1368,13 @@ module Google
         end
       end
       
+      class PartnerProvidedIdData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partner_provided_ids, as: 'partnerProvidedIds'
+        end
+      end
+      
       class PpidData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1282,6 +1396,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billable_record_count, :numeric_string => true, as: 'billableRecordCount'
           property :sync_status, as: 'syncStatus'
+        end
+      end
+      
+      class RemoveAllAudienceMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :remove_as_of_time, as: 'removeAsOfTime'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RemoveAllAudienceMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
+      class RemoveAllAudienceMembersStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1311,9 +1448,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :composite_data_removal_status, as: 'compositeDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveCompositeDataStatus::Representation
       
+          property :google_user_id_data_removal_status, as: 'googleUserIdDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveGoogleUserIdDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveGoogleUserIdDataStatus::Representation
+      
           property :mobile_data_removal_status, as: 'mobileDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemoveMobileDataStatus, decorator: Google::Apis::DatamanagerV1::RemoveMobileDataStatus::Representation
       
           property :pair_data_removal_status, as: 'pairDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePairDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePairDataStatus::Representation
+      
+          property :partner_provided_id_data_removal_status, as: 'partnerProvidedIdDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePartnerProvidedIdDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePartnerProvidedIdDataStatus::Representation
       
           property :ppid_data_removal_status, as: 'ppidDataRemovalStatus', class: Google::Apis::DatamanagerV1::RemovePpidDataStatus, decorator: Google::Apis::DatamanagerV1::RemovePpidDataStatus::Representation
       
@@ -1333,6 +1474,14 @@ module Google
         end
       end
       
+      class RemoveGoogleUserIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_user_id_count, :numeric_string => true, as: 'googleUserIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
       class RemoveMobileDataStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1345,6 +1494,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :pair_id_count, :numeric_string => true, as: 'pairIdCount'
+          property :record_count, :numeric_string => true, as: 'recordCount'
+        end
+      end
+      
+      class RemovePartnerProvidedIdDataStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :partner_provided_id_count, :numeric_string => true, as: 'partnerProvidedIdCount'
           property :record_count, :numeric_string => true, as: 'recordCount'
         end
       end
@@ -1385,6 +1542,8 @@ module Google
           property :error_info, as: 'errorInfo', class: Google::Apis::DatamanagerV1::ErrorInfo, decorator: Google::Apis::DatamanagerV1::ErrorInfo::Representation
       
           property :events_ingestion_status, as: 'eventsIngestionStatus', class: Google::Apis::DatamanagerV1::IngestEventsStatus, decorator: Google::Apis::DatamanagerV1::IngestEventsStatus::Representation
+      
+          property :remove_all_audience_members_status, as: 'removeAllAudienceMembersStatus', class: Google::Apis::DatamanagerV1::RemoveAllAudienceMembersStatus, decorator: Google::Apis::DatamanagerV1::RemoveAllAudienceMembersStatus::Representation
       
           property :request_status, as: 'requestStatus'
           property :warning_info, as: 'warningInfo', class: Google::Apis::DatamanagerV1::WarningInfo, decorator: Google::Apis::DatamanagerV1::WarningInfo::Representation

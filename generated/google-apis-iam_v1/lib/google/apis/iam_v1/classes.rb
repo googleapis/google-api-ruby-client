@@ -493,28 +493,12 @@ module Google
       class DisableServiceAccountKeyRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Usable by internal google services only. An extended_status_message
-        # can be used to include additional information about the key, such as its
-        # private key data being exposed on a public repository like GitHub.
-        # Corresponds to the JSON property `extendedStatusMessage`
-        # @return [String]
-        attr_accessor :extended_status_message
-      
-        # Optional. Describes the reason this key is being disabled. If unspecified, the
-        # default value of SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be
-        # used.
-        # Corresponds to the JSON property `serviceAccountKeyDisableReason`
-        # @return [String]
-        attr_accessor :service_account_key_disable_reason
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @extended_status_message = args[:extended_status_message] if args.key?(:extended_status_message)
-          @service_account_key_disable_reason = args[:service_account_key_disable_reason] if args.key?(:service_account_key_disable_reason)
         end
       end
       
@@ -1792,7 +1776,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_audiences
       
-        # Required. The OIDC issuer URL. Must be an HTTPS endpoint. Per OpenID Connect
+        # Required. The OIDC `issuer_uri`. Must be an HTTPS endpoint. Per OpenID Connect
         # Discovery 1.0 spec, the OIDC issuer URL is used to locate the provider's
         # public keys (via `jwks_uri`) for verifying tokens like the OIDC ID token.
         # These public key types must be 'EC' or 'RSA'.
@@ -2607,20 +2591,22 @@ module Google
       end
       
       # Represents a service account key. A service account has two sets of key-pairs:
-      # user-managed, and system-managed. User-managed key-pairs can be created and
-      # deleted by users. Users are responsible for rotating these keys periodically
-      # to ensure security of their service accounts. Users retain the private key of
-      # these key-pairs, and Google retains ONLY the public key. System-managed keys
-      # are automatically rotated by Google, and are used for signing for a maximum of
-      # two weeks. The rotation process is probabilistic, and usage of the new key
-      # will gradually ramp up and down over the key's lifetime. If you cache the
-      # public key set for a service account, we recommend that you update the cache
-      # every 15 minutes. User-managed keys can be added and removed at any time, so
-      # it is important to update the cache frequently. For Google-managed keys,
-      # Google will publish a key at least 6 hours before it is first used for signing
-      # and will keep publishing it for at least 6 hours after it was last used for
-      # signing. Public keys for all service accounts are also published at the OAuth2
-      # Service Account API.
+      # user-managed and system-managed. System-managed keys are also called _Google-
+      # owned and managed keys_. User-managed key-pairs can be created and deleted by
+      # users. Users are responsible for rotating these keys periodically to ensure
+      # security of their service accounts. Users retain the private key of these key-
+      # pairs, and Google retains ONLY the public key. System-managed keys that are
+      # actively used for signing are rotated regularly according to [security best
+      # practices](https://docs.cloud.google.com/iam/docs/key-rotation#timing). The
+      # rotation process is probabilistic, and usage of the new key will gradually
+      # ramp up and down over the key's lifetime. If you cache the public key set for
+      # a service account, we recommend that you update the cache every 15 minutes.
+      # User-managed keys can be added and removed at any time, so it is important to
+      # update the cache frequently. For Google-managed keys, Google will publish a
+      # key at least 6 hours before it is first used for signing and will keep
+      # publishing it for at least 6 hours after it was last used for signing. Public
+      # keys for all service accounts are also published at the OAuth2 Service Account
+      # API.
       class ServiceAccountKey
         include Google::Apis::Core::Hashable
       

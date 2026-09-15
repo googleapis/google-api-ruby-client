@@ -325,6 +325,11 @@ module Google
         # @return [String]
         attr_accessor :execution_reason
       
+        # Output only. A reason for the instance condition.
+        # Corresponds to the JSON property `instanceReason`
+        # @return [String]
+        attr_accessor :instance_reason
+      
         # Last time the condition transitioned from one status to another.
         # Corresponds to the JSON property `lastTransitionTime`
         # @return [String]
@@ -370,6 +375,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @execution_reason = args[:execution_reason] if args.key?(:execution_reason)
+          @instance_reason = args[:instance_reason] if args.key?(:instance_reason)
           @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
           @message = args[:message] if args.key?(:message)
           @reason = args[:reason] if args.key?(:reason)
@@ -1005,6 +1011,13 @@ module Google
         # @return [String]
         attr_accessor :client_version
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -1050,6 +1063,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @labels = args[:labels] if args.key?(:labels)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -2223,6 +2237,13 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride>]
         attr_accessor :container_overrides
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Optional. The desired number of tasks the execution should run. Will replace
         # existing task_count value.
         # Corresponds to the JSON property `taskCount`
@@ -2243,6 +2264,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @task_count = args[:task_count] if args.key?(:task_count)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -2632,7 +2654,7 @@ module Google
         attr_accessor :concurrency_utilization
       
         # Optional. Determines a threshold for CPU utilization before scaling begins.
-        # Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable
+        # Accepted values are between `0.1` and `0.90` (inclusive) or `0.0` to disable
         # CPU utilization as threshold for scaling. CPU and concurrency scaling cannot
         # both be disabled.
         # Corresponds to the JSON property `cpuUtilization`
@@ -3188,6 +3210,12 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2ServiceScaling]
         attr_accessor :scaling
       
+        # Optional. Enables SSH access to the Service.
+        # Corresponds to the JSON property `sshEnabled`
+        # @return [Boolean]
+        attr_accessor :ssh_enabled
+        alias_method :ssh_enabled?, :ssh_enabled
+      
         # RevisionTemplate describes the data a revision should have when created from a
         # template.
         # Corresponds to the JSON property `template`
@@ -3276,6 +3304,7 @@ module Google
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
+          @ssh_enabled = args[:ssh_enabled] if args.key?(:ssh_enabled)
           @template = args[:template] if args.key?(:template)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @threat_detection_enabled = args[:threat_detection_enabled] if args.key?(:threat_detection_enabled)
@@ -4085,6 +4114,44 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The request message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of Cloud Run Service upload source archive will be used for.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # The response message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage source.
+        # Corresponds to the JSON property `cloudStorageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
+        attr_accessor :cloud_storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
         end
       end
       
@@ -5817,6 +5884,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -5841,6 +5916,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)

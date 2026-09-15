@@ -165,6 +165,21 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::AdvertiserDataAccessConfig]
         attr_accessor :data_access_config
       
+        # Optional. The default business name for the advertiser. This is the value used
+        # by YouTube and Demand Gen ads under this advertiser if a business name is not
+        # provided.
+        # Corresponds to the JSON property `defaultBusinessName`
+        # @return [String]
+        attr_accessor :default_business_name
+      
+        # Optional. The asset ID of the default logo image for the advertiser. This is
+        # the asset ID that will be used by YouTube and Demand ads under this advertiser
+        # if a logo asset is not provided. You must use advertisers.adAssets.upload to
+        # upload this asset using the API.
+        # Corresponds to the JSON property `defaultLogoAssetId`
+        # @return [Fixnum]
+        attr_accessor :default_logo_asset_id
+      
         # Required. The display name of the advertiser. Must be UTF-8 encoded with a
         # maximum size of 240 bytes.
         # Corresponds to the JSON property `displayName`
@@ -234,6 +249,8 @@ module Google
           @contains_eu_political_ads = args[:contains_eu_political_ads] if args.key?(:contains_eu_political_ads)
           @creative_config = args[:creative_config] if args.key?(:creative_config)
           @data_access_config = args[:data_access_config] if args.key?(:data_access_config)
+          @default_business_name = args[:default_business_name] if args.key?(:default_business_name)
+          @default_logo_asset_id = args[:default_logo_asset_id] if args.key?(:default_logo_asset_id)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_status = args[:entity_status] if args.key?(:entity_status)
           @general_config = args[:general_config] if args.key?(:general_config)
@@ -3357,9 +3374,7 @@ module Google
         # attribution model will determine how conversions are counted. The Primary
         # model can be set by you for a floodlight config or group. More details [here](
         # https://support.google.com/displayvideo/answer/7409983). Only applicable to
-        # Demand Gen line items. Retrieval and management of Demand Gen resources is
-        # currently rolling out. This field will be available to all partners by *June
-        # 24, 2026*.
+        # Demand Gen line items.
         # Corresponds to the JSON property `primaryAttributionModelId`
         # @return [Fixnum]
         attr_accessor :primary_attribution_model_id
@@ -3799,6 +3814,12 @@ module Google
         attr_accessor :skippable
         alias_method :skippable?, :skippable
       
+        # Optional. Whether to add a label to the creative as created or edited using AI
+        # when served in regions with local AI labeling regulations.
+        # Corresponds to the JSON property `syntheticContentAttestationStatus`
+        # @return [String]
+        attr_accessor :synthetic_content_attestation_status
+      
         # Optional. The original third-party tag used for the creative. Required and
         # only valid for third-party tag creatives. Third-party tag creatives are
         # creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY`
@@ -3922,6 +3943,7 @@ module Google
           @review_status = args[:review_status] if args.key?(:review_status)
           @skip_offset = args[:skip_offset] if args.key?(:skip_offset)
           @skippable = args[:skippable] if args.key?(:skippable)
+          @synthetic_content_attestation_status = args[:synthetic_content_attestation_status] if args.key?(:synthetic_content_attestation_status)
           @third_party_tag = args[:third_party_tag] if args.key?(:third_party_tag)
           @third_party_urls = args[:third_party_urls] if args.key?(:third_party_urls)
           @timer_events = args[:timer_events] if args.key?(:timer_events)
@@ -4597,7 +4619,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The display name of the digital content label rating tier to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept the
+        # value `CONTENT_RATING_TIER_UNRATED`. All other values will be deprecated and
+        # no longer be accepted.**
         # Corresponds to the JSON property `excludedContentRatingTier`
         # @return [String]
         attr_accessor :excluded_content_rating_tier
@@ -9805,7 +9829,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. An enum for the DV360 Sensitive category content classified to be
-        # EXCLUDED.
+        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept `
+        # SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
+        # . All other values will be deprecated and no longer be accepted.**
         # Corresponds to the JSON property `excludedSensitiveCategory`
         # @return [String]
         attr_accessor :excluded_sensitive_category
@@ -10012,9 +10038,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Whether to exclude demographic expansion for Optimized Targeting.
-        # This field can only be set for Demand Gen ad groups. Retrieval and management
-        # of Demand Gen resources is currently rolling out. This field will be available
-        # to all partners by *June 24, 2026*.
+        # This field can only be set for Demand Gen ad groups.
         # Corresponds to the JSON property `excludeDemographicExpansion`
         # @return [Boolean]
         attr_accessor :exclude_demographic_expansion
@@ -10356,7 +10380,7 @@ module Google
         # Optional. The third-party vendors measuring brand lift. The following third-
         # party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `
         # THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `
-        # THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        # THIRD_PARTY_VENDOR_MACROMILL`
         # Corresponds to the JSON property `brandLiftVendorConfigs`
         # @return [Array<Google::Apis::DisplayvideoV2::ThirdPartyVendorConfig>]
         attr_accessor :brand_lift_vendor_configs

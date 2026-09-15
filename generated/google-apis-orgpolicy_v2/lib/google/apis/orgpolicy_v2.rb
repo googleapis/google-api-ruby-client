@@ -32,6 +32,12 @@ module Google
 
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # See, edit, configure, and delete your Google Cloud Organization Policy data and see the email address for your Google Account
+      AUTH_ORGANIZATIONPOLICY = 'https://www.googleapis.com/auth/organizationpolicy'
+
+      # See your Google Cloud Organization Policy data and the email address of your Google Account
+      AUTH_ORGANIZATIONPOLICY_READONLY = 'https://www.googleapis.com/auth/organizationpolicy.readonly'
     end
   end
 end

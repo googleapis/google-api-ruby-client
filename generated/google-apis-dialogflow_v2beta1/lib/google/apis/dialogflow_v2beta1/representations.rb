@@ -3400,6 +3400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ProbeDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1QueryInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3622,6 +3628,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SipHostname
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1SipTrunk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3641,6 +3659,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SpeechToTextConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4467,6 +4491,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3AdvancedSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3AdvancedSettings::Representation
       
+          property :code_block_function, as: 'codeBlockFunction'
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
@@ -5532,6 +5557,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :advanced_settings, as: 'advancedSettings', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1AdvancedSettings::Representation
       
+          property :code_block_function, as: 'codeBlockFunction'
           collection :conditional_cases, as: 'conditionalCases', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases::Representation
       
           property :enable_generative_fallback, as: 'enableGenerativeFallback'
@@ -7194,6 +7220,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidates_token_count, as: 'candidatesTokenCount'
           property :prompt_token_count, as: 'promptTokenCount'
+          property :similarity_to_last_query, as: 'similarityToLastQuery'
+          property :similarity_to_last_query_threshold, as: 'similarityToLastQueryThreshold'
+          property :thinking_budget_tokens, as: 'thinkingBudgetTokens'
+          property :thinking_level, as: 'thinkingLevel'
           property :total_token_count, as: 'totalTokenCount'
         end
       end
@@ -7478,6 +7508,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :retryable, as: 'retryable'
         end
       end
       
@@ -8955,7 +8986,10 @@ module Google
           property :default_no_speech_timeout, as: 'defaultNoSpeechTimeout'
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
+          property :enable_voice_activity_events, as: 'enableVoiceActivityEvents'
           property :enable_word_info, as: 'enableWordInfo'
+          property :gemini_asr_config, as: 'geminiAsrConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig::Representation
+      
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
@@ -8966,6 +9000,7 @@ module Google
           property :single_utterance, as: 'singleUtterance'
           collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext::Representation
       
+          property :use_gemini_asr, as: 'useGeminiAsr'
         end
       end
       
@@ -9644,6 +9679,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :candidates_token_count, as: 'candidatesTokenCount'
           property :prompt_token_count, as: 'promptTokenCount'
+          property :similarity_to_last_query, as: 'similarityToLastQuery'
+          property :similarity_to_last_query_threshold, as: 'similarityToLastQueryThreshold'
+          property :thinking_budget_tokens, as: 'thinkingBudgetTokens'
+          property :thinking_level, as: 'thinkingLevel'
           property :total_token_count, as: 'totalTokenCount'
         end
       end
@@ -9952,6 +9991,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ProbeDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :init_time, as: 'initTime'
+          property :options_latency, as: 'optionsLatency'
+          property :probe_status, as: 'probeStatus'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1QueryInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10144,6 +10192,7 @@ module Google
       class GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :ces_debug_info, as: 'cesDebugInfo'
           property :datastore_response_reason, as: 'datastoreResponseReason'
           property :ingested_context_reference_debug_info, as: 'ingestedContextReferenceDebugInfo', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IngestedContextReferenceDebugInfo::Representation
       
@@ -10339,6 +10388,29 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1SipHostname
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_state, as: 'connectionState'
+          property :enabled_sip_ping, as: 'enabledSipPing'
+          property :error_details, as: 'errorDetails', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails::Representation
+      
+          property :peer_hostname, as: 'peerHostname'
+          property :peer_socket_address, as: 'peerSocketAddress'
+          property :ping_interval, as: 'pingInterval'
+          property :probe_details, as: 'probeDetails', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ProbeDetails, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ProbeDetails::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_state, as: 'certificateState'
+          property :error_message, as: 'errorMessage'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1SipTrunk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10346,7 +10418,10 @@ module Google
       
           property :display_name, as: 'displayName'
           collection :expected_hostname, as: 'expectedHostname'
+          property :google_root_cert_file, as: 'googleRootCertFile'
           property :name, as: 'name'
+          collection :peer_hostnames, as: 'peerHostnames', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SipHostname, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SipHostname::Representation
+      
         end
       end
       
@@ -10372,12 +10447,26 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
           property :enable_word_info, as: 'enableWordInfo'
+          property :gemini_asr_config, as: 'geminiAsrConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig::Representation
+      
           property :language_code, as: 'languageCode'
           property :model, as: 'model'
           collection :phrase_sets, as: 'phraseSets'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :speech_model_variant, as: 'speechModelVariant'
+          property :use_gemini_asr, as: 'useGeminiAsr'
           property :use_timeout_based_endpointing, as: 'useTimeoutBasedEndpointing'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_speech_sensitivity, as: 'endOfSpeechSensitivity'
+          property :model_id, as: 'modelId'
+          property :prefix_padding_ms, as: 'prefixPaddingMs'
+          property :silence_duration_ms, as: 'silenceDurationMs'
+          property :start_of_speech_sensitivity, as: 'startOfSpeechSensitivity'
         end
       end
       
@@ -10968,6 +11057,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          property :retryable, as: 'retryable'
         end
       end
       

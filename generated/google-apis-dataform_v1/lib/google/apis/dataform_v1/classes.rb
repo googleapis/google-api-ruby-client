@@ -409,6 +409,11 @@ module Google
         # @return [String]
         attr_accessor :default_schema
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         # Optional. The suffix that should be appended to all schema (BigQuery dataset
         # ID) names.
         # Corresponds to the JSON property `schemaSuffix`
@@ -439,6 +444,7 @@ module Google
           @default_location = args[:default_location] if args.key?(:default_location)
           @default_notebook_runtime_options = args[:default_notebook_runtime_options] if args.key?(:default_notebook_runtime_options)
           @default_schema = args[:default_schema] if args.key?(:default_schema)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
           @schema_suffix = args[:schema_suffix] if args.key?(:schema_suffix)
           @table_prefix = args[:table_prefix] if args.key?(:table_prefix)
           @vars = args[:vars] if args.key?(:vars)
@@ -730,6 +736,11 @@ module Google
         # @return [String]
         attr_accessor :dataform_core_version
       
+        # Metadata about a repository snapshot stored in Google Cloud Storage.
+        # Corresponds to the JSON property `gcsRepositorySnapshotMetadata`
+        # @return [Google::Apis::DataformV1::GcsRepositorySnapshotMetadata]
+        attr_accessor :gcs_repository_snapshot_metadata
+      
         # Immutable. Git commit/tag/branch name at which the repository should be
         # compiled. Must exist in the remote repository. Examples: - a commit SHA: `
         # 12ade345` - a tag: `tag1` - a branch name: `branch1`
@@ -783,6 +794,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @dataform_core_version = args[:dataform_core_version] if args.key?(:dataform_core_version)
+          @gcs_repository_snapshot_metadata = args[:gcs_repository_snapshot_metadata] if args.key?(:gcs_repository_snapshot_metadata)
           @git_commitish = args[:git_commitish] if args.key?(:git_commitish)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @name = args[:name] if args.key?(:name)
@@ -1532,6 +1544,59 @@ module Google
         end
       end
       
+      # Configures the destination for a repository snapshot.
+      class GcsRepositorySnapshotDestination
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Google Cloud Storage destination to upload the repository
+        # snapshot to. Format: `gs://bucket-name/path/`.
+        # Corresponds to the JSON property `repositorySnapshotUri`
+        # @return [String]
+        attr_accessor :repository_snapshot_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @repository_snapshot_uri = args[:repository_snapshot_uri] if args.key?(:repository_snapshot_uri)
+        end
+      end
+      
+      # Metadata about a repository snapshot stored in Google Cloud Storage.
+      class GcsRepositorySnapshotMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The crc32c checksum of the repository snapshot, big-endian base64
+        # encoded.
+        # Corresponds to the JSON property `crc32cChecksum`
+        # @return [String]
+        attr_accessor :crc32c_checksum
+      
+        # Output only. The generation number of the Cloud Storage object. See https://
+        # cloud.google.com/storage/docs/metadata#generation-number.
+        # Corresponds to the JSON property `generation`
+        # @return [Fixnum]
+        attr_accessor :generation
+      
+        # Output only. The Google Cloud Storage URI of the repository snapshot.
+        # Corresponds to the JSON property `repositorySnapshotUri`
+        # @return [String]
+        attr_accessor :repository_snapshot_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crc32c_checksum = args[:crc32c_checksum] if args.key?(:crc32c_checksum)
+          @generation = args[:generation] if args.key?(:generation)
+          @repository_snapshot_uri = args[:repository_snapshot_uri] if args.key?(:repository_snapshot_uri)
+        end
+      end
+      
       # Controls Git remote configuration for a repository.
       class GitRemoteSettings
         include Google::Apis::Core::Hashable
@@ -1703,12 +1768,18 @@ module Google
       class InstallNpmPackagesRequest
         include Google::Apis::Core::Hashable
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
         end
       end
       
@@ -2355,6 +2426,11 @@ module Google
         # @return [String]
         attr_accessor :contents
       
+        # Output only. The path to the notebook file in the repository.
+        # Corresponds to the JSON property `filePath`
+        # @return [String]
+        attr_accessor :file_path
+      
         # Output only. The ID of the Gemini Enterprise Agent Platform job that executed
         # the notebook in contents and also the ID used for the outputs created in
         # Google Cloud Storage buckets. Only set once the job has started to run.
@@ -2369,6 +2445,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
+          @file_path = args[:file_path] if args.key?(:file_path)
           @job_id = args[:job_id] if args.key?(:job_id)
         end
       end
@@ -2391,6 +2468,11 @@ module Google
         # @return [String]
         attr_accessor :gcs_output_bucket
       
+        # Configures the destination for a repository snapshot.
+        # Corresponds to the JSON property `gcsRepositorySnapshotDestination`
+        # @return [Google::Apis::DataformV1::GcsRepositorySnapshotDestination]
+        attr_accessor :gcs_repository_snapshot_destination
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2399,6 +2481,7 @@ module Google
         def update!(**args)
           @ai_platform_notebook_runtime_template = args[:ai_platform_notebook_runtime_template] if args.key?(:ai_platform_notebook_runtime_template)
           @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
+          @gcs_repository_snapshot_destination = args[:gcs_repository_snapshot_destination] if args.key?(:gcs_repository_snapshot_destination)
         end
       end
       
@@ -2571,6 +2654,33 @@ module Google
           @queries = args[:queries] if args.key?(:queries)
           @relation_descriptor = args[:relation_descriptor] if args.key?(:relation_descriptor)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Defines the pipeline type and path within the Git repository.
+      class PipelineConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. The relative path within the Git repository where the pipeline is
+        # defined. For example, for a Dataform pipeline, it is a path to the folder
+        # where `workflow_settings.yaml` or `dataform.json` is located.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Required. The type of the pipeline.
+        # Corresponds to the JSON property `pipelineType`
+        # @return [String]
+        attr_accessor :pipeline_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @path = args[:path] if args.key?(:path)
+          @pipeline_type = args[:pipeline_type] if args.key?(:pipeline_type)
         end
       end
       
@@ -3240,8 +3350,9 @@ module Google
         attr_accessor :release_compilation_result
       
         # Optional. Specifies the time zone to be used when interpreting cron_schedule.
-        # Must be a time zone name from the time zone database (https://en.wikipedia.org/
-        # wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        # Must be a time zone name from the [time zone database](https://en.wikipedia.
+        # org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is `
+        # UTC`.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -4071,8 +4182,9 @@ module Google
         attr_accessor :release_config
       
         # Optional. Specifies the time zone to be used when interpreting cron_schedule.
-        # Must be a time zone name from the time zone database (https://en.wikipedia.org/
-        # wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
+        # Must be a time zone name from the [time zone database](https://en.wikipedia.
+        # org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is `
+        # UTC`.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone
@@ -4142,6 +4254,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Defines the pipeline type and path within the Git repository.
+        # Corresponds to the JSON property `pipelineConfig`
+        # @return [Google::Apis::DataformV1::PipelineConfig]
+        attr_accessor :pipeline_config
+      
         # Metadata used to identify if a resource is user scoped.
         # Corresponds to the JSON property `privateResourceMetadata`
         # @return [Google::Apis::DataformV1::PrivateResourceMetadata]
@@ -4177,6 +4294,7 @@ module Google
           @invocation_config = args[:invocation_config] if args.key?(:invocation_config)
           @invocation_timing = args[:invocation_timing] if args.key?(:invocation_timing)
           @name = args[:name] if args.key?(:name)
+          @pipeline_config = args[:pipeline_config] if args.key?(:pipeline_config)
           @private_resource_metadata = args[:private_resource_metadata] if args.key?(:private_resource_metadata)
           @resolved_compilation_result = args[:resolved_compilation_result] if args.key?(:resolved_compilation_result)
           @state = args[:state] if args.key?(:state)

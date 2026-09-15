@@ -237,17 +237,24 @@ module Google
         #   resources. Format: `projects/`project_number`/apps/`app``
         # @param [String] filter
         #   Optional. The expression to filter releases listed in the response. To learn
-        #   more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160).
-        #   Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard
-        #   character (`*`) at the beginning or end of the string) - `createTime` supports
-        #   `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `
-        #   createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND
-        #   createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+        #   more about filtering, refer to the [AIP-160 standard](http://aip.dev/160).
+        #   Supported fields: - Time fields supporting `<`, `<=`, `>` and `>=`; expecting
+        #   an RFC-3339 formatted string: - `create_time` (or `createTime`) - `update_time`
+        #   (or `updateTime`) - `expire_time` (or `expireTime`) - Text fields supporting `
+        #   =`. The compared text can contain a wildcard character (`*`) at the beginning
+        #   and/or end of the string which also enables case-insensitive matching: - `
+        #   release_notes.text` (or `releaseNotes.text`) - `display_version` (or `
+        #   displayVersion`) - `build_version` (or `buildVersion`). Examples: - `
+        #   createTime <= "2021-09-08T00:00:00+04:00"` - `expire_time > "2021-09-08T00:00:
+        #   00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.
+        #   0Z"` - `releaseNotes.text="*v1.0.0-rc*"` - `(display_version = "v1.0.0-rc2"
+        #   AND `build_version = "123") OR release_notes = "*v1.0.0-rc2 (123)*"`
         # @param [String] order_by
-        #   Optional. The fields used to order releases. Supported fields: - `createTime`
-        #   To specify descending order for a field, append a "desc" suffix, for example, `
-        #   createTime desc`. If this parameter is not set, releases are ordered by `
-        #   createTime` in descending order.
+        #   Optional. The fields used to order releases. Supported fields: - `create_time`
+        #   (or `createTime`) - `update_time` (or `updateTime`) - `expire_time` (or `
+        #   expireTime`) To specify descending order for a field, append a "desc" suffix,
+        #   for example, `createTime desc`. If this parameter is not set, releases are
+        #   ordered by `createTime` in descending order.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of releases to return. The service may return
         #   fewer than this value. The valid range is [1-100]; If unspecified (0), at most

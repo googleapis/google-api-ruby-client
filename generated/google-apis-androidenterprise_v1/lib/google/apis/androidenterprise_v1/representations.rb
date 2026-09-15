@@ -903,7 +903,6 @@ module Google
       class GoogleAuthenticationSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :dedicated_devices_allowed, as: 'dedicatedDevicesAllowed'
           property :google_authentication_required, as: 'googleAuthenticationRequired'
         end
       end

@@ -515,6 +515,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Send a message to the agent. This is a blocking call that will return the task
+        # once it is completed, or a LRO if requested.
+        # @param [Google::Apis::CloudbillingV1::SendMessageRequest] send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::SendMessageResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::SendMessageResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def send_message(send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/message:send', options)
+          command.request_representation = Google::Apis::CloudbillingV1::SendMessageRequest::Representation
+          command.request_object = send_message_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::SendMessageResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::SendMessageResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # SendStreamingMessage is a streaming call that will return a stream of task
+        # update events until the Task is in an interrupted or terminal state.
+        # @param [Google::Apis::CloudbillingV1::SendMessageRequest] send_message_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::StreamResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::StreamResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_message(send_message_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/message:stream', options)
+          command.request_representation = Google::Apis::CloudbillingV1::SendMessageRequest::Representation
+          command.request_object = send_message_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::StreamResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::StreamResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # This method creates [billing subaccounts](https://cloud.google.com/billing/
         # docs/concepts#subaccounts). Google Cloud resellers should use the Channel
         # Services APIs, [accounts.customers.create](https://cloud.google.com/channel/
@@ -823,6 +885,300 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['startTime'] = start_time unless start_time.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancel a task from the agent. If supported one should expect no more task
+        # updates for the task.
+        # @param [String] name
+        #   The resource name of the task to cancel. Format: tasks/`task_id`
+        # @param [Google::Apis::CloudbillingV1::CancelTaskRequest] cancel_task_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::Task] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::Task]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_task(name, cancel_task_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.request_representation = Google::Apis::CloudbillingV1::CancelTaskRequest::Representation
+          command.request_object = cancel_task_request_object
+          command.response_representation = Google::Apis::CloudbillingV1::Task::Representation
+          command.response_class = Google::Apis::CloudbillingV1::Task
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the current state of a task from the agent.
+        # @param [String] name
+        #   Required. The resource name of the task. Format: tasks/`task_id`
+        # @param [Fixnum] history_length
+        #   The number of most recent messages from the task's history to retrieve.
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::Task] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::Task]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_task(name, history_length: nil, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbillingV1::Task::Representation
+          command.response_class = Google::Apis::CloudbillingV1::Task
+          command.params['name'] = name unless name.nil?
+          command.query['historyLength'] = history_length unless history_length.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # TaskSubscription is a streaming call that will return a stream of task update
+        # events. This attaches the stream to an existing in process task. If the task
+        # is complete the stream will return the completed task (like GetTask) and close
+        # the stream.
+        # @param [String] name
+        #   The resource name of the task to subscribe to. Format: tasks/`task_id`
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::StreamResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::StreamResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def subscribe_task(name, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:subscribe', options)
+          command.response_representation = Google::Apis::CloudbillingV1::StreamResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::StreamResponse
+          command.params['name'] = name unless name.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Set a push notification config for a task.
+        # @param [String] parent
+        #   Required. The parent task resource for this config. Format: tasks/`task_id`
+        # @param [Google::Apis::CloudbillingV1::TaskPushNotificationConfig] task_push_notification_config_object
+        # @param [String] config_id
+        #   Required. The ID for the new config.
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::TaskPushNotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::TaskPushNotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_task_push_notification_config(parent, task_push_notification_config_object = nil, config_id: nil, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}', options)
+          command.request_representation = Google::Apis::CloudbillingV1::TaskPushNotificationConfig::Representation
+          command.request_object = task_push_notification_config_object
+          command.response_representation = Google::Apis::CloudbillingV1::TaskPushNotificationConfig::Representation
+          command.response_class = Google::Apis::CloudbillingV1::TaskPushNotificationConfig
+          command.params['parent'] = parent unless parent.nil?
+          command.query['configId'] = config_id unless config_id.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a push notification config for a task.
+        # @param [String] name
+        #   The resource name of the config to delete. Format: tasks/`task_id`/
+        #   pushNotificationConfigs/`config_id`
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_task_push_notification_config(name, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbillingV1::Empty::Representation
+          command.response_class = Google::Apis::CloudbillingV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a push notification config for a task.
+        # @param [String] name
+        #   The resource name of the config to retrieve. Format: tasks/`task_id`/
+        #   pushNotificationConfigs/`config_id`
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::TaskPushNotificationConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::TaskPushNotificationConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_task_push_notification_config(name, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudbillingV1::TaskPushNotificationConfig::Representation
+          command.response_class = Google::Apis::CloudbillingV1::TaskPushNotificationConfig
+          command.params['name'] = name unless name.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a list of push notifications configured for a task.
+        # @param [String] parent
+        #   The parent task resource. Format: tasks/`task_id`
+        # @param [Fixnum] page_size
+        #   For AIP-158 these fields are present. Usually not used/needed. The maximum
+        #   number of configurations to return. If unspecified, all configs will be
+        #   returned.
+        # @param [String] page_token
+        #   A page token received from a previous ListTaskPushNotificationConfigRequest
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListTaskPushNotificationConfigRequest` must match the
+        #   call that provided the page token.
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::ListTaskPushNotificationConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::ListTaskPushNotificationConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_task_push_notification_configs(parent, page_size: nil, page_token: nil, tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/pushNotificationConfigs', options)
+          command.response_representation = Google::Apis::CloudbillingV1::ListTaskPushNotificationConfigResponse::Representation
+          command.response_class = Google::Apis::CloudbillingV1::ListTaskPushNotificationConfigResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['tenant'] = tenant unless tenant.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # GetAgentCard returns the agent card for the agent.
+        # @param [String] tenant
+        #   Optional tenant, provided as a path parameter. Experimental, might still
+        #   change for 1.0 release.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudbillingV1::AgentCard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudbillingV1::AgentCard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_card(tenant: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/card', options)
+          command.response_representation = Google::Apis::CloudbillingV1::AgentCard::Representation
+          command.response_class = Google::Apis::CloudbillingV1::AgentCard
+          command.query['tenant'] = tenant unless tenant.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

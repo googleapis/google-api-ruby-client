@@ -842,7 +842,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a support event subscription for an organization.
+        # Creates a support event subscription for an organization. EXAMPLES: cURL: ```
+        # shell parent="organizations/123456789" curl \ --request POST \ --header "
+        # Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-
+        # Type: application/json' \ --data '` "pub_sub_topic": "projects/my-project/
+        # topics/my-topic" `' \ "https://cloudsupport.googleapis.com/v2beta/$parent/
+        # supportEventSubscriptions" ``` Python: ```python import googleapiclient.
+        # discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.
+        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
+        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
+        # request = supportApiService.supportEventSubscriptions().create( parent="
+        # organizations/123456789", body=` "pub_sub_topic": "projects/my-project/topics/
+        # my-topic" `, ) print(request.execute()) ```
         # @param [String] parent
         #   Required. The parent resource name where the support event subscription will
         #   be created. Format: organizations/`organization_id`
@@ -864,7 +875,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_support_event_subscription(parent, support_event_subscription_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2beta/{+parent}/supportEventSubscriptions', options)
           command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
           command.request_object = support_event_subscription_object
@@ -876,7 +887,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Soft deletes a support event subscription.
+        # Soft deletes a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --request DELETE \ --header "Authorization: Bearer $(
+        # gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/
+        # $support_event_subscription" ``` Python: ```python import googleapiclient.
+        # discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.
+        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
+        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
+        # request = supportApiService).supportEventSubscriptions().delete( name="
+        # organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(
+        # request.execute()) ```
         # @param [String] name
         #   Required. The name of the support event subscription to delete. Format:
         #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
@@ -897,7 +918,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_organization_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v2beta/{+name}', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
@@ -907,7 +928,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a support event subscription.
+        # Expunges a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
+        # auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$
+        # support_event_subscription:expunge" ``` Python: ```python import
+        # googleapiclient.discovery api_version = "v2beta" supportApiService =
+        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
+        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
+        # discovery/rest?version=`api_version`", ) request = supportApiService.
+        # supportEventSubscriptions().expunge( name="organizations/123456789/
+        # supportEventSubscriptions/abcdef123456" ) print(request.execute()) ```
+        # @param [String] name
+        #   Required. The name of the support event subscription to expunge. Format:
+        #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
+        # @param [Google::Apis::CloudsupportV2beta::ExpungeSupportEventSubscriptionRequest] expunge_support_event_subscription_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsupportV2beta::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsupportV2beta::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def expunge_support_event_subscription(name, expunge_support_event_subscription_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta/{+name}:expunge', options)
+          command.request_representation = Google::Apis::CloudsupportV2beta::ExpungeSupportEventSubscriptionRequest::Representation
+          command.request_object = expunge_support_event_subscription_request_object
+          command.response_representation = Google::Apis::CloudsupportV2beta::Empty::Representation
+          command.response_class = Google::Apis::CloudsupportV2beta::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --header "Authorization: Bearer $(gcloud auth print-
+        # access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$
+        # support_event_subscription" ``` Python: ```python import googleapiclient.
+        # discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.
+        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
+        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
+        # request = supportApiService.supportEventSubscriptions().get( name="
+        # organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(
+        # request.execute()) ```
         # @param [String] name
         #   Required. The name of the support event subscription to retrieve. Format:
         #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`
@@ -928,7 +1003,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_organization_support_event_subscription(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+name}', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::SupportEventSubscription
@@ -938,7 +1013,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists support event subscriptions.
+        # Lists support event subscriptions. EXAMPLES: cURL: ```shell parent="
+        # organizations/123456789" curl \ --header "Authorization: Bearer $(gcloud auth
+        # print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$parent/
+        # supportEventSubscriptions" ``` Python: ```python import googleapiclient.
+        # discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.
+        # build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"
+        # https://cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", )
+        # request = supportApiService.supportEventSubscriptions().list( parent="
+        # organizations/123456789" ) print(request.execute()) ```
         # @param [String] parent
         #   Required. The fully qualified name of the Cloud resource to list support event
         #   subscriptions under. Format: organizations/`organization_id`
@@ -974,7 +1057,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_support_event_subscriptions(parent, filter: nil, page_size: nil, page_token: nil, show_deleted: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta/{+parent}/supportEventSubscriptions', options)
           command.response_representation = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse::Representation
           command.response_class = Google::Apis::CloudsupportV2beta::ListSupportEventSubscriptionsResponse
@@ -988,7 +1071,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a support event subscription.
+        # Updates a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --request PATCH \ --header "Authorization: Bearer $(
+        # gcloud auth print-access-token)" \ --header "Content-Type: application/json" \
+        # --data '` "pub_sub_topic": "projects/my-project/topics/new-topic" `' \ "https:/
+        # /cloudsupport.googleapis.com/v2beta/$support_event_subscription?updateMask=
+        # pub_sub_topic" ``` Python: ```python import googleapiclient.discovery
+        # api_version = "v2beta" supportApiService = googleapiclient.discovery.build(
+        # serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://
+        # cloudsupport.googleapis.com/$discovery/rest?version=`api_version`", ) request =
+        # supportApiService.supportEventSubscriptions().patch( name="organizations/
+        # 123456789/supportEventSubscriptions/abcdef123456", body=` "pub_sub_topic": "
+        # projects/my-project/topics/new-topic" `, ) print(request.execute()) ```
         # @param [String] name
         #   Identifier. The resource name of the support event subscription.
         # @param [Google::Apis::CloudsupportV2beta::SupportEventSubscription] support_event_subscription_object
@@ -1012,7 +1107,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_support_event_subscription(name, support_event_subscription_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v2beta/{+name}', options)
           command.request_representation = Google::Apis::CloudsupportV2beta::SupportEventSubscription::Representation
           command.request_object = support_event_subscription_object
@@ -1025,7 +1120,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Undeletes a support event subscription.
+        # Undeletes a support event subscription. EXAMPLES: cURL: ```shell
+        # support_event_subscription="organizations/123456789/supportEventSubscriptions/
+        # abcdef123456" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
+        # auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$
+        # support_event_subscription:undelete" ``` Python: ```python import
+        # googleapiclient.discovery api_version = "v2beta" supportApiService =
+        # googleapiclient.discovery.build( serviceName="cloudsupport", version=
+        # api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$
+        # discovery/rest?version=`api_version`", ) request = supportApiService.
+        # supportEventSubscriptions().undelete( name="organizations/123456789/
+        # supportEventSubscriptions/abcdef123456" ) print(request.execute()) ```
         # @param [String] name
         #   Required. The name of the support event subscription to undelete. Format:
         #   organizations/`organization_id`/supportEventSubscriptions/`subscription_id`

@@ -186,6 +186,11 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -194,6 +199,7 @@ module Google
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
           @keys = args[:keys] if args.key?(:keys)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -270,6 +276,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         # Options for beginning a new transaction. Transactions can be created
         # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
         # ReadOptions.new_transaction in read requests.
@@ -284,6 +295,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @transaction_options = args[:transaction_options] if args.key?(:transaction_options)
         end
       end
@@ -333,6 +345,11 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Mutation>]
         attr_accessor :mutations
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         # Options for beginning a new transaction. Transactions can be created
         # explicitly with calls to Datastore.BeginTransaction or implicitly by setting
         # ReadOptions.new_transaction in read requests.
@@ -356,6 +373,7 @@ module Google
           @database_id = args[:database_id] if args.key?(:database_id)
           @mode = args[:mode] if args.key?(:mode)
           @mutations = args[:mutations] if args.key?(:mutations)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @single_use_transaction = args[:single_use_transaction] if args.key?(:single_use_transaction)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
@@ -1824,6 +1842,11 @@ module Google
         # @return [Google::Apis::DatastoreV1::ReadOptions]
         attr_accessor :read_options
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1834,6 +1857,7 @@ module Google
           @keys = args[:keys] if args.key?(:keys)
           @property_mask = args[:property_mask] if args.key?(:property_mask)
           @read_options = args[:read_options] if args.key?(:read_options)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -2560,6 +2584,45 @@ module Google
         end
       end
       
+      # Options for a request.
+      class RequestOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The request tags for the request. Request tags are user-provided
+        # strings used for usage monitoring, cost management, and observability. Callers
+        # can associate custom application context (such as component, microservice,
+        # feature name, or operation type) with database requests. These tags are
+        # collected and aggregated in usage and monitoring reports, allowing billable
+        # operations and usage metrics to be sliced and analyzed by tag. These tags *
+        # only* show up in monitoring and are visible in administrative operations (such
+        # as usage reports). They do not affect data storage, query semantics, or
+        # request execution. Cardinality and Best Practices: - Request tags are most
+        # effective when using a bounded set of distinct values (e.g., fewer than 100
+        # distinct tags across an entire database). Using a large number of distinct
+        # tags may result in tags being omitted from top usage dashboards. - Use
+        # structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`
+        # ) and avoid high-cardinality values such as UUIDs, request IDs, timestamps,
+        # user IDs, or document keys. - Do not include sensitive data or personally
+        # identifiable information (PII) in request tags, as they show up in
+        # administrative monitoring. The tags are processed as follows: - Leading and
+        # trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out.
+        # - Truncated to a maximum of 510 characters. - Deduplicated within the same
+        # request. - Limited to a maximum of 50 tags per request (excess tags are
+        # silently discarded).
+        # Corresponds to the JSON property `requestTags`
+        # @return [Array<String>]
+        attr_accessor :request_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_tags = args[:request_tags] if args.key?(:request_tags)
+        end
+      end
+      
       # The request for Datastore.ReserveIds.
       class ReserveIdsRequest
         include Google::Apis::Core::Hashable
@@ -2576,6 +2639,11 @@ module Google
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2584,6 +2652,7 @@ module Google
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
           @keys = args[:keys] if args.key?(:keys)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -2610,6 +2679,11 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         # Required. The transaction identifier, returned by a call to Datastore.
         # BeginTransaction.
         # Corresponds to the JSON property `transaction`
@@ -2624,6 +2698,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @database_id = args[:database_id] if args.key?(:database_id)
+          @request_options = args[:request_options] if args.key?(:request_options)
           @transaction = args[:transaction] if args.key?(:transaction)
         end
       end
@@ -2685,6 +2760,11 @@ module Google
         # @return [Google::Apis::DatastoreV1::ReadOptions]
         attr_accessor :read_options
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2697,6 +2777,7 @@ module Google
           @gql_query = args[:gql_query] if args.key?(:gql_query)
           @partition_id = args[:partition_id] if args.key?(:partition_id)
           @read_options = args[:read_options] if args.key?(:read_options)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       
@@ -2792,6 +2873,11 @@ module Google
         # @return [Google::Apis::DatastoreV1::ReadOptions]
         attr_accessor :read_options
       
+        # Options for a request.
+        # Corresponds to the JSON property `requestOptions`
+        # @return [Google::Apis::DatastoreV1::RequestOptions]
+        attr_accessor :request_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2805,6 +2891,7 @@ module Google
           @property_mask = args[:property_mask] if args.key?(:property_mask)
           @query = args[:query] if args.key?(:query)
           @read_options = args[:read_options] if args.key?(:read_options)
+          @request_options = args[:request_options] if args.key?(:request_options)
         end
       end
       

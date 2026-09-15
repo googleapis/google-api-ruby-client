@@ -21,7 +21,8 @@ module Google
   module Apis
     # Cloud Product Registry API
     #
-    # cloudproductregistry.googleapis.com API.
+    # Cloud Product Registry API provides capabilities to access all first Google
+    # Cloud products.
     #
     # @see https://docs.cloud.google.com/product-registry
     module CloudproductregistryV1

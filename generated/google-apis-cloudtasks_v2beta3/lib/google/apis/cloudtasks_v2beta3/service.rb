@@ -210,6 +210,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta3/{+name}', options)
+          command.response_representation = Google::Apis::CloudtasksV2beta3::Operation::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a queue. Queues created with this method allow tasks to live for a
         # maximum of 31 days. After a task is 31 days old, the task will be deleted
         # regardless of whether it was dispatched or not. WARNING: Using this method may
@@ -666,6 +697,79 @@ module Google
           command.response_representation = Google::Apis::CloudtasksV2beta3::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::CloudtasksV2beta3::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a batch of tasks and adds them to a queue. This call is not atomic.
+        # All tasks must be for the same queue. A maximum of 100 tasks can be created in
+        # a single batch.
+        # @param [String] parent
+        #   Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+        # @param [Google::Apis::CloudtasksV2beta3::BatchCreateTasksRequest] batch_create_tasks_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_create_tasks(parent, batch_create_tasks_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta3/{+parent}/tasks:batchCreate', options)
+          command.request_representation = Google::Apis::CloudtasksV2beta3::BatchCreateTasksRequest::Representation
+          command.request_object = batch_create_tasks_request_object
+          command.response_representation = Google::Apis::CloudtasksV2beta3::Operation::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a batch of tasks. This is a non-atomic operation: if deletion fails
+        # for some tasks, it can still succeed for others. The metadata field of google.
+        # longrunning.Operation contains details of failed deletions. A maximum of 1000
+        # tasks can be deleted in a batch.
+        # @param [String] parent
+        #   Required. The queue name. For example: Format: `projects/PROJECT_ID/locations/
+        #   LOCATION_ID/queues/QUEUE_ID`
+        # @param [Google::Apis::CloudtasksV2beta3::BatchDeleteTasksRequest] batch_delete_tasks_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudtasksV2beta3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudtasksV2beta3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_delete_tasks(parent, batch_delete_tasks_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta3/{+parent}/tasks:batchDelete', options)
+          command.request_representation = Google::Apis::CloudtasksV2beta3::BatchDeleteTasksRequest::Representation
+          command.request_object = batch_delete_tasks_request_object
+          command.response_representation = Google::Apis::CloudtasksV2beta3::Operation::Representation
+          command.response_class = Google::Apis::CloudtasksV2beta3::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

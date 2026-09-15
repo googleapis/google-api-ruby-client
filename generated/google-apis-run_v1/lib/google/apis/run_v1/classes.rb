@@ -1168,6 +1168,13 @@ module Google
       class ExecutionSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Optional. Specifies the maximum desired number of tasks the execution should
         # run at given time. When the job is run, if this field is 0 or unset, the
         # maximum possible value will be used for that execution. The actual number of
@@ -1197,6 +1204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
           @template = args[:template] if args.key?(:template)
@@ -2597,6 +2605,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -2621,6 +2637,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
@@ -3931,8 +3948,8 @@ module Google
         end
       end
       
-      # Instance represents the configuration of a single Instance, which references a
-      # container image which is run to completion.
+      # An Instance represents the configuration of a single instance that references
+      # a container image and runs to completion.
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -3961,7 +3978,7 @@ module Google
         # @return [Google::Apis::RunV1::InstanceSpec]
         attr_accessor :spec
       
-        # InstanceStatus represents the current state of a Instance.
+        # InstanceStatus represents the current state of an Instance.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::RunV1::InstanceStatus]
         attr_accessor :status
@@ -4066,7 +4083,7 @@ module Google
         end
       end
       
-      # InstanceStatus represents the current state of a Instance.
+      # InstanceStatus represents the current state of an Instance.
       class InstanceStatus
         include Google::Apis::Core::Hashable
       
@@ -4915,8 +4932,8 @@ module Google
         # run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the
         # accepted annotations will be different depending on the resource type. * `
         # autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/
-        # minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision. * `
-        # run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.
+        # minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision . *
+        # `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.
         # googleapis.com/binary-authorization`: Service, Job, Execution. * `run.
         # googleapis.com/build-base-image`: Service. * `run.googleapis.com/build-enable-
         # automatic-updates`: Service. * `run.googleapis.com/build-environment-variables`
@@ -4926,26 +4943,27 @@ module Google
         # googleapis.com/build-service-account`: Service. * `run.googleapis.com/build-
         # source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`:
         # Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.
-        # com/cloudsql-instances`: Revision, Execution . * `run.googleapis.com/container-
-        # dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. * `
-        # run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/default-
-        # url-disabled`: Service. * `run.googleapis.com/description`: Service. * `run.
-        # googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/
-        # encryption-key`: Revision, Execution . * `run.googleapis.com/execution-
-        # environment`: Revision, Execution . * `run.googleapis.com/gc-traffic-tags`:
-        # Service. * `run.googleapis.com/gpu-zonal-redundancy-disabled`: Revision. * `
-        # run.googleapis.com/health-check-disabled`: Revision. * `run.googleapis.com/
-        # ingress`: Service, Instance. * `run.googleapis.com/invoker-iam-disabled`:
-        # Service, Instance. * `run.googleapis.com/launch-stage`: Service, Job. * `run.
-        # googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`: Service. *
-        # `run.googleapis.com/manualInstanceCount`: Service. * `run.googleapis.com/
-        # network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-
-        # revocation-action-type`: Revision. `run.googleapis.com/scalingMode`: Service. *
-        # `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/
-        # secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`:
-        # Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.
-        # googleapis.com/vpc-access-connector`: Revision, Execution . * `run.googleapis.
-        # com/vpc-access-egress`: Revision, Execution.
+        # com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/
+        # container-dependencies`: Revision, Instance . * `run.googleapis.com/cpu-
+        # throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `
+        # run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/
+        # description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
+        # Revision * `run.googleapis.com/encryption-key`: Revision, Execution, Instance.
+        # * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.
+        # googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-
+        # redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
+        # Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.
+        # com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-
+        # stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.
+        # googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`:
+        # Service. * `run.googleapis.com/network-interfaces`: Revision, Execution,
+        # Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. `
+        # run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
+        # Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `
+        # run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-
+        # cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
+        # Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution,
+        # Instance.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -5068,6 +5086,13 @@ module Google
         # @return [Array<Google::Apis::RunV1::ContainerOverride>]
         attr_accessor :container_overrides
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # The desired number of tasks the execution should run. Will replace existing
         # task_count value.
         # Corresponds to the JSON property `taskCount`
@@ -5088,6 +5113,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @task_count = args[:task_count] if args.key?(:task_count)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
@@ -5319,8 +5345,8 @@ module Google
       class ResourceRecord
         include Google::Apis::Core::Hashable
       
-        # Relative name of the object affected by this record. Only applicable for `
-        # CNAME` records. Example: 'www'.
+        # Name of the resource record relative to its apex domain, e.g. `www` for `www.
+        # example.com`. Omitted for apex records.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5469,11 +5495,6 @@ module Google
         # @return [String]
         attr_accessor :runtime_class_name
       
-        # Optional. Container templates that can be launched through the `sandbox` CLI.
-        # Corresponds to the JSON property `sandboxes`
-        # @return [Array<Google::Apis::RunV1::Container>]
-        attr_accessor :sandboxes
-      
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
         # and determines what permissions the revision has. If not provided, the
@@ -5506,7 +5527,6 @@ module Google
           @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @runtime_class_name = args[:runtime_class_name] if args.key?(:runtime_class_name)
-          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -6121,12 +6141,19 @@ module Google
       class StartInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates that the server should validate the request and populate
+        # default values without persisting the request. Supported values: `all`
+        # Corresponds to the JSON property `dryRun`
+        # @return [String]
+        attr_accessor :dry_run
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
         end
       end
       
@@ -6288,12 +6315,19 @@ module Google
       class StopInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Indicates that the server should validate the request and populate
+        # default values without persisting the request. Supported values: `all`
+        # Corresponds to the JSON property `dryRun`
+        # @return [String]
+        attr_accessor :dry_run
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
         end
       end
       

@@ -308,6 +308,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a CTA.
+        # @param [String] name
+        #   Identifier. The resource name of the Cta. Format: organizations/`organization`/
+        #   publications/`publication`/ctas/`cta`
+        # @param [Google::Apis::WebcontentpublisherV1::Cta] cta_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::Cta] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::Cta]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_publication_cta(name, cta_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::WebcontentpublisherV1::Cta::Representation
+          command.request_object = cta_object
+          command.response_representation = Google::Apis::WebcontentpublisherV1::Cta::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::Cta
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks if a user is eligible for free article access.
         # @param [String] name
         #   Required. The resource name of the publication. Format: publications/`
@@ -340,6 +377,41 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['httpReferrer'] = http_referrer unless http_referrer.nil?
           command.query['uri'] = uri unless uri.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns user tokens mapped to their canonical domains for all publications the
+        # authenticated user is entitled to.
+        # @param [String] name
+        #   Required. The resource name of the user to generate tokens for. Format: users/`
+        #   user`
+        # @param [Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensRequest] generate_platform_site_tokens_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_user_platform_site_tokens(name, generate_platform_site_tokens_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generatePlatformSiteTokens', options)
+          command.request_representation = Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensRequest::Representation
+          command.request_object = generate_platform_site_tokens_request_object
+          command.response_representation = Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensResponse::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::GeneratePlatformSiteTokensResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

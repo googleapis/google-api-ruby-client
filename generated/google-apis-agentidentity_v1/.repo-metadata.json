@@ -1,0 +1,7 @@
+{
+    "api_id": "agentidentity:v1",
+    "name_pretty": "Agent Identity API",
+    "distribution_name": "google-apis-agentidentity_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}

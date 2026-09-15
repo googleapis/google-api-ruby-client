@@ -638,8 +638,6 @@ module Google
           property :end_time, as: 'endTime'
           property :error_status, as: 'errorStatus', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
       
-          property :metadata_destination, as: 'metadataDestination', class: Google::Apis::BigquerydatatransferV1::MetadataDestination, decorator: Google::Apis::BigquerydatatransferV1::MetadataDestination::Representation
-      
           property :name, as: 'name'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           hash :params, as: 'params'

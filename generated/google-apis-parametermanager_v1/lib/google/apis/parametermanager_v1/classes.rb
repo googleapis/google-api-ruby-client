@@ -125,6 +125,68 @@ module Google
         end
       end
       
+      # Message for response to listing TemplateVersions
+      class ListTemplateVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of TemplateVersions
+        # Corresponds to the JSON property `templateVersions`
+        # @return [Array<Google::Apis::ParametermanagerV1::TemplateVersion>]
+        attr_accessor :template_versions
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @template_versions = args[:template_versions] if args.key?(:template_versions)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Message for response to listing Templates
+      class ListTemplatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of Templates
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::ParametermanagerV1::Template>]
+        attr_accessor :templates
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @templates = args[:templates] if args.key?(:templates)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # A resource that represents a Google Cloud location.
       class Location
         include Google::Apis::Core::Hashable
@@ -346,6 +408,55 @@ module Google
         end
       end
       
+      # Message describing RenderTemplateVersionResponse resource
+      class RenderTemplateVersionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the ParameterVersion used to render the
+        # template version in the format `projects/*/locations/*/parameters/*/versions/*`
+        # .
+        # Corresponds to the JSON property `parameterVersion`
+        # @return [String]
+        attr_accessor :parameter_version
+      
+        # Message for storing a TemplateVersion resource's payload data
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::ParametermanagerV1::TemplateVersionPayload]
+        attr_accessor :payload
+      
+        # Output only. Server generated rendered version of the user provided payload
+        # data (TemplateVersionPayload) which has all the variables resolved using the
+        # provided parameter version.
+        # Corresponds to the JSON property `renderedPayload`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :rendered_payload
+      
+        # Output only. Format of the template version.
+        # Corresponds to the JSON property `templateFormat`
+        # @return [String]
+        attr_accessor :template_format
+      
+        # Resource identifier of a TemplateVersion in the format `projects/*/locations/*/
+        # templates/*/versions/*`.
+        # Corresponds to the JSON property `templateVersion`
+        # @return [String]
+        attr_accessor :template_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameter_version = args[:parameter_version] if args.key?(:parameter_version)
+          @payload = args[:payload] if args.key?(:payload)
+          @rendered_payload = args[:rendered_payload] if args.key?(:rendered_payload)
+          @template_format = args[:template_format] if args.key?(:template_format)
+          @template_version = args[:template_version] if args.key?(:template_version)
+        end
+      end
+      
       # Output-only policy member strings of a Google Cloud resource's built-in
       # identity.
       class ResourcePolicyMember
@@ -377,6 +488,116 @@ module Google
         def update!(**args)
           @iam_policy_name_principal = args[:iam_policy_name_principal] if args.key?(:iam_policy_name_principal)
           @iam_policy_uid_principal = args[:iam_policy_uid_principal] if args.key?(:iam_policy_uid_principal)
+        end
+      end
+      
+      # Message describing Template resource
+      class Template
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Specifies the format of a Template.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the Template in the format `projects/*/
+        # locations/*/templates/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @format = args[:format] if args.key?(:format)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message describing TemplateVersion resource
+      class TemplateVersion
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Disabled boolean to determine if a TemplateVersion acts as a
+        # metadata only resource (payload is never returned if disabled is true).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Identifier. The resource name of the TemplateVersion in the format `projects/*/
+        # locations/*/templates/*/versions/*`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Message for storing a TemplateVersion resource's payload data
+        # Corresponds to the JSON property `payload`
+        # @return [Google::Apis::ParametermanagerV1::TemplateVersionPayload]
+        attr_accessor :payload
+      
+        # Output only. Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @name = args[:name] if args.key?(:name)
+          @payload = args[:payload] if args.key?(:payload)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message for storing a TemplateVersion resource's payload data
+      class TemplateVersionPayload
+        include Google::Apis::Core::Hashable
+      
+        # Required. bytes data for storing payload.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
         end
       end
     end

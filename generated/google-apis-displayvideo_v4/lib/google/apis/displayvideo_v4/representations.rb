@@ -1144,12 +1144,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EffectiveFrequencyBreakdown
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1942,6 +1936,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PlannableProductCoreAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PlannableTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2524,6 +2524,7 @@ module Google
           property :ad_asset_type, as: 'adAssetType'
           property :entity_status, as: 'entityStatus'
           property :name, as: 'name'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :youtube_video_asset, as: 'youtubeVideoAsset', class: Google::Apis::DisplayvideoV4::YoutubeVideoAsset, decorator: Google::Apis::DisplayvideoV4::YoutubeVideoAsset::Representation
       
         end
@@ -2867,6 +2868,7 @@ module Google
           property :frequency_cap, as: 'frequencyCap', class: Google::Apis::DisplayvideoV4::FrequencyCap, decorator: Google::Apis::DisplayvideoV4::FrequencyCap::Representation
       
           collection :genders, as: 'genders'
+          property :network, as: 'network'
           collection :plannable_location_ids, as: 'plannableLocationIds'
           property :surface_targeting_settings, as: 'surfaceTargetingSettings', class: Google::Apis::DisplayvideoV4::SurfaceTargetingSettings, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingSettings::Representation
       
@@ -2892,6 +2894,8 @@ module Google
       
           property :data_access_config, as: 'dataAccessConfig', class: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserDataAccessConfig::Representation
       
+          property :default_business_name, as: 'defaultBusinessName'
+          property :default_logo_asset_id, :numeric_string => true, as: 'defaultLogoAssetId'
           property :display_name, as: 'displayName'
           property :entity_status, as: 'entityStatus'
           property :general_config, as: 'generalConfig', class: Google::Apis::DisplayvideoV4::AdvertiserGeneralConfig, decorator: Google::Apis::DisplayvideoV4::AdvertiserGeneralConfig::Representation
@@ -4088,6 +4092,7 @@ module Google
           property :skip_offset, as: 'skipOffset', class: Google::Apis::DisplayvideoV4::AudioVideoOffset, decorator: Google::Apis::DisplayvideoV4::AudioVideoOffset::Representation
       
           property :skippable, as: 'skippable'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
           property :third_party_tag, as: 'thirdPartyTag'
           collection :third_party_urls, as: 'thirdPartyUrls', class: Google::Apis::DisplayvideoV4::ThirdPartyUrl, decorator: Google::Apis::DisplayvideoV4::ThirdPartyUrl::Representation
       
@@ -4580,17 +4585,6 @@ module Google
         end
       end
       
-      class EffectiveFrequencyBreakdown
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :effective_coview_reach, :numeric_string => true, as: 'effectiveCoviewReach'
-          property :effective_frequency, as: 'effectiveFrequency'
-          property :on_target_effective_coview_reach, :numeric_string => true, as: 'onTargetEffectiveCoviewReach'
-          property :on_target_reach, :numeric_string => true, as: 'onTargetReach'
-          property :total_reach, :numeric_string => true, as: 'totalReach'
-        end
-      end
-      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4771,7 +4765,6 @@ module Google
           property :campaign_duration, as: 'campaignDuration', class: Google::Apis::DisplayvideoV4::CampaignDuration, decorator: Google::Apis::DisplayvideoV4::CampaignDuration::Representation
       
           property :currency_code, as: 'currencyCode'
-          property :effective_frequency_breakdown_limit, as: 'effectiveFrequencyBreakdownLimit'
           property :min_effective_frequency, as: 'minEffectiveFrequency'
           collection :planned_products, as: 'plannedProducts', class: Google::Apis::DisplayvideoV4::PlannedProduct, decorator: Google::Apis::DisplayvideoV4::PlannedProduct::Representation
       
@@ -5921,8 +5914,18 @@ module Google
           property :display_name, as: 'displayName'
           property :geo_region_type, as: 'geoRegionType'
           property :name, as: 'name'
+          property :parent_plannable_location_id, :numeric_string => true, as: 'parentPlannableLocationId'
           property :plannable_location_id, :numeric_string => true, as: 'plannableLocationId'
           property :region_code, as: 'regionCode'
+        end
+      end
+      
+      class PlannableProductCoreAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :buying_method, as: 'buyingMethod'
+          property :cost_model, as: 'costModel'
+          property :product_category, as: 'productCategory'
         end
       end
       
@@ -5930,6 +5933,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :age_ranges, as: 'ageRanges'
+          property :default_youtube_select_lineup, as: 'defaultYoutubeSelectLineup', class: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp, decorator: Google::Apis::DisplayvideoV4::YouTubeSelectLineUp::Representation
+      
           collection :devices, as: 'devices'
           collection :genders, as: 'genders'
           collection :networks, as: 'networks'
@@ -5974,10 +5979,12 @@ module Google
       class PlannedProductForecast
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :effective_frequency_breakdowns, as: 'effectiveFrequencyBreakdowns', class: Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown, decorator: Google::Apis::DisplayvideoV4::EffectiveFrequencyBreakdown::Representation
-      
+          property :on_target_coview_impressions, :numeric_string => true, as: 'onTargetCoviewImpressions'
+          property :on_target_coview_reach, :numeric_string => true, as: 'onTargetCoviewReach'
           property :on_target_impressions, :numeric_string => true, as: 'onTargetImpressions'
           property :on_target_reach, :numeric_string => true, as: 'onTargetReach'
+          property :total_coview_impressions, :numeric_string => true, as: 'totalCoviewImpressions'
+          property :total_coview_reach, :numeric_string => true, as: 'totalCoviewReach'
           property :total_impressions, :numeric_string => true, as: 'totalImpressions'
           property :total_reach, :numeric_string => true, as: 'totalReach'
           property :trueview_views, :numeric_string => true, as: 'trueviewViews'
@@ -6066,6 +6073,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :plannable_product_code, as: 'plannableProductCode'
+          property :plannable_product_core_attributes, as: 'plannableProductCoreAttributes', class: Google::Apis::DisplayvideoV4::PlannableProductCoreAttributes, decorator: Google::Apis::DisplayvideoV4::PlannableProductCoreAttributes::Representation
+      
           property :plannable_product_description, as: 'plannableProductDescription'
           property :plannable_targeting, as: 'plannableTargeting', class: Google::Apis::DisplayvideoV4::PlannableTargeting, decorator: Google::Apis::DisplayvideoV4::PlannableTargeting::Representation
       
@@ -6339,6 +6348,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_surface_types, as: 'availableSurfaceTypes'
+          collection :default_surface_types, as: 'defaultSurfaceTypes'
           collection :valid_surface_combinations, as: 'validSurfaceCombinations', class: Google::Apis::DisplayvideoV4::SurfaceTargetingCombination, decorator: Google::Apis::DisplayvideoV4::SurfaceTargetingCombination::Representation
       
         end
@@ -6560,6 +6570,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ad_asset_type, as: 'adAssetType'
           property :filename, as: 'filename'
+          property :synthetic_content_attestation_status, as: 'syntheticContentAttestationStatus'
         end
       end
       

@@ -185,6 +185,68 @@ module Google
         end
       end
       
+      # A schedule for autoscaling.
+      class AutoscalingSchedule
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A crontab specification of when this schedule should trigger
+        # applying overrides. The overrides will be applied from the trigger time until
+        # the specified duration elapses.
+        # Corresponds to the JSON property `crontab`
+        # @return [String]
+        attr_accessor :crontab
+      
+        # Optional. The duration for which the parameter overrides for this schedule
+        # will be applied when triggered by the crontab.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Optional. The name of the schedule.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The parameters to use for autoscaling when this schedule is active.
+        # Corresponds to the JSON property `parameters`
+        # @return [Google::Apis::DataflowV1b3::Parameters]
+        attr_accessor :parameters
+      
+        # Optional. Specifies the priority of the schedule. If two schedules overlap,
+        # the one with the higher priority will be used. The higher the value, the
+        # higher the priority of the schedule.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Optional. The time zone for the schedule. The value of this field must be a
+        # time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database)
+        # . The default value is UTC.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
+        # Output only. When the customer last updated the schedule.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crontab = args[:crontab] if args.key?(:crontab)
+          @duration = args[:duration] if args.key?(:duration)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @priority = args[:priority] if args.key?(:priority)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Settings for WorkerPool autoscaling.
       class AutoscalingSettings
         include Google::Apis::Core::Hashable
@@ -565,6 +627,57 @@ module Google
         def update!(**args)
           @index = args[:index] if args.key?(:index)
           @position = args[:position] if args.key?(:position)
+        end
+      end
+      
+      # A ConfigStoreSetting resource.
+      class ConfigStoreSetting
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the setting.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Represents a dynamically typed value.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSettingValue]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents a dynamically typed value.
+      class ConfigStoreSettingValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Represents a string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
@@ -1442,6 +1555,22 @@ module Google
         def update!(**args)
           @primary = args[:primary] if args.key?(:primary)
           @residual = args[:residual] if args.key?(:residual)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -3305,6 +3434,31 @@ module Google
         end
       end
       
+      # Response message for ListConfigStoreSettings.
+      class ListConfigStoreSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of ConfigStoreSettings.
+        # Corresponds to the JSON property `configStoreSettings`
+        # @return [Array<Google::Apis::DataflowV1b3::ConfigStoreSetting>]
+        attr_accessor :config_store_settings
+      
+        # A token that can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_store_settings = args[:config_store_settings] if args.key?(:config_store_settings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to a request to list job messages.
       class ListJobMessagesResponse
         include Google::Apis::Core::Hashable
@@ -4110,6 +4264,43 @@ module Google
         end
       end
       
+      # The parameters to use for autoscaling when this schedule is active.
+      class Parameters
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The target CPU utilization for this schedule.
+        # Corresponds to the JSON property `cpuUtilizationTarget`
+        # @return [Float]
+        attr_accessor :cpu_utilization_target
+      
+        # Optional. The target latency for this schedule.
+        # Corresponds to the JSON property `latencyTarget`
+        # @return [String]
+        attr_accessor :latency_target
+      
+        # Optional. The maximum number of workers for this schedule.
+        # Corresponds to the JSON property `maxWorkerCount`
+        # @return [Fixnum]
+        attr_accessor :max_worker_count
+      
+        # Optional. The minimum number of workers for this schedule.
+        # Corresponds to the JSON property `minWorkerCount`
+        # @return [Fixnum]
+        attr_accessor :min_worker_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_utilization_target = args[:cpu_utilization_target] if args.key?(:cpu_utilization_target)
+          @latency_target = args[:latency_target] if args.key?(:latency_target)
+          @max_worker_count = args[:max_worker_count] if args.key?(:max_worker_count)
+          @min_worker_count = args[:min_worker_count] if args.key?(:min_worker_count)
+        end
+      end
+      
       # An instruction that does a partial group-by-key. One input and one output.
       class PartialGroupByKeyInstruction
         include Google::Apis::Core::Hashable
@@ -4614,6 +4805,44 @@ module Google
         end
       end
       
+      # Request message for ResolveConfigStoreSetting.
+      class ResolveConfigStoreSettingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for ResolveConfigStoreSetting.
+      class ResolveConfigStoreSettingResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of settings that were considered during resolution.
+        # Corresponds to the JSON property `choices`
+        # @return [Array<Google::Apis::DataflowV1b3::ConfigStoreSetting>]
+        attr_accessor :choices
+      
+        # A ConfigStoreSetting resource.
+        # Corresponds to the JSON property `setting`
+        # @return [Google::Apis::DataflowV1b3::ConfigStoreSetting]
+        attr_accessor :setting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @choices = args[:choices] if args.key?(:choices)
+          @setting = args[:setting] if args.key?(:setting)
+        end
+      end
+      
       # Worker metrics exported from workers. This contains resource utilization
       # metrics accumulated from a variety of sources. For more information, see go/df-
       # resource-signals.
@@ -4891,6 +5120,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_num_workers
       
+        # Optional. The schedule for autoscaling.
+        # Corresponds to the JSON property `schedules`
+        # @return [Array<Google::Apis::DataflowV1b3::AutoscalingSchedule>]
+        attr_accessor :schedules
+      
         # Target worker utilization, compared against the aggregate utilization of the
         # worker pool by autoscaler, to determine upscaling and downscaling when absent
         # other constraints such as backlog. For more information, see [Update an
@@ -4911,6 +5145,7 @@ module Google
           @latency_tier = args[:latency_tier] if args.key?(:latency_tier)
           @max_num_workers = args[:max_num_workers] if args.key?(:max_num_workers)
           @min_num_workers = args[:min_num_workers] if args.key?(:min_num_workers)
+          @schedules = args[:schedules] if args.key?(:schedules)
           @worker_utilization_hint = args[:worker_utilization_hint] if args.key?(:worker_utilization_hint)
         end
       end

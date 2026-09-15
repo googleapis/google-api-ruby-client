@@ -116,7 +116,7 @@ module Google
       class DomainProperty
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether the domain ownership has been verified (e.g., via Google
+        # Output only. Whether the domain ownership has been verified (e.g., via Google
         # Search Console).
         # Corresponds to the JSON property `ownershipVerified`
         # @return [Boolean]
@@ -136,6 +136,38 @@ module Google
         def update!(**args)
           @ownership_verified = args[:ownership_verified] if args.key?(:ownership_verified)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Request message for `GeneratePlatformSiteTokens`.
+      class GeneratePlatformSiteTokensRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for `GeneratePlatformSiteTokens`.
+      class GeneratePlatformSiteTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of domain-scoped secure token mappings.
+        # Corresponds to the JSON property `siteTokens`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::SiteToken>]
+        attr_accessor :site_tokens
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @site_tokens = args[:site_tokens] if args.key?(:site_tokens)
         end
       end
       
@@ -211,6 +243,12 @@ module Google
         attr_accessor :name_required
         alias_method :name_required?, :name_required
       
+        # Optional. Whether checking the opt-in checkbox is required.
+        # Corresponds to the JSON property `optInRequired`
+        # @return [Boolean]
+        attr_accessor :opt_in_required
+        alias_method :opt_in_required?, :opt_in_required
+      
         # Required. The title of the newsletter signup prompt.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -225,6 +263,7 @@ module Google
           @custom_consent_text = args[:custom_consent_text] if args.key?(:custom_consent_text)
           @custom_message = args[:custom_message] if args.key?(:custom_message)
           @name_required = args[:name_required] if args.key?(:name_required)
+          @opt_in_required = args[:opt_in_required] if args.key?(:opt_in_required)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -301,6 +340,12 @@ module Google
         # @return [String]
         attr_accessor :publication_tos_url
       
+        # Optional. The publication entity type (for-profit vs non-profit). Defaults to
+        # FOR_PROFIT if omitted.
+        # Corresponds to the JSON property `publicationType`
+        # @return [String]
+        attr_accessor :publication_type
+      
         # Required. The ISO 3166-1 alpha-2 region code where the publication is
         # registered (e.g., "US").
         # Corresponds to the JSON property `regionCode`
@@ -337,6 +382,7 @@ module Google
           @publication_id = args[:publication_id] if args.key?(:publication_id)
           @publication_privacy_policy_url = args[:publication_privacy_policy_url] if args.key?(:publication_privacy_policy_url)
           @publication_tos_url = args[:publication_tos_url] if args.key?(:publication_tos_url)
+          @publication_type = args[:publication_type] if args.key?(:publication_type)
           @region_code = args[:region_code] if args.key?(:region_code)
           @rrm_product = args[:rrm_product] if args.key?(:rrm_product)
           @sl_product = args[:sl_product] if args.key?(:sl_product)
@@ -376,6 +422,31 @@ module Google
         end
       end
       
+      # Represents a domain-scoped secure token mapping.
+      class SiteToken
+        include Google::Apis::Core::Hashable
+      
+        # The domain scope this token is valid for.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # The domain-scoped secure token value (ESUT).
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @token = args[:token] if args.key?(:token)
+        end
+      end
+      
       # Subscription Linking (SL) product settings and status.
       class SlProduct
         include Google::Apis::Core::Hashable
@@ -406,15 +477,12 @@ module Google
       class TosAcceptance
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of the person who accepted the TOS.
-        # Corresponds to the JSON property `signer`
-        # @return [String]
-        attr_accessor :signer
-      
-        # Optional. The job title or role of the signer.
-        # Corresponds to the JSON property `signerTitle`
-        # @return [String]
-        attr_accessor :signer_title
+        # Optional. Whether the user opted in to receive product updates and email
+        # communications.
+        # Corresponds to the JSON property `emailOptIn`
+        # @return [Boolean]
+        attr_accessor :email_opt_in
+        alias_method :email_opt_in?, :email_opt_in
       
         # Required. Whether the user has accepted the Terms of Service.
         # Corresponds to the JSON property `userAccepted`
@@ -428,8 +496,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @signer = args[:signer] if args.key?(:signer)
-          @signer_title = args[:signer_title] if args.key?(:signer_title)
+          @email_opt_in = args[:email_opt_in] if args.key?(:email_opt_in)
           @user_accepted = args[:user_accepted] if args.key?(:user_accepted)
         end
       end

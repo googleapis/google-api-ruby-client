@@ -783,7 +783,7 @@ module Google
         #   Required. The resource name of the dataset that the document belongs to .
         #   Format: projects/`project`/locations/`location`/processors/`processor`/dataset
         # @param [String] document_id_gcs_managed_doc_id_cw_doc_id
-        #   Id of the document (indexed) managed by Content Warehouse.
+        #   ID of the document (indexed) managed by Content Warehouse.
         # @param [String] document_id_gcs_managed_doc_id_gcs_uri
         #   Required. The Cloud Storage URI where the actual document is stored.
         # @param [String] document_id_revision_ref_latest_processor_version
@@ -795,7 +795,7 @@ module Google
         # @param [String] document_id_revision_ref_revision_id
         #   Reads the revision given by the id.
         # @param [String] document_id_unmanaged_doc_id_doc_id
-        #   Required. The id of the document.
+        #   Required. The ID of the document.
         # @param [Fixnum] page_range_end
         #   Last page number (one-based index) to be returned.
         # @param [Fixnum] page_range_start

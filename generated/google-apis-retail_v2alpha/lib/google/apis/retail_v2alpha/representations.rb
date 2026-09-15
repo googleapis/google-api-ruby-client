@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2446,6 +2452,8 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_prompts, as: 'agentPrompts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt::Representation
+      
           hash :attribute_results, as: 'attributeResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult::Representation
       
           property :attribution_token, as: 'attributionToken'
@@ -2453,6 +2461,13 @@ module Google
       
           collection :recent_search_results, as: 'recentSearchResults', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prompt, as: 'prompt'
         end
       end
       
@@ -2466,6 +2481,8 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agent_prompts, as: 'agentPrompts', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt::Representation
+      
           hash :attributes, as: 'attributes', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCustomAttribute::Representation
       
           collection :facets, as: 'facets', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchResponseFacet::Representation
@@ -3827,6 +3844,8 @@ module Google
           property :canonical_filter, as: 'canonicalFilter'
           property :conversational_search_spec, as: 'conversationalSearchSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpec::Representation
       
+          collection :dynamic_controls, as: 'dynamicControls', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl::Representation
+      
           property :dynamic_facet_spec, as: 'dynamicFacetSpec', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec::Representation
       
           property :entity, as: 'entity'
@@ -3834,6 +3853,7 @@ module Google
           collection :facet_specs, as: 'facetSpecs', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestFacetSpec::Representation
       
           property :filter, as: 'filter'
+          collection :ignored_control_ids, as: 'ignoredControlIds'
           hash :labels, as: 'labels'
           property :language_code, as: 'languageCode'
           property :offset, as: 'offset'

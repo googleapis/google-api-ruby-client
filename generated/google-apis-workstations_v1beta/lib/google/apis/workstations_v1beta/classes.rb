@@ -571,10 +571,26 @@ module Google
         attr_accessor :archive_timeout
       
         # Optional. Maximum size in GB to which this persistent directory can be resized.
-        # Defaults to unlimited if not set.
+        # Defaults to `0`, which indicates no maximum limit is enforced by this
+        # configuration. Resizing is still subject to the quotas and limits of the
+        # underlying disk type.
         # Corresponds to the JSON property `maxSizeGb`
         # @return [Fixnum]
         attr_accessor :max_size_gb
+      
+        # Optional. Indicates how many IOPS to provision for the disk. This sets the
+        # number of I/O operations per second that the disk can handle. Values must be
+        # between 3000 and 100,000.
+        # Corresponds to the JSON property `provisionedIops`
+        # @return [Fixnum]
+        attr_accessor :provisioned_iops
+      
+        # Optional. Indicates how much throughput to provision for the disk. This sets
+        # the number of throughput mb per second that the disk can handle. Values must
+        # be between 1 and 2,400.
+        # Corresponds to the JSON property `provisionedThroughput`
+        # @return [Fixnum]
+        attr_accessor :provisioned_throughput
       
         # Optional. Whether the persistent disk should be deleted when the workstation
         # is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
@@ -604,6 +620,8 @@ module Google
         def update!(**args)
           @archive_timeout = args[:archive_timeout] if args.key?(:archive_timeout)
           @max_size_gb = args[:max_size_gb] if args.key?(:max_size_gb)
+          @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
+          @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
           @reclaim_policy = args[:reclaim_policy] if args.key?(:reclaim_policy)
           @size_gb = args[:size_gb] if args.key?(:size_gb)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
@@ -912,7 +930,9 @@ module Google
         attr_accessor :fs_type
       
         # Optional. Maximum size in GB to which this persistent directory can be resized.
-        # Defaults to unlimited if not set.
+        # Defaults to `0`, which indicates no maximum limit is enforced by this
+        # configuration. Resizing is still subject to the quotas and limits of the
+        # underlying disk type.
         # Corresponds to the JSON property `maxSizeGb`
         # @return [Fixnum]
         attr_accessor :max_size_gb
@@ -1320,29 +1340,36 @@ module Google
         end
       end
       
-      # OAuth token.
+      # Represents an OAuth 2.0 access token and its associated metadata.
       class OAuthToken
         include Google::Apis::Core::Hashable
       
-        # Required. The OAuth token.
+        # Required. The OAuth 2.0 access token value.
         # Corresponds to the JSON property `accessToken`
         # @return [String]
         attr_accessor :access_token
       
-        # Optional. The email address encapsulated in the OAuth token.
+        # Optional. The email address associated with the OAuth 2.0 access token.
         # Corresponds to the JSON property `email`
         # @return [String]
         attr_accessor :email
       
         # Optional. The time the OAuth access token will expire. This should be the time
         # the access token was generated plus the expires_in offset returned from the
-        # Access Token Response.
+        # Access Token Response. Only one of `expire_time` or `expires_in` should be
+        # specified.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
       
-        # Optional. The scopes encapsulated in the OAuth token. See https://developers.
-        # google.com/identity/protocols/oauth2/scopes for more information.
+        # Optional. The lifetime duration of the access token. Only one of `expire_time`
+        # or `expires_in` should be specified.
+        # Corresponds to the JSON property `expiresIn`
+        # @return [String]
+        attr_accessor :expires_in
+      
+        # Optional. The scopes associated with the OAuth 2.0 access token. See https://
+        # developers.google.com/identity/protocols/oauth2/scopes for more information.
         # Corresponds to the JSON property `scopes`
         # @return [String]
         attr_accessor :scopes
@@ -1356,6 +1383,7 @@ module Google
           @access_token = args[:access_token] if args.key?(:access_token)
           @email = args[:email] if args.key?(:email)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @expires_in = args[:expires_in] if args.key?(:expires_in)
           @scopes = args[:scopes] if args.key?(:scopes)
         end
       end
@@ -1696,7 +1724,7 @@ module Google
       class PushCredentialsRequest
         include Google::Apis::Core::Hashable
       
-        # OAuth token.
+        # Represents an OAuth 2.0 access token and its associated metadata.
         # Corresponds to the JSON property `applicationDefaultCredentials`
         # @return [Google::Apis::WorkstationsV1beta::OAuthToken]
         attr_accessor :application_default_credentials
@@ -1919,6 +1947,34 @@ module Google
       
       # Request message for StopWorkstation.
       class StopWorkstationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set, the request will be rejected if the latest version of the
+        # workstation on the server does not have this ETag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. If set, validate the request and preview the result, but do not
+        # actually apply it.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Request message for SuspendWorkstation.
+      class SuspendWorkstationRequest
         include Google::Apis::Core::Hashable
       
         # Optional. If set, the request will be rejected if the latest version of the
@@ -2200,6 +2256,15 @@ module Google
         # @return [Array<Google::Apis::WorkstationsV1beta::Status>]
         attr_accessor :conditions
       
+        # Optional. Specifies a custom base URL for the Google Cloud Console. This field
+        # is intended to be user-configurable to support data residency for Cloud
+        # Workstations users. This will be used generally for user journeys where users
+        # need to go to the Cloud Console from Code OSS. When the Auth and Launch URLs
+        # are unset, this will be used as the base URL for those endpoints if set.
+        # Corresponds to the JSON property `consoleBaseUrl`
+        # @return [String]
+        attr_accessor :console_base_url
+      
         # Output only. The private IP address of the control plane for this workstation
         # cluster. Workstation VMs need access to this IP address to work with the
         # service, so make sure that your firewall rules allow egress from the
@@ -2343,6 +2408,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @conditions = args[:conditions] if args.key?(:conditions)
+          @console_base_url = args[:console_base_url] if args.key?(:console_base_url)
           @control_plane_ip = args[:control_plane_ip] if args.key?(:control_plane_ip)
           @create_time = args[:create_time] if args.key?(:create_time)
           @degraded = args[:degraded] if args.key?(:degraded)
@@ -2501,12 +2567,20 @@ module Google
         # @return [Google::Apis::WorkstationsV1beta::HttpOptions]
         attr_accessor :http_options
       
-        # Optional. Number of seconds to wait before automatically stopping a
-        # workstation after it last received user traffic. A value of `"0s"` indicates
-        # that Cloud Workstations VMs created with this configuration should never time
-        # out due to idleness. Provide [duration](https://developers.google.com/protocol-
-        # buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—
-        # for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
+        # Optional. The action to take when the workstation has been idle for the
+        # duration specified in idle_timeout. Defaults to STOP.
+        # Corresponds to the JSON property `idleAction`
+        # @return [String]
+        attr_accessor :idle_action
+      
+        # Optional. Number of seconds to wait before automatically stopping or
+        # suspending a workstation after it last received user traffic. See idle_action
+        # to configure whether to stop or suspend idle workstations. A value of `"0s"`
+        # indicates that Cloud Workstations VMs created with this configuration should
+        # never time out due to idleness. Provide [duration](https://developers.google.
+        # com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s`
+        # for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20
+        # minutes).
         # Corresponds to the JSON property `idleTimeout`
         # @return [String]
         attr_accessor :idle_timeout
@@ -2563,19 +2637,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_zones
       
-        # Optional. Number of seconds that a workstation can run until it is
-        # automatically shut down. We recommend that workstations be shut down daily to
-        # reduce costs and so that security updates can be applied upon restart. The
-        # idle_timeout and running_timeout fields are independent of each other. Note
-        # that the running_timeout field shuts down VMs after the specified time,
-        # regardless of whether or not the VMs are idle. Provide duration terminated by `
-        # s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12
-        # hours). A value of `"0s"` indicates that workstations using this configuration
-        # should never time out. If encryption_key is set, it must be greater than `"0s"`
-        # and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates
-        # that Cloud Workstations VMs created with this configuration have no maximum
-        # running time. This is strongly discouraged because you incur costs and will
-        # not pick up security updates.
+        # Optional. Number of seconds to wait before automatically stopping a
+        # workstation. We recommend that workstations be stopped daily so that security
+        # updates can be applied upon restart. The idle_timeout and running_timeout
+        # fields are independent of each other. Note that the running_timeout field
+        # stops workstations after the specified time, regardless of whether or not the
+        # workstations are idle. Note: This timeout applies to workstations in the
+        # following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation
+        # does not reset this timeout. Provide duration terminated by `s` for seconds—
+        # for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
+        # of `"0s"` indicates that workstations using this configuration should never
+        # time out. If encryption_key is set, it must be greater than `"0s"` and less
+        # than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud
+        # Workstations VMs created with this configuration have no maximum running time.
+        # This is strongly discouraged because you incur costs and will not pick up
+        # security updates.
         # Corresponds to the JSON property `runningTimeout`
         # @return [String]
         attr_accessor :running_timeout
@@ -2627,6 +2703,7 @@ module Google
           @grant_workstation_admin_role_on_create = args[:grant_workstation_admin_role_on_create] if args.key?(:grant_workstation_admin_role_on_create)
           @host = args[:host] if args.key?(:host)
           @http_options = args[:http_options] if args.key?(:http_options)
+          @idle_action = args[:idle_action] if args.key?(:idle_action)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
           @max_usable_workstations = args[:max_usable_workstations] if args.key?(:max_usable_workstations)

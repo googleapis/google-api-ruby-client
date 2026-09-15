@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomThreatScenarioConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomerProfileCitation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DocumentQuery
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringFeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainSetting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnumerateAlertFacetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetPasswordResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitialAccessBrokerAlertDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +257,12 @@ module Google
       end
       
       class InsiderThreatFindingDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LegacyMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,9 +538,13 @@ module Google
       class ConfigurationDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_threat_scenario, as: 'customThreatScenario', class: Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomThreatScenarioConfig::Representation
+      
           property :customer_profile, as: 'customerProfile', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileConfig::Representation
       
           property :detail_type, as: 'detailType'
+          property :domain_configuration, as: 'domainConfiguration', class: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration, decorator: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration::Representation
+      
           property :technology_watchlist, as: 'technologyWatchlist', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig::Representation
       
         end
@@ -510,6 +556,18 @@ module Google
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :snapshot, as: 'snapshot', class: Google::Apis::ThreatintelligenceV1beta::Configuration, decorator: Google::Apis::ThreatintelligenceV1beta::Configuration::Representation
+      
+        end
+      end
+      
+      class CustomThreatScenarioConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_lucene_query, as: 'compiledLuceneQuery'
+          property :document_condition, as: 'documentCondition'
+          property :document_query, as: 'documentQuery', class: Google::Apis::ThreatintelligenceV1beta::DocumentQuery, decorator: Google::Apis::ThreatintelligenceV1beta::DocumentQuery::Representation
+      
+          property :legacy_monitor_metadata, as: 'legacyMonitorMetadata', class: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata, decorator: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata::Representation
       
         end
       end
@@ -681,6 +739,40 @@ module Google
         end
       end
       
+      class DocumentQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_model, as: 'dataModel'
+          property :query, as: 'query'
+          property :query_type, as: 'queryType'
+        end
+      end
+      
+      class DomainConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domain_settings, as: 'domainSettings', class: Google::Apis::ThreatintelligenceV1beta::DomainSetting, decorator: Google::Apis::ThreatintelligenceV1beta::DomainSetting::Representation
+      
+        end
+      end
+      
+      class DomainMonitoringFeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+        end
+      end
+      
+      class DomainSetting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :domain_monitoring_config, as: 'domainMonitoringConfig', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFeatureConfig::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
       class EnumerateAlertFacetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -763,6 +855,13 @@ module Google
         end
       end
       
+      class GetPasswordResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :password, as: 'password'
+        end
+      end
+      
       class InitialAccessBrokerAlertDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -794,6 +893,28 @@ module Google
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class LegacyMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_enabled, as: 'aggregationEnabled'
+          property :aggregation_similarity, as: 'aggregationSimilarity'
+          property :condition_version, as: 'conditionVersion'
+          property :creator_user_id, as: 'creatorUserId'
+          property :description, as: 'description'
+          property :disabled_code, as: 'disabledCode'
+          property :disabled_reason, as: 'disabledReason'
+          property :display_name, as: 'displayName'
+          property :email_notification_enabled, as: 'emailNotificationEnabled'
+          property :email_notification_immediate, as: 'emailNotificationImmediate'
+          property :legacy_monitor_id, as: 'legacyMonitorId'
+          property :stale_time, as: 'staleTime'
+          property :template_id, as: 'templateId'
+          property :tenant_id, as: 'tenantId'
+          property :updater_user_id, as: 'updaterUserId'
+          property :version, as: 'version'
         end
       end
       

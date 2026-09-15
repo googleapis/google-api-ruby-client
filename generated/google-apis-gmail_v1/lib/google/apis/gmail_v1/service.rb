@@ -1787,6 +1787,10 @@ module Google
         #   The requester's primary email address. To indicate the authenticated user, you
         #   can use the special value `me`.
         # @param [Google::Apis::GmailV1::CseKeyPair] cse_key_pair_object
+        # @param [String] chain_validation
+        #   The type of certificate chain validation to perform at creation. The request
+        #   will be rejected if the uploaded chain fails to satisfy the requested
+        #   validation checks. When unspecified, this parameter defaults to `all`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1804,13 +1808,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_user_setting_cse_keypair(user_id, cse_key_pair_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_user_setting_cse_keypair(user_id, cse_key_pair_object = nil, chain_validation: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'gmail/v1/users/{userId}/settings/cse/keypairs', options)
           command.request_representation = Google::Apis::GmailV1::CseKeyPair::Representation
           command.request_object = cse_key_pair_object
           command.response_representation = Google::Apis::GmailV1::CseKeyPair::Representation
           command.response_class = Google::Apis::GmailV1::CseKeyPair
           command.params['userId'] = user_id unless user_id.nil?
+          command.query['chainValidation'] = chain_validation unless chain_validation.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.4'
   gem.add_runtime_dependency "google-apis-core", "~> 0.1"
+  gem.add_runtime_dependency "multi_json", "~> 1.0"
 end

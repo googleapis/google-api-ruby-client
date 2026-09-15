@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -977,6 +983,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :device_info, as: 'deviceInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo::Representation
       
+          property :dispatch_info, as: 'dispatchInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo::Representation
+      
           property :group_info, as: 'groupInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo::Representation
       
           property :output_type, as: 'outputType'
@@ -986,6 +994,13 @@ module Google
       end
       
       class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_type, as: 'outputType'
+        end
+      end
+      
+      class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_type, as: 'outputType'

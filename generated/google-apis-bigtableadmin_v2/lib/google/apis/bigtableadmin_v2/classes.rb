@@ -860,6 +860,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :logical_data_bytes
       
+        # Output only. The logical data bytes of the column family stored on HDD.
+        # Corresponds to the JSON property `logicalDataHddBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_hdd_bytes
+      
+        # Output only. The logical data bytes of the column family stored on SSD.
+        # Corresponds to the JSON property `logicalDataSsdBytes`
+        # @return [Fixnum]
+        attr_accessor :logical_data_ssd_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -869,6 +879,8 @@ module Google
           @average_cells_per_column = args[:average_cells_per_column] if args.key?(:average_cells_per_column)
           @average_columns_per_row = args[:average_columns_per_row] if args.key?(:average_columns_per_row)
           @logical_data_bytes = args[:logical_data_bytes] if args.key?(:logical_data_bytes)
+          @logical_data_hdd_bytes = args[:logical_data_hdd_bytes] if args.key?(:logical_data_hdd_bytes)
+          @logical_data_ssd_bytes = args[:logical_data_ssd_bytes] if args.key?(:logical_data_ssd_bytes)
         end
       end
       
@@ -1337,6 +1349,13 @@ module Google
       class CreateMaterializedViewRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, ignore optional safety checks when creating the
+        # materialized view.
+        # Corresponds to the JSON property `ignoreWarnings`
+        # @return [Boolean]
+        attr_accessor :ignore_warnings
+        alias_method :ignore_warnings?, :ignore_warnings
+      
         # A materialized view object that can be referenced in SQL queries.
         # Corresponds to the JSON property `materializedView`
         # @return [Google::Apis::BigtableadminV2::MaterializedView]
@@ -1360,6 +1379,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ignore_warnings = args[:ignore_warnings] if args.key?(:ignore_warnings)
           @materialized_view = args[:materialized_view] if args.key?(:materialized_view)
           @materialized_view_id = args[:materialized_view_id] if args.key?(:materialized_view_id)
           @parent = args[:parent] if args.key?(:parent)
@@ -2894,7 +2914,10 @@ module Google
         # regular expression: `\p`Ll`\p`Lo``0,62``. * Label values must be between 0 and
         # 63 characters long and must conform to the regular expression: `[\p`Ll`\p`Lo`\
         # p`N`_-]`0,63``. * No more than 64 labels can be associated with a given
-        # resource. * Keys and values must both be under 128 bytes.
+        # resource. * Keys and values must both be under 128 bytes. Labels and Tags (
+        # below) are both used to bind metadata to resources, with different use-cases.
+        # See https://cloud.google.com/resource-manager/docs/tags/tags-overview for an
+        # in-depth overview on the difference between tags and labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

@@ -4704,6 +4704,29 @@ module Google
         end
       end
       
+      # A JSON representation of a pass.
+      class JsonResource
+        include Google::Apis::Core::Hashable
+      
+        # Required. A JSON string representing the unencoded JWT payload for a pass of
+        # the format described at https://developers.google.com/wallet/reference/rest/v1/
+        # Jwt. This can be set to either the entire JSON representation described at
+        # this link or just the contents of the payload field holding the relevant
+        # classes and objects.
+        # Corresponds to the JSON property `json`
+        # @return [String]
+        attr_accessor :json
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json = args[:json] if args.key?(:json)
+        end
+      end
+      
       # 
       class JwtInsertResponse
         include Google::Apis::Core::Hashable
@@ -4750,6 +4773,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @jwt = args[:jwt] if args.key?(:jwt)
+        end
+      end
+      
+      # Request to validate the JWT or JSON representation of a pass.
+      class JwtValidateRequest
+        include Google::Apis::Core::Hashable
+      
+        # A JSON representation of a pass.
+        # Corresponds to the JSON property `jsonResource`
+        # @return [Google::Apis::WalletobjectsV1::JsonResource]
+        attr_accessor :json_resource
+      
+        # A JWT representation of a pass.
+        # Corresponds to the JSON property `jwtResource`
+        # @return [Google::Apis::WalletobjectsV1::JwtResource]
+        attr_accessor :jwt_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_resource = args[:json_resource] if args.key?(:json_resource)
+          @jwt_resource = args[:jwt_resource] if args.key?(:jwt_resource)
+        end
+      end
+      
+      # Empty if the resource in the request is valid. Returns exception if invalid.
+      class JwtValidateResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

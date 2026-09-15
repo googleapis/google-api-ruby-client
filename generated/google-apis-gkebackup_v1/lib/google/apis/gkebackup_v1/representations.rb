@@ -523,6 +523,7 @@ module Google
       class BdrBackupRestoreJobLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_protection_policy, as: 'autoProtectionPolicy'
           property :backup_consistency_time, as: 'backupConsistencyTime'
           property :backup_name, as: 'backupName'
           property :backup_plan_name, as: 'backupPlanName'
@@ -546,6 +547,7 @@ module Google
           property :source_resource_location, as: 'sourceResourceLocation'
           property :source_resource_name, as: 'sourceResourceName'
           property :start_time, as: 'startTime'
+          property :storage_tier, as: 'storageTier'
           property :target_resource_type, as: 'targetResourceType'
         end
       end
@@ -712,6 +714,7 @@ module Google
           property :recurrence_schedule, as: 'recurrenceSchedule'
           property :retention_days, as: 'retentionDays'
           property :rule_name, as: 'ruleName'
+          property :storage_tier, as: 'storageTier'
         end
       end
       

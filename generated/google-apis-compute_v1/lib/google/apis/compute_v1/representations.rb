@@ -1684,6 +1684,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FutureReservationStoragePoolProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FutureReservationTimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1805,6 +1817,18 @@ module Google
       end
       
       class GrpctlsHealthCheck
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2278,8 +2302,50 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Host
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostPhysicalTopology
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HostRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostsGetVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HostsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4180,6 +4246,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedInstanceShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4211,6 +4289,12 @@ module Google
       end
       
       class NamedPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamedSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5440,6 +5524,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegexRewrite
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Region
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -5800,6 +5890,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReliabilityRisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReliabilityRisksListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestMirrorPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6076,6 +6190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePoliciesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -6257,6 +6377,30 @@ module Google
       end
       
       class ResourceStatusScheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceStatusShutdownDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RiskRecommendation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6604,6 +6748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RoutersGetNamedSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoutersGetRoutePolicyResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6611,6 +6761,24 @@ module Google
       end
       
       class RoutersListBgpRoutes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoutersListNamedSets
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -6695,6 +6863,12 @@ module Google
       end
       
       class Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchedulingGracefulShutdown
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7457,6 +7631,18 @@ module Google
       end
       
       class StoragePoolResourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolShareSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8866,6 +9052,8 @@ module Google
           property :kind, as: 'kind'
           property :maximum_cards_per_instance, as: 'maximumCardsPerInstance'
           property :name, as: 'name'
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
+      
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
         end
@@ -10114,6 +10302,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authentication_config, as: 'authenticationConfig'
+          property :identity, as: 'identity'
           property :sni, as: 'sni'
           collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName, decorator: Google::Apis::ComputeV1::BackendServiceTlsSettingsSubjectAltName::Representation
       
@@ -11878,6 +12067,9 @@ module Google
           property :planning_status, as: 'planningStatus'
           property :reservation_mode, as: 'reservationMode'
           property :reservation_name, as: 'reservationName'
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
+      
+          property :resource_name, as: 'resourceName'
           property :scheduling_type, as: 'schedulingType'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -11887,6 +12079,8 @@ module Google
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationSpecificSkuProperties::Representation
       
           property :status, as: 'status', class: Google::Apis::ComputeV1::FutureReservationStatus, decorator: Google::Apis::ComputeV1::FutureReservationStatus::Representation
+      
+          property :storage_pool_properties, as: 'storagePoolProperties', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProperties, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProperties::Representation
       
           property :time_window, as: 'timeWindow', class: Google::Apis::ComputeV1::FutureReservationTimeWindow, decorator: Google::Apis::ComputeV1::FutureReservationTimeWindow::Representation
       
@@ -11925,6 +12119,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :amendment_status, as: 'amendmentStatus'
           collection :auto_created_reservations, as: 'autoCreatedReservations'
+          property :exapool_provisioned_capacity_gb, as: 'exapoolProvisionedCapacityGb', class: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
           property :existing_matching_usage_info, as: 'existingMatchingUsageInfo', class: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo, decorator: Google::Apis::ComputeV1::FutureReservationStatusExistingMatchingUsageInfo::Representation
       
           property :fulfilled_count, :numeric_string => true, as: 'fulfilledCount'
@@ -11933,6 +12129,8 @@ module Google
           property :lock_time, as: 'lockTime'
           property :procurement_status, as: 'procurementStatus'
           property :specific_sku_properties, as: 'specificSkuProperties', class: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties, decorator: Google::Apis::ComputeV1::FutureReservationStatusSpecificSkuProperties::Representation
+      
+          property :storage_pool_provisioned_capacity, as: 'storagePoolProvisionedCapacity', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity::Representation
       
         end
       end
@@ -11975,6 +12173,26 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :source_instance_template_id, as: 'sourceInstanceTemplateId'
+        end
+      end
+      
+      class FutureReservationStoragePoolProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_exapool_provisioned_capacity_gb, as: 'requestedExapoolProvisionedCapacityGb', class: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb, decorator: Google::Apis::ComputeV1::StoragePoolExapoolProvisionedCapacityGb::Representation
+      
+          property :requested_storage_pool_provisioned_capacity, as: 'requestedStoragePoolProvisionedCapacity', class: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity, decorator: Google::Apis::ComputeV1::FutureReservationStoragePoolProvisionedCapacity::Representation
+      
+          property :storage_pool_type, as: 'storagePoolType'
+        end
+      end
+      
+      class FutureReservationStoragePoolProvisionedCapacity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pool_provisioned_capacity_gb, :numeric_string => true, as: 'poolProvisionedCapacityGb'
+          property :pool_provisioned_iops, :numeric_string => true, as: 'poolProvisionedIops'
+          property :pool_provisioned_throughput, :numeric_string => true, as: 'poolProvisionedThroughput'
         end
       end
       
@@ -12186,6 +12404,25 @@ module Google
           property :grpc_service_name, as: 'grpcServiceName'
           property :port, as: 'port'
           property :port_specification, as: 'portSpecification'
+        end
+      end
+      
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::ComputeV1::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -13037,12 +13274,90 @@ module Google
         end
       end
       
+      class Host
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alias_links, as: 'aliasLinks'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::HostStatus, decorator: Google::Apis::ComputeV1::HostStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class HostPhysicalTopology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :block, as: 'block'
+          property :cluster, as: 'cluster'
+          property :host, as: 'host'
+          property :sub_block, as: 'subBlock'
+        end
+      end
+      
       class HostRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           collection :hosts, as: 'hosts'
           property :path_matcher, as: 'pathMatcher'
+        end
+      end
+      
+      class HostStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputeV1::HostPhysicalTopology, decorator: Google::Apis::ComputeV1::HostPhysicalTopology::Representation
+      
+          collection :running_instances, as: 'runningInstances'
+        end
+      end
+      
+      class HostsGetVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sbom_selections, as: 'sbomSelections'
+        end
+      end
+      
+      class HostsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::Host, decorator: Google::Apis::ComputeV1::Host::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HostsListResponse::Warning, decorator: Google::Apis::ComputeV1::HostsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HostsListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::HostsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -13453,6 +13768,7 @@ module Google
           property :last_start_timestamp, as: 'lastStartTimestamp'
           property :last_stop_timestamp, as: 'lastStopTimestamp'
           property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -13561,6 +13877,7 @@ module Google
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :rank, :numeric_string => true, as: 'rank'
         end
       end
@@ -13843,6 +14160,8 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::PerInstanceConfig, decorator: Google::Apis::ComputeV1::PerInstanceConfig::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :region, as: 'region'
@@ -14594,6 +14913,7 @@ module Google
       
           property :key_revocation_action_type, as: 'keyRevocationActionType'
           hash :labels, as: 'labels'
+          property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
           property :metadata, as: 'metadata', class: Google::Apis::ComputeV1::Metadata, decorator: Google::Apis::ComputeV1::Metadata::Representation
       
@@ -15158,6 +15478,7 @@ module Google
           property :requested_link_count, as: 'requestedLinkCount'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :state, as: 'state'
           property :subzone, as: 'subzone'
           collection :wire_groups, as: 'wireGroups'
@@ -15947,6 +16268,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
+          property :max_dynamic_path_bandwidth_gbps, :numeric_string => true, as: 'maxDynamicPathBandwidthGbps'
+          property :max_fixed_path_bandwidth_gbps, :numeric_string => true, as: 'maxFixedPathBandwidthGbps'
         end
       end
       
@@ -16575,6 +16898,11 @@ module Google
       
           property :properties_from_flexibility_policy, as: 'propertiesFromFlexibilityPolicy', class: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy, decorator: Google::Apis::ComputeV1::ManagedInstancePropertiesFromFlexibilityPolicy::Representation
       
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::ManagedInstanceScheduling, decorator: Google::Apis::ComputeV1::ManagedInstanceScheduling::Representation
+      
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails, decorator: Google::Apis::ComputeV1::ManagedInstanceShutdownDetails::Representation
+      
+          property :target_status, as: 'targetStatus'
           property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
       
         end
@@ -16636,6 +16964,23 @@ module Google
         end
       end
       
+      class ManagedInstanceScheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
+          property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ManagedInstanceShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
+        end
+      end
+      
       class ManagedInstanceVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -16684,6 +17029,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :port, as: 'port'
+        end
+      end
+      
+      class NamedSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          collection :elements, as: 'elements', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
+      
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -18148,6 +18505,8 @@ module Google
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::ComputeV1::Operation::Error, decorator: Google::Apis::ComputeV1::Operation::Error::Representation
       
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::ComputeV1::GetHealthOperationMetadata, decorator: Google::Apis::ComputeV1::GetHealthOperationMetadata::Representation
+      
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeV1::GetVersionOperationMetadata, decorator: Google::Apis::ComputeV1::GetVersionOperationMetadata::Representation
       
           property :http_error_message, as: 'httpErrorMessage'
@@ -19035,6 +19394,14 @@ module Google
         end
       end
       
+      class RegexRewrite
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :path_pattern, as: 'pathPattern'
+          property :path_substitution, as: 'pathSubstitution'
+        end
+      end
+      
       class Region
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19596,6 +19963,56 @@ module Google
         end
       end
       
+      class ReliabilityRisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :details, as: 'details', class: Google::Apis::ComputeV1::RiskDetails, decorator: Google::Apis::ComputeV1::RiskDetails::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :recommendation, as: 'recommendation', class: Google::Apis::ComputeV1::RiskRecommendation, decorator: Google::Apis::ComputeV1::RiskRecommendation::Representation
+      
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+        end
+      end
+      
+      class ReliabilityRisksListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ReliabilityRisk, decorator: Google::Apis::ComputeV1::ReliabilityRisk::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning, decorator: Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning::Datum, decorator: Google::Apis::ComputeV1::ReliabilityRisksListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class RequestMirrorPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -19629,6 +20046,8 @@ module Google
       
           property :protection_tier, as: 'protectionTier'
           property :reservation_sharing_policy, as: 'reservationSharingPolicy', class: Google::Apis::ComputeV1::AllocationReservationSharingPolicy, decorator: Google::Apis::ComputeV1::AllocationReservationSharingPolicy::Representation
+      
+          property :resource_metadata, as: 'resourceMetadata', class: Google::Apis::ComputeV1::ResourceMetadata, decorator: Google::Apis::ComputeV1::ResourceMetadata::Representation
       
           hash :resource_policies, as: 'resourcePolicies'
           property :resource_status, as: 'resourceStatus', class: Google::Apis::ComputeV1::AllocationResourceStatus, decorator: Google::Apis::ComputeV1::AllocationResourceStatus::Representation
@@ -20098,6 +20517,14 @@ module Google
         end
       end
       
+      class ResourceMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
       class ResourcePoliciesScopedList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20371,6 +20798,8 @@ module Google
       
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::ResourceStatusScheduling, decorator: Google::Apis::ComputeV1::ResourceStatusScheduling::Representation
       
+          property :shutdown_details, as: 'shutdownDetails', class: Google::Apis::ComputeV1::ResourceStatusShutdownDetails, decorator: Google::Apis::ComputeV1::ResourceStatusShutdownDetails::Representation
+      
           property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeV1::UpcomingMaintenance, decorator: Google::Apis::ComputeV1::UpcomingMaintenance::Representation
       
         end
@@ -20414,6 +20843,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumed_reservation, as: 'consumedReservation'
+          property :consumed_reservation_block, as: 'consumedReservationBlock'
+          property :consumed_reservation_sub_block, as: 'consumedReservationSubBlock'
         end
       end
       
@@ -20421,6 +20852,49 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
+          property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
+          property :termination_timestamp, as: 'terminationTimestamp'
+        end
+      end
+      
+      class ResourceStatusShutdownDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
+          property :request_timestamp, as: 'requestTimestamp'
+          property :stop_state, as: 'stopState'
+          property :target_state, as: 'targetState'
+        end
+      end
+      
+      class RiskDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :global_dns_insight, as: 'globalDnsInsight', class: Google::Apis::ComputeV1::RiskDetailsGlobalDnsInsight, decorator: Google::Apis::ComputeV1::RiskDetailsGlobalDnsInsight::Representation
+      
+          property :last_update_timestamp, as: 'lastUpdateTimestamp'
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
+      class RiskDetailsGlobalDnsInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_default_is_global_dns, as: 'projectDefaultIsGlobalDns'
+          property :query_observation_window, as: 'queryObservationWindow'
+          property :risky_query_count, :numeric_string => true, as: 'riskyQueryCount'
+          property :total_query_count, :numeric_string => true, as: 'totalQueryCount'
+        end
+      end
+      
+      class RiskRecommendation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :reference_url, as: 'referenceUrl'
         end
       end
       
@@ -21129,6 +21603,15 @@ module Google
         end
       end
       
+      class RoutersGetNamedSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::NamedSet, decorator: Google::Apis::ComputeV1::NamedSet::Representation
+      
+        end
+      end
+      
       class RoutersGetRoutePolicyResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -21157,6 +21640,40 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListBgpRoutes::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class RoutersListNamedSets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :result, as: 'result', class: Google::Apis::ComputeV1::NamedSet, decorator: Google::Apis::ComputeV1::NamedSet::Representation
+      
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::RoutersListNamedSets::Warning, decorator: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum, decorator: Google::Apis::ComputeV1::RoutersListNamedSets::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -21302,6 +21819,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :availability_domain, as: 'availabilityDomain'
+          property :graceful_shutdown, as: 'gracefulShutdown', class: Google::Apis::ComputeV1::SchedulingGracefulShutdown, decorator: Google::Apis::ComputeV1::SchedulingGracefulShutdown::Representation
+      
           property :host_error_timeout_seconds, as: 'hostErrorTimeoutSeconds'
           property :instance_termination_action, as: 'instanceTerminationAction'
           property :local_ssd_recovery_timeout, as: 'localSsdRecoveryTimeout', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
@@ -21316,9 +21835,20 @@ module Google
           property :on_instance_stop_action, as: 'onInstanceStopAction', class: Google::Apis::ComputeV1::SchedulingOnInstanceStopAction, decorator: Google::Apis::ComputeV1::SchedulingOnInstanceStopAction::Representation
       
           property :preemptible, as: 'preemptible'
+          property :preemption_notice_duration, as: 'preemptionNoticeDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
           property :provisioning_model, as: 'provisioningModel'
           property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'
+        end
+      end
+      
+      class SchedulingGracefulShutdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :max_duration, as: 'maxDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
+      
         end
       end
       
@@ -22573,6 +23103,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :share_settings, as: 'shareSettings', class: Google::Apis::ComputeV1::StoragePoolShareSettings, decorator: Google::Apis::ComputeV1::StoragePoolShareSettings::Representation
+      
           property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeV1::StoragePoolResourceStatus, decorator: Google::Apis::ComputeV1::StoragePoolResourceStatus::Representation
       
@@ -22733,6 +23265,21 @@ module Google
           property :total_provisioned_disk_capacity_gb, :numeric_string => true, as: 'totalProvisionedDiskCapacityGb'
           property :total_provisioned_disk_iops, :numeric_string => true, as: 'totalProvisionedDiskIops'
           property :total_provisioned_disk_throughput, :numeric_string => true, as: 'totalProvisionedDiskThroughput'
+        end
+      end
+      
+      class StoragePoolShareSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :project_map, as: 'projectMap', class: Google::Apis::ComputeV1::StoragePoolShareSettingsProjectConfig, decorator: Google::Apis::ComputeV1::StoragePoolShareSettingsProjectConfig::Representation
+      
+        end
+      end
+      
+      class StoragePoolShareSettingsProjectConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_id, as: 'projectId'
         end
       end
       
@@ -23011,6 +23558,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ip_collection, as: 'ipCollection'
+          property :ip_version, as: 'ipVersion'
           property :range_name, as: 'rangeName'
           property :reserved_internal_range, as: 'reservedInternalRange'
         end
@@ -24258,6 +24807,8 @@ module Google
           property :host_rewrite, as: 'hostRewrite'
           property :path_prefix_rewrite, as: 'pathPrefixRewrite'
           property :path_template_rewrite, as: 'pathTemplateRewrite'
+          property :regex_rewrite, as: 'regexRewrite', class: Google::Apis::ComputeV1::RegexRewrite, decorator: Google::Apis::ComputeV1::RegexRewrite::Representation
+      
         end
       end
       

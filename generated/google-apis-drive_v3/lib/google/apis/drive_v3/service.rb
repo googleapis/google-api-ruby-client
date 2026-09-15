@@ -385,7 +385,12 @@ module Google
         end
         
         # Lists the approvals on a file. For more information, see [Manage approvals](
-        # https://developers.google.com/workspace/drive/api/guides/approvals).
+        # https://developers.google.com/workspace/drive/api/guides/approvals). By
+        # default, this method returns a minimal response that may not include the items
+        # array. To retrieve approval details, you must explicitly specify the fields
+        # you want using the `fields` query parameter. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/workspace/
+        # drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   Required. The ID of the file that the approval is on.
         # @param [Fixnum] page_size
@@ -647,7 +652,9 @@ module Google
         # @param [Boolean] include_team_drive_items
         #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [Fixnum] page_size
-        #   The maximum number of changes to return per page.
+        #   The maximum number of changes to return. The service may return fewer than
+        #   this value. If unspecified, at most 100 changes will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [Boolean] restrict_to_my_drive
         #   Whether to restrict the results to changes inside the My Drive hierarchy. This
         #   omits changes to files such as those in the Application Data folder or shared
@@ -732,7 +739,9 @@ module Google
         # @param [Boolean] include_team_drive_items
         #   Deprecated: Use `includeItemsFromAllDrives` instead.
         # @param [Fixnum] page_size
-        #   The maximum number of changes to return per page.
+        #   The maximum number of changes to return. The service may return fewer than
+        #   this value. If unspecified, at most 100 changes will be returned. The maximum
+        #   value is 1000; values above 1000 will be coerced to 1000.
         # @param [Boolean] restrict_to_my_drive
         #   Whether to restrict the results to changes inside the My Drive hierarchy. This
         #   omits changes to files such as those in the Application Data folder or shared
@@ -939,7 +948,9 @@ module Google
         #   Whether to include deleted comments. Deleted comments will not include their
         #   original content.
         # @param [Fixnum] page_size
-        #   The maximum number of comments to return per page.
+        #   The maximum number of comments to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 comments will be returned. The maximum
+        #   value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response.
@@ -1169,7 +1180,9 @@ module Google
         # see the [Search for shared drives](https://developers.google.com/workspace/
         # drive/api/guides/search-shareddrives) guide.
         # @param [Fixnum] page_size
-        #   Maximum number of shared drives to return per page.
+        #   The maximum number of shared drives to return. The service may return fewer
+        #   than this value. If unspecified, at most 10 shared drives will be returned.
+        #   The maximum value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   Page token for shared drives.
         # @param [String] q
@@ -1285,6 +1298,8 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
+        # @param [Boolean] copy_comments
+        #   Whether to copy the comments associated with the file.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
@@ -1327,13 +1342,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, copy_comments: nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV3::File::Representation
           command.request_object = file_object
           command.response_representation = Google::Apis::DriveV3::File::Representation
           command.response_class = Google::Apis::DriveV3::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['copyComments'] = copy_comments unless copy_comments.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ignoreDefaultVisibility'] = ignore_default_visibility unless ignore_default_visibility.nil?
           command.query['includeLabels'] = include_labels unless include_labels.nil?
@@ -1801,10 +1817,10 @@ module Google
         #   Each key sorts ascending by default, but can be reversed with the `desc`
         #   modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.
         # @param [Fixnum] page_size
-        #   The maximum number of files to return per page. Pages may be partial or empty
-        #   even before reaching the end of the file list. If unspecified, at most 100
-        #   files are returned for shared drives, and the entire list of files for non-
-        #   shared drives. The maximum value is 100; values above 100 are changed to 100.
+        #   The maximum number of files to return. The service may return fewer than this
+        #   value. If unspecified, at most 100 files will be returned for shared drives,
+        #   and the entire list of files for non-shared drives. The maximum value is 1000;
+        #   values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of `nextPageToken` from the previous response.
@@ -2300,9 +2316,10 @@ module Google
         #   Specifies which additional view's permissions to include in the response. Only
         #   `published` is supported.
         # @param [Fixnum] page_size
-        #   The maximum number of permissions to return per page. When not set for files
-        #   in a shared drive, at most 100 results will be returned. When not set for
-        #   files that are not in a shared drive, the entire list will be returned.
+        #   The maximum number of permissions to return. The service may return fewer than
+        #   this value. If unspecified, at most 100 permissions will be returned for
+        #   shared drives, and the entire list of permissions for non-shared drives. The
+        #   maximum value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of `nextPageToken` from the previous response.
@@ -2542,7 +2559,9 @@ module Google
         #   Whether to include deleted replies. Deleted replies don't include their
         #   original content.
         # @param [Fixnum] page_size
-        #   The maximum number of replies to return per page.
+        #   The maximum number of replies to return. The service may return fewer than
+        #   this value. If unspecified, at most 20 replies will be returned. The maximum
+        #   value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of `nextPageToken` from the previous response.
@@ -2712,7 +2731,9 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Fixnum] page_size
-        #   The maximum number of revisions to return per page.
+        #   The maximum number of revisions to return. The service may return fewer than
+        #   this value. If unspecified, at most 200 revisions will be returned. The
+        #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
         #   The token for continuing a previous list request on the next page. This should
         #   be set to the value of 'nextPageToken' from the previous response.

@@ -92,6 +92,35 @@ module Google
       class AnswerQueryRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Applies a strict filter to the search results used to ground the
+        # answer. The expression supports a subset of the syntax described at https://
+        # google.aip.dev/160. Supported fields for filtering: * `content_length_bytes` (
+        # INTEGER): The length of the `Document.content` field in bytes. * `data_source`
+        # (STRING): The source of the document, e.g. `docs.cloud.google.com`. See https:/
+        # /developers.google.com/knowledge/reference/corpus-reference for the complete
+        # list of data sources in the corpus. * `update_time` (TIMESTAMP): The timestamp
+        # of when the document was last meaningfully updated. A meaningful update is one
+        # that changes document's markdown content or metadata. * `uri` (STRING): The
+        # document URI, e.g. `https://docs.cloud.google.com/bigquery/docs/tables`.
+        # INTEGER fields support `=`, `<`, `<=`, `>`, and `>=` operators. STRING fields
+        # support `=` (equals) and `!=` (not equals) operators for **exact match** on
+        # the whole string. Partial match, prefix match, and regexp match are not
+        # supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators.
+        # Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`. You can
+        # combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical operators. `
+        # OR` has higher precedence than `AND`. Use parentheses for explicit precedence
+        # grouping. Examples: * Filter by `Document.content_length_bytes`: `
+        # content_length_bytes < 50000` * `data_source = "docs.cloud.google.com" OR
+        # data_source = "firebase.google.com"` * `data_source != "firebase.google.com"` *
+        # `update_time < "2024-01-01T00:00:00Z"` * `update_time >= "2025-01-22T00:00:
+        # 00Z" AND (data_source = "developer.chrome.com" OR data_source = "web.dev")` * `
+        # uri = "https://docs.cloud.google.com/release-notes"` The `filter` string must
+        # not exceed 500 characters; values longer than 500 characters will result in an
+        # `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # Required. The query to answer.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -103,6 +132,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
           @query = args[:query] if args.key?(:query)
         end
       end
@@ -184,7 +214,9 @@ module Google
         end
       end
       
-      # A Document represents a piece of content from the Developer Knowledge corpus.
+      # A Document represents a page of documentation in the Developer Knowledge
+      # corpus, like the page at https://docs.cloud.google.com/storage/docs/creating-
+      # buckets.
       class Document
         include Google::Apis::Core::Hashable
       
@@ -192,6 +224,11 @@ module Google
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
+      
+        # Output only. The length of the `content` field in bytes.
+        # Corresponds to the JSON property `contentLengthBytes`
+        # @return [Fixnum]
+        attr_accessor :content_length_bytes
       
         # Output only. Specifies the data source of the document. Example data source: `
         # firebase.google.com`
@@ -222,8 +259,8 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Provides the URI of the content, such as `docs.cloud.google.com/
-        # storage/docs/creating-buckets`.
+        # Output only. Provides the URI of the content, such as `https://docs.cloud.
+        # google.com/storage/docs/creating-buckets`.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -240,6 +277,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @content_length_bytes = args[:content_length_bytes] if args.key?(:content_length_bytes)
           @data_source = args[:data_source] if args.key?(:data_source)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
@@ -262,7 +300,9 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # A Document represents a piece of content from the Developer Knowledge corpus.
+        # A Document represents a page of documentation in the Developer Knowledge
+        # corpus, like the page at https://docs.cloud.google.com/storage/docs/creating-
+        # buckets.
         # Corresponds to the JSON property `document`
         # @return [Google::Apis::DeveloperknowledgeV1alpha::Document]
         attr_accessor :document
@@ -281,6 +321,13 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Output only. Represents the relevance score of the chunk to the search query.
+        # Higher score indicates higher chunk relevance. The score is in range [0.0, 1.0]
+        # .
+        # Corresponds to the JSON property `relevanceScore`
+        # @return [Float]
+        attr_accessor :relevance_score
+      
         def initialize(**args)
            update!(**args)
         end
@@ -291,6 +338,7 @@ module Google
           @document = args[:document] if args.key?(:document)
           @id = args[:id] if args.key?(:id)
           @parent = args[:parent] if args.key?(:parent)
+          @relevance_score = args[:relevance_score] if args.key?(:relevance_score)
         end
       end
       
@@ -320,8 +368,8 @@ module Google
       class SearchDocumentChunksResponse
         include Google::Apis::Core::Hashable
       
-        # Optional. Provides a token that can be sent as `page_token` to retrieve the
-        # next page. If this field is omitted, there are no subsequent pages.
+        # Provides a token that can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

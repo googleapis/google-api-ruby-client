@@ -721,9 +721,9 @@ module Google
       
         # The total number of conversions. This includes all conversions regardless of
         # the value of include_in_conversions_metric. When this column is selected with
-        # date, the values in date column means the conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # date, the values in date column means the conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611).
         # Corresponds to the JSON property `allConversionsByConversionDate`
         # @return [Float]
         attr_accessor :all_conversions_by_conversion_date
@@ -791,9 +791,9 @@ module Google
         attr_accessor :all_conversions_value
       
         # The value of all conversions. When this column is selected with date, the
-        # values in date column means the conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # values in date column means the conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611).
         # Corresponds to the JSON property `allConversionsValueByConversionDate`
         # @return [Float]
         attr_accessor :all_conversions_value_by_conversion_date
@@ -823,16 +823,17 @@ module Google
       
         # The total cost of all clicks divided by the total number of clicks received.
         # This metric is a monetary value and returned in the customer's currency by
-        # default. See the metrics_currency parameter at https://developers.google.com/
-        # search-ads/reporting/query/query-structure#parameters_clause
+        # default. See the `metrics_currency` parameter at [PARAMETERS clause](https://
+        # developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause).
         # Corresponds to the JSON property `averageCpc`
         # @return [Float]
         attr_accessor :average_cpc
       
         # Average cost-per-thousand impressions (CPM). This metric is a monetary value
-        # and returned in the customer's currency by default. See the metrics_currency
-        # parameter at https://developers.google.com/search-ads/reporting/query/query-
-        # structure#parameters_clause
+        # and returned in the customer's currency by default. See the `metrics_currency`
+        # parameter at [PARAMETERS clause](https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `averageCpm`
         # @return [Float]
         attr_accessor :average_cpm
@@ -867,16 +868,16 @@ module Google
         attr_accessor :clicks
       
         # The number of client account conversions. This only includes conversion
-        # actions which include_in_client_account_conversions_metric attribute is set to
-        # true. If you use conversion-based bidding, your bid strategies will optimize
-        # for these conversions.
+        # actions which `include_in_client_account_conversions_metric` attribute is set
+        # to `true`. If you use conversion-based bidding, your bid strategies will
+        # optimize for these conversions.
         # Corresponds to the JSON property `clientAccountConversions`
         # @return [Float]
         attr_accessor :client_account_conversions
       
         # The value of client account conversions. This only includes conversion actions
-        # which include_in_client_account_conversions_metric attribute is set to true.
-        # If you use conversion-based bidding, your bid strategies will optimize for
+        # which `include_in_client_account_conversions_metric` attribute is set to `true`
+        # . If you use conversion-based bidding, your bid strategies will optimize for
         # these conversions.
         # Corresponds to the JSON property `clientAccountConversionsValue`
         # @return [Float]
@@ -895,9 +896,9 @@ module Google
         # the shirt has a cost of goods sold value of $5. The cross-sell cost of goods
         # sold for this order is $5. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_cost_of_goods_sold_micros
@@ -915,9 +916,9 @@ module Google
         # priced $20 and has a cost of goods sold value of $5. The cross-sell gross
         # profit of this order is $15 = $20 - $5. This metric is only available if you
         # report conversions with cart data. This metric is a monetary value and
-        # returned in the customer's currency by default. See the metrics_currency
-        # parameter at https://developers.google.com/search-ads/reporting/query/query-
-        # structure#parameters_clause
+        # returned in the customer's currency by default. See the `metrics_currency`
+        # parameter at [PARAMETERS clause](https://developers.google.com/search-ads/
+        # reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_gross_profit_micros
@@ -934,9 +935,9 @@ module Google
         # shirt. The hat is priced $10 and the shirt is priced $20. The cross-sell
         # revenue of this order is $20. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountCrossSellRevenueMicros`
         # @return [Fixnum]
         attr_accessor :client_account_cross_sell_revenue_micros
@@ -968,8 +969,9 @@ module Google
         # shirt has a cost of goods sold value of $5. The lead cost of goods sold for
         # this order is $3. This metric is only available if you report conversions with
         # cart data. This metric is a monetary value and returned in the customer's
-        # currency by default. See the metrics_currency parameter at https://developers.
-        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        # clause](https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_cost_of_goods_sold_micros
@@ -986,9 +988,9 @@ module Google
         # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
         # The lead gross profit of this order is $7 = $10 - $3. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_gross_profit_micros
@@ -1004,9 +1006,9 @@ module Google
         # ad for a hat then bought the same hat and a shirt. The hat is priced $10 and
         # the shirt is priced $20. The lead revenue of this order is $10. This metric is
         # only available if you report conversions with cart data. This metric is a
-        # monetary value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # monetary value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `clientAccountLeadRevenueMicros`
         # @return [Fixnum]
         attr_accessor :client_account_lead_revenue_micros
@@ -1071,7 +1073,7 @@ module Google
       
         # The sum of conversions by conversion date for biddable conversion types. Can
         # be fractional due to attribution modeling. When this column is selected with
-        # date, the values in date column means the conversion date.
+        # date, the values in the date column mean the conversion date.
         # Corresponds to the JSON property `conversionsByConversionDate`
         # @return [Float]
         attr_accessor :conversions_by_conversion_date
@@ -1084,9 +1086,10 @@ module Google
         attr_accessor :conversions_from_interactions_rate
       
         # The value of conversions from interactions divided by the number of ad
-        # interactions. This only includes conversion actions which
-        # include_in_conversions_metric attribute is set to true. If you use conversion-
-        # based bidding, your bid strategies will optimize for these conversions.
+        # interactions. This only includes conversion actions which `
+        # include_in_conversions_metric` attribute is set to `true`. If you use
+        # conversion-based bidding, your bid strategies will optimize for these
+        # conversions.
         # Corresponds to the JSON property `conversionsFromInteractionsValuePerInteraction`
         # @return [Float]
         attr_accessor :conversions_from_interactions_value_per_interaction
@@ -1112,9 +1115,9 @@ module Google
       
         # The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM)
         # costs during this period. This metric is a monetary value and returned in the
-        # customer's currency by default. See the metrics_currency parameter at https://
-        # developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause) for more details.
         # Corresponds to the JSON property `costMicros`
         # @return [Fixnum]
         attr_accessor :cost_micros
@@ -1143,8 +1146,8 @@ module Google
         attr_accessor :cost_per_conversion
       
         # The cost of ad interactions divided by current model attributed conversions.
-        # This only includes conversion actions which include_in_conversions_metric
-        # attribute is set to true. If you use conversion-based bidding, your bid
+        # This only includes conversion actions which `include_in_conversions_metric`
+        # attribute is set to `true`. If you use conversion-based bidding, your bid
         # strategies will optimize for these conversions.
         # Corresponds to the JSON property `costPerCurrentModelAttributedConversion`
         # @return [Float]
@@ -1152,14 +1155,14 @@ module Google
       
         # Conversions from when a customer clicks on an ad on one device, then converts
         # on a different device or browser. Cross-device conversions are already
-        # included in all_conversions.
+        # included in `all_conversions`.
         # Corresponds to the JSON property `crossDeviceConversions`
         # @return [Float]
         attr_accessor :cross_device_conversions
       
-        # The number of cross-device conversions by conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # The number of cross-device conversions by conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611)
         # Corresponds to the JSON property `crossDeviceConversionsByConversionDate`
         # @return [Float]
         attr_accessor :cross_device_conversions_by_conversion_date
@@ -1169,9 +1172,9 @@ module Google
         # @return [Float]
         attr_accessor :cross_device_conversions_value
       
-        # The sum of cross-device conversions value by conversion date. Details for the
-        # by_conversion_date columns are available at https://support.google.com/sa360/
-        # answer/9250611.
+        # The sum of cross-device conversions value by conversion date. Details for the `
+        # by_conversion_date` columns are available at [About the "All conversions"
+        # column](https://support.google.com/sa360/answer/9250611)
         # Corresponds to the JSON property `crossDeviceConversionsValueByConversionDate`
         # @return [Float]
         attr_accessor :cross_device_conversions_value_by_conversion_date
@@ -1189,8 +1192,9 @@ module Google
         # cost of goods sold value of $5. The cross-sell cost of goods sold for this
         # order is $5. This metric is only available if you report conversions with cart
         # data. This metric is a monetary value and returned in the customer's currency
-        # by default. See the metrics_currency parameter at https://developers.google.
-        # com/search-ads/reporting/query/query-structure#parameters_clause
+        # by default. See the `metrics_currency` parameter at [PARAMETERS clause](https:/
+        # /developers.google.com/search-ads/reporting/query/query-structure#
+        # parameters_clause).
         # Corresponds to the JSON property `crossSellCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_cost_of_goods_sold_micros
@@ -1208,9 +1212,9 @@ module Google
         # has a cost of goods sold value of $5. The cross-sell gross profit of this
         # order is $15 = $20 - $5. This metric is only available if you report
         # conversions with cart data. This metric is a monetary value and returned in
-        # the customer's currency by default. See the metrics_currency parameter at
-        # https://developers.google.com/search-ads/reporting/query/query-structure#
-        # parameters_clause
+        # the customer's currency by default. See the `metrics_currency` parameter at [
+        # PARAMETERS clause](https://developers.google.com/search-ads/reporting/query/
+        # query-structure#parameters_clause).
         # Corresponds to the JSON property `crossSellGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_gross_profit_micros
@@ -1227,8 +1231,9 @@ module Google
         # hat is priced $10 and the shirt is priced $20. The cross-sell revenue of this
         # order is $20. This metric is only available if you report conversions with
         # cart data. This metric is a monetary value and returned in the customer's
-        # currency by default. See the metrics_currency parameter at https://developers.
-        # google.com/search-ads/reporting/query/query-structure#parameters_clause
+        # currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        # clause](https://developers.google.com/search-ads/reporting/query/query-
+        # structure#parameters_clause).
         # Corresponds to the JSON property `crossSellRevenueMicros`
         # @return [Fixnum]
         attr_accessor :cross_sell_revenue_micros
@@ -1259,8 +1264,9 @@ module Google
         # These are clicks Google considers illegitimate that are detected through
         # routine means of filtration (that is, known invalid data-center traffic, bots
         # and spiders or other crawlers, irregular patterns, etc). You're not charged
-        # for them, and they don't affect your account statistics. See the help page at
-        # https://support.google.com/campaignmanager/answer/6076504 for details.
+        # for them, and they don't affect your account statistics. See [Filtering
+        # invalid traffic to ensure quality](https://support.google.com/campaignmanager/
+        # answer/6076504).
         # Corresponds to the JSON property `generalInvalidClickRate`
         # @return [Float]
         attr_accessor :general_invalid_click_rate
@@ -1269,8 +1275,8 @@ module Google
         # that are detected through routine means of filtration (such as known invalid
         # data-center traffic, bots and spiders or other crawlers, irregular patterns,
         # etc.). You're not charged for them, and they don't affect your account
-        # statistics. See the help page at https://support.google.com/campaignmanager/
-        # answer/6076504 for details.
+        # statistics. See [Filtering invalid traffic to ensure quality](https://support.
+        # google.com/campaignmanager/answer/6076504).
         # Corresponds to the JSON property `generalInvalidClicks`
         # @return [Fixnum]
         attr_accessor :general_invalid_clicks
@@ -1372,8 +1378,8 @@ module Google
         # goods sold value of $5. The lead cost of goods sold for this order is $3. This
         # metric is only available if you report conversions with cart data. This metric
         # is a monetary value and returned in the customer's currency by default. See
-        # the metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # the `metrics_currency` parameter at [PARAMETERS clause](https://developers.
+        # google.com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadCostOfGoodsSoldMicros`
         # @return [Fixnum]
         attr_accessor :lead_cost_of_goods_sold_micros
@@ -1390,9 +1396,9 @@ module Google
         # and a shirt. The hat is priced $10 and has a cost of goods sold value of $3.
         # The lead gross profit of this order is $7 = $10 - $3. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadGrossProfitMicros`
         # @return [Fixnum]
         attr_accessor :lead_gross_profit_micros
@@ -1408,9 +1414,9 @@ module Google
         # hat then bought the same hat and a shirt. The hat is priced $10 and the shirt
         # is priced $20. The lead revenue of this order is $10. This metric is only
         # available if you report conversions with cart data. This metric is a monetary
-        # value and returned in the customer's currency by default. See the
-        # metrics_currency parameter at https://developers.google.com/search-ads/
-        # reporting/query/query-structure#parameters_clause
+        # value and returned in the customer's currency by default. See the `
+        # metrics_currency` parameter at [PARAMETERS clause](https://developers.google.
+        # com/search-ads/reporting/query/query-structure#parameters_clause).
         # Corresponds to the JSON property `leadRevenueMicros`
         # @return [Fixnum]
         attr_accessor :lead_revenue_micros
@@ -1464,8 +1470,9 @@ module Google
         attr_accessor :revenue_micros
       
         # The percentage of the customer's Shopping or Search ad impressions that are
-        # shown in the most prominent Shopping position. See https://support.google.com/
-        # sa360/answer/9566729 for details. Any value below 0.1 is reported as 0.0999.
+        # shown in the most prominent Shopping position. See [About top and absolute top
+        # metrics](https://support.google.com/sa360/answer/9566729) for details. Any
+        # value below 0.1 is reported as 0.0999.
         # Corresponds to the JSON property `searchAbsoluteTopImpressionShare`
         # @return [Float]
         attr_accessor :search_absolute_top_impression_share
@@ -1486,7 +1493,7 @@ module Google
         # @return [Float]
         attr_accessor :search_budget_lost_impression_share
       
-        # The number estimating how often your ad didn't show adjacent to the top
+        # The estimated percent of times that your ad didn't show adjacent to the top
         # organic search results due to a low budget. Note: Search budget lost top
         # impression share is reported in the range of 0 to 0.9. Any value above 0.9 is
         # reported as 0.9001.
@@ -1585,8 +1592,9 @@ module Google
       
         # The value of all conversions divided by the number of all conversions. When
         # this column is selected with date, the values in date column means the
-        # conversion date. Details for the by_conversion_date columns are available at
-        # https://support.google.com/sa360/answer/9250611.
+        # conversion date. Details for the `by_conversion_date` columns are available at
+        # [About the "All conversions" column](https://support.google.com/sa360/answer/
+        # 9250611).
         # Corresponds to the JSON property `valuePerAllConversionsByConversionDate`
         # @return [Float]
         attr_accessor :value_per_all_conversions_by_conversion_date
@@ -1830,7 +1838,8 @@ module Google
         end
       end
       
-      # A Search Ads 360 expanded text ad.
+      # A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use
+      # SearchAds360ResponsiveSearchAd instead.
       class GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo
         include Google::Apis::Core::Hashable
       
@@ -2462,6 +2471,57 @@ module Google
           @vertical_ads_vertical = args[:vertical_ads_vertical] if args.key?(:vertical_ads_vertical)
           @week = args[:week] if args.key?(:week)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # Represents an attestation about synthetic content from a single source.
+      class GoogleAdsSearchads360V0CommonSyntheticContentAttestation
+        include Google::Apis::Core::Hashable
+      
+        # The source of the synthetic content attestation.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Indicates whether the content is considered synthetic by this source.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source = args[:source] if args.key?(:source)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Container for synthetic content attestations from different sources, such as
+      # the advertiser and Google systems.
+      class GoogleAdsSearchads360V0CommonSyntheticContentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Represents an attestation about synthetic content from a single source.
+        # Corresponds to the JSON property `advertiserAttestation`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation]
+        attr_accessor :advertiser_attestation
+      
+        # Represents an attestation about synthetic content from a single source.
+        # Corresponds to the JSON property `systemAttestation`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentAttestation]
+        attr_accessor :system_attestation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_attestation = args[:advertiser_attestation] if args.key?(:advertiser_attestation)
+          @system_attestation = args[:system_attestation] if args.key?(:system_attestation)
         end
       end
       
@@ -4270,7 +4330,8 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo]
         attr_accessor :expanded_dynamic_search_ad
       
-        # A Search Ads 360 expanded text ad.
+        # A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use
+        # SearchAds360ResponsiveSearchAd instead.
         # Corresponds to the JSON property `expandedTextAd`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo]
         attr_accessor :expanded_text_ad
@@ -4324,6 +4385,12 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo]
         attr_accessor :responsive_search_ad
       
+        # Container for synthetic content attestations from different sources, such as
+        # the advertiser and Google systems.
+        # Corresponds to the JSON property `syntheticContentInfo`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo]
+        attr_accessor :synthetic_content_info
+      
         # A Search Ads 360 text ad.
         # Corresponds to the JSON property `textAd`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo]
@@ -4357,6 +4424,7 @@ module Google
           @product_ad = args[:product_ad] if args.key?(:product_ad)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @responsive_search_ad = args[:responsive_search_ad] if args.key?(:responsive_search_ad)
+          @synthetic_content_info = args[:synthetic_content_info] if args.key?(:synthetic_content_info)
           @text_ad = args[:text_ad] if args.key?(:text_ad)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
@@ -5178,7 +5246,13 @@ module Google
         end
       end
       
-      # An age range view.
+      # An age range view. Represents the view of a customer's performance metrics (
+      # like impressions and clicks) aggregated by age range. All statistics are
+      # aggregated at the ad group level. Note: While you can segment metrics by age
+      # range using `age_range_view` or by gender using `gender_view`, the Search Ads
+      # 360 API does not support segmenting metrics by both age range and gender
+      # simultaneously in a single query. Analyzing performance across both dimensions
+      # combined is not supported in the Search Ads 360 API.
       class GoogleAdsSearchads360V0ResourcesAgeRangeView
         include Google::Apis::Core::Hashable
       
@@ -5300,6 +5374,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Container for synthetic content attestations from different sources, such as
+        # the advertiser and Google systems.
+        # Corresponds to the JSON property `syntheticContentInfo`
+        # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonSyntheticContentInfo]
+        attr_accessor :synthetic_content_info
+      
         # A Text asset.
         # Corresponds to the JSON property `textAsset`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0CommonTextAsset]
@@ -5350,6 +5430,7 @@ module Google
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @sitelink_asset = args[:sitelink_asset] if args.key?(:sitelink_asset)
           @status = args[:status] if args.key?(:status)
+          @synthetic_content_info = args[:synthetic_content_info] if args.key?(:synthetic_content_info)
           @text_asset = args[:text_asset] if args.key?(:text_asset)
           @tracking_url_template = args[:tracking_url_template] if args.key?(:tracking_url_template)
           @type = args[:type] if args.key?(:type)
@@ -7609,9 +7690,13 @@ module Google
         end
       end
       
-      # A gender view. The gender_view resource reflects the effective serving state,
-      # rather than what criteria were added. An ad group without gender criteria by
-      # default shows to all genders, so all genders appear in gender_view with stats.
+      # A gender view resource. Represents the view of a customer's performance
+      # metrics aggregated by gender. All statistics are aggregated at the ad group
+      # level. Note: While you can segment metrics by age range using `age_range_view`
+      # or by gender using `gender_view`, the Search Ads 360 API does not support
+      # segmenting metrics by both age range and gender simultaneously in a single
+      # query. Analyzing performance across both dimensions combined is not supported
+      # in the Search Ads 360 API.
       class GoogleAdsSearchads360V0ResourcesGenderView
         include Google::Apis::Core::Hashable
       
@@ -8616,7 +8701,13 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAdGroupLabel]
         attr_accessor :ad_group_label
       
-        # An age range view.
+        # An age range view. Represents the view of a customer's performance metrics (
+        # like impressions and clicks) aggregated by age range. All statistics are
+        # aggregated at the ad group level. Note: While you can segment metrics by age
+        # range using `age_range_view` or by gender using `gender_view`, the Search Ads
+        # 360 API does not support segmenting metrics by both age range and gender
+        # simultaneously in a single query. Analyzing performance across both dimensions
+        # combined is not supported in the Search Ads 360 API.
         # Corresponds to the JSON property `ageRangeView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesAgeRangeView]
         attr_accessor :age_range_view
@@ -8795,9 +8886,13 @@ module Google
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesDynamicSearchAdsSearchTermView]
         attr_accessor :dynamic_search_ads_search_term_view
       
-        # A gender view. The gender_view resource reflects the effective serving state,
-        # rather than what criteria were added. An ad group without gender criteria by
-        # default shows to all genders, so all genders appear in gender_view with stats.
+        # A gender view resource. Represents the view of a customer's performance
+        # metrics aggregated by gender. All statistics are aggregated at the ad group
+        # level. Note: While you can segment metrics by age range using `age_range_view`
+        # or by gender using `gender_view`, the Search Ads 360 API does not support
+        # segmenting metrics by both age range and gender simultaneously in a single
+        # query. Analyzing performance across both dimensions combined is not supported
+        # in the Search Ads 360 API.
         # Corresponds to the JSON property `genderView`
         # @return [Google::Apis::Searchads360V0::GoogleAdsSearchads360V0ResourcesGenderView]
         attr_accessor :gender_view
