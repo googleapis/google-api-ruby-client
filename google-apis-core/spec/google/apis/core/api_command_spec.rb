@@ -99,6 +99,7 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
 
     it "should set the X-Goog-Gcs-Idempotency-Token header" do
+      command.options.add_idempotency_token_header = true
       command.prepare!
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
       expect(command.header['X-Goog-Gcs-Idempotency-Token']).to match(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)
@@ -114,6 +115,9 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       cmd1 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
       cmd2 = Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
 
+      cmd1.options.add_idempotency_token_header = true
+      cmd2.options.add_idempotency_token_header = true
+
       cmd1.prepare!
       cmd2.prepare!
 
@@ -121,6 +125,7 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
 
     it "should respect custom X-Goog-Gcs-Idempotency-Token in options.header regardless of casing" do
+      command.options.add_idempotency_token_header = true
       command.options.header = { 'x-goog-gcs-idempotency-token' => 'my-custom-token' }
       command.prepare!
       expect(command.header['x-goog-gcs-idempotency-token']).to eql 'my-custom-token'
