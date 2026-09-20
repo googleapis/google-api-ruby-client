@@ -868,6 +868,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1alpha::EncryptionConfig, decorator: Google::Apis::AlloydbV1alpha::EncryptionConfig::Representation
       
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1alpha::EncryptionInfo, decorator: Google::Apis::AlloydbV1alpha::EncryptionInfo::Representation
@@ -995,6 +996,7 @@ module Google
       
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1alpha::EncryptionConfig, decorator: Google::Apis::AlloydbV1alpha::EncryptionConfig::Representation
       
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1alpha::EncryptionInfo, decorator: Google::Apis::AlloydbV1alpha::EncryptionInfo::Representation
