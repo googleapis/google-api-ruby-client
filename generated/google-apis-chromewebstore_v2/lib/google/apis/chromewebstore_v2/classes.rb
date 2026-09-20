@@ -22,6 +22,25 @@ module Google
   module Apis
     module ChromewebstoreV2
       
+      # Info on the author of the review.
+      class AuthorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Display name for the author.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Request message for CancelSubmission.
       class CancelSubmissionRequest
         include Google::Apis::Core::Hashable
@@ -92,6 +111,32 @@ module Google
         def update!(**args)
           @crx_version = args[:crx_version] if args.key?(:crx_version)
           @deploy_percentage = args[:deploy_percentage] if args.key?(:deploy_percentage)
+        end
+      end
+      
+      # Response message for FetchItemReviews.
+      class FetchItemReviewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of reviews.
+        # Corresponds to the JSON property `reviews`
+        # @return [Array<Google::Apis::ChromewebstoreV2::Review>]
+        attr_accessor :reviews
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reviews = args[:reviews] if args.key?(:reviews)
         end
       end
       
@@ -268,6 +313,56 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @warning_info = args[:warning_info] if args.key?(:warning_info)
+        end
+      end
+      
+      # A review written by a user to rate an item in the Chrome Web Store.
+      class Review
+        include Google::Apis::Core::Hashable
+      
+        # Info on the author of the review.
+        # Corresponds to the JSON property `authorInfo`
+        # @return [Google::Apis::ChromewebstoreV2::AuthorInfo]
+        attr_accessor :author_info
+      
+        # Content of the review.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Output only. When the review was posted.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The item that this review evaluates. Format: publishers/`
+        # publisher`/items/`item`
+        # Corresponds to the JSON property `item`
+        # @return [String]
+        attr_accessor :item
+      
+        # Identifier. Review resource name. Format: reviews/`reviewId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Rating of the item, between 1 and 5.
+        # Corresponds to the JSON property `rating`
+        # @return [Fixnum]
+        attr_accessor :rating
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_info = args[:author_info] if args.key?(:author_info)
+          @comment = args[:comment] if args.key?(:comment)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @item = args[:item] if args.key?(:item)
+          @name = args[:name] if args.key?(:name)
+          @rating = args[:rating] if args.key?(:rating)
         end
       end
       

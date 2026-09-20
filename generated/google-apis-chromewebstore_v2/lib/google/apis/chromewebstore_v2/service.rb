@@ -131,6 +131,57 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Fetch user reviews for an item.
+        # @param [String] name
+        #   Required. The item resource name whose reviews are being fetched. Format:
+        #   publishers/`publisher_id`/items/`item_id`
+        # @param [String] filter
+        #   Optional. A filter to apply to the reviews. Only equality comparison on rating
+        #   is supported, e.g. `rating = 5`.
+        # @param [String] order_by
+        #   Optional. An optional comma-separated list of fields by which to sort the
+        #   results. Supported fields are `rating` and `create_time`. Supported orders are
+        #   `asc` (default) and `desc`. Example: "rating desc, create_time".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of reviews to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 reviews will be returned.
+        #   The maximum value is 200; values above 200 will be coerced to 200.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FetchItemReviews` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `FetchItemReviews` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromewebstoreV2::FetchItemReviewsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromewebstoreV2::FetchItemReviewsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_publisher_item_reviews(name, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}:fetchReviews', options)
+          command.response_representation = Google::Apis::ChromewebstoreV2::FetchItemReviewsResponse::Representation
+          command.response_class = Google::Apis::ChromewebstoreV2::FetchItemReviewsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetch the status of an item.
         # @param [String] name
         #   Required. Name of the item to retrieve the status of in the form `publishers/`
