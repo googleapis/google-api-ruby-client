@@ -431,6 +431,10 @@ module Google
         # @param [String] parent
         #   Required. The project and location from which the AgentGateways should be
         #   listed, specified in the format `projects/*/locations/*`.
+        # @param [String] filter
+        #   Optional. A filter expression to filter the results listed in the response.
+        #   The expression must follow the syntax described in [AIP-160](https://google.
+        #   aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. Maximum number of AgentGateways to return per call.
         # @param [String] page_token
@@ -458,11 +462,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_agent_gateways(parent, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_agent_gateways(parent, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/agentGateways', options)
           command.response_representation = Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse::Representation
           command.response_class = Google::Apis::NetworkservicesV1beta1::ListAgentGatewaysResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
