@@ -1142,7 +1142,10 @@ module Google
         attr_accessor :range
       
         # Optional. Aggregation window size, in number of days. Defaults to 1 if not
-        # specified.
+        # specified. If the requested range is not an exact multiple of `
+        # window_size_days`, the final bucket chronologically will be truncated at the
+        # upper endpoint of the range and will cover a duration shorter than `
+        # window_size_days`.
         # Corresponds to the JSON property `windowSizeDays`
         # @return [Fixnum]
         attr_accessor :window_size_days
@@ -2658,6 +2661,71 @@ module Google
         end
       end
       
+      # Represents a type of health data a user can have data points recorded for. It
+      # matches the parent resource of collection containing data points of the given
+      # type. Clients currently do not need to interact with this resource directly.
+      class GoogleDevicesandservicesHealthV4betaDataType
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the data type. Format: `users/`user`/
+        # dataTypes/`data_type`` See DataPoint.name for examples and possible values.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a user in the Google Health API. It matches the parent resource of
+      # collections owned by the user. Clients currently do not need to interact with
+      # this resource directly.
+      class GoogleDevicesandservicesHealthV4betaUser
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the user. The ``user`` ID is a system-
+        # generated identifier, as described in Identity.health_user_id. Format: `users/`
+        # user``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Log message for a webhook notification sent by the Google Health API to a
+      # subscriber's endpoint. Includes the HTTP response received from the endpoint.
+      class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog
+        include Google::Apis::Core::Hashable
+      
+        # Represents an HTTP response.
+        # Corresponds to the JSON property `httpResponse`
+        # @return [Google::Apis::HealthV4::HttpResponse]
+        attr_accessor :http_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_response = args[:http_response] if args.key?(:http_response)
+        end
+      end
+      
       # A single heart beat measurement.
       class HeartBeat
         include Google::Apis::Core::Hashable
@@ -2794,6 +2862,11 @@ module Google
       class HeartRateVariability
         include Google::Apis::Core::Hashable
       
+        # Metadata for HeartRateVariability.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::HealthV4::HeartRateVariabilityMetadata]
+        attr_accessor :metadata
+      
         # Optional. The root mean square of successive differences between normal
         # heartbeats. This is a measure of heart rate variability used by Google Health.
         # Corresponds to the JSON property `rootMeanSquareOfSuccessiveDifferencesMilliseconds`
@@ -2816,9 +2889,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @root_mean_square_of_successive_differences_milliseconds = args[:root_mean_square_of_successive_differences_milliseconds] if args.key?(:root_mean_square_of_successive_differences_milliseconds)
           @sample_time = args[:sample_time] if args.key?(:sample_time)
           @standard_deviation_milliseconds = args[:standard_deviation_milliseconds] if args.key?(:standard_deviation_milliseconds)
+        end
+      end
+      
+      # Metadata for HeartRateVariability.
+      class HeartRateVariabilityMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The power in interbeat interval fluctuations within the high
+        # frequency band (0.15 Hz - 0.4 Hz).
+        # Corresponds to the JSON property `highFrequencyPower`
+        # @return [Float]
+        attr_accessor :high_frequency_power
+      
+        # Optional. The power in interbeat interval fluctuations within the low
+        # frequency band (0.04 Hz - 0.15 Hz).
+        # Corresponds to the JSON property `lowFrequencyPower`
+        # @return [Float]
+        attr_accessor :low_frequency_power
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high_frequency_power = args[:high_frequency_power] if args.key?(:high_frequency_power)
+          @low_frequency_power = args[:low_frequency_power] if args.key?(:low_frequency_power)
         end
       end
       
@@ -4143,19 +4244,17 @@ module Google
         attr_accessor :age
       
         # Output only. The automatically calculated running stride length, in
-        # millimeters. The user must consent to one of the following access scopes to
-        # access this field: - `https://www.googleapis.com/auth/googlehealth.
-        # activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.
-        # activity_and_fitness`
+        # millimeters. The user must consent to the following access scope to access
+        # this field: - `https://www.googleapis.com/auth/googlehealth.
+        # activity_and_fitness.readonly`
         # Corresponds to the JSON property `autoRunningStrideLengthMm`
         # @return [Fixnum]
         attr_accessor :auto_running_stride_length_mm
       
         # Output only. The automatically calculated walking stride length, in
-        # millimeters. The user must consent to one of the following access scopes to
-        # access this field: - `https://www.googleapis.com/auth/googlehealth.
-        # activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.
-        # activity_and_fitness`
+        # millimeters. The user must consent to the following access scope to access
+        # this field: - `https://www.googleapis.com/auth/googlehealth.
+        # activity_and_fitness.readonly`
         # Corresponds to the JSON property `autoWalkingStrideLengthMm`
         # @return [Fixnum]
         attr_accessor :auto_walking_stride_length_mm
@@ -4182,17 +4281,15 @@ module Google
         attr_accessor :name
       
         # Optional. The user's user configured running stride length, in millimeters.
-        # The user must consent to one of the following access scopes to access this
-        # field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.
-        # readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        # The user must consent to the following access scope to access this field: - `
+        # https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         # Corresponds to the JSON property `userConfiguredRunningStrideLengthMm`
         # @return [Fixnum]
         attr_accessor :user_configured_running_stride_length_mm
       
         # Optional. The user's user configured walking stride length, in millimeters.
-        # The user must consent to one of the following access scopes to access this
-        # field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.
-        # readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        # The user must consent to the following access scope to access this field: - `
+        # https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         # Corresponds to the JSON property `userConfiguredWalkingStrideLengthMm`
         # @return [Fixnum]
         attr_accessor :user_configured_walking_stride_length_mm
@@ -4637,7 +4734,10 @@ module Google
         attr_accessor :range
       
         # Required. The size of the time window to group data points into before
-        # applying the aggregation functions. Must be at least 1 second.
+        # applying the aggregation functions. Must be at least 1 second. If the
+        # requested range is not an exact multiple of `window_size`, the final bucket
+        # chronologically will be truncated at the upper endpoint of the range and will
+        # cover a duration shorter than `window_size`.
         # Corresponds to the JSON property `windowSize`
         # @return [String]
         attr_accessor :window_size
