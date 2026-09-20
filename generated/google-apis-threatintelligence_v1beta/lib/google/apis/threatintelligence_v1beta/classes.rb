@@ -543,6 +543,11 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::LegacyMetadata]
         attr_accessor :legacy_monitor_metadata
       
+        # Optional. The custom threat scenario type used to create this configuration.
+        # Corresponds to the JSON property `scenarioType`
+        # @return [String]
+        attr_accessor :scenario_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -553,6 +558,7 @@ module Google
           @document_condition = args[:document_condition] if args.key?(:document_condition)
           @document_query = args[:document_query] if args.key?(:document_query)
           @legacy_monitor_metadata = args[:legacy_monitor_metadata] if args.key?(:legacy_monitor_metadata)
+          @scenario_type = args[:scenario_type] if args.key?(:scenario_type)
         end
       end
       
@@ -1117,11 +1123,6 @@ module Google
       class DocumentQuery
         include Google::Apis::Core::Hashable
       
-        # Required. The data model to query against.
-        # Corresponds to the JSON property `dataModel`
-        # @return [String]
-        attr_accessor :data_model
-      
         # Required. The query string.
         # Corresponds to the JSON property `query`
         # @return [String]
@@ -1138,7 +1139,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @data_model = args[:data_model] if args.key?(:data_model)
           @query = args[:query] if args.key?(:query)
           @query_type = args[:query_type] if args.key?(:query_type)
         end

@@ -1,5 +1,9 @@
 # Release history for google-apis-threatintelligence_v1beta
 
+### v0.17.0 (2026-09-20)
+
+* Regenerated from discovery document revision 20260913
+
 ### v0.16.0 (2026-09-06)
 
 * Regenerated from discovery document revision 20260830

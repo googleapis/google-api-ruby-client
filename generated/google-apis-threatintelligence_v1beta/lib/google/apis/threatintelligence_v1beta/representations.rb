@@ -569,6 +569,7 @@ module Google
       
           property :legacy_monitor_metadata, as: 'legacyMonitorMetadata', class: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata, decorator: Google::Apis::ThreatintelligenceV1beta::LegacyMetadata::Representation
       
+          property :scenario_type, as: 'scenarioType'
         end
       end
       
@@ -742,7 +743,6 @@ module Google
       class DocumentQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data_model, as: 'dataModel'
           property :query, as: 'query'
           property :query_type, as: 'queryType'
         end
