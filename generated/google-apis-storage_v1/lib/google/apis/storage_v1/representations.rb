@@ -1273,6 +1273,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime', type: DateTime
       
+          property :extended_data_type_url, as: 'extendedDataTypeUrl'
           property :update_time, as: 'updateTime', type: DateTime
       
           property :value, as: 'value'

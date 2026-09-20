@@ -3020,6 +3020,11 @@ module Google
         # @return [DateTime]
         attr_accessor :create_time
       
+        # The type URL of the object context's extended data.
+        # Corresponds to the JSON property `extendedDataTypeUrl`
+        # @return [String]
+        attr_accessor :extended_data_type_url
+      
         # The time at which the object context was last updated in RFC 3339 format.
         # Corresponds to the JSON property `updateTime`
         # @return [DateTime]
@@ -3037,6 +3042,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @extended_data_type_url = args[:extended_data_type_url] if args.key?(:extended_data_type_url)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value = args[:value] if args.key?(:value)
         end
