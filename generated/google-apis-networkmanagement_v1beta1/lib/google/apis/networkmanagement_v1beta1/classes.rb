@@ -736,6 +736,52 @@ module Google
         end
       end
       
+      # For display only. Metadata associated with a serverless direct VPC ingress
+      # connection.
+      class DirectVpcIngressConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the VPC network for direct ingress. Format: `projects/`project_id`/
+        # global/networks/`network_id``
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Region in which the Direct VPC ingress is deployed.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Selected destination IP address, from the selected IP range.
+        # Corresponds to the JSON property `selectedIpAddress`
+        # @return [String]
+        attr_accessor :selected_ip_address
+      
+        # Selected IP range.
+        # Corresponds to the JSON property `selectedIpRange`
+        # @return [String]
+        attr_accessor :selected_ip_range
+      
+        # URI of the subnetwork for direct ingress. Format: `projects/`project_id`/
+        # regions/`region`/subnetworks/`subnetwork_id``
+        # Corresponds to the JSON property `subnetworkUri`
+        # @return [String]
+        attr_accessor :subnetwork_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @region = args[:region] if args.key?(:region)
+          @selected_ip_address = args[:selected_ip_address] if args.key?(:selected_ip_address)
+          @selected_ip_range = args[:selected_ip_range] if args.key?(:selected_ip_range)
+          @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
+        end
+      end
+      
       # Details of the final state "drop" and associated resource.
       class DropInfo
         include Google::Apis::Core::Hashable
@@ -3468,6 +3514,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo]
         attr_accessor :direct_vpc_egress_connection
       
+        # For display only. Metadata associated with a serverless direct VPC ingress
+        # connection.
+        # Corresponds to the JSON property `directVpcIngressConnection`
+        # @return [Google::Apis::NetworkmanagementV1beta1::DirectVpcIngressConnectionInfo]
+        attr_accessor :direct_vpc_ingress_connection
+      
         # For display only. Metadata associated with a Private Connection.
         # Corresponds to the JSON property `dmsPrivateConnection`
         # @return [Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo]
@@ -3664,6 +3716,7 @@ module Google
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
           @direct_vpc_egress_connection = args[:direct_vpc_egress_connection] if args.key?(:direct_vpc_egress_connection)
+          @direct_vpc_ingress_connection = args[:direct_vpc_ingress_connection] if args.key?(:direct_vpc_ingress_connection)
           @dms_private_connection = args[:dms_private_connection] if args.key?(:dms_private_connection)
           @drop = args[:drop] if args.key?(:drop)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
