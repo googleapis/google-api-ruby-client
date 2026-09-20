@@ -355,6 +355,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :findings_count
       
+        # Output only. Number of organization policy findings for the cloud control.
+        # Corresponds to the JSON property `orgPolicyFindingCount`
+        # @return [Fixnum]
+        attr_accessor :org_policy_finding_count
+      
+        # Output only. Number of resource findings for the cloud control.
+        # Corresponds to the JSON property `resourceFindingCount`
+        # @return [Fixnum]
+        attr_accessor :resource_finding_count
+      
         def initialize(**args)
            update!(**args)
         end
@@ -363,6 +373,8 @@ module Google
         def update!(**args)
           @evaluation_state = args[:evaluation_state] if args.key?(:evaluation_state)
           @findings_count = args[:findings_count] if args.key?(:findings_count)
+          @org_policy_finding_count = args[:org_policy_finding_count] if args.key?(:org_policy_finding_count)
+          @resource_finding_count = args[:resource_finding_count] if args.key?(:resource_finding_count)
         end
       end
       
@@ -620,10 +632,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Number of organization policy findings for this control.
+        # Corresponds to the JSON property `orgPolicyFindingCount`
+        # @return [Fixnum]
+        attr_accessor :org_policy_finding_count
+      
         # Output only. The overall evaluation status of the control.
         # Corresponds to the JSON property `overallEvaluationState`
         # @return [String]
         attr_accessor :overall_evaluation_state
+      
+        # Output only. Number of resource findings for this control.
+        # Corresponds to the JSON property `resourceFindingCount`
+        # @return [Fixnum]
+        attr_accessor :resource_finding_count
       
         # The list of similar controls.
         # Corresponds to the JSON property `similarControls`
@@ -649,7 +671,9 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_fake_control = args[:is_fake_control] if args.key?(:is_fake_control)
           @name = args[:name] if args.key?(:name)
+          @org_policy_finding_count = args[:org_policy_finding_count] if args.key?(:org_policy_finding_count)
           @overall_evaluation_state = args[:overall_evaluation_state] if args.key?(:overall_evaluation_state)
+          @resource_finding_count = args[:resource_finding_count] if args.key?(:resource_finding_count)
           @similar_controls = args[:similar_controls] if args.key?(:similar_controls)
           @total_findings_count = args[:total_findings_count] if args.key?(:total_findings_count)
         end
