@@ -2889,6 +2889,7 @@ module Google
           collection :analytics_publisher_identities, as: 'analyticsPublisherIdentities'
           property :name, as: 'name'
           collection :synchronizer_identities, as: 'synchronizerIdentities'
+          collection :watcher_identities, as: 'watcherIdentities'
         end
       end
       

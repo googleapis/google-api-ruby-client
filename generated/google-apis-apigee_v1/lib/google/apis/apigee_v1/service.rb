@@ -124,13 +124,14 @@ module Google
         
         # Delete an Apigee organization. For organizations with BillingType EVALUATION,
         # an immediate deletion is performed. For paid organizations (Subscription or
-        # Pay-as-you-go), a soft-deletion is performed. The organization can be restored
-        # within the soft-deletion period, which is specified using the `retention`
-        # field in the request or by filing a support ticket with Apigee. During the
-        # data retention period specified in the request, the Apigee organization cannot
-        # be recreated in the same Google Cloud project. **IMPORTANT: The default data
-        # retention setting for this operation is 7 days. To permanently delete the
-        # organization in 24 hours, set the retention parameter to `MINIMUM`.**
+        # Pay-as-you-go), a soft-deletion is performed by default. The organization can
+        # be restored within the soft-deletion period, which is specified using the `
+        # retention` field in the request or by filing a support ticket with Apigee.
+        # During the data retention period specified in the request, the Apigee
+        # organization cannot be recreated in the same Google Cloud project. **IMPORTANT:
+        # The default data retention setting for this operation is 7 days. To
+        # permanently delete the organization in 24 hours, set the retention parameter
+        # to `MINIMUM`.**
         # @param [String] name
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``
