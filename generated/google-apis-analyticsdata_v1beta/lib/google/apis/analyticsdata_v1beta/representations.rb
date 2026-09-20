@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataTruncationDateRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DataTruncationReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DateRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -602,6 +614,25 @@ module Google
         end
       end
       
+      class DataTruncationDateRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :start_date, as: 'startDate'
+        end
+      end
+      
+      class DataTruncationReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_truncation_date, as: 'dataTruncationDate'
+          collection :data_truncation_date_ranges, as: 'dataTruncationDateRanges', class: Google::Apis::AnalyticsdataV1beta::DataTruncationDateRange, decorator: Google::Apis::AnalyticsdataV1beta::DataTruncationDateRange::Representation
+      
+          property :data_truncation_message, as: 'dataTruncationMessage'
+          property :data_truncation_type, as: 'dataTruncationType'
+        end
+      end
+      
       class DateRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -952,6 +983,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :currency_code, as: 'currencyCode'
           property :data_loss_from_other_row, as: 'dataLossFromOtherRow'
+          collection :data_truncation_reasons, as: 'dataTruncationReasons', class: Google::Apis::AnalyticsdataV1beta::DataTruncationReason, decorator: Google::Apis::AnalyticsdataV1beta::DataTruncationReason::Representation
+      
           property :empty_reason, as: 'emptyReason'
           collection :sampling_metadatas, as: 'samplingMetadatas', class: Google::Apis::AnalyticsdataV1beta::SamplingMetadata, decorator: Google::Apis::AnalyticsdataV1beta::SamplingMetadata::Representation
       
