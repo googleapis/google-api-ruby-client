@@ -8625,10 +8625,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent] parsed result object
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent]
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -8637,8 +8637,8 @@ module Google
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent::Representation
           command.request_object = google_cloud_aiplatform_v1_agent_object
-          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent::Representation
-          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Agent
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -22,9 +22,55 @@ module Google
   module Apis
     module AiplatformV1
       
+      # Experimental response metadata for video generation.
+      class CloudAiLargeModelsVisionExperimentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Result metadata from a Pro Edit operation.
+        # Corresponds to the JSON property `proEditResult`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponseProEditResult]
+        attr_accessor :pro_edit_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pro_edit_result = args[:pro_edit_result] if args.key?(:pro_edit_result)
+        end
+      end
+      
+      # Result metadata from a Pro Edit operation.
+      class CloudAiLargeModelsVisionExperimentsResponseProEditResult
+        include Google::Apis::Core::Hashable
+      
+        # The output structured prompt produced by this edit.
+        # Corresponds to the JSON property `structuredPrompt`
+        # @return [Hash<String,Object>]
+        attr_accessor :structured_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @structured_prompt = args[:structured_prompt] if args.key?(:structured_prompt)
+        end
+      end
+      
       # Experimental parameters for video generation.
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         include Google::Apis::Core::Hashable
+      
+        # If false, when a non-subscription customer tries to call an experimental
+        # feature, the request will be rejected. This field has no effect for
+        # subscription customers.
+        # Corresponds to the JSON property `allowMeteredBilling`
+        # @return [Boolean]
+        attr_accessor :allow_metered_billing
+        alias_method :allow_metered_billing?, :allow_metered_billing
       
         # Optional. If true, anchors the last frame in video generation by generating a
         # custom border mask.
@@ -109,6 +155,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig]
         attr_accessor :outpaint_config
       
+        # Configuration for Pro Edit.
+        # Corresponds to the JSON property `proEdit`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig]
+        attr_accessor :pro_edit
+      
         # "Direct" prompting for Experimental Video Generation. These will be sent
         # directly to the LDM without being rewritten.
         # Corresponds to the JSON property `promptInputs`
@@ -169,6 +220,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_metered_billing = args[:allow_metered_billing] if args.key?(:allow_metered_billing)
           @anchor_last_frame = args[:anchor_last_frame] if args.key?(:anchor_last_frame)
           @audio_control = args[:audio_control] if args.key?(:audio_control)
           @cfg_scale = args[:cfg_scale] if args.key?(:cfg_scale)
@@ -184,6 +236,7 @@ module Google
           @omni_rewriter = args[:omni_rewriter] if args.key?(:omni_rewriter)
           @original_request_json = args[:original_request_json] if args.key?(:original_request_json)
           @outpaint_config = args[:outpaint_config] if args.key?(:outpaint_config)
+          @pro_edit = args[:pro_edit] if args.key?(:pro_edit)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
@@ -352,6 +405,40 @@ module Google
           @glob_pattern = args[:glob_pattern] if args.key?(:glob_pattern)
           @horizontal_offset = args[:horizontal_offset] if args.key?(:horizontal_offset)
           @vertical_offset = args[:vertical_offset] if args.key?(:vertical_offset)
+        end
+      end
+      
+      # Configuration for Pro Edit.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
+        include Google::Apis::Core::Hashable
+      
+        # A text string containing the user's edit instruction. Will be applied to the
+        # original URF.
+        # Corresponds to the JSON property `editInstructionPrompt`
+        # @return [String]
+        attr_accessor :edit_instruction_prompt
+      
+        # Required. The operation_id from a previous omni-cine generation whose OF and
+        # URF should be retrieved for editing.
+        # Corresponds to the JSON property `fromOperationId`
+        # @return [String]
+        attr_accessor :from_operation_id
+      
+        # A JSON object containing the user's modified URF. The URF Editing Preamble
+        # will diff this against the original URF to determine what changed.
+        # Corresponds to the JSON property `structuredPrompt`
+        # @return [Hash<String,Object>]
+        attr_accessor :structured_prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edit_instruction_prompt = args[:edit_instruction_prompt] if args.key?(:edit_instruction_prompt)
+          @from_operation_id = args[:from_operation_id] if args.key?(:from_operation_id)
+          @structured_prompt = args[:structured_prompt] if args.key?(:structured_prompt)
         end
       end
       
@@ -592,6 +679,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperiments]
         attr_accessor :experiments_metadata
       
+        # Experimental response metadata for video generation.
+        # Corresponds to the JSON property `experimentsResponse`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponse]
+        attr_accessor :experiments_response
+      
         # Cloud Storage URI where the generated video is written.
         # Corresponds to the JSON property `gcsUri`
         # @return [String]
@@ -610,6 +702,7 @@ module Google
         def update!(**args)
           @bytes_base64_encoded = args[:bytes_base64_encoded] if args.key?(:bytes_base64_encoded)
           @experiments_metadata = args[:experiments_metadata] if args.key?(:experiments_metadata)
+          @experiments_response = args[:experiments_response] if args.key?(:experiments_response)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
@@ -1481,6 +1574,11 @@ module Google
         # @return [String]
         attr_accessor :object
       
+        # Observability settings for one agent's sessions.
+        # Corresponds to the JSON property `observabilityConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ObservabilityConfig]
+        attr_accessor :observability_config
+      
         # Optional. The instructions for the agent to follow. These instructions are
         # passed to the LLM as a system instruction.
         # Corresponds to the JSON property `system_instruction`
@@ -1511,6 +1609,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @object = args[:object] if args.key?(:object)
+          @observability_config = args[:observability_config] if args.key?(:observability_config)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tools = args[:tools] if args.key?(:tools)
           @updated = args[:updated] if args.key?(:updated)
@@ -1685,10 +1784,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
-        # Optional. The tool's GCP resource name, used to resolve the tool. Applicable
-        # when `type` is `mcp_server` or `endpoint` (a tool registered in Agent Registry)
-        # , for example `projects/`project`/locations/`location`/.../mcpServers/`id`` or
-        # `projects/`project`/locations/`location`/.../endpoints/`id``.
+        # Optional. The tool's Google Cloud resource name, used to resolve the tool.
+        # Applicable when `type` is `mcp_server` or `endpoint` (a tool registered in
+        # Agent Registry), for example `projects/`project`/locations/`location`/.../
+        # mcpServers/`id`` or `projects/`project`/locations/`location`/.../endpoints/`id`
+        # `.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -29213,6 +29313,39 @@ module Google
           @colab_image = args[:colab_image] if args.key?(:colab_image)
           @env = args[:env] if args.key?(:env)
           @post_startup_script_config = args[:post_startup_script_config] if args.key?(:post_startup_script_config)
+        end
+      end
+      
+      # Observability settings for one agent's sessions.
+      class GoogleCloudAiplatformV1ObservabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Enables observability for this agent's sessions: OpenTelemetry span
+        # emission covering tool names, model names, token counts, latencies and status.
+        # If `false`, the other fields here are ignored.
+        # Corresponds to the JSON property `observabilityEnabled`
+        # @return [Boolean]
+        attr_accessor :observability_enabled
+        alias_method :observability_enabled?, :observability_enabled
+      
+        # Optional. Enables sensitive logging. Sensitive logging includes customer core
+        # content (prompts, model completions, tool argument payloads and tool responses)
+        # . If `false`, those are sanitized and only structural attributes are recorded.
+        # No effect unless `observability_enabled` is true. Not yet enforced: `
+        # CreateAgent` and `UpdateAgent` currently reject setting this to `true`.
+        # Corresponds to the JSON property `sensitiveLoggingEnabled`
+        # @return [Boolean]
+        attr_accessor :sensitive_logging_enabled
+        alias_method :sensitive_logging_enabled?, :sensitive_logging_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @observability_enabled = args[:observability_enabled] if args.key?(:observability_enabled)
+          @sensitive_logging_enabled = args[:sensitive_logging_enabled] if args.key?(:sensitive_logging_enabled)
         end
       end
       

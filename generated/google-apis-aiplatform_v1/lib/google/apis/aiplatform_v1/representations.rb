@@ -22,6 +22,18 @@ module Google
   module Apis
     module AiplatformV1
       
+      class CloudAiLargeModelsVisionExperimentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionExperimentsResponseProEditResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +71,12 @@ module Google
       end
       
       class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4666,6 +4684,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ObservabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1OnlineEvaluator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8926,9 +8950,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionExperimentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pro_edit_result, as: 'proEditResult', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponseProEditResult, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponseProEditResult::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionExperimentsResponseProEditResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :structured_prompt, as: 'structuredPrompt'
+        end
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_metered_billing, as: 'allowMeteredBilling'
           property :anchor_last_frame, as: 'anchorLastFrame'
           property :audio_control, as: 'audioControl', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig::Representation
       
@@ -8949,6 +8989,8 @@ module Google
       
           property :original_request_json, as: 'originalRequestJson'
           property :outpaint_config, as: 'outpaintConfig', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig::Representation
+      
+          property :pro_edit, as: 'proEdit', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig::Representation
       
           property :prompt_inputs, as: 'promptInputs', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionPromptInputs::Representation
       
@@ -9015,6 +9057,15 @@ module Google
           property :glob_pattern, as: 'globPattern'
           property :horizontal_offset, as: 'horizontalOffset'
           property :vertical_offset, as: 'verticalOffset'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :edit_instruction_prompt, as: 'editInstructionPrompt'
+          property :from_operation_id, as: 'fromOperationId'
+          hash :structured_prompt, as: 'structuredPrompt'
         end
       end
       
@@ -9090,6 +9141,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bytes_base64_encoded, as: 'bytesBase64Encoded'
           property :experiments_metadata, as: 'experimentsMetadata', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperiments, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperiments::Representation
+      
+          property :experiments_response, as: 'experimentsResponse', class: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponse, decorator: Google::Apis::AiplatformV1::CloudAiLargeModelsVisionExperimentsResponse::Representation
       
           property :gcs_uri, as: 'gcsUri'
           property :mime_type, as: 'mimeType'
@@ -9349,6 +9402,8 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :object, as: 'object'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ObservabilityConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ObservabilityConfig::Representation
+      
           property :system_instruction, as: 'system_instruction'
           collection :tools, as: 'tools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentTool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AgentTool::Representation
       
@@ -17148,6 +17203,14 @@ module Google
       
           property :post_startup_script_config, as: 'postStartupScriptConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PostStartupScriptConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PostStartupScriptConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :observability_enabled, as: 'observabilityEnabled'
+          property :sensitive_logging_enabled, as: 'sensitiveLoggingEnabled'
         end
       end
       
