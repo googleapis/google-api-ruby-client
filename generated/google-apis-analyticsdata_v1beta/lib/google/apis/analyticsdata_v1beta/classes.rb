@@ -612,6 +612,69 @@ module Google
         end
       end
       
+      # Define the truncated date range from start_date to end_date.
+      class DataTruncationDateRange
+        include Google::Apis::Core::Hashable
+      
+        # The end date in the format YYYY-MM-DD (inclusive).
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # The start date in the format YYYY-MM-DD (inclusive).
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
+      # Describes a reason for data truncation in the report.
+      class DataTruncationReason
+        include Google::Apis::Core::Hashable
+      
+        # The data truncation date in the format YYYY-MM-DD. Indicates data before this
+        # date is truncated.
+        # Corresponds to the JSON property `dataTruncationDate`
+        # @return [String]
+        attr_accessor :data_truncation_date
+      
+        # The truncated date ranges.
+        # Corresponds to the JSON property `dataTruncationDateRanges`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::DataTruncationDateRange>]
+        attr_accessor :data_truncation_date_ranges
+      
+        # A descriptive message explaining the data truncation.
+        # Corresponds to the JSON property `dataTruncationMessage`
+        # @return [String]
+        attr_accessor :data_truncation_message
+      
+        # The type of data truncation.
+        # Corresponds to the JSON property `dataTruncationType`
+        # @return [String]
+        attr_accessor :data_truncation_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_truncation_date = args[:data_truncation_date] if args.key?(:data_truncation_date)
+          @data_truncation_date_ranges = args[:data_truncation_date_ranges] if args.key?(:data_truncation_date_ranges)
+          @data_truncation_message = args[:data_truncation_message] if args.key?(:data_truncation_message)
+          @data_truncation_type = args[:data_truncation_type] if args.key?(:data_truncation_type)
+        end
+      end
+      
       # A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`.
       # Requests are allowed up to 4 date ranges.
       class DateRange
@@ -1864,6 +1927,11 @@ module Google
         attr_accessor :data_loss_from_other_row
         alias_method :data_loss_from_other_row?, :data_loss_from_other_row
       
+        # If set, indicate there is data truncation in the report.
+        # Corresponds to the JSON property `dataTruncationReasons`
+        # @return [Array<Google::Apis::AnalyticsdataV1beta::DataTruncationReason>]
+        attr_accessor :data_truncation_reasons
+      
         # If empty reason is specified, the report is empty for this reason.
         # Corresponds to the JSON property `emptyReason`
         # @return [String]
@@ -1913,6 +1981,7 @@ module Google
         def update!(**args)
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @data_loss_from_other_row = args[:data_loss_from_other_row] if args.key?(:data_loss_from_other_row)
+          @data_truncation_reasons = args[:data_truncation_reasons] if args.key?(:data_truncation_reasons)
           @empty_reason = args[:empty_reason] if args.key?(:empty_reason)
           @sampling_metadatas = args[:sampling_metadatas] if args.key?(:sampling_metadatas)
           @schema_restriction_response = args[:schema_restriction_response] if args.key?(:schema_restriction_response)
