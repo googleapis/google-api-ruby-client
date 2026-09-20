@@ -711,6 +711,15 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The deployments linked directly to this API operation. For
+        # operations parsed from a spec, `UpdateApiOperation` returns `
+        # FAILED_PRECONDITION`; link the parent spec to the deployment via `Spec.
+        # deployments` instead. Format is `projects/`project`/locations/`location`/
+        # deployments/`deployment``
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<String>]
+        attr_accessor :deployments
+      
         # The operation details parsed from the spec.
         # Corresponds to the JSON property `details`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1OperationDetails]
@@ -749,6 +758,7 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployments = args[:deployments] if args.key?(:deployments)
           @details = args[:details] if args.key?(:details)
           @name = args[:name] if args.key?(:name)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
@@ -1769,6 +1779,11 @@ module Google
       class GoogleCloudApihubV1Deployment
         include Google::Apis::Core::Hashable
       
+        # Output only. The API operations linked directly to this deployment.
+        # Corresponds to the JSON property `apiOperations`
+        # @return [Array<String>]
+        attr_accessor :api_operations
+      
         # Output only. The API versions linked to this deployment. Note: A particular
         # deployment could be linked to multiple different API versions (of same or
         # different APIs).
@@ -1864,10 +1879,25 @@ module Google
         # @return [String]
         attr_accessor :source_project
       
+        # Optional. A revision identifier for the underlying gateway configuration that
+        # this deployment serves. For Apigee gateway variants, this is typically the
+        # proxy revision number populated automatically when the deployment is
+        # discovered.
+        # Corresponds to the JSON property `sourceRevision`
+        # @return [String]
+        attr_accessor :source_revision
+      
         # The attribute values associated with resource.
         # Corresponds to the JSON property `sourceUri`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :source_uri
+      
+        # Output only. The specs linked directly to this deployment. Note: a deployment
+        # could serve multiple specs (e.g., across different revisions of the same
+        # underlying gateway configuration).
+        # Corresponds to the JSON property `specs`
+        # @return [Array<String>]
+        attr_accessor :specs
       
         # Output only. The time at which the deployment was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -1880,6 +1910,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_operations = args[:api_operations] if args.key?(:api_operations)
           @api_versions = args[:api_versions] if args.key?(:api_versions)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1896,7 +1927,9 @@ module Google
           @source_environment = args[:source_environment] if args.key?(:source_environment)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @source_project = args[:source_project] if args.key?(:source_project)
+          @source_revision = args[:source_revision] if args.key?(:source_revision)
           @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @specs = args[:specs] if args.key?(:specs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -4817,6 +4850,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The deployments linked directly to this spec. Format is `projects/`
+        # project`/locations/`location`/deployments/`deployment``
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<String>]
+        attr_accessor :deployments
+      
         # SpecDetails contains the details parsed from supported spec types.
         # Corresponds to the JSON property `details`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1SpecDetails]
@@ -4881,6 +4920,7 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployments = args[:deployments] if args.key?(:deployments)
           @details = args[:details] if args.key?(:details)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
@@ -4951,6 +4991,16 @@ module Google
       class GoogleCloudApihubV1SpecMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. The gateway-side URIs of deployments that serve this spec. If
+        # provided, the API Hub service creates links between this spec and the
+        # deployments identified by these URIs. URIs that don't match any known
+        # deployment are ignored; a subsequent ingestion cycle that includes the missing
+        # deployment will re-establish the link. The maximum number of URIs allowed is
+        # 100.
+        # Corresponds to the JSON property `deploymentResourceUris`
+        # @return [Array<String>]
+        attr_accessor :deployment_resource_uris
+      
         # Optional. Timestamp indicating when the spec was created at the source.
         # Corresponds to the JSON property `originalCreateTime`
         # @return [String]
@@ -4980,6 +5030,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_resource_uris = args[:deployment_resource_uris] if args.key?(:deployment_resource_uris)
           @original_create_time = args[:original_create_time] if args.key?(:original_create_time)
           @original_id = args[:original_id] if args.key?(:original_id)
           @original_update_time = args[:original_update_time] if args.key?(:original_update_time)
