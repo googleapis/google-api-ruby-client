@@ -51,7 +51,9 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Gets a conference record by conference ID.
+        # Gets a conference record by conference ID. For more information, see [Work
+        # with conferences](https://developers.google.com/workspace/meet/api/guides/
+        # conferences).
         # @param [String] name
         #   Required. Resource name of the conference.
         # @param [String] fields
@@ -82,7 +84,8 @@ module Google
         end
         
         # Lists the conference records. By default, ordered by start time and in
-        # descending order.
+        # descending order. For more information, see [Work with conferences](https://
+        # developers.google.com/workspace/meet/api/guides/conferences).
         # @param [String] filter
         #   Optional. User specified filtering condition in [EBNF format](https://en.
         #   wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the
@@ -126,7 +129,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a participant by participant ID.
+        # Gets a participant by participant ID. For more information, see [Work with
+        # participants](https://developers.google.com/workspace/meet/api/guides/
+        # participants).
         # @param [String] name
         #   Required. Resource name of the participant.
         # @param [String] fields
@@ -159,7 +164,9 @@ module Google
         # Lists the participants in a conference record. By default, ordered by join
         # time and in descending order. This API supports `fields` as standard
         # parameters like every other API. However, when the `fields` request parameter
-        # is omitted, this API defaults to `'participants/*, next_page_token'`.
+        # is omitted, this API defaults to `'participants/*, next_page_token'`. For more
+        # information, see [Work with participants](https://developers.google.com/
+        # workspace/meet/api/guides/participants).
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record``
         # @param [String] filter
@@ -204,7 +211,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a participant session by participant session ID.
+        # Gets a participant session by participant session ID. For more information,
+        # see [Work with participants](https://developers.google.com/workspace/meet/api/
+        # guides/participants).
         # @param [String] name
         #   Required. Resource name of the participant.
         # @param [String] fields
@@ -238,7 +247,8 @@ module Google
         # default, ordered by join time and in descending order. This API supports `
         # fields` as standard parameters like every other API. However, when the `fields`
         # request parameter is omitted this API defaults to `'participantsessions/*,
-        # next_page_token'`.
+        # next_page_token'`. For more information, see [Work with participants](https://
+        # developers.google.com/workspace/meet/api/guides/participants).
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record`/participants/`
         #   participant``
@@ -284,7 +294,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a recording by recording ID.
+        # Gets a recording by recording ID. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] name
         #   Required. Resource name of the recording.
         # @param [String] fields
@@ -315,7 +326,8 @@ module Google
         end
         
         # Lists the recording resources from the conference record. By default, ordered
-        # by start time and in ascending order.
+        # by start time and in ascending order. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record``
         # @param [Fixnum] page_size
@@ -354,7 +366,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets smart notes by smart note ID.
+        # Gets smart notes by smart note ID. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] name
         #   Required. Resource name of the smart note. Format: conferenceRecords/`
         #   conference_record`/smartNotes/`smart_note`
@@ -386,7 +399,8 @@ module Google
         end
         
         # Lists the set of smart notes from the conference record. By default, ordered
-        # by start time and in ascending order.
+        # by start time and in ascending order. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record``
         # @param [Fixnum] page_size
@@ -425,7 +439,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a transcript by transcript ID.
+        # Gets a transcript by transcript ID. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] name
         #   Required. Resource name of the transcript.
         # @param [String] fields
@@ -456,7 +471,8 @@ module Google
         end
         
         # Lists the set of transcripts from the conference record. By default, ordered
-        # by start time and in ascending order.
+        # by start time and in ascending order. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record``
         # @param [Fixnum] page_size
@@ -495,11 +511,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a `TranscriptEntry` resource by entry ID. Note: The transcript entries
-        # returned by the Google Meet API might not match the transcription found in the
-        # Google Docs transcript file. This can occur when 1) we have interleaved
-        # speakers within milliseconds, or 2) the Google Docs transcript file is
-        # modified after generation.
+        # Gets a `TranscriptEntry` resource by entry ID. For more information, see [Work
+        # with artifacts](https://developers.google.com/workspace/meet/api/guides/
+        # artifacts). Note: The transcript entries returned by the Google Meet API might
+        # not match the transcription found in the Google Docs transcript file. This can
+        # occur when 1) we have interleaved speakers within milliseconds, or 2) the
+        # Google Docs transcript file is modified after generation.
         # @param [String] name
         #   Required. Resource name of the `TranscriptEntry`.
         # @param [String] fields
@@ -530,11 +547,12 @@ module Google
         end
         
         # Lists the structured transcript entries per transcript. By default, ordered by
-        # start time and in ascending order. Note: The transcript entries returned by
-        # the Google Meet API might not match the transcription found in the Google Docs
-        # transcript file. This can occur when 1) we have interleaved speakers within
-        # milliseconds, or 2) the Google Docs transcript file is modified after
-        # generation.
+        # start time and in ascending order. For more information, see [Work with
+        # artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+        # Note: The transcript entries returned by the Google Meet API might not match
+        # the transcription found in the Google Docs transcript file. This can occur
+        # when 1) we have interleaved speakers within milliseconds, or 2) the Google
+        # Docs transcript file is modified after generation.
         # @param [String] parent
         #   Required. Format: `conferenceRecords/`conference_record`/transcripts/`
         #   transcript``
@@ -573,7 +591,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a space.
+        # Creates a space. For more information, see [Manage meeting spaces](https://
+        # developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
         # @param [Google::Apis::MeetV2::Space] space_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -603,9 +622,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Ends an active conference (if there's one). For an example, see [End active
-        # conference](https://developers.google.com/workspace/meet/api/guides/meeting-
-        # spaces#end-active-conference).
+        # Ends an active conference (if there's one). For more information, see [Manage
+        # meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-
+        # meeting-spaces).
         # @param [String] name
         #   Required. Resource name of the space. Format: `spaces/`space``. ``space`` is
         #   the resource identifier for the space. It's a unique, server-generated ID and
@@ -642,9 +661,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details about a meeting space. For an example, see [Get a meeting space](
-        # https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-
-        # meeting-space).
+        # Gets details about a meeting space. For more information, see [Manage meeting
+        # spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-
+        # spaces). For an example, see [Get a meeting space](https://developers.google.
+        # com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
         # @param [String] name
         #   Required. Resource name of the space. Format: `spaces/`space`` or `spaces/`
         #   meetingCode``. ``space`` is the resource identifier for the space. It's a
@@ -685,9 +705,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates details about a meeting space. For an example, see [Update a meeting
-        # space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#
-        # update-meeting-space).
+        # Updates details about a meeting space. For more information, see [Manage
+        # meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-
+        # meeting-spaces).
         # @param [String] name
         #   Immutable. Resource name of the space. Format: `spaces/`space``. ``space`` is
         #   the resource identifier for the space. It's a unique, server-generated ID and
@@ -724,6 +744,232 @@ module Google
           command.request_object = space_object
           command.response_representation = Google::Apis::MeetV2::Space::Representation
           command.response_class = Google::Apis::MeetV2::Space
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates members of one space within a batch. For more information, see [Manage
+        # meeting space members](https://developers.google.com/workspace/meet/api/guides/
+        # meeting-space-members).
+        # @param [String] parent
+        #   Required. The parent resource shared by all Members being updated. Format:
+        #   spaces/`space`
+        # @param [Google::Apis::MeetV2::BatchUpdateMembersRequest] batch_update_members_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::BatchUpdateMembersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::BatchUpdateMembersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_update_members(parent, batch_update_members_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/members:batchUpdate', options)
+          command.request_representation = Google::Apis::MeetV2::BatchUpdateMembersRequest::Representation
+          command.request_object = batch_update_members_request_object
+          command.response_representation = Google::Apis::MeetV2::BatchUpdateMembersResponse::Representation
+          command.response_class = Google::Apis::MeetV2::BatchUpdateMembersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a member. For more information, see [Manage meeting space members](
+        # https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+        # This API supports the `fields` parameter in [SystemParameterContext](https://
+        # cloud.google.com/apis/docs/system-parameters). When the `fields` parameter is
+        # omitted, this API response will default to "name,email,role,user".
+        # @param [String] parent
+        #   Required. Format: spaces/`space`
+        # @param [Google::Apis::MeetV2::Member] member_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::Member] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::Member]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_space_member(parent, member_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/members', options)
+          command.request_representation = Google::Apis::MeetV2::Member::Representation
+          command.request_object = member_object
+          command.response_representation = Google::Apis::MeetV2::Member::Representation
+          command.response_class = Google::Apis::MeetV2::Member
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the member who was previously assigned roles in the space. For more
+        # information, see [Manage meeting space members](https://developers.google.com/
+        # workspace/meet/api/guides/meeting-space-members).
+        # @param [String] name
+        #   Required. Format: “spaces/`space`/members/`member`”
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_space_member(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::MeetV2::Empty::Representation
+          command.response_class = Google::Apis::MeetV2::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a member. For more information, see [Manage meeting space members](https:/
+        # /developers.google.com/workspace/meet/api/guides/meeting-space-members). This
+        # API supports the `fields` parameter in [SystemParameterContext](https://cloud.
+        # google.com/apis/docs/system-parameters). When the `fields` parameter is
+        # omitted, this API response will default to "name,email,role,user".
+        # @param [String] name
+        #   Required. Format: “spaces/`space`/members/`member`”
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::Member] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::Member]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_space_member(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::MeetV2::Member::Representation
+          command.response_class = Google::Apis::MeetV2::Member
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists members. For more information, see [Manage meeting space members](https:/
+        # /developers.google.com/workspace/meet/api/guides/meeting-space-members). This
+        # API supports the `fields` parameter in [SystemParameterContext](https://cloud.
+        # google.com/apis/docs/system-parameters). When the `fields` parameter is
+        # omitted this API response will default to "name,email,role,user".
+        # @param [String] parent
+        #   Required. Format: spaces/`space`
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of members to return. The service might return fewer
+        #   than this value. If unspecified or set to 0, at most 250 members are returned.
+        #   The maximum value is 500; values above 500 are coerced to 500. Maximum might
+        #   change in the future.
+        # @param [String] page_token
+        #   Optional. Page token returned from previous List Call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::ListMembersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::ListMembersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_space_members(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/members', options)
+          command.response_representation = Google::Apis::MeetV2::ListMembersResponse::Representation
+          command.response_class = Google::Apis::MeetV2::ListMembersResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a member. For more information, see [Manage meeting space members](
+        # https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+        # @param [String] name
+        #   Identifier. Resource name of the member. Format: spaces/`space`/members/`
+        #   member`
+        # @param [Google::Apis::MeetV2::Member] member_object
+        # @param [String] update_mask
+        #   Optional. Field mask used to specify the fields to be updated in the member.
+        #   If update_mask isn't provided(not set, set with empty paths, or only has "" as
+        #   paths), it defaults to update all fields provided with values in the request.
+        #   Using "*" as update_mask will update all fields, including deleting fields not
+        #   set in the request. In case of BatchUpdate, it must be absent or the same as
+        #   the update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built
+        #   as a child request of BatchUpdateMembersRequest.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MeetV2::Member] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MeetV2::Member]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_space_member(name, member_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::MeetV2::Member::Representation
+          command.request_object = member_object
+          command.response_representation = Google::Apis::MeetV2::Member::Representation
+          command.response_class = Google::Apis::MeetV2::Member
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
