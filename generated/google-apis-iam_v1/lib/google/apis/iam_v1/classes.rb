@@ -1624,7 +1624,7 @@ module Google
       class OauthClient
         include Google::Apis::Core::Hashable
       
-        # Required. The list of OAuth grant types is allowed for the OauthClient.
+        # Optional. The list of OAuth grant types is allowed for the OauthClient.
         # Corresponds to the JSON property `allowedGrantTypes`
         # @return [Array<String>]
         attr_accessor :allowed_grant_types
