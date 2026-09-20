@@ -96,6 +96,59 @@ module Google
         end
       end
       
+      # Request to update members of one space within a batch.
+      class BatchUpdateMembersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The request message specifying the resources to update. A maximum of
+        # 500 members can be modified in a batch.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::MeetV2::UpdateMemberRequest>]
+        attr_accessor :requests
+      
+        # Optional. Top-level field mask used to specify the fields to be updated in the
+        # member for all UpdateMemberRequests. There are 4 possible scenarios for top-
+        # level and child field mask: 1. top-level and child field mask is absent: All
+        # fields provided in the requests are updated, including deleting fields not set
+        # in the requests. 2. top-level field mask is present but child field mask is
+        # absent: The fields specified in the top-level field mask are updated. 3. top-
+        # level and child field mask is present: The child field mask must be the same
+        # as the top-level field mask. 4. top-level field mask is absent but child field
+        # mask is present: It isn't supported and will return an error.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Response of batch update members.
+      class BatchUpdateMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Members updated.
+        # Corresponds to the JSON property `members`
+        # @return [Array<Google::Apis::MeetV2::Member>]
+        attr_accessor :members
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+        end
+      end
+      
       # Single instance of a meeting held in a space.
       class ConferenceRecord
         include Google::Apis::Core::Hashable
@@ -286,6 +339,32 @@ module Google
         end
       end
       
+      # Response of list members.
+      class ListMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of members for the current page.
+        # Corresponds to the JSON property `members`
+        # @return [Array<Google::Apis::MeetV2::Member>]
+        attr_accessor :members
+      
+        # Token to be circulated back for further list call if current list doesn't
+        # include all the members. Unset if all members are returned.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @members = args[:members] if args.key?(:members)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response of ListParticipants method.
       class ListParticipantSessionsResponse
         include Google::Apis::Core::Hashable
@@ -447,6 +526,39 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @transcripts = args[:transcripts] if args.key?(:transcripts)
+        end
+      end
+      
+      # Users who are configured to have a role in the space. These users can join the
+      # space without knocking.
+      class Member
+        include Google::Apis::Core::Hashable
+      
+        # Email for the member. This is required for creating the member.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Identifier. Resource name of the member. Format: spaces/`space`/members/`
+        # member`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The meeting role assigned to the member.
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
@@ -1040,6 +1152,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_transcription_generation = args[:auto_transcription_generation] if args.key?(:auto_transcription_generation)
+        end
+      end
+      
+      # Request to update a member.
+      class UpdateMemberRequest
+        include Google::Apis::Core::Hashable
+      
+        # Users who are configured to have a role in the space. These users can join the
+        # space without knocking.
+        # Corresponds to the JSON property `member`
+        # @return [Google::Apis::MeetV2::Member]
+        attr_accessor :member
+      
+        # Optional. Field mask used to specify the fields to be updated in the member.
+        # If update_mask isn't provided(not set, set with empty paths, or only has "" as
+        # paths), it defaults to update all fields provided with values in the request.
+        # Using "*" as update_mask will update all fields, including deleting fields not
+        # set in the request. In case of BatchUpdate, it must be absent or the same as
+        # the update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built
+        # as a child request of BatchUpdateMembersRequest.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @member = args[:member] if args.key?(:member)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
     end
