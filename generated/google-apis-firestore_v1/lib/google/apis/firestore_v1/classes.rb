@@ -3249,7 +3249,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Disables geoJSON indexing for the field. By default, geoJSON points
-        # are indexed.
+        # are indexed. Firestore GeoPoints are indexed regardless of the value of this
+        # field.
         # Corresponds to the JSON property `geoJsonIndexingDisabled`
         # @return [Boolean]
         attr_accessor :geo_json_indexing_disabled
