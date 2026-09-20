@@ -22,6 +22,18 @@ module Google
   module Apis
     module AiplatformV1beta1
       
+      class CloudAiLargeModelsVisionExperimentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionExperimentsResponseProEditResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +71,12 @@ module Google
       end
       
       class CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfigFrameSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6796,6 +6814,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1ObservabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1OnlineEvaluator
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8081,6 +8105,18 @@ module Google
       end
       
       class GoogleCloudAiplatformV1beta1ReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11890,9 +11926,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudAiLargeModelsVisionExperimentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pro_edit_result, as: 'proEditResult', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionExperimentsResponseProEditResult, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionExperimentsResponseProEditResult::Representation
+      
+        end
+      end
+      
+      class CloudAiLargeModelsVisionExperimentsResponseProEditResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :structured_prompt, as: 'structuredPrompt'
+        end
+      end
+      
       class CloudAiLargeModelsVisionGenerateVideoExperiments
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_metered_billing, as: 'allowMeteredBilling'
           property :anchor_last_frame, as: 'anchorLastFrame'
           property :audio_control, as: 'audioControl', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsAudioControlConfig::Representation
       
@@ -11913,6 +11965,8 @@ module Google
       
           property :original_request_json, as: 'originalRequestJson'
           property :outpaint_config, as: 'outpaintConfig', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig::Representation
+      
+          property :pro_edit, as: 'proEdit', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig::Representation
       
           property :prompt_inputs, as: 'promptInputs', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionPromptInputs, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionPromptInputs::Representation
       
@@ -11979,6 +12033,15 @@ module Google
           property :glob_pattern, as: 'globPattern'
           property :horizontal_offset, as: 'horizontalOffset'
           property :vertical_offset, as: 'verticalOffset'
+        end
+      end
+      
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :edit_instruction_prompt, as: 'editInstructionPrompt'
+          property :from_operation_id, as: 'fromOperationId'
+          hash :structured_prompt, as: 'structuredPrompt'
         end
       end
       
@@ -12054,6 +12117,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bytes_base64_encoded, as: 'bytesBase64Encoded'
           property :experiments_metadata, as: 'experimentsMetadata', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperiments, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperiments::Representation
+      
+          property :experiments_response, as: 'experimentsResponse', class: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionExperimentsResponse, decorator: Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionExperimentsResponse::Representation
       
           property :gcs_uri, as: 'gcsUri'
           property :mime_type, as: 'mimeType'
@@ -13809,7 +13874,7 @@ module Google
       class GoogleCloudAiplatformV1beta1A2APart
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :data, as: 'data'
+          property :data, as: 'data'
           property :filename, as: 'filename'
           property :media_type, as: 'mediaType'
           hash :metadata, as: 'metadata'
@@ -14172,6 +14237,8 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           property :object, as: 'object'
+          property :observability_config, as: 'observabilityConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ObservabilityConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ObservabilityConfig::Representation
+      
           property :system_instruction, as: 'system_instruction'
           collection :tools, as: 'tools', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentTool, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentTool::Representation
       
@@ -23771,6 +23838,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1ObservabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :observability_enabled, as: 'observabilityEnabled'
+          property :sensitive_logging_enabled, as: 'sensitiveLoggingEnabled'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1OnlineEvaluator
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -25885,6 +25960,8 @@ module Google
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :revision_garbage_collection_strategy, as: 'revisionGarbageCollectionStrategy', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy::Representation
+      
           property :spec, as: 'spec', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineSpec::Representation
       
           property :traffic_config, as: 'trafficConfig', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineTrafficConfig, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineTrafficConfig::Representation
@@ -25950,6 +26027,21 @@ module Google
           property :create_ttl, as: 'createTtl'
           property :generate_created_ttl, as: 'generateCreatedTtl'
           property :generate_updated_ttl, as: 'generateUpdatedTtl'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keep_n_latest, as: 'keepNLatest', class: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest, decorator: Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1ReasoningEngineRevisionGarbageCollectionStrategyKeepNLatest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_revisions, as: 'maxRevisions'
         end
       end
       
