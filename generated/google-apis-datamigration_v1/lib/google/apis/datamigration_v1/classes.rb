@@ -3861,10 +3861,26 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # Private Connectivity.
+        # Corresponds to the JSON property `privateConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateConnectivity]
+        attr_accessor :private_connectivity
+      
+        # [Private Service Connect connectivity](https://cloud.google.com/vpc/docs/
+        # private-service-connect#service-attachments)
+        # Corresponds to the JSON property `privateServiceConnectConnectivity`
+        # @return [Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity]
+        attr_accessor :private_service_connect_connectivity
+      
         # SSL configuration information.
         # Corresponds to the JSON property `ssl`
         # @return [Google::Apis::DatamigrationV1::SslConfig]
         attr_accessor :ssl
+      
+        # Static IP address connectivity configured on service project.
+        # Corresponds to the JSON property `staticServiceIpConnectivity`
+        # @return [Google::Apis::DatamigrationV1::StaticServiceIpConnectivity]
+        attr_accessor :static_service_ip_connectivity
       
         # Required. The username that Database Migration Service will use to connect to
         # the database. The value is encrypted when stored in Database Migration Service.
@@ -3883,7 +3899,10 @@ module Google
           @password = args[:password] if args.key?(:password)
           @password_set = args[:password_set] if args.key?(:password_set)
           @port = args[:port] if args.key?(:port)
+          @private_connectivity = args[:private_connectivity] if args.key?(:private_connectivity)
+          @private_service_connect_connectivity = args[:private_service_connect_connectivity] if args.key?(:private_service_connect_connectivity)
           @ssl = args[:ssl] if args.key?(:ssl)
+          @static_service_ip_connectivity = args[:static_service_ip_connectivity] if args.key?(:static_service_ip_connectivity)
           @username = args[:username] if args.key?(:username)
         end
       end
@@ -4242,6 +4261,11 @@ module Google
         # @return [String]
         attr_accessor :dump_parallel_level
       
+        # Optional. Initial load parallelism level.
+        # Corresponds to the JSON property `loadParallelLevel`
+        # @return [String]
+        attr_accessor :load_parallel_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4249,6 +4273,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dump_parallel_level = args[:dump_parallel_level] if args.key?(:dump_parallel_level)
+          @load_parallel_level = args[:load_parallel_level] if args.key?(:load_parallel_level)
         end
       end
       
