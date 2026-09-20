@@ -82,6 +82,35 @@ module Google
         end
       end
       
+      # Response containing the aggregated collection of matching ReaderEntitlements
+      # objects.
+      class ListReaderEntitlementsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The collection of ReaderEntitlements found across the scoped child
+        # publications. Every element's `name` field will contain the canonical sub-
+        # publication path, never the wildcard dash.
+        # Corresponds to the JSON property `readerEntitlements`
+        # @return [Array<Google::Apis::ReaderrevenuesubscriptionlinkingV1::ReaderEntitlements>]
+        attr_accessor :reader_entitlements
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reader_entitlements = args[:reader_entitlements] if args.key?(:reader_entitlements)
+        end
+      end
+      
       # A reader of a publication.
       class Reader
         include Google::Apis::Core::Hashable
