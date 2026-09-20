@@ -2758,6 +2758,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageViewsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InitialStateConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2897,6 +2915,12 @@ module Google
       end
       
       class InstanceGroupManagerInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11464,8 +11488,11 @@ module Google
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
           collection :cache_tags, as: 'cacheTags'
+          property :content_type, as: 'contentType'
           property :host, as: 'host'
+          property :http_status, as: 'httpStatus'
           property :path, as: 'path'
         end
       end
@@ -12695,6 +12722,8 @@ module Google
       class DistributionPolicyZoneConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_size, as: 'maxSize', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -13321,6 +13350,7 @@ module Google
           property :auto_created_reservations_duration, as: 'autoCreatedReservationsDuration', class: Google::Apis::ComputeBeta::Duration, decorator: Google::Apis::ComputeBeta::Duration::Representation
       
           property :auto_delete_auto_created_reservations, as: 'autoDeleteAutoCreatedReservations'
+          property :colocation_resource, as: 'colocationResource'
           property :commitment_info, as: 'commitmentInfo', class: Google::Apis::ComputeBeta::FutureReservationCommitmentInfo, decorator: Google::Apis::ComputeBeta::FutureReservationCommitmentInfo::Representation
       
           property :confidential_compute_type, as: 'confidentialComputeType'
@@ -15050,6 +15080,40 @@ module Google
         end
       end
       
+      class ImageViewsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::ImageView, decorator: Google::Apis::ComputeBeta::ImageView::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::ImageViewsListResponse::Warning, decorator: Google::Apis::ComputeBeta::ImageViewsListResponse::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::ImageViewsListResponse::Warning::Datum, decorator: Google::Apis::ComputeBeta::ImageViewsListResponse::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class InitialStateConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -15432,10 +15496,19 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyConstraints, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyConstraints::Representation
+      
           hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
           property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_machine_type, as: 'singleMachineType'
         end
       end
       
@@ -23499,6 +23572,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :encrypted_interconnect_router, as: 'encryptedInterconnectRouter'
+          property :etag, as: 'etag'
           property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeBeta::RouterInterface, decorator: Google::Apis::ComputeBeta::RouterInterface::Representation
       
@@ -23725,6 +23799,7 @@ module Google
           property :description, as: 'description'
           property :match, as: 'match'
           property :rule_number, as: 'ruleNumber'
+          collection :source_workload_identities, as: 'sourceWorkloadIdentities'
         end
       end
       
