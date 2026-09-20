@@ -670,6 +670,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GuardrailSupervisor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2339,6 +2345,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event, as: 'event'
+          hash :variables, as: 'variables'
         end
       end
       
@@ -2515,6 +2522,8 @@ module Google
           property :model_safety, as: 'modelSafety', class: Google::Apis::CesV1::GuardrailModelSafety, decorator: Google::Apis::CesV1::GuardrailModelSafety::Representation
       
           property :name, as: 'name'
+          property :supervisor, as: 'supervisor', class: Google::Apis::CesV1::GuardrailSupervisor, decorator: Google::Apis::CesV1::GuardrailSupervisor::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -2588,6 +2597,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :category, as: 'category'
           property :threshold, as: 'threshold'
+        end
+      end
+      
+      class GuardrailSupervisor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detection_mode, as: 'detectionMode'
+          property :type, as: 'type'
         end
       end
       
@@ -3417,7 +3434,10 @@ module Google
           property :api_authentication, as: 'apiAuthentication', class: Google::Apis::CesV1::ApiAuthentication, decorator: Google::Apis::CesV1::ApiAuthentication::Representation
       
           property :description, as: 'description'
+          hash :input_variable_mapping, as: 'inputVariableMapping'
           property :name, as: 'name'
+          hash :output_variable_mapping, as: 'outputVariableMapping'
+          property :stateful_agent, as: 'statefulAgent'
         end
       end
       
