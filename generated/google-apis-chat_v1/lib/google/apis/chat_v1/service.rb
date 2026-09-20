@@ -806,15 +806,16 @@ module Google
         #   audience). `access_settings.access_permission_settings` is not supported with `
         #   useAdminAccess`. The supported field masks include: - `access_settings.
         #   access_permission_settings.discoverSpaceSetting` - `access_settings.
-        #   access_permission_settings.joinSpaceSetting` `permission_settings`: Supports
-        #   changing the [permission settings](https://support.google.com/chat/answer/
-        #   13340792) of a space. When updating permission settings, you can only specify `
-        #   permissionSettings` field masks; you cannot update other field masks at the
-        #   same time. The supported field masks include: - `permission_settings.
+        #   access_permission_settings.joinSpaceSetting` - `access_settings.
+        #   access_permission_settings.viewSpaceMembershipSetting` `permission_settings`:
+        #   Supports changing the [permission settings](https://support.google.com/chat/
+        #   answer/13340792) of a space. When updating permission settings, you can only
+        #   specify `permissionSettings` field masks; you cannot update other field masks
+        #   at the same time. The supported field masks include: - `permission_settings.
         #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
         #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
-        #   permission_settings.replyMessages`
+        #   permission_settings.replyMessages` - `permission_settings.viewSpaceMembership`
         # @param [Boolean] use_admin_access
         #   Optional. When `true`, the method runs using the user's Google Workspace
         #   administrator privileges. The calling user must be a Google Workspace
