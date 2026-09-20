@@ -22,6 +22,47 @@ module Google
   module Apis
     module MarketingplatformadminV1alpha
       
+      # A resource message representing a binding to a set of roles.
+      class AdminAccessBinding
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of this AdminAccessBinding. Format:
+        # organizations/`org_id`/adminAccessBindings/`admin_access_binding_id` Example: "
+        # organizations/123abc/adminAccessBindings/456def"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. A list of roles granted to the parent organization. USER_ADMIN_ROLE
+        # and BILLING_ADMIN_ROLE will be automatically added if ORG_ADMIN_ROLE is
+        # assigned. No roles will be assigned if no roles are specified.
+        # Corresponds to the JSON property `organizationRoles`
+        # @return [Array<String>]
+        attr_accessor :organization_roles
+      
+        # Email address of the user.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # Resource name of the user group.
+        # Corresponds to the JSON property `userGroup`
+        # @return [String]
+        attr_accessor :user_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @organization_roles = args[:organization_roles] if args.key?(:organization_roles)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_group = args[:user_group] if args.key?(:user_group)
+        end
+      end
+      
       # A resource message representing the link between a Google Analytics account
       # and a Google Marketing Platform organization.
       class AnalyticsAccountLink
@@ -245,6 +286,32 @@ module Google
         end
       end
       
+      # Response message for ListAdminAccessBindings RPC.
+      class ListAdminAccessBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Admin Access Bindings in the organization.
+        # Corresponds to the JSON property `adminAccessBindings`
+        # @return [Array<Google::Apis::MarketingplatformadminV1alpha::AdminAccessBinding>]
+        attr_accessor :admin_access_bindings
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_access_bindings = args[:admin_access_bindings] if args.key?(:admin_access_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for ListAnalyticsAccountLinks RPC.
       class ListAnalyticsAccountLinksResponse
         include Google::Apis::Core::Hashable
@@ -295,6 +362,58 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @organizations = args[:organizations] if args.key?(:organizations)
+        end
+      end
+      
+      # Response message for ListUserGroupMembers RPC.
+      class ListUserGroupMembersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # User group members in the user group.
+        # Corresponds to the JSON property `userGroupMembers`
+        # @return [Array<Google::Apis::MarketingplatformadminV1alpha::UserGroupMember>]
+        attr_accessor :user_group_members
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_group_members = args[:user_group_members] if args.key?(:user_group_members)
+        end
+      end
+      
+      # Response message for ListUserGroups RPC.
+      class ListUserGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # User groups in the organization.
+        # Corresponds to the JSON property `userGroups`
+        # @return [Array<Google::Apis::MarketingplatformadminV1alpha::UserGroup>]
+        attr_accessor :user_groups
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @user_groups = args[:user_groups] if args.key?(:user_groups)
         end
       end
       
@@ -499,6 +618,77 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A resource message representing a user group in a GMP organization.
+      class UserGroup
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The description of the user group.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. The human-readable name for the user group.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name of this UserGroup. Format: organizations/`org_id`/
+        # userGroups/`user_group_id` Example: "organizations/123abc/userGroups/456def"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A resource message representing a member of a user group.
+      class UserGroupMember
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The role of the member in the user group.
+        # Corresponds to the JSON property `membershipRole`
+        # @return [String]
+        attr_accessor :membership_role
+      
+        # Identifier. The resource name of this UserGroupMember. Format: organizations/`
+        # org_id`/userGroups/`user_group_id`/members/`member_id` Example: "organizations/
+        # 123abc/userGroups/456def/members/789ghi"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Email address of the user member.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        # User group resource name of the group member.
+        # Corresponds to the JSON property `userGroup`
+        # @return [String]
+        attr_accessor :user_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @membership_role = args[:membership_role] if args.key?(:membership_role)
+          @name = args[:name] if args.key?(:name)
+          @user_email = args[:user_email] if args.key?(:user_email)
+          @user_group = args[:user_group] if args.key?(:user_group)
         end
       end
     end
