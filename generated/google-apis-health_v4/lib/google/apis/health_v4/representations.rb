@@ -406,6 +406,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevicesandservicesHealthV4betaDataType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeartBeat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +449,12 @@ module Google
       end
       
       class HeartRateVariability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeartRateVariabilityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1664,6 +1688,28 @@ module Google
         end
       end
       
+      class GoogleDevicesandservicesHealthV4betaDataType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_response, as: 'httpResponse', class: Google::Apis::HealthV4::HttpResponse, decorator: Google::Apis::HealthV4::HttpResponse::Representation
+      
+        end
+      end
+      
       class HeartBeat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1706,10 +1752,20 @@ module Google
       class HeartRateVariability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::HealthV4::HeartRateVariabilityMetadata, decorator: Google::Apis::HealthV4::HeartRateVariabilityMetadata::Representation
+      
           property :root_mean_square_of_successive_differences_milliseconds, as: 'rootMeanSquareOfSuccessiveDifferencesMilliseconds'
           property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
       
           property :standard_deviation_milliseconds, as: 'standardDeviationMilliseconds'
+        end
+      end
+      
+      class HeartRateVariabilityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high_frequency_power, as: 'highFrequencyPower'
+          property :low_frequency_power, as: 'lowFrequencyPower'
         end
       end
       
