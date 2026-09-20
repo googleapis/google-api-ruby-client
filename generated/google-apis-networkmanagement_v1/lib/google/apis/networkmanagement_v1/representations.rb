@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectVpcIngressConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DropInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -725,6 +731,17 @@ module Google
       end
       
       class DirectVpcEgressConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_uri, as: 'networkUri'
+          property :region, as: 'region'
+          property :selected_ip_address, as: 'selectedIpAddress'
+          property :selected_ip_range, as: 'selectedIpRange'
+          property :subnetwork_uri, as: 'subnetworkUri'
+        end
+      end
+      
+      class DirectVpcIngressConnectionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_uri, as: 'networkUri'
@@ -1527,6 +1544,8 @@ module Google
       
           property :description, as: 'description'
           property :direct_vpc_egress_connection, as: 'directVpcEgressConnection', class: Google::Apis::NetworkmanagementV1::DirectVpcEgressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1::DirectVpcEgressConnectionInfo::Representation
+      
+          property :direct_vpc_ingress_connection, as: 'directVpcIngressConnection', class: Google::Apis::NetworkmanagementV1::DirectVpcIngressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1::DirectVpcIngressConnectionInfo::Representation
       
           property :dms_private_connection, as: 'dmsPrivateConnection', class: Google::Apis::NetworkmanagementV1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1::PrivateConnectionInfo::Representation
       
