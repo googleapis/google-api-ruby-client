@@ -1302,8 +1302,9 @@ module Google
         # @return [String]
         attr_accessor :suggestions_view_mode
       
-        # Tabs that are part of a document. Tabs can contain child tabs, a tab nested
-        # within another tab. Child tabs are represented by the Tab.childTabs field.
+        # Output only. Tabs that are part of a document. Tabs can contain child tabs, a
+        # tab nested within another tab. Child tabs are represented by the Tab.childTabs
+        # field.
         # Corresponds to the JSON property `tabs`
         # @return [Array<Google::Apis::DocsV1::Tab>]
         attr_accessor :tabs
