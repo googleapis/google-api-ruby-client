@@ -5416,6 +5416,12 @@ module Google
         # @return [String]
         attr_accessor :autofill_policy
       
+        # Optional. Controls whether the backup service is disabled. Supported only on
+        # fully managed devices running Android 8 and above.
+        # Corresponds to the JSON property `backupService`
+        # @return [String]
+        attr_accessor :backup_service
+      
         # This field has no effect.
         # Corresponds to the JSON property `blockApplicationsEnabled`
         # @return [Boolean]
@@ -6033,6 +6039,7 @@ module Google
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @autofill_policy = args[:autofill_policy] if args.key?(:autofill_policy)
+          @backup_service = args[:backup_service] if args.key?(:backup_service)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
           @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)
