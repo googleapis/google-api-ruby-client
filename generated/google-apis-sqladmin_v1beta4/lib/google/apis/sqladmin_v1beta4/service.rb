@@ -3200,6 +3200,196 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Lists all captured workloads associated with the instance.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::WorkloadCapturesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::WorkloadCapturesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_workload_captures(project, instance, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'sql/v1beta4/projects/{project}/instances/{instance}/workloadCaptures', options)
+          command.response_representation = Google::Apis::SqladminV1beta4::WorkloadCapturesListResponse::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::WorkloadCapturesListResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts capturing the SQL queries, transactions, and other operations executed
+        # on the primary instance. This traffic is securely stored and forms a "captured
+        # workload". This workload can be replayed later on a different instance to
+        # safely test performance impacts, database upgrades, configuration changes etc.
+        # before applying them to production.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStartRequest] sql_workload_captures_start_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_workload_capture(project, instance, sql_workload_captures_start_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/workloadCaptures:start', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStartRequest::Representation
+          command.request_object = sql_workload_captures_start_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts executing a captured workload on a separate Cloud SQL instance
+        # provisioned for workload replay. This target instance simulates the production
+        # environment without affecting the primary instance.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] workload_id
+        #   Required. The ID of the workload to replay.
+        # @param [Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStartReplayRequest] sql_workload_captures_start_replay_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_workload_capture_replay(project, instance, workload_id, sql_workload_captures_start_replay_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/workloadCaptures/{workloadId}:startReplay', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStartReplayRequest::Representation
+          command.request_object = sql_workload_captures_start_replay_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.params['workloadId'] = workload_id unless workload_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops capturing the query traffic and related operations executed on the
+        # primary instance.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStopRequest] sql_workload_captures_stop_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_workload_capture(project, instance, sql_workload_captures_stop_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/workloadCaptures:stop', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStopRequest::Representation
+          command.request_object = sql_workload_captures_stop_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops executing a captured workload on the separate Cloud SQL instance.
+        # @param [String] project
+        #   Required. Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Required. Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] workload_id
+        #   Required. The ID of the workload to replay.
+        # @param [Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStopReplayRequest] sql_workload_captures_stop_replay_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqladminV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqladminV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_workload_capture_replay(project, instance, workload_id, sql_workload_captures_stop_replay_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/workloadCaptures/{workloadId}:stopReplay', options)
+          command.request_representation = Google::Apis::SqladminV1beta4::SqlWorkloadCapturesStopReplayRequest::Representation
+          command.request_object = sql_workload_captures_stop_replay_request_object
+          command.response_representation = Google::Apis::SqladminV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqladminV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.params['workloadId'] = workload_id unless workload_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

@@ -886,6 +886,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlWorkloadCapturesStartReplayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStartRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStopReplayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStopRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -922,7 +946,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartWorkloadCaptureContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartWorkloadReplayContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopWorkloadCaptureContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopWorkloadReplayContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -995,6 +1043,18 @@ module Google
       end
       
       class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadCapture
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadCapturesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1488,6 +1548,7 @@ module Google
       class DiskEncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_source_log_encryption_enforced, as: 'cmekSourceLogEncryptionEnforced'
           property :confidential_mode, as: 'confidentialMode'
           property :kind, as: 'kind'
           property :kms_key_name, as: 'kmsKeyName'
@@ -2133,7 +2194,15 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
+          property :start_workload_capture_context, as: 'startWorkloadCaptureContext', class: Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext, decorator: Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext::Representation
+      
+          property :start_workload_replay_context, as: 'startWorkloadReplayContext', class: Google::Apis::SqladminV1beta4::StartWorkloadReplayContext, decorator: Google::Apis::SqladminV1beta4::StartWorkloadReplayContext::Representation
+      
           property :status, as: 'status'
+          property :stop_workload_capture_context, as: 'stopWorkloadCaptureContext', class: Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext, decorator: Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext::Representation
+      
+          property :stop_workload_replay_context, as: 'stopWorkloadReplayContext', class: Google::Apis::SqladminV1beta4::StopWorkloadReplayContext, decorator: Google::Apis::SqladminV1beta4::StopWorkloadReplayContext::Representation
+      
           property :sub_operation_type, as: 'subOperationType', class: Google::Apis::SqladminV1beta4::SqlSubOperationType, decorator: Google::Apis::SqladminV1beta4::SqlSubOperationType::Representation
       
           property :target_id, as: 'targetId'
@@ -2702,6 +2771,38 @@ module Google
         end
       end
       
+      class SqlWorkloadCapturesStartReplayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_workload_replay_context, as: 'startWorkloadReplayContext', class: Google::Apis::SqladminV1beta4::StartWorkloadReplayContext, decorator: Google::Apis::SqladminV1beta4::StartWorkloadReplayContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStartRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_workload_capture_context, as: 'startWorkloadCaptureContext', class: Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext, decorator: Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStopReplayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_workload_replay_context, as: 'stopWorkloadReplayContext', class: Google::Apis::SqladminV1beta4::StopWorkloadReplayContext, decorator: Google::Apis::SqladminV1beta4::StopWorkloadReplayContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStopRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_workload_capture_context, as: 'stopWorkloadCaptureContext', class: Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext, decorator: Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext::Representation
+      
+        end
+      end
+      
       class SslCert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2763,12 +2864,43 @@ module Google
         end
       end
       
+      class StartWorkloadCaptureContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_live_replay, as: 'enableLiveReplay'
+          property :replay_instance, as: 'replayInstance'
+        end
+      end
+      
+      class StartWorkloadReplayContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replay_instance, as: 'replayInstance'
+          property :workload_id, as: 'workloadId'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopWorkloadCaptureContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort_live_replay, as: 'abortLiveReplay'
+        end
+      end
+      
+      class StopWorkloadReplayContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replay_instance, as: 'replayInstance'
+          property :workload_id, as: 'workloadId'
         end
       end
       
@@ -2887,6 +3019,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :null_value, as: 'nullValue'
           property :value, as: 'value'
+        end
+      end
+      
+      class WorkloadCapture
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :replay_instance, as: 'replayInstance'
+          property :retention_days, as: 'retentionDays'
+          property :source_instance, as: 'sourceInstance'
+          property :start_time, as: 'startTime'
+          property :workload_capture_state, as: 'workloadCaptureState'
+          property :workload_id, as: 'workloadId'
+        end
+      end
+      
+      class WorkloadCapturesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :workload_captures, as: 'workloadCaptures', class: Google::Apis::SqladminV1beta4::WorkloadCapture, decorator: Google::Apis::SqladminV1beta4::WorkloadCapture::Representation
+      
         end
       end
     end
