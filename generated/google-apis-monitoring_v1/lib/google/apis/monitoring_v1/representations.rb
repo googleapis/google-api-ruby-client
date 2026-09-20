@@ -436,6 +436,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeSeriesFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1188,6 +1194,15 @@ module Google
         end
       end
       
+      class TimeRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :absolute_window, as: 'absoluteWindow', class: Google::Apis::MonitoringV1::Interval, decorator: Google::Apis::MonitoringV1::Interval::Representation
+      
+          property :relative_duration, as: 'relativeDuration'
+        end
+      end
+      
       class TimeSeriesFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1330,6 +1345,8 @@ module Google
           property :single_view_group, as: 'singleViewGroup', class: Google::Apis::MonitoringV1::SingleViewGroup, decorator: Google::Apis::MonitoringV1::SingleViewGroup::Representation
       
           property :text, as: 'text', class: Google::Apis::MonitoringV1::Text, decorator: Google::Apis::MonitoringV1::Text::Representation
+      
+          property :time_range, as: 'timeRange', class: Google::Apis::MonitoringV1::TimeRange, decorator: Google::Apis::MonitoringV1::TimeRange::Representation
       
           property :time_series_table, as: 'timeSeriesTable', class: Google::Apis::MonitoringV1::TimeSeriesTable, decorator: Google::Apis::MonitoringV1::TimeSeriesTable::Representation
       

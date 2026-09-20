@@ -2704,6 +2704,35 @@ module Google
         end
       end
       
+      # Represents a time range.
+      class TimeRange
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive).The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `absoluteWindow`
+        # @return [Google::Apis::MonitoringV1::Interval]
+        attr_accessor :absolute_window
+      
+        # Optional. Specifies the duration used to shift the data relative to current
+        # time as the end time. The duration must be positive.
+        # Corresponds to the JSON property `relativeDuration`
+        # @return [String]
+        attr_accessor :relative_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolute_window = args[:absolute_window] if args.key?(:absolute_window)
+          @relative_duration = args[:relative_duration] if args.key?(:relative_duration)
+        end
+      end
+      
       # A filter that defines a subset of time series data that is displayed in a
       # widget. Time series data is fetched using the ListTimeSeries (https://cloud.
       # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
@@ -3235,6 +3264,11 @@ module Google
         # @return [Google::Apis::MonitoringV1::Text]
         attr_accessor :text
       
+        # Represents a time range.
+        # Corresponds to the JSON property `timeRange`
+        # @return [Google::Apis::MonitoringV1::TimeRange]
+        attr_accessor :time_range
+      
         # A table that displays time series data.
         # Corresponds to the JSON property `timeSeriesTable`
         # @return [Google::Apis::MonitoringV1::TimeSeriesTable]
@@ -3279,6 +3313,7 @@ module Google
           @section_header = args[:section_header] if args.key?(:section_header)
           @single_view_group = args[:single_view_group] if args.key?(:single_view_group)
           @text = args[:text] if args.key?(:text)
+          @time_range = args[:time_range] if args.key?(:time_range)
           @time_series_table = args[:time_series_table] if args.key?(:time_series_table)
           @title = args[:title] if args.key?(:title)
           @treemap = args[:treemap] if args.key?(:treemap)
