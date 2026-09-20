@@ -1198,6 +1198,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservedResourcesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceLabels
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3403,6 +3409,8 @@ module Google
           property :memory_manager, as: 'memoryManager', class: Google::Apis::ContainerV1::MemoryManager, decorator: Google::Apis::ContainerV1::MemoryManager::Representation
       
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
+          property :reserved_resources_config, as: 'reservedResourcesConfig', class: Google::Apis::ContainerV1::ReservedResourcesConfig, decorator: Google::Apis::ContainerV1::ReservedResourcesConfig::Representation
+      
           property :shutdown_grace_period_critical_pods_seconds, as: 'shutdownGracePeriodCriticalPodsSeconds'
           property :shutdown_grace_period_seconds, as: 'shutdownGracePeriodSeconds'
           property :single_process_oom_kill, as: 'singleProcessOomKill'
@@ -3862,6 +3870,16 @@ module Google
           property :consume_reservation_type, as: 'consumeReservationType'
           property :key, as: 'key'
           collection :values, as: 'values'
+        end
+      end
+      
+      class ReservedResourcesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_reserved_millicore, :numeric_string => true, as: 'cpuReservedMillicore'
+          property :effective_cpu_reserved_millicore, :numeric_string => true, as: 'effectiveCpuReservedMillicore'
+          property :effective_memory_reserved_mib, :numeric_string => true, as: 'effectiveMemoryReservedMib'
+          property :memory_reserved_mib, :numeric_string => true, as: 'memoryReservedMib'
         end
       end
       

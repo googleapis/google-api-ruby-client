@@ -303,7 +303,8 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeReadinessConfig]
         attr_accessor :node_readiness_config
       
-        # Configuration for the Cloud Storage Parallelstore CSI driver.
+        # Deprecated: The Parallelstore CSI driver is no longer supported. Configuration
+        # for the Cloud Storage Parallelstore CSI driver.
         # Corresponds to the JSON property `parallelstoreCsiDriverConfig`
         # @return [Google::Apis::ContainerV1::ParallelstoreCsiDriverConfig]
         attr_accessor :parallelstore_csi_driver_config
@@ -6855,6 +6856,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
       
+        # ReservedResourcesConfig contains the configuration for the reserved resources
+        # on the node.
+        # Corresponds to the JSON property `reservedResourcesConfig`
+        # @return [Google::Apis::ContainerV1::ReservedResourcesConfig]
+        attr_accessor :reserved_resources_config
+      
         # Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed
         # grace period (in seconds) used to terminate critical pods during a node
         # shutdown. This value should be <= shutdown_grace_period_seconds, and is only
@@ -6919,6 +6926,7 @@ module Google
           @max_parallel_image_pulls = args[:max_parallel_image_pulls] if args.key?(:max_parallel_image_pulls)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @reserved_resources_config = args[:reserved_resources_config] if args.key?(:reserved_resources_config)
           @shutdown_grace_period_critical_pods_seconds = args[:shutdown_grace_period_critical_pods_seconds] if args.key?(:shutdown_grace_period_critical_pods_seconds)
           @shutdown_grace_period_seconds = args[:shutdown_grace_period_seconds] if args.key?(:shutdown_grace_period_seconds)
           @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
@@ -7878,7 +7886,8 @@ module Google
         end
       end
       
-      # Configuration for the Cloud Storage Parallelstore CSI driver.
+      # Deprecated: The Parallelstore CSI driver is no longer supported. Configuration
+      # for the Cloud Storage Parallelstore CSI driver.
       class ParallelstoreCsiDriverConfig
         include Google::Apis::Core::Hashable
       
@@ -8631,6 +8640,52 @@ module Google
           @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
           @key = args[:key] if args.key?(:key)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # ReservedResourcesConfig contains the configuration for the reserved resources
+      # on the node.
+      class ReservedResourcesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The amount of CPU to reserve for system daemons. This is a user-
+        # specified value. If unspecified, GKE decides the default based on node version
+        # using different formula.
+        # Corresponds to the JSON property `cpuReservedMillicore`
+        # @return [Fixnum]
+        attr_accessor :cpu_reserved_millicore
+      
+        # Output only. The effective amount of CPU reserved for system daemons. If `
+        # cpu_reserved_millicore` is specified, user-specified value is used. Otherwise
+        # the GKE default is applied.
+        # Corresponds to the JSON property `effectiveCpuReservedMillicore`
+        # @return [Fixnum]
+        attr_accessor :effective_cpu_reserved_millicore
+      
+        # Output only. The effective amount of memory reserved for system daemons. If `
+        # memory_reserved_mib` is specified, the user-specified value is used. Otherwise
+        # the GKE default is applied.
+        # Corresponds to the JSON property `effectiveMemoryReservedMib`
+        # @return [Fixnum]
+        attr_accessor :effective_memory_reserved_mib
+      
+        # Optional. The amount of memory to reserve for system daemons (in MiB). This is
+        # a user-specified value. If unspecified, GKE decides the default based on node
+        # version using different formula.
+        # Corresponds to the JSON property `memoryReservedMib`
+        # @return [Fixnum]
+        attr_accessor :memory_reserved_mib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_reserved_millicore = args[:cpu_reserved_millicore] if args.key?(:cpu_reserved_millicore)
+          @effective_cpu_reserved_millicore = args[:effective_cpu_reserved_millicore] if args.key?(:effective_cpu_reserved_millicore)
+          @effective_memory_reserved_mib = args[:effective_memory_reserved_mib] if args.key?(:effective_memory_reserved_mib)
+          @memory_reserved_mib = args[:memory_reserved_mib] if args.key?(:memory_reserved_mib)
         end
       end
       
