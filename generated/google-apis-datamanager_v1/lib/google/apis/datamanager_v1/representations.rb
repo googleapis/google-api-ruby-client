@@ -675,6 +675,7 @@ module Google
           property :event_subtype, as: 'eventSubtype'
           property :event_subtype_string, as: 'eventSubtypeString'
           property :event_type, as: 'eventType'
+          property :ip_address, as: 'ipAddress'
           property :measurement_allowed, as: 'measurementAllowed'
           property :medium, as: 'medium'
           property :mobile_device_id, as: 'mobileDeviceId'
@@ -707,7 +708,9 @@ module Google
       
           property :match_id, as: 'matchId'
           property :mobile_device_id, as: 'mobileDeviceId'
+          property :ppid, as: 'ppid'
           property :session_attributes, as: 'sessionAttributes'
+          property :visitor_ppid, as: 'visitorPpid'
           property :wbraid, as: 'wbraid'
         end
       end

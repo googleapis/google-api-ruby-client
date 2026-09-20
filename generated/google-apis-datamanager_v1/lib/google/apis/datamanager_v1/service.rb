@@ -52,18 +52,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Retrieves marketing data insights for a given user list. This feature is only
-        # available to data partners. Authorization Headers: This method supports the
-        # following optional headers to define how the API authorizes access for the
-        # request: * `login-account`: (Optional) The resource name of the account where
-        # the Google Account of the credentials is a user. If not set, defaults to the
-        # account of the request. Format: `accountTypes/`loginAccountType`/accounts/`
-        # loginAccountId`` * `linked-account`: (Optional) The resource name of the
-        # account with an established product link to the `login-account`. Format: `
-        # accountTypes/`linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] parent
-        #   Required. The parent account that owns the user list. Format: `accountTypes/`
-        #   account_type`/accounts/`account``
         # @param [Google::Apis::DatamanagerV1::RetrieveInsightsRequest] retrieve_insights_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -94,15 +84,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a partner link for the given account. Authorization Headers: This
-        # method supports the following optional headers to define how the API
-        # authorizes access for the request: * `login-account`: (Optional) The resource
-        # name of the account where the Google Account of the credentials is a user. If
-        # not set, defaults to the account of the request. Format: `accountTypes/`
-        # loginAccountType`/accounts/`loginAccountId``
+        # 
         # @param [String] parent
-        #   Required. The parent, which owns this collection of partner links. Format:
-        #   accountTypes/`account_type`/accounts/`account`
         # @param [Google::Apis::DatamanagerV1::PartnerLink] partner_link_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -133,15 +116,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a partner link for the given account. Authorization Headers: This
-        # method supports the following optional headers to define how the API
-        # authorizes access for the request: * `login-account`: (Optional) The resource
-        # name of the account where the Google Account of the credentials is a user. If
-        # not set, defaults to the account of the request. Format: `accountTypes/`
-        # loginAccountType`/accounts/`loginAccountId``
+        # 
         # @param [String] name
-        #   Required. The resource name of the partner link to delete. Format:
-        #   accountTypes/`account_type`/accounts/`account`/partnerLinks/`partner_link`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -169,39 +145,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Searches for all partner links to and from a given account. Authorization
-        # Headers: This method supports the following optional headers to define how the
-        # API authorizes access for the request: * `login-account`: (Optional) The
-        # resource name of the account where the Google Account of the credentials is a
-        # user. If not set, defaults to the account of the request. Format: `
-        # accountTypes/`loginAccountType`/accounts/`loginAccountId``
+        # 
         # @param [String] parent
-        #   Required. Account to search for partner links. If no `filter` is specified,
-        #   all partner links where this account is either the `owning_account` or `
-        #   partner_account` are returned. Format: `accountTypes/`account_type`/accounts/`
-        #   account``
         # @param [String] filter
-        #   Optional. A [filter string](https://google.aip.dev/160). All fields need to be
-        #   on the left hand side of each condition (for example: `partner_link_id =
-        #   123456789`). Fields must be specified using either all [camel case](https://en.
-        #   wikipedia.org/wiki/Camel_case) or all [snake case](https://en.wikipedia.org/
-        #   wiki/Snake_case). Don't use a combination of camel case and snake case.
-        #   Supported operations: - `AND` - `=` - `!=` Supported fields: - `
-        #   partner_link_id` - `owning_account.account_type` - `owning_account.account_id`
-        #   - `partner_account.account_type` - `partner_account.account_id` - `feature_set`
-        #   For partner links with the FEATURE_SET_AD_EVENT_MANAGEMENT feature set, the
-        #   following fields are also supported: - `partner_customer_account.account_id` -
-        #   `partner_link_metadata.implicit_accounts.account_id` Example: `owning_account.
-        #   account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
         # @param [Fixnum] page_size
-        #   The maximum number of partner links to return. The service may return fewer
-        #   than this value. If unspecified, at most 50 partner links will be returned.
-        #   The maximum value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
-        #   A page token, received from a previous `SearchPartnerLinks` call. Provide this
-        #   to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `SearchPartnerLinks` must match the call that provided the page
-        #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -232,11 +180,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a user list direct license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] parent
-        #   Required. The account that owns the user list being licensed. Should be in the
-        #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [Google::Apis::DatamanagerV1::UserListDirectLicense] user_list_direct_license_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -267,10 +212,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a user list direct license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] name
-        #   Required. The resource name of the user list direct license.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -298,32 +241,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all user list direct licenses owned by the parent account. This feature
-        # is only available to data partners.
+        # 
         # @param [String] parent
-        #   Required. The account whose licenses are being queried. Should be in the
-        #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [String] filter
-        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
-        #   request. All fields need to be on the left hand side of each condition (for
-        #   example: `user_list_id = 123`). Fields must be specified using either all [
-        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
-        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
-        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
-        #   ` - `<` - `<=` **Supported Functions:** - `IN(field, value1, value2, ...)`:
-        #   returns true if the field matches any of the values. Example: `IN(user_list_id,
-        #   123, 456)` **Unsupported Fields:** - `name` (use get method instead) - `
-        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
-        #   end_time`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of licenses to return per page. The service may
-        #   return fewer than this value. If unspecified, at most 50 licenses will be
-        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListUserListDirectLicense`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListUserListDirectLicense` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -354,14 +276,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a user list direct license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the user list direct license.
         # @param [Google::Apis::DatamanagerV1::UserListDirectLicense] user_list_direct_license_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update. The special character `*` is not
-        #   supported and an `INVALID_UPDATE_MASK` error will be thrown if used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -392,11 +310,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a user list global license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] parent
-        #   Required. The account that owns the user list being licensed. Should be in the
-        #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [Google::Apis::DatamanagerV1::UserListGlobalLicense] user_list_global_license_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -427,10 +342,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a user list global license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] name
-        #   Required. The resource name of the user list global license.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -458,32 +371,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all user list global licenses owned by the parent account. This feature
-        # is only available to data partners.
+        # 
         # @param [String] parent
-        #   Required. The account whose licenses are being queried. Should be in the
-        #   format accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`
         # @param [String] filter
-        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
-        #   request. All fields need to be on the left hand side of each condition (for
-        #   example: `user_list_id = 123`). Fields must be specified using either all [
-        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
-        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
-        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
-        #   ` - `<` - `<=` **Supported Functions:** - `IN(field, value1, value2, ...)`:
-        #   returns true if the field matches any of the values. Example: `IN(user_list_id,
-        #   123, 456)` **Unsupported Fields:** - `name` (use get method instead) - `
-        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
-        #   end_time`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of licenses to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 licenses will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListUserListGlobalLicense`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListUserListDirectLicense` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -514,14 +406,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a user list global license. This feature is only available to data
-        # partners.
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the user list global license.
         # @param [Google::Apis::DatamanagerV1::UserListGlobalLicense] user_list_global_license_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update. The special character `*` is not
-        #   supported and an `INVALID_UPDATE_MASK` error will be thrown if used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -552,36 +440,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all customer info for a user list global license. This feature is only
-        # available to data partners.
+        # 
         # @param [String] parent
-        #   Required. The global license whose customer info are being queried. Should be
-        #   in the format `accountTypes/`ACCOUNT_TYPE`/accounts/`ACCOUNT_ID`/
-        #   userListGlobalLicenses/`USER_LIST_GLOBAL_LICENSE_ID``. To list all global
-        #   license customer info under an account, replace the user list global license
-        #   id with a '-' (for example, `accountTypes/DATA_PARTNER/accounts/123/
-        #   userListGlobalLicenses/-`)
         # @param [String] filter
-        #   Optional. A [filter string](https://google.aip.dev/160) to apply to the list
-        #   request. All fields need to be on the left hand side of each condition (for
-        #   example: `user_list_id = 123`). Fields must be specified using either all [
-        #   camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake case](
-        #   https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel
-        #   case and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `>` - `>=
-        #   ` - `<` - `<=` **Supported Functions:** - `IN(field, value1, value2, ...)`:
-        #   returns true if the field matches any of the values. Example: `IN(user_list_id,
-        #   123, 456)` **Unsupported Fields:** - `name` (use get method instead) - `
-        #   historical_pricings` and all its subfields - `pricing.start_time` - `pricing.
-        #   end_time`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of licenses to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 licenses will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListUserListDirectLicense`
-        #   call. Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListUserListDirectLicense` must match the call that
-        #   provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -612,20 +475,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a UserList. Authorization Headers: This method supports the following
-        # optional headers to define how the API authorizes access for the request: * `
-        # login-account`: (Optional) The resource name of the account where the Google
-        # Account of the credentials is a user. If not set, defaults to the account of
-        # the request. Format: `accountTypes/`loginAccountType`/accounts/`loginAccountId`
-        # ` * `linked-account`: (Optional) The resource name of the account with an
-        # established product link to the `login-account`. Format: `accountTypes/`
-        # linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] parent
-        #   Required. The parent account where this user list will be created. Format:
-        #   accountTypes/`account_type`/accounts/`account`
         # @param [Google::Apis::DatamanagerV1::UserList] user_list_object
         # @param [Boolean] validate_only
-        #   Optional. If true, the request is validated but not executed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -656,19 +509,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a UserList. Authorization Headers: This method supports the following
-        # optional headers to define how the API authorizes access for the request: * `
-        # login-account`: (Optional) The resource name of the account where the Google
-        # Account of the credentials is a user. If not set, defaults to the account of
-        # the request. Format: `accountTypes/`loginAccountType`/accounts/`loginAccountId`
-        # ` * `linked-account`: (Optional) The resource name of the account with an
-        # established product link to the `login-account`. Format: `accountTypes/`
-        # linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] name
-        #   Required. The name of the user list to delete. Format: accountTypes/`
-        #   account_type`/accounts/`account`/userLists/`user_list`
         # @param [Boolean] validate_only
-        #   Optional. If true, the request is validated but not executed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -697,17 +540,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a UserList. Authorization Headers: This method supports the following
-        # optional headers to define how the API authorizes access for the request: * `
-        # login-account`: (Optional) The resource name of the account where the Google
-        # Account of the credentials is a user. If not set, defaults to the account of
-        # the request. Format: `accountTypes/`loginAccountType`/accounts/`loginAccountId`
-        # ` * `linked-account`: (Optional) The resource name of the account with an
-        # established product link to the `login-account`. Format: `accountTypes/`
-        # linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] name
-        #   Required. The resource name of the UserList to retrieve. Format: accountTypes/`
-        #   account_type`/accounts/`account`/userLists/`user_list`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -735,37 +569,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists UserLists. Authorization Headers: This method supports the following
-        # optional headers to define how the API authorizes access for the request: * `
-        # login-account`: (Optional) The resource name of the account where the Google
-        # Account of the credentials is a user. If not set, defaults to the account of
-        # the request. Format: `accountTypes/`loginAccountType`/accounts/`loginAccountId`
-        # ` * `linked-account`: (Optional) The resource name of the account with an
-        # established product link to the `login-account`. Format: `accountTypes/`
-        # linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] parent
-        #   Required. The parent account which owns this collection of user lists. Format:
-        #   accountTypes/`account_type`/accounts/`account`
         # @param [String] filter
-        #   Optional. A [filter string](https://google.aip.dev/160). All fields need to be
-        #   on the left hand side of each condition (for example: `display_name = "list 1"`
-        #   ). Fields must be specified using either all [camel case](https://en.wikipedia.
-        #   org/wiki/Camel_case) or all [snake case](https://en.wikipedia.org/wiki/
-        #   Snake_case). Don't use a combination of camel case and snake case. Supported
-        #   operations: - `AND` - `=` - `!=` - `>` - `>=` - `<` - `<=` - `:` (has) **
-        #   Supported Functions:** - `IN(field, value1, value2, ...)`: returns true if the
-        #   field matches any of the values. Example: `IN(display_name, "name1", "name2")`
-        #   Supported fields: - `id` - `display_name` - `description` - `membership_status`
-        #   - `integration_code` - `access_reason` - `ingested_user_list_info.
-        #   upload_key_types`
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of user lists to return. The service may return
-        #   fewer than this value. If unspecified, at most 50 user lists will be returned.
-        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListUserLists` call. Provide
-        #   this to retrieve the subsequent page. When paginating, all other parameters
-        #   provided to `ListUserLists` must match the call that provided the page token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -796,22 +604,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a UserList. Authorization Headers: This method supports the following
-        # optional headers to define how the API authorizes access for the request: * `
-        # login-account`: (Optional) The resource name of the account where the Google
-        # Account of the credentials is a user. If not set, defaults to the account of
-        # the request. Format: `accountTypes/`loginAccountType`/accounts/`loginAccountId`
-        # ` * `linked-account`: (Optional) The resource name of the account with an
-        # established product link to the `login-account`. Format: `accountTypes/`
-        # linkedAccountType`/accounts/`linkedAccountId``
+        # 
         # @param [String] name
-        #   Identifier. The resource name of the user list. Format: accountTypes/`
-        #   account_type`/accounts/`account`/userLists/`user_list`
         # @param [Google::Apis::DatamanagerV1::UserList] user_list_object
         # @param [String] update_mask
-        #   Optional. The list of fields to update.
         # @param [Boolean] validate_only
-        #   Optional. If true, the request is validated but not executed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -843,8 +640,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a list of AdEvent resources to Google Analytics. This feature is only
-        # available to accounts on an allowlist.
+        # 
         # @param [Google::Apis::DatamanagerV1::IngestAdEventsRequest] ingest_ad_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -874,7 +670,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a list of AudienceMember resources to the provided Destination.
+        # 
         # @param [Google::Apis::DatamanagerV1::IngestAudienceMembersRequest] ingest_audience_members_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -904,7 +700,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a list of AudienceMember resources from the provided Destination.
+        # 
         # @param [Google::Apis::DatamanagerV1::RemoveAudienceMembersRequest] remove_audience_members_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -934,7 +730,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes all audience members from the provided destinations.
+        # 
         # @param [Google::Apis::DatamanagerV1::RemoveAllAudienceMembersRequest] remove_all_audience_members_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -964,7 +760,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads a list of Event resources from the provided Destination.
+        # 
         # @param [Google::Apis::DatamanagerV1::IngestEventsRequest] ingest_events_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -994,9 +790,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the status of a request given request id.
+        # 
         # @param [String] request_id
-        #   Required. Required. The request ID of the Data Manager API request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
