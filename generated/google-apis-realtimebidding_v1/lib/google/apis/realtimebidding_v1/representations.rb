@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddDealsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddTargetedAppsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,6 +394,13 @@ module Google
           collection :detected_gvl_ids, as: 'detectedGvlIds'
           collection :detected_provider_ids, as: 'detectedProviderIds'
           collection :unidentified_provider_domains, as: 'unidentifiedProviderDomains'
+        end
+      end
+      
+      class AddDealsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deal_ids, as: 'dealIds'
         end
       end
       
