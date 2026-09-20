@@ -5731,7 +5731,8 @@ module Google
         # The name of the VM instance of the leader network endpoint. The
         # instance must already be attached to the NEG specified in the
         # haPolicy.leader.backendGroup.
-        # The name must be 1-63 characters long, and comply with RFC1035.
+        # The value must be a valid RFC1035 name (1-63 characters) or a valid
+        # instance URL.
         # Authorization requires the following IAM permission on the
         # specified resource instance: compute.instances.use
         # Corresponds to the JSON property `instance`
@@ -7797,6 +7798,523 @@ module Google
         end
       end
       
+      # A request to provide Assistant Scores. These scores determine VM
+      # obtainability and preemption likelihood.
+      class CapacityAdviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Distribution policy.
+        # Corresponds to the JSON property `distributionPolicy`
+        # @return [Google::Apis::ComputeV1::CapacityAdviceRequestDistributionPolicy]
+        attr_accessor :distribution_policy
+      
+        # Specification of alternative, flexible instance configurations.
+        # Corresponds to the JSON property `instanceFlexibilityPolicy`
+        # @return [Google::Apis::ComputeV1::CapacityAdviceRequestInstanceFlexibilityPolicy]
+        attr_accessor :instance_flexibility_policy
+      
+        # Instance provisioning properties.
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeV1::CapacityAdviceRequestInstanceProperties]
+        attr_accessor :instance_properties
+      
+        # The number of VM instances to request.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distribution_policy = args[:distribution_policy] if args.key?(:distribution_policy)
+          @instance_flexibility_policy = args[:instance_flexibility_policy] if args.key?(:instance_flexibility_policy)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @size = args[:size] if args.key?(:size)
+        end
+      end
+      
+      # Distribution policy.
+      class CapacityAdviceRequestDistributionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Target distribution shape. You can specify the following values:ANY,
+        # ANY_SINGLE_ZONE, or BALANCED.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
+        # Zones where Capacity Advisor looks for capacity.
+        # Corresponds to the JSON property `zones`
+        # @return [Array<Google::Apis::ComputeV1::CapacityAdviceRequestDistributionPolicyZoneConfiguration>]
+        attr_accessor :zones
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
+          @zones = args[:zones] if args.key?(:zones)
+        end
+      end
+      
+      # Zone configuration for the distribution policy.
+      class CapacityAdviceRequestDistributionPolicyZoneConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # The URL of the zone. It can be a
+        # partial or full URL. For example, the following are valid values:
+        # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+        # - projects/project/zones/zone
+        # - zones/zone
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Specification of alternative, flexible instance configurations.
+      class CapacityAdviceRequestInstanceFlexibilityPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Named instance selections to configure properties.
+        # The key is an arbitrary, unique RFC1035 string that identifies the
+        # instance selection.
+        # Corresponds to the JSON property `instanceSelections`
+        # @return [Hash<String,Google::Apis::ComputeV1::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection>]
+        attr_accessor :instance_selections
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
+        end
+      end
+      
+      # Machine specification.
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection
+        include Google::Apis::Core::Hashable
+      
+        # Local SSDs.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeV1::CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>]
+        attr_accessor :disks
+      
+        # Accelerators configuration.
+        # Corresponds to the JSON property `guestAccelerators`
+        # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
+        attr_accessor :guest_accelerators
+      
+        # Full machine-type names, e.g. "n1-standard-16".
+        # Corresponds to the JSON property `machineTypes`
+        # @return [Array<String>]
+        attr_accessor :machine_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
+          @machine_types = args[:machine_types] if args.key?(:machine_types)
+        end
+      end
+      
+      # Attached disk configuration.
+      class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the type of the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Instance provisioning properties.
+      class CapacityAdviceRequestInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Defines the instance scheduling options.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeV1::CapacityAdviceRequestInstancePropertiesScheduling]
+        attr_accessor :scheduling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # Defines the instance scheduling options.
+      class CapacityAdviceRequestInstancePropertiesScheduling
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the provisioning model.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+        end
+      end
+      
+      # A response contains scoring recommendations.
+      class CapacityAdviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Initially the API will provide one recommendation which balances the
+        # individual scores according to the service provider's preference.
+        # Corresponds to the JSON property `recommendations`
+        # @return [Array<Google::Apis::ComputeV1::CapacityAdviceResponseRecommendation>]
+        attr_accessor :recommendations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendations = args[:recommendations] if args.key?(:recommendations)
+        end
+      end
+      
+      # Recommendation.
+      class CapacityAdviceResponseRecommendation
+        include Google::Apis::Core::Hashable
+      
+        # Groups information about a shard of capacity.
+        # Corresponds to the JSON property `scores`
+        # @return [Google::Apis::ComputeV1::CapacityAdviceResponseRecommendationScores]
+        attr_accessor :scores
+      
+        # Shards represent blocks of uniform capacity in recommendations.
+        # Corresponds to the JSON property `shards`
+        # @return [Array<Google::Apis::ComputeV1::CapacityAdviceResponseRecommendationShard>]
+        attr_accessor :shards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scores = args[:scores] if args.key?(:scores)
+          @shards = args[:shards] if args.key?(:shards)
+        end
+      end
+      
+      # Groups information about a shard of capacity.
+      class CapacityAdviceResponseRecommendationScores
+        include Google::Apis::Core::Hashable
+      
+        # The estimated run time of the majority of Spot VMs in the request
+        # before preemption. The estimate is best-effort only. It is based on
+        # historical data and current conditions.
+        # Corresponds to the JSON property `estimatedUptime`
+        # @return [String]
+        attr_accessor :estimated_uptime
+      
+        # The obtainability score indicates the likelihood of successfully
+        # obtaining (provisioning) the requested number of VMs.
+        # The score range is 0.0 through 1.0. Higher is better.
+        # Corresponds to the JSON property `obtainability`
+        # @return [Float]
+        attr_accessor :obtainability
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @estimated_uptime = args[:estimated_uptime] if args.key?(:estimated_uptime)
+          @obtainability = args[:obtainability] if args.key?(:obtainability)
+        end
+      end
+      
+      # Shards represent blocks of uniform capacity in recommendations.
+      # Each shard is for a single zone and a single machine shape. Each shard
+      # defines a size expressed as the number of VMs.
+      class CapacityAdviceResponseRecommendationShard
+        include Google::Apis::Core::Hashable
+      
+        # The number of instances.
+        # Corresponds to the JSON property `instanceCount`
+        # @return [Fixnum]
+        attr_accessor :instance_count
+      
+        # The machine type corresponds to the instance selection in the request.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # The provisioning model that you want to view recommendations for.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        # Output only. The zone name for this shard.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_count = args[:instance_count] if args.key?(:instance_count)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # A request to get the capacity history.
+      class CapacityHistoryRequest
+        include Google::Apis::Core::Hashable
+      
+        # Instance properties for this request.
+        # Corresponds to the JSON property `instanceProperties`
+        # @return [Google::Apis::ComputeV1::CapacityHistoryRequestInstanceProperties]
+        attr_accessor :instance_properties
+      
+        # Location policy for this request.
+        # Corresponds to the JSON property `locationPolicy`
+        # @return [Google::Apis::ComputeV1::CapacityHistoryRequestLocationPolicy]
+        attr_accessor :location_policy
+      
+        # List of history types to get capacity history for.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance_properties = args[:instance_properties] if args.key?(:instance_properties)
+          @location_policy = args[:location_policy] if args.key?(:location_policy)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # Instance properties for this request.
+      class CapacityHistoryRequestInstanceProperties
+        include Google::Apis::Core::Hashable
+      
+        # The machine type for the VM, such as `n2-standard-4`.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # Scheduling options.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesScheduling]
+        attr_accessor :scheduling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # Scheduling options.
+      class CapacityHistoryRequestInstancePropertiesScheduling
+        include Google::Apis::Core::Hashable
+      
+        # The provisioning model to get capacity history for.
+        # This field must be set to SPOT.
+        # For more information, see
+        # Compute Engine instances provisioning models.
+        # Corresponds to the JSON property `provisioningModel`
+        # @return [String]
+        attr_accessor :provisioning_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
+        end
+      end
+      
+      # Location policy for this request.
+      class CapacityHistoryRequestLocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The region or zone to get capacity history for.
+        # It can be a partial or full URL. For example, the following are valid
+        # values:
+        # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/zones/zone
+        # - projects/project/zones/zone
+        # - zones/zone
+        # This field is optional.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Contains the capacity history.
+      class CapacityHistoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The location (region or zone) for which the capacity history is
+        # returned.
+        # It is returned as a URL - For example,https://www.googleapis.com/compute/v1/
+        # projects/project/zones/zone.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The machine type for which the capacity history is returned.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
+        # The preemption history for the requested machine type and location.
+        # Corresponds to the JSON property `preemptionHistory`
+        # @return [Array<Google::Apis::ComputeV1::CapacityHistoryResponsePreemptionRecord>]
+        attr_accessor :preemption_history
+      
+        # The price history for the requested machine type and location.
+        # Corresponds to the JSON property `priceHistory`
+        # @return [Array<Google::Apis::ComputeV1::CapacityHistoryResponsePriceRecord>]
+        attr_accessor :price_history
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @location = args[:location] if args.key?(:location)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @preemption_history = args[:preemption_history] if args.key?(:preemption_history)
+          @price_history = args[:price_history] if args.key?(:price_history)
+        end
+      end
+      
+      # A record of Spot VM preemption history.
+      class CapacityHistoryResponsePreemptionRecord
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive).
+        # The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time).
+        # When both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::ComputeV1::Interval]
+        attr_accessor :interval
+      
+        # The preemption rate during the interval, representing the fraction of
+        # Spot VMs that were preempted. Range: 0.0 to 1.0. Preemption rate is
+        # calculated as (total preempted Spots) / (total Spots that stopped
+        # running).
+        # Corresponds to the JSON property `preemptionRate`
+        # @return [Float]
+        attr_accessor :preemption_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @preemption_rate = args[:preemption_rate] if args.key?(:preemption_rate)
+        end
+      end
+      
+      # A record of price history.
+      class CapacityHistoryResponsePriceRecord
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive).
+        # The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time).
+        # When both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::ComputeV1::Interval]
+        attr_accessor :interval
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `listPrice`
+        # @return [Google::Apis::ComputeV1::Money]
+        attr_accessor :list_price
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @list_price = args[:list_price] if args.key?(:list_price)
+        end
+      end
+      
       # Settings controlling the volume of requests, connections and retries to this
       # backend service.
       class CircuitBreakers
@@ -8045,7 +8563,8 @@ module Google
         # GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2,
         # GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
         # GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
-        # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For
+        # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,
+        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For
         # example, type MEMORY_OPTIMIZED specifies a commitment that
         # applies only to eligible resources of memory optimized M1 and M2 machine
         # series. Type GENERAL_PURPOSE specifies a commitment that
@@ -13086,6 +13605,16 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # An integer indicating the priority of an association. The priority
+        # must be a positive value between 1 and 2147483647.
+        # Firewall Policies are evaluated from highest to lowest priority where 1
+        # is the highest priority and 2147483647 is the lowest priority.
+        # The default value is `1000`. If two associations have the same priority
+        # then lexicographical order on association names is applied.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
         # Output only. [Output Only] The short name of the firewall policy of the
         # association.
         # Corresponds to the JSON property `shortName`
@@ -13102,6 +13631,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @firewall_policy_id = args[:firewall_policy_id] if args.key?(:firewall_policy_id)
           @name = args[:name] if args.key?(:name)
+          @priority = args[:priority] if args.key?(:priority)
           @short_name = args[:short_name] if args.key?(:short_name)
         end
       end
@@ -14714,6 +15244,13 @@ module Google
         attr_accessor :auto_delete_auto_created_reservations
         alias_method :auto_delete_auto_created_reservations?, :auto_delete_auto_created_reservations
       
+        # Full or partial URL of an existing future reservation to indicate
+        # intent for reserving capacity in the same cluster as the colocation
+        # resource.
+        # Corresponds to the JSON property `colocationResource`
+        # @return [String]
+        attr_accessor :colocation_resource
+      
         # If not present, then FR will not deliver a new commitment or update an
         # existing commitment.
         # Corresponds to the JSON property `commitmentInfo`
@@ -14886,6 +15423,7 @@ module Google
           @auto_created_reservations_delete_time = args[:auto_created_reservations_delete_time] if args.key?(:auto_created_reservations_delete_time)
           @auto_created_reservations_duration = args[:auto_created_reservations_duration] if args.key?(:auto_created_reservations_duration)
           @auto_delete_auto_created_reservations = args[:auto_delete_auto_created_reservations] if args.key?(:auto_delete_auto_created_reservations)
+          @colocation_resource = args[:colocation_resource] if args.key?(:colocation_resource)
           @commitment_info = args[:commitment_info] if args.key?(:commitment_info)
           @confidential_compute_type = args[:confidential_compute_type] if args.key?(:confidential_compute_type)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
@@ -16249,6 +16787,106 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @destination_address = args[:destination_address] if args.key?(:destination_address)
+        end
+      end
+      
+      # Represents the Global Frontend Bundle settings for a single project.
+      class GlobalFrontendSettings
+        include Google::Apis::Core::Hashable
+      
+        # Customer-settable bundle type.
+        # Corresponds to the JSON property `bundleType`
+        # @return [String]
+        attr_accessor :bundle_type
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Output only. [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. For optimistic locking.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Output only. OUTPUT_ONLY fields
+        # [Output Only] Name of the resource. Must be 1-63 characters long and match
+        # the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_type = args[:bundle_type] if args.key?(:bundle_type)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Response to an UpdateGlobalFrontendSettingsRequest.
+      class GlobalFrontendSettingsPatchResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Operation resource.
+        # Google Compute Engine has three Operation resources:
+        # * [Global](/compute/docs/reference/rest/v1/globalOperations)
+        # * [Regional](/compute/docs/reference/rest/v1/regionOperations)
+        # * [Zonal](/compute/docs/reference/rest/v1/zoneOperations)
+        # You can use an operation resource to manage asynchronous API requests.
+        # For more information, readHandling
+        # API responses.
+        # Operations can be global, regional or zonal.
+        # 
+        # - For global operations, use the `globalOperations`
+        # resource.
+        # - For regional operations, use the
+        # `regionOperations` resource.
+        # - For zonal operations, use
+        # the `zoneOperations` resource.
+        # For more information, read
+        # Global, Regional, and Zonal Resources.
+        # Note that completed Operation resources have a limited
+        # retention period.
+        # Corresponds to the JSON property `operation`
+        # @return [Google::Apis::ComputeV1::Operation]
+        attr_accessor :operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation = args[:operation] if args.key?(:operation)
         end
       end
       
@@ -22037,6 +22675,158 @@ module Google
         end
       end
       
+      # Represents a read-only view of a global Image resource.
+      class ImageView
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Image resource.
+        # You can use images to create boot disks for your VM instances.
+        # For more information, read Images.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::ComputeV1::Image]
+        attr_accessor :image
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+        end
+      end
+      
+      # Response message for ImageViewsService.List
+      class ImageViewsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of the resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of Image resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::ImageView>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ImageViewsListResponse::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ImageViewsListResponse::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Initial State for shielded instance,
       # these are public keys which are safe to store in public
       class InitialStateConfig
@@ -23744,10 +24534,22 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
         include Google::Apis::Core::Hashable
       
+        # List of disks to be attached to the instances created from this
+        # selection.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
+        attr_accessor :disks
+      
         # Full machine-type names, e.g. "n1-standard-16".
         # Corresponds to the JSON property `machineTypes`
         # @return [Array<String>]
         attr_accessor :machine_types
+      
+        # Name of the minimum CPU platform to be used by this instance selection.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         # Preference of this instance selection. Lower number means higher
         # preference. MIG will first try to create a VM based on the machine-type
@@ -23764,7 +24566,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @rank = args[:rank] if args.key?(:rank)
         end
       end
@@ -26968,6 +27772,12 @@ module Google
       class InstancePropertiesPatch
         include Google::Apis::Core::Hashable
       
+        # This optional flag exposes the hashed physical host ID.
+        # Corresponds to the JSON property `exposeHostTopology`
+        # @return [Boolean]
+        attr_accessor :expose_host_topology
+        alias_method :expose_host_topology?, :expose_host_topology
+      
         # The label key-value pairs that you want to patch onto the instance.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -26986,6 +27796,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @expose_host_topology = args[:expose_host_topology] if args.key?(:expose_host_topology)
           @labels = args[:labels] if args.key?(:labels)
           @metadata = args[:metadata] if args.key?(:metadata)
         end
@@ -33456,6 +34267,39 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive).
+      # The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time).
+      # When both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval.
+        # If specified, a Timestamp matching this interval will have to be before the
+        # end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval.
+        # If specified, a Timestamp matching this interval will have to be the same
+        # or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Represents a License resource.
       # A License represents billing and aggregate usage data forpublic andmarketplace
       # images.
@@ -35497,10 +36341,21 @@ module Google
       class ManagedInstancePropertiesFromFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
+        # List of disks to be attached to the instance.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeV1::AttachedDisk>]
+        attr_accessor :disks
+      
         # Output only. The machine type to be used for this instance.
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
+      
+        # Name of the minimum CPU platform to be used by this instance.
+        # e.g. 'Intel Ice Lake'.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
       
         def initialize(**args)
            update!(**args)
@@ -35508,7 +36363,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
       
@@ -35597,6 +36454,189 @@ module Google
         def update!(**args)
           @instance_template = args[:instance_template] if args.key?(:instance_template)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents a ManagedRuleset resource.
+      # Managed internally by Cloud Armor CLH for Managed Rules features.
+      # Customers can only view these resources to modify their Security Policies.
+      # For more information, see
+      # https://cloud.google.com/armor/docs/.
+      class ManagedRuleset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The change log for this managed ruleset.
+        # Corresponds to the JSON property `changeLog`
+        # @return [String]
+        attr_accessor :change_log
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # [Output Only] An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Name of the resource. Generated internally when the resource is created.
+        # The name must be 1-63 characters long, and comply withRFC1035.
+        # Specifically, the name must be 1-63 characters long and match the regular
+        # expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. [Output Only] The list of managed rule IDs that are included in
+        # this managed ruleset.
+        # Corresponds to the JSON property `ruleIds`
+        # @return [Array<String>]
+        attr_accessor :rule_ids
+      
+        # Output only. [Output Only] The managed ruleset identifier that can be
+        # configured in
+        # Security Policy rules.
+        # Corresponds to the JSON property `rulesetId`
+        # @return [String]
+        attr_accessor :ruleset_id
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_log = args[:change_log] if args.key?(:change_log)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @rule_ids = args[:rule_ids] if args.key?(:rule_ids)
+          @ruleset_id = args[:ruleset_id] if args.key?(:ruleset_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # 
+      class ManagedRulesetList
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The list of managed rulesets.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::ManagedRuleset>]
+        attr_accessor :items
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ManagedRulesetList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # 
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ManagedRulesetList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -35749,6 +36789,43 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount.
+        # The value must be between -999,999,999 and +999,999,999 inclusive.
+        # If `units` is positive, `nanos` must be positive or zero.
+        # If `units` is zero, `nanos` can be positive, zero, or negative.
+        # If `units` is negative, `nanos` must be negative or zero.
+        # For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount.
+        # For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
       
@@ -44626,6 +45703,30 @@ module Google
           @usage_export_location = args[:usage_export_location] if args.key?(:usage_export_location)
           @vm_dns_setting = args[:vm_dns_setting] if args.key?(:vm_dns_setting)
           @xpn_project_status = args[:xpn_project_status] if args.key?(:xpn_project_status)
+        end
+      end
+      
+      # Represents a ProjectView resource.
+      # A ProjectView resource contains read-only project data which is available
+      # globally.
+      class ProjectView
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Project resource.
+        # A project is used to organize resources in a Google Cloud Platform
+        # environment. For more information, read about the
+        # Resource Hierarchy.
+        # Corresponds to the JSON property `project`
+        # @return [Google::Apis::ComputeV1::Project]
+        attr_accessor :project
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project = args[:project] if args.key?(:project)
         end
       end
       
@@ -55766,6 +56867,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :availability_domain
       
+        # This optional flag exposes the hashed physical host ID in the
+        # ResourceStatus resource of the VM.
+        # Corresponds to the JSON property `exposeHostTopology`
+        # @return [Boolean]
+        attr_accessor :expose_host_topology
+        alias_method :expose_host_topology?, :expose_host_topology
+      
         # The configuration for gracefully shutting down the instance.
         # Corresponds to the JSON property `gracefulShutdown`
         # @return [Google::Apis::ComputeV1::SchedulingGracefulShutdown]
@@ -55880,6 +56988,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
+          @expose_host_topology = args[:expose_host_topology] if args.key?(:expose_host_topology)
           @graceful_shutdown = args[:graceful_shutdown] if args.key?(:graceful_shutdown)
           @host_error_timeout_seconds = args[:host_error_timeout_seconds] if args.key?(:host_error_timeout_seconds)
           @instance_termination_action = args[:instance_termination_action] if args.key?(:instance_termination_action)
@@ -57412,6 +58521,12 @@ module Google
       class SecurityPolicyRulePreconfiguredWafConfigExclusion
         include Google::Apis::Core::Hashable
       
+        # A list of request body fields to be excluded from inspection during
+        # preconfigured WAF evaluation.
+        # Corresponds to the JSON property `requestBodiesToExclude`
+        # @return [Array<Google::Apis::ComputeV1::SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>]
+        attr_accessor :request_bodies_to_exclude
+      
         # A list of request cookie names whose value will be excluded from
         # inspection during preconfigured WAF evaluation.
         # Corresponds to the JSON property `requestCookiesToExclude`
@@ -57456,6 +58571,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @request_bodies_to_exclude = args[:request_bodies_to_exclude] if args.key?(:request_bodies_to_exclude)
           @request_cookies_to_exclude = args[:request_cookies_to_exclude] if args.key?(:request_cookies_to_exclude)
           @request_headers_to_exclude = args[:request_headers_to_exclude] if args.key?(:request_headers_to_exclude)
           @request_query_params_to_exclude = args[:request_query_params_to_exclude] if args.key?(:request_query_params_to_exclude)
