@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ComponentMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ControlledEgressConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +95,12 @@ module Google
       end
       
       class ExportMetadataEncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExportMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,6 +263,18 @@ module Google
         end
       end
       
+      class ComponentMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component_type, as: 'componentType'
+          property :duration, as: 'duration'
+          property :end_time, as: 'endTime'
+          property :retry_count, as: 'retryCount'
+          property :size_gb, as: 'sizeGb'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
       class ControlledEgressConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -326,6 +350,8 @@ module Google
           property :esa_source_dataset_id, as: 'esaSourceDatasetId'
           property :export_encryption_key, as: 'exportEncryptionKey', class: Google::Apis::LookerV1::ExportMetadataEncryptionKey, decorator: Google::Apis::LookerV1::ExportMetadataEncryptionKey::Representation
       
+          property :export_metrics, as: 'exportMetrics', class: Google::Apis::LookerV1::ExportMetrics, decorator: Google::Apis::LookerV1::ExportMetrics::Representation
+      
           collection :file_paths, as: 'filePaths'
           property :looker_encryption_key, as: 'lookerEncryptionKey'
           property :looker_instance, as: 'lookerInstance'
@@ -340,6 +366,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cmek, as: 'cmek'
           property :version, as: 'version'
+        end
+      end
+      
+      class ExportMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :component_metrics, as: 'componentMetrics', class: Google::Apis::LookerV1::ComponentMetrics, decorator: Google::Apis::LookerV1::ComponentMetrics::Representation
+      
+          property :instance_internal_name, as: 'instanceInternalName'
         end
       end
       
