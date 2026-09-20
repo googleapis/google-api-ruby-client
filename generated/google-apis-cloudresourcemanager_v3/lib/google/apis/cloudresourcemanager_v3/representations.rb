@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapabilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,12 @@ module Google
       end
       
       class Lien
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCapabilityConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -495,6 +507,21 @@ module Google
         end
       end
       
+      class CapabilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :boundaries, as: 'boundaries'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :management_project, as: 'managementProject'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          collection :types, as: 'types'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -713,6 +740,15 @@ module Google
           property :parent, as: 'parent'
           property :reason, as: 'reason'
           collection :restrictions, as: 'restrictions'
+        end
+      end
+      
+      class ListCapabilityConfigsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capability_configs, as: 'capabilityConfigs', class: Google::Apis::CloudresourcemanagerV3::CapabilityConfig, decorator: Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
