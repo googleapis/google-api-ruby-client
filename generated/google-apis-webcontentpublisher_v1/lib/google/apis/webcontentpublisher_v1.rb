@@ -28,6 +28,9 @@ module Google
       # Version of the Web Content Publisher API this client connects to.
       # This is NOT the gem version.
       VERSION = 'V1'
+
+      # Private Service: https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system
+      AUTH_WEBCONTENTPUBLISHER_PUBLICATIONS_MANAGE_SYSTEM = 'https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system'
     end
   end
 end
