@@ -4037,6 +4037,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Export resources using POST.
+        # @param [String] name
+        #   Required. Name of the `Group` resource that is exported, in format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id`/fhir/Group/`group_id``.
+        # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
+        # @param [String] _since
+        #   Optional. If provided, only resources updated after this time are exported.
+        #   The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-
+        #   07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified
+        #   to the second and include a time zone.
+        # @param [String] _type
+        #   Optional. String of comma-delimited FHIR resource types. If provided, only
+        #   resources of the specified resource type(s) are exported.
+        # @param [String] organize_output_by
+        #   Required. The FHIR resource type used to organize exported resources. Only
+        #   supports "Patient". When organized by Patient resource, output files are
+        #   grouped as follows: * Patient file(s) containing the Patient resources. Each
+        #   Patient is sequentially followed by all resources the Patient references, and
+        #   all resources that reference the Patient (equivalent to a GetPatientEverything
+        #   request). * Individual files grouped by resource type for resources in the
+        #   Group's member field and the Group resource itself. Resources may be
+        #   duplicated across multiple Patients. For example, if two Patient resources
+        #   reference the same Organization resource, it will appear twice, once after
+        #   each Patient. The Group resource from the request does not appear in the
+        #   Patient files.
+        # @param [String] output_format
+        #   Optional. Output format of the export. This field is optional and only `
+        #   application/fhir+ndjson` is supported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_project_location_dataset_fhir_store_export_group_post(name, http_body_object = nil, _since: nil, _type: nil, organize_output_by: nil, output_format: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}/$export', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['_since'] = _since unless _since.nil?
+          command.query['_type'] = _type unless _type.nil?
+          command.query['organizeOutputBy'] = organize_output_by unless organize_output_by.nil?
+          command.query['outputFormat'] = output_format unless output_format.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Bulk deletes the FHIR resources from the given FHIR store. This method returns
         # an Operation that can be used to track the progress of the deletion by calling
         # GetOperation. The success and secondary_success counters correspond to the
