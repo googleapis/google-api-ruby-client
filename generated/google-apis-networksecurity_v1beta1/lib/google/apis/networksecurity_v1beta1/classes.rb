@@ -739,7 +739,7 @@ module Google
       class AuthzPolicyAuthzRuleToRequestOperationMcp
         include Google::Apis::Core::Hashable
       
-        # Optional. If specified, matches on the MCP protocol’s non-access specific
+        # Optional. If specified, matches on the MCP protocol's non-access specific
         # methods namely: * initialize * completion/ * logging/ * notifications/ * ping
         # Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
         # Corresponds to the JSON property `baseProtocolMethodsOption`
