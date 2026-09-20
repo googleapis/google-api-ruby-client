@@ -1672,6 +1672,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomBigQueryDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomBigQueryDestination::Representation
       
+          property :filter_config, as: 'filterConfig', class: Google::Apis::HealthcareV1::DicomFilterConfig, decorator: Google::Apis::HealthcareV1::DicomFilterConfig::Representation
+      
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomGcsDestination, decorator: Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomGcsDestination::Representation
       
         end

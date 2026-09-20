@@ -2308,6 +2308,11 @@ module Google
         # @return [Google::Apis::HealthcareV1::GoogleCloudHealthcareV1DicomBigQueryDestination]
         attr_accessor :bigquery_destination
       
+        # Specifies the filter configuration for DICOM resources.
+        # Corresponds to the JSON property `filterConfig`
+        # @return [Google::Apis::HealthcareV1::DicomFilterConfig]
+        attr_accessor :filter_config
+      
         # The Cloud Storage location where the server writes the output and the export
         # configuration.
         # Corresponds to the JSON property `gcsDestination`
@@ -2321,6 +2326,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @filter_config = args[:filter_config] if args.key?(:filter_config)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
