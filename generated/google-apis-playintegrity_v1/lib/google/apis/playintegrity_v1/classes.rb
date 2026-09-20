@@ -315,6 +315,11 @@ module Google
         # @return [Google::Apis::PlayintegrityV1::AppAccessRiskVerdict]
         attr_accessor :app_access_risk_verdict
       
+        # The evaluation of the Location Spoofing Risk verdict.
+        # Corresponds to the JSON property `locationSpoofingRiskVerdict`
+        # @return [Array<String>]
+        attr_accessor :location_spoofing_risk_verdict
+      
         # The evaluation of Play Protect verdict.
         # Corresponds to the JSON property `playProtectVerdict`
         # @return [String]
@@ -327,6 +332,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_access_risk_verdict = args[:app_access_risk_verdict] if args.key?(:app_access_risk_verdict)
+          @location_spoofing_risk_verdict = args[:location_spoofing_risk_verdict] if args.key?(:location_spoofing_risk_verdict)
           @play_protect_verdict = args[:play_protect_verdict] if args.key?(:play_protect_verdict)
         end
       end
