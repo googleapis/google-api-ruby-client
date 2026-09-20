@@ -172,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetVersionOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +227,12 @@ module Google
       end
       
       class InstancesBulkInsertOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesTroubleshootOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -270,6 +288,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -727,6 +751,25 @@ module Google
         end
       end
       
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::DeploymentmanagerV2beta::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::DeploymentmanagerV2beta::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GetVersionOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -798,6 +841,13 @@ module Google
         end
       end
       
+      class InstancesTroubleshootOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :troubleshoot_output, as: 'troubleshootOutput'
+        end
+      end
+      
       class LocalizedMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -839,10 +889,14 @@ module Google
           property :client_operation_id, as: 'clientOperationId'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :details, as: 'details', class: Google::Apis::DeploymentmanagerV2beta::OperationDetails, decorator: Google::Apis::DeploymentmanagerV2beta::OperationDetails::Representation
+      
           property :end_time, as: 'endTime'
           property :error, as: 'error', class: Google::Apis::DeploymentmanagerV2beta::Operation::Error, decorator: Google::Apis::DeploymentmanagerV2beta::Operation::Error::Representation
       
           property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::FirewallPolicyRuleOperationMetadata::Representation
+      
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::GetHealthOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::GetHealthOperationMetadata::Representation
       
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::GetVersionOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::GetVersionOperationMetadata::Representation
       
@@ -851,6 +905,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :insert_time, as: 'insertTime'
           property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::InstancesBulkInsertOperationMetadata::Representation
+      
+          property :instances_troubleshoot_operation_metadata, as: 'instancesTroubleshootOperationMetadata', class: Google::Apis::DeploymentmanagerV2beta::InstancesTroubleshootOperationMetadata, decorator: Google::Apis::DeploymentmanagerV2beta::InstancesTroubleshootOperationMetadata::Representation
       
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -927,6 +983,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class OperationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :message, as: 'message'
         end
       end
       
