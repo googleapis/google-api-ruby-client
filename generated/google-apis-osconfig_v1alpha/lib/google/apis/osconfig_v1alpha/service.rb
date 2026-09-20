@@ -52,7 +52,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Get OS policies compliance data for the specified Compute Engine VM instance.
+        # Deprecated: Use GetOSPolicyAssignmentReport instead. Get OS policies
+        # compliance data for the specified Compute Engine VM instance.
         # @param [String] name
         #   Required. API resource name for instance OS policies compliance resource.
         #   Format: `projects/`project`/locations/`location`/instanceOSPoliciesCompliances/
@@ -86,8 +87,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List OS policies compliance data for all Compute Engine VM instances in the
-        # specified zone.
+        # Deprecated: Use ListOSPolicyAssignmentReports instead. List OS policies
+        # compliance data for all Compute Engine VM instances in the specified zone.
         # @param [String] parent
         #   Required. The parent resource name. Format: `projects/`project`/locations/`
         #   location`` For ``project``, either Compute Engine project-number or project-id
