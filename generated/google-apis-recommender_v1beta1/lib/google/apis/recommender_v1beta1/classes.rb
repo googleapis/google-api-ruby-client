@@ -22,6 +22,326 @@ module Google
   module Apis
     module RecommenderV1beta1
       
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1ContentChunk
+        include Google::Apis::Core::Hashable
+      
+        # Field for adding custom complex table
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1Table]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1CtaConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `isPrimary`
+        # @return [Boolean]
+        attr_accessor :is_primary
+        alias_method :is_primary?, :is_primary
+      
+        # Enum used to map to the string to be shown in the UI for the button.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # 
+        # Corresponds to the JSON property `redirectPage`
+        # @return [String]
+        attr_accessor :redirect_page
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_primary = args[:is_primary] if args.key?(:is_primary)
+          @label = args[:label] if args.key?(:label)
+          @redirect_page = args[:redirect_page] if args.key?(:redirect_page)
+        end
+      end
+      
+      # Presentational config that maps to the UI components of templatized issue
+      # subtasks.
+      class CloudRecommendationsRecommendersDatabasesV1DatabasesPresentationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Call to action buttons for the issue.
+        # Corresponds to the JSON property `ctaConfigs`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1CtaConfig>]
+        attr_accessor :cta_configs
+      
+        # Content chunks for the issue.
+        # Corresponds to the JSON property `issueContentChunks`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1ContentChunk>]
+        attr_accessor :issue_content_chunks
+      
+        # Issue description for the issue.
+        # Corresponds to the JSON property `issueDescription`
+        # @return [Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1Description]
+        attr_accessor :issue_description
+      
+        # Fields for the table containing metadata associated with the issue.
+        # Corresponds to the JSON property `issueTableFields`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1TableField>]
+        attr_accessor :issue_table_fields
+      
+        # Content chunks for the next steps.
+        # Corresponds to the JSON property `nextStepsContentChunks`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1ContentChunk>]
+        attr_accessor :next_steps_content_chunks
+      
+        # Next steps description for the issue.
+        # Corresponds to the JSON property `nextStepsDescription`
+        # @return [Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1Description]
+        attr_accessor :next_steps_description
+      
+        # Fields for the table containing metadata associated with the next steps.
+        # Corresponds to the JSON property `nextStepsTableFields`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1TableField>]
+        attr_accessor :next_steps_table_fields
+      
+        # Playbook links for the issue.
+        # Corresponds to the JSON property `playbookLinks`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1PlaybookLink>]
+        attr_accessor :playbook_links
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cta_configs = args[:cta_configs] if args.key?(:cta_configs)
+          @issue_content_chunks = args[:issue_content_chunks] if args.key?(:issue_content_chunks)
+          @issue_description = args[:issue_description] if args.key?(:issue_description)
+          @issue_table_fields = args[:issue_table_fields] if args.key?(:issue_table_fields)
+          @next_steps_content_chunks = args[:next_steps_content_chunks] if args.key?(:next_steps_content_chunks)
+          @next_steps_description = args[:next_steps_description] if args.key?(:next_steps_description)
+          @next_steps_table_fields = args[:next_steps_table_fields] if args.key?(:next_steps_table_fields)
+          @playbook_links = args[:playbook_links] if args.key?(:playbook_links)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1Description
+        include Google::Apis::Core::Hashable
+      
+        # Enum used to map to the html template to be shown in the UI.
+        # Corresponds to the JSON property `descriptionEnum`
+        # @return [String]
+        attr_accessor :description_enum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description_enum = args[:description_enum] if args.key?(:description_enum)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1Link
+        include Google::Apis::Core::Hashable
+      
+        # String label for the link. This value is not translated
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Enum used to map to the redirect page for the link.
+        # Corresponds to the JSON property `redirectPage`
+        # @return [String]
+        attr_accessor :redirect_page
+      
+        # Resource name for the table cell. This is used to construct the link.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @redirect_page = args[:redirect_page] if args.key?(:redirect_page)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1PlaybookLink
+        include Google::Apis::Core::Hashable
+      
+        # Enum used to map to the string to be shown in the UI for the link.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # 
+        # Corresponds to the JSON property `link`
+        # @return [String]
+        attr_accessor :link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label = args[:label] if args.key?(:label)
+          @link = args[:link] if args.key?(:link)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1SimpleValue
+        include Google::Apis::Core::Hashable
+      
+        # Enum value for the table cell. This should be used when value MUST be
+        # translated and represents common status/field like Enabled, Disabled, Success,
+        # Failure, etc.
+        # Corresponds to the JSON property `enumValue`
+        # @return [String]
+        attr_accessor :enum_value
+      
+        # Link value for the table cell.
+        # Corresponds to the JSON property `linkValue`
+        # @return [Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1Link]
+        attr_accessor :link_value
+      
+        # Number value for the table cell.
+        # Corresponds to the JSON property `numberValue`
+        # @return [Float]
+        attr_accessor :number_value
+      
+        # String value for the table cell. This should be used when value doesn't need
+        # to be translated.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Timestamp value for the table cell.
+        # Corresponds to the JSON property `timestampValue`
+        # @return [String]
+        attr_accessor :timestamp_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enum_value = args[:enum_value] if args.key?(:enum_value)
+          @link_value = args[:link_value] if args.key?(:link_value)
+          @number_value = args[:number_value] if args.key?(:number_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+        end
+      end
+      
+      # Field for adding custom complex table
+      class CloudRecommendationsRecommendersDatabasesV1Table
+        include Google::Apis::Core::Hashable
+      
+        # Headers for the table. IMPORTANT: Each header defines a column and its title.
+        # All Headers must be unique and shouldn't be used more than once within the
+        # same list.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<String>]
+        attr_accessor :headers
+      
+        # Rows for the table. Ensure that the order of the cells in the row matches the
+        # order of the headers.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1TableRow>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+          @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # 
+      class CloudRecommendationsRecommendersDatabasesV1TableField
+        include Google::Apis::Core::Hashable
+      
+        # Enum used to map to the string to be shown in the UI for the field.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Number value for the table field.
+        # Corresponds to the JSON property `numberValue`
+        # @return [Float]
+        attr_accessor :number_value
+      
+        # String value for the table field. Note that this string won't be translated.
+        # It is advised to provide values that don't require translation.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Timestamp value for the table field. Timestamp will be shown in the user's
+        # timezone with the format: "Feb 27, 2009 3:22:54 PM".
+        # Corresponds to the JSON property `timestampValue`
+        # @return [String]
+        attr_accessor :timestamp_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @number_value = args[:number_value] if args.key?(:number_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
+        end
+      end
+      
+      # Table row for a table
+      class CloudRecommendationsRecommendersDatabasesV1TableRow
+        include Google::Apis::Core::Hashable
+      
+        # Table cells for the table row.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<Google::Apis::RecommenderV1beta1::CloudRecommendationsRecommendersDatabasesV1SimpleValue>]
+        attr_accessor :cells
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class GoogleCloudLocationListLocationsResponse
         include Google::Apis::Core::Hashable
