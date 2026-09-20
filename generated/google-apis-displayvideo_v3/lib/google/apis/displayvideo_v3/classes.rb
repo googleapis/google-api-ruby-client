@@ -13330,7 +13330,7 @@ module Google
         # @return [String]
         attr_accessor :display_url_breadcrumb2
       
-        # The domain of the display URL.
+        # Output only. The domain of the display URL.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
