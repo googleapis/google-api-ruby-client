@@ -635,6 +635,203 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a CapabilityConfig under a parent Organization, Folder or Project.
+        # Creating a CapabilityConfig triggers the creation of a Management Project if
+        # one is not supplied.
+        # @param [String] parent
+        #   Required. The parent resource under which the CapabilityConfig will be created.
+        #   Format: `organizations/`organization_id`` or `folders/`folder_id`` or `
+        #   projects/`project_number``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] capability_config_id
+        #   Required. The user-assigned ID for the CapabilityConfig, which will become the
+        #   final component of the CapabilityConfig's resource name. Must be unique within
+        #   the parent resource. It must be 6 to 30 lowercase ASCII letters, digits, or
+        #   hyphens. It must start with a letter. Trailing hyphens are prohibited. Example:
+        #   `my-capability-config-123`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_capability_config(parent, capability_config_object = nil, capability_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/capabilityConfigs', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['capabilityConfigId'] = capability_config_id unless capability_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the CapabilityConfig identified by the specified `name` (for example, `
+        # folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to delete. Format: `organizations/`
+        #   organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Capability Config identified by the specified `name` (for
+        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
+        #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig`` Example: `folders/123456789/
+        #   capabilityConfigs/my-capability-config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::CapabilityConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::CapabilityConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists CapabilityConfigs that are direct children of the specified organization,
+        # folder or project resource.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose CapabilityConfigs are being
+        #   listed. Format: `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of CapabilityConfigs to return in the response.
+        #   The service may return fewer CapabilityConfigs than requested. If unspecified,
+        #   at most 100 CapabilityConfigs will be returned. The maximum value is 100;
+        #   values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A pagination token received from a previous call to `
+        #   ListCapabilityConfigs` that indicates from where listing should continue.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_capability_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/capabilityConfigs', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig
+        # identified by the specified `name` (for example, `folders/123456789/
+        # capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the CapabilityConfig. Format: `
+        #   organizations/`organization`/capabilityConfigs/`capabilityConfig`` or, `
+        #   folders/`folder`/capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_capability_config(name, capability_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a Lien which applies to the resource denoted by the `parent` field.
         # Callers of this method will require permission on the `parent` resource. For
         # example, applying to `projects/1234` requires permission `resourcemanager.
@@ -1117,6 +1314,203 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a CapabilityConfig under a parent Organization, Folder or Project.
+        # Creating a CapabilityConfig triggers the creation of a Management Project if
+        # one is not supplied.
+        # @param [String] parent
+        #   Required. The parent resource under which the CapabilityConfig will be created.
+        #   Format: `organizations/`organization_id`` or `folders/`folder_id`` or `
+        #   projects/`project_number``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] capability_config_id
+        #   Required. The user-assigned ID for the CapabilityConfig, which will become the
+        #   final component of the CapabilityConfig's resource name. Must be unique within
+        #   the parent resource. It must be 6 to 30 lowercase ASCII letters, digits, or
+        #   hyphens. It must start with a letter. Trailing hyphens are prohibited. Example:
+        #   `my-capability-config-123`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_capability_config(parent, capability_config_object = nil, capability_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/capabilityConfigs', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['capabilityConfigId'] = capability_config_id unless capability_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the CapabilityConfig identified by the specified `name` (for example, `
+        # folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to delete. Format: `organizations/`
+        #   organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Capability Config identified by the specified `name` (for
+        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
+        #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig`` Example: `folders/123456789/
+        #   capabilityConfigs/my-capability-config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::CapabilityConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::CapabilityConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists CapabilityConfigs that are direct children of the specified organization,
+        # folder or project resource.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose CapabilityConfigs are being
+        #   listed. Format: `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of CapabilityConfigs to return in the response.
+        #   The service may return fewer CapabilityConfigs than requested. If unspecified,
+        #   at most 100 CapabilityConfigs will be returned. The maximum value is 100;
+        #   values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A pagination token received from a previous call to `
+        #   ListCapabilityConfigs` that indicates from where listing should continue.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_capability_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/capabilityConfigs', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig
+        # identified by the specified `name` (for example, `folders/123456789/
+        # capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the CapabilityConfig. Format: `
+        #   organizations/`organization`/capabilityConfigs/`capabilityConfig`` or, `
+        #   folders/`folder`/capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_capability_config(name, capability_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Request that a new project be created. The result is an `Operation` which can
         # be used to track the creation process. This process usually takes a few
         # seconds, but can sometimes take much longer. The tracking `Operation` is
@@ -1586,6 +1980,203 @@ module Google
           command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a CapabilityConfig under a parent Organization, Folder or Project.
+        # Creating a CapabilityConfig triggers the creation of a Management Project if
+        # one is not supplied.
+        # @param [String] parent
+        #   Required. The parent resource under which the CapabilityConfig will be created.
+        #   Format: `organizations/`organization_id`` or `folders/`folder_id`` or `
+        #   projects/`project_number``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] capability_config_id
+        #   Required. The user-assigned ID for the CapabilityConfig, which will become the
+        #   final component of the CapabilityConfig's resource name. Must be unique within
+        #   the parent resource. It must be 6 to 30 lowercase ASCII letters, digits, or
+        #   hyphens. It must start with a letter. Trailing hyphens are prohibited. Example:
+        #   `my-capability-config-123`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_capability_config(parent, capability_config_object = nil, capability_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/capabilityConfigs', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['capabilityConfigId'] = capability_config_id unless capability_config_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the CapabilityConfig identified by the specified `name` (for example, `
+        # folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to delete. Format: `organizations/`
+        #   organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Capability Config identified by the specified `name` (for
+        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
+        #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
+        #   capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig`` Example: `folders/123456789/
+        #   capabilityConfigs/my-capability-config`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::CapabilityConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_capability_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::CapabilityConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists CapabilityConfigs that are direct children of the specified organization,
+        # folder or project resource.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose CapabilityConfigs are being
+        #   listed. Format: `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of CapabilityConfigs to return in the response.
+        #   The service may return fewer CapabilityConfigs than requested. If unspecified,
+        #   at most 100 CapabilityConfigs will be returned. The maximum value is 100;
+        #   values above 100 will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A pagination token received from a previous call to `
+        #   ListCapabilityConfigs` that indicates from where listing should continue.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_capability_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/capabilityConfigs', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListCapabilityConfigsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig
+        # identified by the specified `name` (for example, `folders/123456789/
+        # capabilityConfigs/my-capability-config`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the CapabilityConfig. Format: `
+        #   organizations/`organization`/capabilityConfigs/`capabilityConfig`` or, `
+        #   folders/`folder`/capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        #   capabilityConfigs/`capabilityConfig``
+        # @param [Google::Apis::CloudresourcemanagerV3::CapabilityConfig] capability_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_capability_config(name, capability_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::CapabilityConfig::Representation
+          command.request_object = capability_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
