@@ -1299,7 +1299,7 @@ module Google
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] copy_comments
-        #   Whether to copy the comments associated with the file.
+        #   Whether to copy the open (unresolved) comments associated with the file.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
