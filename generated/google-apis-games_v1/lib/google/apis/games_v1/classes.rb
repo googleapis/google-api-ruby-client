@@ -2667,11 +2667,6 @@ module Google
         # @return [String]
         attr_accessor :string_value
       
-        # A timestamp value.
-        # Corresponds to the JSON property `timestampValue`
-        # @return [String]
-        attr_accessor :timestamp_value
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2683,7 +2678,6 @@ module Google
           @duration_value = args[:duration_value] if args.key?(:duration_value)
           @int_value = args[:int_value] if args.key?(:int_value)
           @string_value = args[:string_value] if args.key?(:string_value)
-          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
         end
       end
       

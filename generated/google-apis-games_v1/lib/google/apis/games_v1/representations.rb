@@ -1245,7 +1245,6 @@ module Google
           property :duration_value, as: 'durationValue'
           property :int_value, :numeric_string => true, as: 'intValue'
           property :string_value, as: 'stringValue'
-          property :timestamp_value, as: 'timestampValue'
         end
       end
       
