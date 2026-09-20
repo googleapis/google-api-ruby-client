@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetMembershipGraphMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +893,14 @@ module Google
         end
       end
       
+      class ExternalId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :namespace, as: 'namespace'
+        end
+      end
+      
       class GetMembershipGraphMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1281,6 +1295,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :dynamic_group_metadata, as: 'dynamicGroupMetadata', class: Google::Apis::CloudidentityV1::DynamicGroupMetadata, decorator: Google::Apis::CloudidentityV1::DynamicGroupMetadata::Representation
+      
+          collection :external_ids, as: 'externalIds', class: Google::Apis::CloudidentityV1::ExternalId, decorator: Google::Apis::CloudidentityV1::ExternalId::Representation
       
           property :group_key, as: 'groupKey', class: Google::Apis::CloudidentityV1::EntityKey, decorator: Google::Apis::CloudidentityV1::EntityKey::Representation
       
