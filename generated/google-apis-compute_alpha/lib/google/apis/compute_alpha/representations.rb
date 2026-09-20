@@ -1078,6 +1078,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CapacityHistoryRequestInstancePropertiesScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3317,6 +3323,12 @@ module Google
       end
       
       class InstanceGroupManagerInstanceFlexibilityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -12820,6 +12832,7 @@ module Google
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
@@ -12899,9 +12912,20 @@ module Google
       class CapacityHistoryRequestInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesAttachedDisk, decorator: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesAttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
           property :machine_type, as: 'machineType'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesScheduling::Representation
       
+        end
+      end
+      
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -13989,6 +14013,8 @@ module Google
       class DistributionPolicyZoneConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_size, as: 'maxSize', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -17278,12 +17304,21 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyConstraints, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyConstraints::Representation
+      
           hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
           hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
           property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_machine_type, as: 'singleMachineType'
         end
       end
       
