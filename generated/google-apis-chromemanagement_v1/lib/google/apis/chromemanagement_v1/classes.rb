@@ -2010,6 +2010,101 @@ module Google
         end
       end
       
+      # Response to `FindSaasUsageBrowsers` method.
+      class GoogleChromeManagementV1FindSaasUsageBrowsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SaaS usage browser reports.
+        # Corresponds to the JSON property `saasUsageBrowsers`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageBrowser>]
+        attr_accessor :saas_usage_browsers
+      
+        # Total number of SaaS usage browser reports that match the request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saas_usage_browsers = args[:saas_usage_browsers] if args.key?(:saas_usage_browsers)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response to `FindSaasUsageProfiles` method.
+      class GoogleChromeManagementV1FindSaasUsageProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SaaS usage profile reports.
+        # Corresponds to the JSON property `profileReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageProfileReport>]
+        attr_accessor :profile_reports
+      
+        # Total number of SaaS usage profile reports that match the request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @profile_reports = args[:profile_reports] if args.key?(:profile_reports)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
+      # Response to `FindSaasUsage` method.
+      class GoogleChromeManagementV1FindSaasUsageReportsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of SaaS usage reports.
+        # Corresponds to the JSON property `saasReports`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReport>]
+        attr_accessor :saas_reports
+      
+        # Total number of SaaS usage reports that match the request.
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @saas_reports = args[:saas_reports] if args.key?(:saas_reports)
+          @total_size = args[:total_size] if args.key?(:total_size)
+        end
+      end
+      
       # Information of a graphics adapter (GPU).
       class GoogleChromeManagementV1GraphicsAdapterInfo
         include Google::Apis::Core::Hashable
@@ -3189,6 +3284,242 @@ module Google
           @enter_sleep_count = args[:enter_sleep_count] if args.key?(:enter_sleep_count)
           @report_time = args[:report_time] if args.key?(:report_time)
           @uptime_runtime_duration = args[:uptime_runtime_duration] if args.key?(:uptime_runtime_duration)
+        end
+      end
+      
+      # Details of a SaaS usage browser.
+      class GoogleChromeManagementV1SaasUsageBrowser
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The device permanent ID.
+        # Corresponds to the JSON property `devicePermanentId`
+        # @return [String]
+        attr_accessor :device_permanent_id
+      
+        # Output only. The timestamp when the application was first navigated to by this
+        # browser.
+        # Corresponds to the JSON property `firstNavigationTime`
+        # @return [String]
+        attr_accessor :first_navigation_time
+      
+        # Output only. The timestamp when the application was last navigated to by this
+        # browser.
+        # Corresponds to the JSON property `lastNavigationTime`
+        # @return [String]
+        attr_accessor :last_navigation_time
+      
+        # Output only. The machine name.
+        # Corresponds to the JSON property `machine`
+        # @return [String]
+        attr_accessor :machine
+      
+        # Output only. The ID of the organizational unit.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Output only. The OS platform.
+        # Corresponds to the JSON property `osPlatform`
+        # @return [String]
+        attr_accessor :os_platform
+      
+        # Output only. The OS version.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_permanent_id = args[:device_permanent_id] if args.key?(:device_permanent_id)
+          @first_navigation_time = args[:first_navigation_time] if args.key?(:first_navigation_time)
+          @last_navigation_time = args[:last_navigation_time] if args.key?(:last_navigation_time)
+          @machine = args[:machine] if args.key?(:machine)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @os_platform = args[:os_platform] if args.key?(:os_platform)
+          @os_version = args[:os_version] if args.key?(:os_version)
+        end
+      end
+      
+      # Represents a single SaaS report entry grouped by profile.
+      class GoogleChromeManagementV1SaasUsageProfileReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The email of the user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. The timestamp when the application was first navigated to by this
+        # profile.
+        # Corresponds to the JSON property `firstNavigationTime`
+        # @return [String]
+        attr_accessor :first_navigation_time
+      
+        # Output only. The timestamp when the application was last navigated to by this
+        # profile.
+        # Corresponds to the JSON property `lastNavigationTime`
+        # @return [String]
+        attr_accessor :last_navigation_time
+      
+        # Output only. The ID of the organizational unit.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Output only. The OS platform.
+        # Corresponds to the JSON property `osPlatform`
+        # @return [String]
+        attr_accessor :os_platform
+      
+        # Output only. The OS version.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. The permanent ID of the profile.
+        # Corresponds to the JSON property `profilePermanentId`
+        # @return [String]
+        attr_accessor :profile_permanent_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @first_navigation_time = args[:first_navigation_time] if args.key?(:first_navigation_time)
+          @last_navigation_time = args[:last_navigation_time] if args.key?(:last_navigation_time)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @os_platform = args[:os_platform] if args.key?(:os_platform)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @profile_permanent_id = args[:profile_permanent_id] if args.key?(:profile_permanent_id)
+        end
+      end
+      
+      # Represents a single SaaS report entry.
+      class GoogleChromeManagementV1SaasUsageReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the application.
+        # Corresponds to the JSON property `app`
+        # @return [String]
+        attr_accessor :app
+      
+        # Output only. The category of the application.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Provides information about content transfer events, if available.
+        # Corresponds to the JSON property `contentTransferDetails`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReportContentTransferDetails]
+        attr_accessor :content_transfer_details
+      
+        # Output only. Number of distinct browsers that visited the application.
+        # Corresponds to the JSON property `distinctBrowsersCount`
+        # @return [Fixnum]
+        attr_accessor :distinct_browsers_count
+      
+        # Output only. Number of distinct users who visited the application.
+        # Corresponds to the JSON property `distinctUsersCount`
+        # @return [Fixnum]
+        attr_accessor :distinct_users_count
+      
+        # Output only. A list of domains and subdomains associated with the application.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # Output only. A list of encryption protocols used to access the application.
+        # Corresponds to the JSON property `encryptionProtocols`
+        # @return [Array<String>]
+        attr_accessor :encryption_protocols
+      
+        # Output only. The timestamp when the application was first navigated to.
+        # Corresponds to the JSON property `firstNavigationTime`
+        # @return [String]
+        attr_accessor :first_navigation_time
+      
+        # Output only. The year the organization was founded.
+        # Corresponds to the JSON property `foundedYear`
+        # @return [Fixnum]
+        attr_accessor :founded_year
+      
+        # Output only. The headquarters location of the organization.
+        # Corresponds to the JSON property `headquarters`
+        # @return [String]
+        attr_accessor :headquarters
+      
+        # Output only. The timestamp when the application was last navigated to.
+        # Corresponds to the JSON property `lastNavigationTime`
+        # @return [String]
+        attr_accessor :last_navigation_time
+      
+        # Output only. The ID of the organizational unit.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Output only. The organization that develops the application.
+        # Corresponds to the JSON property `organization`
+        # @return [String]
+        attr_accessor :organization
+      
+        # Output only. The primary domain of the application.
+        # Corresponds to the JSON property `primaryDomain`
+        # @return [String]
+        attr_accessor :primary_domain
+      
+        # Output only. Total number of visits to the application.
+        # Corresponds to the JSON property `visitsCount`
+        # @return [Fixnum]
+        attr_accessor :visits_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app = args[:app] if args.key?(:app)
+          @category = args[:category] if args.key?(:category)
+          @content_transfer_details = args[:content_transfer_details] if args.key?(:content_transfer_details)
+          @distinct_browsers_count = args[:distinct_browsers_count] if args.key?(:distinct_browsers_count)
+          @distinct_users_count = args[:distinct_users_count] if args.key?(:distinct_users_count)
+          @domains = args[:domains] if args.key?(:domains)
+          @encryption_protocols = args[:encryption_protocols] if args.key?(:encryption_protocols)
+          @first_navigation_time = args[:first_navigation_time] if args.key?(:first_navigation_time)
+          @founded_year = args[:founded_year] if args.key?(:founded_year)
+          @headquarters = args[:headquarters] if args.key?(:headquarters)
+          @last_navigation_time = args[:last_navigation_time] if args.key?(:last_navigation_time)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @organization = args[:organization] if args.key?(:organization)
+          @primary_domain = args[:primary_domain] if args.key?(:primary_domain)
+          @visits_count = args[:visits_count] if args.key?(:visits_count)
+        end
+      end
+      
+      # Provides information about content transfer events, if available.
+      class GoogleChromeManagementV1SaasUsageReportContentTransferDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Total number of content transfers associated with the application.
+        # Corresponds to the JSON property `contentTransferCount`
+        # @return [Fixnum]
+        attr_accessor :content_transfer_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_transfer_count = args[:content_transfer_count] if args.key?(:content_transfer_count)
         end
       end
       
@@ -4863,8 +5194,8 @@ module Google
         # @return [String]
         attr_accessor :command_state
       
-        # Required. Type of the remote command. The only supported command_type is "
-        # clearBrowsingData".
+        # Required. Type of the remote command. Supported commands: "clearBrowsingData"
+        # and "extensionUpdateCheck".
         # Corresponds to the JSON property `commandType`
         # @return [String]
         attr_accessor :command_type
@@ -4882,7 +5213,7 @@ module Google
       
         # Required. Payload of the remote command. The payload for "clearBrowsingData"
         # command supports: - fields "clearCache" and "clearCookies" - values of boolean
-        # type.
+        # type. The payload for "extensionUpdateCheck" should be empty.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -5125,6 +5456,11 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubXdrConfig]
         attr_accessor :pub_sub_xdr_config
       
+        # Secure gateway connector config.
+        # Corresponds to the JSON property `secureGatewayConfig`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SecureGatewayConfig]
+        attr_accessor :secure_gateway_config
+      
         # Splunk connector config.
         # Corresponds to the JSON property `splunkConfig`
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SplunkConfig]
@@ -5145,6 +5481,7 @@ module Google
           @palo_alto_networks_config = args[:palo_alto_networks_config] if args.key?(:palo_alto_networks_config)
           @pub_sub_config = args[:pub_sub_config] if args.key?(:pub_sub_config)
           @pub_sub_xdr_config = args[:pub_sub_xdr_config] if args.key?(:pub_sub_xdr_config)
+          @secure_gateway_config = args[:secure_gateway_config] if args.key?(:secure_gateway_config)
           @splunk_config = args[:splunk_config] if args.key?(:splunk_config)
         end
       end
@@ -6249,6 +6586,31 @@ module Google
           @state = args[:state] if args.key?(:state)
           @subject_alt_names = args[:subject_alt_names] if args.key?(:subject_alt_names)
           @subject_common_name = args[:subject_common_name] if args.key?(:subject_common_name)
+        end
+      end
+      
+      # Secure gateway connector config.
+      class GoogleChromeManagementVersionsV1SecureGatewayConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The enabled platforms for the secure gateway connector config.
+        # Corresponds to the JSON property `enabledPlatforms`
+        # @return [Array<String>]
+        attr_accessor :enabled_platforms
+      
+        # Required. The resource ID of the secure gateway connector config.
+        # Corresponds to the JSON property `resourceId`
+        # @return [String]
+        attr_accessor :resource_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled_platforms = args[:enabled_platforms] if args.key?(:enabled_platforms)
+          @resource_id = args[:resource_id] if args.key?(:resource_id)
         end
       end
       
