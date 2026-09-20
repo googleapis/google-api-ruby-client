@@ -731,14 +731,23 @@ module Google
         end
       end
       
-      # An installable set of active APKs. A set of APKs might only contain 1 APK if
-      # the app in question publishes using APKs. If the app uses app bundles (or a
-      # similar technology), this set should contain all APKs (even optional ones)
-      # that might be installed for this app. A set of APKs should be installable
-      # together. If certain APKs are exclusive to one another and cannot be installed
-      # together, then a separate AppStoreAppActiveApkSet should be created.
+      # An installable set of active APKs. All APKs in this set should belong to the
+      # same version of the app. A set of APKs might only contain 1 APK if the app in
+      # question publishes using APKs. If the app uses app bundles (or a similar
+      # technology), this set should contain all APKs (even optional ones) that might
+      # be installed for this app. A set of APKs should be installable together. If
+      # certain APKs are exclusive to one another and cannot be installed together,
+      # then a separate AppStoreAppActiveApkSet should be created.
       class AppStoreAppActiveApkSet
         include Google::Apis::Core::Hashable
+      
+        # Optional. Whether all APKs referenced in this active APK set are published on
+        # Play Store (or derived from an app bundle published on Play Store). When this
+        # is set, version_code must be provided.
+        # Corresponds to the JSON property `alreadyPublishedOnPlay`
+        # @return [Boolean]
+        attr_accessor :already_published_on_play
+        alias_method :already_published_on_play?, :already_published_on_play
       
         # Required. The ID for the main base application module. Example: base.apk or
         # app.apk.
@@ -753,14 +762,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :split_apk_id
       
+        # Optional. Version code for the version this APK set represents.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @already_published_on_play = args[:already_published_on_play] if args.key?(:already_published_on_play)
           @base_apk_id = args[:base_apk_id] if args.key?(:base_apk_id)
           @split_apk_id = args[:split_apk_id] if args.key?(:split_apk_id)
+          @version_code = args[:version_code] if args.key?(:version_code)
         end
       end
       
