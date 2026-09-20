@@ -1144,6 +1144,7 @@ module Google
       
           property :create_time, as: 'createTime'
           property :dry_run, as: 'dryRun'
+          property :end_time, as: 'endTime'
           property :service, as: 'service'
         end
       end
