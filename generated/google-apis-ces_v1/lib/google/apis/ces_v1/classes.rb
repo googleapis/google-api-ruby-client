@@ -3455,6 +3455,11 @@ module Google
         # @return [String]
         attr_accessor :event
       
+        # Optional. Additional variables associated with the event.
+        # Corresponds to the JSON property `variables`
+        # @return [Hash<String,Object>]
+        attr_accessor :variables
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3462,6 +3467,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @event = args[:event] if args.key?(:event)
+          @variables = args[:variables] if args.key?(:variables)
         end
       end
       
@@ -4085,6 +4091,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Guardrail that runs supervisor intervention.
+        # Corresponds to the JSON property `supervisor`
+        # @return [Google::Apis::CesV1::GuardrailSupervisor]
+        attr_accessor :supervisor
+      
         # Output only. Timestamp when the guardrail was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -4108,6 +4119,7 @@ module Google
           @llm_prompt_security = args[:llm_prompt_security] if args.key?(:llm_prompt_security)
           @model_safety = args[:model_safety] if args.key?(:model_safety)
           @name = args[:name] if args.key?(:name)
+          @supervisor = args[:supervisor] if args.key?(:supervisor)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -4358,6 +4370,31 @@ module Google
         def update!(**args)
           @category = args[:category] if args.key?(:category)
           @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
+      # Guardrail that runs supervisor intervention.
+      class GuardrailSupervisor
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The detection mode of the supervisor.
+        # Corresponds to the JSON property `detectionMode`
+        # @return [String]
+        attr_accessor :detection_mode
+      
+        # Optional. The type of the supervisor.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detection_mode = args[:detection_mode] if args.key?(:detection_mode)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -7341,10 +7378,31 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. Mapping of input variable names of remote agent to GECX variable
+        # names.
+        # Corresponds to the JSON property `inputVariableMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :input_variable_mapping
+      
         # Required. The name of the tool.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Optional. Mapping of output variable names of remote agent to GECX variable
+        # names.
+        # Corresponds to the JSON property `outputVariableMapping`
+        # @return [Hash<String,String>]
+        attr_accessor :output_variable_mapping
+      
+        # Optional. When enabled, the interaction between the CXAS app and the remote
+        # agent will share the same context. If the remote agent returns a context_id,
+        # it will be persisted for the entirety of the session for this remote agent
+        # tool.
+        # Corresponds to the JSON property `statefulAgent`
+        # @return [Boolean]
+        attr_accessor :stateful_agent
+        alias_method :stateful_agent?, :stateful_agent
       
         def initialize(**args)
            update!(**args)
@@ -7355,7 +7413,10 @@ module Google
           @agent_card = args[:agent_card] if args.key?(:agent_card)
           @api_authentication = args[:api_authentication] if args.key?(:api_authentication)
           @description = args[:description] if args.key?(:description)
+          @input_variable_mapping = args[:input_variable_mapping] if args.key?(:input_variable_mapping)
           @name = args[:name] if args.key?(:name)
+          @output_variable_mapping = args[:output_variable_mapping] if args.key?(:output_variable_mapping)
+          @stateful_agent = args[:stateful_agent] if args.key?(:stateful_agent)
         end
       end
       
