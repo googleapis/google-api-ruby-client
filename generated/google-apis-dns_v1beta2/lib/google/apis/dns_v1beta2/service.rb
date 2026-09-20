@@ -941,9 +941,6 @@ module Google
         # Fetches the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.
-        # @param [String] client_operation_id
-        #   For mutating operation requests only. An optional identifier specified by the
-        #   client. Must be unique for operation resources in the Operations collection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -961,12 +958,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project(project, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project(project, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'dns/v1beta2/projects/{project}', options)
           command.response_representation = Google::Apis::DnsV1beta2::Project::Representation
           command.response_class = Google::Apis::DnsV1beta2::Project
           command.params['project'] = project unless project.nil?
-          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
