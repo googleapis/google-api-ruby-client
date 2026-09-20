@@ -3079,6 +3079,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :synchronizer_identities
       
+        # Optional. Service accounts granted access to control plane resources for the
+        # apigee-watcher component.
+        # Corresponds to the JSON property `watcherIdentities`
+        # @return [Array<String>]
+        attr_accessor :watcher_identities
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3088,6 +3094,7 @@ module Google
           @analytics_publisher_identities = args[:analytics_publisher_identities] if args.key?(:analytics_publisher_identities)
           @name = args[:name] if args.key?(:name)
           @synchronizer_identities = args[:synchronizer_identities] if args.key?(:synchronizer_identities)
+          @watcher_identities = args[:watcher_identities] if args.key?(:watcher_identities)
         end
       end
       
