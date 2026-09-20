@@ -780,7 +780,8 @@ module Google
         # @return [Array<Google::Apis::MybusinessbusinessinformationV1::MoreHours>]
         attr_accessor :more_hours
       
-        # Google identifier for this location in the form: `locations/`location_id``.
+        # Identifier. Google identifier for this location in the form: `locations/`
+        # location_id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -940,8 +941,8 @@ module Google
         attr_accessor :can_operate_health_data
         alias_method :can_operate_health_data?, :can_operate_health_data
       
-        # Output only. Indicates if the listing can manage local posts. Deprecated: This
-        # field is no longer populated and will be removed in a future version.
+        # Output only. Deprecated: This field is no longer populated and will be removed
+        # in a future version.
         # Corresponds to the JSON property `canOperateLocalPost`
         # @return [Boolean]
         attr_accessor :can_operate_local_post
@@ -982,7 +983,10 @@ module Google
         attr_accessor :has_voice_of_merchant
         alias_method :has_voice_of_merchant?, :has_voice_of_merchant
       
-        # Output only.
+        # Output only. Indicates whether the location is classified as a particularly
+        # personal place. This means there are restrictions on Location History features.
+        # If you believe this was a mistake, see the [help center article](https://
+        # support.google.com/business/answer/3480441).
         # Corresponds to the JSON property `isParticularlyPersonalPlace`
         # @return [Boolean]
         attr_accessor :is_particularly_personal_place
@@ -1226,7 +1230,8 @@ module Google
       class Places
         include Google::Apis::Core::Hashable
       
-        # The areas represented by place IDs. Limited to a maximum of 20 places.
+        # Optional. The areas represented by place IDs. Limited to a maximum of 20
+        # places.
         # Corresponds to the JSON property `placeInfos`
         # @return [Array<Google::Apis::MybusinessbusinessinformationV1::PlaceInfo>]
         attr_accessor :place_infos
@@ -1400,13 +1405,13 @@ module Google
       class RelationshipData
         include Google::Apis::Core::Hashable
       
-        # The list of children locations that this location has relations with.
+        # Optional. The list of children locations that this location has relations with.
         # Corresponds to the JSON property `childrenLocations`
         # @return [Array<Google::Apis::MybusinessbusinessinformationV1::RelevantLocation>]
         attr_accessor :children_locations
       
-        # The resource name of the Chain that this location is member of. How to find
-        # Chain ID
+        # Optional. The resource name of the Chain that this location is member of. How
+        # to find Chain ID
         # Corresponds to the JSON property `parentChain`
         # @return [String]
         attr_accessor :parent_chain
