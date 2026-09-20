@@ -11730,10 +11730,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Agent] parsed result object
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Agent]
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -11742,8 +11742,8 @@ module Google
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Agent::Representation
           command.request_object = google_cloud_aiplatform_v1beta1_agent_object
-          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Agent::Representation
-          command.response_class = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Agent
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -32031,28 +32031,33 @@ module Google
         # @param [String] filter
         #   Optional. Filter expression restricting which AnalyzedSessions are returned.
         #   Supports a subset of AIP-160: a closed `detection_time` window (both bounds
-        #   required), an equality on `severity`, and an equality on `agent_type`, joined
-        #   by `AND`. Each clause is optional, may appear at most once, and may appear in
-        #   any order. The `severity` value is the **canonical** `Severity` enum name -- `
-        #   SEVERITY_CRITICAL`, `SEVERITY_HIGH`, `SEVERITY_MEDIUM` or `SEVERITY_LOW`.
-        #   Short forms such as `"CRITICAL"` are rejected, as is `SEVERITY_UNSPECIFIED`.
-        #   It matches sessions whose *maximum* severity equals that bucket: a session
-        #   that fires at both LOW and CRITICAL matches `severity = "SEVERITY_CRITICAL"`,
-        #   not `severity = "SEVERITY_LOW"`. The `agent_type` value is the canonical `
-        #   AgentResource.AgentType` enum name -- `REASONING_ENGINE`, `CLOUD_RUN_SERVICE`,
-        #   `GKE_WORKLOAD`, `GCE_INSTANCE`, `AGENT_TYPE_OTHER` or `AGENT_TYPE_UNSPECIFIED`
-        #   -- and matches sessions run by an agent on that runtime. Unlike `severity`, `
-        #   agent_type` accepts its `UNSPECIFIED` value. The two are not analogous: a
-        #   session always has a computed severity bucket, so `SEVERITY_UNSPECIFIED` is
-        #   never returned and filtering on it could only match nothing. `
-        #   AGENT_TYPE_UNSPECIFIED` *is* returned -- it is what `AnalyzedSession.
-        #   agent_type` reports for an agent whose runtime was never recorded -- so it
-        #   must remain filterable. Example (time window, severity and runtime): ```
-        #   detection_time >= "2024-01-01T00:00:00Z" AND detection_time <= "2024-01-08T00:
-        #   00:00Z" AND severity = "SEVERITY_CRITICAL" AND agent_type = "CLOUD_RUN_SERVICE"
-        #   ``` If empty, results are restricted to the last 7 days with no severity or
-        #   runtime restriction. Other fields, additional operators, set membership (`IN`),
-        #   and boolean combinations (`OR`, `NOT`, parentheses) are not yet supported.
+        #   required), an equality on `severity`, an equality on `agent_type`, and an
+        #   equality on `session_id`, joined by `AND`. Each clause is optional, may appear
+        #   at most once, and may appear in any order. The `severity` value is the **
+        #   canonical** `Severity` enum name -- `SEVERITY_CRITICAL`, `SEVERITY_HIGH`, `
+        #   SEVERITY_MEDIUM` or `SEVERITY_LOW`. Short forms such as `"CRITICAL"` are
+        #   rejected, as is `SEVERITY_UNSPECIFIED`. It matches sessions whose *maximum*
+        #   severity equals that bucket: a session that fires at both LOW and CRITICAL
+        #   matches `severity = "SEVERITY_CRITICAL"`, not `severity = "SEVERITY_LOW"`. The
+        #   `agent_type` value is the canonical `AgentResource.AgentType` enum name -- `
+        #   REASONING_ENGINE`, `CLOUD_RUN_SERVICE`, `GKE_WORKLOAD`, `GCE_INSTANCE`, `
+        #   AGENT_TYPE_OTHER` or `AGENT_TYPE_UNSPECIFIED` -- and matches sessions run by
+        #   an agent on that runtime. Unlike `severity`, `agent_type` accepts its `
+        #   UNSPECIFIED` value. The two are not analogous: a session always has a computed
+        #   severity bucket, so `SEVERITY_UNSPECIFIED` is never returned and filtering on
+        #   it could only match nothing. `AGENT_TYPE_UNSPECIFIED` *is* returned -- it is
+        #   what `AnalyzedSession.agent_type` reports for an agent whose runtime was never
+        #   recorded -- so it must remain filterable. The `session_id` value is a case-
+        #   sensitive exact match (no substring or prefix matching) on `AnalyzedSession.
+        #   session_id`. Unlike `severity` and `agent_type` it is not a closed enum, so
+        #   any non-empty value is accepted; an empty value (`session_id = ""`) is
+        #   rejected rather than treated as "no filter". Example (time window, severity
+        #   and runtime): ``` detection_time >= "2024-01-01T00:00:00Z" AND detection_time <
+        #   = "2024-01-08T00:00:00Z" AND severity = "SEVERITY_CRITICAL" AND agent_type = "
+        #   CLOUD_RUN_SERVICE" ``` If empty, results are restricted to the last 7 days
+        #   with no severity, runtime, or session restriction. Other fields, additional
+        #   operators, set membership (`IN`), and boolean combinations (`OR`, `NOT`,
+        #   parentheses) are not yet supported.
         # @param [String] order_by
         #   Optional. Comma-separated list of fields to sort by, following AIP-132 syntax.
         #   The default sort direction is ascending; append " desc" to a field to sort
