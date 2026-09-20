@@ -30,7 +30,7 @@ module Google
       #    Policyanalyzer = Google::Apis::PolicyanalyzerV1 # Alias the module
       #    service = Policyanalyzer::PolicyAnalyzerService.new
       #
-      # @see https://www.google.com
+      # @see https://cloud.google.com/policy-intelligence/docs/overview
       class PolicyAnalyzerService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://policyanalyzer.$UNIVERSE_DOMAIN$/"
 
