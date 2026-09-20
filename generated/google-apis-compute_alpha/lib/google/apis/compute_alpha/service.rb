@@ -8291,6 +8291,7 @@ module Google
         # @param [String] folder
         #   Folder ID for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8749,6 +8750,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11244,6 +11246,7 @@ module Google
         
         # Gets the Global Frontend Billing Bundle Settings for a project.
         # @param [String] project
+        #   Required. Project ID for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11276,10 +11279,12 @@ module Google
         
         # Updates the Global Frontend Billing Bundle Settings for a project.
         # @param [String] project
+        #   Required. Project ID for this request.
         # @param [Google::Apis::ComputeAlpha::GlobalFrontendSettings] global_frontend_settings_object
         # @param [String] request_id
+        #   An optional request ID to identify requests.
         # @param [String] update_mask
-        #   e.g., "type"
+        #   Field mask to support patch. E.g., "type".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12889,6 +12894,7 @@ module Google
         # @param [String] project
         #   Project ID for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34487,6 +34493,7 @@ module Google
         # @param [String] organization
         #   Organization ID for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36567,6 +36574,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -75993,6 +76001,7 @@ module Google
         # @param [String] zone
         #   Name of the zone for this request.
         # @param [String] extension_name
+        #   Required. Name of the VM extension for this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

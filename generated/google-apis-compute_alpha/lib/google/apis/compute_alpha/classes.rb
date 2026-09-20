@@ -8975,6 +8975,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :machine_types
       
+        # Optional. Rank when prioritizing the shape flexibilities.
+        # The instance selections are considered in the ascending order of the
+        # rank. If not set, defaults to 0.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8984,6 +8991,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -9224,6 +9232,16 @@ module Google
       class CapacityHistoryRequestInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Local SSDs.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesAttachedDisk>]
+        attr_accessor :disks
+      
+        # Accelerators configuration.
+        # Corresponds to the JSON property `guestAccelerators`
+        # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
+        attr_accessor :guest_accelerators
+      
         # The machine type for the VM, such as `n2-standard-4`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -9240,8 +9258,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # AttachedDisk modeled after Instance's AttachedDisk.
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the type of the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -9746,7 +9785,8 @@ module Google
         # GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2,
         # GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
         # GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
-        # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For
+        # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,
+        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For
         # example, type MEMORY_OPTIMIZED specifies a commitment that
         # applies only to eligible resources of memory optimized M1 and M2 machine
         # series. Type GENERAL_PURPOSE specifies a commitment that
@@ -14145,6 +14185,11 @@ module Google
       class DistributionPolicyZoneConfiguration
         include Google::Apis::Core::Hashable
       
+        # Encapsulates numeric value that can be either absolute or relative.
+        # Corresponds to the JSON property `maxSize`
+        # @return [Google::Apis::ComputeAlpha::FixedOrPercent]
+        attr_accessor :max_size
+      
         # The URL of thezone.
         # The zone must exist in the region where the managed instance group is
         # located.
@@ -14158,6 +14203,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @max_size = args[:max_size] if args.key?(:max_size)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -19416,7 +19462,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only. For optimistic locking
+        # Output only. For optimistic locking.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -26932,7 +26978,7 @@ module Google
       class ImageViewsListResponse
         include Google::Apis::Core::Hashable
       
-        # 
+        # Etag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -28953,6 +28999,11 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
+        # Constraints applied to instance flexibility spreading and selection.
+        # Corresponds to the JSON property `constraints`
+        # @return [Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyConstraints]
+        attr_accessor :constraints
+      
         # Named instance selections configuring properties that the group will use
         # when creating new VMs.
         # Corresponds to the JSON property `instanceSelectionLists`
@@ -28977,9 +29028,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @constraints = args[:constraints] if args.key?(:constraints)
           @instance_selection_lists = args[:instance_selection_lists] if args.key?(:instance_selection_lists)
           @instance_selections = args[:instance_selections] if args.key?(:instance_selections)
           @provisioning_model_mix = args[:provisioning_model_mix] if args.key?(:provisioning_model_mix)
+        end
+      end
+      
+      # Constraints applied to instance flexibility spreading and selection.
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
+        include Google::Apis::Core::Hashable
+      
+        # When set to true, all instances in the group will be provisioned with
+        # the exact same machine type, ensuring cluster homogeneity across zones.
+        # Defaults to false.
+        # Corresponds to the JSON property `singleMachineType`
+        # @return [Boolean]
+        attr_accessor :single_machine_type
+        alias_method :single_machine_type?, :single_machine_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @single_machine_type = args[:single_machine_type] if args.key?(:single_machine_type)
         end
       end
       
@@ -43256,7 +43330,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # 
+        # The list of managed rulesets.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::ComputeAlpha::ManagedRuleset>]
         attr_accessor :items
