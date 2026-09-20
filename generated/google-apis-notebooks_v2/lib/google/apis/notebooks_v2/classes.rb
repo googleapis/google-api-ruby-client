@@ -789,6 +789,12 @@ module Google
         # @return [Google::Apis::NotebooksV2::ShieldedInstanceConfig]
         attr_accessor :shielded_instance_config
       
+        # Output only. Represents system-managed metadata for this instance: the subset
+        # of `metadata` whose keys are recognized Workbench system keys.
+        # Corresponds to the JSON property `systemMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :system_metadata
+      
         # Optional. The Compute Engine network tags to add to runtime (see [Add network
         # tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         # Corresponds to the JSON property `tags`
@@ -823,6 +829,7 @@ module Google
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
+          @system_metadata = args[:system_metadata] if args.key?(:system_metadata)
           @tags = args[:tags] if args.key?(:tags)
           @vm_image = args[:vm_image] if args.key?(:vm_image)
         end
