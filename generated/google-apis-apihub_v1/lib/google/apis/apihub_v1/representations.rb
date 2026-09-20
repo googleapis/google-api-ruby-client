@@ -1107,6 +1107,7 @@ module Google
           hash :attributes, as: 'attributes', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
           property :create_time, as: 'createTime'
+          collection :deployments, as: 'deployments'
           property :details, as: 'details', class: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationDetails, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1OperationDetails::Representation
       
           property :name, as: 'name'
@@ -1402,6 +1403,7 @@ module Google
       class GoogleCloudApihubV1Deployment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_operations, as: 'apiOperations'
           collection :api_versions, as: 'apiVersions'
           hash :attributes, as: 'attributes', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
@@ -1425,8 +1427,10 @@ module Google
           collection :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
       
           property :source_project, as: 'sourceProject'
+          property :source_revision, as: 'sourceRevision'
           property :source_uri, as: 'sourceUri', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
       
+          collection :specs, as: 'specs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -2312,6 +2316,7 @@ module Google
           property :contents, as: 'contents', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecContents::Representation
       
           property :create_time, as: 'createTime'
+          collection :deployments, as: 'deployments'
           property :details, as: 'details', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecDetails, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SpecDetails::Representation
       
           property :display_name, as: 'displayName'
@@ -2350,6 +2355,7 @@ module Google
       class GoogleCloudApihubV1SpecMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :deployment_resource_uris, as: 'deploymentResourceUris'
           property :original_create_time, as: 'originalCreateTime'
           property :original_id, as: 'originalId'
           property :original_update_time, as: 'originalUpdateTime'
