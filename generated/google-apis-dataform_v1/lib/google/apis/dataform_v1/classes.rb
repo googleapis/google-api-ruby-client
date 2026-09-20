@@ -227,6 +227,107 @@ module Google
         end
       end
       
+      # Represents a BigQuery unit test.
+      class BigQueryUnitTest
+        include Google::Apis::Core::Hashable
+      
+        # A list of actions that this action depends on.
+        # Corresponds to the JSON property `dependencyTargets`
+        # @return [Array<Google::Apis::DataformV1::Target>]
+        attr_accessor :dependency_targets
+      
+        # Whether this action is disabled (i.e. should not be run).
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The name of the unit test.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Expected output query to compare against the test query.
+        # Corresponds to the JSON property `expectedOutputQuery`
+        # @return [String]
+        attr_accessor :expected_output_query
+      
+        # Arbitrary, user-defined tags on this action.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        # Test query to execute.
+        # Corresponds to the JSON property `testQuery`
+        # @return [String]
+        attr_accessor :test_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dependency_targets = args[:dependency_targets] if args.key?(:dependency_targets)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expected_output_query = args[:expected_output_query] if args.key?(:expected_output_query)
+          @tags = args[:tags] if args.key?(:tags)
+          @test_query = args[:test_query] if args.key?(:test_query)
+        end
+      end
+      
+      # Represents a workflow action that will run a BigQuery unit test.
+      class BigQueryUnitTestAction
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Job ID for the actual results.
+        # Corresponds to the JSON property `actualResultsJobId`
+        # @return [String]
+        attr_accessor :actual_results_job_id
+      
+        # Output only. SQL script for the actual results.
+        # Corresponds to the JSON property `actualResultsSqlScript`
+        # @return [String]
+        attr_accessor :actual_results_sql_script
+      
+        # Output only. Job ID for the expected results.
+        # Corresponds to the JSON property `expectedResultsJobId`
+        # @return [String]
+        attr_accessor :expected_results_job_id
+      
+        # Output only. SQL script for the expected results.
+        # Corresponds to the JSON property `expectedResultsSqlScript`
+        # @return [String]
+        attr_accessor :expected_results_sql_script
+      
+        # Output only. Total bytes billed for this action. Combined total for actual and
+        # expected jobs.
+        # Corresponds to the JSON property `totalBilledBytes`
+        # @return [Fixnum]
+        attr_accessor :total_billed_bytes
+      
+        # Output only. Total bytes processed for this action. Combined total for actual
+        # and expected jobs.
+        # Corresponds to the JSON property `totalProcessedBytes`
+        # @return [Fixnum]
+        attr_accessor :total_processed_bytes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actual_results_job_id = args[:actual_results_job_id] if args.key?(:actual_results_job_id)
+          @actual_results_sql_script = args[:actual_results_sql_script] if args.key?(:actual_results_sql_script)
+          @expected_results_job_id = args[:expected_results_job_id] if args.key?(:expected_results_job_id)
+          @expected_results_sql_script = args[:expected_results_sql_script] if args.key?(:expected_results_sql_script)
+          @total_billed_bytes = args[:total_billed_bytes] if args.key?(:total_billed_bytes)
+          @total_processed_bytes = args[:total_processed_bytes] if args.key?(:total_processed_bytes)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -814,6 +915,11 @@ module Google
         # @return [Google::Apis::DataformV1::Assertion]
         attr_accessor :assertion
       
+        # Represents a BigQuery unit test.
+        # Corresponds to the JSON property `bigqueryUnitTest`
+        # @return [Google::Apis::DataformV1::BigQueryUnitTest]
+        attr_accessor :bigquery_unit_test
+      
         # Represents an action identifier. If the action writes output, the output will
         # be written to the referenced database object.
         # Corresponds to the JSON property `canonicalTarget`
@@ -872,6 +978,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assertion = args[:assertion] if args.key?(:assertion)
+          @bigquery_unit_test = args[:bigquery_unit_test] if args.key?(:bigquery_unit_test)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @data_preparation = args[:data_preparation] if args.key?(:data_preparation)
           @declaration = args[:declaration] if args.key?(:declaration)
@@ -1186,6 +1293,50 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Includes configuration options for repository end user authentication.
+      class EndUserAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth configuration for end user authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DataformV1::OAuthConfig]
+        attr_accessor :oauth_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+        end
+      end
+      
+      # Includes configuration options for end user authentication.
+      class EndUserAuthenticationConfig
+        include Google::Apis::Core::Hashable
+      
+        # OAuth configuration for end user authentication.
+        # Corresponds to the JSON property `oauthConfig`
+        # @return [Google::Apis::DataformV1::OAuthConfig]
+        attr_accessor :oauth_config
+      
+        # Output only. Email address of the user to run workflow invocations under.
+        # Corresponds to the JSON property `userEmail`
+        # @return [String]
+        attr_accessor :user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_config = args[:oauth_config] if args.key?(:oauth_config)
+          @user_email = args[:user_email] if args.key?(:user_email)
         end
       end
       
@@ -1831,6 +1982,16 @@ module Google
       class InvocationConfig
         include Google::Apis::Core::Hashable
       
+        # Includes configuration options for end user authentication.
+        # Corresponds to the JSON property `endUserAuthConfig`
+        # @return [Google::Apis::DataformV1::EndUserAuthenticationConfig]
+        attr_accessor :end_user_auth_config
+      
+        # Optional. Specifies the execution mode for the workflow invocation.
+        # Corresponds to the JSON property `executionMode`
+        # @return [String]
+        attr_accessor :execution_mode
+      
         # Optional. When set to true, any incremental tables will be fully refreshed.
         # Corresponds to the JSON property `fullyRefreshIncrementalTablesEnabled`
         # @return [Boolean]
@@ -1879,6 +2040,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @end_user_auth_config = args[:end_user_auth_config] if args.key?(:end_user_auth_config)
+          @execution_mode = args[:execution_mode] if args.key?(:execution_mode)
           @fully_refresh_incremental_tables_enabled = args[:fully_refresh_incremental_tables_enabled] if args.key?(:fully_refresh_incremental_tables_enabled)
           @included_tags = args[:included_tags] if args.key?(:included_tags)
           @included_targets = args[:included_targets] if args.key?(:included_targets)
@@ -2482,6 +2645,26 @@ module Google
           @ai_platform_notebook_runtime_template = args[:ai_platform_notebook_runtime_template] if args.key?(:ai_platform_notebook_runtime_template)
           @gcs_output_bucket = args[:gcs_output_bucket] if args.key?(:gcs_output_bucket)
           @gcs_repository_snapshot_destination = args[:gcs_repository_snapshot_destination] if args.key?(:gcs_repository_snapshot_destination)
+        end
+      end
+      
+      # OAuth configuration for end user authentication.
+      class OAuthConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional OAuth scopes to use for BigQuery executions. Scopes
+        # always in use: `https://www.googleapis.com/auth/bigquery`
+        # Corresponds to the JSON property `additionalOauthScopes`
+        # @return [Array<String>]
+        attr_accessor :additional_oauth_scopes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_oauth_scopes = args[:additional_oauth_scopes] if args.key?(:additional_oauth_scopes)
         end
       end
       
@@ -3467,6 +3650,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Includes configuration options for repository end user authentication.
+        # Corresponds to the JSON property `endUserAuthConfig`
+        # @return [Google::Apis::DataformV1::EndUserAuthConfig]
+        attr_accessor :end_user_auth_config
+      
         # Controls Git remote configuration for a repository.
         # Corresponds to the JSON property `gitRemoteSettings`
         # @return [Google::Apis::DataformV1::GitRemoteSettings]
@@ -3541,6 +3729,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_encryption_state = args[:data_encryption_state] if args.key?(:data_encryption_state)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @end_user_auth_config = args[:end_user_auth_config] if args.key?(:end_user_auth_config)
           @git_remote_settings = args[:git_remote_settings] if args.key?(:git_remote_settings)
           @internal_metadata = args[:internal_metadata] if args.key?(:internal_metadata)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -4311,6 +4500,11 @@ module Google
         # @return [Google::Apis::DataformV1::BigQueryAction]
         attr_accessor :bigquery_action
       
+        # Represents a workflow action that will run a BigQuery unit test.
+        # Corresponds to the JSON property `bigqueryUnitTestAction`
+        # @return [Google::Apis::DataformV1::BigQueryUnitTestAction]
+        attr_accessor :bigquery_unit_test_action
+      
         # Represents an action identifier. If the action writes output, the output will
         # be written to the referenced database object.
         # Corresponds to the JSON property `canonicalTarget`
@@ -4365,6 +4559,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bigquery_action = args[:bigquery_action] if args.key?(:bigquery_action)
+          @bigquery_unit_test_action = args[:bigquery_unit_test_action] if args.key?(:bigquery_unit_test_action)
           @canonical_target = args[:canonical_target] if args.key?(:canonical_target)
           @data_preparation_action = args[:data_preparation_action] if args.key?(:data_preparation_action)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
