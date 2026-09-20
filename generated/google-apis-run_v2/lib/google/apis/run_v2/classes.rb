@@ -1536,6 +1536,12 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. Enables SSH access to the Instance.
+        # Corresponds to the JSON property `sshEnabled`
+        # @return [Boolean]
+        attr_accessor :ssh_enabled
+        alias_method :ssh_enabled?, :ssh_enabled
+      
         # Defines a status condition for a resource.
         # Corresponds to the JSON property `terminalCondition`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
@@ -1607,6 +1613,7 @@ module Google
           @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @ssh_enabled = args[:ssh_enabled] if args.key?(:ssh_enabled)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1753,6 +1760,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. The functional type of the Job.
+        # Corresponds to the JSON property `functionalType`
+        # @return [String]
+        attr_accessor :functional_type
+      
         # Output only. A number that monotonically increases every time the user
         # modifies the desired state.
         # Corresponds to the JSON property `generation`
@@ -1887,6 +1899,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @execution_count = args[:execution_count] if args.key?(:execution_count)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @generation = args[:generation] if args.key?(:generation)
           @labels = args[:labels] if args.key?(:labels)
           @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
@@ -2596,6 +2609,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2638,6 +2656,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -2844,6 +2863,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2871,6 +2895,7 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -3083,6 +3108,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. The functional type of the Service.
+        # Corresponds to the JSON property `functionalType`
+        # @return [String]
+        attr_accessor :functional_type
+      
         # Output only. A number that monotonically increases every time the user
         # modifies the desired state. Please note that unlike v1, this is an int64 value.
         # As with most Google APIs, its JSON representation will be a `string` instead
@@ -3289,6 +3319,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @generation = args[:generation] if args.key?(:generation)
           @iap_enabled = args[:iap_enabled] if args.key?(:iap_enabled)
           @ingress = args[:ingress] if args.key?(:ingress)
@@ -3866,6 +3897,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3905,6 +3941,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -4015,6 +4052,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4031,6 +4073,7 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -4737,6 +4780,40 @@ module Google
         # Update properties of this object
         def update!(**args)
           @manual_instance_count = args[:manual_instance_count] if args.key?(:manual_instance_count)
+        end
+      end
+      
+      # Workload identity settings.
+      class GoogleCloudRunV2WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Revision's SPIFFE workload identity. Enables provisioning of
+        # SPIFFE workload certificates.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # Optional. Controls whether an instance receives a MWLID certificate.
+        # Corresponds to the intention of the original --[no-]identity-certificate flag.
+        # Corresponds to the JSON property `identityCertificateEnabled`
+        # @return [Boolean]
+        attr_accessor :identity_certificate_enabled
+        alias_method :identity_certificate_enabled?, :identity_certificate_enabled
+      
+        # Optional. The type of identity to use.
+        # Corresponds to the JSON property `identityType`
+        # @return [String]
+        attr_accessor :identity_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
+          @identity_type = args[:identity_type] if args.key?(:identity_type)
         end
       end
       

@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2WorkloadIdentityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1ApprovalConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1238,6 +1244,7 @@ module Google
           property :restart_policy, as: 'restartPolicy'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
+          property :ssh_enabled, as: 'sshEnabled'
           property :terminal_condition, as: 'terminalCondition', class: Google::Apis::RunV2::GoogleCloudRunV2Condition, decorator: Google::Apis::RunV2::GoogleCloudRunV2Condition::Representation
       
           property :uid, as: 'uid'
@@ -1284,6 +1291,7 @@ module Google
           property :etag, as: 'etag'
           property :execution_count, as: 'executionCount'
           property :expire_time, as: 'expireTime'
+          property :functional_type, as: 'functionalType'
           property :generation, :numeric_string => true, as: 'generation'
           hash :labels, as: 'labels'
           property :last_modifier, as: 'lastModifier'
@@ -1492,6 +1500,8 @@ module Google
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig, decorator: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig::Representation
+      
         end
       end
       
@@ -1541,6 +1551,8 @@ module Google
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig, decorator: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig::Representation
       
         end
       end
@@ -1593,6 +1605,7 @@ module Google
           property :description, as: 'description'
           property :etag, as: 'etag'
           property :expire_time, as: 'expireTime'
+          property :functional_type, as: 'functionalType'
           property :generation, :numeric_string => true, as: 'generation'
           property :iap_enabled, as: 'iapEnabled'
           property :ingress, as: 'ingress'
@@ -1765,6 +1778,8 @@ module Google
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig, decorator: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig::Representation
+      
         end
       end
       
@@ -1794,6 +1809,8 @@ module Google
           collection :volumes, as: 'volumes', class: Google::Apis::RunV2::GoogleCloudRunV2Volume, decorator: Google::Apis::RunV2::GoogleCloudRunV2Volume::Representation
       
           property :vpc_access, as: 'vpcAccess', class: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess, decorator: Google::Apis::RunV2::GoogleCloudRunV2VpcAccess::Representation
+      
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig, decorator: Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig::Representation
       
         end
       end
@@ -1952,6 +1969,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :manual_instance_count, as: 'manualInstanceCount'
+        end
+      end
+      
+      class GoogleCloudRunV2WorkloadIdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity'
+          property :identity_certificate_enabled, as: 'identityCertificateEnabled'
+          property :identity_type, as: 'identityType'
         end
       end
       
