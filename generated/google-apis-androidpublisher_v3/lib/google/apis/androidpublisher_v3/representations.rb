@@ -2620,8 +2620,10 @@ module Google
       class AppStoreAppActiveApkSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :already_published_on_play, as: 'alreadyPublishedOnPlay'
           property :base_apk_id, as: 'baseApkId'
           collection :split_apk_id, as: 'splitApkId'
+          property :version_code, :numeric_string => true, as: 'versionCode'
         end
       end
       
