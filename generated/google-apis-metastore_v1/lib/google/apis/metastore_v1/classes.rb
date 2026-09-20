@@ -1962,7 +1962,7 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1::CatalogSummary>]
         attr_accessor :catalog_summaries
       
-        # Output only. The UTC time when this report was finalized.
+        # Output only. The UTC time when the source metadata read was initiated.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1972,6 +1972,11 @@ module Google
         # @return [Boolean]
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
+      
+        # Output only. The UTC time when the report was written.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
       
         # Output only. The Dataproc Metastore service name (format: projects/*/locations/
         # */services/*) on which the migration was executed.
@@ -1988,6 +1993,7 @@ module Google
           @catalog_summaries = args[:catalog_summaries] if args.key?(:catalog_summaries)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @service = args[:service] if args.key?(:service)
         end
       end
