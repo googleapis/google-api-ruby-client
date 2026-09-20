@@ -1986,6 +1986,178 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Find SaaS usage reports of a customer based on the given search and sorting
+        # criteria.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [String] filter
+        #   Optional. The filter expression to narrow down the SaaS reports to return.
+        #   Supported operators are: =, !=, <, <=, >, >=, :. Logical operators AND, OR,
+        #   and NOT are supported. Supported fields: * app * org_unit_id *
+        #   first_navigation_time * last_navigation_time * category * organization *
+        #   founded_year * headquarters * primary_domain * domains * encryption_protocols *
+        #   visits_count * distinct_users_count * distinct_browsers_count *
+        #   content_transfer_count Example: `(first_navigation_time < "2026-01-31T00:00:
+        #   00Z" AND last_navigation_time > "2026-01-01T00:00:00Z") AND visits_count > 100`
+        # @param [String] order_by
+        #   Optional. The order by expression to sort the SaaS reports. Supported fields: *
+        #   app * category * organization * founded_year * headquarters * primary_domain *
+        #   visits_count * distinct_users_count * distinct_browsers_count *
+        #   content_transfer_count Default order is ascending. To specify descending order
+        #   for a field, append " desc". Example: `visits_count desc`
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of reports to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 reports will be returned.
+        #   The maximum value is 200; values above 200 will be coerced to 200.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FindSaasUsageReports` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `FindSaasUsageReports` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageReportsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageReportsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_customer_report_saas_usage(customer, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:findSaasUsage', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageReportsResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageReportsResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Find SaaS usage reports of a customer grouped by browsers based on the given
+        # search and sorting criteria.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [String] app
+        #   Required. The name of the SaaS application (e.g., `ChatGPT`, `Gemini`).
+        # @param [String] filter
+        #   Optional. The filter expression to narrow down the SaaS browser reports to
+        #   return. Supported operators are: =, !=, <, <=, >, >=, :. Logical operators AND,
+        #   OR, and NOT are supported. Supported fields: * machine * os_platform *
+        #   first_navigation_time * last_navigation_time * org_unit_id
+        # @param [String] order_by
+        #   Optional. The order by expression to sort the SaaS browser reports. Supported
+        #   fields: * machine * os_platform * first_navigation_time * last_navigation_time
+        #   Default order is ascending. To specify descending order for a field, append "
+        #   desc".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of browsers to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 browsers will be returned.
+        #   The maximum value is 200; values above 200 will be coerced to 200.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FindSaasUsageBrowsers` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageBrowsersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageBrowsersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_customer_report_saas_usage_browsers(customer, app: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:findSaasUsageBrowsers', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageBrowsersResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageBrowsersResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['app'] = app unless app.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Find SaaS usage reports of a customer grouped by profiles based on the given
+        # search and sorting criteria.
+        # @param [String] customer
+        #   Required. Obfuscated customer ID prefixed with "customers/C" or "customers/
+        #   my_customer".
+        # @param [String] app
+        #   Required. The name of the SaaS application (e.g., `ChatGPT`, `Gemini`).
+        # @param [String] filter
+        #   Optional. The filter expression to narrow down the SaaS profile reports to
+        #   return. Supported operators are: =, !=, <, <=, >, >=, :. Logical operators AND,
+        #   OR, and NOT are supported. Supported fields: * email * org_unit_id *
+        #   os_platform * first_navigation_time * last_navigation_time
+        # @param [String] order_by
+        #   Optional. The order by expression to sort the SaaS profile reports. Supported
+        #   fields: * email * os_platform * first_navigation_time * last_navigation_time
+        #   Default order is ascending. To specify descending order for a field, append "
+        #   desc".
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of reports to return. The service may return
+        #   fewer than this value. If unspecified, at most 100 reports will be returned.
+        #   The maximum value is 200; values above 200 will be coerced to 200.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `FindSaasUsageProfiles` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def find_customer_report_saas_usage_profiles(customer, app: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+customer}/reports:findSaasUsageProfiles', options)
+          command.response_representation = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageProfilesResponse::Representation
+          command.response_class = Google::Apis::ChromemanagementV1::GoogleChromeManagementV1FindSaasUsageProfilesResponse
+          command.params['customer'] = customer unless customer.nil?
+          command.query['app'] = app unless app.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Get telemetry device.
         # @param [String] name
         #   Required. Name of the `TelemetryDevice` to return.
