@@ -206,6 +206,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The edition of the cluster this backup was created from. Any
+        # restored cluster created from this backup will have the same edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # EncryptionConfig describes the encryption config of a cluster or a backup that
         # is encrypted with a CMEK (customer-managed encryption key).
         # Corresponds to the JSON property `encryptionConfig`
@@ -321,6 +327,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
@@ -689,6 +696,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Edition of the cluster. If left unspecified, the cluster behaves as `
+        # EDITION_ALLOYDB`.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # EncryptionConfig describes the encryption config of a cluster or a backup that
         # is encrypted with a CMEK (customer-managed encryption key).
         # Corresponds to the JSON property `encryptionConfig`
@@ -869,6 +882,7 @@ module Google
           @dataplex_config = args[:dataplex_config] if args.key?(:dataplex_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
