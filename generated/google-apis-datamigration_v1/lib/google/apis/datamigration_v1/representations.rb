@@ -2057,7 +2057,13 @@ module Google
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
+          property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
+      
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
+      
+          property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity::Representation
       
           property :username, as: 'username'
         end
@@ -2161,6 +2167,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dump_parallel_level, as: 'dumpParallelLevel'
+          property :load_parallel_level, as: 'loadParallelLevel'
         end
       end
       
