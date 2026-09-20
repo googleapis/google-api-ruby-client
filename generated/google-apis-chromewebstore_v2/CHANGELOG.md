@@ -1,5 +1,9 @@
 # Release history for google-apis-chromewebstore_v2
 
+### v0.5.0 (2026-09-20)
+
+* Regenerated from discovery document revision 20260916
+
 ### v0.4.0 (2026-06-14)
 
 * Regenerated from discovery document revision 20260601
