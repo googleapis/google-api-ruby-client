@@ -550,6 +550,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation_state, as: 'evaluationState'
           property :findings_count, as: 'findingsCount'
+          property :org_policy_finding_count, :numeric_string => true, as: 'orgPolicyFindingCount'
+          property :resource_finding_count, :numeric_string => true, as: 'resourceFindingCount'
         end
       end
       
@@ -617,7 +619,9 @@ module Google
           property :display_name, as: 'displayName'
           property :is_fake_control, as: 'isFakeControl'
           property :name, as: 'name'
+          property :org_policy_finding_count, :numeric_string => true, as: 'orgPolicyFindingCount'
           property :overall_evaluation_state, as: 'overallEvaluationState'
+          property :resource_finding_count, :numeric_string => true, as: 'resourceFindingCount'
           collection :similar_controls, as: 'similarControls', class: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1SimilarControls, decorator: Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1SimilarControls::Representation
       
           property :total_findings_count, as: 'totalFindingsCount'
