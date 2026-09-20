@@ -866,14 +866,14 @@ module Google
         #   Required. Parent Resource to list workloads from. Must be of the form `
         #   organizations/`org_id`/locations/`location``.
         # @param [String] filter
-        #   A custom filter for filtering by properties of a workload. At this time, only
-        #   filtering by labels is supported.
+        #   Optional. A custom filter for filtering by properties of a workload. At this
+        #   time, only filtering by labels is supported.
         # @param [Fixnum] page_size
-        #   Page size.
+        #   Optional. Page size.
         # @param [String] page_token
-        #   Page token returned from previous request. Page token contains context from
-        #   previous request. Page token needs to be passed in the second and following
-        #   requests.
+        #   Optional. Page token returned from previous request. Page token contains
+        #   context from previous request. Page token needs to be passed in the second and
+        #   following requests.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
