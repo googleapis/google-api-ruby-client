@@ -4932,8 +4932,8 @@ module Google
         # run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the
         # accepted annotations will be different depending on the resource type. * `
         # autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/
-        # minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision . *
-        # `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.
+        # minScale`: Revision. * `run.googleapis.com/base-images`: Service, Revision. * `
+        # run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.
         # googleapis.com/binary-authorization`: Service, Job, Execution. * `run.
         # googleapis.com/build-base-image`: Service. * `run.googleapis.com/build-enable-
         # automatic-updates`: Service. * `run.googleapis.com/build-environment-variables`
@@ -4944,7 +4944,7 @@ module Google
         # source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`:
         # Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.
         # com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/
-        # container-dependencies`: Revision, Instance . * `run.googleapis.com/cpu-
+        # container-dependencies`: Revision, Instance. * `run.googleapis.com/cpu-
         # throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `
         # run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/
         # description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
@@ -4957,7 +4957,7 @@ module Google
         # stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.
         # googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`:
         # Service. * `run.googleapis.com/network-interfaces`: Revision, Execution,
-        # Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. `
+        # Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `
         # run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
         # Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `
         # run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-
