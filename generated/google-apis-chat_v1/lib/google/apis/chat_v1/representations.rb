@@ -1153,6 +1153,8 @@ module Google
       
           property :join_space_setting, as: 'joinSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
       
+          property :view_space_membership_setting, as: 'viewSpaceMembershipSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
         end
       end
       
@@ -2637,6 +2639,8 @@ module Google
           property :toggle_history, as: 'toggleHistory', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
       
           property :use_at_mention_all, as: 'useAtMentionAll', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :view_space_membership, as: 'viewSpaceMembership', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
       
         end
       end

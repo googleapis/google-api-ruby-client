@@ -55,6 +55,11 @@ module Google
         # @return [Google::Apis::ChatV1::AccessPermissionSetting]
         attr_accessor :join_space_setting
       
+        # An access permission setting.
+        # Corresponds to the JSON property `viewSpaceMembershipSetting`
+        # @return [Google::Apis::ChatV1::AccessPermissionSetting]
+        attr_accessor :view_space_membership_setting
+      
         def initialize(**args)
            update!(**args)
         end
@@ -63,6 +68,7 @@ module Google
         def update!(**args)
           @discover_space_setting = args[:discover_space_setting] if args.key?(:discover_space_setting)
           @join_space_setting = args[:join_space_setting] if args.key?(:join_space_setting)
+          @view_space_membership_setting = args[:view_space_membership_setting] if args.key?(:view_space_membership_setting)
         end
       end
       
@@ -1406,10 +1412,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -5257,10 +5264,11 @@ module Google
         # @return [Google::Apis::ChatV1::Group]
         attr_accessor :group_member
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `member`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
@@ -5606,10 +5614,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `privateMessageViewer`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :private_message_viewer
@@ -5622,10 +5631,11 @@ module Google
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
@@ -6033,6 +6043,11 @@ module Google
         # @return [Google::Apis::ChatV1::PermissionSetting]
         attr_accessor :use_at_mention_all
       
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `viewSpaceMembership`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :view_space_membership
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6047,6 +6062,7 @@ module Google
           @reply_messages = args[:reply_messages] if args.key?(:reply_messages)
           @toggle_history = args[:toggle_history] if args.key?(:toggle_history)
           @use_at_mention_all = args[:use_at_mention_all] if args.key?(:use_at_mention_all)
+          @view_space_membership = args[:view_space_membership] if args.key?(:view_space_membership)
         end
       end
       
@@ -6250,10 +6266,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -6831,10 +6848,11 @@ module Google
       class SlashCommandMetadata
         include Google::Apis::Core::Hashable
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `bot`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :bot
@@ -7704,14 +7722,23 @@ module Google
         end
       end
       
-      # A user in Google Chat. When returned as an output from a request, if your Chat
-      # app [authenticates as a user](https://developers.google.com/workspace/chat/
-      # authenticate-authorize-chat-user), the output for a `User` resource only
-      # populates the user's `name` and `type`.
+      # If your Chat app [authenticates as a user](https://developers.google.com/
+      # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+      # resource (such as in the Messages and Memberships APIs) only populates the `
+      # name` and `type` fields for both internal and external users, unless they are
+      # members of the space or have prior affinity with the calling user.
       class User
         include Google::Apis::Core::Hashable
       
-        # Output only. The user's display name.
+        # Output only. The user's display name. Populated for both app authentication
+        # and user authentication. This field is always populated for requests made with
+        # [app authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-app). When calling the Messages and Memberships APIs with [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user), this field is populated for both internal and external
+        # users for the `sender` of a message, users within `annotations` (such as user
+        # mentions), and within `Membership` resources, provided the user is a member of
+        # the space or has prior affinity with the calling user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7721,7 +7748,9 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
-        # Output only. When `true`, the user is deleted or their profile is not visible.
+        # Output only. When `true`, the user is deleted or their profile is not visible,
+        # such as when a user is mentioned in a space without being a member and without
+        # prior affinity with the calling user.
         # Corresponds to the JSON property `isAnonymous`
         # @return [Boolean]
         attr_accessor :is_anonymous
@@ -7771,10 +7800,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
