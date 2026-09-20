@@ -300,6 +300,8 @@ module Google
       
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_agent, as: 'serviceAgent'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
