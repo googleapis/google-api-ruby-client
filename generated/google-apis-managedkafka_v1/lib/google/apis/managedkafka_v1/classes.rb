@@ -417,8 +417,8 @@ module Google
         # @return [Google::Apis::ManagedkafkaV1::GcpConfig]
         attr_accessor :gcp_config
       
-        # Output only. Only populated when FULL view is requested. The Kafka version of
-        # the cluster.
+        # Optional. The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.
+        # x`). If not specified during cluster creation, defaults to `3.7.x`.
         # Corresponds to the JSON property `kafkaVersion`
         # @return [String]
         attr_accessor :kafka_version
