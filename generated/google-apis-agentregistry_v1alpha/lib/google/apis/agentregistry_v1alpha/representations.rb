@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchAvailableBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +113,48 @@ module Google
       end
       
       class GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1SetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1TestIamPermissionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleIamV1TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -420,6 +468,16 @@ module Google
         end
       end
       
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
+        end
+      end
+      
       class FetchAvailableBindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -445,6 +503,68 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :generation, :numeric_string => true, as: 'generation'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleIamV1AuditConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::AgentregistryV1alpha::GoogleIamV1AuditLogConfig, decorator: Google::Apis::AgentregistryV1alpha::GoogleIamV1AuditLogConfig::Representation
+      
+          property :service, as: 'service'
+        end
+      end
+      
+      class GoogleIamV1AuditLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
+        end
+      end
+      
+      class GoogleIamV1Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::AgentregistryV1alpha::Expr, decorator: Google::Apis::AgentregistryV1alpha::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class GoogleIamV1Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::AgentregistryV1alpha::GoogleIamV1AuditConfig, decorator: Google::Apis::AgentregistryV1alpha::GoogleIamV1AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::AgentregistryV1alpha::GoogleIamV1Binding, decorator: Google::Apis::AgentregistryV1alpha::GoogleIamV1Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleIamV1SetIamPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AgentregistryV1alpha::GoogleIamV1Policy, decorator: Google::Apis::AgentregistryV1alpha::GoogleIamV1Policy::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class GoogleIamV1TestIamPermissionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
+        end
+      end
+      
+      class GoogleIamV1TestIamPermissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :permissions, as: 'permissions'
         end
       end
       
