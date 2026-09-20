@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV2PipelineRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,12 +281,6 @@ module Google
       end
       
       class PipelineResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PipelineRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -777,6 +777,54 @@ module Google
         end
       end
       
+      class GoogleDevtoolsCloudbuildV2PipelineRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          collection :child_references, as: 'childReferences', class: Google::Apis::CloudbuildV2::ChildStatusReference, decorator: Google::Apis::CloudbuildV2::ChildStatusReference::Representation
+      
+          property :completion_time, as: 'completionTime'
+          collection :conditions, as: 'conditions', class: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition, decorator: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition::Representation
+      
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :finally_start_time, as: 'finallyStartTime'
+          hash :gcb_params, as: 'gcbParams'
+          property :name, as: 'name'
+          collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
+      
+          property :pipeline_ref, as: 'pipelineRef', class: Google::Apis::CloudbuildV2::PipelineRef, decorator: Google::Apis::CloudbuildV2::PipelineRef::Representation
+      
+          property :pipeline_run_status, as: 'pipelineRunStatus'
+          property :pipeline_spec, as: 'pipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
+      
+          property :pipeline_spec_yaml, as: 'pipelineSpecYaml'
+          property :provenance, as: 'provenance', class: Google::Apis::CloudbuildV2::Provenance, decorator: Google::Apis::CloudbuildV2::Provenance::Representation
+      
+          property :record, as: 'record'
+          property :resolved_pipeline_spec, as: 'resolvedPipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
+      
+          collection :results, as: 'results', class: Google::Apis::CloudbuildV2::PipelineRunResult, decorator: Google::Apis::CloudbuildV2::PipelineRunResult::Representation
+      
+          property :security, as: 'security', class: Google::Apis::CloudbuildV2::Security, decorator: Google::Apis::CloudbuildV2::Security::Representation
+      
+          property :service_account, as: 'serviceAccount'
+          collection :skipped_tasks, as: 'skippedTasks', class: Google::Apis::CloudbuildV2::SkippedTask, decorator: Google::Apis::CloudbuildV2::SkippedTask::Representation
+      
+          property :start_time, as: 'startTime'
+          property :timeouts, as: 'timeouts', class: Google::Apis::CloudbuildV2::TimeoutFields, decorator: Google::Apis::CloudbuildV2::TimeoutFields::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+          property :worker, as: 'worker', class: Google::Apis::CloudbuildV2::Worker, decorator: Google::Apis::CloudbuildV2::Worker::Representation
+      
+          property :worker_pool, as: 'workerPool'
+          property :workflow, as: 'workflow'
+          collection :workspaces, as: 'workspaces', class: Google::Apis::CloudbuildV2::WorkspaceBinding, decorator: Google::Apis::CloudbuildV2::WorkspaceBinding::Representation
+      
+        end
+      end
+      
       class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -922,54 +970,6 @@ module Google
           property :name, as: 'name'
           property :type, as: 'type'
           property :value, as: 'value', class: Google::Apis::CloudbuildV2::ResultValue, decorator: Google::Apis::CloudbuildV2::ResultValue::Representation
-      
-        end
-      end
-      
-      class PipelineRun
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          collection :child_references, as: 'childReferences', class: Google::Apis::CloudbuildV2::ChildStatusReference, decorator: Google::Apis::CloudbuildV2::ChildStatusReference::Representation
-      
-          property :completion_time, as: 'completionTime'
-          collection :conditions, as: 'conditions', class: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition, decorator: Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition::Representation
-      
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          property :finally_start_time, as: 'finallyStartTime'
-          hash :gcb_params, as: 'gcbParams'
-          property :name, as: 'name'
-          collection :params, as: 'params', class: Google::Apis::CloudbuildV2::Param, decorator: Google::Apis::CloudbuildV2::Param::Representation
-      
-          property :pipeline_ref, as: 'pipelineRef', class: Google::Apis::CloudbuildV2::PipelineRef, decorator: Google::Apis::CloudbuildV2::PipelineRef::Representation
-      
-          property :pipeline_run_status, as: 'pipelineRunStatus'
-          property :pipeline_spec, as: 'pipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
-      
-          property :pipeline_spec_yaml, as: 'pipelineSpecYaml'
-          property :provenance, as: 'provenance', class: Google::Apis::CloudbuildV2::Provenance, decorator: Google::Apis::CloudbuildV2::Provenance::Representation
-      
-          property :record, as: 'record'
-          property :resolved_pipeline_spec, as: 'resolvedPipelineSpec', class: Google::Apis::CloudbuildV2::PipelineSpec, decorator: Google::Apis::CloudbuildV2::PipelineSpec::Representation
-      
-          collection :results, as: 'results', class: Google::Apis::CloudbuildV2::PipelineRunResult, decorator: Google::Apis::CloudbuildV2::PipelineRunResult::Representation
-      
-          property :security, as: 'security', class: Google::Apis::CloudbuildV2::Security, decorator: Google::Apis::CloudbuildV2::Security::Representation
-      
-          property :service_account, as: 'serviceAccount'
-          collection :skipped_tasks, as: 'skippedTasks', class: Google::Apis::CloudbuildV2::SkippedTask, decorator: Google::Apis::CloudbuildV2::SkippedTask::Representation
-      
-          property :start_time, as: 'startTime'
-          property :timeouts, as: 'timeouts', class: Google::Apis::CloudbuildV2::TimeoutFields, decorator: Google::Apis::CloudbuildV2::TimeoutFields::Representation
-      
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-          property :worker, as: 'worker', class: Google::Apis::CloudbuildV2::Worker, decorator: Google::Apis::CloudbuildV2::Worker::Representation
-      
-          property :worker_pool, as: 'workerPool'
-          property :workflow, as: 'workflow'
-          collection :workspaces, as: 'workspaces', class: Google::Apis::CloudbuildV2::WorkspaceBinding, decorator: Google::Apis::CloudbuildV2::WorkspaceBinding::Representation
       
         end
       end
