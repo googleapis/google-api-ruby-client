@@ -509,8 +509,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. The default API Gateway host name of the form ``gateway_id`-`hash`
-        # .`region_code`.gateway.dev`.
+        # Output only. The default hostname that serves traffic for this Gateway.
         # Corresponds to the JSON property `defaultHostname`
         # @return [String]
         attr_accessor :default_hostname
