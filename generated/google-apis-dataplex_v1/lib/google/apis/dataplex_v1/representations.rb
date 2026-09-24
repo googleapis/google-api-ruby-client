@@ -796,6 +796,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3238,6 +3250,8 @@ module Google
           property :catalog_publishing_status, as: 'catalogPublishingStatus', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanCatalogPublishingStatus::Representation
       
           property :create_time, as: 'createTime'
+          property :data_documentation, as: 'dataDocumentation', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResult::Representation
+      
           property :data_profile, as: 'dataProfile', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult::Representation
       
           property :data_profile_configs, as: 'dataProfileConfigs', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs::Representation
@@ -3261,6 +3275,28 @@ module Google
         end
       end
       
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :billable_token_usage, as: 'billableTokenUsage', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cached_content_token_count, :numeric_string => true, as: 'cachedContentTokenCount'
+          property :candidates_token_count, :numeric_string => true, as: 'candidatesTokenCount'
+          property :input_token_count, :numeric_string => true, as: 'inputTokenCount'
+          property :output_token_count, :numeric_string => true, as: 'outputTokenCount'
+          property :prompt_token_count, :numeric_string => true, as: 'promptTokenCount'
+          property :thoughts_token_count, :numeric_string => true, as: 'thoughtsTokenCount'
+          property :tool_use_prompt_token_count, :numeric_string => true, as: 'toolUsePromptTokenCount'
+          property :total_token_count, :numeric_string => true, as: 'totalTokenCount'
+        end
+      end
+      
       class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3273,6 +3309,7 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataProfileResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :dcu_consumed, as: 'dcuConsumed'
           property :row_count, :numeric_string => true, as: 'rowCount'
         end
       end
