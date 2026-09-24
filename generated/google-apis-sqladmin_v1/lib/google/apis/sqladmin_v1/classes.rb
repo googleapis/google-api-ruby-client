@@ -2036,6 +2036,14 @@ module Google
       class DiskEncryptionConfiguration
         include Google::Apis::Core::Hashable
       
+        # Optional. Whether to enforce CMEK log encryption at source. When enforced,
+        # transaction logs are encrypted prior to being uploaded to Cloud Storage. If
+        # not enforced, then CMEK logs are encrypted by the Cloud Storage service.
+        # Corresponds to the JSON property `cmekSourceLogEncryptionEnforced`
+        # @return [Boolean]
+        attr_accessor :cmek_source_log_encryption_enforced
+        alias_method :cmek_source_log_encryption_enforced?, :cmek_source_log_encryption_enforced
+      
         # Optional. If true, enables Confidential Mode for the instance's Hyperdisk
         # Balanced volumes. Only supported for zonal C4A instances currently.
         # Corresponds to the JSON property `confidentialMode`
@@ -2048,7 +2056,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Resource name of KMS key for disk encryption
+        # Resource name of KMS key for disk encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -2059,6 +2067,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cmek_source_log_encryption_enforced = args[:cmek_source_log_encryption_enforced] if args.key?(:cmek_source_log_encryption_enforced)
           @confidential_mode = args[:confidential_mode] if args.key?(:confidential_mode)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
@@ -4448,10 +4457,37 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The context for the `StartWorkloadCapture` operation, which contains details
+        # to start recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `startWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1::StartWorkloadCaptureContext]
+        attr_accessor :start_workload_capture_context
+      
+        # The context for the `StartWorkloadReplay` operation, which contains details
+        # about starting the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+        # SQL queries are executed).
+        # Corresponds to the JSON property `startWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1::StartWorkloadReplayContext]
+        attr_accessor :start_workload_replay_context
+      
         # The status of an operation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
+      
+        # The context for the `StopWorkloadCapture` operation, which contains details to
+        # stop recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `stopWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1::StopWorkloadCaptureContext]
+        attr_accessor :stop_workload_capture_context
+      
+        # The context for the `StopWorkloadReplay` operation, which contains details
+        # about stopping the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance.
+        # Corresponds to the JSON property `stopWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1::StopWorkloadReplayContext]
+        attr_accessor :stop_workload_replay_context
       
         # The sub operation type based on the operation type.
         # Corresponds to the JSON property `subOperationType`
@@ -4498,7 +4534,11 @@ module Google
           @pre_check_major_version_upgrade_context = args[:pre_check_major_version_upgrade_context] if args.key?(:pre_check_major_version_upgrade_context)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @start_workload_capture_context = args[:start_workload_capture_context] if args.key?(:start_workload_capture_context)
+          @start_workload_replay_context = args[:start_workload_replay_context] if args.key?(:start_workload_replay_context)
           @status = args[:status] if args.key?(:status)
+          @stop_workload_capture_context = args[:stop_workload_capture_context] if args.key?(:stop_workload_capture_context)
+          @stop_workload_replay_context = args[:stop_workload_replay_context] if args.key?(:stop_workload_replay_context)
           @sub_operation_type = args[:sub_operation_type] if args.key?(:sub_operation_type)
           @target_id = args[:target_id] if args.key?(:target_id)
           @target_link = args[:target_link] if args.key?(:target_link)
@@ -6168,7 +6208,7 @@ module Google
         end
       end
       
-      # Execute SQL statements response.
+      # 
       class SqlInstancesExecuteSqlResponse
         include Google::Apis::Core::Hashable
       
@@ -6700,6 +6740,91 @@ module Google
         end
       end
       
+      # Request to start executing a captured workload on a replay instance (the Cloud
+      # SQL instance where the recorded SQL queries are executed).
+      class SqlWorkloadCapturesStartReplayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StartWorkloadReplay` operation, which contains details
+        # about starting the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+        # SQL queries are executed).
+        # Corresponds to the JSON property `startWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1::StartWorkloadReplayContext]
+        attr_accessor :start_workload_replay_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_workload_replay_context = args[:start_workload_replay_context] if args.key?(:start_workload_replay_context)
+        end
+      end
+      
+      # Request to start recording traffic from the primary instance (captured
+      # workload).
+      class SqlWorkloadCapturesStartRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StartWorkloadCapture` operation, which contains details
+        # to start recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `startWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1::StartWorkloadCaptureContext]
+        attr_accessor :start_workload_capture_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_workload_capture_context = args[:start_workload_capture_context] if args.key?(:start_workload_capture_context)
+        end
+      end
+      
+      # Request to stop executing a captured workload on a replay instance.
+      class SqlWorkloadCapturesStopReplayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StopWorkloadReplay` operation, which contains details
+        # about stopping the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance.
+        # Corresponds to the JSON property `stopWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1::StopWorkloadReplayContext]
+        attr_accessor :stop_workload_replay_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_workload_replay_context = args[:stop_workload_replay_context] if args.key?(:stop_workload_replay_context)
+        end
+      end
+      
+      # Request to stop recording traffic from the primary instance.
+      class SqlWorkloadCapturesStopRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StopWorkloadCapture` operation, which contains details to
+        # stop recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `stopWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1::StopWorkloadCaptureContext]
+        attr_accessor :stop_workload_capture_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_workload_capture_context = args[:stop_workload_capture_context] if args.key?(:stop_workload_capture_context)
+        end
+      end
+      
       # SslCerts Resource
       class SslCert
         include Google::Apis::Core::Hashable
@@ -6904,6 +7029,79 @@ module Google
         end
       end
       
+      # The context for the `StartWorkloadCapture` operation, which contains details
+      # to start recording the workload (SQL queries) on a Cloud SQL instance.
+      class StartWorkloadCaptureContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the captured workload is simultaneously executed on a
+        # separate, ephemeral Cloud SQL instance. This "live replay" instance is
+        # automatically provisioned and is cloned from the source instance. If false (
+        # the default), the workload is only stored and no live replay occurs. It can be
+        # replayed later using a separate `StartWorkloadReplayRequest`. Note: The
+        # workload capture runs continuously until an explicit `
+        # StopWorkloadCaptureRequest` is issued.
+        # Corresponds to the JSON property `enableLiveReplay`
+        # @return [Boolean]
+        attr_accessor :enable_live_replay
+        alias_method :enable_live_replay?, :enable_live_replay
+      
+        # Optional. Required if `enable_live_replay` is true. The name of the Cloud SQL
+        # instance where the captured workload (SQL queries) is being executed,
+        # excluding the project ID (for example, `my-replay-instance`). The instance
+        # name must start with a lowercase letter and contain only lowercase letters,
+        # numbers, and hyphens. The combined length of `project-ID:instance-name` must
+        # be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_live_replay = args[:enable_live_replay] if args.key?(:enable_live_replay)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+        end
+      end
+      
+      # The context for the `StartWorkloadReplay` operation, which contains details
+      # about starting the execution of a captured workload (recorded read and write
+      # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+      # SQL queries are executed).
+      class StartWorkloadReplayContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Cloud SQL instance where the captured workload (SQL
+        # queries) is being executed, excluding the project ID (for example, `my-replay-
+        # instance`). The instance name must start with a lowercase letter and contain
+        # only lowercase letters, numbers, and hyphens. The combined length of `project-
+        # ID:instance-name` must be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The ID of the workload to start executing on the replay instance.
+        # Each workload capture generates a unique ID in the format `workload-` (for
+        # example, `workload-1786046400`). Use this ID to start executing the recorded
+        # SQL queries.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -6940,6 +7138,64 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The context for the `StopWorkloadCapture` operation, which contains details to
+      # stop recording the workload (SQL queries) on a Cloud SQL instance.
+      class StopWorkloadCaptureContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, immediately aborts the concurrent live replay and discards
+        # any un-replayed traffic alongside stopping the capture. If false (the default),
+        # the capture stops recording new traffic, but the live replay will continue
+        # executing until the entire backlog of captured traffic has been replayed.
+        # Corresponds to the JSON property `abortLiveReplay`
+        # @return [Boolean]
+        attr_accessor :abort_live_replay
+        alias_method :abort_live_replay?, :abort_live_replay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort_live_replay = args[:abort_live_replay] if args.key?(:abort_live_replay)
+        end
+      end
+      
+      # The context for the `StopWorkloadReplay` operation, which contains details
+      # about stopping the execution of a captured workload (recorded read and write
+      # SQL queries) on a replay instance.
+      class StopWorkloadReplayContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Cloud SQL instance where the captured workload (SQL
+        # queries) is being executed, excluding the project ID (for example, `my-replay-
+        # instance`). The instance name must start with a lowercase letter and contain
+        # only lowercase letters, numbers, and hyphens. The combined length of `project-
+        # ID:instance-name` must be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The ID of the workload to stop executing on the replay instance.
+        # Each workload capture generates a unique ID in the format `workload-` (for
+        # example, `workload-1786046400`). Use this ID to stop executing the recorded
+        # SQL queries.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
         end
       end
       
@@ -7335,6 +7591,86 @@ module Google
         def update!(**args)
           @null_value = args[:null_value] if args.key?(:null_value)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Captured workload for an instance.
+      class WorkloadCapture
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of the workload capture.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The name of the replay instance, if live replay was enabled.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The retention period in days for the captured workload.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Output only. The name of the source instance.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Output only. The start time of the workload capture.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the workload capture.
+        # Corresponds to the JSON property `workloadCaptureState`
+        # @return [String]
+        attr_accessor :workload_capture_state
+      
+        # Output only. The ID of the captured workload.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @workload_capture_state = args[:workload_capture_state] if args.key?(:workload_capture_state)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
+        end
+      end
+      
+      # 
+      class WorkloadCapturesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # This is always `sql#workloadCapturesList`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of captured workloads for the instance.
+        # Corresponds to the JSON property `workloadCaptures`
+        # @return [Array<Google::Apis::SqladminV1::WorkloadCapture>]
+        attr_accessor :workload_captures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @workload_captures = args[:workload_captures] if args.key?(:workload_captures)
         end
       end
     end
