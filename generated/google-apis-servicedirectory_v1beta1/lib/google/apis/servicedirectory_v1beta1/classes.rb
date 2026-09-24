@@ -173,7 +173,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Immutable. The resource name for the endpoint in the format `projects/*/
+        # Identifier. The resource name for the endpoint in the format `projects/*/
         # locations/*/namespaces/*/services/*/endpoints/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -488,7 +488,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Immutable. The resource name for the namespace in the format `projects/*/
+        # Identifier. The resource name for the namespace in the format `projects/*/
         # locations/*/namespaces/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -709,7 +709,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
-        # Immutable. The resource name for the service in the format `projects/*/
+        # Identifier. The resource name for the service in the format `projects/*/
         # locations/*/namespaces/*/services/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
