@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExpirationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -655,6 +661,13 @@ module Google
         end
       end
       
+      class EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class ExpirationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -963,6 +976,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :documentation, as: 'documentation'
+          property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::AnalyticshubV1::EncryptionConfig, decorator: Google::Apis::AnalyticshubV1::EncryptionConfig::Representation
+      
           property :name, as: 'name'
           property :primary_contact, as: 'primaryContact'
           property :proposer, as: 'proposer'
