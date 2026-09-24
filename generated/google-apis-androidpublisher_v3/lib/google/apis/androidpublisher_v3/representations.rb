@@ -5946,6 +5946,7 @@ module Google
       class UpdateAppStoreHostedAppResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_id, as: 'updateId'
         end
       end
       
