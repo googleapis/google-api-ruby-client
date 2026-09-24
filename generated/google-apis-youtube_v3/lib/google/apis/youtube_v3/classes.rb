@@ -177,18 +177,6 @@ module Google
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsComment]
         attr_accessor :comment
       
-        # Information about a video that was marked as a favorite video. Deprecated:
-        # This resource is no longer returned.
-        # Corresponds to the JSON property `favorite`
-        # @return [Google::Apis::YoutubeV3::ActivityContentDetailsFavorite]
-        attr_accessor :favorite
-      
-        # Information about a resource that received a positive (like) rating.
-        # Deprecated: This resource is no longer returned.
-        # Corresponds to the JSON property `like`
-        # @return [Google::Apis::YoutubeV3::ActivityContentDetailsLike]
-        attr_accessor :like
-      
         # Information about a new playlist item.
         # Corresponds to the JSON property `playlistItem`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsPlaylistItem]
@@ -209,8 +197,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSocial]
         attr_accessor :social
       
-        # Information about a channel that a user subscribed to. Deprecated: This
-        # resource is no longer returned.
+        # Information about a channel that a user subscribed to.
         # Corresponds to the JSON property `subscription`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsSubscription]
         attr_accessor :subscription
@@ -229,8 +216,6 @@ module Google
           @bulletin = args[:bulletin] if args.key?(:bulletin)
           @channel_item = args[:channel_item] if args.key?(:channel_item)
           @comment = args[:comment] if args.key?(:comment)
-          @favorite = args[:favorite] if args.key?(:favorite)
-          @like = args[:like] if args.key?(:like)
           @playlist_item = args[:playlist_item] if args.key?(:playlist_item)
           @promoted_item = args[:promoted_item] if args.key?(:promoted_item)
           @recommendation = args[:recommendation] if args.key?(:recommendation)
@@ -280,46 +265,6 @@ module Google
       
       # Information about a resource that received a comment.
       class ActivityContentDetailsComment
-        include Google::Apis::Core::Hashable
-      
-        # A resource id is a generic reference that points to another YouTube resource.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::YoutubeV3::ResourceId]
-        attr_accessor :resource_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # Information about a video that was marked as a favorite video. Deprecated:
-      # This resource is no longer returned.
-      class ActivityContentDetailsFavorite
-        include Google::Apis::Core::Hashable
-      
-        # A resource id is a generic reference that points to another YouTube resource.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::YoutubeV3::ResourceId]
-        attr_accessor :resource_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # Information about a resource that received a positive (like) rating.
-      # Deprecated: This resource is no longer returned.
-      class ActivityContentDetailsLike
         include Google::Apis::Core::Hashable
       
         # A resource id is a generic reference that points to another YouTube resource.
@@ -523,8 +468,7 @@ module Google
         end
       end
       
-      # Information about a channel that a user subscribed to. Deprecated: This
-      # resource is no longer returned.
+      # Information about a channel that a user subscribed to.
       class ActivityContentDetailsSubscription
         include Google::Apis::Core::Hashable
       
@@ -8102,7 +8046,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoStatistics]
         attr_accessor :statistics
       
-        # Basic details about a video category, such as its localized title. Next Id: 19
+        # Basic details about a video category, such as its localized title. Next Id: 20
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::VideoStatus]
         attr_accessor :status
@@ -9540,7 +9484,7 @@ module Google
         end
       end
       
-      # Basic details about a video category, such as its localized title. Next Id: 19
+      # Basic details about a video category, such as its localized title. Next Id: 20
       class VideoStatus
         include Google::Apis::Core::Hashable
       
