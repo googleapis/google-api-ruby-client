@@ -488,7 +488,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The git proxy configuration.
+        # Configuration for proxies. For legacy reasons, this message is named `
+        # GitProxyConfig`, but it includes settings for both Git and HTTP proxy.
         # Corresponds to the JSON property `gitProxyConfig`
         # @return [Google::Apis::DeveloperconnectV1::GitProxyConfig]
         attr_accessor :git_proxy_config
@@ -1388,7 +1389,8 @@ module Google
         end
       end
       
-      # The git proxy configuration.
+      # Configuration for proxies. For legacy reasons, this message is named `
+      # GitProxyConfig`, but it includes settings for both Git and HTTP proxy.
       class GitProxyConfig
         include Google::Apis::Core::Hashable
       
