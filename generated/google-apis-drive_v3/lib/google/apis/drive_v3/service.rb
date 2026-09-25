@@ -2130,8 +2130,10 @@ module Google
         
         # Creates a permission for a file or shared drive. For more information, see [
         # Share files, folders, and drives](https://developers.google.com/workspace/
-        # drive/api/guides/manage-sharing). **Warning:** Concurrent permissions
-        # operations on the same file aren't supported; only the last update is applied.
+        # drive/api/guides/manage-sharing). **Warning:** Concurrent permission
+        # modifications (such as update or delete) on the same file, folder, or shared
+        # drive aren't supported across any users or clients; only the last update is
+        # applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [Google::Apis::DriveV3::Permission] permission_object
@@ -2207,8 +2209,9 @@ module Google
         
         # Deletes a permission. For more information, see [Share files, folders, and
         # drives](https://developers.google.com/workspace/drive/api/guides/manage-
-        # sharing). **Warning:** Concurrent permissions operations on the same file aren'
-        # t supported; only the last update is applied.
+        # sharing). **Warning:** Concurrent permission modifications (such as update or
+        # delete) on the same file, folder, or shared drive aren't supported across any
+        # users or clients; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id
@@ -2370,8 +2373,9 @@ module Google
         
         # Updates a permission with patch semantics. For more information, see [Share
         # files, folders, and drives](https://developers.google.com/workspace/drive/api/
-        # guides/manage-sharing). **Warning:** Concurrent permissions operations on the
-        # same file aren't supported; only the last update is applied.
+        # guides/manage-sharing). **Warning:** Concurrent permission modifications (such
+        # as update or delete) on the same file, folder, or shared drive aren't
+        # supported across any users or clients; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id
