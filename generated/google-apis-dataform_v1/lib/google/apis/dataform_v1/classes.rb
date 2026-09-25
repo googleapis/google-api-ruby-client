@@ -1558,7 +1558,7 @@ module Google
       class FileSearchResult
         include Google::Apis::Core::Hashable
       
-        # File system path relative to the workspace root.
+        # File system path relative to the file tree root.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
