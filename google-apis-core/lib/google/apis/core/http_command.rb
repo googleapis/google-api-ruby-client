@@ -84,7 +84,7 @@ module Google
           self.url = url
           self.url = Addressable::Template.new(url) if url.is_a?(String)
           self.method = method
-          self.header =({})
+          self.header = {}
           self.body = body
           self.query = {}
           self.params = {}
@@ -425,7 +425,9 @@ module Google
             elsif body.nil?
               0
             end
-          @opencensus_span.put_message_event OpenCensus::Trace::SpanBuilder::SENT, 1, sent_size if sent_size
+          if sent_size
+            @opencensus_span.put_message_event OpenCensus::Trace::SpanBuilder::SENT, 1, sent_size
+          end
 
           formatter = OpenCensus::Trace.config.http_formatter
           if formatter.respond_to? :header_name
@@ -522,7 +524,7 @@ module Google
           template_pattern.scan(TEMPLATE_VAR_PATTERN) do |operator, var_list|
             var_list.split(',').each do |var|
               var_name = var.split(':').first.split('*').first
-              variables << { name: var_name, operator: operator, reserved: (operator == '+' || operator == '#') }
+              variables << { name: var_name, operator: operator, reserved: ['+', '#'].include?(operator) }
             end
           end
 
@@ -542,9 +544,9 @@ module Google
             if v[:reserved]
               value_segments = unescaped_value.split('/', -1)
               value_segments.each do |seg|
-                if seg == '.' || seg == '..'
+                if ['.', '..'].include?(seg)
                   raise Google::Apis::Error,
-                        "Value for #{var_name} must not contain segments that are exactly . or .."
+                        "Value for #{var_name} must not contain segments that are exactly '#{seg}'."
                 end
                 raise Google::Apis::Error, "Invalid path segment '' in parameter #{var_name}" if seg == ''
               end
@@ -553,9 +555,9 @@ module Google
                 raise Google::Apis::Error, "Simple parameter #{var_name} cannot contain slashes: #{value}"
               end
 
-              if unescaped_value == '.' || unescaped_value == '..'
+              if ['.', '..'].include?(unescaped_value)
                 raise Google::Apis::Error,
-                      "Invalid value #{unescaped_value} for #{var_name}"
+                      "Invalid value for #{var_name} '#{unescaped_value}'."
               end
             end
           end
