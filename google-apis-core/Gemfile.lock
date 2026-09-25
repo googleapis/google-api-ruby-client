@@ -7,7 +7,7 @@ PATH
       faraday-follow_redirects (~> 0.3)
       googleauth (~> 1.14)
       mini_mime (~> 1.1)
-      multi_json (~> 1.11)
+      multi_json (~> 1.21)
       representable (~> 3.3)
       retriable (>= 3.1, < 5.0)
 
