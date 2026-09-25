@@ -2257,7 +2257,8 @@ module Google
         end
         
         # Deletes a permission from a file or shared drive. **Warning:** Concurrent
-        # permissions operations on the same file are not supported; only the last
+        # permission modifications (such as update or delete) on the same file, folder,
+        # or shared drive aren't supported across any users or clients; only the last
         # update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
@@ -2380,7 +2381,8 @@ module Google
         end
         
         # Inserts a permission for a file or shared drive. **Warning:** Concurrent
-        # permissions operations on the same file are not supported; only the last
+        # permission modifications (such as update or delete) on the same file, folder,
+        # or shared drive aren't supported across any users or clients; only the last
         # update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
@@ -2500,9 +2502,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a permission using patch semantics. **Warning:** Concurrent
-        # permissions operations on the same file are not supported; only the last
-        # update is applied.
+        # Updates a permission using patch semantics. **Warning:** Concurrent permission
+        # modifications (such as update or delete) on the same file, folder, or shared
+        # drive aren't supported across any users or clients; only the last update is
+        # applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [String] permission_id
@@ -2560,8 +2563,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a permission. **Warning:** Concurrent permissions operations on the
-        # same file are not supported; only the last update is applied.
+        # Updates a permission. **Warning:** Concurrent permission modifications (such
+        # as update or delete) on the same file, folder, or shared drive aren't
+        # supported across any users or clients; only the last update is applied.
         # @param [String] file_id
         #   The ID for the file or shared drive.
         # @param [String] permission_id
