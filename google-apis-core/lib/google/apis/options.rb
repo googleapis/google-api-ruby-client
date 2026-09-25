@@ -41,8 +41,7 @@ module Google
       :quota_project,
       :query,
       :add_invocation_id_header,
-      :upload_chunk_size,
-      :add_idempotency_token_header
+      :upload_chunk_size
     )
 
     # General client options
@@ -105,8 +104,6 @@ module Google
       #   @return [Boolean] True if the header gccl-invocation-id need to be set
       # @!attribute [rw] upload_chunk_size
       #   @return [Integer] The chunk size of storage upload. The default value is 100 MB.
-      # @!attribute [rw] add_idempotency_token_header
-      #   @return [Boolean] Flag to control whether the X-Goog-Gcs-Idempotency-Token is sent.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -143,6 +140,5 @@ module Google
     RequestOptions.default.quota_project = nil
     RequestOptions.default.add_invocation_id_header = false
     RequestOptions.default.upload_chunk_size = 100 * 1024 * 1024 # 100 MB
-    RequestOptions.default.add_idempotency_token_header = false
   end
 end
