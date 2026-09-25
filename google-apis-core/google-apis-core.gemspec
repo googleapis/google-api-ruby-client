@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.files = Dir.glob('lib/**/*.rb') + Dir.glob('*.md') + ['.yardopts']
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 3.2'
+  gem.required_ruby_version = '>= 3.3'
   gem.add_runtime_dependency 'addressable', '~> 2.9'
   gem.add_runtime_dependency 'faraday', '~> 2.13'
   gem.add_runtime_dependency 'faraday-follow_redirects', '~> 0.3'
