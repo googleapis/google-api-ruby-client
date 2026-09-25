@@ -243,7 +243,7 @@ module Google
         # Optional. Human-readable non-unique display name of the CapabilityConfig. When
         # present it must be between 4 to 30 characters. Allowed characters are:
         # lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote,
-        # space, and exclamation point. Example: `My Capability Config`
+        # space, and exclamation point. Example: `My CapabilityConfig`
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
