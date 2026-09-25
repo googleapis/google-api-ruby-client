@@ -3075,8 +3075,10 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_url, as: 'avatarUrl'
           property :display_name, as: 'displayName'
           property :domain_id, as: 'domainId'
+          property :email, as: 'email'
           property :is_anonymous, as: 'isAnonymous'
           property :name, as: 'name'
           property :type, as: 'type'
