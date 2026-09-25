@@ -52,5 +52,5 @@ RSpec.describe Google::Apis::RequestOptions do
     expect(defaults.use_opencensus).to be true
     expect(defaults.quota_project).to be_nil
     expect(defaults.upload_chunk_size).to eq(100 * 1024 * 1024)
- end
+  end
 end
