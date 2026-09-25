@@ -8254,7 +8254,7 @@ module Google
         # Deletes a MetadataFeed.
         # @param [String] name
         #   Required. The resource name of the metadata feed, in the format projects/`
-        #   project_id_or_number`/locations/`location_id`/MetadataFeeds/`metadata_feed_id`.
+        #   project_id_or_number`/locations/`location_id`/metadataFeeds/`metadata_feed_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8285,7 +8285,7 @@ module Google
         # Gets a MetadataFeed.
         # @param [String] name
         #   Required. The resource name of the metadata feed, in the format projects/`
-        #   project_id_or_number`/locations/`location_id`/MetadataFeeds/`metadata_feed_id`.
+        #   project_id_or_number`/locations/`location_id`/metadataFeeds/`metadata_feed_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
