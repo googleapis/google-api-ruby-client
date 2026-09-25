@@ -1162,7 +1162,9 @@ module Google
         end
       end
       
-      # A message that represents loyalty program.
+      # A message that represents loyalty program. For more information on loyalty
+      # programs, see [Overview of loyalty programs](/merchant/api/guides/loyalty/
+      # loyalty-programs).
       class LoyaltyProgram
         include Google::Apis::Core::Hashable
       
