@@ -11500,12 +11500,21 @@ module Google
       class UpdateAppStoreHostedAppResponse
         include Google::Apis::Core::Hashable
       
+        # Unique identifier for the specific version of the hosted app submitted in this
+        # update. This identifier can be used to correlate publishing signals (such as
+        # those returned by ListHostedAppsPublishingSignals) with this specific app
+        # update.
+        # Corresponds to the JSON property `updateId`
+        # @return [String]
+        attr_accessor :update_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @update_id = args[:update_id] if args.key?(:update_id)
         end
       end
       
