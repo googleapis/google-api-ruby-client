@@ -14339,6 +14339,12 @@ module Google
         attr_accessor :auto_renew
         alias_method :auto_renew?, :auto_renew
       
+        # Output only. The name of the BillingAccountLicenseConfig from which this
+        # LicenseConfig is assigned, if this field is set.
+        # Corresponds to the JSON property `billingAccountLicenseConfig`
+        # @return [String]
+        attr_accessor :billing_account_license_config
+      
         # Output only. Indication of whether the subscription is terminated earlier than
         # the expiration date. This is usually terminated by pipeline once the
         # subscription gets terminated from subsv3.
@@ -14439,6 +14445,7 @@ module Google
         def update!(**args)
           @alert_policy_resource_config = args[:alert_policy_resource_config] if args.key?(:alert_policy_resource_config)
           @auto_renew = args[:auto_renew] if args.key?(:auto_renew)
+          @billing_account_license_config = args[:billing_account_license_config] if args.key?(:billing_account_license_config)
           @early_terminated = args[:early_terminated] if args.key?(:early_terminated)
           @early_termination_date = args[:early_termination_date] if args.key?(:early_termination_date)
           @end_date = args[:end_date] if args.key?(:end_date)
@@ -23357,7 +23364,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :selected_position
       
-        # End user selected CompleteQueryResponse.QuerySuggestion.suggestion.
+        # Optional. End user selected CompleteQueryResponse.QuerySuggestion.suggestion.
         # Corresponds to the JSON property `selectedSuggestion`
         # @return [String]
         attr_accessor :selected_suggestion
@@ -30841,8 +30848,8 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # The user's search query. See SearchRequest.query for definition. The value
-        # must be a UTF-8 encoded string with a length limit of 5,000 characters.
+        # Optional. The user's search query. See SearchRequest.query for definition. The
+        # value must be a UTF-8 encoded string with a length limit of 5,000 characters.
         # Otherwise, an `INVALID_ARGUMENT` error is returned. At least one of
         # search_query or PageInfo.page_category is required for `search` events. Other
         # event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error
@@ -35214,16 +35221,16 @@ module Google
       class GoogleCloudDiscoveryengineV1betaUserEvent
         include Google::Apis::Core::Hashable
       
-        # Extra user event features to include in the recommendation model. These
-        # attributes must NOT contain data that needs to be parsed or processed further,
-        # e.g. JSON or other encodings. If you provide custom attributes for ingested
-        # user events, also include them in the user events that you associate with
-        # prediction requests. Custom attribute formatting must be consistent between
-        # imported events and events provided with prediction requests. This lets the
-        # Discovery Engine API use those custom attributes when training models and
-        # serving predictions, which helps improve recommendation quality. This field
-        # needs to pass all below criteria, otherwise an `INVALID_ARGUMENT` error is
-        # returned: * The key must be a UTF-8 encoded string with a length limit of 5,
+        # Optional. Extra user event features to include in the recommendation model.
+        # These attributes must NOT contain data that needs to be parsed or processed
+        # further, e.g. JSON or other encodings. If you provide custom attributes for
+        # ingested user events, also include them in the user events that you associate
+        # with prediction requests. Custom attribute formatting must be consistent
+        # between imported events and events provided with prediction requests. This
+        # lets the Discovery Engine API use those custom attributes when training models
+        # and serving predictions, which helps improve recommendation quality. This
+        # field needs to pass all below criteria, otherwise an `INVALID_ARGUMENT` error
+        # is returned: * The key must be a UTF-8 encoded string with a length limit of 5,
         # 000 characters. * For text attributes, at most 400 values are allowed. Empty
         # values are not allowed. Each value must be a UTF-8 encoded string with a
         # length limit of 256 characters. * For number attributes, at most 400 values
