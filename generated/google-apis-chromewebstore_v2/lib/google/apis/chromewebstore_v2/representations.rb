@@ -22,12 +22,6 @@ module Google
   module Apis
     module ChromewebstoreV2
       
-      class AuthorInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CancelSubmissionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -52,12 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FetchItemReviewsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class FetchItemStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,12 +65,6 @@ module Google
       end
       
       class PublishItemResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Review
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,13 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-        end
-      end
-      
       class CancelSubmissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -155,15 +130,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crx_version, as: 'crxVersion'
           property :deploy_percentage, as: 'deployPercentage'
-        end
-      end
-      
-      class FetchItemReviewsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :reviews, as: 'reviews', class: Google::Apis::ChromewebstoreV2::Review, decorator: Google::Apis::ChromewebstoreV2::Review::Representation
-      
         end
       end
       
@@ -211,19 +177,6 @@ module Google
           property :state, as: 'state'
           property :warning_info, as: 'warningInfo', class: Google::Apis::ChromewebstoreV2::WarningsInfo, decorator: Google::Apis::ChromewebstoreV2::WarningsInfo::Representation
       
-        end
-      end
-      
-      class Review
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :author_info, as: 'authorInfo', class: Google::Apis::ChromewebstoreV2::AuthorInfo, decorator: Google::Apis::ChromewebstoreV2::AuthorInfo::Representation
-      
-          property :comment, as: 'comment'
-          property :create_time, as: 'createTime'
-          property :item, as: 'item'
-          property :name, as: 'name'
-          property :rating, as: 'rating'
         end
       end
       
