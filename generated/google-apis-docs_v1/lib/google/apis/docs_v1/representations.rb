@@ -22,6 +22,24 @@ module Google
   module Apis
     module DocsV1
       
+      class AcceptSuggestionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddCommentReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddDocumentTabRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +113,18 @@ module Google
       end
       
       class ColumnBreak
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentThread
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +214,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteContentRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +257,12 @@ module Google
       end
       
       class DeletePositionedObjectRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteSuggestionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,6 +437,18 @@ module Google
       end
       
       class InlineObjectPropertiesSuggestionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertCommentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -658,7 +718,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Post
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostAuthor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Range
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RejectSuggestionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -850,6 +928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuggestionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuggestionThread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Tab
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -976,6 +1066,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateCommentPostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateDocumentStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1042,6 +1138,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceptSuggestionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
+      class AddCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post, as: 'post', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
+      class AddCommentReplyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post, as: 'post', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+        end
+      end
+      
       class AddDocumentTabRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1099,8 +1220,11 @@ module Google
       class BatchUpdateDocumentResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_update_state, as: 'commentUpdateState'
           property :document_id, as: 'documentId'
           collection :replies, as: 'replies', class: Google::Apis::DocsV1::Response, decorator: Google::Apis::DocsV1::Response::Representation
+      
+          collection :suggestion_responses, as: 'suggestionResponses', class: Google::Apis::DocsV1::SuggestionResponse, decorator: Google::Apis::DocsV1::SuggestionResponse::Representation
       
           property :write_control, as: 'writeControl', class: Google::Apis::DocsV1::WriteControl, decorator: Google::Apis::DocsV1::WriteControl::Representation
       
@@ -1160,6 +1284,29 @@ module Google
       
           property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
       
+        end
+      end
+      
+      class CommentAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          collection :ranges, as: 'ranges', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
+      
+        end
+      end
+      
+      class CommentThread
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          property :comment_id, as: 'commentId'
+          property :head_post, as: 'headPost', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+          property :plain_text_quote, as: 'plainTextQuote'
+          collection :replies, as: 'replies', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -1299,6 +1446,22 @@ module Google
         end
       end
       
+      class DeleteCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post_id, as: 'postId'
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
+      class DeleteCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+        end
+      end
+      
       class DeleteContentRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1349,6 +1512,13 @@ module Google
         end
       end
       
+      class DeleteSuggestionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
       class DeleteTabRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1385,6 +1555,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body', class: Google::Apis::DocsV1::Body, decorator: Google::Apis::DocsV1::Body::Representation
       
+          collection :comments, as: 'comments', class: Google::Apis::DocsV1::CommentThread, decorator: Google::Apis::DocsV1::CommentThread::Representation
+      
+          property :comments_view_mode, as: 'commentsViewMode'
           property :document_id, as: 'documentId'
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
@@ -1408,6 +1581,8 @@ module Google
           hash :suggested_document_style_changes, as: 'suggestedDocumentStyleChanges', class: Google::Apis::DocsV1::SuggestedDocumentStyle, decorator: Google::Apis::DocsV1::SuggestedDocumentStyle::Representation
       
           hash :suggested_named_styles_changes, as: 'suggestedNamedStylesChanges', class: Google::Apis::DocsV1::SuggestedNamedStyles, decorator: Google::Apis::DocsV1::SuggestedNamedStyles::Representation
+      
+          collection :suggestions, as: 'suggestions', class: Google::Apis::DocsV1::SuggestionThread, decorator: Google::Apis::DocsV1::SuggestionThread::Representation
       
           property :suggestions_view_mode, as: 'suggestionsViewMode'
           collection :tabs, as: 'tabs', class: Google::Apis::DocsV1::Tab, decorator: Google::Apis::DocsV1::Tab::Representation
@@ -1489,6 +1664,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body', class: Google::Apis::DocsV1::Body, decorator: Google::Apis::DocsV1::Body::Representation
+      
+          hash :comment_anchors, as: 'commentAnchors', class: Google::Apis::DocsV1::CommentAnchor, decorator: Google::Apis::DocsV1::CommentAnchor::Representation
       
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
@@ -1740,6 +1917,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :embedded_object_suggestion_state, as: 'embeddedObjectSuggestionState', class: Google::Apis::DocsV1::EmbeddedObjectSuggestionState, decorator: Google::Apis::DocsV1::EmbeddedObjectSuggestionState::Representation
+      
+        end
+      end
+      
+      class InsertCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email_address, as: 'assigneeEmailAddress'
+          property :content, as: 'content'
+          property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
+      
+        end
+      end
+      
+      class InsertCommentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_thread, as: 'commentThread', class: Google::Apis::DocsV1::CommentThread, decorator: Google::Apis::DocsV1::CommentThread::Representation
       
         end
       end
@@ -2275,6 +2470,36 @@ module Google
         end
       end
       
+      class Post
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email, as: 'assigneeEmail'
+          property :author, as: 'author', class: Google::Apis::DocsV1::PostAuthor, decorator: Google::Apis::DocsV1::PostAuthor::Representation
+      
+          property :comment_action, as: 'commentAction'
+          property :content, as: 'content'
+          property :content_html, as: 'contentHtml'
+          property :create_time, as: 'createTime'
+          property :deleted, as: 'deleted'
+          property :from_copied_document, as: 'fromCopiedDocument'
+          property :from_document_comparison, as: 'fromDocumentComparison'
+          property :from_imported_document, as: 'fromImportedDocument'
+          property :post_id, as: 'postId'
+          property :suggestion_action, as: 'suggestionAction'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PostAuthor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anonymous, as: 'anonymous'
+          property :display_name, as: 'displayName'
+          property :me, as: 'me'
+          property :user, as: 'user'
+        end
+      end
+      
       class Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2282,6 +2507,13 @@ module Google
           property :segment_id, as: 'segmentId'
           property :start_index, as: 'startIndex'
           property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class RejectSuggestionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :suggestion_id, as: 'suggestionId'
         end
       end
       
@@ -2327,6 +2559,10 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accept_suggestion, as: 'acceptSuggestion', class: Google::Apis::DocsV1::AcceptSuggestionRequest, decorator: Google::Apis::DocsV1::AcceptSuggestionRequest::Representation
+      
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::DocsV1::AddCommentReplyRequest, decorator: Google::Apis::DocsV1::AddCommentReplyRequest::Representation
+      
           property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabRequest, decorator: Google::Apis::DocsV1::AddDocumentTabRequest::Representation
       
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
@@ -2338,6 +2574,10 @@ module Google
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeRequest, decorator: Google::Apis::DocsV1::CreateNamedRangeRequest::Representation
       
           property :create_paragraph_bullets, as: 'createParagraphBullets', class: Google::Apis::DocsV1::CreateParagraphBulletsRequest, decorator: Google::Apis::DocsV1::CreateParagraphBulletsRequest::Representation
+      
+          property :delete_comment, as: 'deleteComment', class: Google::Apis::DocsV1::DeleteCommentRequest, decorator: Google::Apis::DocsV1::DeleteCommentRequest::Representation
+      
+          property :delete_comment_reply, as: 'deleteCommentReply', class: Google::Apis::DocsV1::DeleteCommentReplyRequest, decorator: Google::Apis::DocsV1::DeleteCommentReplyRequest::Representation
       
           property :delete_content_range, as: 'deleteContentRange', class: Google::Apis::DocsV1::DeleteContentRangeRequest, decorator: Google::Apis::DocsV1::DeleteContentRangeRequest::Representation
       
@@ -2351,11 +2591,15 @@ module Google
       
           property :delete_positioned_object, as: 'deletePositionedObject', class: Google::Apis::DocsV1::DeletePositionedObjectRequest, decorator: Google::Apis::DocsV1::DeletePositionedObjectRequest::Representation
       
+          property :delete_suggestion, as: 'deleteSuggestion', class: Google::Apis::DocsV1::DeleteSuggestionRequest, decorator: Google::Apis::DocsV1::DeleteSuggestionRequest::Representation
+      
           property :delete_tab, as: 'deleteTab', class: Google::Apis::DocsV1::DeleteTabRequest, decorator: Google::Apis::DocsV1::DeleteTabRequest::Representation
       
           property :delete_table_column, as: 'deleteTableColumn', class: Google::Apis::DocsV1::DeleteTableColumnRequest, decorator: Google::Apis::DocsV1::DeleteTableColumnRequest::Representation
       
           property :delete_table_row, as: 'deleteTableRow', class: Google::Apis::DocsV1::DeleteTableRowRequest, decorator: Google::Apis::DocsV1::DeleteTableRowRequest::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::DocsV1::InsertCommentRequest, decorator: Google::Apis::DocsV1::InsertCommentRequest::Representation
       
           property :insert_date, as: 'insertDate', class: Google::Apis::DocsV1::InsertDateRequest, decorator: Google::Apis::DocsV1::InsertDateRequest::Representation
       
@@ -2381,6 +2625,8 @@ module Google
       
           property :pin_table_header_rows, as: 'pinTableHeaderRows', class: Google::Apis::DocsV1::PinTableHeaderRowsRequest, decorator: Google::Apis::DocsV1::PinTableHeaderRowsRequest::Representation
       
+          property :reject_suggestion, as: 'rejectSuggestion', class: Google::Apis::DocsV1::RejectSuggestionRequest, decorator: Google::Apis::DocsV1::RejectSuggestionRequest::Representation
+      
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::DocsV1::ReplaceAllTextRequest, decorator: Google::Apis::DocsV1::ReplaceAllTextRequest::Representation
       
           property :replace_image, as: 'replaceImage', class: Google::Apis::DocsV1::ReplaceImageRequest, decorator: Google::Apis::DocsV1::ReplaceImageRequest::Representation
@@ -2388,6 +2634,8 @@ module Google
           property :replace_named_range_content, as: 'replaceNamedRangeContent', class: Google::Apis::DocsV1::ReplaceNamedRangeContentRequest, decorator: Google::Apis::DocsV1::ReplaceNamedRangeContentRequest::Representation
       
           property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::DocsV1::UnmergeTableCellsRequest, decorator: Google::Apis::DocsV1::UnmergeTableCellsRequest::Representation
+      
+          property :update_comment_post, as: 'updateCommentPost', class: Google::Apis::DocsV1::UpdateCommentPostRequest, decorator: Google::Apis::DocsV1::UpdateCommentPostRequest::Representation
       
           property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
       
@@ -2413,6 +2661,8 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::DocsV1::AddCommentReplyResponse, decorator: Google::Apis::DocsV1::AddCommentReplyResponse::Representation
+      
           property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabResponse, decorator: Google::Apis::DocsV1::AddDocumentTabResponse::Representation
       
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
@@ -2422,6 +2672,8 @@ module Google
           property :create_header, as: 'createHeader', class: Google::Apis::DocsV1::CreateHeaderResponse, decorator: Google::Apis::DocsV1::CreateHeaderResponse::Representation
       
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeResponse, decorator: Google::Apis::DocsV1::CreateNamedRangeResponse::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::DocsV1::InsertCommentResponse, decorator: Google::Apis::DocsV1::InsertCommentResponse::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageResponse, decorator: Google::Apis::DocsV1::InsertInlineImageResponse::Representation
       
@@ -2701,6 +2953,31 @@ module Google
         end
       end
       
+      class SuggestionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accepted_suggestion_ids, as: 'acceptedSuggestionIds'
+          collection :created_suggestion_ids, as: 'createdSuggestionIds'
+          collection :deleted_suggestion_ids, as: 'deletedSuggestionIds'
+          collection :rejected_suggestion_ids, as: 'rejectedSuggestionIds'
+          collection :updated_summary_suggestion_ids, as: 'updatedSummarySuggestionIds'
+        end
+      end
+      
+      class SuggestionThread
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :head_post, as: 'headPost', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+          collection :replies, as: 'replies', class: Google::Apis::DocsV1::Post, decorator: Google::Apis::DocsV1::Post::Representation
+      
+          property :status, as: 'status'
+          property :suggestion_id, as: 'suggestionId'
+          property :summary_html, as: 'summaryHtml'
+          property :summary_text, as: 'summaryText'
+        end
+      end
+      
       class Tab
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2967,6 +3244,16 @@ module Google
         end
       end
       
+      class UpdateCommentPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :content, as: 'content'
+          property :post_id, as: 'postId'
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
       class UpdateDocumentStyleRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3079,6 +3366,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :required_revision_id, as: 'requiredRevisionId'
           property :target_revision_id, as: 'targetRevisionId'
+          property :write_mode, as: 'writeMode'
         end
       end
     end
