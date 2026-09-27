@@ -2169,6 +2169,11 @@ module Google
         # @return [String]
         attr_accessor :requested_verify_option
       
+        # Output only. Worker release resolved from the release channel.
+        # Corresponds to the JSON property `resolvedWorkerRelease`
+        # @return [String]
+        attr_accessor :resolved_worker_release
+      
         # A list of global environment variables, which are encrypted using a Cloud Key
         # Management Service crypto key. These values must be specified in the build's `
         # Secret`. These variables will be available to all build steps in this build.
@@ -2203,6 +2208,12 @@ module Google
         # @return [String]
         attr_accessor :worker_pool
       
+        # Optional. Option to specify which release or release channel (rapid|regular|
+        # stable) to use to run this build.
+        # Corresponds to the JSON property `workerRelease`
+        # @return [String]
+        attr_accessor :worker_release
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2221,11 +2232,13 @@ module Google
           @pool = args[:pool] if args.key?(:pool)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
+          @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)
           @volumes = args[:volumes] if args.key?(:volumes)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+          @worker_release = args[:worker_release] if args.key?(:worker_release)
         end
       end
       
@@ -2242,6 +2255,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. OUTPUT_ONLY. Worker release resolved from the release channel.
+        # Corresponds to the JSON property `resolvedWorkerRelease`
+        # @return [String]
+        attr_accessor :resolved_worker_release
+      
+        # Output only. OUTPUT_ONLY. The release or release channel used to run the Build.
+        # This is set to the same value as `PrivatePoolV1Config.WorkerConfig.
+        # worker_release` for the UI to easily access.
+        # Corresponds to the JSON property `workerRelease`
+        # @return [String]
+        attr_accessor :worker_release
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2249,6 +2274,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
+          @worker_release = args[:worker_release] if args.key?(:worker_release)
         end
       end
       
