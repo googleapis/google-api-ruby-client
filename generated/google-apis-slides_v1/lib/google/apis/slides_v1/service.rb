@@ -132,6 +132,11 @@ module Google
         # Gets the latest version of the specified presentation.
         # @param [String] presentation_id
         #   The ID of the presentation to retrieve.
+        # @param [String] comments_view_mode
+        #   The comments view mode to apply to the presentation. This allows viewing the
+        #   presentation with comments omitted or included. If one is not specified,
+        #   COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
+        #   google.com/workspace/preview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -149,11 +154,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_presentation(presentation_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_presentation(presentation_id, comments_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/presentations/{+presentationId}', options)
           command.response_representation = Google::Apis::SlidesV1::Presentation::Representation
           command.response_class = Google::Apis::SlidesV1::Presentation
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
+          command.query['commentsViewMode'] = comments_view_mode unless comments_view_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -164,6 +170,11 @@ module Google
         #   The ID of the presentation to retrieve.
         # @param [String] page_object_id
         #   The object ID of the page to retrieve.
+        # @param [String] comments_view_mode
+        #   The comments view mode to apply to the page. This allows viewing the page with
+        #   comments omitted or included. If one is not specified,
+        #   COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
+        #   google.com/workspace/preview).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -181,12 +192,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_presentation_page(presentation_id, page_object_id, fields: nil, quota_user: nil, options: nil, &block)
+        def get_presentation_page(presentation_id, page_object_id, comments_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/presentations/{presentationId}/pages/{pageObjectId}', options)
           command.response_representation = Google::Apis::SlidesV1::Page::Representation
           command.response_class = Google::Apis::SlidesV1::Page
           command.params['presentationId'] = presentation_id unless presentation_id.nil?
           command.params['pageObjectId'] = page_object_id unless page_object_id.nil?
+          command.query['commentsViewMode'] = comments_view_mode unless comments_view_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
