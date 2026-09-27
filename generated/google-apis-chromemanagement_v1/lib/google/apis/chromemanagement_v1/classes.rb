@@ -5373,7 +5373,7 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfigDetails]
         attr_accessor :details
       
-        # Required. The display name of the config.
+        # Required. The display name of the config. Must be at most 100 characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -5589,12 +5589,14 @@ module Google
       class GoogleChromeManagementVersionsV1CrowdStrikeConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. API key to use on the ingestion API.
+        # Required. Input only. API key to use on the ingestion API. Must be at most 50
+        # characters.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
       
         # Required. Host to identify the customer specific server to receive the events.
+        # Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -5620,12 +5622,14 @@ module Google
       class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. API key to use on the ingestion API.
+        # Required. Input only. API key to use on the ingestion API. Must be at most 50
+        # characters.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
       
         # Required. Host to identify the customer specific server to receive the events.
+        # Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -5651,12 +5655,14 @@ module Google
       class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. API key to use on the ingestion API.
+        # Required. Input only. API key to use on the ingestion API. Must be at most 256
+        # characters.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
       
         # Required. Host to identify the customer specific server to receive the events.
+        # Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -5881,14 +5887,15 @@ module Google
       class GoogleChromeManagementVersionsV1GoogleSecOpsConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. API key to use on the ingestion API.
+        # Required. Input only. API key to use on the ingestion API. Must be 39
+        # characters.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
       
         # Required. Host of ingestion API endpoint. Allows customer to upload events to
         # servers in specific geographical regions. Existing configs that don't have
-        # this setting default to US.
+        # this setting default to US. Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -6070,12 +6077,14 @@ module Google
       class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Input only. API key to use on the ingestion API.
+        # Required. Input only. API key to use on the ingestion API. Must be at most 256
+        # characters.
         # Corresponds to the JSON property `apiKey`
         # @return [String]
         attr_accessor :api_key
       
         # Required. Host to identify the customer specific server to receive the events.
+        # Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -6106,7 +6115,8 @@ module Google
         # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings]
         attr_accessor :reporting_settings
       
-        # Required. The full path to the topic to send the event to.
+        # Required. The full path to the topic to send the event to. Must be at most
+        # 1000 characters.
         # Corresponds to the JSON property `topicFullPath`
         # @return [String]
         attr_accessor :topic_full_path
@@ -6126,7 +6136,8 @@ module Google
       class GoogleChromeManagementVersionsV1PubSubXdrConfig
         include Google::Apis::Core::Hashable
       
-        # Required. The full path to the topic to send the event to.
+        # Required. The full path to the topic to send the event to. Must be at most
+        # 1000 characters.
         # Corresponds to the JSON property `topicFullPath`
         # @return [String]
         attr_accessor :topic_full_path
@@ -6598,7 +6609,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :enabled_platforms
       
-        # Required. The resource ID of the secure gateway connector config.
+        # Required. The resource ID of the secure gateway connector config. Must be at
+        # most 256 characters.
         # Corresponds to the JSON property `resourceId`
         # @return [String]
         attr_accessor :resource_id
@@ -6720,12 +6732,13 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Input only. The data input's HTTP Event Collector token to use as an
-        # Authorization header.
+        # Authorization header. Must be at most 50 characters.
         # Corresponds to the JSON property `hecToken`
         # @return [String]
         attr_accessor :hec_token
       
         # Required. Host to identify the customer specific server to receive the events.
+        # Must be at most 256 characters.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -6741,7 +6754,7 @@ module Google
         attr_accessor :reporting_settings
       
         # Optional. Optional source name to override the default one set in the Splunk
-        # admin console.
+        # admin console. Must be at most 100 characters.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
