@@ -1,0 +1,7 @@
+{
+    "api_id": "devicerun:v1alpha",
+    "name_pretty": "Device Run API",
+    "distribution_name": "google-apis-devicerun_v1alpha",
+    "language": "ruby",
+    "library_type": "REST"
+}
