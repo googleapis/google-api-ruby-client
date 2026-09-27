@@ -1209,6 +1209,11 @@ module Google
         attr_accessor :has_uncommitted_changes
         alias_method :has_uncommitted_changes?, :has_uncommitted_changes
       
+        # Optional. Output only. The timestamp when the workspace was last applied.
+        # Corresponds to the JSON property `latestApplyTime`
+        # @return [String]
+        attr_accessor :latest_apply_time
+      
         # Output only. The latest commit ID.
         # Corresponds to the JSON property `latestCommitId`
         # @return [String]
@@ -1218,6 +1223,11 @@ module Google
         # Corresponds to the JSON property `latestCommitTime`
         # @return [String]
         attr_accessor :latest_commit_time
+      
+        # Optional. Output only. The timestamp when the workspace was last converted.
+        # Corresponds to the JSON property `latestConvertTime`
+        # @return [String]
+        attr_accessor :latest_convert_time
       
         # Full name of the workspace resource, in the form of: projects/`project`/
         # locations/`location`/conversionWorkspaces/`conversion_workspace`.
@@ -1252,8 +1262,10 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @global_settings = args[:global_settings] if args.key?(:global_settings)
           @has_uncommitted_changes = args[:has_uncommitted_changes] if args.key?(:has_uncommitted_changes)
+          @latest_apply_time = args[:latest_apply_time] if args.key?(:latest_apply_time)
           @latest_commit_id = args[:latest_commit_id] if args.key?(:latest_commit_id)
           @latest_commit_time = args[:latest_commit_time] if args.key?(:latest_commit_time)
+          @latest_convert_time = args[:latest_convert_time] if args.key?(:latest_convert_time)
           @name = args[:name] if args.key?(:name)
           @source = args[:source] if args.key?(:source)
           @source_provider = args[:source_provider] if args.key?(:source_provider)
@@ -1839,6 +1851,43 @@ module Google
         end
       end
       
+      # An entity identifier.
+      class EntityId
+        include Google::Apis::Core::Hashable
+      
+        # The parent entity full name.
+        # Corresponds to the JSON property `parentName`
+        # @return [String]
+        attr_accessor :parent_name
+      
+        # The type of the database entity (schema, table, view, ...).
+        # Corresponds to the JSON property `parentType`
+        # @return [String]
+        attr_accessor :parent_type
+      
+        # The short name (e.g. table name) of the entity.
+        # Corresponds to the JSON property `shortName`
+        # @return [String]
+        attr_accessor :short_name
+      
+        # The type of the database entity (schema, table, view, index, ...).
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent_name = args[:parent_name] if args.key?(:parent_name)
+          @parent_type = args[:parent_type] if args.key?(:parent_type)
+          @short_name = args[:short_name] if args.key?(:short_name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Issue related to the entity.
       class EntityIssue
         include Google::Apis::Core::Hashable
@@ -2002,6 +2051,83 @@ module Google
         end
       end
       
+      # A single entity for the UI view.
+      class EntityStatusView
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The set of entities that this entity directly depends on, i.e., it
+        # does not include transitive dependencies. Provided only for
+        # FULL_WITH_DEPENDENCIES view. Dependencies are provided according to the
+        # request tree type.
+        # Corresponds to the JSON property `dependencies`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityId>]
+        attr_accessor :dependencies
+      
+        # The DDL Kind selected for apply. If UNSPECIFIED, the entity wasn't converted
+        # yet. For SUMMARY view, this rolls up from descendants with the logic of
+        # UNSPECIFIED < DETERMINISTIC < AI. USER_EDIT is not propagated.
+        # Corresponds to the JSON property `draftDdlKind`
+        # @return [String]
+        attr_accessor :draft_ddl_kind
+      
+        # An entity identifier.
+        # Corresponds to the JSON property `draftEntity`
+        # @return [Google::Apis::DatamigrationV1::EntityId]
+        attr_accessor :draft_entity
+      
+        # If ddl_kind is USER_EDIT, this holds the DDL kind of the original content -
+        # DETERMINISTIC or AI. Otherwise, this is DDL_KIND_UNSPECIFIED. Relevant only
+        # for FULL view.
+        # Corresponds to the JSON property `editedDdlKind`
+        # @return [String]
+        attr_accessor :edited_ddl_kind
+      
+        # Aggregate issue information.
+        # Corresponds to the JSON property `issues`
+        # @return [Google::Apis::DatamigrationV1::IssueAggregateData]
+        attr_accessor :issues
+      
+        # Aggregate issue information.
+        # Corresponds to the JSON property `resolvedIssues`
+        # @return [Google::Apis::DatamigrationV1::IssueAggregateData]
+        attr_accessor :resolved_issues
+      
+        # An entity identifier.
+        # Corresponds to the JSON property `sourceEntity`
+        # @return [Google::Apis::DatamigrationV1::EntityId]
+        attr_accessor :source_entity
+      
+        # Optional. Whether the entity has successfully generated and executed
+        # validation tests.
+        # Corresponds to the JSON property `testedEntity`
+        # @return [Boolean]
+        attr_accessor :tested_entity
+        alias_method :tested_entity?, :tested_entity
+      
+        # Was the entity applied on the destination. Relevant only for FULL view.
+        # Corresponds to the JSON property `wasApplied`
+        # @return [Boolean]
+        attr_accessor :was_applied
+        alias_method :was_applied?, :was_applied
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dependencies = args[:dependencies] if args.key?(:dependencies)
+          @draft_ddl_kind = args[:draft_ddl_kind] if args.key?(:draft_ddl_kind)
+          @draft_entity = args[:draft_entity] if args.key?(:draft_entity)
+          @edited_ddl_kind = args[:edited_ddl_kind] if args.key?(:edited_ddl_kind)
+          @issues = args[:issues] if args.key?(:issues)
+          @resolved_issues = args[:resolved_issues] if args.key?(:resolved_issues)
+          @source_entity = args[:source_entity] if args.key?(:source_entity)
+          @tested_entity = args[:tested_entity] if args.key?(:tested_entity)
+          @was_applied = args[:was_applied] if args.key?(:was_applied)
+        end
+      end
+      
       # Describes the cause of the error with structured details. Example of an error
       # when contacting the "pubsub.googleapis.com" API when it is not enabled: ` "
       # reason": "API_DISABLED" "domain": "googleapis.com" "metadata": ` "resource": "
@@ -2105,6 +2231,98 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Response message for DataMigrationService.FetchEntitiesStatusView.
+      class FetchEntitiesStatusViewResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of the entities matching the request, sorted by their full name (source
+        # name if requested the SOURCE tree, draft name if requested the DRAFT tree).
+        # Sub-entities (such as indexes) always appear immediately after their parent
+        # element.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DatamigrationV1::EntityStatusView>]
+        attr_accessor :entities
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response for fetching issues of a conversion workspace.
+      class FetchIssuesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of issues for the conversion workspace.
+        # Corresponds to the JSON property `issues`
+        # @return [Array<Google::Apis::DatamigrationV1::Issue>]
+        attr_accessor :issues
+      
+        # A token which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issues = args[:issues] if args.key?(:issues)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Issue position.
+      class FetchIssuesResponseIssuePosition
+        include Google::Apis::Core::Hashable
+      
+        # Issue column number.
+        # Corresponds to the JSON property `column`
+        # @return [Fixnum]
+        attr_accessor :column
+      
+        # Issue length.
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # Issue line number.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        # Issue offset.
+        # Corresponds to the JSON property `offset`
+        # @return [Fixnum]
+        attr_accessor :offset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column = args[:column] if args.key?(:column)
+          @length = args[:length] if args.key?(:length)
+          @line = args[:line] if args.key?(:line)
+          @offset = args[:offset] if args.key?(:offset)
         end
       end
       
@@ -2643,6 +2861,117 @@ module Google
         def update!(**args)
           @value = args[:value] if args.key?(:value)
           @value_comparison = args[:value_comparison] if args.key?(:value_comparison)
+        end
+      end
+      
+      # Issue related to the entity.
+      class Issue
+        include Google::Apis::Core::Hashable
+      
+        # The category ID.
+        # Corresponds to the JSON property `categoryId`
+        # @return [String]
+        attr_accessor :category_id
+      
+        # Entity full name.
+        # Corresponds to the JSON property `entityFullName`
+        # @return [String]
+        attr_accessor :entity_full_name
+      
+        # The entity type (if the DDL is for a sub entity).
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # The group ID.
+        # Corresponds to the JSON property `groupId`
+        # @return [String]
+        attr_accessor :group_id
+      
+        # Unique Issue ID. Use this ID when referencing a specific issue in other API
+        # calls, such as DataMigrationService.SetIssuesState.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The source of the issue (deterministic, gemini, etc).
+        # Corresponds to the JSON property `issueOrigin`
+        # @return [String]
+        attr_accessor :issue_origin
+      
+        # Output only. The state of the issue (open, resolved, etc).
+        # Corresponds to the JSON property `issueState`
+        # @return [String]
+        attr_accessor :issue_state
+      
+        # Issue detailed message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Issue position.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::DatamigrationV1::FetchIssuesResponseIssuePosition]
+        attr_accessor :position
+      
+        # Severity of the issue.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The type of the issue.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_id = args[:category_id] if args.key?(:category_id)
+          @entity_full_name = args[:entity_full_name] if args.key?(:entity_full_name)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @group_id = args[:group_id] if args.key?(:group_id)
+          @id = args[:id] if args.key?(:id)
+          @issue_origin = args[:issue_origin] if args.key?(:issue_origin)
+          @issue_state = args[:issue_state] if args.key?(:issue_state)
+          @message = args[:message] if args.key?(:message)
+          @position = args[:position] if args.key?(:position)
+          @severity = args[:severity] if args.key?(:severity)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Aggregate issue information.
+      class IssueAggregateData
+        include Google::Apis::Core::Hashable
+      
+        # Number of error issues.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # Number of info issues.
+        # Corresponds to the JSON property `infoCount`
+        # @return [Fixnum]
+        attr_accessor :info_count
+      
+        # Number of warning issues.
+        # Corresponds to the JSON property `warningCount`
+        # @return [Fixnum]
+        attr_accessor :warning_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @info_count = args[:info_count] if args.key?(:info_count)
+          @warning_count = args[:warning_count] if args.key?(:warning_count)
         end
       end
       
@@ -5480,6 +5809,69 @@ module Google
           @max_value = args[:max_value] if args.key?(:max_value)
           @min_value = args[:min_value] if args.key?(:min_value)
           @start_value = args[:start_value] if args.key?(:start_value)
+        end
+      end
+      
+      # Request message for DataMigrationService.SetDraftEntityDdl.
+      class SetDraftEntityDdlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Which DDL (Deterministic/AI) the updated DDL is based on. Defaults
+        # to DETERMINISTIC if not specified.
+        # Corresponds to the JSON property `basedOnDdlKind`
+        # @return [String]
+        attr_accessor :based_on_ddl_kind
+      
+        # Required. The DDL to set.
+        # Corresponds to the JSON property `ddl`
+        # @return [String]
+        attr_accessor :ddl
+      
+        # Optional. The updated DDL Kind. Can be either USER_EDIT (default) or AI.
+        # Corresponds to the JSON property `ddlKind`
+        # @return [String]
+        attr_accessor :ddl_kind
+      
+        # Required. The draft entity full name from the tree. .
+        # Corresponds to the JSON property `entityName`
+        # @return [String]
+        attr_accessor :entity_name
+      
+        # Required. The type of the database entity (table, view, index, ...).
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # Optional. An optional explanation of the generated DDL if ddl_kind is AI.
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @based_on_ddl_kind = args[:based_on_ddl_kind] if args.key?(:based_on_ddl_kind)
+          @ddl = args[:ddl] if args.key?(:ddl)
+          @ddl_kind = args[:ddl_kind] if args.key?(:ddl_kind)
+          @entity_name = args[:entity_name] if args.key?(:entity_name)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @explanation = args[:explanation] if args.key?(:explanation)
+        end
+      end
+      
+      # Response message for DataMigrationService.SetDraftEntityDdl.
+      class SetDraftEntityDdlResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
