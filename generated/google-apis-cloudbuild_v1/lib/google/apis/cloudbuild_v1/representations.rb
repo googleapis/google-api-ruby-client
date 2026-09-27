@@ -910,12 +910,14 @@ module Google
       
           property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
           property :worker_pool, as: 'workerPool'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
@@ -1447,6 +1449,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
@@ -1827,6 +1831,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
