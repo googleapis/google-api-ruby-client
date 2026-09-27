@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublishOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +281,12 @@ module Google
       end
       
       class PublishResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubClientTelemetry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -837,6 +849,14 @@ module Google
         end
       end
       
+      class PublishOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hedged_attempt_count, as: 'hedgedAttemptCount'
+          property :publish_start_time, as: 'publishStartTime'
+        end
+      end
+      
       class PublishRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -849,6 +869,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :message_ids, as: 'messageIds'
+        end
+      end
+      
+      class PubsubClientTelemetry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_operation, as: 'publishOperation', class: Google::Apis::PubsubV1::PublishOperation, decorator: Google::Apis::PubsubV1::PublishOperation::Representation
+      
         end
       end
       
