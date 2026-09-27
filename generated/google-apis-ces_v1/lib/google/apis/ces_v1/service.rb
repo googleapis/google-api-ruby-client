@@ -278,6 +278,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Generates personalized onboarding suggestions for the AI assistant zero state:
+        # classifies the requesting user (new / exploring / returning) from their
+        # assistant-session history in the app and returns suggestion chips (resume a
+        # session, continue work, or start something new) to render before any message
+        # is sent.
+        # @param [String] name
+        #   Required. The app whose zero state is being rendered. Format: `projects/`
+        #   project`/locations/`location`/apps/`app``
+        # @param [Google::Apis::CesV1::GenerateOnboardingSuggestionsRequest] generate_onboarding_suggestions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::GenerateOnboardingSuggestionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::GenerateOnboardingSuggestionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def generate_app_onboarding_suggestions(name, generate_onboarding_suggestions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:generateOnboardingSuggestions', options)
+          command.request_representation = Google::Apis::CesV1::GenerateOnboardingSuggestionsRequest::Representation
+          command.request_object = generate_onboarding_suggestions_request_object
+          command.response_representation = Google::Apis::CesV1::GenerateOnboardingSuggestionsResponse::Representation
+          command.response_class = Google::Apis::CesV1::GenerateOnboardingSuggestionsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of the specified app.
         # @param [String] name
         #   Required. The resource name of the app to retrieve.
@@ -680,6 +718,78 @@ module Google
           command.response_class = Google::Apis::CesV1::Agent
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels the assistant session's in-flight turn, if any: the explicit user stop
+        # for a turn running detached from any stream. A cancel landing on a task that
+        # does not host the turn preempts it through the session turn epoch instead,
+        # ending it within one lease renewal.
+        # @param [String] name
+        #   Required. The assistant session whose in-flight turn to cancel.
+        # @param [Google::Apis::CesV1::CancelAssistantTurnRequest] cancel_assistant_turn_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::CancelAssistantTurnResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::CancelAssistantTurnResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_assistant_session_assistant_turn(name, cancel_assistant_turn_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancelAssistantTurn', options)
+          command.request_representation = Google::Apis::CesV1::CancelAssistantTurnRequest::Representation
+          command.request_object = cancel_assistant_turn_request_object
+          command.response_representation = Google::Apis::CesV1::CancelAssistantTurnResponse::Representation
+          command.response_class = Google::Apis::CesV1::CancelAssistantTurnResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Runs the Chat AI assistant agent for the specified assistant session in a
+        # streaming fashion.
+        # @param [String] name
+        #   Required. The assistant session to be used to run the assistant. Format: `
+        #   projects/`project`/locations/`location`/apps/`app`/assistantSessions/`
+        #   assistant_session``
+        # @param [Google::Apis::CesV1::StreamChatAiAssistantRequest] stream_chat_ai_assistant_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CesV1::StreamChatAiAssistantResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CesV1::StreamChatAiAssistantResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stream_assistant_session_chat_ai_assistant(name, stream_chat_ai_assistant_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:streamChatAiAssistant', options)
+          command.request_representation = Google::Apis::CesV1::StreamChatAiAssistantRequest::Representation
+          command.request_object = stream_chat_ai_assistant_request_object
+          command.response_representation = Google::Apis::CesV1::StreamChatAiAssistantResponse::Representation
+          command.response_class = Google::Apis::CesV1::StreamChatAiAssistantResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
