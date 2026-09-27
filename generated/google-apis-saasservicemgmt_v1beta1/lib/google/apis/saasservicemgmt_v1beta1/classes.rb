@@ -2147,7 +2147,7 @@ module Google
         # @return [String]
         attr_accessor :unit_filter
       
-        # Required. Immutable. UnitKind that this rollout kind corresponds to. Rollouts
+        # Optional. Immutable. UnitKind that this rollout kind corresponds to. Rollouts
         # stemming from this rollout kind will target the units of this unit kind. In
         # other words, this defines the population of target units to be upgraded by
         # rollouts.
@@ -3061,6 +3061,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The timestamp when the resource was marked for deletion (deletion
+        # is an asynchronous operation).
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
         # Output only. An opaque value that uniquely identifies a version or generation
         # of a resource. It can be used to confirm that the client and server agree on
         # the ordering of a resource being written.
@@ -3105,6 +3111,7 @@ module Google
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @etag = args[:etag] if args.key?(:etag)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
