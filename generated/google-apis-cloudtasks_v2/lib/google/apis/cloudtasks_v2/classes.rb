@@ -258,6 +258,66 @@ module Google
         end
       end
       
+      # Request message for [BatchCreateTasks].
+      class BatchCreateTasksRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. This field will be used to identify the long running operation,
+        # avoiding duplication when user retries. If not provided, then a UUID will be
+        # generated at server side.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. The list of requests to create tasks. The queue specified in parent
+        # field of each CreateTaskRequest will be the same. This validation happens on
+        # the client side as well as in the handler. BatchCreateTasksRequest.parent will
+        # also be the same value as the individual CreateTaskRequest.parent . The
+        # maximum number of requests is 100.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::CloudtasksV2::CreateTaskRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Request message for deleting a batch of tasks using BatchDeleteTasks.
+      class BatchDeleteTasksRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The names of the tasks to delete. A maximum of 1000 tasks can be
+        # deleted in a batch. For example: Format: `projects/PROJECT_ID/locations/
+        # LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        # Corresponds to the JSON property `names`
+        # @return [Array<String>]
+        attr_accessor :names
+      
+        # Optional. This field will be used to identify the long running operation,
+        # avoiding duplication when user retries. If not provided, then a UUID will be
+        # generated at server side.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @names = args[:names] if args.key?(:names)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Associates `members`, or principals, with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -447,6 +507,12 @@ module Google
       class CreateTaskRequest
         include Google::Apis::Core::Hashable
       
+        # Required. The queue name. For example: `projects/PROJECT_ID/locations/
+        # LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # The response_view specifies which subset of the Task will be returned. By
         # default response_view is BASIC; not all information is retrieved by default
         # because some data, such as payloads, might be desirable to return only when
@@ -468,6 +534,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
           @response_view = args[:response_view] if args.key?(:response_view)
           @task = args[:task] if args.key?(:task)
         end
@@ -1784,6 +1851,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :response_count
       
+        # Retry config. These settings determine when a failed task attempt is retried.
+        # Corresponds to the JSON property `retryConfig`
+        # @return [Google::Apis::CloudtasksV2::RetryConfig]
+        attr_accessor :retry_config
+      
         # The time when the task is scheduled to be attempted or retried. `schedule_time`
         # will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
@@ -1810,6 +1882,7 @@ module Google
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @name = args[:name] if args.key?(:name)
           @response_count = args[:response_count] if args.key?(:response_count)
+          @retry_config = args[:retry_config] if args.key?(:retry_config)
           @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
           @view = args[:view] if args.key?(:view)
         end
