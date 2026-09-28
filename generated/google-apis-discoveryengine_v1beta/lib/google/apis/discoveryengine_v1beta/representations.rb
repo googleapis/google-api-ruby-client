@@ -9515,6 +9515,7 @@ module Google
           property :alert_policy_resource_config, as: 'alertPolicyResourceConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig::Representation
       
           property :auto_renew, as: 'autoRenew'
+          property :billing_account_license_config, as: 'billingAccountLicenseConfig'
           property :early_terminated, as: 'earlyTerminated'
           property :early_termination_date, as: 'earlyTerminationDate', class: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate, decorator: Google::Apis::DiscoveryengineV1beta::GoogleTypeDate::Representation
       
