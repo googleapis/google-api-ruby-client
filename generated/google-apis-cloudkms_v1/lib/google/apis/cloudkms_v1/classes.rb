@@ -3031,7 +3031,6 @@ module Google
         attr_accessor :algorithm
       
         # The name of the CryptoKeyVersion public key. Provided here for verification.
-        # NOTE: This field is in Beta.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3052,8 +3051,7 @@ module Google
         # computation of the CRC32C checksum. Note: This field is defined as int64 for
         # reasons of compatibility across different languages. However, it is a non-
         # negative integer, which will never exceed `2^32-1`, and can be safely
-        # downconverted to uint32 in languages that support this type. NOTE: This field
-        # is in Beta.
+        # downconverted to uint32 in languages that support this type.
         # Corresponds to the JSON property `pemCrc32c`
         # @return [Fixnum]
         attr_accessor :pem_crc32c
