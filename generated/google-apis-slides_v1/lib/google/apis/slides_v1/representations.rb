@@ -22,6 +22,18 @@ module Google
   module Apis
     module SlidesV1
       
+      class AddCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddCommentReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AffineTransform
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +77,18 @@ module Google
       end
       
       class ColorStop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentThread
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +190,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteObjectRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -239,6 +275,18 @@ module Google
       end
       
       class ImageProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertCommentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OpaqueColor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +461,18 @@ module Google
       end
       
       class Placeholder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Post
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostAuthor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -526,6 +592,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShapeTextAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShapeTextAnchors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SheetsChart
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -586,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableBorderCell
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -616,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TableCellAnchors
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TableCellBackgroundFill
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,6 +719,18 @@ module Google
       end
       
       class TableCellProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableCellTextAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TableCellTextRanges
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -670,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TextRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -701,6 +809,12 @@ module Google
       end
       
       class UnmergeTableCellsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateCommentPostRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -838,6 +952,23 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post, as: 'post', class: Google::Apis::SlidesV1::Post, decorator: Google::Apis::SlidesV1::Post::Representation
+      
+        end
+      end
+      
+      class AddCommentReplyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post, as: 'post', class: Google::Apis::SlidesV1::Post, decorator: Google::Apis::SlidesV1::Post::Representation
+      
+        end
+      end
+      
       class AffineTransform
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -883,6 +1014,7 @@ module Google
       class BatchUpdatePresentationResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_update_state, as: 'commentUpdateState'
           property :presentation_id, as: 'presentationId'
           collection :replies, as: 'replies', class: Google::Apis::SlidesV1::Response, decorator: Google::Apis::SlidesV1::Response::Representation
       
@@ -917,6 +1049,29 @@ module Google
           property :color, as: 'color', class: Google::Apis::SlidesV1::OpaqueColor, decorator: Google::Apis::SlidesV1::OpaqueColor::Representation
       
           property :position, as: 'position'
+        end
+      end
+      
+      class CommentAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          collection :object_anchors, as: 'objectAnchors', class: Google::Apis::SlidesV1::ObjectAnchor, decorator: Google::Apis::SlidesV1::ObjectAnchor::Representation
+      
+        end
+      end
+      
+      class CommentThread
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          property :comment_id, as: 'commentId'
+          property :head_post, as: 'headPost', class: Google::Apis::SlidesV1::Post, decorator: Google::Apis::SlidesV1::Post::Representation
+      
+          property :plain_text_quote, as: 'plainTextQuote'
+          collection :replies, as: 'replies', class: Google::Apis::SlidesV1::Post, decorator: Google::Apis::SlidesV1::Post::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -1069,6 +1224,21 @@ module Google
         end
       end
       
+      class DeleteCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post_id, as: 'postId'
+        end
+      end
+      
+      class DeleteCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+        end
+      end
+      
       class DeleteObjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1190,6 +1360,29 @@ module Google
           property :shadow, as: 'shadow', class: Google::Apis::SlidesV1::Shadow, decorator: Google::Apis::SlidesV1::Shadow::Representation
       
           property :transparency, as: 'transparency'
+        end
+      end
+      
+      class InsertCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email_address, as: 'assigneeEmailAddress'
+          property :content, as: 'content'
+          property :object_id_prop, as: 'objectId'
+          property :shape_text_anchor, as: 'shapeTextAnchor', class: Google::Apis::SlidesV1::ShapeTextAnchor, decorator: Google::Apis::SlidesV1::ShapeTextAnchor::Representation
+      
+          property :table_anchor, as: 'tableAnchor', class: Google::Apis::SlidesV1::TableAnchor, decorator: Google::Apis::SlidesV1::TableAnchor::Representation
+      
+          property :table_cell_text_anchor, as: 'tableCellTextAnchor', class: Google::Apis::SlidesV1::TableCellTextAnchor, decorator: Google::Apis::SlidesV1::TableCellTextAnchor::Representation
+      
+        end
+      end
+      
+      class InsertCommentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_thread, as: 'commentThread', class: Google::Apis::SlidesV1::CommentThread, decorator: Google::Apis::SlidesV1::CommentThread::Representation
+      
         end
       end
       
@@ -1348,6 +1541,17 @@ module Google
         end
       end
       
+      class ObjectAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :shape_text_anchors, as: 'shapeTextAnchors', class: Google::Apis::SlidesV1::ShapeTextAnchors, decorator: Google::Apis::SlidesV1::ShapeTextAnchors::Representation
+      
+          property :table_cell_anchors, as: 'tableCellAnchors', class: Google::Apis::SlidesV1::TableCellAnchors, decorator: Google::Apis::SlidesV1::TableCellAnchors::Representation
+      
+        end
+      end
+      
       class OpaqueColor
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1388,6 +1592,11 @@ module Google
       class Page
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :comment_anchors, as: 'commentAnchors', class: Google::Apis::SlidesV1::CommentAnchor, decorator: Google::Apis::SlidesV1::CommentAnchor::Representation
+      
+          collection :comments, as: 'comments', class: Google::Apis::SlidesV1::CommentThread, decorator: Google::Apis::SlidesV1::CommentThread::Representation
+      
+          property :comments_view_mode, as: 'commentsViewMode'
           property :layout_properties, as: 'layoutProperties', class: Google::Apis::SlidesV1::LayoutProperties, decorator: Google::Apis::SlidesV1::LayoutProperties::Representation
       
           property :master_properties, as: 'masterProperties', class: Google::Apis::SlidesV1::MasterProperties, decorator: Google::Apis::SlidesV1::MasterProperties::Representation
@@ -1508,9 +1717,40 @@ module Google
         end
       end
       
+      class Post
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email, as: 'assigneeEmail'
+          property :author, as: 'author', class: Google::Apis::SlidesV1::PostAuthor, decorator: Google::Apis::SlidesV1::PostAuthor::Representation
+      
+          property :comment_action, as: 'commentAction'
+          property :content, as: 'content'
+          property :content_html, as: 'contentHtml'
+          property :create_time, as: 'createTime'
+          property :deleted, as: 'deleted'
+          property :from_copied_presentation, as: 'fromCopiedPresentation'
+          property :from_imported_presentation, as: 'fromImportedPresentation'
+          property :post_id, as: 'postId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PostAuthor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anonymous, as: 'anonymous'
+          property :display_name, as: 'displayName'
+          property :me, as: 'me'
+          property :user, as: 'user'
+        end
+      end
+      
       class Presentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :comments, as: 'comments', class: Google::Apis::SlidesV1::CommentThread, decorator: Google::Apis::SlidesV1::CommentThread::Representation
+      
+          property :comments_view_mode, as: 'commentsViewMode'
           collection :layouts, as: 'layouts', class: Google::Apis::SlidesV1::Page, decorator: Google::Apis::SlidesV1::Page::Representation
       
           property :locale, as: 'locale'
@@ -1620,6 +1860,8 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::SlidesV1::AddCommentReplyRequest, decorator: Google::Apis::SlidesV1::AddCommentReplyRequest::Representation
+      
           property :create_image, as: 'createImage', class: Google::Apis::SlidesV1::CreateImageRequest, decorator: Google::Apis::SlidesV1::CreateImageRequest::Representation
       
           property :create_line, as: 'createLine', class: Google::Apis::SlidesV1::CreateLineRequest, decorator: Google::Apis::SlidesV1::CreateLineRequest::Representation
@@ -1636,6 +1878,10 @@ module Google
       
           property :create_video, as: 'createVideo', class: Google::Apis::SlidesV1::CreateVideoRequest, decorator: Google::Apis::SlidesV1::CreateVideoRequest::Representation
       
+          property :delete_comment, as: 'deleteComment', class: Google::Apis::SlidesV1::DeleteCommentRequest, decorator: Google::Apis::SlidesV1::DeleteCommentRequest::Representation
+      
+          property :delete_comment_reply, as: 'deleteCommentReply', class: Google::Apis::SlidesV1::DeleteCommentReplyRequest, decorator: Google::Apis::SlidesV1::DeleteCommentReplyRequest::Representation
+      
           property :delete_object, as: 'deleteObject', class: Google::Apis::SlidesV1::DeleteObjectRequest, decorator: Google::Apis::SlidesV1::DeleteObjectRequest::Representation
       
           property :delete_paragraph_bullets, as: 'deleteParagraphBullets', class: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest, decorator: Google::Apis::SlidesV1::DeleteParagraphBulletsRequest::Representation
@@ -1649,6 +1895,8 @@ module Google
           property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectRequest, decorator: Google::Apis::SlidesV1::DuplicateObjectRequest::Representation
       
           property :group_objects, as: 'groupObjects', class: Google::Apis::SlidesV1::GroupObjectsRequest, decorator: Google::Apis::SlidesV1::GroupObjectsRequest::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::SlidesV1::InsertCommentRequest, decorator: Google::Apis::SlidesV1::InsertCommentRequest::Representation
       
           property :insert_table_columns, as: 'insertTableColumns', class: Google::Apis::SlidesV1::InsertTableColumnsRequest, decorator: Google::Apis::SlidesV1::InsertTableColumnsRequest::Representation
       
@@ -1673,6 +1921,8 @@ module Google
           property :ungroup_objects, as: 'ungroupObjects', class: Google::Apis::SlidesV1::UngroupObjectsRequest, decorator: Google::Apis::SlidesV1::UngroupObjectsRequest::Representation
       
           property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::SlidesV1::UnmergeTableCellsRequest, decorator: Google::Apis::SlidesV1::UnmergeTableCellsRequest::Representation
+      
+          property :update_comment_post, as: 'updateCommentPost', class: Google::Apis::SlidesV1::UpdateCommentPostRequest, decorator: Google::Apis::SlidesV1::UpdateCommentPostRequest::Representation
       
           property :update_image_properties, as: 'updateImageProperties', class: Google::Apis::SlidesV1::UpdateImagePropertiesRequest, decorator: Google::Apis::SlidesV1::UpdateImagePropertiesRequest::Representation
       
@@ -1721,6 +1971,8 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::SlidesV1::AddCommentReplyResponse, decorator: Google::Apis::SlidesV1::AddCommentReplyResponse::Representation
+      
           property :create_image, as: 'createImage', class: Google::Apis::SlidesV1::CreateImageResponse, decorator: Google::Apis::SlidesV1::CreateImageResponse::Representation
       
           property :create_line, as: 'createLine', class: Google::Apis::SlidesV1::CreateLineResponse, decorator: Google::Apis::SlidesV1::CreateLineResponse::Representation
@@ -1738,6 +1990,8 @@ module Google
           property :duplicate_object, as: 'duplicateObject', class: Google::Apis::SlidesV1::DuplicateObjectResponse, decorator: Google::Apis::SlidesV1::DuplicateObjectResponse::Representation
       
           property :group_objects, as: 'groupObjects', class: Google::Apis::SlidesV1::GroupObjectsResponse, decorator: Google::Apis::SlidesV1::GroupObjectsResponse::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::SlidesV1::InsertCommentResponse, decorator: Google::Apis::SlidesV1::InsertCommentResponse::Representation
       
           property :replace_all_shapes_with_image, as: 'replaceAllShapesWithImage', class: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse, decorator: Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse::Representation
       
@@ -1809,6 +2063,23 @@ module Google
           property :shadow, as: 'shadow', class: Google::Apis::SlidesV1::Shadow, decorator: Google::Apis::SlidesV1::Shadow::Representation
       
           property :shape_background_fill, as: 'shapeBackgroundFill', class: Google::Apis::SlidesV1::ShapeBackgroundFill, decorator: Google::Apis::SlidesV1::ShapeBackgroundFill::Representation
+      
+        end
+      end
+      
+      class ShapeTextAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
+      
+        end
+      end
+      
+      class ShapeTextAnchors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ranges, as: 'ranges', class: Google::Apis::SlidesV1::TextRange, decorator: Google::Apis::SlidesV1::TextRange::Representation
       
         end
       end
@@ -1914,6 +2185,15 @@ module Google
         end
       end
       
+      class TableAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :object_id_prop, as: 'objectId'
+          property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
+      
+        end
+      end
+      
       class TableBorderCell
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1965,6 +2245,14 @@ module Google
         end
       end
       
+      class TableCellAnchors
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cell_ranges, as: 'cellRanges', class: Google::Apis::SlidesV1::TableCellTextRanges, decorator: Google::Apis::SlidesV1::TableCellTextRanges::Representation
+      
+        end
+      end
+      
       class TableCellBackgroundFill
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1987,6 +2275,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content_alignment, as: 'contentAlignment'
           property :table_cell_background_fill, as: 'tableCellBackgroundFill', class: Google::Apis::SlidesV1::TableCellBackgroundFill, decorator: Google::Apis::SlidesV1::TableCellBackgroundFill::Representation
+      
+        end
+      end
+      
+      class TableCellTextAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
+          property :object_id_prop, as: 'objectId'
+          property :text_range, as: 'textRange', class: Google::Apis::SlidesV1::Range, decorator: Google::Apis::SlidesV1::Range::Representation
+      
+        end
+      end
+      
+      class TableCellTextRanges
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cell_location, as: 'cellLocation', class: Google::Apis::SlidesV1::TableCellLocation, decorator: Google::Apis::SlidesV1::TableCellLocation::Representation
+      
+          collection :ranges, as: 'ranges', class: Google::Apis::SlidesV1::TextRange, decorator: Google::Apis::SlidesV1::TextRange::Representation
       
         end
       end
@@ -2053,6 +2362,14 @@ module Google
         end
       end
       
+      class TextRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_index, as: 'endIndex'
+          property :start_index, as: 'startIndex'
+        end
+      end
+      
       class TextRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2116,6 +2433,15 @@ module Google
           property :object_id_prop, as: 'objectId'
           property :table_range, as: 'tableRange', class: Google::Apis::SlidesV1::TableRange, decorator: Google::Apis::SlidesV1::TableRange::Representation
       
+        end
+      end
+      
+      class UpdateCommentPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :content, as: 'content'
+          property :post_id, as: 'postId'
         end
       end
       
