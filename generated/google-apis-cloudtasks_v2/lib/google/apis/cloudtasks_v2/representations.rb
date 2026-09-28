@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateTasksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteTasksRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -301,6 +313,23 @@ module Google
         end
       end
       
+      class BatchCreateTasksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+          collection :requests, as: 'requests', class: Google::Apis::CloudtasksV2::CreateTaskRequest, decorator: Google::Apis::CloudtasksV2::CreateTaskRequest::Representation
+      
+        end
+      end
+      
+      class BatchDeleteTasksRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -338,6 +367,7 @@ module Google
       class CreateTaskRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           property :response_view, as: 'responseView'
           property :task, as: 'task', class: Google::Apis::CloudtasksV2::Task, decorator: Google::Apis::CloudtasksV2::Task::Representation
       
@@ -623,6 +653,8 @@ module Google
       
           property :name, as: 'name'
           property :response_count, as: 'responseCount'
+          property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2::RetryConfig, decorator: Google::Apis::CloudtasksV2::RetryConfig::Representation
+      
           property :schedule_time, as: 'scheduleTime'
           property :view, as: 'view'
         end
