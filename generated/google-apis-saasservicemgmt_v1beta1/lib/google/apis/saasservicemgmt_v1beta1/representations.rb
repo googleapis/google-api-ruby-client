@@ -1186,6 +1186,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
           property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
           property :etag, as: 'etag'
           hash :labels, as: 'labels'
           property :name, as: 'name'
