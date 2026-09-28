@@ -817,6 +817,123 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # An internal, RPC only method that returns a list of the (filtered) entities
+        # with minimal information required for the entities tree view.
+        # @param [String] conversion_workspace
+        #   Required. Name of the conversion workspace resource whose database entities
+        #   are described. Must be in the form of: projects/`project`/locations/`location`/
+        #   conversionWorkspaces/`conversion_workspace`.
+        # @param [String] fetch_view
+        #   Optional. The view to fetch. If not specified, FULL is used.
+        # @param [String] filter
+        #   Optional. Filter the returned entities based on AIP-160 standard.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of entities to return. The service may return
+        #   fewer entities than the value specifies. Default is 100000.
+        # @param [String] page_token
+        #   Optional. The nextPageToken value received in the previous call to
+        #   conversionWorkspace.FetchEntitiesStatusView, used in the subsequent request to
+        #   retrieve the next page of results. On first call this should be left blank.
+        #   When paginating, all other parameters provided to conversionWorkspace.
+        #   FetchEntitiesStatusView must match the call that provided the page token,
+        #   except for the page_size parameter.
+        # @param [String] tree
+        #   Required. The tree to fetch.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::FetchEntitiesStatusViewResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::FetchEntitiesStatusViewResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_conversion_workspace_entities_status_view(conversion_workspace, fetch_view: nil, filter: nil, page_size: nil, page_token: nil, tree: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+conversionWorkspace}:fetchEntitiesStatusView', options)
+          command.response_representation = Google::Apis::DatamigrationV1::FetchEntitiesStatusViewResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::FetchEntitiesStatusViewResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
+          command.query['fetchView'] = fetch_view unless fetch_view.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['tree'] = tree unless tree.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List issues of conversion workspace operations e.g. conversion.
+        # @param [String] conversion_workspace
+        #   Required. Conversion workspace with issues to fetch. Must be in the form of:
+        #   projects/`project`/locations/`location`/conversionWorkspaces/`
+        #   conversion_workspace`.
+        # @param [Boolean] all_issues
+        #   Optional. If 'true', gets all issues matching the filter. Otherwise, for each
+        #   entity only the issues matching the DdlKind chosen for application on the
+        #   destination are returned.
+        # @param [String] filter
+        #   Optional. AIP-160 standard filter. Supporting both entity and issue fields.
+        #   Supported fields: - `name` / `fullname`: The entity full name. - `type`: The
+        #   entity type (e.g. `TABLE`, `VIEW`, `INDEX`, `TRIGGER`). - `ddlkind`: The kind
+        #   of DDL (e.g. `DDL_KIND_SOURCE`, `DDL_KIND_AI`, `DDL_KIND_DETERMINISTIC`). - `
+        #   issue.severity`: The severity of the issue (e.g. `INFO`, `WARNING`, `ERROR`). -
+        #   `issue.state`: The state of the issue (e.g. `OPEN`, `RESOLVED`). - `issue.
+        #   origin`: The origin of the issue (e.g. `DETERMINISTIC`, `AI`). - `issue.
+        #   category_id`: The category ID of the issue. - `issue.group_id`: The group ID
+        #   of the issue.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of issues to return. The service may return fewer
+        #   issues than the value specifies.
+        # @param [String] page_token
+        #   Optional. The FetchIssuesResponse.next_page_token value received in the
+        #   previous call to FetchIssues, used in the subsequent request to retrieve the
+        #   next page of results. On first call this should be left blank. When paginating,
+        #   all other parameters provided to FetchIssues must match the call that
+        #   provided the page token, except for the page_size parameter.
+        # @param [String] tree
+        #   Optional. The tree to fetch issues from. If not specified, source tree is
+        #   assumed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::FetchIssuesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::FetchIssuesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_conversion_workspace_issues(conversion_workspace, all_issues: nil, filter: nil, page_size: nil, page_token: nil, tree: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+conversionWorkspace}:fetchIssues', options)
+          command.response_representation = Google::Apis::DatamigrationV1::FetchIssuesResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::FetchIssuesResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
+          command.query['allIssues'] = all_issues unless all_issues.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['tree'] = tree unless tree.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets details of a single conversion workspace.
         # @param [String] name
         #   Required. Name of the conversion workspace resource to get.
@@ -1098,6 +1215,40 @@ module Google
           command.response_representation = Google::Apis::DatamigrationV1::Operation::Representation
           command.response_class = Google::Apis::DatamigrationV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the draft DDL of an entity.
+        # @param [String] conversion_workspace
+        #   Required. Name of the conversion workspace resource in the form of: projects/`
+        #   project`/locations/`location`/conversionWorkspaces/`conversion_workspace`.
+        # @param [Google::Apis::DatamigrationV1::SetDraftEntityDdlRequest] set_draft_entity_ddl_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatamigrationV1::SetDraftEntityDdlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatamigrationV1::SetDraftEntityDdlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_conversion_workspace_draft_entity_ddl(conversion_workspace, set_draft_entity_ddl_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+conversionWorkspace}:setDraftEntityDdl', options)
+          command.request_representation = Google::Apis::DatamigrationV1::SetDraftEntityDdlRequest::Representation
+          command.request_object = set_draft_entity_ddl_request_object
+          command.response_representation = Google::Apis::DatamigrationV1::SetDraftEntityDdlResponse::Representation
+          command.response_class = Google::Apis::DatamigrationV1::SetDraftEntityDdlResponse
+          command.params['conversionWorkspace'] = conversion_workspace unless conversion_workspace.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
