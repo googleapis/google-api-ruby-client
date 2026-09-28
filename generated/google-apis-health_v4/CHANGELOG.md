@@ -1,8 +1,8 @@
 # Release history for google-apis-health_v4
 
-### v0.13.0 (2026-09-20)
+### v0.13.0 (2026-09-24)
 
-* Regenerated from discovery document revision 20260908
+* Regenerated from discovery document revision 20260923
 
 ### v0.12.0 (2026-08-23)
 

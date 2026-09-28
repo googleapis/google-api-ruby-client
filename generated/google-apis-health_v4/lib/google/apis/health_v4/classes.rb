@@ -31,7 +31,8 @@ module Google
         # @return [Google::Apis::HealthV4::ObservationTimeInterval]
         attr_accessor :interval
       
-        # Required. Energy burned during an activity, measured in kilocalories.
+        # Required. Energy burned during an activity, measured in kilocalories. Must be
+        # in the range `[0, 1000000]`.
         # Corresponds to the JSON property `kcal`
         # @return [Float]
         attr_accessor :kcal
@@ -374,7 +375,8 @@ module Google
       class Altitude
         include Google::Apis::Core::Hashable
       
-        # Required. Altitude gain in millimeters over the observed interval.
+        # Required. Altitude gain in millimeters over the observed interval. Must be in
+        # the range `[-1000000000, 1000000000]`.
         # Corresponds to the JSON property `gainMillimeters`
         # @return [Fixnum]
         attr_accessor :gain_millimeters
@@ -508,7 +510,8 @@ module Google
       class BloodGlucose
         include Google::Apis::Core::Hashable
       
-        # Required. Blood glucose level concentration in mg/dL.
+        # Required. Blood glucose level concentration in mg/dL. Must be in the range `[0,
+        # 900]`.
         # Corresponds to the JSON property `bloodGlucoseMilligramsPerDeciliter`
         # @return [Float]
         attr_accessor :blood_glucose_milligrams_per_deciliter
@@ -583,7 +586,7 @@ module Google
       class BodyFat
         include Google::Apis::Core::Hashable
       
-        # Required. Body fat percentage, in range [0, 100].
+        # Required. Body fat percentage. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `percentage`
         # @return [Float]
         attr_accessor :percentage
@@ -753,7 +756,8 @@ module Google
         # @return [Google::Apis::HealthV4::ObservationSampleTime]
         attr_accessor :sample_time
       
-        # Required. The core body temperature in Celsius.
+        # Required. The core body temperature in Celsius. Must be in the range `[0, 100]`
+        # .
         # Corresponds to the JSON property `temperatureCelsius`
         # @return [Float]
         attr_accessor :temperature_celsius
@@ -966,6 +970,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The average value of the oxygen saturation samples during the sleep.
+        # Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `averagePercentage`
         # @return [Float]
         attr_accessor :average_percentage
@@ -983,7 +988,7 @@ module Google
         attr_accessor :date
       
         # Required. The lower bound of the confidence interval of oxygen saturation
-        # samples during sleep.
+        # samples during sleep. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `lowerBoundPercentage`
         # @return [Float]
         attr_accessor :lower_bound_percentage
@@ -995,7 +1000,7 @@ module Google
         attr_accessor :standard_deviation_percentage
       
         # Required. The upper bound of the confidence interval of oxygen saturation
-        # samples during sleep.
+        # samples during sleep. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `upperBoundPercentage`
         # @return [Float]
         attr_accessor :upper_bound_percentage
@@ -1117,7 +1122,15 @@ module Google
         # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
         # and Pixel Watch). Excludes manually logged data. - `users/me/
         # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
-        # data from tracker devices, manually logged data, and Health Connect.
+        # data from tracker devices, manually logged data, and Health Connect. - `users/
+        # me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        # client wrote through this API, that is, data points whose data source was
+        # registered through this API with the same OAuth client ID as the caller.
+        # Callers that were only granted write scopes for the requested data type may
+        # only read the data they wrote themselves: their requests are implicitly
+        # restricted to `self-sources`, and requesting any other data source family
+        # fails with `PERMISSION_DENIED`. If no data point matches the requested data
+        # source family, the response is an empty list rather than an error.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -1440,7 +1453,7 @@ module Google
         alias_method :estimated?, :estimated
       
         # Required. Daily VO2 max value measured as in ml consumed oxygen / kg of body
-        # weight / min.
+        # weight / min. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `vo2Max`
         # @return [Float]
         attr_accessor :vo2_max
@@ -1993,7 +2006,8 @@ module Google
         # @return [Google::Apis::HealthV4::ObservationTimeInterval]
         attr_accessor :interval
       
-        # Required. Distance in millimeters over the observed interval.
+        # Required. Distance in millimeters over the observed interval. Must be in the
+        # range `[0, 1000000000]`.
         # Corresponds to the JSON property `millimeters`
         # @return [Fixnum]
         attr_accessor :millimeters
@@ -2152,7 +2166,7 @@ module Google
       class EnergyQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. The energy value in kilocalories.
+        # Required. The energy value in kilocalories. Must be in the range `[0, 100000]`.
         # Corresponds to the JSON property `kcal`
         # @return [Float]
         attr_accessor :kcal
@@ -2377,7 +2391,8 @@ module Google
       class Floors
         include Google::Apis::Core::Hashable
       
-        # Required. Number of floors in the recorded interval
+        # Required. Number of floors in the recorded interval. Must be in the range `[0,
+        # 1000000]`.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -2772,7 +2787,8 @@ module Google
       class HeartRate
         include Google::Apis::Core::Hashable
       
-        # Required. The heart rate value in beats per minute.
+        # Required. The heart rate value in beats per minute. Must be in the range `[1,
+        # 300]`.
         # Corresponds to the JSON property `beatsPerMinute`
         # @return [Fixnum]
         attr_accessor :beats_per_minute
@@ -2869,6 +2885,7 @@ module Google
       
         # Optional. The root mean square of successive differences between normal
         # heartbeats. This is a measure of heart rate variability used by Google Health.
+        # Must be in the range `[1, 200]`.
         # Corresponds to the JSON property `rootMeanSquareOfSuccessiveDifferencesMilliseconds`
         # @return [Float]
         attr_accessor :root_mean_square_of_successive_differences_milliseconds
@@ -2984,7 +3001,7 @@ module Google
       class Height
         include Google::Apis::Core::Hashable
       
-        # Required. Height of the user in millimeters.
+        # Required. Height of the user in millimeters. Must be in the range `[0, 3000]`.
         # Corresponds to the JSON property `heightMillimeters`
         # @return [Fixnum]
         attr_accessor :height_millimeters
@@ -4098,7 +4115,7 @@ module Google
       class OxygenSaturation
         include Google::Apis::Core::Hashable
       
-        # Required. The oxygen saturation percentage. Valid values are from 0 to 100.
+        # Required. The oxygen saturation percentage. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `percentage`
         # @return [Float]
         attr_accessor :percentage
@@ -4275,7 +4292,8 @@ module Google
         # profile` Example: `users/1234567890/profile` or `users/me/profile` The `user`
         # ID is a system-generated Google Health API user ID, a string of 1-63
         # characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        # The literal `me` can also be used to refer to the authenticated user.
+        # The literal `me` can also be used to refer to the authenticated user. This
+        # field is read-only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4706,7 +4724,15 @@ module Google
         # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
         # and Pixel Watch). Excludes manually logged data. - `users/me/
         # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
-        # data from tracker devices, manually logged data, and Health Connect.
+        # data from tracker devices, manually logged data, and Health Connect. - `users/
+        # me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        # client wrote through this API, that is, data points whose data source was
+        # registered through this API with the same OAuth client ID as the caller.
+        # Callers that were only granted write scopes for the requested data type may
+        # only read the data they wrote themselves: their requests are implicitly
+        # restricted to `self-sources`, and requesting any other data source family
+        # fails with `PERMISSION_DENIED`. If no data point matches the requested data
+        # source family, the response is an empty list rather than an error.
         # Corresponds to the JSON property `dataSourceFamily`
         # @return [String]
         attr_accessor :data_source_family
@@ -4949,7 +4975,7 @@ module Google
       class RunVo2Max
         include Google::Apis::Core::Hashable
       
-        # Required. Run VO2 max value in ml/kg/min.
+        # Required. Run VO2 max value in ml/kg/min. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `runVo2Max`
         # @return [Float]
         attr_accessor :run_vo2_max
@@ -5175,7 +5201,8 @@ module Google
         # settings` Example: `users/1234567890/settings` or `users/me/settings` The `
         # user` ID is a system-generated Google Health API user ID, a string of 1-63
         # characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        # The literal `me` can also be used to refer to the authenticated user.
+        # The literal `me` can also be used to refer to the authenticated user. This
+        # field is read-only.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -5619,7 +5646,8 @@ module Google
       class Steps
         include Google::Apis::Core::Hashable
       
-        # Required. Number of steps in the recorded interval.
+        # Required. Number of steps in the recorded interval. Must be in the range `[0,
+        # 1000000]`.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -6096,7 +6124,7 @@ module Google
         attr_accessor :sample_time
       
         # Required. VO2 max value measured as in ml consumed oxygen / kg of body weight /
-        # min.
+        # min. Must be in the range `[0, 100]`.
         # Corresponds to the JSON property `vo2Max`
         # @return [Float]
         attr_accessor :vo2_max
@@ -6117,7 +6145,8 @@ module Google
       class VolumeQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. Value representing the volume in milliliters.
+        # Required. Value representing the volume in milliliters. Must be in the range `[
+        # 0, 100000]`.
         # Corresponds to the JSON property `milliliters`
         # @return [Float]
         attr_accessor :milliliters
@@ -6179,7 +6208,7 @@ module Google
         # @return [Google::Apis::HealthV4::ObservationSampleTime]
         attr_accessor :sample_time
       
-        # Required. Weight of a user in grams.
+        # Required. Weight of a user in grams. Must be in the range `[0, 1000000]`.
         # Corresponds to the JSON property `weightGrams`
         # @return [Float]
         attr_accessor :weight_grams
@@ -6200,7 +6229,7 @@ module Google
       class WeightQuantity
         include Google::Apis::Core::Hashable
       
-        # Required. The weight value in grams.
+        # Required. The weight value in grams. Must be in the range `[0, 100000]`.
         # Corresponds to the JSON property `grams`
         # @return [Float]
         attr_accessor :grams
