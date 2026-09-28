@@ -312,8 +312,8 @@ module Google
         # allowed value in the same attribute resource. * If not provided, a system
         # generated id derived from the display name will be used. In this case, the
         # service will handle conflict resolution by adding a system generated suffix in
-        # case of duplicates. This value should be 4-63 characters, and valid characters
-        # are /a-z-/.
+        # case of duplicates. This value should be 3-500 characters, and valid
+        # characters are /a-z[0-9]-_/.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -426,6 +426,11 @@ module Google
         # @return [String]
         attr_accessor :selected_version
       
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `serviceType`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :service_type
+      
         # Output only. The list of sources and metadata from the sources of the API
         # resource.
         # Corresponds to the JSON property `sourceMetadata`
@@ -475,6 +480,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
           @selected_version = args[:selected_version] if args.key?(:selected_version)
+          @service_type = args[:service_type] if args.key?(:service_type)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @target_user = args[:target_user] if args.key?(:target_user)
           @team = args[:team] if args.key?(:team)
@@ -2371,13 +2377,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Description of the external API. Max length is 2000 characters (
+        # Optional. Description of the external API. Max length is 500000 characters (
         # Unicode Code Points).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. Display name of the external API. Max length is 63 characters (
+        # Required. Display name of the external API. Max length is 500 characters (
         # Unicode Code Points).
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4072,14 +4078,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The plugin description. Max length is 2000 characters (Unicode code
-        # points).
+        # Optional. The plugin description. Max length is 500000 characters (Unicode
+        # code points).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. The display name of the plugin. Max length is 50 characters (Unicode
-        # code points).
+        # Required. The display name of the plugin. Max length is 500 characters (
+        # Unicode code points).
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4226,7 +4232,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The display name for this plugin instance. Max length is 255
+        # Required. The display name for this plugin instance. Max length is 500
         # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]

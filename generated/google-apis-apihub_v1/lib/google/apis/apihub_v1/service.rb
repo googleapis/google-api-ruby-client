@@ -1165,8 +1165,8 @@ module Google
         #   If not provided, a system generated id will be used. This value should be 4-
         #   500 characters, overall resource name which will be of format `projects/`
         #   project`/locations/`location`/apis/`api`/versions/`version`/operations/`
-        #   operation``, its length is limited to 700 characters, and valid characters are
-        #   /a-z[0-9]-_/.
+        #   operation``, its length is limited to 1000 characters, and valid characters
+        #   are /a-z[0-9]-_/.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -1031,6 +1031,8 @@ module Google
           property :owner, as: 'owner', class: Google::Apis::ApihubV1::GoogleCloudApihubV1Owner, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1Owner::Representation
       
           property :selected_version, as: 'selectedVersion'
+          property :service_type, as: 'serviceType', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
+      
           collection :source_metadata, as: 'sourceMetadata', class: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1SourceMetadata::Representation
       
           property :target_user, as: 'targetUser', class: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues, decorator: Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues::Representation
