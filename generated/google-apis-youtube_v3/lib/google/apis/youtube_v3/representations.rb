@@ -70,18 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ActivityContentDetailsFavorite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ActivityContentDetailsLike
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ActivityContentDetailsPlaylistItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1344,10 +1332,6 @@ module Google
       
           property :comment, as: 'comment', class: Google::Apis::YoutubeV3::ActivityContentDetailsComment, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsComment::Representation
       
-          property :favorite, as: 'favorite', class: Google::Apis::YoutubeV3::ActivityContentDetailsFavorite, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsFavorite::Representation
-      
-          property :like, as: 'like', class: Google::Apis::YoutubeV3::ActivityContentDetailsLike, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsLike::Representation
-      
           property :playlist_item, as: 'playlistItem', class: Google::Apis::YoutubeV3::ActivityContentDetailsPlaylistItem, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsPlaylistItem::Representation
       
           property :promoted_item, as: 'promotedItem', class: Google::Apis::YoutubeV3::ActivityContentDetailsPromotedItem, decorator: Google::Apis::YoutubeV3::ActivityContentDetailsPromotedItem::Representation
@@ -1380,22 +1364,6 @@ module Google
       end
       
       class ActivityContentDetailsComment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
-      
-        end
-      end
-      
-      class ActivityContentDetailsFavorite
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
-      
-        end
-      end
-      
-      class ActivityContentDetailsLike
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_id, as: 'resourceId', class: Google::Apis::YoutubeV3::ResourceId, decorator: Google::Apis::YoutubeV3::ResourceId::Representation
