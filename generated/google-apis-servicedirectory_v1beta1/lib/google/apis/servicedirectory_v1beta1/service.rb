@@ -341,7 +341,7 @@ module Google
         
         # Updates a namespace.
         # @param [String] name
-        #   Immutable. The resource name for the namespace in the format `projects/*/
+        #   Identifier. The resource name for the namespace in the format `projects/*/
         #   locations/*/namespaces/*`.
         # @param [Google::Apis::ServicedirectoryV1beta1::Namespace] namespace_object
         # @param [String] update_mask
@@ -647,7 +647,7 @@ module Google
         
         # Updates a service.
         # @param [String] name
-        #   Immutable. The resource name for the service in the format `projects/*/
+        #   Identifier. The resource name for the service in the format `projects/*/
         #   locations/*/namespaces/*/services/*`.
         # @param [Google::Apis::ServicedirectoryV1beta1::Service] service_object
         # @param [String] update_mask
@@ -957,7 +957,7 @@ module Google
         
         # Updates an endpoint.
         # @param [String] name
-        #   Immutable. The resource name for the endpoint in the format `projects/*/
+        #   Identifier. The resource name for the endpoint in the format `projects/*/
         #   locations/*/namespaces/*/services/*/endpoints/*`.
         # @param [Google::Apis::ServicedirectoryV1beta1::Endpoint] endpoint_object
         # @param [String] update_mask
