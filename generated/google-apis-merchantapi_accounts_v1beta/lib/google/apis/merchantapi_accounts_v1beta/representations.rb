@@ -828,6 +828,7 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :account_name, as: 'accountName'
           property :adult_content, as: 'adultContent'
+          property :home_page_uri, as: 'homePageUri'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :test_account, as: 'testAccount'

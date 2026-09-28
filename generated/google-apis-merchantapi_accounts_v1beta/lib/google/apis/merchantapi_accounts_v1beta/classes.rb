@@ -153,6 +153,11 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
+        # Output only. URI (typically a URL) of the store's homepage.
+        # Corresponds to the JSON property `homePageUri`
+        # @return [String]
+        attr_accessor :home_page_uri
+      
         # Required. The account's [BCP-47 language code](https://tools.ietf.org/html/
         # bcp47), such as `en-US` or `sr-Latn`.
         # Corresponds to the JSON property `languageCode`
@@ -185,6 +190,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @account_name = args[:account_name] if args.key?(:account_name)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
+          @home_page_uri = args[:home_page_uri] if args.key?(:home_page_uri)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @test_account = args[:test_account] if args.key?(:test_account)
