@@ -122,7 +122,8 @@ module Google
         
         # Lists publications.
         # @param [String] parent
-        #   Required. The parent organization whose publications to list. Format: `
+        #   Required. The parent organization whose publications to list, or "
+        #   organizations/-" for all organizations a user has access to. Format: `
         #   organizations/`organization``.
         # @param [String] filter
         #   Optional. A filter expression to filter the publications returned.
