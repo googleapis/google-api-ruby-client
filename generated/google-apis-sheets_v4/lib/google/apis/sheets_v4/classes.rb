@@ -98,6 +98,54 @@ module Google
         end
       end
       
+      # Inserts a reply Post into a CommentThread. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class AddCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread to add the reply to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::SheetsV4::Post]
+        attr_accessor :post
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post = args[:post] if args.key?(:post)
+        end
+      end
+      
+      # The result of creating a reply. [Developer Preview](https://developers.google.
+      # com/workspace/preview).
+      class AddCommentReplyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::SheetsV4::Post]
+        attr_accessor :post
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post = args[:post] if args.key?(:post)
+        end
+      end
+      
       # Adds a new conditional format rule at the given index. All subsequent rules'
       # indexes are incremented.
       class AddConditionalFormatRuleRequest
@@ -1748,6 +1796,15 @@ module Google
       class BatchUpdateSpreadsheetRequest
         include Google::Apis::Core::Hashable
       
+        # The comments view mode to apply to the spreadsheet. This allows viewing the
+        # spreadsheet with comments omitted or included. If one is not specified,
+        # COMMENTS_VIEW_MODE_OMITTED is used. Meaningful only if
+        # include_spreadsheet_in_response is 'true'. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
+      
         # Determines if the update response should include the spreadsheet resource.
         # Corresponds to the JSON property `includeSpreadsheetInResponse`
         # @return [Boolean]
@@ -1781,6 +1838,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @include_spreadsheet_in_response = args[:include_spreadsheet_in_response] if args.key?(:include_spreadsheet_in_response)
           @requests = args[:requests] if args.key?(:requests)
           @response_include_grid_data = args[:response_include_grid_data] if args.key?(:response_include_grid_data)
@@ -1791,6 +1849,12 @@ module Google
       # The reply for batch updating a spreadsheet.
       class BatchUpdateSpreadsheetResponse
         include Google::Apis::Core::Hashable
+      
+        # Whether comment updates were applied in the batch request. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentUpdateState`
+        # @return [String]
+        attr_accessor :comment_update_state
       
         # The reply of the updates. This maps 1:1 with the updates, although replies to
         # some requests may be empty.
@@ -1814,6 +1878,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment_update_state = args[:comment_update_state] if args.key?(:comment_update_state)
           @replies = args[:replies] if args.key?(:replies)
           @spreadsheet_id = args[:spreadsheet_id] if args.key?(:spreadsheet_id)
           @updated_spreadsheet = args[:updated_spreadsheet] if args.key?(:updated_spreadsheet)
@@ -3565,6 +3630,97 @@ module Google
         end
       end
       
+      # A location in the spreadsheet that is tied to a CommentThread with the same
+      # anchorId. Note: Multiple anchors may refer to the same location. [Developer
+      # Preview](https://developers.google.com/workspace/preview).
+      class CommentAnchor
+        include Google::Apis::Core::Hashable
+      
+        # The unique ID of the comment anchor. Output only.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # A range on a sheet. All indexes are zero-based. Indexes are half open, i.e.
+        # the start index is inclusive and the end index is exclusive -- [start_index,
+        # end_index). Missing indexes indicate the range is unbounded on that side. For
+        # example, if `"Sheet1"` is sheet ID 123456, then: `Sheet1!A1:A1 == sheet_id:
+        # 123456, start_row_index: 0, end_row_index: 1, start_column_index: 0,
+        # end_column_index: 1` `Sheet1!A3:B4 == sheet_id: 123456, start_row_index: 2,
+        # end_row_index: 4, start_column_index: 0, end_column_index: 2` `Sheet1!A:B ==
+        # sheet_id: 123456, start_column_index: 0, end_column_index: 2` `Sheet1!A5:B ==
+        # sheet_id: 123456, start_row_index: 4, start_column_index: 0, end_column_index:
+        # 2` `Sheet1 == sheet_id: 123456` The start index must always be less than or
+        # equal to the end index. If the start index equals the end index, then the
+        # range is empty. Empty ranges are typically not meaningful and are usually
+        # rendered in the UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Represents a single comment thread inside a spreadsheet. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class CommentThread
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentAnchor in the sheet that this thread is tied to.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # The unique ID of the comment thread.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `headPost`
+        # @return [Google::Apis::SheetsV4::Post]
+        attr_accessor :head_post
+      
+        # The quoted text from the spreadsheet when the comment was created, formatted
+        # as plain-text.
+        # Corresponds to the JSON property `plainTextQuote`
+        # @return [String]
+        attr_accessor :plain_text_quote
+      
+        # Replies to the head post.
+        # Corresponds to the JSON property `replies`
+        # @return [Array<Google::Apis::SheetsV4::Post>]
+        attr_accessor :replies
+      
+        # Whether the thread is open or resolved.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @head_post = args[:head_post] if args.key?(:head_post)
+          @plain_text_quote = args[:plain_text_quote] if args.key?(:plain_text_quote)
+          @replies = args[:replies] if args.key?(:replies)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
       # The value of the condition.
       class ConditionValue
         include Google::Apis::Core::Hashable
@@ -4629,6 +4785,55 @@ module Google
         # Update properties of this object
         def update!(**args)
           @banded_range_id = args[:banded_range_id] if args.key?(:banded_range_id)
+        end
+      end
+      
+      # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
+      # - The requesting user is not the author of the post. - The reply post contains
+      # a comment action. - The reply post contains an assignee. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class DeleteCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The ID of the reply Post being deleted.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
+        end
+      end
+      
+      # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+      # user is not the author of the headPost. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class DeleteCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread that is being deleted.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
         end
       end
       
@@ -6058,6 +6263,14 @@ module Google
       class GetSpreadsheetByDataFilterRequest
         include Google::Apis::Core::Hashable
       
+        # The comments view mode to apply to the spreadsheet. This allows viewing the
+        # spreadsheet with comments omitted or included. If one is not specified,
+        # COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
+      
         # The DataFilters used to select which ranges to retrieve from the spreadsheet.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
@@ -6082,6 +6295,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @data_filters = args[:data_filters] if args.key?(:data_filters)
           @exclude_tables_in_banded_ranges = args[:exclude_tables_in_banded_ranges] if args.key?(:exclude_tables_in_banded_ranges)
           @include_grid_data = args[:include_grid_data] if args.key?(:include_grid_data)
@@ -6493,6 +6707,63 @@ module Google
           @bar_color = args[:bar_color] if args.key?(:bar_color)
           @bar_color_style = args[:bar_color_style] if args.key?(:bar_color_style)
           @data = args[:data] if args.key?(:data)
+        end
+      end
+      
+      # Inserts a CommentThread into the spreadsheet. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class InsertCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the assignee of the comment. Leave empty for a
+        # non-assigned comment. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `assigneeEmailAddress`
+        # @return [String]
+        attr_accessor :assignee_email_address
+      
+        # The text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Sheets editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # A coordinate in a sheet. All indexes are zero-based.
+        # Corresponds to the JSON property `coordinate`
+        # @return [Google::Apis::SheetsV4::GridCoordinate]
+        attr_accessor :coordinate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email_address = args[:assignee_email_address] if args.key?(:assignee_email_address)
+          @content = args[:content] if args.key?(:content)
+          @coordinate = args[:coordinate] if args.key?(:coordinate)
+        end
+      end
+      
+      # The result of creating a comment. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class InsertCommentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single comment thread inside a spreadsheet. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentThread`
+        # @return [Google::Apis::SheetsV4::CommentThread]
+        attr_accessor :comment_thread
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_thread = args[:comment_thread] if args.key?(:comment_thread)
         end
       end
       
@@ -7929,6 +8200,143 @@ module Google
         end
       end
       
+      # Represents a single post in a comment thread. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class Post
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email of the user who is being newly assigned to the thread as
+        # part of this post. Returns a 400 bad request error if: - The parent thread is
+        # a CommentThread whose headPost does not have an assignee. - commentAction is
+        # specified as `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code
+        # units.
+        # Corresponds to the JSON property `assigneeEmail`
+        # @return [String]
+        attr_accessor :assignee_email
+      
+        # Represents a user who authored a comment post. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `author`
+        # @return [Google::Apis::SheetsV4::PostAuthor]
+        attr_accessor :author
+      
+        # Action taken as part of creating the post.
+        # Corresponds to the JSON property `commentAction`
+        # @return [String]
+        attr_accessor :comment_action
+      
+        # The content of the post. Required to be non-empty if comment_action is not `
+        # RESOLVE` or `REOPEN`. This text content will be handled similarly to comments
+        # created in the Sheets editor. It will have similar behaviors for formatting,
+        # notifications, etc. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The content of the post as HTML.
+        # Corresponds to the JSON property `contentHtml`
+        # @return [String]
+        attr_accessor :content_html
+      
+        # Output only. The time the post was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Whether the post is deleted. If `true`, content and author fields
+        # will be empty.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Output only. Whether the post is from a copied spreadsheet. This field cannot
+        # be set directly by callers.
+        # Corresponds to the JSON property `fromCopiedSpreadsheet`
+        # @return [Boolean]
+        attr_accessor :from_copied_spreadsheet
+        alias_method :from_copied_spreadsheet?, :from_copied_spreadsheet
+      
+        # Output only. Whether the post is from an imported spreadsheet. This field
+        # cannot be set directly by callers.
+        # Corresponds to the JSON property `fromImportedSpreadsheet`
+        # @return [Boolean]
+        attr_accessor :from_imported_spreadsheet
+        alias_method :from_imported_spreadsheet?, :from_imported_spreadsheet
+      
+        # Output only. The unique ID of the post.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # Output only. The time the post was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email = args[:assignee_email] if args.key?(:assignee_email)
+          @author = args[:author] if args.key?(:author)
+          @comment_action = args[:comment_action] if args.key?(:comment_action)
+          @content = args[:content] if args.key?(:content)
+          @content_html = args[:content_html] if args.key?(:content_html)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @from_copied_spreadsheet = args[:from_copied_spreadsheet] if args.key?(:from_copied_spreadsheet)
+          @from_imported_spreadsheet = args[:from_imported_spreadsheet] if args.key?(:from_imported_spreadsheet)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a user who authored a comment post. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class PostAuthor
+        include Google::Apis::Core::Hashable
+      
+        # Whether the user is anonymous.
+        # Corresponds to the JSON property `anonymous`
+        # @return [Boolean]
+        attr_accessor :anonymous
+        alias_method :anonymous?, :anonymous
+      
+        # The display name of the user. May be absent if the author is anonymous.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the user is the authenticated user making the request.
+        # Corresponds to the JSON property `me`
+        # @return [Boolean]
+        attr_accessor :me
+        alias_method :me?, :me
+      
+        # The resource name of the post author user, which can also be used to identify
+        # the user in the [Google People API](https://developers.google.com/people/api/
+        # rest/v1/people). Format: `users/`user``. Will not be populated if the
+        # anonymous field is `true` or if the post is from an imported spreadsheet.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anonymous = args[:anonymous] if args.key?(:anonymous)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @me = args[:me] if args.key?(:me)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # A protected range.
       class ProtectedRange
         include Google::Apis::Core::Hashable
@@ -8244,6 +8652,12 @@ module Google
         # @return [Google::Apis::SheetsV4::AddChartRequest]
         attr_accessor :add_chart
       
+        # Inserts a reply Post into a CommentThread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::SheetsV4::AddCommentReplyRequest]
+        attr_accessor :add_comment_reply
+      
         # Adds a new conditional format rule at the given index. All subsequent rules'
         # indexes are incremented.
         # Corresponds to the JSON property `addConditionalFormatRule`
@@ -8363,6 +8777,21 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteBandingRequest]
         attr_accessor :delete_banding
       
+        # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+        # user is not the author of the headPost. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteComment`
+        # @return [Google::Apis::SheetsV4::DeleteCommentRequest]
+        attr_accessor :delete_comment
+      
+        # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
+        # - The requesting user is not the author of the post. - The reply post contains
+        # a comment action. - The reply post contains an assignee. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteCommentReply`
+        # @return [Google::Apis::SheetsV4::DeleteCommentReplyRequest]
+        attr_accessor :delete_comment_reply
+      
         # Deletes a conditional format rule at the given index. All subsequent rules'
         # indexes are decremented.
         # Corresponds to the JSON property `deleteConditionalFormatRule`
@@ -8454,6 +8883,12 @@ module Google
         # Corresponds to the JSON property `findReplace`
         # @return [Google::Apis::SheetsV4::FindReplaceRequest]
         attr_accessor :find_replace
+      
+        # Inserts a CommentThread into the spreadsheet. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::SheetsV4::InsertCommentRequest]
+        attr_accessor :insert_comment
       
         # Inserts rows or columns in a sheet at a particular index.
         # Corresponds to the JSON property `insertDimension`
@@ -8570,6 +9005,13 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateChartSpecRequest]
         attr_accessor :update_chart_spec
       
+        # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
+        # requesting user is not the author of the post. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `updateCommentPost`
+        # @return [Google::Apis::SheetsV4::UpdateCommentPostRequest]
+        attr_accessor :update_comment_post
+      
         # Updates a conditional format rule at the given index, or moves a conditional
         # format rule to another index.
         # Corresponds to the JSON property `updateConditionalFormatRule`
@@ -8658,6 +9100,7 @@ module Google
         def update!(**args)
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_conditional_format_rule = args[:add_conditional_format_rule] if args.key?(:add_conditional_format_rule)
           @add_data_source = args[:add_data_source] if args.key?(:add_data_source)
           @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
@@ -8677,6 +9120,8 @@ module Google
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @cut_paste = args[:cut_paste] if args.key?(:cut_paste)
           @delete_banding = args[:delete_banding] if args.key?(:delete_banding)
+          @delete_comment = args[:delete_comment] if args.key?(:delete_comment)
+          @delete_comment_reply = args[:delete_comment_reply] if args.key?(:delete_comment_reply)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_data_source = args[:delete_data_source] if args.key?(:delete_data_source)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
@@ -8693,6 +9138,7 @@ module Google
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @insert_dimension = args[:insert_dimension] if args.key?(:insert_dimension)
           @insert_range = args[:insert_range] if args.key?(:insert_range)
           @merge_cells = args[:merge_cells] if args.key?(:merge_cells)
@@ -8711,6 +9157,7 @@ module Google
           @update_borders = args[:update_borders] if args.key?(:update_borders)
           @update_cells = args[:update_cells] if args.key?(:update_cells)
           @update_chart_spec = args[:update_chart_spec] if args.key?(:update_chart_spec)
+          @update_comment_post = args[:update_comment_post] if args.key?(:update_comment_post)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
           @update_data_source = args[:update_data_source] if args.key?(:update_data_source)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
@@ -8741,6 +9188,12 @@ module Google
         # Corresponds to the JSON property `addChart`
         # @return [Google::Apis::SheetsV4::AddChartResponse]
         attr_accessor :add_chart
+      
+        # The result of creating a reply. [Developer Preview](https://developers.google.
+        # com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::SheetsV4::AddCommentReplyResponse]
+        attr_accessor :add_comment_reply
       
         # The result of adding a data source.
         # Corresponds to the JSON property `addDataSource`
@@ -8827,6 +9280,12 @@ module Google
         # @return [Google::Apis::SheetsV4::FindReplaceResponse]
         attr_accessor :find_replace
       
+        # The result of creating a comment. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::SheetsV4::InsertCommentResponse]
+        attr_accessor :insert_comment
+      
         # The response from refreshing one or multiple data source objects.
         # Corresponds to the JSON property `refreshDataSource`
         # @return [Google::Apis::SheetsV4::RefreshDataSourceResponse]
@@ -8865,6 +9324,7 @@ module Google
         def update!(**args)
           @add_banding = args[:add_banding] if args.key?(:add_banding)
           @add_chart = args[:add_chart] if args.key?(:add_chart)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_data_source = args[:add_data_source] if args.key?(:add_data_source)
           @add_dimension_group = args[:add_dimension_group] if args.key?(:add_dimension_group)
           @add_filter_view = args[:add_filter_view] if args.key?(:add_filter_view)
@@ -8882,6 +9342,7 @@ module Google
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @refresh_data_source = args[:refresh_data_source] if args.key?(:refresh_data_source)
           @trim_whitespace = args[:trim_whitespace] if args.key?(:trim_whitespace)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
@@ -9144,6 +9605,12 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
         attr_accessor :column_groups
       
+        # The comment anchors on this sheet. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `commentAnchors`
+        # @return [Array<Google::Apis::SheetsV4::CommentAnchor>]
+        attr_accessor :comment_anchors
+      
         # The conditional format rules in this sheet.
         # Corresponds to the JSON property `conditionalFormats`
         # @return [Array<Google::Apis::SheetsV4::ConditionalFormatRule>]
@@ -9212,6 +9679,7 @@ module Google
           @basic_filter = args[:basic_filter] if args.key?(:basic_filter)
           @charts = args[:charts] if args.key?(:charts)
           @column_groups = args[:column_groups] if args.key?(:column_groups)
+          @comment_anchors = args[:comment_anchors] if args.key?(:comment_anchors)
           @conditional_formats = args[:conditional_formats] if args.key?(:conditional_formats)
           @data = args[:data] if args.key?(:data)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
@@ -9740,6 +10208,18 @@ module Google
       class Spreadsheet
         include Google::Apis::Core::Hashable
       
+        # The comment threads associated with the spreadsheet. [Developer Preview](https:
+        # //developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `comments`
+        # @return [Array<Google::Apis::SheetsV4::CommentThread>]
+        attr_accessor :comments
+      
+        # Output only. The comments view mode applied to the spreadsheet. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
+      
         # Output only. A list of data source refresh schedules.
         # Corresponds to the JSON property `dataSourceSchedules`
         # @return [Array<Google::Apis::SheetsV4::DataSourceRefreshSchedule>]
@@ -9786,6 +10266,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comments = args[:comments] if args.key?(:comments)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @data_source_schedules = args[:data_source_schedules] if args.key?(:data_source_schedules)
           @data_sources = args[:data_sources] if args.key?(:data_sources)
           @developer_metadata = args[:developer_metadata] if args.key?(:developer_metadata)
@@ -10996,6 +11478,42 @@ module Google
         def update!(**args)
           @chart_id = args[:chart_id] if args.key?(:chart_id)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
+      # requesting user is not the author of the post. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class UpdateCommentPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The new text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Sheets editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The ID of the post being updated.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @content = args[:content] if args.key?(:content)
+          @post_id = args[:post_id] if args.key?(:post_id)
         end
       end
       
