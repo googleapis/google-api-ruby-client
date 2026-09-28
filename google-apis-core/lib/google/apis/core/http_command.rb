@@ -505,13 +505,11 @@ module Google
         #
         # Validation Mechanism:
         # 1. Identifies query/fragment injections: Rejects values containing '?' or '#' characters.
-        # 2. URL-decodes the parameter value to ensure all encoded dot (`%2e` / `%2E`) and slash
-        #    (`%2f` / `%2F`) segments are expanded before segment checks.
-        # 3. For simple variables (standard single-wildcard behavior):
+        # 2. For simple variables (standard single-wildcard behavior):
         #    - Rejects if the value contains '/' (cannot span multiple path segments).
         #    - Rejects if the value is exactly '.' or '..'.
-        # 4. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
-        #    - Splits the decoded value by slash ('/') using a `-1` limit to preserve empty segments.
+        # 3. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
+        #    - Splits the value by slash ('/') using a `-1` limit to preserve empty segments.
         #    - Rejects if any segment is a directory traversal segment ('.' or '..').
         #    - Rejects empty segments ('', meaning duplicate slashes '//' or trailing slashes).
         #
@@ -539,10 +537,8 @@ module Google
               raise Google::Apis::Error, "Parameter #{var_name} contains invalid characters (? or #)"
             end
 
-            unescaped_value = CGI.unescape value
-
             if v[:reserved]
-              value_segments = unescaped_value.split('/', -1)
+              value_segments = value.split('/', -1)
               value_segments.each do |seg|
                 if ['.', '..'].include?(seg)
                   raise Google::Apis::Error,
@@ -551,13 +547,13 @@ module Google
                 raise Google::Apis::Error, "Invalid path segment '' in parameter #{var_name}" if seg == ''
               end
             else
-              if unescaped_value.include?('/')
+              if value.include?('/')
                 raise Google::Apis::Error, "Simple parameter #{var_name} cannot contain slashes: #{value}"
               end
 
-              if ['.', '..'].include?(unescaped_value)
+              if ['.', '..'].include?(value)
                 raise Google::Apis::Error,
-                      "Invalid value for #{var_name} '#{unescaped_value}'."
+                      "Invalid value for #{var_name} '#{value}'."
               end
             end
           end
