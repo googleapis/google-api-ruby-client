@@ -723,6 +723,18 @@ module Google
       class IntervalMetrics
         include Google::Apis::Core::Hashable
       
+        # Mobile only. Percentage of crash-free sessions. (total_sessions_count -
+        # impacted_sessions_count) / total_sessions_count * 100.
+        # Corresponds to the JSON property `crashFreeSessionsPercentage`
+        # @return [Float]
+        attr_accessor :crash_free_sessions_percentage
+      
+        # Mobile only. Percentage of crash-free users. (total_users_count -
+        # impacted_users_count) / total_users_count * 100
+        # Corresponds to the JSON property `crashFreeUsersPercentage`
+        # @return [Float]
+        attr_accessor :crash_free_users_percentage
+      
         # The end of the interval covered by the computation.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -733,12 +745,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :events_count
       
+        # The number of distinct sessions in the set of events.
+        # Corresponds to the JSON property `impactedSessionsCount`
+        # @return [Fixnum]
+        attr_accessor :impacted_sessions_count
+      
         # The number of distinct users in the set of events.
         # Corresponds to the JSON property `impactedUsersCount`
         # @return [Fixnum]
         attr_accessor :impacted_users_count
       
-        # The number of distinct sessions in the set of events.
+        # Deprecated: Prefer `impacted_sessions_count`. The number of distinct sessions
+        # in the set of events.
         # Corresponds to the JSON property `sessionsCount`
         # @return [Fixnum]
         attr_accessor :sessions_count
@@ -748,17 +766,32 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The number of distinct sessions.
+        # Corresponds to the JSON property `totalSessionsCount`
+        # @return [Fixnum]
+        attr_accessor :total_sessions_count
+      
+        # The number of distinct users.
+        # Corresponds to the JSON property `totalUsersCount`
+        # @return [Fixnum]
+        attr_accessor :total_users_count
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @crash_free_sessions_percentage = args[:crash_free_sessions_percentage] if args.key?(:crash_free_sessions_percentage)
+          @crash_free_users_percentage = args[:crash_free_users_percentage] if args.key?(:crash_free_users_percentage)
           @end_time = args[:end_time] if args.key?(:end_time)
           @events_count = args[:events_count] if args.key?(:events_count)
+          @impacted_sessions_count = args[:impacted_sessions_count] if args.key?(:impacted_sessions_count)
           @impacted_users_count = args[:impacted_users_count] if args.key?(:impacted_users_count)
           @sessions_count = args[:sessions_count] if args.key?(:sessions_count)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @total_sessions_count = args[:total_sessions_count] if args.key?(:total_sessions_count)
+          @total_users_count = args[:total_users_count] if args.key?(:total_users_count)
         end
       end
       

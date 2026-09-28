@@ -405,11 +405,16 @@ module Google
       class IntervalMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :crash_free_sessions_percentage, as: 'crashFreeSessionsPercentage'
+          property :crash_free_users_percentage, as: 'crashFreeUsersPercentage'
           property :end_time, as: 'endTime'
           property :events_count, :numeric_string => true, as: 'eventsCount'
+          property :impacted_sessions_count, :numeric_string => true, as: 'impactedSessionsCount'
           property :impacted_users_count, :numeric_string => true, as: 'impactedUsersCount'
           property :sessions_count, :numeric_string => true, as: 'sessionsCount'
           property :start_time, as: 'startTime'
+          property :total_sessions_count, :numeric_string => true, as: 'totalSessionsCount'
+          property :total_users_count, :numeric_string => true, as: 'totalUsersCount'
         end
       end
       
