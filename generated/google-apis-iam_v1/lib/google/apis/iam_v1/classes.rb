@@ -969,13 +969,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :rotation_window_percentage
       
-        # Optional. If set to true, the trust domain will utilize the GCP-provisioned
-        # default CA. A default CA in the same region as the workload will be selected
-        # to issue the certificate. Enabling this will clear any existing `ca_pools`
-        # configuration to provision the certificates. NOTE: This field is mutually
-        # exclusive with `ca_pools`. If this flag is enabled, certificates will be
-        # automatically provisioned from the default shared CAs. This flag should not be
-        # set if you want to use your own CA pools to provision the certificates.
+        # Optional. Determines whether the trust domain utilizes the Google Cloud-
+        # provisioned default CA. A default CA in the same region as the workload will
+        # be selected to issue the certificate. Enabling this will clear any existing `
+        # ca_pools` configuration to provision the certificates. NOTE: This field is
+        # mutually exclusive with `ca_pools`. If this flag is enabled, certificates will
+        # be automatically provisioned from the default shared CAs. This flag should not
+        # be set if you want to use your own CA pools to provision the certificates.
         # Corresponds to the JSON property `useDefaultSharedCa`
         # @return [Boolean]
         attr_accessor :use_default_shared_ca
@@ -3024,7 +3024,7 @@ module Google
         # @return [Array<Google::Apis::IamV1::TrustAnchor>]
         attr_accessor :trust_anchors
       
-        # Optional. If set to True, the trust bundle will include the private ca managed
+        # Optional. Determines whether the trust bundle includes the private CA managed
         # identity regional root public certificates. Important: `
         # trust_default_shared_ca` is only supported for managed identity trust domain
         # resource.
@@ -3899,11 +3899,14 @@ module Google
         # JSON representing the authentication credential issued by the provider. * `
         # google`: The Google attributes mapped from the assertion in the `
         # attribute_mappings`. * `attribute`: The custom attributes mapped from the
-        # assertion in the `attribute_mappings`. The maximum length of the attribute
-        # condition expression is 4096 characters. If unspecified, all valid
-        # authentication credential are accepted. The following example shows how to
-        # only allow credentials with a mapped `google.groups` value of `admins`: ``` "'
-        # admins' in google.groups" ```
+        # assertion in the `attribute_mappings`. The maximum length of the `
+        # attribute_condition` expression is 4,096 characters. Providing a condition
+        # longer than this will result in an error. If unspecified, all valid
+        # authentication credentials are accepted. However, multi-tenant identity
+        # providers (such as GitHub or Terraform Cloud) require an `attribute_condition`
+        # to prevent token spoofing. The following example shows how to only allow
+        # credentials with a mapped `google.groups` value of `admins`: ``` "'admins' in
+        # google.groups" ```
         # Corresponds to the JSON property `attributeCondition`
         # @return [String]
         attr_accessor :attribute_condition
