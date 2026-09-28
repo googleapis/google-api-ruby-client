@@ -1126,6 +1126,260 @@ module Google
         end
       end
       
+      # A streamed fragment of a document artifact (e.g. a markdown TDD) that the
+      # assistant is generating. Content deltas stream while the document is being
+      # written so clients can render a live preview; the FINALIZED chunk carries the
+      # GCS URI once the file has been persisted.
+      class ArtifactChunk
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the artifact, stable across all chunks of one artifact within
+        # the stream.
+        # Corresponds to the JSON property `artifactId`
+        # @return [String]
+        attr_accessor :artifact_id
+      
+        # Incremental artifact content. Set on DELTA chunks.
+        # Corresponds to the JSON property `contentDelta`
+        # @return [String]
+        attr_accessor :content_delta
+      
+        # The file name shown to the user, e.g. "hotel_booking_tdd.md". Set on STARTED (
+        # and repeated on FINALIZED).
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The GCS object the artifact was persisted to. Set on FINALIZED chunks.
+        # Corresponds to the JSON property `gcsUri`
+        # @return [String]
+        attr_accessor :gcs_uri
+      
+        # The IANA media type of the artifact content, e.g. "text/markdown".
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Lifecycle position of this chunk.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_id = args[:artifact_id] if args.key?(:artifact_id)
+          @content_delta = args[:content_delta] if args.key?(:content_delta)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # A blocking question or confirmation the assistant needs answered before an
+      # agent action can proceed. The requesting agent is paused and resumes only when
+      # the answer arrives on a later StreamChatAiAssistantRequest.
+      # confirmation_response.
+      class AssistantConfirmationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Display label of the agent that raised the confirmation (e.g. `"Contract
+        # Architect"`), for the card header.
+        # Corresponds to the JSON property `agentName`
+        # @return [String]
+        attr_accessor :agent_name
+      
+        # Identifier correlating this request with its response. Opaque to clients; must
+        # be echoed verbatim on the answering request.
+        # Corresponds to the JSON property `confirmationId`
+        # @return [String]
+        attr_accessor :confirmation_id
+      
+        # Context describing what is being confirmed (e.g. the action the agent wants to
+        # take, or the question it needs answered). Rendered as plain text, not Markdown.
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Time after which this confirmation can no longer be answered. An expired card
+        # renders as inactive, and the server declines the confirmation on the next turn
+        # so the paused agent does not wait indefinitely.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Label for the declining action of a binary confirmation (e.g. "Not yet").
+        # Unset when `questions` is populated.
+        # Corresponds to the JSON property `negativeLabel`
+        # @return [String]
+        attr_accessor :negative_label
+      
+        # Label for the approving action of a binary confirmation (e.g. "Publish").
+        # Unset when `questions` is populated.
+        # Corresponds to the JSON property `positiveLabel`
+        # @return [String]
+        attr_accessor :positive_label
+      
+        # Multi-choice form of the confirmation. When populated, the card renders a
+        # selectable option list and the chosen option's submit_text (or free-form user
+        # text) is returned as AssistantConfirmationResponse.answer_text.
+        # Corresponds to the JSON property `questions`
+        # @return [Array<Google::Apis::CesV1::OptionQuestionsChunkQuestion>]
+        attr_accessor :questions
+      
+        # Name of the tool call the agent paused on (e.g. "update_app"), for the card
+        # header. Unset for pure questions.
+        # Corresponds to the JSON property `tool`
+        # @return [String]
+        attr_accessor :tool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_name = args[:agent_name] if args.key?(:agent_name)
+          @confirmation_id = args[:confirmation_id] if args.key?(:confirmation_id)
+          @context = args[:context] if args.key?(:context)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @negative_label = args[:negative_label] if args.key?(:negative_label)
+          @positive_label = args[:positive_label] if args.key?(:positive_label)
+          @questions = args[:questions] if args.key?(:questions)
+          @tool = args[:tool] if args.key?(:tool)
+        end
+      end
+      
+      # The user's answer to an AssistantConfirmationRequest, sent on the next
+      # SessionService.StreamChatAiAssistant call to resume the paused agent.
+      class AssistantConfirmationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The chosen option's submit_text, or free-form user text. The paused action is
+        # cancelled and the text is handed to the agent to act on.
+        # Corresponds to the JSON property `answerText`
+        # @return [String]
+        attr_accessor :answer_text
+      
+        # The AssistantConfirmationRequest.confirmation_id being answered.
+        # Corresponds to the JSON property `confirmationId`
+        # @return [String]
+        attr_accessor :confirmation_id
+      
+        # Binary answer: true approves the paused action, false declines it.
+        # Corresponds to the JSON property `confirmed`
+        # @return [Boolean]
+        attr_accessor :confirmed
+        alias_method :confirmed?, :confirmed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_text = args[:answer_text] if args.key?(:answer_text)
+          @confirmation_id = args[:confirmation_id] if args.key?(:confirmation_id)
+          @confirmed = args[:confirmed] if args.key?(:confirmed)
+        end
+      end
+      
+      # A single personalized onboarding suggestion chip for the AI assistant's zero
+      # state.
+      class AssistantSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # Rule-table candidate type in kebab-case (e.g. "resume-pending-review"), for
+        # metrics.
+        # Corresponds to the JSON property `candidateType`
+        # @return [String]
+        attr_accessor :candidate_type
+      
+        # Icon hint for the chip.
+        # Corresponds to the JSON property `icon`
+        # @return [String]
+        attr_accessor :icon
+      
+        # Chip label shown to the user (at most 60 characters).
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        # Parameters for the load_session action.
+        # Corresponds to the JSON property `loadSession`
+        # @return [Google::Apis::CesV1::AssistantSuggestionLoadSession]
+        attr_accessor :load_session
+      
+        # Optional short explanation of why this suggestion is shown (tooltip /
+        # rationale popover).
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        # Prefill the composer with this text; the user reviews and sends.
+        # Corresponds to the JSON property `seedPrompt`
+        # @return [String]
+        attr_accessor :seed_prompt
+      
+        # Prefill the composer with this text and submit immediately. Only used for
+        # quick-reply chips inside an active onboarding conversation.
+        # Corresponds to the JSON property `sendMessage`
+        # @return [String]
+        attr_accessor :send_message
+      
+        # How this suggestion was produced.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Stable identifier for this suggestion, round-tripped by clients in interaction
+        # logging.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @candidate_type = args[:candidate_type] if args.key?(:candidate_type)
+          @icon = args[:icon] if args.key?(:icon)
+          @label = args[:label] if args.key?(:label)
+          @load_session = args[:load_session] if args.key?(:load_session)
+          @rationale = args[:rationale] if args.key?(:rationale)
+          @seed_prompt = args[:seed_prompt] if args.key?(:seed_prompt)
+          @send_message = args[:send_message] if args.key?(:send_message)
+          @source = args[:source] if args.key?(:source)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
+      # Parameters for the load_session action.
+      class AssistantSuggestionLoadSession
+        include Google::Apis::Core::Hashable
+      
+        # Identifier of the assistant session to open (the final segment of the
+        # AssistantSession resource name).
+        # Corresponds to the JSON property `assistantSessionId`
+        # @return [String]
+        attr_accessor :assistant_session_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assistant_session_id = args[:assistant_session_id] if args.key?(:assistant_session_id)
+        end
+      end
+      
       # Configuration for how the input and output audio should be processed and
       # delivered.
       class AudioProcessingConfig
@@ -1387,6 +1641,47 @@ module Google
           @disabled = args[:disabled] if args.key?(:disabled)
           @proactive_execution_enabled = args[:proactive_execution_enabled] if args.key?(:proactive_execution_enabled)
           @python_code = args[:python_code] if args.key?(:python_code)
+        end
+      end
+      
+      # Request to cancel an assistant session's in-flight turn.
+      class CancelAssistantTurnRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The turn to cancel; empty cancels whichever turn is running. A
+        # cancel naming a turn that is no longer the running one is a no-op.
+        # Corresponds to the JSON property `turnId`
+        # @return [String]
+        attr_accessor :turn_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @turn_id = args[:turn_id] if args.key?(:turn_id)
+        end
+      end
+      
+      # Response for CancelAssistantTurn.
+      class CancelAssistantTurnResponse
+        include Google::Apis::Core::Hashable
+      
+        # Whether an in-flight turn was found and asked to stop (directly on this task,
+        # or through an epoch preemption for a turn hosted elsewhere).
+        # Corresponds to the JSON property `cancelled`
+        # @return [Boolean]
+        attr_accessor :cancelled
+        alias_method :cancelled?, :cancelled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancelled = args[:cancelled] if args.key?(:cancelled)
         end
       end
       
@@ -2324,11 +2619,23 @@ module Google
         # @return [String]
         attr_accessor :voice_instruction
       
+        # Optional. Instruction mode for the voice sample. If unspecified, defaults to
+        # NO_INSTRUCTION.
+        # Corresponds to the JSON property `voiceInstructionMode`
+        # @return [String]
+        attr_accessor :voice_instruction_mode
+      
         # Optional. The Cloud Storage URI to the audio sample for voice cloning. The
         # audio sample should be a mono-channel, 24kHz WAV file.
         # Corresponds to the JSON property `voiceSampleGcsUri`
         # @return [String]
         attr_accessor :voice_sample_gcs_uri
+      
+        # Output only. Warning messages encountered during voice clone processing (e.g.
+        # low audio level).
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<Google::Apis::CesV1::CustomVoiceSampleWarning>]
+        attr_accessor :warnings
       
         def initialize(**args)
            update!(**args)
@@ -2341,7 +2648,34 @@ module Google
           @preview_audio_content = args[:preview_audio_content] if args.key?(:preview_audio_content)
           @preview_text = args[:preview_text] if args.key?(:preview_text)
           @voice_instruction = args[:voice_instruction] if args.key?(:voice_instruction)
+          @voice_instruction_mode = args[:voice_instruction_mode] if args.key?(:voice_instruction_mode)
           @voice_sample_gcs_uri = args[:voice_sample_gcs_uri] if args.key?(:voice_sample_gcs_uri)
+          @warnings = args[:warnings] if args.key?(:warnings)
+        end
+      end
+      
+      # A warning message encountered during voice sample processing.
+      class CustomVoiceSampleWarning
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A human-readable description of the warning.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Output only. The type of the warning.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3903,6 +4237,58 @@ module Google
         def update!(**args)
           @chat_token = args[:chat_token] if args.key?(:chat_token)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
+      # Request message for SessionService.GenerateOnboardingSuggestions.
+      class GenerateOnboardingSuggestionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Maximum number of suggestions to return. Defaults to 4 when unset.
+        # Corresponds to the JSON property `maxSuggestions`
+        # @return [Fixnum]
+        attr_accessor :max_suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_suggestions = args[:max_suggestions] if args.key?(:max_suggestions)
+        end
+      end
+      
+      # Response message for SessionService.GenerateOnboardingSuggestions.
+      class GenerateOnboardingSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Opaque token capturing the onboarding snapshot used to generate these
+        # suggestions. Clients echo it on the first StreamChatAiAssistantRequest so the
+        # server can reuse the snapshot.
+        # Corresponds to the JSON property `contextToken`
+        # @return [String]
+        attr_accessor :context_token
+      
+        # Personalized suggestions, ranked most relevant first.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::CesV1::AssistantSuggestion>]
+        attr_accessor :suggestions
+      
+        # Classification of the requesting user's history.
+        # Corresponds to the JSON property `userProfile`
+        # @return [String]
+        attr_accessor :user_profile
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_token = args[:context_token] if args.key?(:context_token)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @user_profile = args[:user_profile] if args.key?(:user_profile)
         end
       end
       
@@ -6886,6 +7272,11 @@ module Google
         # @return [Float]
         attr_accessor :temperature
       
+        # Optional. The thinking level of the model.
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6894,6 +7285,7 @@ module Google
         def update!(**args)
           @model = args[:model] if args.key?(:model)
           @temperature = args[:temperature] if args.key?(:temperature)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
         end
       end
       
@@ -7130,6 +7522,71 @@ module Google
         end
       end
       
+      # Event sent by the client or background worker to resume an assistant session
+      # after an asynchronous Long-Running Operation (LRO) completes.
+      class OperationCompletedEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional deduplication token (e.g. UUID) to prevent duplicate turn execution
+        # from concurrent browser tabs.
+        # Corresponds to the JSON property `deduplicationToken`
+        # @return [String]
+        attr_accessor :deduplication_token
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::CesV1::Status]
+        attr_accessor :error
+      
+        # Optional structured result metadata (e.g. pass_rate, total_examples,
+        # export_uri).
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # The operation resource name (e.g. `operations/`op``).
+        # Corresponds to the JSON property `operationName`
+        # @return [String]
+        attr_accessor :operation_name
+      
+        # The operation type or tool name (e.g. "run_evaluation", "copy_app", "
+        # export_app").
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Status of the operation run (e.g. "SUCCEEDED", "FAILED", "CANCELLED").
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The primary resource targeted or produced by the operation (e.g. evaluation
+        # run ID, app ID, dataset ID).
+        # Corresponds to the JSON property `targetResourceName`
+        # @return [String]
+        attr_accessor :target_resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deduplication_token = args[:deduplication_token] if args.key?(:deduplication_token)
+          @error = args[:error] if args.key?(:error)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @operation_name = args[:operation_name] if args.key?(:operation_name)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @status = args[:status] if args.key?(:status)
+          @target_resource_name = args[:target_resource_name] if args.key?(:target_resource_name)
+        end
+      end
+      
       # Represents the metadata of the long-running operation.
       class OperationMetadata
         include Google::Apis::Core::Hashable
@@ -7168,6 +7625,86 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
           @status_message = args[:status_message] if args.key?(:status_message)
+        end
+      end
+      
+      # Structured clarification options the assistant asks the user to choose among,
+      # transduced server-side out of the model's turn (the option block is stripped
+      # from the streamed and persisted text). The console renders a keyboard-
+      # navigable option list docked above the composer.
+      class OptionQuestionsChunk
+        include Google::Apis::Core::Hashable
+      
+        # The questions asked this turn. More than one entry drives the console's "1 of
+        # N" pager.
+        # Corresponds to the JSON property `questions`
+        # @return [Array<Google::Apis::CesV1::OptionQuestionsChunkQuestion>]
+        attr_accessor :questions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @questions = args[:questions] if args.key?(:questions)
+        end
+      end
+      
+      # A single selectable option.
+      class OptionQuestionsChunkOption
+        include Google::Apis::Core::Hashable
+      
+        # Optional trade-off details shown as secondary text.
+        # Corresponds to the JSON property `details`
+        # @return [String]
+        attr_accessor :details
+      
+        # Optional message text to send when the option is chosen; defaults to `title`
+        # when empty.
+        # Corresponds to the JSON property `submitText`
+        # @return [String]
+        attr_accessor :submit_text
+      
+        # Short plain-text option title (no markdown, no numbering).
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @details = args[:details] if args.key?(:details)
+          @submit_text = args[:submit_text] if args.key?(:submit_text)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # One question with its options.
+      class OptionQuestionsChunkQuestion
+        include Google::Apis::Core::Hashable
+      
+        # The selectable options, in presentation order.
+        # Corresponds to the JSON property `options`
+        # @return [Array<Google::Apis::CesV1::OptionQuestionsChunkOption>]
+        attr_accessor :options
+      
+        # The question header text.
+        # Corresponds to the JSON property `question`
+        # @return [String]
+        attr_accessor :question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+          @question = args[:question] if args.key?(:question)
         end
       end
       
@@ -7840,6 +8377,26 @@ module Google
         end
       end
       
+      # Session checkpoint containing inferred user intent for session title and UI.
+      class SessionCheckpoint
+        include Google::Apis::Core::Hashable
+      
+        # Inferred user goal or topic for the session (e.g. "Building E-Commerce Support
+        # Agent").
+        # Corresponds to the JSON property `userIntent`
+        # @return [String]
+        attr_accessor :user_intent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_intent = args[:user_intent] if args.key?(:user_intent)
+        end
+      end
+      
       # The configuration for the session.
       class SessionConfig
         include Google::Apis::Core::Hashable
@@ -8068,11 +8625,6 @@ module Google
         # @return [Google::Apis::CesV1::Citations]
         attr_accessor :citations
       
-        # Context messages for external supervision guardrails.
-        # Corresponds to the JSON property `context`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :context
-      
         # Contains execution details during the processing.
         # Corresponds to the JSON property `diagnosticInfo`
         # @return [Google::Apis::CesV1::SessionOutputDiagnosticInfo]
@@ -8138,7 +8690,6 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @citations = args[:citations] if args.key?(:citations)
-          @context = args[:context] if args.key?(:context)
           @diagnostic_info = args[:diagnostic_info] if args.key?(:diagnostic_info)
           @end_session = args[:end_session] if args.key?(:end_session)
           @google_search_suggestions = args[:google_search_suggestions] if args.key?(:google_search_suggestions)
@@ -8265,15 +8816,224 @@ module Google
         end
       end
       
+      # Request message for SessionService.StreamChatAiAssistant.
+      class StreamChatAiAssistantRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional flag to attach to an existing in-flight turn without
+        # submitting a new message.
+        # Corresponds to the JSON property `attachOnly`
+        # @return [Boolean]
+        attr_accessor :attach_only
+        alias_method :attach_only?, :attach_only
+      
+        # Optional. Cloud Storage URIs for files uploaded by the user during this turn.
+        # Example: "gs://cxas-transient-uploads/uuid/prd.pdf"
+        # Corresponds to the JSON property `attachedGcsUris`
+        # @return [Array<String>]
+        attr_accessor :attached_gcs_uris
+      
+        # Optional. Response features this client can render. The server only emits
+        # events that need a capability (e.g. `confirmation_request`) when the
+        # capability is declared, so older clients never receive events they would
+        # silently drop.
+        # Corresponds to the JSON property `clientCapabilities`
+        # @return [Array<String>]
+        attr_accessor :client_capabilities
+      
+        # The user's answer to an AssistantConfirmationRequest, sent on the next
+        # SessionService.StreamChatAiAssistant call to resume the paused agent.
+        # Corresponds to the JSON property `confirmationResponse`
+        # @return [Google::Apis::CesV1::AssistantConfirmationResponse]
+        attr_accessor :confirmation_response
+      
+        # Optional. Opaque onboarding context token returned by SessionService.
+        # GenerateOnboardingSuggestions. When set and still fresh, the server reuses the
+        # onboarding snapshot computed for the zero state instead of recomputing it for
+        # the first conversation turn.
+        # Corresponds to the JSON property `contextToken`
+        # @return [String]
+        attr_accessor :context_token
+      
+        # Optional. The message to send to the assistant agent. May be empty when `
+        # confirmation_response` is set (answering a pending confirmation without adding
+        # a new message); at least one of the two must be provided.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Event sent by the client or background worker to resume an assistant session
+        # after an asynchronous Long-Running Operation (LRO) completes.
+        # Corresponds to the JSON property `operationCompletedEvent`
+        # @return [Google::Apis::CesV1::OperationCompletedEvent]
+        attr_accessor :operation_completed_event
+      
+        # Optional. Optional cursor to resume and replay events from an in-flight or
+        # completed turn.
+        # Corresponds to the JSON property `resumeFromSequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :resume_from_sequence_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attach_only = args[:attach_only] if args.key?(:attach_only)
+          @attached_gcs_uris = args[:attached_gcs_uris] if args.key?(:attached_gcs_uris)
+          @client_capabilities = args[:client_capabilities] if args.key?(:client_capabilities)
+          @confirmation_response = args[:confirmation_response] if args.key?(:confirmation_response)
+          @context_token = args[:context_token] if args.key?(:context_token)
+          @message = args[:message] if args.key?(:message)
+          @operation_completed_event = args[:operation_completed_event] if args.key?(:operation_completed_event)
+          @resume_from_sequence_number = args[:resume_from_sequence_number] if args.key?(:resume_from_sequence_number)
+        end
+      end
+      
+      # Response message for SessionService.StreamChatAiAssistant.
+      class StreamChatAiAssistantResponse
+        include Google::Apis::Core::Hashable
+      
+        # A streamed fragment of a document artifact (e.g. a markdown TDD) that the
+        # assistant is generating. Content deltas stream while the document is being
+        # written so clients can render a live preview; the FINALIZED chunk carries the
+        # GCS URI once the file has been persisted.
+        # Corresponds to the JSON property `artifactChunk`
+        # @return [Google::Apis::CesV1::ArtifactChunk]
+        attr_accessor :artifact_chunk
+      
+        # A blocking question or confirmation the assistant needs answered before an
+        # agent action can proceed. The requesting agent is paused and resumes only when
+        # the answer arrives on a later StreamChatAiAssistantRequest.
+        # confirmation_response.
+        # Corresponds to the JSON property `confirmationRequest`
+        # @return [Google::Apis::CesV1::AssistantConfirmationRequest]
+        attr_accessor :confirmation_request
+      
+        # Unique identifier for the event.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # Timestamp when the event occurred.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # Emitted before this task stops serving the stream mid-turn (e.g. a server
+        # restart). The turn's state is persisted; a reconnect carrying
+        # resume_from_sequence_number continues it on another task.
+        # Corresponds to the JSON property `handoff`
+        # @return [Google::Apis::CesV1::TurnHandoffEvent]
+        attr_accessor :handoff
+      
+        # Structured clarification options the assistant asks the user to choose among,
+        # transduced server-side out of the model's turn (the option block is stripped
+        # from the streamed and persisted text). The console renders a keyboard-
+        # navigable option list docked above the composer.
+        # Corresponds to the JSON property `optionQuestionsChunk`
+        # @return [Google::Apis::CesV1::OptionQuestionsChunk]
+        attr_accessor :option_questions_chunk
+      
+        # A compacted replay of an in-flight turn: everything needed to render the turn'
+        # s visible output so far, plus the position live events continue from.
+        # Corresponds to the JSON property `resumeSnapshot`
+        # @return [Google::Apis::CesV1::TurnResumeSnapshot]
+        attr_accessor :resume_snapshot
+      
+        # Optional. Monotonically increasing sequence number for this session turn.
+        # Corresponds to the JSON property `sequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :sequence_number
+      
+        # Session checkpoint containing inferred user intent for session title and UI.
+        # Corresponds to the JSON property `sessionCheckpoint`
+        # @return [Google::Apis::CesV1::SessionCheckpoint]
+        attr_accessor :session_checkpoint
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::CesV1::Status]
+        attr_accessor :status
+      
+        # Text Token (for streaming Gemini responses word-by-word).
+        # Corresponds to the JSON property `textChunk`
+        # @return [String]
+        attr_accessor :text_chunk
+      
+        # Thought text chunk (agent's reasoning before generating response).
+        # Corresponds to the JSON property `thoughtChunk`
+        # @return [String]
+        attr_accessor :thought_chunk
+      
+        # Request for the client or the agent to execute the specified tool.
+        # Corresponds to the JSON property `toolCall`
+        # @return [Google::Apis::CesV1::ToolCall]
+        attr_accessor :tool_call
+      
+        # The execution result of a specific tool from the client or the agent.
+        # Corresponds to the JSON property `toolResponse`
+        # @return [Google::Apis::CesV1::ToolResponse]
+        attr_accessor :tool_response
+      
+        # Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed).
+        # Corresponds to the JSON property `turnCompleted`
+        # @return [Google::Apis::CesV1::TurnCompletedEvent]
+        attr_accessor :turn_completed
+      
+        # Optional. Indicates whether the turn is still actively running in the
+        # background.
+        # Corresponds to the JSON property `turnInProgress`
+        # @return [Boolean]
+        attr_accessor :turn_in_progress
+        alias_method :turn_in_progress?, :turn_in_progress
+      
+        # Turn-level metadata and intent categorization.
+        # Corresponds to the JSON property `turnMetadata`
+        # @return [Google::Apis::CesV1::TurnMetadata]
+        attr_accessor :turn_metadata
+      
+        # Represents a UI event payload.
+        # Corresponds to the JSON property `uiEvent`
+        # @return [Google::Apis::CesV1::UiEvent]
+        attr_accessor :ui_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_chunk = args[:artifact_chunk] if args.key?(:artifact_chunk)
+          @confirmation_request = args[:confirmation_request] if args.key?(:confirmation_request)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @handoff = args[:handoff] if args.key?(:handoff)
+          @option_questions_chunk = args[:option_questions_chunk] if args.key?(:option_questions_chunk)
+          @resume_snapshot = args[:resume_snapshot] if args.key?(:resume_snapshot)
+          @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
+          @session_checkpoint = args[:session_checkpoint] if args.key?(:session_checkpoint)
+          @status = args[:status] if args.key?(:status)
+          @text_chunk = args[:text_chunk] if args.key?(:text_chunk)
+          @thought_chunk = args[:thought_chunk] if args.key?(:thought_chunk)
+          @tool_call = args[:tool_call] if args.key?(:tool_call)
+          @tool_response = args[:tool_response] if args.key?(:tool_response)
+          @turn_completed = args[:turn_completed] if args.key?(:turn_completed)
+          @turn_in_progress = args[:turn_in_progress] if args.key?(:turn_in_progress)
+          @turn_metadata = args[:turn_metadata] if args.key?(:turn_metadata)
+          @ui_event = args[:ui_event] if args.key?(:ui_event)
+        end
+      end
+      
       # Configuration for how the agent response should be synthesized.
       class SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
-      
-        # Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig
-        # instead. The Cloud Storage URI to the consent audio for voice cloning.
-        # Corresponds to the JSON property `consentAudioGcsUri`
-        # @return [String]
-        attr_accessor :consent_audio_gcs_uri
       
         # Optional. The instruction used to synthesize speech when using a generative
         # model.
@@ -8302,27 +9062,16 @@ module Google
         # @return [String]
         attr_accessor :voice
       
-        # Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig
-        # instead. The Cloud Storage URI to the audio sample for voice cloning. The
-        # audio sample should be a mono-channel, 24kHz WAV file. Note: Please make sure
-        # the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `
-        # storage.objects.get` permission to the Cloud Storage object.
-        # Corresponds to the JSON property `voiceSampleGcsUri`
-        # @return [String]
-        attr_accessor :voice_sample_gcs_uri
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @consent_audio_gcs_uri = args[:consent_audio_gcs_uri] if args.key?(:consent_audio_gcs_uri)
           @instruction = args[:instruction] if args.key?(:instruction)
           @model = args[:model] if args.key?(:model)
           @speaking_rate = args[:speaking_rate] if args.key?(:speaking_rate)
           @voice = args[:voice] if args.key?(:voice)
-          @voice_sample_gcs_uri = args[:voice_sample_gcs_uri] if args.key?(:voice_sample_gcs_uri)
         end
       end
       
@@ -8526,6 +9275,13 @@ module Google
         # @return [Google::Apis::CesV1::PythonFunction]
         attr_accessor :python_function
       
+        # Output only. Indicates whether the tool is read-only. If true, the tool cannot
+        # be modified by the user.
+        # Corresponds to the JSON property `readOnly`
+        # @return [Boolean]
+        attr_accessor :read_only
+        alias_method :read_only?, :read_only
+      
         # Represents a tool that allows the agent to call another remote agent.
         # Corresponds to the JSON property `remoteAgentTool`
         # @return [Google::Apis::CesV1::RemoteAgentTool]
@@ -8581,6 +9337,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @open_api_tool = args[:open_api_tool] if args.key?(:open_api_tool)
           @python_function = args[:python_function] if args.key?(:python_function)
+          @read_only = args[:read_only] if args.key?(:read_only)
           @remote_agent_tool = args[:remote_agent_tool] if args.key?(:remote_agent_tool)
           @system_tool = args[:system_tool] if args.key?(:system_tool)
           @timeout = args[:timeout] if args.key?(:timeout)
@@ -9095,6 +9852,183 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent = args[:agent] if args.key?(:agent)
+        end
+      end
+      
+      # Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed).
+      class TurnCompletedEvent
+        include Google::Apis::Core::Hashable
+      
+        # Sequence number of the last event the turn produced. A client whose cursor is
+        # lower missed content and should reload the session to see it.
+        # Corresponds to the JSON property `finalSequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :final_sequence_number
+      
+        # Why the turn ended.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and
+        # ActiveTurnInfo.turn_id.
+        # Corresponds to the JSON property `turnId`
+        # @return [String]
+        attr_accessor :turn_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @final_sequence_number = args[:final_sequence_number] if args.key?(:final_sequence_number)
+          @reason = args[:reason] if args.key?(:reason)
+          @turn_id = args[:turn_id] if args.key?(:turn_id)
+        end
+      end
+      
+      # Emitted before this task stops serving the stream mid-turn (e.g. a server
+      # restart). The turn's state is persisted; a reconnect carrying
+      # resume_from_sequence_number continues it on another task.
+      class TurnHandoffEvent
+        include Google::Apis::Core::Hashable
+      
+        # Why the stream is handing off.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Identifies the turn to resume.
+        # Corresponds to the JSON property `turnId`
+        # @return [String]
+        attr_accessor :turn_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @turn_id = args[:turn_id] if args.key?(:turn_id)
+        end
+      end
+      
+      # Turn-level metadata and intent categorization.
+      class TurnMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Set on the terminal event of a contract draft whose every placeholder is
+        # resolved (contract_progress is 100%), whether or not the draft was published.
+        # Clients complete and dismiss the contract progress display on it; publication
+        # is reported separately by contract_finalized.
+        # Corresponds to the JSON property `contractDraftComplete`
+        # @return [Boolean]
+        attr_accessor :contract_draft_complete
+        alias_method :contract_draft_complete?, :contract_draft_complete
+      
+        # Set on the final artifact event of a turn whose contract draft was published (
+        # a revision was activated). Terminal for the clarification flow of this draft:
+        # contract_progress is authoritative and complete.
+        # Corresponds to the JSON property `contractFinalized`
+        # @return [Boolean]
+        attr_accessor :contract_finalized
+        alias_method :contract_finalized?, :contract_finalized
+      
+        # Indicates whether this assistant turn was contract-related (e.g. contract
+        # drafting, alignment, extraction, or revision).
+        # Corresponds to the JSON property `contractRelated`
+        # @return [Boolean]
+        attr_accessor :contract_related
+        alias_method :contract_related?, :contract_related
+      
+        # Set only on in-flight progress estimates emitted while a contract artifact
+        # fence is streaming, and on the revision-turn-start event. Unset on
+        # authoritative payloads.
+        # Corresponds to the JSON property `contractStreamingPhase`
+        # @return [String]
+        attr_accessor :contract_streaming_phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contract_draft_complete = args[:contract_draft_complete] if args.key?(:contract_draft_complete)
+          @contract_finalized = args[:contract_finalized] if args.key?(:contract_finalized)
+          @contract_related = args[:contract_related] if args.key?(:contract_related)
+          @contract_streaming_phase = args[:contract_streaming_phase] if args.key?(:contract_streaming_phase)
+        end
+      end
+      
+      # A compacted replay of an in-flight turn: everything needed to render the turn'
+      # s visible output so far, plus the position live events continue from.
+      class TurnResumeSnapshot
+        include Google::Apis::Core::Hashable
+      
+        # Compacted events reconstructing the turn's visible output, in render order,
+        # using the same event shapes as live streaming.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::CesV1::StreamChatAiAssistantResponse>]
+        attr_accessor :events
+      
+        # When the turn will be wound down if no client remains attached.
+        # Corresponds to the JSON property `orphanDeadlineTime`
+        # @return [String]
+        attr_accessor :orphan_deadline_time
+      
+        # The position this snapshot represents. Live events follow with sequence_number
+        # strictly greater than this. When lower than the resume_from_sequence_number
+        # the client requested, flushed progress lags what the client already rendered:
+        # the client must discard its rendered content of this turn beyond this position
+        # before applying the snapshot.
+        # Corresponds to the JSON property `resolvedSequenceNumber`
+        # @return [Fixnum]
+        attr_accessor :resolved_sequence_number
+      
+        # Identifies the turn being attached to.
+        # Corresponds to the JSON property `turnId`
+        # @return [String]
+        attr_accessor :turn_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @events = args[:events] if args.key?(:events)
+          @orphan_deadline_time = args[:orphan_deadline_time] if args.key?(:orphan_deadline_time)
+          @resolved_sequence_number = args[:resolved_sequence_number] if args.key?(:resolved_sequence_number)
+          @turn_id = args[:turn_id] if args.key?(:turn_id)
+        end
+      end
+      
+      # Represents a UI event payload.
+      class UiEvent
+        include Google::Apis::Core::Hashable
+      
+        # The JSON payload representing the A2UI surface.
+        # Corresponds to the JSON property `jsonPayload`
+        # @return [String]
+        attr_accessor :json_payload
+      
+        # The media type (MIME type) indicating the format of the UI event payload (e.g.,
+        # "application/json+a2ui").
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_payload = args[:json_payload] if args.key?(:json_payload)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
         end
       end
       

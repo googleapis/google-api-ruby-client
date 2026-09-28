@@ -142,6 +142,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantConfirmationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantConfirmationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantSuggestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssistantSuggestionLoadSession
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AudioProcessingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +215,18 @@ module Google
       end
       
       class Callback
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelAssistantTurnRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelAssistantTurnResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -317,6 +359,12 @@ module Google
       end
       
       class CustomVoiceSample
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomVoiceSampleWarning
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -599,6 +647,18 @@ module Google
       end
       
       class GenerateChatTokenResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateOnboardingSuggestionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateOnboardingSuggestionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1084,7 +1144,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationCompletedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OptionQuestionsChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OptionQuestionsChunkOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OptionQuestionsChunkQuestion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1198,6 +1282,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SessionCheckpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SessionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1235,6 +1325,18 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamChatAiAssistantRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamChatAiAssistantResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1361,6 +1463,36 @@ module Google
       end
       
       class TriggerActionTransferAgent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnCompletedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnHandoffEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TurnResumeSnapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UiEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1685,6 +1817,65 @@ module Google
         end
       end
       
+      class ArtifactChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_id, as: 'artifactId'
+          property :content_delta, as: 'contentDelta'
+          property :display_name, as: 'displayName'
+          property :gcs_uri, as: 'gcsUri'
+          property :mime_type, as: 'mimeType'
+          property :state, as: 'state'
+        end
+      end
+      
+      class AssistantConfirmationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_name, as: 'agentName'
+          property :confirmation_id, as: 'confirmationId'
+          property :context, as: 'context'
+          property :expire_time, as: 'expireTime'
+          property :negative_label, as: 'negativeLabel'
+          property :positive_label, as: 'positiveLabel'
+          collection :questions, as: 'questions', class: Google::Apis::CesV1::OptionQuestionsChunkQuestion, decorator: Google::Apis::CesV1::OptionQuestionsChunkQuestion::Representation
+      
+          property :tool, as: 'tool'
+        end
+      end
+      
+      class AssistantConfirmationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :answer_text, as: 'answerText'
+          property :confirmation_id, as: 'confirmationId'
+          property :confirmed, as: 'confirmed'
+        end
+      end
+      
+      class AssistantSuggestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :candidate_type, as: 'candidateType'
+          property :icon, as: 'icon'
+          property :label, as: 'label'
+          property :load_session, as: 'loadSession', class: Google::Apis::CesV1::AssistantSuggestionLoadSession, decorator: Google::Apis::CesV1::AssistantSuggestionLoadSession::Representation
+      
+          property :rationale, as: 'rationale'
+          property :seed_prompt, as: 'seedPrompt'
+          property :send_message, as: 'sendMessage'
+          property :source, as: 'source'
+          property :suggestion_id, as: 'suggestionId'
+        end
+      end
+      
+      class AssistantSuggestionLoadSession
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assistant_session_id, as: 'assistantSessionId'
+        end
+      end
+      
       class AudioProcessingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1754,6 +1945,20 @@ module Google
           property :disabled, as: 'disabled'
           property :proactive_execution_enabled, as: 'proactiveExecutionEnabled'
           property :python_code, as: 'pythonCode'
+        end
+      end
+      
+      class CancelAssistantTurnRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :turn_id, as: 'turnId'
+        end
+      end
+      
+      class CancelAssistantTurnResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancelled, as: 'cancelled'
         end
       end
       
@@ -2007,7 +2212,18 @@ module Google
           property :preview_audio_content, :base64 => true, as: 'previewAudioContent'
           property :preview_text, as: 'previewText'
           property :voice_instruction, as: 'voiceInstruction'
+          property :voice_instruction_mode, as: 'voiceInstructionMode'
           property :voice_sample_gcs_uri, as: 'voiceSampleGcsUri'
+          collection :warnings, as: 'warnings', class: Google::Apis::CesV1::CustomVoiceSampleWarning, decorator: Google::Apis::CesV1::CustomVoiceSampleWarning::Representation
+      
+        end
+      end
+      
+      class CustomVoiceSampleWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :type, as: 'type'
         end
       end
       
@@ -2468,6 +2684,23 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chat_token, as: 'chatToken'
           property :expire_time, as: 'expireTime'
+        end
+      end
+      
+      class GenerateOnboardingSuggestionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_suggestions, as: 'maxSuggestions'
+        end
+      end
+      
+      class GenerateOnboardingSuggestionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :context_token, as: 'contextToken'
+          collection :suggestions, as: 'suggestions', class: Google::Apis::CesV1::AssistantSuggestion, decorator: Google::Apis::CesV1::AssistantSuggestion::Representation
+      
+          property :user_profile, as: 'userProfile'
         end
       end
       
@@ -3308,6 +3541,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :model, as: 'model'
           property :temperature, as: 'temperature'
+          property :thinking_level, as: 'thinkingLevel'
         end
       end
       
@@ -3366,6 +3600,20 @@ module Google
         end
       end
       
+      class OperationCompletedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deduplication_token, as: 'deduplicationToken'
+          property :error, as: 'error', class: Google::Apis::CesV1::Status, decorator: Google::Apis::CesV1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :operation_name, as: 'operationName'
+          property :operation_type, as: 'operationType'
+          property :status, as: 'status'
+          property :target_resource_name, as: 'targetResourceName'
+        end
+      end
+      
       class OperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3373,6 +3621,32 @@ module Google
           property :end_time, as: 'endTime'
           property :requested_cancellation, as: 'requestedCancellation'
           property :status_message, as: 'statusMessage'
+        end
+      end
+      
+      class OptionQuestionsChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :questions, as: 'questions', class: Google::Apis::CesV1::OptionQuestionsChunkQuestion, decorator: Google::Apis::CesV1::OptionQuestionsChunkQuestion::Representation
+      
+        end
+      end
+      
+      class OptionQuestionsChunkOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :details, as: 'details'
+          property :submit_text, as: 'submitText'
+          property :title, as: 'title'
+        end
+      end
+      
+      class OptionQuestionsChunkQuestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :options, as: 'options', class: Google::Apis::CesV1::OptionQuestionsChunkOption, decorator: Google::Apis::CesV1::OptionQuestionsChunkOption::Representation
+      
+          property :question, as: 'question'
         end
       end
       
@@ -3567,6 +3841,13 @@ module Google
         end
       end
       
+      class SessionCheckpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_intent, as: 'userIntent'
+        end
+      end
+      
       class SessionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3621,7 +3902,6 @@ module Google
           property :audio, :base64 => true, as: 'audio'
           property :citations, as: 'citations', class: Google::Apis::CesV1::Citations, decorator: Google::Apis::CesV1::Citations::Representation
       
-          collection :context, as: 'context'
           property :diagnostic_info, as: 'diagnosticInfo', class: Google::Apis::CesV1::SessionOutputDiagnosticInfo, decorator: Google::Apis::CesV1::SessionOutputDiagnosticInfo::Representation
       
           property :end_session, as: 'endSession', class: Google::Apis::CesV1::EndSession, decorator: Google::Apis::CesV1::EndSession::Representation
@@ -3672,15 +3952,65 @@ module Google
         end
       end
       
+      class StreamChatAiAssistantRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attach_only, as: 'attachOnly'
+          collection :attached_gcs_uris, as: 'attachedGcsUris'
+          collection :client_capabilities, as: 'clientCapabilities'
+          property :confirmation_response, as: 'confirmationResponse', class: Google::Apis::CesV1::AssistantConfirmationResponse, decorator: Google::Apis::CesV1::AssistantConfirmationResponse::Representation
+      
+          property :context_token, as: 'contextToken'
+          property :message, as: 'message'
+          property :operation_completed_event, as: 'operationCompletedEvent', class: Google::Apis::CesV1::OperationCompletedEvent, decorator: Google::Apis::CesV1::OperationCompletedEvent::Representation
+      
+          property :resume_from_sequence_number, :numeric_string => true, as: 'resumeFromSequenceNumber'
+        end
+      end
+      
+      class StreamChatAiAssistantResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :artifact_chunk, as: 'artifactChunk', class: Google::Apis::CesV1::ArtifactChunk, decorator: Google::Apis::CesV1::ArtifactChunk::Representation
+      
+          property :confirmation_request, as: 'confirmationRequest', class: Google::Apis::CesV1::AssistantConfirmationRequest, decorator: Google::Apis::CesV1::AssistantConfirmationRequest::Representation
+      
+          property :event_id, as: 'eventId'
+          property :event_time, as: 'eventTime'
+          property :handoff, as: 'handoff', class: Google::Apis::CesV1::TurnHandoffEvent, decorator: Google::Apis::CesV1::TurnHandoffEvent::Representation
+      
+          property :option_questions_chunk, as: 'optionQuestionsChunk', class: Google::Apis::CesV1::OptionQuestionsChunk, decorator: Google::Apis::CesV1::OptionQuestionsChunk::Representation
+      
+          property :resume_snapshot, as: 'resumeSnapshot', class: Google::Apis::CesV1::TurnResumeSnapshot, decorator: Google::Apis::CesV1::TurnResumeSnapshot::Representation
+      
+          property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
+          property :session_checkpoint, as: 'sessionCheckpoint', class: Google::Apis::CesV1::SessionCheckpoint, decorator: Google::Apis::CesV1::SessionCheckpoint::Representation
+      
+          property :status, as: 'status', class: Google::Apis::CesV1::Status, decorator: Google::Apis::CesV1::Status::Representation
+      
+          property :text_chunk, as: 'textChunk'
+          property :thought_chunk, as: 'thoughtChunk'
+          property :tool_call, as: 'toolCall', class: Google::Apis::CesV1::ToolCall, decorator: Google::Apis::CesV1::ToolCall::Representation
+      
+          property :tool_response, as: 'toolResponse', class: Google::Apis::CesV1::ToolResponse, decorator: Google::Apis::CesV1::ToolResponse::Representation
+      
+          property :turn_completed, as: 'turnCompleted', class: Google::Apis::CesV1::TurnCompletedEvent, decorator: Google::Apis::CesV1::TurnCompletedEvent::Representation
+      
+          property :turn_in_progress, as: 'turnInProgress'
+          property :turn_metadata, as: 'turnMetadata', class: Google::Apis::CesV1::TurnMetadata, decorator: Google::Apis::CesV1::TurnMetadata::Representation
+      
+          property :ui_event, as: 'uiEvent', class: Google::Apis::CesV1::UiEvent, decorator: Google::Apis::CesV1::UiEvent::Representation
+      
+        end
+      end
+      
       class SynthesizeSpeechConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :consent_audio_gcs_uri, as: 'consentAudioGcsUri'
           property :instruction, as: 'instruction'
           property :model, as: 'model'
           property :speaking_rate, as: 'speakingRate'
           property :voice, as: 'voice'
-          property :voice_sample_gcs_uri, as: 'voiceSampleGcsUri'
         end
       end
       
@@ -3742,6 +4072,7 @@ module Google
       
           property :python_function, as: 'pythonFunction', class: Google::Apis::CesV1::PythonFunction, decorator: Google::Apis::CesV1::PythonFunction::Representation
       
+          property :read_only, as: 'readOnly'
           property :remote_agent_tool, as: 'remoteAgentTool', class: Google::Apis::CesV1::RemoteAgentTool, decorator: Google::Apis::CesV1::RemoteAgentTool::Representation
       
           property :system_tool, as: 'systemTool', class: Google::Apis::CesV1::SystemTool, decorator: Google::Apis::CesV1::SystemTool::Representation
@@ -3907,6 +4238,52 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent, as: 'agent'
+        end
+      end
+      
+      class TurnCompletedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :final_sequence_number, :numeric_string => true, as: 'finalSequenceNumber'
+          property :reason, as: 'reason'
+          property :turn_id, as: 'turnId'
+        end
+      end
+      
+      class TurnHandoffEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :turn_id, as: 'turnId'
+        end
+      end
+      
+      class TurnMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contract_draft_complete, as: 'contractDraftComplete'
+          property :contract_finalized, as: 'contractFinalized'
+          property :contract_related, as: 'contractRelated'
+          property :contract_streaming_phase, as: 'contractStreamingPhase'
+        end
+      end
+      
+      class TurnResumeSnapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :events, as: 'events', class: Google::Apis::CesV1::StreamChatAiAssistantResponse, decorator: Google::Apis::CesV1::StreamChatAiAssistantResponse::Representation
+      
+          property :orphan_deadline_time, as: 'orphanDeadlineTime'
+          property :resolved_sequence_number, :numeric_string => true, as: 'resolvedSequenceNumber'
+          property :turn_id, as: 'turnId'
+        end
+      end
+      
+      class UiEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :json_payload, as: 'jsonPayload'
+          property :mime_type, as: 'mimeType'
         end
       end
       
