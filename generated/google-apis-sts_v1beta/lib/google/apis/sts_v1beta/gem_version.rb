@@ -16,13 +16,13 @@ module Google
   module Apis
     module StsV1beta
       # Version of the google-apis-sts_v1beta gem
-      GEM_VERSION = "0.34.0"
+      GEM_VERSION = "0.35.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260318"
+      REVISION = "20260916"
     end
   end
 end
