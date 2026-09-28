@@ -1799,6 +1799,69 @@ module Google
       end
       
       # 
+      class IngestUsersRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::DatamanagerV1::Destination>]
+        attr_accessor :destinations
+      
+        # 
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # 
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::DatamanagerV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
+        # 
+        # Corresponds to the JSON property `users`
+        # @return [Array<Google::Apis::DatamanagerV1::User>]
+        attr_accessor :users
+      
+        # 
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
+          @users = args[:users] if args.key?(:users)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # 
+      class IngestUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # 
       class IngestedUserListInfo
         include Google::Apis::Core::Hashable
       
@@ -2919,6 +2982,69 @@ module Google
       end
       
       # 
+      class RemoveUsersRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `destinations`
+        # @return [Array<Google::Apis::DatamanagerV1::Destination>]
+        attr_accessor :destinations
+      
+        # 
+        # Corresponds to the JSON property `encoding`
+        # @return [String]
+        attr_accessor :encoding
+      
+        # 
+        # Corresponds to the JSON property `encryptionInfo`
+        # @return [Google::Apis::DatamanagerV1::EncryptionInfo]
+        attr_accessor :encryption_info
+      
+        # 
+        # Corresponds to the JSON property `userData`
+        # @return [Array<Google::Apis::DatamanagerV1::UserData>]
+        attr_accessor :user_data
+      
+        # 
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destinations = args[:destinations] if args.key?(:destinations)
+          @encoding = args[:encoding] if args.key?(:encoding)
+          @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
+          @user_data = args[:user_data] if args.key?(:user_data)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # 
+      class RemoveUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # 
       class RequestStatusPerDestination
         include Google::Apis::Core::Hashable
       
@@ -3178,6 +3304,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_match_terms_of_service_status = args[:customer_match_terms_of_service_status] if args.key?(:customer_match_terms_of_service_status)
+        end
+      end
+      
+      # 
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `mobileData`
+        # @return [Google::Apis::DatamanagerV1::MobileData]
+        attr_accessor :mobile_data
+      
+        # 
+        # Corresponds to the JSON property `userData`
+        # @return [Google::Apis::DatamanagerV1::UserData]
+        attr_accessor :user_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mobile_data = args[:mobile_data] if args.key?(:mobile_data)
+          @user_data = args[:user_data] if args.key?(:user_data)
         end
       end
       
