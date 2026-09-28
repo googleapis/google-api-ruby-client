@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LakehouseProxyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatestBackup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -944,6 +950,14 @@ module Google
         end
       end
       
+      class LakehouseProxyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :catalog, as: 'catalog'
+          collection :namespaces, as: 'namespaces'
+        end
+      end
+      
       class LatestBackup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1340,6 +1354,8 @@ module Google
           property :hive_metastore_config, as: 'hiveMetastoreConfig', class: Google::Apis::MetastoreV1beta::HiveMetastoreConfig, decorator: Google::Apis::MetastoreV1beta::HiveMetastoreConfig::Representation
       
           hash :labels, as: 'labels'
+          property :lakehouse_proxy_config, as: 'lakehouseProxyConfig', class: Google::Apis::MetastoreV1beta::LakehouseProxyConfig, decorator: Google::Apis::MetastoreV1beta::LakehouseProxyConfig::Representation
+      
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::MetastoreV1beta::MaintenanceWindow, decorator: Google::Apis::MetastoreV1beta::MaintenanceWindow::Representation
       
           property :metadata_integration, as: 'metadataIntegration', class: Google::Apis::MetastoreV1beta::MetadataIntegration, decorator: Google::Apis::MetastoreV1beta::MetadataIntegration::Representation
