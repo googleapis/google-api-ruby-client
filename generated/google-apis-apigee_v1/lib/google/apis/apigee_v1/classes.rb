@@ -12973,8 +12973,7 @@ module Google
         attr_accessor :is_enabled
         alias_method :is_enabled?, :is_enabled
       
-        # Required. The resource id of this target server. Values must match the regular
-        # expression
+        # Required. The resource id of this target server.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
