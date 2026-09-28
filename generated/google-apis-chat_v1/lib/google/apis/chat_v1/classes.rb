@@ -6480,6 +6480,9 @@ module Google
         # partial match of their display name. Results are limited to the top five space
         # matches. For example, `space.display_name:Project` searches for messages in
         # the top five spaces that contain the word "Project" in their display names. - `
+        # space.space_type`: The type of the space. Only supports `=`. For example, `
+        # space.space_type="DIRECT_MESSAGE"` returns only messages from direct messages.
+        # The possible values are `DIRECT_MESSAGE`, `GROUP_CHAT`, and `SPACE`. - `
         # attachment`: Supports the operator `:*` (has any) to check for the presence of
         # attachments. If `attachment:*` is specified, only messages that have at least
         # one attachment are returned. - `annotations.user_mentions.user.name`: The
@@ -6492,50 +6495,53 @@ module Google
         # For advanced filtering, the following functions are also available: - `
         # has_link()`: Returns only messages that have at least one hyperlink in the
         # message text. - `is_unread()`: Filters out messages that have been read by the
-        # calling user. Using the `space.display_name` filter requires that the calling
-        # credentials include one of the following [authorization scopes](https://
-        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
-        # `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.
-        # googleapis.com/auth/chat.spaces` Using the `is_unread()` filter requires that
-        # the calling credentials include one of the following [authorization scopes](
-        # https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
-        # scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `
-        # https://www.googleapis.com/auth/chat.users.readstate` Across different fields,
-        # only `AND` operators are supported. A valid example is `sender.name = "users/
-        # 1234567890" AND is_unread()`. The word `AND` is optional and is implied if
-        # omitted. For example, `sender.name = "users/1234567890" is_unread()` is valid
-        # and is equivalent to the previous example. An invalid example is `sender.name =
-        # "users/1234567890" OR is_unread()` because `OR` is not supported between
-        # different fields. Among the same field: - `create_time` supports only `AND`,
-        # and can only be used to represent an interval, such as `create_time >= "2022-
-        # 01-01T00:00:00+00:00" AND create_time < "2023-01-01T00:00:00+00:00"`. - `
-        # sender.name` supports only the `OR` operator, for example: `sender.name = "
-        # users/1234567890" OR sender.name = "users/0987654321"`. - `space.name`
-        # supports only the `OR` operator, for example: `space.name = "spaces/ABCDEFGH"
-        # OR space.name = "spaces/QWERTYUI"`. - `space.display_name` supports the
-        # operators `AND` and `OR`, but not a mix of both. For example: `space.
-        # display_name:Project AND space.display_name:Tasks` returns messages that are
-        # in spaces with display names containing both `Project` and `Tasks`, whereas `
-        # space.display_name:Project OR space.display_name:Tasks` returns messages that
-        # are in spaces with display names containing either `Project` or `Tasks` or
-        # both. - `annotations.user_mentions.user.name` supports the operators `AND` and
-        # `OR`, but not a mix of both. For example: `annotations.user_mentions.user.name:
-        # "users/1234567890" AND annotations.user_mentions.user.name:"users/0987654321"`
-        # returns only messages that mentions both users, whereas `annotations.
-        # user_mentions.user.name:"users/1234567890" OR annotations.user_mentions.user.
-        # name:"users/0987654321"` returns messages that mention either user or both.
-        # Parentheses are required to disambiguate operator precedence when combining `
-        # AND` and `OR` operators in the same query. For example: `(sender.name="users/
-        # me" OR sender.name="users/123456") AND is_unread()`. Otherwise, parentheses
-        # are optional. The following example queries are valid: ``` "Pending reports"
-        # AND create_time >= "2023-01-01T00:00:00Z" sender.name = "users/example@gmail.
-        # com" annotations.user_mentions.user.name:"users/0987654321" attachment:* AND
-        # space.name = "spaces/ABCDEFGH" tasks AND is_unread() AND sender.name = "users/
-        # 1234567890" "things to do" "urgent" (sender.name = "users/1234567890") AND (
-        # create_time < "2023-05-01T00:00:00Z") tasks AND space.name = "spaces/ABCDEFGH"
-        # AND has_link() "project one" is_unread() space.display_name:Project tasks ```
-        # The maximum query length is 1,000 characters. Invalid queries are rejected by
-        # the server with an `INVALID_ARGUMENT` error.
+        # calling user. Using the `space.display_name` or the `space.space_type` filters
+        # requires that the calling credentials include one of the following [
+        # authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` Using
+        # the `is_unread()` filter requires that the calling credentials include one of
+        # the following [authorization scopes](https://developers.google.com/workspace/
+        # chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/
+        # auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.
+        # users.readstate` Across different fields, only `AND` operators are supported.
+        # A valid example is `sender.name = "users/1234567890" AND is_unread()`. The
+        # word `AND` is optional and is implied if omitted. For example, `sender.name = "
+        # users/1234567890" is_unread()` is valid and is equivalent to the previous
+        # example. An invalid example is `sender.name = "users/1234567890" OR is_unread()
+        # ` because `OR` is not supported between different fields. Among the same field:
+        # - `create_time` supports only `AND`, and can only be used to represent an
+        # interval, such as `create_time >= "2022-01-01T00:00:00+00:00" AND create_time <
+        # "2023-01-01T00:00:00+00:00"`. - `sender.name` supports only the `OR` operator,
+        # for example: `sender.name = "users/1234567890" OR sender.name = "users/
+        # 0987654321"`. - `space.name` supports only the `OR` operator, for example: `
+        # space.name = "spaces/ABCDEFGH" OR space.name = "spaces/QWERTYUI"`. - `space.
+        # display_name` supports the operators `AND` and `OR`, but not a mix of both.
+        # For example: `space.display_name:Project AND space.display_name:Tasks` returns
+        # messages that are in spaces with display names containing both `Project` and `
+        # Tasks`, whereas `space.display_name:Project OR space.display_name:Tasks`
+        # returns messages that are in spaces with display names containing either `
+        # Project` or `Tasks` or both. - `space.space_type` supports only the `OR`
+        # operator, for example: `space.space_type = "DIRECT_MESSAGE" OR space.
+        # space_type = "GROUP_CHAT"`. - `annotations.user_mentions.user.name` supports
+        # the operators `AND` and `OR`, but not a mix of both. For example: `annotations.
+        # user_mentions.user.name:"users/1234567890" AND annotations.user_mentions.user.
+        # name:"users/0987654321"` returns only messages that mentions both users,
+        # whereas `annotations.user_mentions.user.name:"users/1234567890" OR annotations.
+        # user_mentions.user.name:"users/0987654321"` returns messages that mention
+        # either user or both. Parentheses are required to disambiguate operator
+        # precedence when combining `AND` and `OR` operators in the same query. For
+        # example: `(sender.name="users/me" OR sender.name="users/123456") AND is_unread(
+        # )`. Otherwise, parentheses are optional. The following example queries are
+        # valid: ``` "Pending reports" AND create_time >= "2023-01-01T00:00:00Z" sender.
+        # name = "users/example@gmail.com" annotations.user_mentions.user.name:"users/
+        # 0987654321" attachment:* AND space.name = "spaces/ABCDEFGH" tasks AND
+        # is_unread() AND sender.name = "users/1234567890" "things to do" "urgent" (
+        # sender.name = "users/1234567890") AND (create_time < "2023-05-01T00:00:00Z")
+        # tasks AND space.name = "spaces/ABCDEFGH" AND has_link() "project one"
+        # is_unread() space.display_name:Project tasks ``` The maximum query length is 1,
+        # 000 characters. Invalid queries are rejected by the server with an `
+        # INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -7730,6 +7736,17 @@ module Google
       class User
         include Google::Apis::Core::Hashable
       
+        # Output only. The user's avatar image URL. When calling the Messages and
+        # Memberships APIs with [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), this field is populated for
+        # both internal and external users for the `sender` of a message, users within `
+        # annotations` (such as user mentions), and within `Membership` resources,
+        # provided the user is a member of the space or has prior affinity with the
+        # calling user.
+        # Corresponds to the JSON property `avatarUrl`
+        # @return [String]
+        attr_accessor :avatar_url
+      
         # Output only. The user's display name. Populated for both app authentication
         # and user authentication. This field is always populated for requests made with
         # [app authentication](https://developers.google.com/workspace/chat/authenticate-
@@ -7747,6 +7764,17 @@ module Google
         # Corresponds to the JSON property `domainId`
         # @return [String]
         attr_accessor :domain_id
+      
+        # Output only. The user's email address. When calling the Messages and
+        # Memberships APIs with [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), this field is populated for
+        # both internal and external users for the `sender` of a message, users within `
+        # annotations` (such as user mentions), and within `Membership` resources,
+        # provided the user is a member of the space or has prior affinity with the
+        # calling user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
       
         # Output only. When `true`, the user is deleted or their profile is not visible,
         # such as when a user is mentioned in a space without being a member and without
@@ -7783,8 +7811,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_id = args[:domain_id] if args.key?(:domain_id)
+          @email = args[:email] if args.key?(:email)
           @is_anonymous = args[:is_anonymous] if args.key?(:is_anonymous)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
