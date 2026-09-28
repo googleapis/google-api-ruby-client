@@ -453,21 +453,21 @@ module Google
         end
       end
       
-      # An external identifier for an entity in the Cloud Identity Groups API. Used to
-      # link a `Group` in Cloud Identity Groups API with a corresponding entity in an
-      # external identity system or directory.
+      # Represents an external identifier that links a Group in the Cloud Identity
+      # Groups API with a corresponding entity in an external directory or identity
+      # provider.
       class ExternalId
         include Google::Apis::Core::Hashable
       
         # Required. The unique identifier assigned by the external identity provider.
-        # The API does not enforce uniqueness of IDs across entities, but clients should
+        # The API does not enforce unique IDs across entities, but clients **must**
         # ensure IDs are unique within their namespace.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Required. The namespace in which the entity exists. Cannot be empty. Currently,
-        # the only allowable namespace is `"system/external"`.
+        # Required. The namespace in which the entity exists. The only supported
+        # namespace is `system/external`.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -1914,10 +1914,9 @@ module Google
         # @return [Google::Apis::CloudidentityV1::DynamicGroupMetadata]
         attr_accessor :dynamic_group_metadata
       
-        # Optional. External identifiers associated with the `Group`. Enables external
-        # identity providers and directory sync tools to link their native unique
-        # identifiers with this group. Currently, the only allowable namespace is `"
-        # system/external"`.
+        # Optional. External identifiers associated with the `Group`. Allows external
+        # identity providers and directory sync tools link their native unique
+        # identifiers with this group. The only supported namespace is `system/external`.
         # Corresponds to the JSON property `externalIds`
         # @return [Array<Google::Apis::CloudidentityV1::ExternalId>]
         attr_accessor :external_ids
