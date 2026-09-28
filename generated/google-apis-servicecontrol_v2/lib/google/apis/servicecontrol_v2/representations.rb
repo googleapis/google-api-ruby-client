@@ -118,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RabPolicyViolationInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReportRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -428,8 +422,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :org_policy_violation_info, as: 'orgPolicyViolationInfo', class: Google::Apis::ServicecontrolV2::OrgPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV2::OrgPolicyViolationInfo::Representation
       
-          property :rab_policy_violation_info, as: 'rabPolicyViolationInfo', class: Google::Apis::ServicecontrolV2::RabPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV2::RabPolicyViolationInfo::Representation
-      
         end
       end
       
@@ -438,14 +430,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :pam_binding_ids, as: 'pamBindingIds', class: Google::Apis::ServicecontrolV2::AuditPamBindingId, decorator: Google::Apis::ServicecontrolV2::AuditPamBindingId::Representation
       
-        end
-      end
-      
-      class RabPolicyViolationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message, as: 'errorMessage'
-          collection :resource_locations, as: 'resourceLocations'
         end
       end
       
