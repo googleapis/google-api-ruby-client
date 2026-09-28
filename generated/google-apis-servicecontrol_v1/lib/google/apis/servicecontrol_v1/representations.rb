@@ -256,12 +256,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RabPolicyViolationInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ReportError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -805,8 +799,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :org_policy_violation_info, as: 'orgPolicyViolationInfo', class: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo::Representation
       
-          property :rab_policy_violation_info, as: 'rabPolicyViolationInfo', class: Google::Apis::ServicecontrolV1::RabPolicyViolationInfo, decorator: Google::Apis::ServicecontrolV1::RabPolicyViolationInfo::Representation
-      
         end
       end
       
@@ -857,14 +849,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :quota_mode, as: 'quotaMode'
-        end
-      end
-      
-      class RabPolicyViolationInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error_message, as: 'errorMessage'
-          collection :resource_locations, as: 'resourceLocations'
         end
       end
       

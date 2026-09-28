@@ -1759,11 +1759,6 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::OrgPolicyViolationInfo]
         attr_accessor :org_policy_violation_info
       
-        # Represents Regional Access Boundary (RAB) Policy Violation information.
-        # Corresponds to the JSON property `rabPolicyViolationInfo`
-        # @return [Google::Apis::ServicecontrolV1::RabPolicyViolationInfo]
-        attr_accessor :rab_policy_violation_info
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1771,7 +1766,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @org_policy_violation_info = args[:org_policy_violation_info] if args.key?(:org_policy_violation_info)
-          @rab_policy_violation_info = args[:rab_policy_violation_info] if args.key?(:rab_policy_violation_info)
         end
       end
       
@@ -1981,34 +1975,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @quota_mode = args[:quota_mode] if args.key?(:quota_mode)
-        end
-      end
-      
-      # Represents Regional Access Boundary (RAB) Policy Violation information.
-      class RabPolicyViolationInfo
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Error message detailing what triggered the violation. The error
-        # message content originates from the authz library e.g., google3/cloud/security/
-        # iam/cap/deny_explanation/internal/make_error_msg.cc. This will be the same (
-        # canonical) error message provided by the http error code.
-        # Corresponds to the JSON property `errorMessage`
-        # @return [String]
-        attr_accessor :error_message
-      
-        # Optional. The list of target locations of the resource.
-        # Corresponds to the JSON property `resourceLocations`
-        # @return [Array<String>]
-        attr_accessor :resource_locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error_message = args[:error_message] if args.key?(:error_message)
-          @resource_locations = args[:resource_locations] if args.key?(:resource_locations)
         end
       end
       
