@@ -2931,6 +2931,7 @@ module Google
       
         # Indicates whether to track active query plans for an instance. If not set, the
         # default value is "off". Can only be enabled if track_active_queries is enabled.
+        # Deprecated: Use track_active_queries instead.
         # Corresponds to the JSON property `trackActiveQueryPlan`
         # @return [Boolean]
         attr_accessor :track_active_query_plan
