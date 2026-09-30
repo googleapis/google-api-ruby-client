@@ -503,15 +503,19 @@ module Google
         # Validates user-supplied path parameter values against the URL template specification
         # to prevent directory traversal and parameter injection exploits.
         #
+        # Addressable::Template has expanded Discovery paths since 2010, so its encoding is
+        # the compatibility baseline, and values it already encodes safely pass through
+        # unchanged. Validation rejects only dot segments, and '?' or '#' where Addressable
+        # leaves them literal.
+        #
         # Validation Mechanism:
-        # 1. Identifies query/fragment injections: Rejects values containing '?' or '#' characters.
-        # 2. For simple variables (standard single-wildcard behavior):
-        #    - Rejects if the value contains '/' (cannot span multiple path segments).
+        # 1. For simple variables (standard single-wildcard behavior):
         #    - Rejects if the value is exactly '.' or '..'.
-        # 3. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
-        #    - Splits the value by slash ('/') using a `-1` limit to preserve empty segments.
-        #    - Rejects if any segment is a directory traversal segment ('.' or '..').
-        #    - Rejects empty segments ('', meaning duplicate slashes '//' or trailing slashes).
+        #    - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable.
+        # 2. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
+        #    - Rejects values containing '?' or '#', which Addressable leaves literal and which
+        #      would start a query or fragment.
+        #    - Splits the value by slash ('/') and rejects any segment that is exactly '.' or '..'.
         #
         # @raise [Google::Apis::Error] If any validation check fails.
         def validate_path_parameters!
@@ -533,28 +537,20 @@ module Google
 
             value = params[var_key].to_s
 
-            if value.include?('?') || value.include?('#')
-              raise Google::Apis::Error, "Parameter #{var_name} contains invalid characters (? or #)"
-            end
-
             if v[:reserved]
-              value_segments = value.split('/', -1)
-              value_segments.each do |seg|
+              if value.include?('?') || value.include?('#')
+                raise Google::Apis::Error, "Parameter #{var_name} contains invalid characters (? or #)"
+              end
+
+              value.split('/').each do |seg|
                 if ['.', '..'].include?(seg)
                   raise Google::Apis::Error,
                         "Value for #{var_name} must not contain segments that are exactly '#{seg}'."
                 end
-                raise Google::Apis::Error, "Invalid path segment '' in parameter #{var_name}" if seg == ''
               end
-            else
-              if value.include?('/')
-                raise Google::Apis::Error, "Simple parameter #{var_name} cannot contain slashes: #{value}"
-              end
-
-              if ['.', '..'].include?(value)
-                raise Google::Apis::Error,
-                      "Invalid value for #{var_name} '#{value}'."
-              end
+            elsif ['.', '..'].include?(value)
+              raise Google::Apis::Error,
+                    "Invalid value for #{var_name} '#{value}'."
             end
           end
         end

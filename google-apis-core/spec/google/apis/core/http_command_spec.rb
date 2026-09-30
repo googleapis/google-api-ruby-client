@@ -632,9 +632,8 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       # Source template specification:
       # Pattern: v1/projects/{project}/locations/{location}/webhooks/{webhook}
       # Variable constraints (RFC 6570 simple expansion):
-      # - Must not contain slashes (cannot span path segments)
-      # - Must not contain traversal segments ('.', '..')
-      # - Must not contain query/fragment injections ('?', '#')
+      # - Must not be exactly a traversal segment ('.', '..')
+      # - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable
       let(:template) do
         Addressable::Template.new(
           'https://www.googleapis.com/v1/projects/{project}/locations/{location}/webhooks/{webhook}'
@@ -652,13 +651,26 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         expect { command.execute(client) }.not_to raise_error
       end
 
-      it 'should reject slashes in simple parameters' do
+      it 'should percent-encode slashes in simple parameters on the wire' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/parent%2Fchild-webhook')
+          .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:project] = 'sys-prod-123'
         command.params[:location] = 'us-central1'
         command.params[:webhook] = 'parent/child-webhook'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /cannot contain slashes/)
+        expect { command.execute(client) }.not_to raise_error
+      end
+
+      it 'should percent-encode slashes in Cloud Storage object names on the wire' do
+        storage_template = Addressable::Template.new('https://www.googleapis.com/storage/v1/b/{bucket}/o/{object}')
+        stub_request(:get, 'https://www.googleapis.com/storage/v1/b/bk/o/folder%2Ffile.txt')
+          .to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, storage_template)
+        command.params[:bucket] = 'bk'
+        command.params[:object] = 'folder/file.txt'
+        command.options.retries = 0
+        expect { command.execute(client) }.not_to raise_error
       end
 
       it 'should reject dot or double-dot in simple parameters' do
@@ -690,22 +702,24 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         expect { command.execute(client) }.not_to raise_error
       end
 
-      it 'should reject query parameter injections' do
+      it 'should percent-encode query and fragment characters in simple parameters on the wire' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%3Fkey%3Dval')
+          .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:project] = 'sys-prod-123'
         command.params[:location] = 'us-central1'
         command.params[:webhook] = 'billing-webhook?key=val'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
-      end
+        expect { command.execute(client) }.not_to raise_error
 
-      it 'should reject fragment parameter injections' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%23fragment')
+          .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:project] = 'sys-prod-123'
         command.params[:location] = 'us-central1'
         command.params[:webhook] = 'billing-webhook#fragment'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+        expect { command.execute(client) }.not_to raise_error
       end
     end
 
@@ -713,10 +727,10 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       # Source template specification:
       # Pattern: v1/{+parent}/indexes
       # Variable constraints (RFC 6570 reserved expansion):
-      # - Allows slashes (multiple path segments)
-      # - Traversals escaping the left parameter boundary (e.g. '../escape') are blocked
-      # - Invalid structures like double-slashes '//' or single dots '.' are blocked
-      # - Query/fragment injections ('?', '#') are blocked
+      # - Allows slashes (multiple path segments), including empty segments
+      # - Must not contain traversal segments ('.', '..')
+      # - Must not contain '?' or '#'. Addressable leaves them literal, so they would start a query or fragment
+      # - Other reserved characters go out literally, as Addressable has always sent them
       let(:template) { Addressable::Template.new('https://www.googleapis.com/v1/{+parent}/indexes') }
 
       it 'should allow safe double wildcard paths' do
@@ -724,6 +738,29 @@ RSpec.describe Google::Apis::Core::HttpCommand do
           .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1'
+        command.options.retries = 0
+        expect { command.execute(client) }.not_to raise_error
+      end
+
+      it 'should reject query parameter injections in reserved parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123?key=val'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+      end
+
+      it 'should reject fragment parameter injections in reserved parameters' do
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123#fragment'
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+      end
+
+      it 'should send colons in reserved parameters literally on the wire' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/p:undelete/indexes')
+          .to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/p:undelete'
         command.options.retries = 0
         expect { command.execute(client) }.not_to raise_error
       end
@@ -795,11 +832,20 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         expect { command.execute(client) }.not_to raise_error
       end
 
-      it 'should reject invalid empty segments' do
+      it 'should allow empty segments in reserved parameters' do
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123//databases/default/indexes')
+          .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123//databases/default'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /Invalid path segment/)
+        expect { command.execute(client) }.not_to raise_error
+
+        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123//indexes')
+          .to_return(status: [200, ''])
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = 'projects/sys-prod-123/'
+        command.options.retries = 0
+        expect { command.execute(client) }.not_to raise_error
       end
     end
   end
