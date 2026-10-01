@@ -585,6 +585,19 @@ EOF
         expect(service.fetch_all(max: 5) { |token| responses[token] } ).to contain_exactly('a', 'b', 'c', 'd', 'e')
       end
 
+      it 'should allow limiting the number of singular items to fetch' do
+        expect(service.fetch_all(max: 2, items: :singular) { |token| responses[token] } ).to contain_exactly('foo', 'bar')
+      end
+
+      it 'should stop fetching pages once the singular item limit is reached' do
+        expect do |b|
+          service.fetch_all(max: 2, items: :singular) do |token|
+            b.to_proc.call(token)
+            responses[token]
+          end.count
+        end.to yield_successive_args(nil, 'p1')
+      end
+
       it 'should yield the next token' do
         expect do |b|
           service.fetch_all do |token|

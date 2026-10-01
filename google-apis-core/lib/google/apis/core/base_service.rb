@@ -80,6 +80,8 @@ module Google
               end
             elsif items
               # yield singular non-nil items (for genomics API)
+              item_count = item_count + 1
+              break if @max && item_count > @max
               yield items
             end
             break if @max && item_count >= @max
