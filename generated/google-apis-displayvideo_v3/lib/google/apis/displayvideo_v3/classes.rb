@@ -4595,12 +4595,12 @@ module Google
       class CommonInStreamAttribute
         include Google::Apis::Core::Hashable
       
-        # The text on the call-to-action button.
+        # Optional. The text on the call-to-action button.
         # Corresponds to the JSON property `actionButtonLabel`
         # @return [String]
         attr_accessor :action_button_label
       
-        # The headline of the call-to-action banner.
+        # Optional. The headline of the call-to-action banner.
         # Corresponds to the JSON property `actionHeadline`
         # @return [String]
         attr_accessor :action_headline
@@ -4610,17 +4610,18 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::ImageAsset]
         attr_accessor :companion_banner
       
-        # The webpage address that appears with the ad.
+        # Required. The webpage address that appears with the ad.
         # Corresponds to the JSON property `displayUrl`
         # @return [String]
         attr_accessor :display_url
       
-        # The URL address of the webpage that people reach after they click the ad.
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
         # Corresponds to the JSON property `finalUrl`
         # @return [String]
         attr_accessor :final_url
       
-        # The URL address loaded in the background for tracking purposes.
+        # Output only. The URL address loaded in the background for tracking purposes.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
@@ -6736,13 +6737,13 @@ module Google
         # @return [String]
         attr_accessor :device_type
       
-        # Output only. Bid multiplier allows you to show your ads more or less
-        # frequently based on the device type. It will apply a multiplier on the
-        # original bid price. When this field is 0, it indicates this field is not
-        # applicable instead of multiplying 0 on the original bid price. For example, if
-        # the bid price without multiplier is $10.0 and the multiplier is 1.5 for Tablet,
-        # the resulting bid price for Tablet will be $15.0. Only applicable to YouTube
-        # and Partners line items.
+        # Optional. Bid multiplier allows you to show your ads more or less frequently
+        # based on the device type. It will apply a multiplier on the original bid price.
+        # When this field is 0, it indicates this field is not applicable instead of
+        # multiplying 0 on the original bid price. For example, if the bid price without
+        # multiplier is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid
+        # price for Tablet will be $15.0. Only applicable to YouTube and Partners line
+        # items.
         # Corresponds to the JSON property `youtubeAndPartnersBidMultiplier`
         # @return [Float]
         attr_accessor :youtube_and_partners_bid_multiplier
@@ -8213,7 +8214,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters and accompanying values to add to the tracking URL.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -10589,7 +10591,8 @@ module Google
         # @return [Google::Apis::DisplayvideoV3::CommonInStreamAttribute]
         attr_accessor :common_in_stream_attribute
       
-        # The custom parameters and accompanying values to add to the tracking URL.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
@@ -13300,32 +13303,33 @@ module Google
       class VideoPerformanceAd
         include Google::Apis::Core::Hashable
       
-        # The list of text assets shown on the call-to-action button.
+        # Optional. The list of text assets shown on the call-to-action button.
         # Corresponds to the JSON property `actionButtonLabels`
         # @return [Array<String>]
         attr_accessor :action_button_labels
       
-        # The list of companion banners used by this ad.
+        # Optional. The list of companion banners used by this ad.
         # Corresponds to the JSON property `companionBanners`
         # @return [Array<Google::Apis::DisplayvideoV3::ImageAsset>]
         attr_accessor :companion_banners
       
-        # The custom parameters and accompanying values to add to the tracking URL.
+        # Optional. The custom parameters and accompanying values to add to the tracking
+        # URL.
         # Corresponds to the JSON property `customParameters`
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
       
-        # The list of descriptions shown on the call-to-action banner.
+        # Optional. The list of descriptions shown on the call-to-action banner.
         # Corresponds to the JSON property `descriptions`
         # @return [Array<String>]
         attr_accessor :descriptions
       
-        # The first piece after the domain in the display URL.
+        # Optional. The first piece after the domain in the display URL.
         # Corresponds to the JSON property `displayUrlBreadcrumb1`
         # @return [String]
         attr_accessor :display_url_breadcrumb1
       
-        # The second piece after the domain in the display URL.
+        # Optional. The second piece after the domain in the display URL.
         # Corresponds to the JSON property `displayUrlBreadcrumb2`
         # @return [String]
         attr_accessor :display_url_breadcrumb2
@@ -13335,27 +13339,28 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # The URL address of the webpage that people reach after they click the ad.
+        # Required. The URL address of the webpage that people reach after they click
+        # the ad.
         # Corresponds to the JSON property `finalUrl`
         # @return [String]
         attr_accessor :final_url
       
-        # The list of headlines shown on the call-to-action banner.
+        # Optional. The list of headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `headlines`
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # The list of long headlines shown on the call-to-action banner.
+        # Optional. The list of long headlines shown on the call-to-action banner.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
       
-        # The URL address loaded in the background for tracking purposes.
+        # Output only. The URL address loaded in the background for tracking purposes.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
       
-        # The list of YouTube video assets used by this ad.
+        # Required. The list of YouTube video assets used by this ad.
         # Corresponds to the JSON property `videos`
         # @return [Array<Google::Apis::DisplayvideoV3::YoutubeVideoDetails>]
         attr_accessor :videos
@@ -13737,7 +13742,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The reason why the video data is not available.
+        # Output only. The reason why the video data is not available.
         # Corresponds to the JSON property `unavailableReason`
         # @return [String]
         attr_accessor :unavailable_reason
