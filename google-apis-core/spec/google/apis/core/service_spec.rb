@@ -598,6 +598,11 @@ EOF
         end.to yield_successive_args(nil, 'p1')
       end
 
+      it 'should yield no items when max is zero' do
+        expect(service.fetch_all(max: 0) { |token| responses[token] }.to_a).to be_empty
+        expect(service.fetch_all(max: 0, items: :singular) { |token| responses[token] }.to_a).to be_empty
+      end
+
       it 'should yield the next token' do
         expect do |b|
           service.fetch_all do |token|
