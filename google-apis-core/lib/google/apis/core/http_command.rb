@@ -499,7 +499,8 @@ module Google
         #    - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable.
         # 2. For reserved variables ({+var}, double-wildcard behavior):
         #    - Splits the value by slash ('/') and rejects any segment that is exactly '.' or '..'.
-        #    - Every character except '/' is percent-encoded by #encode_reserved_parameters.
+        #    - Every character except '/' and unreserved characters is percent-encoded by
+        #      #encode_reserved_parameters.
         #
         # @raise [Google::Apis::ClientError] If any validation check fails.
         def validate_path_parameters!
@@ -533,9 +534,10 @@ module Google
         # Substitutes percent-encoded values for reserved ({+var}) variables in the template.
         #
         # Addressable leaves reserved characters such as '+', ':', '?' and '#' literal in a
-        # reserved expansion, so they would reach the server unencoded. Only '/' should stay
-        # literal, so these values are encoded here and written into the template's literal
-        # text, which Addressable passes through untouched when it expands the rest.
+        # reserved expansion, so they would reach the server unencoded. Only '/' and unreserved
+        # characters should stay literal, so these values are encoded here and written into the
+        # template's literal text, which Addressable passes through untouched when it expands
+        # the rest.
         #
         # @param [Addressable::Template] template
         #   The URL template.
