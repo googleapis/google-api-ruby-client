@@ -306,6 +306,28 @@ module Google
         end
       end
       
+      # Represents a collection of Avro schemas.
+      class AvroSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Avro schemas in JSON format. Each element must be the content of
+        # a valid, self-contained Avro schema file (.avsc), as described in https://avro.
+        # apache.org/docs/1.8.1/spec.html. Use repeated elements to include multiple
+        # Avro schema files in a single bundle.
+        # Corresponds to the JSON property `jsonSchemas`
+        # @return [Array<String>]
+        attr_accessor :json_schemas
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @json_schemas = args[:json_schemas] if args.key?(:json_schemas)
+        end
+      end
+      
       # A backup of a Cloud Bigtable table.
       class Backup
         include Google::Apis::Core::Hashable
@@ -4157,6 +4179,11 @@ module Google
       class SchemaBundle
         include Google::Apis::Core::Hashable
       
+        # Represents a collection of Avro schemas.
+        # Corresponds to the JSON property `avroSchema`
+        # @return [Google::Apis::BigtableadminV2::AvroSchema]
+        attr_accessor :avro_schema
+      
         # Optional. The etag for this schema bundle. This may be sent on update and
         # delete requests to ensure the client has an up-to-date value before proceeding.
         # The server returns an ABORTED error on a mismatched etag.
@@ -4182,6 +4209,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @avro_schema = args[:avro_schema] if args.key?(:avro_schema)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @proto_schema = args[:proto_schema] if args.key?(:proto_schema)
