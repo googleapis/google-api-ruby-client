@@ -428,7 +428,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The fully-qualified name of the `CustomDomain`.
+        # Identifier. The fully-qualified name of the `CustomDomain`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

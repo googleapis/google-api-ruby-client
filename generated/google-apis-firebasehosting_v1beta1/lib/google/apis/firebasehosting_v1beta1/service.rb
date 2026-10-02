@@ -811,7 +811,7 @@ module Google
         
         # Updates the specified `CustomDomain`.
         # @param [String] name
-        #   Output only. The fully-qualified name of the `CustomDomain`.
+        #   Identifier. The fully-qualified name of the `CustomDomain`.
         # @param [Google::Apis::FirebasehostingV1beta1::CustomDomain] custom_domain_object
         # @param [Boolean] allow_missing
         #   If true, Hosting creates the `CustomDomain` if it doesn't already exist.
