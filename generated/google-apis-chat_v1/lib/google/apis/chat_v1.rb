@@ -123,6 +123,12 @@ module Google
       # Create new conversations and spaces in Google Chat
       AUTH_CHAT_SPACES_CREATE = 'https://www.googleapis.com/auth/chat.spaces.create'
 
+      # See, add, and remove pins in your Google Chat spaces
+      AUTH_CHAT_SPACES_PINS = 'https://www.googleapis.com/auth/chat.spaces.pins'
+
+      # See pins in your Google Chat spaces
+      AUTH_CHAT_SPACES_PINS_READONLY = 'https://www.googleapis.com/auth/chat.spaces.pins.readonly'
+
       # View chat and spaces in Google Chat
       AUTH_CHAT_SPACES_READONLY = 'https://www.googleapis.com/auth/chat.spaces.readonly'
 

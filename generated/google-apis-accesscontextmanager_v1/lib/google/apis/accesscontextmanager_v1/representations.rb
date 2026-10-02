@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupConfiguredServicePerimeterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MethodSelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class PrivateServiceConnectEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -548,6 +560,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restricted_client_application, as: 'restrictedClientApplication', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
       
+          property :restricted_project, as: 'restrictedProject', class: Google::Apis::AccesscontextmanagerV1::Project, decorator: Google::Apis::AccesscontextmanagerV1::Project::Representation
+      
         end
       end
       
@@ -669,8 +683,6 @@ module Google
           property :group_key, as: 'groupKey'
           property :name, as: 'name'
           property :principal, as: 'principal', class: Google::Apis::AccesscontextmanagerV1::Principal, decorator: Google::Apis::AccesscontextmanagerV1::Principal::Representation
-      
-          collection :restricted_client_applications, as: 'restrictedClientApplications', class: Google::Apis::AccesscontextmanagerV1::Application, decorator: Google::Apis::AccesscontextmanagerV1::Application::Representation
       
           collection :scoped_access_settings, as: 'scopedAccessSettings', class: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings, decorator: Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings::Representation
       
@@ -813,6 +825,16 @@ module Google
         end
       end
       
+      class LookupConfiguredServicePerimeterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restricted_resource, as: 'restrictedResource'
+          property :restricted_resource_dry_run, as: 'restrictedResourceDryRun'
+          property :service_perimeter, as: 'servicePerimeter'
+          property :service_perimeter_dry_run, as: 'servicePerimeterDryRun'
+        end
+      end
+      
       class MethodSelector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -865,6 +887,7 @@ module Google
       class Principal
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :federated_principal, as: 'federatedPrincipal'
           property :service_account, as: 'serviceAccount'
           property :service_account_project_number, as: 'serviceAccountProjectNumber'
         end
@@ -874,6 +897,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :forwarding_rule, as: 'forwardingRule'
+        end
+      end
+      
+      class Project
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
         end
       end
       

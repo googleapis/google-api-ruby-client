@@ -29,11 +29,8 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
-      # Private Service: https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage
-      AUTH_SUBSCRIBEWITHGOOGLE_PUBLICATIONS_ENTITLEMENTS_MANAGE = 'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage'
-
-      # See and review your subscription information
-      AUTH_SUBSCRIBEWITHGOOGLE_PUBLICATIONS_ENTITLEMENTS_READONLY = 'https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly'
+      # Private Service: https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system
+      AUTH_WEBCONTENTPUBLISHER_PUBLICATIONS_MANAGE_SYSTEM = 'https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system'
     end
   end
 end

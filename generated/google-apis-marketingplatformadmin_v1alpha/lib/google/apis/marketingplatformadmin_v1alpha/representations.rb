@@ -22,6 +22,12 @@ module Google
   module Apis
     module MarketingplatformadminV1alpha
       
+      class AdminAccessBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnalyticsAccountLink
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdminAccessBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAnalyticsAccountLinksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,18 @@ module Google
       end
       
       class ListOrganizationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserGroupMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListUserGroupsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -116,6 +140,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserGroupMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AdminAccessBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :organization_roles, as: 'organizationRoles'
+          property :user_email, as: 'userEmail'
+          property :user_group, as: 'userGroup'
+        end
       end
       
       class AnalyticsAccountLink
@@ -184,6 +230,15 @@ module Google
         end
       end
       
+      class ListAdminAccessBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :admin_access_bindings, as: 'adminAccessBindings', class: Google::Apis::MarketingplatformadminV1alpha::AdminAccessBinding, decorator: Google::Apis::MarketingplatformadminV1alpha::AdminAccessBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListAnalyticsAccountLinksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -198,6 +253,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :organizations, as: 'organizations', class: Google::Apis::MarketingplatformadminV1alpha::Organization, decorator: Google::Apis::MarketingplatformadminV1alpha::Organization::Representation
+      
+        end
+      end
+      
+      class ListUserGroupMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_group_members, as: 'userGroupMembers', class: Google::Apis::MarketingplatformadminV1alpha::UserGroupMember, decorator: Google::Apis::MarketingplatformadminV1alpha::UserGroupMember::Representation
+      
+        end
+      end
+      
+      class ListUserGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :user_groups, as: 'userGroups', class: Google::Apis::MarketingplatformadminV1alpha::UserGroup, decorator: Google::Apis::MarketingplatformadminV1alpha::UserGroup::Representation
       
         end
       end
@@ -260,6 +333,25 @@ module Google
       class SetPropertyServiceLevelResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UserGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class UserGroupMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :membership_role, as: 'membershipRole'
+          property :name, as: 'name'
+          property :user_email, as: 'userEmail'
+          property :user_group, as: 'userGroup'
         end
       end
     end

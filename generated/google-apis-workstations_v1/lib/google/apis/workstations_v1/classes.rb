@@ -564,7 +564,9 @@ module Google
         attr_accessor :archive_timeout
       
         # Optional. Maximum size in GB to which this persistent directory can be resized.
-        # Defaults to unlimited if not set.
+        # Defaults to `0`, which indicates no maximum limit is enforced by this
+        # configuration. Resizing is still subject to the quotas and limits of the
+        # underlying disk type.
         # Corresponds to the JSON property `maxSizeGb`
         # @return [Fixnum]
         attr_accessor :max_size_gb
@@ -898,7 +900,9 @@ module Google
         attr_accessor :fs_type
       
         # Optional. Maximum size in GB to which this persistent directory can be resized.
-        # Defaults to unlimited if not set.
+        # Defaults to `0`, which indicates no maximum limit is enforced by this
+        # configuration. Resizing is still subject to the quotas and limits of the
+        # underlying disk type.
         # Corresponds to the JSON property `maxSizeGb`
         # @return [Fixnum]
         attr_accessor :max_size_gb
@@ -1872,6 +1876,34 @@ module Google
         end
       end
       
+      # Request message for SuspendWorkstation.
+      class SuspendWorkstationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set, the request will be rejected if the latest version of the
+        # workstation on the server does not have this ETag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. If set, validate the request and preview the result, but do not
+        # actually apply it.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
       # Request message for `TestIamPermissions` method.
       class TestIamPermissionsRequest
         include Google::Apis::Core::Hashable
@@ -2334,12 +2366,20 @@ module Google
         # @return [Google::Apis::WorkstationsV1::Host]
         attr_accessor :host
       
-        # Optional. Number of seconds to wait before automatically stopping a
-        # workstation after it last received user traffic. A value of `"0s"` indicates
-        # that Cloud Workstations VMs created with this configuration should never time
-        # out due to idleness. Provide [duration](https://developers.google.com/protocol-
-        # buffers/docs/reference/google.protobuf#duration) terminated by `s` for seconds—
-        # for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
+        # Optional. The action to take when the workstation has been idle for the
+        # duration specified in idle_timeout. Defaults to STOP.
+        # Corresponds to the JSON property `idleAction`
+        # @return [String]
+        attr_accessor :idle_action
+      
+        # Optional. Number of seconds to wait before automatically stopping or
+        # suspending a workstation after it last received user traffic. See idle_action
+        # to configure whether to stop or suspend idle workstations. A value of `"0s"`
+        # indicates that Cloud Workstations VMs created with this configuration should
+        # never time out due to idleness. Provide [duration](https://developers.google.
+        # com/protocol-buffers/docs/reference/google.protobuf#duration) terminated by `s`
+        # for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20
+        # minutes).
         # Corresponds to the JSON property `idleTimeout`
         # @return [String]
         attr_accessor :idle_timeout
@@ -2396,19 +2436,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :replica_zones
       
-        # Optional. Number of seconds that a workstation can run until it is
-        # automatically shut down. We recommend that workstations be shut down daily to
-        # reduce costs and so that security updates can be applied upon restart. The
-        # idle_timeout and running_timeout fields are independent of each other. Note
-        # that the running_timeout field shuts down VMs after the specified time,
-        # regardless of whether or not the VMs are idle. Provide duration terminated by `
-        # s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12
-        # hours). A value of `"0s"` indicates that workstations using this configuration
-        # should never time out. If encryption_key is set, it must be greater than `"0s"`
-        # and less than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates
-        # that Cloud Workstations VMs created with this configuration have no maximum
-        # running time. This is strongly discouraged because you incur costs and will
-        # not pick up security updates.
+        # Optional. Number of seconds to wait before automatically stopping a
+        # workstation. We recommend that workstations be stopped daily so that security
+        # updates can be applied upon restart. The idle_timeout and running_timeout
+        # fields are independent of each other. Note that the running_timeout field
+        # stops workstations after the specified time, regardless of whether or not the
+        # workstations are idle. Note: This timeout applies to workstations in the
+        # following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation
+        # does not reset this timeout. Provide duration terminated by `s` for seconds—
+        # for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
+        # of `"0s"` indicates that workstations using this configuration should never
+        # time out. If encryption_key is set, it must be greater than `"0s"` and less
+        # than `"86400s"` (24 hours). Warning: A value of `"0s"` indicates that Cloud
+        # Workstations VMs created with this configuration have no maximum running time.
+        # This is strongly discouraged because you incur costs and will not pick up
+        # security updates.
         # Corresponds to the JSON property `runningTimeout`
         # @return [String]
         attr_accessor :running_timeout
@@ -2446,6 +2488,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @grant_workstation_admin_role_on_create = args[:grant_workstation_admin_role_on_create] if args.key?(:grant_workstation_admin_role_on_create)
           @host = args[:host] if args.key?(:host)
+          @idle_action = args[:idle_action] if args.key?(:idle_action)
           @idle_timeout = args[:idle_timeout] if args.key?(:idle_timeout)
           @labels = args[:labels] if args.key?(:labels)
           @max_usable_workstations = args[:max_usable_workstations] if args.key?(:max_usable_workstations)

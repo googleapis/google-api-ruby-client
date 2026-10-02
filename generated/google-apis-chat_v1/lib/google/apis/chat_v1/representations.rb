@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMessagePinsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListMessagesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +815,12 @@ module Google
       end
       
       class MessageDeletedEventData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MessagePin
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1140,6 +1152,8 @@ module Google
           property :discover_space_setting, as: 'discoverSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
       
           property :join_space_setting, as: 'joinSpaceSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
+      
+          property :view_space_membership_setting, as: 'viewSpaceMembershipSetting', class: Google::Apis::ChatV1::AccessPermissionSetting, decorator: Google::Apis::ChatV1::AccessPermissionSetting::Representation
       
         end
       end
@@ -2280,6 +2294,15 @@ module Google
         end
       end
       
+      class ListMessagePinsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :message_pins, as: 'messagePins', class: Google::Apis::ChatV1::MessagePin, decorator: Google::Apis::ChatV1::MessagePin::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2541,6 +2564,14 @@ module Google
         end
       end
       
+      class MessagePin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :message, as: 'message'
+          property :name, as: 'name'
+        end
+      end
+      
       class MessageUpdatedEventData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2608,6 +2639,8 @@ module Google
           property :toggle_history, as: 'toggleHistory', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
       
           property :use_at_mention_all, as: 'useAtMentionAll', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
+      
+          property :view_space_membership, as: 'viewSpaceMembership', class: Google::Apis::ChatV1::PermissionSetting, decorator: Google::Apis::ChatV1::PermissionSetting::Representation
       
         end
       end
@@ -3042,8 +3075,10 @@ module Google
       class User
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :avatar_url, as: 'avatarUrl'
           property :display_name, as: 'displayName'
           property :domain_id, as: 'domainId'
+          property :email, as: 'email'
           property :is_anonymous, as: 'isAnonymous'
           property :name, as: 'name'
           property :type, as: 'type'

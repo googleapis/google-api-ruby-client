@@ -37,9 +37,9 @@ module Google
         # Optional. The service account to use to make prediction requests against
         # endpoints. The resource creator or updater that specifies this field must have
         # `iam.serviceAccounts.actAs` permission on the service account. If not
-        # specified, the Pub/Sub [service agent](`$universe.dns_names.
-        # final_documentation_domain`/iam/docs/service-agents), service-`project_number`@
-        # gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        # specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/
+        # service-agents), service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.
+        # com, is used.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -319,9 +319,8 @@ module Google
         # Optional. The service account to use to write to Bigtable. The subscription
         # creator or updater that specifies this field must have `iam.serviceAccounts.
         # actAs` permission on the service account. If not specified, the Pub/Sub [
-        # service agent](`$universe.dns_names.final_documentation_domain`/iam/docs/
-        # service-agents), service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.
-        # com, is used.
+        # service agent](https://cloud.google.com/iam/docs/service-agents), service-`
+        # project_number`@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         # Corresponds to the JSON property `serviceAccountEmail`
         # @return [String]
         attr_accessor :service_account_email
@@ -903,6 +902,26 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Encryption configuration for the query template.
+      class EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The KMS key used to encrypt the query template. Format: `projects/`
+        # project`/locations/`location`/keyRings/`keyring`/cryptoKeys/`key``
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
       end
       
@@ -2166,6 +2185,11 @@ module Google
         # @return [String]
         attr_accessor :documentation
       
+        # Encryption configuration for the query template.
+        # Corresponds to the JSON property `encryptionConfiguration`
+        # @return [Google::Apis::AnalyticshubV1::EncryptionConfig]
+        attr_accessor :encryption_configuration
+      
         # Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/
         # locations/us/dataExchanges/123/queryTemplates/456`
         # Corresponds to the JSON property `name`
@@ -2209,6 +2233,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
+          @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @name = args[:name] if args.key?(:name)
           @primary_contact = args[:primary_contact] if args.key?(:primary_contact)
           @proposer = args[:proposer] if args.key?(:proposer)

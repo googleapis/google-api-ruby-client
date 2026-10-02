@@ -436,6 +436,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicySignalAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoscalingPolicyTimeAggregation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1066,6 +1078,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CapacityHistoryRequestInstancePropertiesScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1660,6 +1678,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DynamicCompressionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2206,6 +2230,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetHealthOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetOwnerInstanceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2225,6 +2261,18 @@ module Google
       end
       
       class GlobalAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3280,6 +3328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3833,6 +3887,18 @@ module Google
       end
       
       class InstanceManagedByIgmErrorManagedInstanceError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagementInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagementInterfaceAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6959,6 +7025,12 @@ module Google
       end
       
       class RegionAddressesMoveRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionAddressesUpdatePublicPtrRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10336,6 +10408,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UtilizationRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VmEndpointNatMappings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -10582,6 +10660,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnTunnelAdditionalKeyExchanges
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnelAggregatedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -10637,6 +10721,12 @@ module Google
       end
       
       class VpnTunnelPhase2Algorithms
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnTunnelPqc
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -11075,12 +11165,16 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :prefix_length, as: 'prefixLength'
+          property :ptr_domain_name, as: 'ptrDomainName'
+          property :ptr_domain_name_ttl, as: 'ptrDomainNameTtl'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :service_class_id, as: 'serviceClassId'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
@@ -11585,6 +11679,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :predictive_method, as: 'predictiveMethod'
+          property :signal_aggregation, as: 'signalAggregation', class: Google::Apis::ComputeAlpha::AutoscalingPolicySignalAggregation, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicySignalAggregation::Representation
+      
+          property :time_aggregation, as: 'timeAggregation', class: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation::Representation
+      
+          property :utilization_range, as: 'utilizationRange', class: Google::Apis::ComputeAlpha::UtilizationRange, decorator: Google::Apis::ComputeAlpha::UtilizationRange::Representation
+      
           property :utilization_target, as: 'utilizationTarget'
         end
       end
@@ -11634,6 +11734,23 @@ module Google
           property :min_required_replicas, as: 'minRequiredReplicas'
           property :schedule, as: 'schedule'
           property :time_zone, as: 'timeZone'
+        end
+      end
+      
+      class AutoscalingPolicySignalAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :statistic, as: 'statistic'
+        end
+      end
+      
+      class AutoscalingPolicyTimeAggregation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :percentile, as: 'percentile'
+          property :statistic, as: 'statistic'
+          property :time_window_sec, as: 'timeWindowSec'
         end
       end
       
@@ -11941,6 +12058,7 @@ module Google
           hash :metadatas, as: 'metadatas'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_pass_through_lb_traffic_policy, as: 'networkPassThroughLbTrafficPolicy', class: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy, decorator: Google::Apis::ComputeAlpha::BackendServiceNetworkPassThroughLbTrafficPolicy::Representation
       
           property :orchestration_info, as: 'orchestrationInfo', class: Google::Apis::ComputeAlpha::BackendServiceOrchestrationInfo, decorator: Google::Apis::ComputeAlpha::BackendServiceOrchestrationInfo::Representation
@@ -11959,6 +12077,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           collection :service_bindings, as: 'serviceBindings'
+          property :service_class_id, as: 'serviceClassId'
           property :service_lb_policy, as: 'serviceLbPolicy'
           property :session_affinity, as: 'sessionAffinity'
           property :strong_session_affinity_cookie, as: 'strongSessionAffinityCookie', class: Google::Apis::ComputeAlpha::BackendServiceHttpCookie, decorator: Google::Apis::ComputeAlpha::BackendServiceHttpCookie::Representation
@@ -12713,6 +12832,7 @@ module Google
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
@@ -12792,9 +12912,20 @@ module Google
       class CapacityHistoryRequestInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesAttachedDisk, decorator: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesAttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
           property :machine_type, as: 'machineType'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeAlpha::CapacityHistoryRequestInstancePropertiesScheduling::Representation
       
+        end
+      end
+      
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -13882,6 +14013,8 @@ module Google
       class DistributionPolicyZoneConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_size, as: 'maxSize', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -13891,6 +14024,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class DynamicCompressionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_mode, as: 'compressionMode'
         end
       end
       
@@ -14167,6 +14307,7 @@ module Google
       class FirewallPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_security_profile_fallback_action, as: 'applySecurityProfileFallbackAction'
           collection :associations, as: 'associations', class: Google::Apis::ComputeAlpha::FirewallPolicyAssociation, decorator: Google::Apis::ComputeAlpha::FirewallPolicyAssociation::Representation
       
           property :creation_timestamp, as: 'creationTimestamp'
@@ -14447,6 +14588,7 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :no_automate_dns_zone, as: 'noAutomateDnsZone'
           property :parent_forwarding_rule, as: 'parentForwardingRule'
@@ -14457,6 +14599,7 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :service_class_id, as: 'serviceClassId'
           collection :service_directory_registrations, as: 'serviceDirectoryRegistrations', class: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration, decorator: Google::Apis::ComputeAlpha::ForwardingRuleServiceDirectoryRegistration::Representation
       
           property :service_label, as: 'serviceLabel'
@@ -14959,6 +15102,25 @@ module Google
         end
       end
       
+      class GetHealthOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_info, as: 'healthInfo', class: Google::Apis::ComputeAlpha::GetHealthOperationMetadataHealthInfo, decorator: Google::Apis::ComputeAlpha::GetHealthOperationMetadataHealthInfo::Representation
+      
+        end
+      end
+      
+      class GetHealthOperationMetadataHealthInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_slo_status, as: 'availabilitySloStatus'
+          property :health_status, as: 'healthStatus'
+          property :repair_category, as: 'repairCategory'
+          property :unhealthy_reason, as: 'unhealthyReason'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class GetOwnerInstanceResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14987,6 +15149,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :destination_address, as: 'destinationAddress'
+        end
+      end
+      
+      class GlobalFrontendSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_type, as: 'bundleType'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :id, :numeric_string => true, as: 'id'
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class GlobalFrontendSettingsPatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation, as: 'operation', class: Google::Apis::ComputeAlpha::Operation, decorator: Google::Apis::ComputeAlpha::Operation::Representation
+      
         end
       end
       
@@ -15338,7 +15521,6 @@ module Google
           collection :backend_services, as: 'backendServices'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
-          property :failover_capacity, as: 'failoverCapacity'
           property :failover_initiation, as: 'failoverInitiation'
           property :id, :numeric_string => true, as: 'id'
           property :instance_name, as: 'instanceName'
@@ -15347,9 +15529,9 @@ module Google
           property :networking_auto_configuration, as: 'networkingAutoConfiguration', class: Google::Apis::ComputeAlpha::HaControllerNetworkingAutoConfiguration, decorator: Google::Apis::ComputeAlpha::HaControllerNetworkingAutoConfiguration::Representation
       
           property :region, as: 'region'
-          property :secondary_zone_capacity, as: 'secondaryZoneCapacity'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
+          property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ComputeAlpha::HaControllerStatus, decorator: Google::Apis::ComputeAlpha::HaControllerStatus::Representation
       
           hash :zone_configurations, as: 'zoneConfigurations', class: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration, decorator: Google::Apis::ComputeAlpha::HaControllerZoneConfiguration::Representation
@@ -15394,6 +15576,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :failover_complete_timestamp, as: 'failoverCompleteTimestamp'
+          property :failover_duration, as: 'failoverDuration'
           property :failover_trigger, as: 'failoverTrigger'
           property :failover_trigger_timestamp, as: 'failoverTriggerTimestamp'
           property :last_failover_attempt, as: 'lastFailoverAttempt', class: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt, decorator: Google::Apis::ComputeAlpha::HaControllerStatusFailoverProgressLastFailoverAttempt::Representation
@@ -16440,6 +16623,8 @@ module Google
       
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeAlpha::CorsPolicy, decorator: Google::Apis::ComputeAlpha::CorsPolicy::Representation
       
+          property :dynamic_compression_policy, as: 'dynamicCompressionPolicy', class: Google::Apis::ComputeAlpha::DynamicCompressionPolicy, decorator: Google::Apis::ComputeAlpha::DynamicCompressionPolicy::Representation
+      
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeAlpha::HttpFaultInjection, decorator: Google::Apis::ComputeAlpha::HttpFaultInjection::Representation
       
           property :image_optimization_policy, as: 'imageOptimizationPolicy', class: Google::Apis::ComputeAlpha::ImageOptimizationPolicy, decorator: Google::Apis::ComputeAlpha::ImageOptimizationPolicy::Representation
@@ -16759,6 +16944,8 @@ module Google
           property :last_suspended_timestamp, as: 'lastSuspendedTimestamp'
           property :local_ssd_encryption_mode, as: 'localSsdEncryptionMode'
           property :machine_type, as: 'machineType'
+          hash :management_interfaces, as: 'managementInterfaces', class: Google::Apis::ComputeAlpha::InstanceManagementInterface, decorator: Google::Apis::ComputeAlpha::InstanceManagementInterface::Representation
+      
           property :metadata, as: 'metadata', class: Google::Apis::ComputeAlpha::Metadata, decorator: Google::Apis::ComputeAlpha::Metadata::Representation
       
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -17117,12 +17304,21 @@ module Google
       class InstanceGroupManagerInstanceFlexibilityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :constraints, as: 'constraints', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyConstraints, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyConstraints::Representation
+      
           hash :instance_selection_lists, as: 'instanceSelectionLists', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
           hash :instance_selections, as: 'instanceSelections', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection::Representation
       
           property :provisioning_model_mix, as: 'provisioningModelMix', class: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerInstanceFlexibilityPolicyConstraints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_machine_type, as: 'singleMachineType'
         end
       end
       
@@ -17555,7 +17751,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           property :instance_redistribution_type, as: 'instanceRedistributionType'
           property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
@@ -17592,7 +17787,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_instances, as: 'allInstances'
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -18048,6 +18242,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class InstanceManagementInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_config, as: 'authenticationConfig', class: Google::Apis::ComputeAlpha::InstanceManagementInterfaceAuthenticationConfig, decorator: Google::Apis::ComputeAlpha::InstanceManagementInterfaceAuthenticationConfig::Representation
+      
+          property :ipv4_address, as: 'ipv4Address'
+          property :ipv6_address, as: 'ipv6Address'
+          property :network, as: 'network'
+          property :state, as: 'state'
+          property :subnetwork, as: 'subnetwork'
+          property :type, as: 'type'
+        end
+      end
+      
+      class InstanceManagementInterfaceAuthenticationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :trust_config, as: 'trustConfig'
         end
       end
       
@@ -19536,6 +19751,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :city, as: 'city'
+          property :max_dynamic_path_bandwidth_gbps, :numeric_string => true, as: 'maxDynamicPathBandwidthGbps'
+          property :max_fixed_path_bandwidth_gbps, :numeric_string => true, as: 'maxFixedPathBandwidthGbps'
           property :max_single_flow_gbps, as: 'maxSingleFlowGbps'
         end
       end
@@ -20863,6 +21080,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_pv4_range, as: 'IPv4Range'
+          collection :additional_tags, as: 'additionalTags'
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -21413,6 +21631,8 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :igmp_query, as: 'igmpQuery'
           property :internal_ipv6_prefix_length, as: 'internalIpv6PrefixLength'
+          property :internal_nic_load_balancing_ipv6_address, as: 'internalNicLoadBalancingIpv6Address'
+          property :internal_nic_load_balancing_ipv6_prefix_length, as: 'internalNicLoadBalancingIpv6PrefixLength'
           collection :ipv6_access_configs, as: 'ipv6AccessConfigs', class: Google::Apis::ComputeAlpha::AccessConfig, decorator: Google::Apis::ComputeAlpha::AccessConfig::Representation
       
           property :ipv6_access_type, as: 'ipv6AccessType'
@@ -22541,6 +22761,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::ComputeAlpha::Operation::Error, decorator: Google::Apis::ComputeAlpha::Operation::Error::Representation
       
           property :firewall_policy_rule_operation_metadata, as: 'firewallPolicyRuleOperationMetadata', class: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata, decorator: Google::Apis::ComputeAlpha::FirewallPolicyRuleOperationMetadata::Representation
+      
+          property :get_health_operation_metadata, as: 'getHealthOperationMetadata', class: Google::Apis::ComputeAlpha::GetHealthOperationMetadata, decorator: Google::Apis::ComputeAlpha::GetHealthOperationMetadata::Representation
       
           property :get_version_operation_metadata, as: 'getVersionOperationMetadata', class: Google::Apis::ComputeAlpha::GetVersionOperationMetadata, decorator: Google::Apis::ComputeAlpha::GetVersionOperationMetadata::Representation
       
@@ -24009,6 +24231,14 @@ module Google
         end
       end
       
+      class RegionAddressesUpdatePublicPtrRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ptr_domain_name, as: 'ptrDomainName'
+          property :ptr_domain_name_ttl, as: 'ptrDomainNameTtl'
+        end
+      end
+      
       class RegionAutoscalerList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -24257,7 +24487,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :all_instances, as: 'allInstances'
           collection :allowed_actions, as: 'allowedActions'
-          property :disruption_mode, as: 'disruptionMode'
           collection :instances, as: 'instances'
           property :maximal_action, as: 'maximalAction'
           property :minimal_action, as: 'minimalAction'
@@ -25605,6 +25834,7 @@ module Google
           property :block, as: 'block'
           property :cluster, as: 'cluster'
           property :host, as: 'host'
+          property :machine, as: 'machine'
           property :subblock, as: 'subblock'
         end
       end
@@ -26066,6 +26296,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :encrypted_interconnect_router, as: 'encryptedInterconnectRouter'
+          property :etag, as: 'etag'
           property :id, :numeric_string => true, as: 'id'
           collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeAlpha::RouterInterface, decorator: Google::Apis::ComputeAlpha::RouterInterface::Representation
       
@@ -30156,6 +30387,15 @@ module Google
         end
       end
       
+      class UtilizationRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_utilization, as: 'maxUtilization'
+          property :min_utilization, as: 'minUtilization'
+          property :utilization_target, as: 'utilizationTarget'
+        end
+      end
+      
       class VmEndpointNatMappings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -30600,6 +30840,10 @@ module Google
           property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
           property :peer_gcp_gateway, as: 'peerGcpGateway'
           property :peer_ip, as: 'peerIp'
+          property :pqc_phase1, as: 'pqcPhase1', class: Google::Apis::ComputeAlpha::VpnTunnelPqc, decorator: Google::Apis::ComputeAlpha::VpnTunnelPqc::Representation
+      
+          property :pqc_phase2, as: 'pqcPhase2', class: Google::Apis::ComputeAlpha::VpnTunnelPqc, decorator: Google::Apis::ComputeAlpha::VpnTunnelPqc::Representation
+      
           property :region, as: 'region'
           collection :remote_traffic_selector, as: 'remoteTrafficSelector'
           property :router, as: 'router'
@@ -30610,6 +30854,19 @@ module Google
           property :target_vpn_gateway, as: 'targetVpnGateway'
           property :vpn_gateway, as: 'vpnGateway'
           property :vpn_gateway_interface, as: 'vpnGatewayInterface'
+        end
+      end
+      
+      class VpnTunnelAdditionalKeyExchanges
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ke1s, as: 'ke1s'
+          collection :ke2s, as: 'ke2s'
+          collection :ke3s, as: 'ke3s'
+          collection :ke4s, as: 'ke4s'
+          collection :ke5s, as: 'ke5s'
+          collection :ke6s, as: 'ke6s'
+          collection :ke7s, as: 'ke7s'
         end
       end
       
@@ -30711,6 +30968,15 @@ module Google
           collection :encryption, as: 'encryption'
           collection :integrity, as: 'integrity'
           collection :pfs, as: 'pfs'
+        end
+      end
+      
+      class VpnTunnelPqc
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keys, as: 'keys', class: Google::Apis::ComputeAlpha::VpnTunnelAdditionalKeyExchanges, decorator: Google::Apis::ComputeAlpha::VpnTunnelAdditionalKeyExchanges::Representation
+      
+          property :mode, as: 'mode'
         end
       end
       
@@ -30922,6 +31188,7 @@ module Google
           property :bandwidth_metered, :numeric_string => true, as: 'bandwidthMetered'
           property :bandwidth_unmetered, :numeric_string => true, as: 'bandwidthUnmetered'
           property :fault_response, as: 'faultResponse'
+          property :flow_management, as: 'flowManagement'
           property :network_service_class, as: 'networkServiceClass'
         end
       end

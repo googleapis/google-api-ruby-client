@@ -1214,6 +1214,11 @@ module Google
         # @return [Google::Apis::AdminReportsV1::GroupIdentity]
         attr_accessor :group_identity
       
+        # Identity of the shared drive who owns the resource.
+        # Corresponds to the JSON property `sharedDriveIdentity`
+        # @return [Google::Apis::AdminReportsV1::SharedDriveIdentity]
+        attr_accessor :shared_drive_identity
+      
         # Identity of the user who owns the resource.
         # Corresponds to the JSON property `userIdentity`
         # @return [Google::Apis::AdminReportsV1::UserIdentity]
@@ -1227,6 +1232,7 @@ module Google
         def update!(**args)
           @customer_identity = args[:customer_identity] if args.key?(:customer_identity)
           @group_identity = args[:group_identity] if args.key?(:group_identity)
+          @shared_drive_identity = args[:shared_drive_identity] if args.key?(:shared_drive_identity)
           @user_identity = args[:user_identity] if args.key?(:user_identity)
         end
       end
@@ -1299,6 +1305,31 @@ module Google
           @relation = args[:relation] if args.key?(:relation)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Identity of the shared drive who owns the resource.
+      class SharedDriveIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Shared drive gaia id.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Shared drive name.
+        # Corresponds to the JSON property `sharedDriveName`
+        # @return [String]
+        attr_accessor :shared_drive_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @shared_drive_name = args[:shared_drive_name] if args.key?(:shared_drive_name)
         end
       end
       

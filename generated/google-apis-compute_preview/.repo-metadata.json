@@ -1,0 +1,7 @@
+{
+    "api_id": "compute:preview",
+    "name_pretty": "Compute Engine API",
+    "distribution_name": "google-apis-compute_preview",
+    "language": "ruby",
+    "library_type": "REST"
+}

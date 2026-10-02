@@ -271,6 +271,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_access_risk_verdict, as: 'appAccessRiskVerdict', class: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict, decorator: Google::Apis::PlayintegrityV1::AppAccessRiskVerdict::Representation
       
+          collection :location_spoofing_risk_verdict, as: 'locationSpoofingRiskVerdict'
           property :play_protect_verdict, as: 'playProtectVerdict'
         end
       end

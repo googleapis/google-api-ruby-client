@@ -705,6 +705,7 @@ module Google
           property :name, as: 'name'
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+          property :user_list_id, as: 'userListId'
         end
       end
       

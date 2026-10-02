@@ -59,6 +59,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # GCP-specific attributes.
+        # Corresponds to the JSON property `gcpAttributes`
+        # @return [Google::Apis::CloudlocationfinderV1alpha::GcpAttributes]
+        attr_accessor :gcp_attributes
+      
         # Identifier. Name of the cloud location. Unique name of the cloud location
         # including project and location using the form: `projects/`project_id`/
         # locations/`location`/cloudLocations/`cloud_location``
@@ -83,8 +88,28 @@ module Google
           @cloud_provider = args[:cloud_provider] if args.key?(:cloud_provider)
           @containing_cloud_location = args[:containing_cloud_location] if args.key?(:containing_cloud_location)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @gcp_attributes = args[:gcp_attributes] if args.key?(:gcp_attributes)
           @name = args[:name] if args.key?(:name)
           @territory_code = args[:territory_code] if args.key?(:territory_code)
+        end
+      end
+      
+      # GCP-specific attributes.
+      class GcpAttributes
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The type of the cloud zone.
+        # Corresponds to the JSON property `zoneType`
+        # @return [String]
+        attr_accessor :zone_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @zone_type = args[:zone_type] if args.key?(:zone_type)
         end
       end
       

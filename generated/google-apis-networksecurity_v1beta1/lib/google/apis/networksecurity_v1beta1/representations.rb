@@ -1204,6 +1204,7 @@ module Google
           property :description, as: 'description'
           property :endpoint_settings, as: 'endpointSettings', class: Google::Apis::NetworksecurityV1beta1::FirewallEndpointEndpointSettings, decorator: Google::Apis::NetworksecurityV1beta1::FirewallEndpointEndpointSettings::Representation
       
+          property :explicit_private_service_connect_attachment, as: 'explicitPrivateServiceConnectAttachment'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
@@ -2143,6 +2144,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ca_pool, as: 'caPool'
+          property :certificate_issuance_mode, as: 'certificateIssuanceMode'
           property :create_time, as: 'createTime'
           collection :custom_tls_features, as: 'customTlsFeatures'
           property :description, as: 'description'

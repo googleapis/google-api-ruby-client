@@ -196,6 +196,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVolumePoolsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListVolumesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +227,12 @@ module Google
       end
       
       class ManagedActiveDirectoryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MountPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -358,6 +376,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Volume
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VolumePool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeeklyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -396,6 +426,7 @@ module Google
           property :source_file_share, as: 'sourceFileShare'
           property :source_instance, as: 'sourceInstance'
           property :source_instance_tier, as: 'sourceInstanceTier'
+          property :source_volume, as: 'sourceVolume'
           property :state, as: 'state'
           property :storage_bytes, :numeric_string => true, as: 'storageBytes'
           hash :tags, as: 'tags'
@@ -695,6 +726,26 @@ module Google
         end
       end
       
+      class ListVolumePoolsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volume_pools, as: 'volumePools', class: Google::Apis::FileV1beta1::VolumePool, decorator: Google::Apis::FileV1beta1::VolumePool::Representation
+      
+        end
+      end
+      
+      class ListVolumesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+          collection :volumes, as: 'volumes', class: Google::Apis::FileV1beta1::Volume, decorator: Google::Apis::FileV1beta1::Volume::Representation
+      
+        end
+      end
+      
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -735,6 +786,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :computer, as: 'computer'
           property :domain, as: 'domain'
+        end
+      end
+      
+      class MountPoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_address, as: 'ipAddress'
+          property :mount_name, as: 'mountName'
         end
       end
       
@@ -827,6 +886,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_project, as: 'endpointProject'
+          property :requested_ip_address, as: 'requestedIpAddress'
         end
       end
       
@@ -908,6 +968,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :capacity_gb, :numeric_string => true, as: 'capacityGb'
+          property :capacity_mb, :numeric_string => true, as: 'capacityMb'
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           hash :labels, as: 'labels'
@@ -959,6 +1020,32 @@ module Google
       
           property :window, as: 'window', class: Google::Apis::FileV1beta1::MaintenanceWindow, decorator: Google::Apis::FileV1beta1::MaintenanceWindow::Representation
       
+        end
+      end
+      
+      class Volume
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :mount_point, as: 'mountPoint', class: Google::Apis::FileV1beta1::MountPoint, decorator: Google::Apis::FileV1beta1::MountPoint::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class VolumePool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_volume_iops, as: 'activeVolumeIops'
+          property :create_time, as: 'createTime'
+          property :default_volume_quota_mib, as: 'defaultVolumeQuotaMib'
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :uid, as: 'uid'
         end
       end
       

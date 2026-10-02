@@ -736,6 +736,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :endpoint_project, as: 'endpointProject'
+          property :requested_ip_address, as: 'requestedIpAddress'
         end
       end
       

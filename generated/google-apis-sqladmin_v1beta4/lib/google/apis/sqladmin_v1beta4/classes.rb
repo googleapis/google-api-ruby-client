@@ -723,6 +723,142 @@ module Google
         end
       end
       
+      # A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment
+      # setup. It orchestrates the lifecycle of creating a synchronized "green"
+      # environment from a "blue" production environment, performing updates, and
+      # managing the switchover process to minimize downtime.
+      class BlueGreenDeployment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the deployment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. A list representing the pairs of source and target instances in
+        # the deployment.
+        # Corresponds to the JSON property `deploymentMappings`
+        # @return [Array<Google::Apis::SqladminV1beta4::SourceTargetPairedNode>]
+        attr_accessor :deployment_mappings
+      
+        # Combined list of tasks for all paired nodes in the deployment.
+        # Corresponds to the JSON property `deploymentTasks`
+        # @return [Google::Apis::SqladminV1beta4::DeploymentTasks]
+        attr_accessor :deployment_tasks
+      
+        # Optional. User-provided description for the deployment.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Provides an error message with details on why switchover is not
+        # possible.
+        # Corresponds to the JSON property `errorDetail`
+        # @return [String]
+        attr_accessor :error_detail
+      
+        # Output only. Identifier. The full resource name of the deployment. Format:
+        # projects/`project`/locations/`location`/blueGreenDeployments/`deployment_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Deprecated: Use deployment_mappings instead. Output only. A list
+        # representing the pairs of source and target instances in the deployment.
+        # Corresponds to the JSON property `pairedNodes`
+        # @return [Array<Google::Apis::SqladminV1beta4::SourceTargetPairedNode>]
+        attr_accessor :paired_nodes
+      
+        # Configuration specified by the user at creation time for the target (Green)
+        # instance.
+        # Corresponds to the JSON property `requestedConfig`
+        # @return [Google::Apis::SqladminV1beta4::RequestedConfig]
+        attr_accessor :requested_config
+      
+        # Required. Immutable. The instance ID of the source instance (the "blue"
+        # instance). The value for this field does not include the project ID, for
+        # example, `my-instance-id`. This field is immutable.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Output only. The current state of the blue-green deployment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Details about the primary target instance (the "Green" instance)
+        # that will be promoted during switchover.
+        # Corresponds to the JSON property `switchoverTargetInstance`
+        # @return [String]
+        attr_accessor :switchover_target_instance
+      
+        # Deprecated: Use RequestedConfig instead. Configuration specified by the user
+        # at creation time for the target (Green) instance.
+        # Corresponds to the JSON property `targetConfig`
+        # @return [Google::Apis::SqladminV1beta4::TargetConfig]
+        attr_accessor :target_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deployment_mappings = args[:deployment_mappings] if args.key?(:deployment_mappings)
+          @deployment_tasks = args[:deployment_tasks] if args.key?(:deployment_tasks)
+          @description = args[:description] if args.key?(:description)
+          @error_detail = args[:error_detail] if args.key?(:error_detail)
+          @name = args[:name] if args.key?(:name)
+          @paired_nodes = args[:paired_nodes] if args.key?(:paired_nodes)
+          @requested_config = args[:requested_config] if args.key?(:requested_config)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @state = args[:state] if args.key?(:state)
+          @switchover_target_instance = args[:switchover_target_instance] if args.key?(:switchover_target_instance)
+          @target_config = args[:target_config] if args.key?(:target_config)
+        end
+      end
+      
+      # Blue-green deployment metadata for a database instance. In a blue-green
+      # deployment, we maintain two environments, one of which is live. This message
+      # contains details about the blue-green deployment.
+      class BlueGreenDeploymentInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource ID of the blue-green deployment.
+        # Corresponds to the JSON property `deploymentId`
+        # @return [String]
+        attr_accessor :deployment_id
+      
+        # The source instance for the Blue-Green deployment.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::SqladminV1beta4::SourceRole]
+        attr_accessor :source
+      
+        # Output only. The current state of blue-green-deployment for UI tags
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The target instance for the Blue-Green deployment.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::SqladminV1beta4::TargetRole]
+        attr_accessor :target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deployment_id = args[:deployment_id] if args.key?(:deployment_id)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
+          @target = args[:target] if args.key?(:target)
+        end
+      end
+      
       # Database instance clone context.
       class CloneContext
         include Google::Apis::Core::Hashable
@@ -847,6 +983,39 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents a specific configuration difference between Blue and Green
+      # instances.
+      class ConfigDiff
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The name of the field that differs, fully-qualified. Example:
+        # settings.tier
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # Output only. The value on the source instance.
+        # Corresponds to the JSON property `sourceValue`
+        # @return [String]
+        attr_accessor :source_value
+      
+        # Output only. The value on the target instance.
+        # Corresponds to the JSON property `targetValue`
+        # @return [String]
+        attr_accessor :target_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @source_value = args[:source_value] if args.key?(:source_value)
+          @target_value = args[:target_value] if args.key?(:target_value)
         end
       end
       
@@ -1240,6 +1409,13 @@ module Google
         # @return [String]
         attr_accessor :database_version
       
+        # Blue-green deployment metadata for a database instance. In a blue-green
+        # deployment, we maintain two environments, one of which is live. This message
+        # contains details about the blue-green deployment.
+        # Corresponds to the JSON property `deploymentInfo`
+        # @return [Google::Apis::SqladminV1beta4::BlueGreenDeploymentInfo]
+        attr_accessor :deployment_info
+      
         # Disk encryption configuration for an instance.
         # Corresponds to the JSON property `diskEncryptionConfiguration`
         # @return [Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration]
@@ -1505,6 +1681,7 @@ module Google
           @database_center_integration_enabled = args[:database_center_integration_enabled] if args.key?(:database_center_integration_enabled)
           @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @database_version = args[:database_version] if args.key?(:database_version)
+          @deployment_info = args[:deployment_info] if args.key?(:deployment_info)
           @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
           @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
           @dns_name = args[:dns_name] if args.key?(:dns_name)
@@ -1800,9 +1977,87 @@ module Google
         end
       end
       
+      # Represents a task executed as part of the deployment on a target instance.
+      class DeploymentTask
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Task end time (if completed).
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Optional Error details if the task state is FAILED.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. Task start time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The current state of the task.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The type of the task.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Combined list of tasks for all paired nodes in the deployment.
+      class DeploymentTasks
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Tasks performed or being performed on the paired nodes of the
+        # deployment at a consolidated level.
+        # Corresponds to the JSON property `task`
+        # @return [Array<Google::Apis::SqladminV1beta4::DeploymentTask>]
+        attr_accessor :task
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task = args[:task] if args.key?(:task)
+        end
+      end
+      
       # Disk encryption configuration for an instance.
       class DiskEncryptionConfiguration
         include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to enforce CMEK log encryption at source. When enforced,
+        # transaction logs are encrypted prior to being uploaded to Cloud Storage. If
+        # not enforced, then CMEK logs are encrypted by the Cloud Storage service.
+        # Corresponds to the JSON property `cmekSourceLogEncryptionEnforced`
+        # @return [Boolean]
+        attr_accessor :cmek_source_log_encryption_enforced
+        alias_method :cmek_source_log_encryption_enforced?, :cmek_source_log_encryption_enforced
+      
+        # Optional. If true, enables Confidential Mode for the instance's Hyperdisk
+        # Balanced volumes. Only supported for zonal C4A instances currently.
+        # Corresponds to the JSON property `confidentialMode`
+        # @return [Boolean]
+        attr_accessor :confidential_mode
+        alias_method :confidential_mode?, :confidential_mode
       
         # This is always `sql#diskEncryptionConfiguration`.
         # Corresponds to the JSON property `kind`
@@ -1820,6 +2075,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cmek_source_log_encryption_enforced = args[:cmek_source_log_encryption_enforced] if args.key?(:cmek_source_log_encryption_enforced)
+          @confidential_mode = args[:confidential_mode] if args.key?(:confidential_mode)
           @kind = args[:kind] if args.key?(:kind)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
         end
@@ -3399,6 +3656,13 @@ module Google
         # @return [String]
         attr_accessor :backupdr_backup
       
+        # Optional. If true, the restore operation proceeds even if the target instance'
+        # s maintenance version is older than the source instance's maintenance version.
+        # Corresponds to the JSON property `ignoreMaintenanceVersion`
+        # @return [Boolean]
+        attr_accessor :ignore_maintenance_version
+        alias_method :ignore_maintenance_version?, :ignore_maintenance_version
+      
         # Database instance restore from backup context. Backup context contains source
         # instance id and project id.
         # Corresponds to the JSON property `restoreBackupContext`
@@ -3425,6 +3689,7 @@ module Google
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
           @backupdr_backup = args[:backupdr_backup] if args.key?(:backupdr_backup)
+          @ignore_maintenance_version = args[:ignore_maintenance_version] if args.key?(:ignore_maintenance_version)
           @restore_backup_context = args[:restore_backup_context] if args.key?(:restore_backup_context)
           @restore_instance_clear_overrides_field_names = args[:restore_instance_clear_overrides_field_names] if args.key?(:restore_instance_clear_overrides_field_names)
           @restore_instance_settings = args[:restore_instance_settings] if args.key?(:restore_instance_settings)
@@ -3729,6 +3994,32 @@ module Google
         end
       end
       
+      # The response message for listing blue-green deployment resources.
+      class ListBlueGreenDeploymentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of blue-green deployment resources.
+        # Corresponds to the JSON property `blueGreenDeployments`
+        # @return [Array<Google::Apis::SqladminV1beta4::BlueGreenDeployment>]
+        attr_accessor :blue_green_deployments
+      
+        # A token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @blue_green_deployments = args[:blue_green_deployments] if args.key?(:blue_green_deployments)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Preferred location. This specifies where a Cloud SQL instance is located. Note
       # that if the preferred location is not available, the instance will be located
       # as close as possible within the region. Only one location may be specified.
@@ -3967,6 +4258,44 @@ module Google
         end
       end
       
+      # Details about an instance within the deployment.
+      class NodeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The instance connection name.
+        # Corresponds to the JSON property `connection`
+        # @return [String]
+        attr_accessor :connection
+      
+        # Output only. The unique DNS name for this instance.
+        # Corresponds to the JSON property `dns`
+        # @return [String]
+        attr_accessor :dns
+      
+        # Output only. The full resource name of the instance. Format: projects/`project`
+        # /instances/`instance`
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Output only. The list of IP addresses for this instance.
+        # Corresponds to the JSON property `ipMappings`
+        # @return [Array<Google::Apis::SqladminV1beta4::IpMapping>]
+        attr_accessor :ip_mappings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection = args[:connection] if args.key?(:connection)
+          @dns = args[:dns] if args.key?(:dns)
+          @instance = args[:instance] if args.key?(:instance)
+          @ip_mappings = args[:ip_mappings] if args.key?(:ip_mappings)
+        end
+      end
+      
       # On-premises instance configuration.
       class OnPremisesConfiguration
         include Google::Apis::Core::Hashable
@@ -4139,10 +4468,37 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The context for the `StartWorkloadCapture` operation, which contains details
+        # to start recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `startWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext]
+        attr_accessor :start_workload_capture_context
+      
+        # The context for the `StartWorkloadReplay` operation, which contains details
+        # about starting the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+        # SQL queries are executed).
+        # Corresponds to the JSON property `startWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1beta4::StartWorkloadReplayContext]
+        attr_accessor :start_workload_replay_context
+      
         # The status of an operation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
+      
+        # The context for the `StopWorkloadCapture` operation, which contains details to
+        # stop recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `stopWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext]
+        attr_accessor :stop_workload_capture_context
+      
+        # The context for the `StopWorkloadReplay` operation, which contains details
+        # about stopping the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance.
+        # Corresponds to the JSON property `stopWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1beta4::StopWorkloadReplayContext]
+        attr_accessor :stop_workload_replay_context
       
         # The sub operation type based on the operation type.
         # Corresponds to the JSON property `subOperationType`
@@ -4189,7 +4545,11 @@ module Google
           @pre_check_major_version_upgrade_context = args[:pre_check_major_version_upgrade_context] if args.key?(:pre_check_major_version_upgrade_context)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @start_workload_capture_context = args[:start_workload_capture_context] if args.key?(:start_workload_capture_context)
+          @start_workload_replay_context = args[:start_workload_replay_context] if args.key?(:start_workload_replay_context)
           @status = args[:status] if args.key?(:status)
+          @stop_workload_capture_context = args[:stop_workload_capture_context] if args.key?(:stop_workload_capture_context)
+          @stop_workload_replay_context = args[:stop_workload_replay_context] if args.key?(:stop_workload_replay_context)
           @sub_operation_type = args[:sub_operation_type] if args.key?(:sub_operation_type)
           @target_id = args[:target_id] if args.key?(:target_id)
           @target_link = args[:target_link] if args.key?(:target_link)
@@ -4885,8 +5245,8 @@ module Google
         attr_accessor :allowed_consumer_projects
       
         # Optional. The network attachment of the consumer network that the Private
-        # Service Connect enabled Cloud SQL instance is authorized to connect via PSC
-        # interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
+        # Service Connect enabled Cloud SQL instance is authorized to connect using the
+        # PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID
         # Corresponds to the JSON property `networkAttachmentUri`
         # @return [String]
         attr_accessor :network_attachment_uri
@@ -5144,6 +5504,26 @@ module Google
           @dr_replica = args[:dr_replica] if args.key?(:dr_replica)
           @failover_dr_replica_name = args[:failover_dr_replica_name] if args.key?(:failover_dr_replica_name)
           @psa_write_endpoint = args[:psa_write_endpoint] if args.key?(:psa_write_endpoint)
+        end
+      end
+      
+      # Configuration specified by the user at creation time for the target (Green)
+      # instance.
+      class RequestedConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The target database major version for the upgrade.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
         end
       end
       
@@ -5680,6 +6060,77 @@ module Google
         end
       end
       
+      # The source instance for the Blue-Green deployment.
+      class SourceRole
+        include Google::Apis::Core::Hashable
+      
+        # Reference to another Cloud SQL instance.
+        # Corresponds to the JSON property `targetId`
+        # @return [Google::Apis::SqladminV1beta4::InstanceReference]
+        attr_accessor :target_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_id = args[:target_id] if args.key?(:target_id)
+        end
+      end
+      
+      # Represents a pairing of a source instance node and a target instance node.
+      class SourceTargetPairedNode
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Deprecated: Indicates which instance (SOURCE or TARGET) in the
+        # pair is currently live. Used for internal implementation and deprecated for
+        # external use.
+        # Corresponds to the JSON property `currentlyServingTraffic`
+        # @return [String]
+        attr_accessor :currently_serving_traffic
+      
+        # Output only. Describes the list of differences for this pair.
+        # Corresponds to the JSON property `diffs`
+        # @return [Array<Google::Apis::SqladminV1beta4::ConfigDiff>]
+        attr_accessor :diffs
+      
+        # Details about an instance within the deployment.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::SqladminV1beta4::NodeInfo]
+        attr_accessor :source
+      
+        # Output only. The current state of this specific source-target pair.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Details about an instance within the deployment.
+        # Corresponds to the JSON property `target`
+        # @return [Google::Apis::SqladminV1beta4::NodeInfo]
+        attr_accessor :target
+      
+        # Output only. Tasks performed or being performed on the target instance of this
+        # pair.
+        # Corresponds to the JSON property `tasks`
+        # @return [Array<Google::Apis::SqladminV1beta4::DeploymentTask>]
+        attr_accessor :tasks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currently_serving_traffic = args[:currently_serving_traffic] if args.key?(:currently_serving_traffic)
+          @diffs = args[:diffs] if args.key?(:diffs)
+          @source = args[:source] if args.key?(:source)
+          @state = args[:state] if args.key?(:state)
+          @target = args[:target] if args.key?(:target)
+          @tasks = args[:tasks] if args.key?(:tasks)
+        end
+      end
+      
       # Active Directory configuration, relevant only for Cloud SQL for SQL Server.
       class SqlActiveDirectoryConfig
         include Google::Apis::Core::Hashable
@@ -5781,7 +6232,7 @@ module Google
         end
       end
       
-      # Execute SQL statements response.
+      # 
       class SqlInstancesExecuteSqlResponse
         include Google::Apis::Core::Hashable
       
@@ -5932,18 +6383,29 @@ module Google
       class SqlInstancesResetReplicaSizeRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
       # 
       class SqlInstancesStartExternalSyncRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Optional. MigrationType configures the migration to use physical files or
         # logical dump files. If not set, then the logical dump file configuration is
@@ -5989,6 +6451,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @replica_overwrite_enabled = args[:replica_overwrite_enabled] if args.key?(:replica_overwrite_enabled)
@@ -6001,6 +6464,11 @@ module Google
       # 
       class SqlInstancesVerifyExternalSyncSettingsRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Region of the Cloud SQL instance.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
       
         # Optional. MigrationType configures the migration to use physical files or
         # logical dump files. If not set, then the logical dump file configuration is
@@ -6048,6 +6516,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @location = args[:location] if args.key?(:location)
           @migration_type = args[:migration_type] if args.key?(:migration_type)
           @mysql_sync_config = args[:mysql_sync_config] if args.key?(:mysql_sync_config)
           @selected_objects = args[:selected_objects] if args.key?(:selected_objects)
@@ -6254,13 +6723,13 @@ module Google
       class SqlServerUserDetails
         include Google::Apis::Core::Hashable
       
-        # If the user has been disabled
+        # Indicates if the user has been disabled.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # The server roles for this user
+        # Indicates the server roles for this user.
         # Corresponds to the JSON property `serverRoles`
         # @return [Array<String>]
         attr_accessor :server_roles
@@ -6292,6 +6761,91 @@ module Google
         # Update properties of this object
         def update!(**args)
           @maintenance_type = args[:maintenance_type] if args.key?(:maintenance_type)
+        end
+      end
+      
+      # Request to start executing a captured workload on a replay instance (the Cloud
+      # SQL instance where the recorded SQL queries are executed).
+      class SqlWorkloadCapturesStartReplayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StartWorkloadReplay` operation, which contains details
+        # about starting the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+        # SQL queries are executed).
+        # Corresponds to the JSON property `startWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1beta4::StartWorkloadReplayContext]
+        attr_accessor :start_workload_replay_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_workload_replay_context = args[:start_workload_replay_context] if args.key?(:start_workload_replay_context)
+        end
+      end
+      
+      # Request to start recording traffic from the primary instance (captured
+      # workload).
+      class SqlWorkloadCapturesStartRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StartWorkloadCapture` operation, which contains details
+        # to start recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `startWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1beta4::StartWorkloadCaptureContext]
+        attr_accessor :start_workload_capture_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @start_workload_capture_context = args[:start_workload_capture_context] if args.key?(:start_workload_capture_context)
+        end
+      end
+      
+      # Request to stop executing a captured workload on a replay instance.
+      class SqlWorkloadCapturesStopReplayRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StopWorkloadReplay` operation, which contains details
+        # about stopping the execution of a captured workload (recorded read and write
+        # SQL queries) on a replay instance.
+        # Corresponds to the JSON property `stopWorkloadReplayContext`
+        # @return [Google::Apis::SqladminV1beta4::StopWorkloadReplayContext]
+        attr_accessor :stop_workload_replay_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_workload_replay_context = args[:stop_workload_replay_context] if args.key?(:stop_workload_replay_context)
+        end
+      end
+      
+      # Request to stop recording traffic from the primary instance.
+      class SqlWorkloadCapturesStopRequest
+        include Google::Apis::Core::Hashable
+      
+        # The context for the `StopWorkloadCapture` operation, which contains details to
+        # stop recording the workload (SQL queries) on a Cloud SQL instance.
+        # Corresponds to the JSON property `stopWorkloadCaptureContext`
+        # @return [Google::Apis::SqladminV1beta4::StopWorkloadCaptureContext]
+        attr_accessor :stop_workload_capture_context
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stop_workload_capture_context = args[:stop_workload_capture_context] if args.key?(:stop_workload_capture_context)
         end
       end
       
@@ -6499,6 +7053,79 @@ module Google
         end
       end
       
+      # The context for the `StartWorkloadCapture` operation, which contains details
+      # to start recording the workload (SQL queries) on a Cloud SQL instance.
+      class StartWorkloadCaptureContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, the captured workload is simultaneously executed on a
+        # separate, ephemeral Cloud SQL instance. This "live replay" instance is
+        # automatically provisioned and is cloned from the source instance. If false (
+        # the default), the workload is only stored and no live replay occurs. It can be
+        # replayed later using a separate `StartWorkloadReplayRequest`. Note: The
+        # workload capture runs continuously until an explicit `
+        # StopWorkloadCaptureRequest` is issued.
+        # Corresponds to the JSON property `enableLiveReplay`
+        # @return [Boolean]
+        attr_accessor :enable_live_replay
+        alias_method :enable_live_replay?, :enable_live_replay
+      
+        # Optional. Required if `enable_live_replay` is true. The name of the Cloud SQL
+        # instance where the captured workload (SQL queries) is being executed,
+        # excluding the project ID (for example, `my-replay-instance`). The instance
+        # name must start with a lowercase letter and contain only lowercase letters,
+        # numbers, and hyphens. The combined length of `project-ID:instance-name` must
+        # be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_live_replay = args[:enable_live_replay] if args.key?(:enable_live_replay)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+        end
+      end
+      
+      # The context for the `StartWorkloadReplay` operation, which contains details
+      # about starting the execution of a captured workload (recorded read and write
+      # SQL queries) on a replay instance (the Cloud SQL instance where the recorded
+      # SQL queries are executed).
+      class StartWorkloadReplayContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Cloud SQL instance where the captured workload (SQL
+        # queries) is being executed, excluding the project ID (for example, `my-replay-
+        # instance`). The instance name must start with a lowercase letter and contain
+        # only lowercase letters, numbers, and hyphens. The combined length of `project-
+        # ID:instance-name` must be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The ID of the workload to start executing on the replay instance.
+        # Each workload capture generates a unique ID in the format `workload-` (for
+        # example, `workload-1786046400`). Use this ID to start executing the recorded
+        # SQL queries.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by [
       # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
@@ -6538,6 +7165,77 @@ module Google
         end
       end
       
+      # The context for the `StopWorkloadCapture` operation, which contains details to
+      # stop recording the workload (SQL queries) on a Cloud SQL instance.
+      class StopWorkloadCaptureContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, immediately aborts the concurrent live replay and discards
+        # any un-replayed traffic alongside stopping the capture. If false (the default),
+        # the capture stops recording new traffic, but the live replay will continue
+        # executing until the entire backlog of captured traffic has been replayed.
+        # Corresponds to the JSON property `abortLiveReplay`
+        # @return [Boolean]
+        attr_accessor :abort_live_replay
+        alias_method :abort_live_replay?, :abort_live_replay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort_live_replay = args[:abort_live_replay] if args.key?(:abort_live_replay)
+        end
+      end
+      
+      # The context for the `StopWorkloadReplay` operation, which contains details
+      # about stopping the execution of a captured workload (recorded read and write
+      # SQL queries) on a replay instance.
+      class StopWorkloadReplayContext
+        include Google::Apis::Core::Hashable
+      
+        # Required. The name of the Cloud SQL instance where the captured workload (SQL
+        # queries) is being executed, excluding the project ID (for example, `my-replay-
+        # instance`). The instance name must start with a lowercase letter and contain
+        # only lowercase letters, numbers, and hyphens. The combined length of `project-
+        # ID:instance-name` must be 98 characters or less.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The ID of the workload to stop executing on the replay instance.
+        # Each workload capture generates a unique ID in the format `workload-` (for
+        # example, `workload-1786046400`). Use this ID to stop executing the recorded
+        # SQL queries.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
+        end
+      end
+      
+      # Request message for switching over a `BlueGreenDeployment` resource.
+      class SwitchoverBlueGreenDeploymentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL
       # external server initial dump.
       class SyncFlags
@@ -6565,6 +7263,26 @@ module Google
         end
       end
       
+      # Deprecated: Use RequestedConfig instead. Configuration specified by the user
+      # at creation time for the target (Green) instance.
+      class TargetConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The target database major version for the upgrade.
+        # Corresponds to the JSON property `databaseVersion`
+        # @return [String]
+        attr_accessor :database_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_version = args[:database_version] if args.key?(:database_version)
+        end
+      end
+      
       # Target metric for read pool auto scaling.
       class TargetMetric
         include Google::Apis::Core::Hashable
@@ -6587,6 +7305,25 @@ module Google
         def update!(**args)
           @metric = args[:metric] if args.key?(:metric)
           @target_value = args[:target_value] if args.key?(:target_value)
+        end
+      end
+      
+      # The target instance for the Blue-Green deployment.
+      class TargetRole
+        include Google::Apis::Core::Hashable
+      
+        # Reference to another Cloud SQL instance.
+        # Corresponds to the JSON property `sourceId`
+        # @return [Google::Apis::SqladminV1beta4::InstanceReference]
+        attr_accessor :source_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_id = args[:source_id] if args.key?(:source_id)
         end
       end
       
@@ -6898,6 +7635,86 @@ module Google
         def update!(**args)
           @null_value = args[:null_value] if args.key?(:null_value)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Captured workload for an instance.
+      class WorkloadCapture
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The end time of the workload capture.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. The name of the replay instance, if live replay was enabled.
+        # Corresponds to the JSON property `replayInstance`
+        # @return [String]
+        attr_accessor :replay_instance
+      
+        # Output only. The retention period in days for the captured workload.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Output only. The name of the source instance.
+        # Corresponds to the JSON property `sourceInstance`
+        # @return [String]
+        attr_accessor :source_instance
+      
+        # Output only. The start time of the workload capture.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Output only. The state of the workload capture.
+        # Corresponds to the JSON property `workloadCaptureState`
+        # @return [String]
+        attr_accessor :workload_capture_state
+      
+        # Output only. The ID of the captured workload.
+        # Corresponds to the JSON property `workloadId`
+        # @return [String]
+        attr_accessor :workload_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @source_instance = args[:source_instance] if args.key?(:source_instance)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @workload_capture_state = args[:workload_capture_state] if args.key?(:workload_capture_state)
+          @workload_id = args[:workload_id] if args.key?(:workload_id)
+        end
+      end
+      
+      # Instance list captured workloads response.
+      class WorkloadCapturesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # This is always `sql#workloadCapturesList`.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # List of captured workloads for the instance.
+        # Corresponds to the JSON property `workloadCaptures`
+        # @return [Array<Google::Apis::SqladminV1beta4::WorkloadCapture>]
+        attr_accessor :workload_captures
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @workload_captures = args[:workload_captures] if args.key?(:workload_captures)
         end
       end
     end

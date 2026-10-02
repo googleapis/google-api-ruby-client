@@ -1474,6 +1474,12 @@ module Google
       class SubscriptionMigrationDetails
         include Google::Apis::Core::Hashable
       
+        # Output only. The creation time of the migrated subscription in the legacy
+        # system.
+        # Corresponds to the JSON property `legacyCreationTime`
+        # @return [String]
+        attr_accessor :legacy_creation_time
+      
         # Output only. The migrated subscription id in the legacy system.
         # Corresponds to the JSON property `migratedSubscriptionId`
         # @return [String]
@@ -1485,6 +1491,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @legacy_creation_time = args[:legacy_creation_time] if args.key?(:legacy_creation_time)
           @migrated_subscription_id = args[:migrated_subscription_id] if args.key?(:migrated_subscription_id)
         end
       end

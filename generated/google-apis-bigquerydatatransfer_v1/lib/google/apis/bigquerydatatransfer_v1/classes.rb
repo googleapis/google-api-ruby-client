@@ -268,6 +268,13 @@ module Google
         attr_accessor :required
         alias_method :required?, :required
       
+        # Output only. If true, the parameter value can be provided through Secret
+        # Manager.
+        # Corresponds to the JSON property `secretManagerAllowed`
+        # @return [Boolean]
+        attr_accessor :secret_manager_allowed
+        alias_method :secret_manager_allowed?, :secret_manager_allowed
+      
         # Parameter type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -308,6 +315,7 @@ module Google
           @recurse = args[:recurse] if args.key?(:recurse)
           @repeated = args[:repeated] if args.key?(:repeated)
           @required = args[:required] if args.key?(:required)
+          @secret_manager_allowed = args[:secret_manager_allowed] if args.key?(:secret_manager_allowed)
           @type = args[:type] if args.key?(:type)
           @validation_description = args[:validation_description] if args.key?(:validation_description)
           @validation_help_url = args[:validation_help_url] if args.key?(:validation_help_url)
@@ -693,6 +701,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataplex_configuration = args[:dataplex_configuration] if args.key?(:dataplex_configuration)
+        end
+      end
+      
+      # Configuration for data source parameters.
+      class ParameterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of parameters that are stored in Secret Manager. The value
+        # of a parameter included in this list will be interpreted as a Secret Manager
+        # key version resource name instead of a raw value. The raw value will be
+        # retrieved from Secret Manager upon execution.
+        # Corresponds to the JSON property `secretManagerManagedParams`
+        # @return [Array<String>]
+        attr_accessor :secret_manager_managed_params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @secret_manager_managed_params = args[:secret_manager_managed_params] if args.key?(:secret_manager_managed_params)
         end
       end
       
@@ -1121,6 +1151,11 @@ module Google
         # @return [Google::Apis::BigquerydatatransferV1::UserInfo]
         attr_accessor :owner_info
       
+        # Configuration for data source parameters.
+        # Corresponds to the JSON property `paramConfig`
+        # @return [Google::Apis::BigquerydatatransferV1::ParameterConfig]
+        attr_accessor :param_config
+      
         # Parameters specific to each data source. For more information see the bq tab
         # in the 'Setting up a data transfer' section for each data source. For example
         # the parameters for Cloud Storage transfers are listed here: https://cloud.
@@ -1191,6 +1226,7 @@ module Google
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @owner_info = args[:owner_info] if args.key?(:owner_info)
+          @param_config = args[:param_config] if args.key?(:param_config)
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_options = args[:schedule_options] if args.key?(:schedule_options)
@@ -1384,6 +1420,11 @@ module Google
         # @return [String]
         attr_accessor :notification_pubsub_topic
       
+        # Configuration for data source parameters.
+        # Corresponds to the JSON property `parameterConfig`
+        # @return [Google::Apis::BigquerydatatransferV1::ParameterConfig]
+        attr_accessor :parameter_config
+      
         # Output only. Parameters specific to each data source. For more information see
         # the bq tab in the 'Setting up a data transfer' section for each data source.
         # For example the parameters for Cloud Storage transfers are listed here: https:/
@@ -1445,6 +1486,7 @@ module Google
           @error_status = args[:error_status] if args.key?(:error_status)
           @name = args[:name] if args.key?(:name)
           @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
+          @parameter_config = args[:parameter_config] if args.key?(:parameter_config)
           @params = args[:params] if args.key?(:params)
           @run_time = args[:run_time] if args.key?(:run_time)
           @schedule = args[:schedule] if args.key?(:schedule)

@@ -29,6 +29,12 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # See and edit allowlisted domains in your Cloud Identity Organization
+      AUTH_CLOUD_IDENTITY_ALLOWLISTEDDOMAINS = 'https://www.googleapis.com/auth/cloud-identity.allowlisteddomains'
+
+      # See allowlisted domains in your Cloud Identity Organization
+      AUTH_CLOUD_IDENTITY_ALLOWLISTEDDOMAINS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.allowlisteddomains.readonly'
+
       # Private Service: https://www.googleapis.com/auth/cloud-identity.devices
       AUTH_CLOUD_IDENTITY_DEVICES = 'https://www.googleapis.com/auth/cloud-identity.devices'
 

@@ -1,0 +1,7 @@
+{
+    "api_id": "auditmanager:v1",
+    "name_pretty": "Audit Manager API",
+    "distribution_name": "google-apis-auditmanager_v1",
+    "language": "ruby",
+    "library_type": "REST"
+}

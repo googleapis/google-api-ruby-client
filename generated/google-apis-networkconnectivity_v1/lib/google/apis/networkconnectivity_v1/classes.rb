@@ -5236,6 +5236,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :advertised_routes
       
+        # Optional. Immutable. Controls whether resources proposed by the Transport are
+        # automatically accepted on behalf of the user. List of actions that can be
+        # automatically accepted are: 1. VPC Peering creation 2. Routing VPC Spoke
+        # creation 3. Hybrid Spoke creation
+        # Corresponds to the JSON property `autoAccept`
+        # @return [Boolean]
+        attr_accessor :auto_accept
+        alias_method :auto_accept?, :auto_accept
+      
         # Optional. Bandwidth of the Transport. This must be one of the supported
         # bandwidths for the remote profile, and must be set when no activation key is
         # being provided.
@@ -5260,6 +5269,13 @@ module Google
         # Corresponds to the JSON property `generatedActivationKey`
         # @return [String]
         attr_accessor :generated_activation_key
+      
+        # Optional. Immutable. The NCC Hub that the Transport should attach to. The hub
+        # must be in the same project as the Transport. Format: ``hub`` or `projects/`
+        # project`/locations/global/hubs/`hub``
+        # Corresponds to the JSON property `hub`
+        # @return [String]
+        attr_accessor :hub
       
         # Optional. Labels as key value pairs.
         # Corresponds to the JSON property `labels`
@@ -5298,6 +5314,15 @@ module Google
         # @return [String]
         attr_accessor :provided_activation_key
       
+        # Optional. Immutable. Controls whether a Routing VPC Spoke should be created
+        # and attached to the NCC Hub. This will provide Private Service Connect (PSC)
+        # connectivity through NCC. This can only be set when the Transport is first
+        # created.
+        # Corresponds to the JSON property `pscRoutingEnabled`
+        # @return [Boolean]
+        attr_accessor :psc_routing_enabled
+        alias_method :psc_routing_enabled?, :psc_routing_enabled
+      
         # Optional. Immutable. The user supplied account id for the CSP associated with
         # the remote profile.
         # Corresponds to the JSON property `remoteAccountId`
@@ -5332,16 +5357,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
+          @auto_accept = args[:auto_accept] if args.key?(:auto_accept)
           @bandwidth = args[:bandwidth] if args.key?(:bandwidth)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @generated_activation_key = args[:generated_activation_key] if args.key?(:generated_activation_key)
+          @hub = args[:hub] if args.key?(:hub)
           @labels = args[:labels] if args.key?(:labels)
           @mtu_limit = args[:mtu_limit] if args.key?(:mtu_limit)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @peering_network = args[:peering_network] if args.key?(:peering_network)
           @provided_activation_key = args[:provided_activation_key] if args.key?(:provided_activation_key)
+          @psc_routing_enabled = args[:psc_routing_enabled] if args.key?(:psc_routing_enabled)
           @remote_account_id = args[:remote_account_id] if args.key?(:remote_account_id)
           @remote_profile = args[:remote_profile] if args.key?(:remote_profile)
           @stack_type = args[:stack_type] if args.key?(:stack_type)

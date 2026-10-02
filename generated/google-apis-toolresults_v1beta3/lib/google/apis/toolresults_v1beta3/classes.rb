@@ -233,6 +233,19 @@ module Google
         end
       end
       
+      # Anti-tampering termination was detected.
+      class AntiTamperingTermination
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # `Any` contains an arbitrary serialized protocol buffer message along with a
       # URL that describes the type of the serialized message. Protobuf library
       # provides support to pack/unpack Any values in the form of utility functions or

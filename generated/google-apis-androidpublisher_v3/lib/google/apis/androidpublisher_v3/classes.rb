@@ -731,14 +731,23 @@ module Google
         end
       end
       
-      # An installable set of active APKs. A set of APKs might only contain 1 APK if
-      # the app in question publishes using APKs. If the app uses app bundles (or a
-      # similar technology), this set should contain all APKs (even optional ones)
-      # that might be installed for this app. A set of APKs should be installable
-      # together. If certain APKs are exclusive to one another and cannot be installed
-      # together, then a separate AppStoreAppActiveApkSet should be created.
+      # An installable set of active APKs. All APKs in this set should belong to the
+      # same version of the app. A set of APKs might only contain 1 APK if the app in
+      # question publishes using APKs. If the app uses app bundles (or a similar
+      # technology), this set should contain all APKs (even optional ones) that might
+      # be installed for this app. A set of APKs should be installable together. If
+      # certain APKs are exclusive to one another and cannot be installed together,
+      # then a separate AppStoreAppActiveApkSet should be created.
       class AppStoreAppActiveApkSet
         include Google::Apis::Core::Hashable
+      
+        # Optional. Whether all APKs referenced in this active APK set are published on
+        # Play Store (or derived from an app bundle published on Play Store). When this
+        # is set, version_code must be provided.
+        # Corresponds to the JSON property `alreadyPublishedOnPlay`
+        # @return [Boolean]
+        attr_accessor :already_published_on_play
+        alias_method :already_published_on_play?, :already_published_on_play
       
         # Required. The ID for the main base application module. Example: base.apk or
         # app.apk.
@@ -753,14 +762,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :split_apk_id
       
+        # Optional. Version code for the version this APK set represents.
+        # Corresponds to the JSON property `versionCode`
+        # @return [Fixnum]
+        attr_accessor :version_code
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @already_published_on_play = args[:already_published_on_play] if args.key?(:already_published_on_play)
           @base_apk_id = args[:base_apk_id] if args.key?(:base_apk_id)
           @split_apk_id = args[:split_apk_id] if args.key?(:split_apk_id)
+          @version_code = args[:version_code] if args.key?(:version_code)
         end
       end
       
@@ -2346,6 +2362,89 @@ module Google
         end
       end
       
+      # Hash digests of a certificate.
+      class CertificateHashes
+        include Google::Apis::Core::Hashable
+      
+        # Hex-encoded MD5 hash of the certificate. example: `43:51:43:A1:B5:FC:8B:B7:0A:
+        # 3A:A9:B1:0F:66:73:A8`
+        # Corresponds to the JSON property `certificateHashMd5`
+        # @return [String]
+        attr_accessor :certificate_hash_md5
+      
+        # Hex-encoded SHA1 hash of the certificate. example: `86:61:97:1A:D5:EF:E5:74:1E:
+        # A7:5B:84:7C:68:37:65:CD:94:16:DE`
+        # Corresponds to the JSON property `certificateHashSha1`
+        # @return [String]
+        attr_accessor :certificate_hash_sha1
+      
+        # Hex-encoded SHA256 hash of the certificate. example: `94:49:C7:F3:A9:3C:F0:C5:
+        # 5A:67:5D:DF:1C:83:73:2D:87:D5:62:55:E7:0B:15:0D:9E:6F:3C:F8:63:BB:7F:C1`
+        # Corresponds to the JSON property `certificateHashSha256`
+        # @return [String]
+        attr_accessor :certificate_hash_sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_hash_md5 = args[:certificate_hash_md5] if args.key?(:certificate_hash_md5)
+          @certificate_hash_sha1 = args[:certificate_hash_sha1] if args.key?(:certificate_hash_sha1)
+          @certificate_hash_sha256 = args[:certificate_hash_sha256] if args.key?(:certificate_hash_sha256)
+        end
+      end
+      
+      # Reference to a private key hosted in developer-managed Google Cloud KMS.
+      class CloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Required. Resource identifier of the private key hosted in Google Cloud KMS.
+        # The Google Play service account must be granted Decrypt and Sign permissions
+        # on this resource. Format: projects//locations//keyRings//cryptoKeys//
+        # cryptoKeyVersions/
+        # Corresponds to the JSON property `cryptoKeyVersionResource`
+        # @return [String]
+        attr_accessor :crypto_key_version_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crypto_key_version_resource = args[:crypto_key_version_resource] if args.key?(:crypto_key_version_resource)
+        end
+      end
+      
+      # Cloud KMS key and the certificate associated with the key.
+      class CloudKmsKeyAndCert
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        # Required. Certificate associated with the key. The bytes must contain the
+        # certificate in PEM format.
+        # Corresponds to the JSON property `pemCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+          @pem_certificate = args[:pem_certificate] if args.key?(:pem_certificate)
+        end
+      end
+      
       # Coarse Geographic location details for where the consumption happened.
       class CoarseLocation
         include Google::Apis::Core::Hashable
@@ -3796,6 +3895,102 @@ module Google
         end
       end
       
+      # Request to enroll an app into Play App Signing using a self-hosted Cloud KMS
+      # key.
+      class EnrollAppRequest
+        include Google::Apis::Core::Hashable
+      
+        # Enroll an existing app into Play signing.
+        # Corresponds to the JSON property `enrollExistingApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollExistingApp]
+        attr_accessor :enroll_existing_app
+      
+        # Enroll a new app into Play signing.
+        # Corresponds to the JSON property `enrollNewApp`
+        # @return [Google::Apis::AndroidpublisherV3::EnrollNewApp]
+        attr_accessor :enroll_new_app
+      
+        # The certificate associated with the upload key, in PEM format.
+        # Corresponds to the JSON property `pemUploadCertificate`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :pem_upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enroll_existing_app = args[:enroll_existing_app] if args.key?(:enroll_existing_app)
+          @enroll_new_app = args[:enroll_new_app] if args.key?(:enroll_new_app)
+          @pem_upload_certificate = args[:pem_upload_certificate] if args.key?(:pem_upload_certificate)
+        end
+      end
+      
+      # Response to enroll an app into Play signing.
+      class EnrollAppResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `signingCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :signing_certificate
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `uploadCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :upload_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signing_certificate = args[:signing_certificate] if args.key?(:signing_certificate)
+          @upload_certificate = args[:upload_certificate] if args.key?(:upload_certificate)
+        end
+      end
+      
+      # Enroll an existing app into Play signing.
+      class EnrollExistingApp
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a private key hosted in developer-managed Google Cloud KMS.
+        # Corresponds to the JSON property `cloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKey]
+        attr_accessor :cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key = args[:cloud_kms_key] if args.key?(:cloud_kms_key)
+        end
+      end
+      
+      # Enroll a new app into Play signing.
+      class EnrollNewApp
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
+        end
+      end
+      
       # An expansion file. The resource for ExpansionFilesService.
       class ExpansionFile
         include Google::Apis::Core::Hashable
@@ -3927,6 +4122,40 @@ module Google
         end
       end
       
+      # Reporting details unique to the external content link program.
+      class ExternalContentLinkDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The category of the downlaoded app. This must match the category
+        # provided in Play Console during the external app verification process. Only
+        # required for app installs.
+        # Corresponds to the JSON property `externalAppCategory`
+        # @return [String]
+        attr_accessor :external_app_category
+      
+        # Optional. The package name of the app downloaded through this transaction.
+        # Only required for app installs.
+        # Corresponds to the JSON property `installedAppPackage`
+        # @return [String]
+        attr_accessor :installed_app_package
+      
+        # Required. The type content being reported by this transaction.
+        # Corresponds to the JSON property `linkType`
+        # @return [String]
+        attr_accessor :link_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @external_app_category = args[:external_app_category] if args.key?(:external_app_category)
+          @installed_app_package = args[:installed_app_package] if args.key?(:installed_app_package)
+          @link_type = args[:link_type] if args.key?(:link_type)
+        end
+      end
+      
       # Reporting details unique to the external offers program.
       class ExternalOfferDetails
         include Google::Apis::Core::Hashable
@@ -4010,6 +4239,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :current_tax_amount
       
+        # Reporting details unique to the external content link program.
+        # Corresponds to the JSON property `externalContentLinkDetails`
+        # @return [Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails]
+        attr_accessor :external_content_link_details
+      
         # Reporting details unique to the external offers program.
         # Corresponds to the JSON property `externalOfferDetails`
         # @return [Google::Apis::AndroidpublisherV3::ExternalOfferDetails]
@@ -4090,6 +4324,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_pre_tax_amount = args[:current_pre_tax_amount] if args.key?(:current_pre_tax_amount)
           @current_tax_amount = args[:current_tax_amount] if args.key?(:current_tax_amount)
+          @external_content_link_details = args[:external_content_link_details] if args.key?(:external_content_link_details)
           @external_offer_details = args[:external_offer_details] if args.key?(:external_offer_details)
           @external_transaction_id = args[:external_transaction_id] if args.key?(:external_transaction_id)
           @one_time_transaction = args[:one_time_transaction] if args.key?(:one_time_transaction)
@@ -6577,6 +6812,27 @@ module Google
         end
       end
       
+      # Configuration specific to game reward offers.
+      class OneTimeProductGameRewardOffer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of times this offer can be redeemed. If unset or set to 0,
+        # allows for unlimited offer redemptions. Otherwise must be a number between 1
+        # and 50 inclusive.
+        # Corresponds to the JSON property `redemptionLimit`
+        # @return [Fixnum]
+        attr_accessor :redemption_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redemption_limit = args[:redemption_limit] if args.key?(:redemption_limit)
+        end
+      end
+      
       # Regional store listing for a one-time product.
       class OneTimeProductListing
         include Google::Apis::Core::Hashable
@@ -6618,6 +6874,11 @@ module Google
         # Corresponds to the JSON property `discountedOffer`
         # @return [Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer]
         attr_accessor :discounted_offer
+      
+        # Configuration specific to game reward offers.
+        # Corresponds to the JSON property `gameRewardOffer`
+        # @return [Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer]
+        attr_accessor :game_reward_offer
       
         # Required. Immutable. The ID of this product offer. Must be unique within the
         # purchase option. It must start with a number or lower-case letter, and can
@@ -6678,6 +6939,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discounted_offer = args[:discounted_offer] if args.key?(:discounted_offer)
+          @game_reward_offer = args[:game_reward_offer] if args.key?(:game_reward_offer)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @offer_tags = args[:offer_tags] if args.key?(:offer_tags)
           @package_name = args[:package_name] if args.key?(:package_name)
@@ -7755,7 +8017,7 @@ module Google
         end
       end
       
-      # An individual response to a policy question about an app.
+      # An individual response (answer) to a policy question about an app.
       class PolicyResponse
         include Google::Apis::Core::Hashable
       
@@ -9399,6 +9661,79 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request to rotate an app's signing key.
+      class RotateAppSigningKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Reason for rotating the app key.
+        # Corresponds to the JSON property `keyRotationReason`
+        # @return [String]
+        attr_accessor :key_rotation_reason
+      
+        # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+        # its associated proof of rotation.
+        # Corresponds to the JSON property `rotatedCloudKmsKey`
+        # @return [Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey]
+        attr_accessor :rotated_cloud_kms_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_rotation_reason = args[:key_rotation_reason] if args.key?(:key_rotation_reason)
+          @rotated_cloud_kms_key = args[:rotated_cloud_kms_key] if args.key?(:rotated_cloud_kms_key)
+        end
+      end
+      
+      # Response to rotate an app's signing key.
+      class RotateAppSigningKeyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Hash digests of a certificate.
+        # Corresponds to the JSON property `rotatedKeyCertificate`
+        # @return [Google::Apis::AndroidpublisherV3::CertificateHashes]
+        attr_accessor :rotated_key_certificate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rotated_key_certificate = args[:rotated_key_certificate] if args.key?(:rotated_key_certificate)
+        end
+      end
+      
+      # Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and
+      # its associated proof of rotation.
+      class RotatedCloudKmsKey
+        include Google::Apis::Core::Hashable
+      
+        # Cloud KMS key and the certificate associated with the key.
+        # Corresponds to the JSON property `cloudKmsKeyAndCert`
+        # @return [Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert]
+        attr_accessor :cloud_kms_key_and_cert
+      
+        # Required. Proof-of-rotation. See [creating signing certificate lineages](https:
+        # //developer.android.com/studio/command-line/apksigner#rotate_signing_keys_2).
+        # Corresponds to the JSON property `signingCertificateLineage`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :signing_certificate_lineage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_kms_key_and_cert = args[:cloud_kms_key_and_cert] if args.key?(:cloud_kms_key_and_cert)
+          @signing_certificate_lineage = args[:signing_certificate_lineage] if args.key?(:signing_certificate_lineage)
         end
       end
       
@@ -11165,12 +11500,21 @@ module Google
       class UpdateAppStoreHostedAppResponse
         include Google::Apis::Core::Hashable
       
+        # Unique identifier for the specific version of the hosted app submitted in this
+        # update. This identifier can be used to correlate publishing signals (such as
+        # those returned by ListHostedAppsPublishingSignals) with this specific app
+        # update.
+        # Corresponds to the JSON property `updateId`
+        # @return [String]
+        attr_accessor :update_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @update_id = args[:update_id] if args.key?(:update_id)
         end
       end
       

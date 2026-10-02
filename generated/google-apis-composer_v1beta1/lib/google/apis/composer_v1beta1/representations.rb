@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HibernateEnvironmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IpAllocationPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +299,12 @@ module Google
       end
       
       class RestartWebServerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResumeEnvironmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -560,6 +572,7 @@ module Google
       
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
+          property :mode, as: 'mode'
           property :name, as: 'name'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -641,6 +654,12 @@ module Google
           property :is_failover_replica_available, as: 'isFailoverReplicaAvailable'
           property :primary_gce_zone, as: 'primaryGceZone'
           property :secondary_gce_zone, as: 'secondaryGceZone'
+        end
+      end
+      
+      class HibernateEnvironmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -878,6 +897,12 @@ module Google
       end
       
       class RestartWebServerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class ResumeEnvironmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

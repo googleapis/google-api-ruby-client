@@ -2525,6 +2525,26 @@ module Google
         end
       end
       
+      # Details regarding the expiration of this role assignment. Used to
+      # automatically revoke access when the time limit is reached.
+      class ExpirationDetails
+        include Google::Apis::Core::Hashable
+      
+        # The specific timestamp when the role assignment expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
       # External identifier used to link and identify this group across external
       # directory systems.
       class ExternalId
@@ -4146,6 +4166,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Details regarding the expiration of this role assignment. Used to
+        # automatically revoke access when the time limit is reached.
+        # Corresponds to the JSON property `expirationDetails`
+        # @return [Google::Apis::AdminDirectoryV1::ExpirationDetails]
+        attr_accessor :expiration_details
+      
         # The type of the API resource. This is always `admin#directory#roleAssignment`.
         # Corresponds to the JSON property `kind`
         # @return [String]
@@ -4182,6 +4208,7 @@ module Google
           @assignee_type = args[:assignee_type] if args.key?(:assignee_type)
           @condition = args[:condition] if args.key?(:condition)
           @etag = args[:etag] if args.key?(:etag)
+          @expiration_details = args[:expiration_details] if args.key?(:expiration_details)
           @kind = args[:kind] if args.key?(:kind)
           @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
           @role_assignment_id = args[:role_assignment_id] if args.key?(:role_assignment_id)

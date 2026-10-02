@@ -55,6 +55,11 @@ module Google
         # @return [Google::Apis::ChatV1::AccessPermissionSetting]
         attr_accessor :join_space_setting
       
+        # An access permission setting.
+        # Corresponds to the JSON property `viewSpaceMembershipSetting`
+        # @return [Google::Apis::ChatV1::AccessPermissionSetting]
+        attr_accessor :view_space_membership_setting
+      
         def initialize(**args)
            update!(**args)
         end
@@ -63,6 +68,7 @@ module Google
         def update!(**args)
           @discover_space_setting = args[:discover_space_setting] if args.key?(:discover_space_setting)
           @join_space_setting = args[:join_space_setting] if args.key?(:join_space_setting)
+          @view_space_membership_setting = args[:view_space_membership_setting] if args.key?(:view_space_membership_setting)
         end
       end
       
@@ -233,15 +239,15 @@ module Google
         end
       end
       
-      # Output only. Annotations can be associated with the plain-text body of the
-      # message or with chips that link to Google Workspace resources like Google Docs
-      # or Sheets with `start_index` and `length` of 0. To add basic formatting to a
-      # text message, see [Format text messages](https://developers.google.com/
-      # workspace/chat/format-messages). Example plain-text message body: ``` Hello @
-      # FooBot how are you!" ``` The corresponding annotations metadata: ``` "
-      # annotations":[` "type":"USER_MENTION", "startIndex":6, "length":7, "
-      # userMention": ` "user": ` "name":"users/`user`", "displayName":"FooBot", "
-      # avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" `, "type":"MENTION" ` `] ```
+      # Annotations can be associated with the plain-text body of the message or with
+      # chips that link to Google Workspace resources like Google Docs or Sheets with `
+      # start_index` and `length` of 0. To add basic formatting to a text message, see
+      # [Format text messages](https://developers.google.com/workspace/chat/format-
+      # messages). Example plain-text message body: ``` Hello @FooBot how are you!" ```
+      # The corresponding annotations metadata: ``` "annotations":[` "type":"
+      # USER_MENTION", "startIndex":6, "length":7, "userMention": ` "user": ` "name":"
+      # users/`user`", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "
+      # type":"BOT" `, "type":"MENTION" ` `] ```
       class Annotation
         include Google::Apis::Core::Hashable
       
@@ -1406,10 +1412,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -4904,6 +4911,32 @@ module Google
         end
       end
       
+      # Response message for listing message pins.
+      class ListMessagePinsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pinned messages from the specified space.
+        # Corresponds to the JSON property `messagePins`
+        # @return [Array<Google::Apis::ChatV1::MessagePin>]
+        attr_accessor :message_pins
+      
+        # You can send a token as `pageToken` to retrieve the next page of results. If
+        # empty, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_pins = args[:message_pins] if args.key?(:message_pins)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response message for listing messages.
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
@@ -5231,10 +5264,11 @@ module Google
         # @return [Google::Apis::ChatV1::Group]
         attr_accessor :group_member
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `member`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :member
@@ -5580,10 +5614,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `privateMessageViewer`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :private_message_viewer
@@ -5596,10 +5631,11 @@ module Google
         # @return [Google::Apis::ChatV1::QuotedMessageMetadata]
         attr_accessor :quoted_message_metadata
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `sender`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :sender
@@ -5786,6 +5822,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A pin on a Chat message. For more information see [Pin a message](https://
+      # support.google.com/chat?p=chat-board-hc).
+      class MessagePin
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The resource name of the message that is pinned. Format: `
+        # spaces/`space`/messages/`message``
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Identifier. The resource name of the message pin. Format: `spaces/`space`/
+        # messagePins/`message_pin`` The resource ID component matches the resource ID
+        # component of the message. For example, a message with `spaces/AAA/messages/bbb.
+        # ccc` corresponds to the message pin with the resource name `spaces/AAA/
+        # messagePins/bbb.ccc`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message = args[:message] if args.key?(:message)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -5976,6 +6043,11 @@ module Google
         # @return [Google::Apis::ChatV1::PermissionSetting]
         attr_accessor :use_at_mention_all
       
+        # Represents a space permission setting.
+        # Corresponds to the JSON property `viewSpaceMembership`
+        # @return [Google::Apis::ChatV1::PermissionSetting]
+        attr_accessor :view_space_membership
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5990,6 +6062,7 @@ module Google
           @reply_messages = args[:reply_messages] if args.key?(:reply_messages)
           @toggle_history = args[:toggle_history] if args.key?(:toggle_history)
           @use_at_mention_all = args[:use_at_mention_all] if args.key?(:use_at_mention_all)
+          @view_space_membership = args[:view_space_membership] if args.key?(:view_space_membership)
         end
       end
       
@@ -6193,10 +6266,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user
@@ -6406,6 +6480,9 @@ module Google
         # partial match of their display name. Results are limited to the top five space
         # matches. For example, `space.display_name:Project` searches for messages in
         # the top five spaces that contain the word "Project" in their display names. - `
+        # space.space_type`: The type of the space. Only supports `=`. For example, `
+        # space.space_type="DIRECT_MESSAGE"` returns only messages from direct messages.
+        # The possible values are `DIRECT_MESSAGE`, `GROUP_CHAT`, and `SPACE`. - `
         # attachment`: Supports the operator `:*` (has any) to check for the presence of
         # attachments. If `attachment:*` is specified, only messages that have at least
         # one attachment are returned. - `annotations.user_mentions.user.name`: The
@@ -6418,50 +6495,53 @@ module Google
         # For advanced filtering, the following functions are also available: - `
         # has_link()`: Returns only messages that have at least one hyperlink in the
         # message text. - `is_unread()`: Filters out messages that have been read by the
-        # calling user. Using the `space.display_name` filter requires that the calling
-        # credentials include one of the following [authorization scopes](https://
-        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
-        # `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.
-        # googleapis.com/auth/chat.spaces` Using the `is_unread()` filter requires that
-        # the calling credentials include one of the following [authorization scopes](
-        # https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
-        # scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `
-        # https://www.googleapis.com/auth/chat.users.readstate` Across different fields,
-        # only `AND` operators are supported. A valid example is `sender.name = "users/
-        # 1234567890" AND is_unread()`. The word `AND` is optional and is implied if
-        # omitted. For example, `sender.name = "users/1234567890" is_unread()` is valid
-        # and is equivalent to the previous example. An invalid example is `sender.name =
-        # "users/1234567890" OR is_unread()` because `OR` is not supported between
-        # different fields. Among the same field: - `create_time` supports only `AND`,
-        # and can only be used to represent an interval, such as `create_time >= "2022-
-        # 01-01T00:00:00+00:00" AND create_time < "2023-01-01T00:00:00+00:00"`. - `
-        # sender.name` supports only the `OR` operator, for example: `sender.name = "
-        # users/1234567890" OR sender.name = "users/0987654321"`. - `space.name`
-        # supports only the `OR` operator, for example: `space.name = "spaces/ABCDEFGH"
-        # OR space.name = "spaces/QWERTYUI"`. - `space.display_name` supports the
-        # operators `AND` and `OR`, but not a mix of both. For example: `space.
-        # display_name:Project AND space.display_name:Tasks` returns messages that are
-        # in spaces with display names containing both `Project` and `Tasks`, whereas `
-        # space.display_name:Project OR space.display_name:Tasks` returns messages that
-        # are in spaces with display names containing either `Project` or `Tasks` or
-        # both. - `annotations.user_mentions.user.name` supports the operators `AND` and
-        # `OR`, but not a mix of both. For example: `annotations.user_mentions.user.name:
-        # "users/1234567890" AND annotations.user_mentions.user.name:"users/0987654321"`
-        # returns only messages that mentions both users, whereas `annotations.
-        # user_mentions.user.name:"users/1234567890" OR annotations.user_mentions.user.
-        # name:"users/0987654321"` returns messages that mention either user or both.
-        # Parentheses are required to disambiguate operator precedence when combining `
-        # AND` and `OR` operators in the same query. For example: `(sender.name="users/
-        # me" OR sender.name="users/123456") AND is_unread()`. Otherwise, parentheses
-        # are optional. The following example queries are valid: ``` "Pending reports"
-        # AND create_time >= "2023-01-01T00:00:00Z" sender.name = "users/example@gmail.
-        # com" annotations.user_mentions.user.name:"users/0987654321" attachment:* AND
-        # space.name = "spaces/ABCDEFGH" tasks AND is_unread() AND sender.name = "users/
-        # 1234567890" "things to do" "urgent" (sender.name = "users/1234567890") AND (
-        # create_time < "2023-05-01T00:00:00Z") tasks AND space.name = "spaces/ABCDEFGH"
-        # AND has_link() "project one" is_unread() space.display_name:Project tasks ```
-        # The maximum query length is 1,000 characters. Invalid queries are rejected by
-        # the server with an `INVALID_ARGUMENT` error.
+        # calling user. Using the `space.display_name` or the `space.space_type` filters
+        # requires that the calling credentials include one of the following [
+        # authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` Using
+        # the `is_unread()` filter requires that the calling credentials include one of
+        # the following [authorization scopes](https://developers.google.com/workspace/
+        # chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/
+        # auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.
+        # users.readstate` Across different fields, only `AND` operators are supported.
+        # A valid example is `sender.name = "users/1234567890" AND is_unread()`. The
+        # word `AND` is optional and is implied if omitted. For example, `sender.name = "
+        # users/1234567890" is_unread()` is valid and is equivalent to the previous
+        # example. An invalid example is `sender.name = "users/1234567890" OR is_unread()
+        # ` because `OR` is not supported between different fields. Among the same field:
+        # - `create_time` supports only `AND`, and can only be used to represent an
+        # interval, such as `create_time >= "2022-01-01T00:00:00+00:00" AND create_time <
+        # "2023-01-01T00:00:00+00:00"`. - `sender.name` supports only the `OR` operator,
+        # for example: `sender.name = "users/1234567890" OR sender.name = "users/
+        # 0987654321"`. - `space.name` supports only the `OR` operator, for example: `
+        # space.name = "spaces/ABCDEFGH" OR space.name = "spaces/QWERTYUI"`. - `space.
+        # display_name` supports the operators `AND` and `OR`, but not a mix of both.
+        # For example: `space.display_name:Project AND space.display_name:Tasks` returns
+        # messages that are in spaces with display names containing both `Project` and `
+        # Tasks`, whereas `space.display_name:Project OR space.display_name:Tasks`
+        # returns messages that are in spaces with display names containing either `
+        # Project` or `Tasks` or both. - `space.space_type` supports only the `OR`
+        # operator, for example: `space.space_type = "DIRECT_MESSAGE" OR space.
+        # space_type = "GROUP_CHAT"`. - `annotations.user_mentions.user.name` supports
+        # the operators `AND` and `OR`, but not a mix of both. For example: `annotations.
+        # user_mentions.user.name:"users/1234567890" AND annotations.user_mentions.user.
+        # name:"users/0987654321"` returns only messages that mentions both users,
+        # whereas `annotations.user_mentions.user.name:"users/1234567890" OR annotations.
+        # user_mentions.user.name:"users/0987654321"` returns messages that mention
+        # either user or both. Parentheses are required to disambiguate operator
+        # precedence when combining `AND` and `OR` operators in the same query. For
+        # example: `(sender.name="users/me" OR sender.name="users/123456") AND is_unread(
+        # )`. Otherwise, parentheses are optional. The following example queries are
+        # valid: ``` "Pending reports" AND create_time >= "2023-01-01T00:00:00Z" sender.
+        # name = "users/example@gmail.com" annotations.user_mentions.user.name:"users/
+        # 0987654321" attachment:* AND space.name = "spaces/ABCDEFGH" tasks AND
+        # is_unread() AND sender.name = "users/1234567890" "things to do" "urgent" (
+        # sender.name = "users/1234567890") AND (create_time < "2023-05-01T00:00:00Z")
+        # tasks AND space.name = "spaces/ABCDEFGH" AND has_link() "project one"
+        # is_unread() space.display_name:Project tasks ``` The maximum query length is 1,
+        # 000 characters. Invalid queries are rejected by the server with an `
+        # INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -6572,7 +6652,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A token that can be used to retrieve the next page. If this field is empty,
-        # there are no subsequent pages.
+        # there are no subsequent pages. Only populated when `useAdminAccess` is set to `
+        # true`.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -6590,7 +6671,8 @@ module Google
         attr_accessor :spaces
       
         # The total number of spaces that match the query, across all pages. If the
-        # result is over 10,000 spaces, this value is an estimate.
+        # result is over 10,000 spaces, this value is an estimate. Only populated when `
+        # useAdminAccess` is set to `true`.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
@@ -6713,10 +6795,19 @@ module Google
         # @return [Array<Google::Apis::ChatV1::Membership>]
         attr_accessor :memberships
       
-        # Optional. A unique identifier for this request. A random UUID is recommended.
-        # Specifying an existing request ID returns the space created with that ID
-        # instead of creating a new space. Specifying an existing request ID from the
-        # same Chat app with a different authenticated user returns an error.
+        # Optional. A unique ID for this request. A random UUID is recommended.
+        # Specifying a request ID makes the request idempotent, which ensures that
+        # multiple identical requests with the same request ID result in only a single
+        # space being created. Subsequent requests with the same request ID return the
+        # existing space and do not update the space, even if the requested details
+        # differ from the current state. To use this field effectively: - Ensure that
+        # subsequent requests are identical and use the same authentication credentials
+        # as the original request. - If a space was already created with the provided
+        # request ID, the request returns that space. Note that the returned space might
+        # not be fully populated; the API echoes the space in your request with the
+        # system-assigned resource name populated. To retrieve the latest metadata for
+        # the space, call `GetSpace`. - Reusing an existing request ID with a different
+        # authenticated user results in an error.
         # Corresponds to the JSON property `requestId`
         # @return [String]
         attr_accessor :request_id
@@ -6763,10 +6854,11 @@ module Google
       class SlashCommandMetadata
         include Google::Apis::Core::Hashable
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `bot`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :bot
@@ -7636,14 +7728,34 @@ module Google
         end
       end
       
-      # A user in Google Chat. When returned as an output from a request, if your Chat
-      # app [authenticates as a user](https://developers.google.com/workspace/chat/
-      # authenticate-authorize-chat-user), the output for a `User` resource only
-      # populates the user's `name` and `type`.
+      # If your Chat app [authenticates as a user](https://developers.google.com/
+      # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+      # resource (such as in the Messages and Memberships APIs) only populates the `
+      # name` and `type` fields for both internal and external users, unless they are
+      # members of the space or have prior affinity with the calling user.
       class User
         include Google::Apis::Core::Hashable
       
-        # Output only. The user's display name.
+        # Output only. The user's avatar image URL. When calling the Messages and
+        # Memberships APIs with [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), this field is populated for
+        # both internal and external users for the `sender` of a message, users within `
+        # annotations` (such as user mentions), and within `Membership` resources,
+        # provided the user is a member of the space or has prior affinity with the
+        # calling user.
+        # Corresponds to the JSON property `avatarUrl`
+        # @return [String]
+        attr_accessor :avatar_url
+      
+        # Output only. The user's display name. Populated for both app authentication
+        # and user authentication. This field is always populated for requests made with
+        # [app authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-app). When calling the Messages and Memberships APIs with [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user), this field is populated for both internal and external
+        # users for the `sender` of a message, users within `annotations` (such as user
+        # mentions), and within `Membership` resources, provided the user is a member of
+        # the space or has prior affinity with the calling user.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -7653,7 +7765,20 @@ module Google
         # @return [String]
         attr_accessor :domain_id
       
-        # Output only. When `true`, the user is deleted or their profile is not visible.
+        # Output only. The user's email address. When calling the Messages and
+        # Memberships APIs with [user authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), this field is populated for
+        # both internal and external users for the `sender` of a message, users within `
+        # annotations` (such as user mentions), and within `Membership` resources,
+        # provided the user is a member of the space or has prior affinity with the
+        # calling user.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Output only. When `true`, the user is deleted or their profile is not visible,
+        # such as when a user is mentioned in a space without being a member and without
+        # prior affinity with the calling user.
         # Corresponds to the JSON property `isAnonymous`
         # @return [Boolean]
         attr_accessor :is_anonymous
@@ -7686,8 +7811,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @avatar_url = args[:avatar_url] if args.key?(:avatar_url)
           @display_name = args[:display_name] if args.key?(:display_name)
           @domain_id = args[:domain_id] if args.key?(:domain_id)
+          @email = args[:email] if args.key?(:email)
           @is_anonymous = args[:is_anonymous] if args.key?(:is_anonymous)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
@@ -7703,10 +7830,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # A user in Google Chat. When returned as an output from a request, if your Chat
-        # app [authenticates as a user](https://developers.google.com/workspace/chat/
-        # authenticate-authorize-chat-user), the output for a `User` resource only
-        # populates the user's `name` and `type`.
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
         # Corresponds to the JSON property `user`
         # @return [Google::Apis::ChatV1::User]
         attr_accessor :user

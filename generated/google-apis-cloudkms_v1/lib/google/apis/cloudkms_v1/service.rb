@@ -116,11 +116,14 @@ module Google
         end
         
         # Returns the effective Cloud KMS Autokey configuration for a given project or
-        # folder.
+        # folder. Note on permissions: - If called on a project (`projects/`project``),
+        # requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+        # folder (`folders/`folder``), requires `cloudkms.folders.
+        # showEffectiveAutokeyConfig`.
         # @param [String] parent
         #   Required. Name of the resource project or folder to show the effective Cloud
-        #   KMS Autokey configuration for. This may be helpful for interrogating the
-        #   effect of nested folder configurations on a given resource project. Format: *
+        #   KMS Autokey configuration for. This may be helpful for evaluating the effect
+        #   of nested folder configurations on a given resource project. Format: *
         #   projects/`project` * folders/`folder`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -364,11 +367,14 @@ module Google
         end
         
         # Returns the effective Cloud KMS Autokey configuration for a given project or
-        # folder.
+        # folder. Note on permissions: - If called on a project (`projects/`project``),
+        # requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a
+        # folder (`folders/`folder``), requires `cloudkms.folders.
+        # showEffectiveAutokeyConfig`.
         # @param [String] parent
         #   Required. Name of the resource project or folder to show the effective Cloud
-        #   KMS Autokey configuration for. This may be helpful for interrogating the
-        #   effect of nested folder configurations on a given resource project. Format: *
+        #   KMS Autokey configuration for. This may be helpful for evaluating the effect
+        #   of nested folder configurations on a given resource project. Format: *
         #   projects/`project` * folders/`folder`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1314,6 +1320,39 @@ module Google
           command.response_class = Google::Apis::CloudkmsV1::KeyRing
           command.params['parent'] = parent unless parent.nil?
           command.query['keyRingId'] = key_ring_id unless key_ring_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Permanently deletes the given KeyRing. All child resources of the KeyRing must
+        # have been previously deleted using their corresponding Delete operations. The
+        # specified key ring will be immediately and permanently deleted upon calling
+        # this method. This action cannot be undone.
+        # @param [String] name
+        #   Required. The name of the KeyRing to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudkmsV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudkmsV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_key_ring(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudkmsV1::Operation::Representation
+          command.response_class = Google::Apis::CloudkmsV1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

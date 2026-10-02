@@ -334,6 +334,66 @@ module Google
         end
       end
       
+      # Loyalty retention campaign goal settings.
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings
+        include Google::Apis::Core::Hashable
+      
+        # Whether to adjust bids for loyalty members.
+        # Corresponds to the JSON property `enableBidAdjustmentsForLoyaltyMembers`
+        # @return [Boolean]
+        attr_accessor :enable_bid_adjustments_for_loyalty_members
+        alias_method :enable_bid_adjustments_for_loyalty_members?, :enable_bid_adjustments_for_loyalty_members
+      
+        # Whether to show targeted loyalty member benefits in PLA format in eligible
+        # countries.
+        # Corresponds to the JSON property `showTargetedLoyaltyMemberBenefitsInPla`
+        # @return [Boolean]
+        attr_accessor :show_targeted_loyalty_member_benefits_in_pla
+        alias_method :show_targeted_loyalty_member_benefits_in_pla?, :show_targeted_loyalty_member_benefits_in_pla
+      
+        # Lifecycle goal optimization value settings.
+        # Corresponds to the JSON property `valueSettingsOverride`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings]
+        attr_accessor :value_settings_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_bid_adjustments_for_loyalty_members = args[:enable_bid_adjustments_for_loyalty_members] if args.key?(:enable_bid_adjustments_for_loyalty_members)
+          @show_targeted_loyalty_member_benefits_in_pla = args[:show_targeted_loyalty_member_benefits_in_pla] if args.key?(:show_targeted_loyalty_member_benefits_in_pla)
+          @value_settings_override = args[:value_settings_override] if args.key?(:value_settings_override)
+        end
+      end
+      
+      # New Customer Acquisition campaign goal settings.
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings
+        include Google::Apis::Core::Hashable
+      
+        # New Customer Acquisition goal optimization mode for this campaign. Defaults to
+        # TARGET_ALL. Whether the campaign is targeting new customers only.
+        # Corresponds to the JSON property `targetOption`
+        # @return [String]
+        attr_accessor :target_option
+      
+        # Lifecycle goal optimization value settings.
+        # Corresponds to the JSON property `valueSettingsOverride`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings]
+        attr_accessor :value_settings_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_option = args[:target_option] if args.key?(:target_option)
+          @value_settings_override = args[:value_settings_override] if args.key?(:value_settings_override)
+        end
+      end
+      
       # Retention campaign goal settings.
       class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings
         include Google::Apis::Core::Hashable
@@ -25500,6 +25560,16 @@ module Google
         # @return [String]
         attr_accessor :campaign
       
+        # Loyalty retention campaign goal settings.
+        # Corresponds to the JSON property `campaignLoyaltyRetentionSettings`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings]
+        attr_accessor :campaign_loyalty_retention_settings
+      
+        # New Customer Acquisition campaign goal settings.
+        # Corresponds to the JSON property `campaignNewCustomerAcquisitionSettings`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings]
+        attr_accessor :campaign_new_customer_acquisition_settings
+      
         # Retention campaign goal settings.
         # Corresponds to the JSON property `campaignRetentionSettings`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings]
@@ -25529,6 +25599,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @campaign = args[:campaign] if args.key?(:campaign)
+          @campaign_loyalty_retention_settings = args[:campaign_loyalty_retention_settings] if args.key?(:campaign_loyalty_retention_settings)
+          @campaign_new_customer_acquisition_settings = args[:campaign_new_customer_acquisition_settings] if args.key?(:campaign_new_customer_acquisition_settings)
           @campaign_retention_settings = args[:campaign_retention_settings] if args.key?(:campaign_retention_settings)
           @goal = args[:goal] if args.key?(:goal)
           @goal_type = args[:goal_type] if args.key?(:goal_type)
@@ -50631,6 +50703,11 @@ module Google
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation]
         attr_accessor :campaign_draft_operation
       
+        # A single mutate operation on the campaign goal config.
+        # Corresponds to the JSON property `campaignGoalConfigOperation`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation]
+        attr_accessor :campaign_goal_config_operation
+      
         # A single operation (create, update, remove) on a campaign group.
         # Corresponds to the JSON property `campaignGroupOperation`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation]
@@ -50829,6 +50906,7 @@ module Google
           @campaign_criterion_operation = args[:campaign_criterion_operation] if args.key?(:campaign_criterion_operation)
           @campaign_customizer_operation = args[:campaign_customizer_operation] if args.key?(:campaign_customizer_operation)
           @campaign_draft_operation = args[:campaign_draft_operation] if args.key?(:campaign_draft_operation)
+          @campaign_goal_config_operation = args[:campaign_goal_config_operation] if args.key?(:campaign_goal_config_operation)
           @campaign_group_operation = args[:campaign_group_operation] if args.key?(:campaign_group_operation)
           @campaign_label_operation = args[:campaign_label_operation] if args.key?(:campaign_label_operation)
           @campaign_operation = args[:campaign_operation] if args.key?(:campaign_operation)
@@ -51022,6 +51100,11 @@ module Google
         # Corresponds to the JSON property `campaignDraftResult`
         # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult]
         attr_accessor :campaign_draft_result
+      
+        # The result for the campaign goal config mutate.
+        # Corresponds to the JSON property `campaignGoalConfigResult`
+        # @return [Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult]
+        attr_accessor :campaign_goal_config_result
       
         # The result for the campaign group mutate.
         # Corresponds to the JSON property `campaignGroupResult`
@@ -51221,6 +51304,7 @@ module Google
           @campaign_criterion_result = args[:campaign_criterion_result] if args.key?(:campaign_criterion_result)
           @campaign_customizer_result = args[:campaign_customizer_result] if args.key?(:campaign_customizer_result)
           @campaign_draft_result = args[:campaign_draft_result] if args.key?(:campaign_draft_result)
+          @campaign_goal_config_result = args[:campaign_goal_config_result] if args.key?(:campaign_goal_config_result)
           @campaign_group_result = args[:campaign_group_result] if args.key?(:campaign_group_result)
           @campaign_label_result = args[:campaign_label_result] if args.key?(:campaign_label_result)
           @campaign_result = args[:campaign_result] if args.key?(:campaign_result)

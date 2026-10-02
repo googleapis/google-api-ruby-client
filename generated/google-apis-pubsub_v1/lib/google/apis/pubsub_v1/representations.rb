@@ -106,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CompiledProtoSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PublishOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +281,12 @@ module Google
       end
       
       class PublishResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubClientTelemetry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -594,6 +612,14 @@ module Google
         end
       end
       
+      class CompiledProtoSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_bytes, :base64 => true, as: 'compiledBytes'
+          property :root_message, as: 'rootMessage'
+        end
+      end
+      
       class Compression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -823,6 +849,14 @@ module Google
         end
       end
       
+      class PublishOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hedged_attempt_count, as: 'hedgedAttemptCount'
+          property :publish_start_time, as: 'publishStartTime'
+        end
+      end
+      
       class PublishRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -835,6 +869,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :message_ids, as: 'messageIds'
+        end
+      end
+      
+      class PubsubClientTelemetry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :publish_operation, as: 'publishOperation', class: Google::Apis::PubsubV1::PublishOperation, decorator: Google::Apis::PubsubV1::PublishOperation::Representation
+      
         end
       end
       
@@ -913,6 +955,8 @@ module Google
       class Schema
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :compiled_proto_schema, as: 'compiledProtoSchema', class: Google::Apis::PubsubV1::CompiledProtoSchema, decorator: Google::Apis::PubsubV1::CompiledProtoSchema::Representation
+      
           property :definition, as: 'definition'
           property :name, as: 'name'
           property :revision_create_time, as: 'revisionCreateTime'

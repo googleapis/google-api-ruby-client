@@ -543,7 +543,8 @@ module Google
         
         # Updates the specified location.
         # @param [String] name
-        #   Google identifier for this location in the form: `locations/`location_id``.
+        #   Identifier. Google identifier for this location in the form: `locations/`
+        #   location_id``.
         # @param [Google::Apis::MybusinessbusinessinformationV1::Location] location_object
         # @param [String] update_mask
         #   Required. The specific fields to update.

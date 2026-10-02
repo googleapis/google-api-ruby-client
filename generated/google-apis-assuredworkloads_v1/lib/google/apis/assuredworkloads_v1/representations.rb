@@ -88,18 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAssuredworkloadsV1CelExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -530,22 +518,6 @@ module Google
         end
       end
       
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acknowledge_type, as: 'acknowledgeType'
-          property :comment, as: 'comment'
-          collection :names, as: 'names'
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :acknowledged_violations_count, as: 'acknowledgedViolationsCount'
-        end
-      end
-      
       class GoogleCloudAssuredworkloadsV1CelExpression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -560,6 +532,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :evaluation_state, as: 'evaluationState'
           property :findings_count, as: 'findingsCount'
+          property :org_policy_finding_count, :numeric_string => true, as: 'orgPolicyFindingCount'
+          property :resource_finding_count, :numeric_string => true, as: 'resourceFindingCount'
         end
       end
       
@@ -625,7 +599,9 @@ module Google
           property :display_name, as: 'displayName'
           property :is_fake_control, as: 'isFakeControl'
           property :name, as: 'name'
+          property :org_policy_finding_count, :numeric_string => true, as: 'orgPolicyFindingCount'
           property :overall_evaluation_state, as: 'overallEvaluationState'
+          property :resource_finding_count, :numeric_string => true, as: 'resourceFindingCount'
           collection :similar_controls, as: 'similarControls', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1SimilarControls::Representation
       
           property :total_findings_count, as: 'totalFindingsCount'
@@ -639,7 +615,9 @@ module Google
           property :finding_class, as: 'findingClass'
           property :finding_count, :numeric_string => true, as: 'findingCount'
           property :name, as: 'name'
+          property :organization_policy_finding_count, :numeric_string => true, as: 'organizationPolicyFindingCount'
           collection :related_frameworks, as: 'relatedFrameworks'
+          property :resource_finding_count, :numeric_string => true, as: 'resourceFindingCount'
           property :severity, as: 'severity'
           property :update_time, as: 'updateTime'
         end

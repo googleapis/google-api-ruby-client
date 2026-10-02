@@ -153,6 +153,11 @@ module Google
         attr_accessor :adult_content
         alias_method :adult_content?, :adult_content
       
+        # Output only. URI (typically a URL) of the store's homepage.
+        # Corresponds to the JSON property `homePageUri`
+        # @return [String]
+        attr_accessor :home_page_uri
+      
         # Required. The account's [BCP-47 language code](https://tools.ietf.org/html/
         # bcp47), such as `en-US` or `sr-Latn`.
         # Corresponds to the JSON property `languageCode`
@@ -185,6 +190,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @account_name = args[:account_name] if args.key?(:account_name)
           @adult_content = args[:adult_content] if args.key?(:adult_content)
+          @home_page_uri = args[:home_page_uri] if args.key?(:home_page_uri)
           @language_code = args[:language_code] if args.key?(:language_code)
           @name = args[:name] if args.key?(:name)
           @test_account = args[:test_account] if args.key?(:test_account)
@@ -414,11 +420,6 @@ module Google
         # @return [String]
         attr_accessor :provider_display_name
       
-        # `UcpCheckoutManagement` payload.
-        # Corresponds to the JSON property `ucpCheckoutManagement`
-        # @return [Google::Apis::MerchantapiAccountsV1beta::UcpCheckoutManagement]
-        attr_accessor :ucp_checkout_management
-      
         def initialize(**args)
            update!(**args)
         end
@@ -437,7 +438,6 @@ module Google
           @products_management = args[:products_management] if args.key?(:products_management)
           @provider = args[:provider] if args.key?(:provider)
           @provider_display_name = args[:provider_display_name] if args.key?(:provider_display_name)
-          @ucp_checkout_management = args[:ucp_checkout_management] if args.key?(:ucp_checkout_management)
         end
       end
       
@@ -3359,8 +3359,8 @@ module Google
       # com/merchants/answer/13889434) program, which enables products from a business'
       # s store to be shown across Google for free. The following list is the
       # available set of program resource IDs accessible through the API: * `checkout`
-      # * `free-listings` * `product-ratings` * `shopping-ads` * `youtube-affiliate` *
-      # `youtube-shopping-checkout`
+      # * `free-listings` * `product-ratings` * `shopping-ads` * `ucp-integration` (
+      # limited access) * `youtube-affiliate` * `youtube-shopping-checkout`
       class Program
         include Google::Apis::Core::Hashable
       
@@ -4426,19 +4426,6 @@ module Google
         def update!(**args)
           @max_transit_days = args[:max_transit_days] if args.key?(:max_transit_days)
           @min_transit_days = args[:min_transit_days] if args.key?(:min_transit_days)
-        end
-      end
-      
-      # `UcpCheckoutManagement` payload.
-      class UcpCheckoutManagement
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       

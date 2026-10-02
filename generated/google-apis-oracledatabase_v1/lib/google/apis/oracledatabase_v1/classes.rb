@@ -1888,6 +1888,18 @@ module Google
         # @return [Google::Apis::OracledatabaseV1::TimeZone]
         attr_accessor :time_zone
       
+        # Optional. Specifies whether VM backups are stored on local DB server storage
+        # or Exascale storage.
+        # Corresponds to the JSON property `vmBackupStorageType`
+        # @return [String]
+        attr_accessor :vm_backup_storage_type
+      
+        # Optional. Specifies whether VM file system storage / VM images are stored on
+        # local DB server storage or Exascale storage.
+        # Corresponds to the JSON property `vmFileSystemStorageType`
+        # @return [String]
+        attr_accessor :vm_file_system_storage_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1928,6 +1940,8 @@ module Google
           @storage_size_gb = args[:storage_size_gb] if args.key?(:storage_size_gb)
           @system_version = args[:system_version] if args.key?(:system_version)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @vm_backup_storage_type = args[:vm_backup_storage_type] if args.key?(:vm_backup_storage_type)
+          @vm_file_system_storage_type = args[:vm_file_system_storage_type] if args.key?(:vm_file_system_storage_type)
         end
       end
       
@@ -1945,6 +1959,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_storage_size_gb
       
+        # Optional. Storage size needed for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `totalVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_vm_storage_size_gb
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1953,6 +1972,7 @@ module Google
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
           @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
+          @total_vm_storage_size_gb = args[:total_vm_storage_size_gb] if args.key?(:total_vm_storage_size_gb)
         end
       end
       
@@ -3621,10 +3641,20 @@ module Google
         # @return [Fixnum]
         attr_accessor :available_storage_size_gb
       
+        # Output only. Available storage size for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `availableVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :available_vm_storage_size_gb
+      
         # Output only. Total storage size needed for Exascale in GBs.
         # Corresponds to the JSON property `totalStorageSizeGb`
         # @return [Fixnum]
         attr_accessor :total_storage_size_gb
+      
+        # Output only. Storage size needed for VM storage on Exascale in GBs.
+        # Corresponds to the JSON property `totalVmStorageSizeGb`
+        # @return [Fixnum]
+        attr_accessor :total_vm_storage_size_gb
       
         def initialize(**args)
            update!(**args)
@@ -3633,7 +3663,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @available_storage_size_gb = args[:available_storage_size_gb] if args.key?(:available_storage_size_gb)
+          @available_vm_storage_size_gb = args[:available_vm_storage_size_gb] if args.key?(:available_vm_storage_size_gb)
           @total_storage_size_gb = args[:total_storage_size_gb] if args.key?(:total_storage_size_gb)
+          @total_vm_storage_size_gb = args[:total_vm_storage_size_gb] if args.key?(:total_vm_storage_size_gb)
         end
       end
       

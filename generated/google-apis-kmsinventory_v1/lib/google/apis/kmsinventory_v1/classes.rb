@@ -477,10 +477,10 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Immutable. Field indicating that the key may be wrapped by a trusted key. This
-        # field can be set for all key purposes except ENCRYPT_DECRYPT, and is only
-        # valid for keys with protection level HSM_SINGLE_TENANT. This field can only be
-        # set at creation or import time via CreateCryptoKeyVersion, or
+        # Optional. Immutable. Field indicating that the key may be wrapped by a trusted
+        # key. This field can be set for all key purposes except ENCRYPT_DECRYPT, and is
+        # only valid for keys with protection level HSM_SINGLE_TENANT. This field can
+        # only be set at creation or import time via CreateCryptoKeyVersion, or
         # ImportCryptoKeyVersion.
         # Corresponds to the JSON property `trustedWrappingEnabled`
         # @return [Boolean]
@@ -552,7 +552,7 @@ module Google
       
         # Optional. The resource name of the backend environment where the key material
         # of CryptoKeyVersions is associated with. Setting this field overrides the
-        # CryptoKeyBackend. This field may be set when CryptoKeyVersions is set to
+        # crypto_key_backend. This field may be set when CryptoKeyVersions is set to
         # EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
         # Corresponds to the JSON property `ekmConnectionBackendOverride`
         # @return [String]

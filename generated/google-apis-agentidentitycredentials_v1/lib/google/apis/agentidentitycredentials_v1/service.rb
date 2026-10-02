@@ -22,7 +22,8 @@ module Google
     module AgentidentitycredentialsV1
       # Agent Identity Credentials API
       #
-      # agentidentitycredentials.googleapis.com API.
+      # The Agent Identity Credentials API retrieves and finalizes authorization
+      #  credentials for auth providers.
       #
       # @example
       #    require 'google/apis/agentidentitycredentials_v1'
@@ -53,7 +54,7 @@ module Google
         
         # Finalizes the credentials after a successful consent flow.
         # @param [String] auth_provider
-        #   Required. The resource name of the AuthProvider. Format: `projects/`project`/
+        #   Required. The resource name of the auth provider. Format: `projects/`project`/
         #   locations/`location`/authProviders/`auth_provider``
         # @param [Google::Apis::AgentidentitycredentialsV1::GoogleCloudAgentidentitycredentialsV1FinalizeCredentialsRequest] google_cloud_agentidentitycredentials_v1_finalize_credentials_request_object
         # @param [String] fields
@@ -85,15 +86,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves authorization credentials for an authprovider, or indicates what
+        # Retrieves authorization credentials for an auth provider, or indicates what
         # action needs to be taken to obtain credentials. If the `token` field in the
         # response is populated, credential retrieval was successful. If one of the
-        # fields in the `status` oneof is populated, further action is required to
+        # fields in the `result` oneof is populated, further action is required to
         # obtain credentials, such as redirecting the user for consent. View comments on
         # `RetrieveCredentialsResponse` for more information.
         # @param [String] auth_provider
-        #   Required. The parent resource name of the AuthProvider. Format: `projects/`
-        #   project`/locations/`location`/authProviders/`auth_provider``
+        #   Required. The resource name of the auth provider. Format: `projects/`project`/
+        #   locations/`location`/authProviders/`auth_provider``
         # @param [Google::Apis::AgentidentitycredentialsV1::GoogleCloudAgentidentitycredentialsV1RetrieveCredentialsRequest] google_cloud_agentidentitycredentials_v1_retrieve_credentials_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -1486,6 +1486,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2MessagePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2MetadataKeyValueExpression
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2940,8 +2946,6 @@ module Google
       
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
-          property :inspect_template, as: 'inspectTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
-      
           collection :logging_configs, as: 'loggingConfigs', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LoggingConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LoggingConfig::Representation
       
           property :name, as: 'name'
@@ -2974,6 +2978,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          collection :message_parts, as: 'messageParts', class: Google::Apis::DlpV2::GooglePrivacyDlpV2MessagePart, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2MessagePart::Representation
+      
           property :message_type, as: 'messageType'
           property :participant_id, as: 'participantId'
         end
@@ -4867,6 +4873,13 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2MessagePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
       class GooglePrivacyDlpV2MetadataKeyValueExpression
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5051,7 +5064,6 @@ module Google
       
           collection :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyCondition, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PolicyCondition::Representation
       
-          property :return_verdict, as: 'returnVerdict'
         end
       end
       

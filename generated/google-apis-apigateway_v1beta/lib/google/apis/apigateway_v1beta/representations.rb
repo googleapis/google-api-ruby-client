@@ -308,9 +308,11 @@ module Google
           property :create_time, as: 'createTime'
           property :default_hostname, as: 'defaultHostname'
           property :display_name, as: 'displayName'
+          property :effective_streaming_mode, as: 'effectiveStreamingMode'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :state, as: 'state'
+          property :streaming_mode, as: 'streamingMode'
           property :update_time, as: 'updateTime'
         end
       end

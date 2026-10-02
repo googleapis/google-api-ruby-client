@@ -730,12 +730,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UcpCheckoutManagement
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class UnclaimHomepageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -834,6 +828,7 @@ module Google
           property :account_id, :numeric_string => true, as: 'accountId'
           property :account_name, as: 'accountName'
           property :adult_content, as: 'adultContent'
+          property :home_page_uri, as: 'homePageUri'
           property :language_code, as: 'languageCode'
           property :name, as: 'name'
           property :test_account, as: 'testAccount'
@@ -899,8 +894,6 @@ module Google
       
           property :provider, as: 'provider'
           property :provider_display_name, as: 'providerDisplayName'
-          property :ucp_checkout_management, as: 'ucpCheckoutManagement', class: Google::Apis::MerchantapiAccountsV1beta::UcpCheckoutManagement, decorator: Google::Apis::MerchantapiAccountsV1beta::UcpCheckoutManagement::Representation
-      
         end
       end
       
@@ -1980,12 +1973,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_transit_days, as: 'maxTransitDays'
           property :min_transit_days, as: 'minTransitDays'
-        end
-      end
-      
-      class UcpCheckoutManagement
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

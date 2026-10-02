@@ -372,7 +372,7 @@ module Google
         # @return [Google::Apis::MerchantapiReportsV1beta::Date]
         attr_accessor :date
       
-        # Domain of your competitor or your domain, if 'is_your_domain' is true.
+        # Domain of your competitor or your domain, if `is_your_domain` is true.
         # Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE' clause.
         # Corresponds to the JSON property `domain`
         # @return [String]
@@ -484,7 +484,7 @@ module Google
         # @return [Google::Apis::MerchantapiReportsV1beta::Date]
         attr_accessor :date
       
-        # Domain of your competitor or your domain, if 'is_your_domain' is true.
+        # Domain of your competitor or your domain, if `is_your_domain` is true.
         # Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE' clause.
         # Corresponds to the JSON property `domain`
         # @return [String]

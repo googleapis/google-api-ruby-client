@@ -529,6 +529,7 @@ module Google
       
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::NotebooksV2::ShieldedInstanceConfig, decorator: Google::Apis::NotebooksV2::ShieldedInstanceConfig::Representation
       
+          hash :system_metadata, as: 'systemMetadata'
           collection :tags, as: 'tags'
           property :vm_image, as: 'vmImage', class: Google::Apis::NotebooksV2::VmImage, decorator: Google::Apis::NotebooksV2::VmImage::Representation
       
@@ -836,6 +837,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family, as: 'family'
+          property :image_description, as: 'imageDescription'
           property :name, as: 'name'
           property :project, as: 'project'
         end

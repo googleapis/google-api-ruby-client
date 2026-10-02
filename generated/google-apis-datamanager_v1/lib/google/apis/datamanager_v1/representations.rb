@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IngestUsersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IngestUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IngestedUserListInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveUsersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestStatusPerDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -557,6 +581,12 @@ module Google
       end
       
       class TermsOfService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -675,6 +705,7 @@ module Google
           property :event_subtype, as: 'eventSubtype'
           property :event_subtype_string, as: 'eventSubtypeString'
           property :event_type, as: 'eventType'
+          property :ip_address, as: 'ipAddress'
           property :measurement_allowed, as: 'measurementAllowed'
           property :medium, as: 'medium'
           property :mobile_device_id, as: 'mobileDeviceId'
@@ -707,7 +738,9 @@ module Google
       
           property :match_id, as: 'matchId'
           property :mobile_device_id, as: 'mobileDeviceId'
+          property :ppid, as: 'ppid'
           property :session_attributes, as: 'sessionAttributes'
+          property :visitor_ppid, as: 'visitorPpid'
           property :wbraid, as: 'wbraid'
         end
       end
@@ -1167,6 +1200,27 @@ module Google
         end
       end
       
+      class IngestUsersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :encoding, as: 'encoding'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          collection :users, as: 'users', class: Google::Apis::DatamanagerV1::User, decorator: Google::Apis::DatamanagerV1::User::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class IngestUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class IngestedUserListInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1530,6 +1584,27 @@ module Google
         end
       end
       
+      class RemoveUsersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :destinations, as: 'destinations', class: Google::Apis::DatamanagerV1::Destination, decorator: Google::Apis::DatamanagerV1::Destination::Representation
+      
+          property :encoding, as: 'encoding'
+          property :encryption_info, as: 'encryptionInfo', class: Google::Apis::DatamanagerV1::EncryptionInfo, decorator: Google::Apis::DatamanagerV1::EncryptionInfo::Representation
+      
+          collection :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RemoveUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class RequestStatusPerDestination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1616,6 +1691,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_match_terms_of_service_status, as: 'customerMatchTermsOfServiceStatus'
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mobile_data, as: 'mobileData', class: Google::Apis::DatamanagerV1::MobileData, decorator: Google::Apis::DatamanagerV1::MobileData::Representation
+      
+          property :user_data, as: 'userData', class: Google::Apis::DatamanagerV1::UserData, decorator: Google::Apis::DatamanagerV1::UserData::Representation
+      
         end
       end
       

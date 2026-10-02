@@ -76,24 +76,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BatchCreateGitLabConnectedRepositoriesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchCreateGitLabConnectedRepositoriesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class BatchCreateGitLabConnectedRepositoriesResponseMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BitbucketServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -214,18 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateGitLabConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CreateGitLabConnectedRepositoryRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreateWorkerPoolOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -245,12 +215,6 @@ module Google
       end
       
       class DeleteGitHubEnterpriseConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DeleteGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -340,48 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GitLabConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabConnectedRepository
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabEnterpriseConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabEventsConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabRepository
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabRepositoryId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GitLabSecrets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GitRepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,18 +377,6 @@ module Google
       end
       
       class ListBuildsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGitLabConfigsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListGitLabRepositoriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -580,12 +490,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RemoveGitLabConnectedRepositoryRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RepoSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -629,12 +533,6 @@ module Google
       end
       
       class Secrets
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ServiceDirectoryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -689,12 +587,6 @@ module Google
       end
       
       class UpdateGitHubEnterpriseConfigOperationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateGitLabConfigOperationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -849,31 +741,6 @@ module Google
       end
       
       class BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :config, as: 'config'
-          property :create_time, as: 'createTime'
-        end
-      end
-      
-      class BatchCreateGitLabConnectedRepositoriesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :requests, as: 'requests', class: Google::Apis::CloudbuildV1::CreateGitLabConnectedRepositoryRequest, decorator: Google::Apis::CloudbuildV1::CreateGitLabConnectedRepositoryRequest::Representation
-      
-        end
-      end
-      
-      class BatchCreateGitLabConnectedRepositoriesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :gitlab_connected_repositories, as: 'gitlabConnectedRepositories', class: Google::Apis::CloudbuildV1::GitLabConnectedRepository, decorator: Google::Apis::CloudbuildV1::GitLabConnectedRepository::Representation
-      
-        end
-      end
-      
-      class BatchCreateGitLabConnectedRepositoriesResponseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :complete_time, as: 'completeTime'
@@ -1043,12 +910,14 @@ module Google
       
           property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'
           collection :volumes, as: 'volumes', class: Google::Apis::CloudbuildV1::Volume, decorator: Google::Apis::CloudbuildV1::Volume::Representation
       
           property :worker_pool, as: 'workerPool'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
@@ -1109,8 +978,6 @@ module Google
           property :git_file_source, as: 'gitFileSource', class: Google::Apis::CloudbuildV1::GitFileSource, decorator: Google::Apis::CloudbuildV1::GitFileSource::Representation
       
           property :github, as: 'github', class: Google::Apis::CloudbuildV1::GitHubEventsConfig, decorator: Google::Apis::CloudbuildV1::GitHubEventsConfig::Representation
-      
-          property :gitlab_enterprise_events_config, as: 'gitlabEnterpriseEventsConfig', class: Google::Apis::CloudbuildV1::GitLabEventsConfig, decorator: Google::Apis::CloudbuildV1::GitLabEventsConfig::Representation
       
           property :id, as: 'id'
           collection :ignored_files, as: 'ignoredFiles'
@@ -1197,24 +1064,6 @@ module Google
         end
       end
       
-      class CreateGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
-        end
-      end
-      
-      class CreateGitLabConnectedRepositoryRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gitlab_connected_repository, as: 'gitlabConnectedRepository', class: Google::Apis::CloudbuildV1::GitLabConnectedRepository, decorator: Google::Apis::CloudbuildV1::GitLabConnectedRepository::Representation
-      
-          property :parent, as: 'parent'
-        end
-      end
-      
       class CreateWorkerPoolOperationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1247,15 +1096,6 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
-        end
-      end
-      
-      class DeleteGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -1403,87 +1243,6 @@ module Google
         end
       end
       
-      class GitLabConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connected_repositories, as: 'connectedRepositories', class: Google::Apis::CloudbuildV1::GitLabRepositoryId, decorator: Google::Apis::CloudbuildV1::GitLabRepositoryId::Representation
-      
-          property :create_time, as: 'createTime'
-          property :enterprise_config, as: 'enterpriseConfig', class: Google::Apis::CloudbuildV1::GitLabEnterpriseConfig, decorator: Google::Apis::CloudbuildV1::GitLabEnterpriseConfig::Representation
-      
-          property :name, as: 'name'
-          property :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::GitLabSecrets, decorator: Google::Apis::CloudbuildV1::GitLabSecrets::Representation
-      
-          property :username, as: 'username'
-          property :webhook_key, as: 'webhookKey'
-        end
-      end
-      
-      class GitLabConnectedRepository
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :parent, as: 'parent'
-          property :repo, as: 'repo', class: Google::Apis::CloudbuildV1::GitLabRepositoryId, decorator: Google::Apis::CloudbuildV1::GitLabRepositoryId::Representation
-      
-          property :status, as: 'status', class: Google::Apis::CloudbuildV1::Status, decorator: Google::Apis::CloudbuildV1::Status::Representation
-      
-        end
-      end
-      
-      class GitLabEnterpriseConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :host_uri, as: 'hostUri'
-          property :service_directory_config, as: 'serviceDirectoryConfig', class: Google::Apis::CloudbuildV1::ServiceDirectoryConfig, decorator: Google::Apis::CloudbuildV1::ServiceDirectoryConfig::Representation
-      
-          property :ssl_ca, as: 'sslCa'
-        end
-      end
-      
-      class GitLabEventsConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gitlab_config, as: 'gitlabConfig', class: Google::Apis::CloudbuildV1::GitLabConfig, decorator: Google::Apis::CloudbuildV1::GitLabConfig::Representation
-      
-          property :gitlab_config_resource, as: 'gitlabConfigResource'
-          property :project_namespace, as: 'projectNamespace'
-          property :pull_request, as: 'pullRequest', class: Google::Apis::CloudbuildV1::PullRequestFilter, decorator: Google::Apis::CloudbuildV1::PullRequestFilter::Representation
-      
-          property :push, as: 'push', class: Google::Apis::CloudbuildV1::PushFilter, decorator: Google::Apis::CloudbuildV1::PushFilter::Representation
-      
-        end
-      end
-      
-      class GitLabRepository
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :browse_uri, as: 'browseUri'
-          property :description, as: 'description'
-          property :display_name, as: 'displayName'
-          property :name, as: 'name'
-          property :repository_id, as: 'repositoryId', class: Google::Apis::CloudbuildV1::GitLabRepositoryId, decorator: Google::Apis::CloudbuildV1::GitLabRepositoryId::Representation
-      
-        end
-      end
-      
-      class GitLabRepositoryId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :id, as: 'id'
-          property :webhook_id, as: 'webhookId'
-        end
-      end
-      
-      class GitLabSecrets
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_access_token_version, as: 'apiAccessTokenVersion'
-          property :api_key_version, as: 'apiKeyVersion'
-          property :read_access_token_version, as: 'readAccessTokenVersion'
-          property :webhook_secret_version, as: 'webhookSecretVersion'
-        end
-      end
-      
       class GitRepoSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1510,6 +1269,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :depth, :numeric_string => true, as: 'depth'
           property :dest_path, as: 'destPath'
+          property :fetch_tags, as: 'fetchTags'
           property :recurse_submodules, as: 'recurseSubmodules'
           property :repository, as: 'repository', class: Google::Apis::CloudbuildV1::GitSourceRepository, decorator: Google::Apis::CloudbuildV1::GitSourceRepository::Representation
       
@@ -1605,24 +1365,6 @@ module Google
         end
       end
       
-      class ListGitLabConfigsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :gitlab_configs, as: 'gitlabConfigs', class: Google::Apis::CloudbuildV1::GitLabConfig, decorator: Google::Apis::CloudbuildV1::GitLabConfig::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListGitLabRepositoriesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :gitlab_repositories, as: 'gitlabRepositories', class: Google::Apis::CloudbuildV1::GitLabRepository, decorator: Google::Apis::CloudbuildV1::GitLabRepository::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListGithubEnterpriseConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1707,6 +1449,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
@@ -1786,14 +1530,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId, decorator: Google::Apis::CloudbuildV1::BitbucketServerRepositoryId::Representation
-      
-        end
-      end
-      
-      class RemoveGitLabConnectedRepositoryRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :connected_repository, as: 'connectedRepository', class: Google::Apis::CloudbuildV1::GitLabRepositoryId, decorator: Google::Apis::CloudbuildV1::GitLabRepositoryId::Representation
       
         end
       end
@@ -1895,13 +1631,6 @@ module Google
         end
       end
       
-      class ServiceDirectoryConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :service, as: 'service'
-        end
-      end
-      
       class Source
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1998,15 +1727,6 @@ module Google
           property :complete_time, as: 'completeTime'
           property :create_time, as: 'createTime'
           property :github_enterprise_config, as: 'githubEnterpriseConfig'
-        end
-      end
-      
-      class UpdateGitLabConfigOperationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :complete_time, as: 'completeTime'
-          property :create_time, as: 'createTime'
-          property :gitlab_config, as: 'gitlabConfig'
         end
       end
       
@@ -2111,6 +1831,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
+          property :worker_release, as: 'workerRelease'
         end
       end
       

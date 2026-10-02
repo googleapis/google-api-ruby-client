@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOrgNumberRegistriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRealmsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -166,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrgNumberRegistry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Range
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +203,12 @@ module Google
       end
       
       class RegistryBook
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScopeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -421,6 +439,16 @@ module Google
         end
       end
       
+      class ListOrgNumberRegistriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :org_number_registries, as: 'orgNumberRegistries', class: Google::Apis::CloudnumberregistryV1alpha::OrgNumberRegistry, decorator: Google::Apis::CloudnumberregistryV1alpha::OrgNumberRegistry::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRealmsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -477,6 +505,18 @@ module Google
         end
       end
       
+      class OrgNumberRegistry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_project, as: 'adminProject'
+          property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :target_scopes, as: 'targetScopes'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -530,11 +570,22 @@ module Google
           property :aggregated_data, as: 'aggregatedData', class: Google::Apis::CloudnumberregistryV1alpha::AggregatedData, decorator: Google::Apis::CloudnumberregistryV1alpha::AggregatedData::Representation
       
           collection :claimed_scopes, as: 'claimedScopes'
+          collection :claimed_scopes_info, as: 'claimedScopesInfo', class: Google::Apis::CloudnumberregistryV1alpha::ScopeInfo, decorator: Google::Apis::CloudnumberregistryV1alpha::ScopeInfo::Representation
+      
           property :create_time, as: 'createTime'
           property :is_default, as: 'isDefault'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ScopeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
+          property :name, as: 'name'
         end
       end
       

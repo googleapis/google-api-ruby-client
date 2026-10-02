@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AntiTamperingTermination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Any
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -756,6 +762,12 @@ module Google
       end
       
       class AndroidTestLoop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AntiTamperingTermination
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end

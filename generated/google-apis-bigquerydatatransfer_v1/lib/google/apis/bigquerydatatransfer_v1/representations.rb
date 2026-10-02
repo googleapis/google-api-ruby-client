@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ParameterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PartitionDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,7 @@ module Google
           property :recurse, as: 'recurse'
           property :repeated, as: 'repeated'
           property :required, as: 'required'
+          property :secret_manager_allowed, as: 'secretManagerAllowed'
           property :type, as: 'type'
           property :validation_description, as: 'validationDescription'
           property :validation_help_url, as: 'validationHelpUrl'
@@ -460,6 +467,13 @@ module Google
         end
       end
       
+      class ParameterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :secret_manager_managed_params, as: 'secretManagerManagedParams'
+        end
+      end
+      
       class PartitionDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -577,6 +591,8 @@ module Google
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           property :owner_info, as: 'ownerInfo', class: Google::Apis::BigquerydatatransferV1::UserInfo, decorator: Google::Apis::BigquerydatatransferV1::UserInfo::Representation
       
+          property :param_config, as: 'paramConfig', class: Google::Apis::BigquerydatatransferV1::ParameterConfig, decorator: Google::Apis::BigquerydatatransferV1::ParameterConfig::Representation
+      
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
           property :schedule_options, as: 'scheduleOptions', class: Google::Apis::BigquerydatatransferV1::ScheduleOptions, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptions::Representation
@@ -640,6 +656,8 @@ module Google
       
           property :name, as: 'name'
           property :notification_pubsub_topic, as: 'notificationPubsubTopic'
+          property :parameter_config, as: 'parameterConfig', class: Google::Apis::BigquerydatatransferV1::ParameterConfig, decorator: Google::Apis::BigquerydatatransferV1::ParameterConfig::Representation
+      
           hash :params, as: 'params'
           property :run_time, as: 'runTime'
           property :schedule, as: 'schedule'

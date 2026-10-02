@@ -388,7 +388,11 @@ module Google
         attr_accessor :easa_label_metadata
       
         # Information about the provenance of the data used to calculate emissions
-        # estimates, including contributing factors and their data sources.
+        # estimates, including contributing factors and their data sources. In `
+        # provenance_entries`, `provenance_entry_type` acts as the "key" identifying the
+        # contributing factor, and there is always only one entry per entry type. The
+        # remaining fields in each entry describe that specific entry type and may or
+        # may not be populated depending on the contributing factor and available data.
         # Corresponds to the JSON property `emissionsProvenance`
         # @return [Google::Apis::TravelimpactmodelV1::EmissionsProvenance]
         attr_accessor :emissions_provenance
@@ -413,11 +417,18 @@ module Google
       end
       
       # Information about the provenance of the data used to calculate emissions
-      # estimates, including contributing factors and their data sources.
+      # estimates, including contributing factors and their data sources. In `
+      # provenance_entries`, `provenance_entry_type` acts as the "key" identifying the
+      # contributing factor, and there is always only one entry per entry type. The
+      # remaining fields in each entry describe that specific entry type and may or
+      # may not be populated depending on the contributing factor and available data.
       class EmissionsProvenance
         include Google::Apis::Core::Hashable
       
-        # Output only. All contributing factors used to calculate emissions.
+        # Output only. All contributing factors used to calculate emissions. Each entry
+        # type (`provenance_entry_type`) acts as a "key" identifying the factor, with
+        # always only one entry per entry type. The remaining fields describe that
+        # specific factor and may or may not be populated.
         # Corresponds to the JSON property `provenanceEntries`
         # @return [Array<Google::Apis::TravelimpactmodelV1::EmissionsProvenanceEntry>]
         attr_accessor :provenance_entries
@@ -432,7 +443,10 @@ module Google
         end
       end
       
-      # Details about a single contributing factor in emissions calculations.
+      # Details about a single contributing factor in emissions calculations. Each
+      # entry represents a single factor where `provenance_entry_type` acts as the key
+      # identifying the factor, and the other fields describe it and may or may not be
+      # populated.
       class EmissionsProvenanceEntry
         include Google::Apis::Core::Hashable
       
@@ -485,7 +499,9 @@ module Google
         # @return [String]
         attr_accessor :load_factors_t100_strategy
       
-        # Output only. The type of the provenance entry.
+        # Output only. The type of the provenance entry. Acts as the "key" identifying
+        # the contributing factor; the remaining fields in this message describe it and
+        # may or may not be populated.
         # Corresponds to the JSON property `provenanceEntryType`
         # @return [String]
         attr_accessor :provenance_entry_type

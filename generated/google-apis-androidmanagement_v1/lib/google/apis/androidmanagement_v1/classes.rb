@@ -2518,24 +2518,25 @@ module Google
       class DeviceRadioState
         include Google::Apis::Core::Hashable
       
-        # Controls whether airplane mode can be toggled by the user or not.
+        # Optional. Controls whether airplane mode can be toggled by the user or not.
         # Corresponds to the JSON property `airplaneModeState`
         # @return [String]
         attr_accessor :airplane_mode_state
       
-        # Controls whether cellular 2G setting can be toggled by the user or not.
+        # Optional. Controls whether cellular 2G setting can be toggled by the user or
+        # not.
         # Corresponds to the JSON property `cellularTwoGState`
         # @return [String]
         attr_accessor :cellular_two_g_state
       
-        # The minimum required security level of Wi-Fi networks that the device can
-        # connect to.
+        # Optional. The minimum required security level of Wi-Fi networks that the
+        # device can connect to.
         # Corresponds to the JSON property `minimumWifiSecurityLevel`
         # @return [String]
         attr_accessor :minimum_wifi_security_level
       
-        # Controls the state of the ultra wideband setting and whether the user can
-        # toggle it on or off.
+        # Optional. Controls the state of the ultra wideband setting and whether the
+        # user can toggle it on or off.
         # Corresponds to the JSON property `ultraWidebandState`
         # @return [String]
         attr_accessor :ultra_wideband_state
@@ -2545,7 +2546,7 @@ module Google
         # @return [String]
         attr_accessor :user_initiated_add_esim_settings
       
-        # Controls current state of Wi-Fi and if user can change its state.
+        # Optional. Controls current state of Wi-Fi and if user can change its state.
         # Corresponds to the JSON property `wifiState`
         # @return [String]
         attr_accessor :wifi_state
@@ -5415,6 +5416,12 @@ module Google
         # @return [String]
         attr_accessor :autofill_policy
       
+        # Optional. Controls whether the backup service is disabled. Supported only on
+        # fully managed devices running Android 8 and above.
+        # Corresponds to the JSON property `backupService`
+        # @return [String]
+        attr_accessor :backup_service
+      
         # This field has no effect.
         # Corresponds to the JSON property `blockApplicationsEnabled`
         # @return [Boolean]
@@ -6032,6 +6039,7 @@ module Google
           @auto_date_and_time_zone = args[:auto_date_and_time_zone] if args.key?(:auto_date_and_time_zone)
           @auto_time_required = args[:auto_time_required] if args.key?(:auto_time_required)
           @autofill_policy = args[:autofill_policy] if args.key?(:autofill_policy)
+          @backup_service = args[:backup_service] if args.key?(:backup_service)
           @block_applications_enabled = args[:block_applications_enabled] if args.key?(:block_applications_enabled)
           @bluetooth_config_disabled = args[:bluetooth_config_disabled] if args.key?(:bluetooth_config_disabled)
           @bluetooth_contact_sharing_disabled = args[:bluetooth_contact_sharing_disabled] if args.key?(:bluetooth_contact_sharing_disabled)
@@ -7989,7 +7997,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the factory-reset protection data is preserved on the device. This
-        # setting doesn’t apply to work profiles.
+        # setting applies to fully managed devices and work profiles on company-owned
+        # devices.
         # Corresponds to the JSON property `preserveFrp`
         # @return [Boolean]
         attr_accessor :preserve_frp
@@ -8067,7 +8076,8 @@ module Google
         # field is only relevant if authenticationType is GOOGLE_AUTHENTICATED. This
         # must be an enterprise account and not a consumer account. Once set and a
         # Google authenticated account is added to the device, changing this field will
-        # have no effect, and thus recommended to be set only once.
+        # have no effect, and thus recommended to be set only once. The email address
+        # must be all lowercase.
         # Corresponds to the JSON property `requiredAccountEmail`
         # @return [String]
         attr_accessor :required_account_email

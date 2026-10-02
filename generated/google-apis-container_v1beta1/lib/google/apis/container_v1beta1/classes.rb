@@ -142,6 +142,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. Additional NIC stack type, configured by the client.
+        # Corresponds to the JSON property `stackType`
+        # @return [String]
+        attr_accessor :stack_type
+      
         # Name of the subnetwork where the additional interface belongs
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
@@ -154,6 +159,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @network = args[:network] if args.key?(:network)
+          @stack_type = args[:stack_type] if args.key?(:stack_type)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end
       end
@@ -319,7 +325,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeReadinessConfig]
         attr_accessor :node_readiness_config
       
-        # Configuration for the Cloud Storage Parallelstore CSI driver.
+        # Deprecated: The Parallelstore CSI driver is no longer supported. Configuration
+        # for the Cloud Storage Parallelstore CSI driver.
         # Corresponds to the JSON property `parallelstoreCsiDriverConfig`
         # @return [Google::Apis::ContainerV1beta1::ParallelstoreCsiDriverConfig]
         attr_accessor :parallelstore_csi_driver_config
@@ -736,7 +743,9 @@ module Google
         attr_accessor :boot_disk_kms_key
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. If unspecified, the default disk size is 100GB.
+        # disk size is 15 GB for node pools running GKE versions 1.36.3-gke.1480000 or
+        # later. Or, for earlier versions, the smallest allowed disk size is 12 GB. If
+        # unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -6710,7 +6719,9 @@ module Google
         attr_accessor :containerd_config
       
         # Size of the disk attached to each node, specified in GB. The smallest allowed
-        # disk size is 10GB. If unspecified, the default disk size is 100GB.
+        # disk size is 15 GB for node pools running GKE versions 1.36.2-gke.2933000 or
+        # later. Or, for earlier versions, the smallest allowed disk size is 12 GB. If
+        # unspecified, the default disk size is 100GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -7351,6 +7362,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :pod_pids_limit
       
+        # ReservedResourcesConfig contains the configuration for the reserved resources
+        # on the node.
+        # Corresponds to the JSON property `reservedResourcesConfig`
+        # @return [Google::Apis::ContainerV1beta1::ReservedResourcesConfig]
+        attr_accessor :reserved_resources_config
+      
         # Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed
         # grace period (in seconds) used to terminate critical pods during a node
         # shutdown. This value should be <= shutdown_grace_period_seconds, and is only
@@ -7415,6 +7432,7 @@ module Google
           @max_parallel_image_pulls = args[:max_parallel_image_pulls] if args.key?(:max_parallel_image_pulls)
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
+          @reserved_resources_config = args[:reserved_resources_config] if args.key?(:reserved_resources_config)
           @shutdown_grace_period_critical_pods_seconds = args[:shutdown_grace_period_critical_pods_seconds] if args.key?(:shutdown_grace_period_critical_pods_seconds)
           @shutdown_grace_period_seconds = args[:shutdown_grace_period_seconds] if args.key?(:shutdown_grace_period_seconds)
           @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
@@ -8427,7 +8445,8 @@ module Google
         end
       end
       
-      # Configuration for the Cloud Storage Parallelstore CSI driver.
+      # Deprecated: The Parallelstore CSI driver is no longer supported. Configuration
+      # for the Cloud Storage Parallelstore CSI driver.
       class ParallelstoreCsiDriverConfig
         include Google::Apis::Core::Hashable
       
@@ -9192,6 +9211,11 @@ module Google
         # @return [String]
         attr_accessor :default_version
       
+        # Output only. List of preview versions for the channel.
+        # Corresponds to the JSON property `previewVersions`
+        # @return [Array<String>]
+        attr_accessor :preview_versions
+      
         # The auto upgrade target version for clusters on the channel.
         # Corresponds to the JSON property `upgradeTargetVersion`
         # @return [String]
@@ -9212,6 +9236,7 @@ module Google
           @channel = args[:channel] if args.key?(:channel)
           @custom_versions = args[:custom_versions] if args.key?(:custom_versions)
           @default_version = args[:default_version] if args.key?(:default_version)
+          @preview_versions = args[:preview_versions] if args.key?(:preview_versions)
           @upgrade_target_version = args[:upgrade_target_version] if args.key?(:upgrade_target_version)
           @valid_versions = args[:valid_versions] if args.key?(:valid_versions)
         end
@@ -9249,6 +9274,52 @@ module Google
           @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
           @key = args[:key] if args.key?(:key)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # ReservedResourcesConfig contains the configuration for the reserved resources
+      # on the node.
+      class ReservedResourcesConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The amount of CPU to reserve for system daemons. This is a user-
+        # specified value. If unspecified, GKE decides the default based on node version
+        # using different formula.
+        # Corresponds to the JSON property `cpuReservedMillicore`
+        # @return [Fixnum]
+        attr_accessor :cpu_reserved_millicore
+      
+        # Output only. The effective amount of CPU reserved for system daemons. If `
+        # cpu_reserved_millicore` is specified, user-specified value is used. Otherwise
+        # the GKE default is applied.
+        # Corresponds to the JSON property `effectiveCpuReservedMillicore`
+        # @return [Fixnum]
+        attr_accessor :effective_cpu_reserved_millicore
+      
+        # Output only. The effective amount of memory reserved for system daemons. If `
+        # memory_reserved_mib` is specified, the user-specified value is used. Otherwise
+        # the GKE default is applied.
+        # Corresponds to the JSON property `effectiveMemoryReservedMib`
+        # @return [Fixnum]
+        attr_accessor :effective_memory_reserved_mib
+      
+        # Optional. The amount of memory to reserve for system daemons (in MiB). This is
+        # a user-specified value. If unspecified, GKE decides the default based on node
+        # version using different formula.
+        # Corresponds to the JSON property `memoryReservedMib`
+        # @return [Fixnum]
+        attr_accessor :memory_reserved_mib
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_reserved_millicore = args[:cpu_reserved_millicore] if args.key?(:cpu_reserved_millicore)
+          @effective_cpu_reserved_millicore = args[:effective_cpu_reserved_millicore] if args.key?(:effective_cpu_reserved_millicore)
+          @effective_memory_reserved_mib = args[:effective_memory_reserved_mib] if args.key?(:effective_memory_reserved_mib)
+          @memory_reserved_mib = args[:memory_reserved_mib] if args.key?(:memory_reserved_mib)
         end
       end
       

@@ -148,13 +148,13 @@ module Google
       end
       
       # The transcription of an audio part. For multi-speaker audio, each speaker
-      # segment is a separate Part with its own AudioTranscription carrying the
-      # speaker_label.
+      # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+      # speaker_label`.
       class GoogleCloudAiplatformV1beta1AudioTranscription
         include Google::Apis::Core::Hashable
       
-        # Optional. A label identifying the speaker of this audio segment (e.g. "spk_1",
-        # "spk_2"). Present when diarization is set.
+        # Optional. A label identifying the speaker of this audio segment (e.g. `spk_1`,
+        # `spk_2`). Present when `diarization` is set.
         # Corresponds to the JSON property `speakerLabel`
         # @return [String]
         attr_accessor :speaker_label
@@ -164,8 +164,8 @@ module Google
         # @return [String]
         attr_accessor :text
       
-        # Optional. Detailed word-level transcriptions and timing details. Present when
-        # word_timestamp is set.
+        # Optional. Detailed word-level transcriptions and timing details. Present when `
+        # word_timestamp` is set.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo>]
         attr_accessor :words
@@ -186,7 +186,8 @@ module Google
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. A list of phrases to bias the ASR model towards.
+        # Optional. Deprecated: Use `custom_vocabulary` instead. A list of phrases to
+        # bias the speech recognition model towards.
         # Corresponds to the JSON property `adaptationPhrases`
         # @return [Array<String>]
         attr_accessor :adaptation_phrases
@@ -203,15 +204,33 @@ module Google
         attr_accessor :diarization
         alias_method :diarization?, :diarization
       
-        # Indicates the language of the audio should be automatically detected.
+        # Deprecated: Use top-level `language_codes` instead. Indicates the language of
+        # the audio should be automatically detected.
         # Corresponds to the JSON property `languageAuto`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto]
         attr_accessor :language_auto
       
-        # Provides hints to the model about possible languages present in the audio.
+        # Optional. BCP-47 language codes providing hints about the languages present in
+        # the audio. If omitted or empty, defaults to automatic language detection.
+        # Corresponds to the JSON property `languageCodes`
+        # @return [Array<String>]
+        attr_accessor :language_codes
+      
+        # Deprecated: Use top-level `language_codes` instead. Provides hints to the
+        # model about possible languages present in the audio.
         # Corresponds to the JSON property `languageHints`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
+      
+        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
+        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
+        # model performs disfluency removal (eliminating filler words, repetitions, and
+        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
+        # bullet points, numbered lists), and minor user edits (inline self-corrections).
+        # Timestamps and diarization are incompatible with mode `SMART`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
       
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
@@ -229,12 +248,15 @@ module Google
           @custom_vocabulary = args[:custom_vocabulary] if args.key?(:custom_vocabulary)
           @diarization = args[:diarization] if args.key?(:diarization)
           @language_auto = args[:language_auto] if args.key?(:language_auto)
+          @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
       
-      # Indicates the language of the audio should be automatically detected.
+      # Deprecated: Use top-level `language_codes` instead. Indicates the language of
+      # the audio should be automatically detected.
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto
         include Google::Apis::Core::Hashable
       
@@ -247,11 +269,13 @@ module Google
         end
       end
       
-      # Provides hints to the model about possible languages present in the audio.
+      # Deprecated: Use top-level `language_codes` instead. Provides hints to the
+      # model about possible languages present in the audio.
       class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints
         include Google::Apis::Core::Hashable
       
-        # Required. BCP-47 language codes. At least one must be specified.
+        # Required. Deprecated: Use top-level `language_codes` instead. BCP-47 language
+        # codes. At least one must be specified.
         # Corresponds to the JSON property `languageCodes`
         # @return [Array<String>]
         attr_accessor :language_codes
@@ -1861,6 +1885,11 @@ module Google
         # @return [Float]
         attr_accessor :top_p
       
+        # Config for translation features.
+        # Corresponds to the JSON property `translationConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig]
+        attr_accessor :translation_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1892,6 +1921,7 @@ module Google
           @thinking_config = args[:thinking_config] if args.key?(:thinking_config)
           @top_k = args[:top_k] if args.key?(:top_k)
           @top_p = args[:top_p] if args.key?(:top_p)
+          @translation_config = args[:translation_config] if args.key?(:translation_config)
         end
       end
       
@@ -2901,8 +2931,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The transcription of an audio part. For multi-speaker audio, each speaker
-        # segment is a separate Part with its own AudioTranscription carrying the
-        # speaker_label.
+        # segment is a separate `Part` with its own `AudioTranscription` carrying the `
+        # speaker_label`.
         # Corresponds to the JSON property `audioTranscription`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscription]
         attr_accessor :audio_transcription
@@ -2948,6 +2978,13 @@ module Google
         # Corresponds to the JSON property `inlineData`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob]
         attr_accessor :inline_data
+      
+        # Optional. How the model processes this part's media for understanding. Only
+        # meaningful for video parts (`inline_data` or `file_data` with video mime). Non-
+        # video parts ignore this field.
+        # Corresponds to the JSON property `mediaProcessing`
+        # @return [String]
+        attr_accessor :media_processing
       
         # per part media resolution. Media resolution for the input media.
         # Corresponds to the JSON property `mediaResolution`
@@ -2995,6 +3032,7 @@ module Google
           @function_call = args[:function_call] if args.key?(:function_call)
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
+          @media_processing = args[:media_processing] if args.key?(:media_processing)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
@@ -4266,6 +4304,35 @@ module Google
         end
       end
       
+      # Config for translation features.
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, the model will generate audio when the target language is
+        # spoken, essentially it will parrot the input. If `false`, we will not produce
+        # audio for the target language.
+        # Corresponds to the JSON property `echoTargetLanguage`
+        # @return [Boolean]
+        attr_accessor :echo_target_language
+        alias_method :echo_target_language?, :echo_target_language
+      
+        # Required. The target language for translation. Supported values are BCP-47
+        # language codes (e.g. "en", "es", "fr").
+        # Corresponds to the JSON property `targetLanguageCode`
+        # @return [String]
+        attr_accessor :target_language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @echo_target_language = args[:echo_target_language] if args.key?(:echo_target_language)
+          @target_language_code = args[:target_language_code] if args.key?(:target_language_code)
+        end
+      end
+      
       # Tool to support URL context.
       class GoogleCloudAiplatformV1beta1UrlContext
         include Google::Apis::Core::Hashable
@@ -4549,6 +4616,12 @@ module Google
         # @return [String]
         attr_accessor :gcs_uri
       
+        # Optional. The video output resolution. Supported values: "360p", "720p", "
+        # 1080p", "4k".
+        # Corresponds to the JSON property `resolution`
+        # @return [String]
+        attr_accessor :resolution
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4559,6 +4632,7 @@ module Google
           @delivery = args[:delivery] if args.key?(:delivery)
           @duration = args[:duration] if args.key?(:duration)
           @gcs_uri = args[:gcs_uri] if args.key?(:gcs_uri)
+          @resolution = args[:resolution] if args.key?(:resolution)
         end
       end
       

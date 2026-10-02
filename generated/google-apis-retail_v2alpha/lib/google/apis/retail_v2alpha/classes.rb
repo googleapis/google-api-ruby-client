@@ -2333,6 +2333,12 @@ module Google
       class GoogleCloudRetailV2alphaCompleteQueryResponse
         include Google::Apis::Core::Hashable
       
+        # Conversational prompts to trigger agents like Shopping Agent. This is an
+        # experimental feature for select customers.
+        # Corresponds to the JSON property `agentPrompts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
+        attr_accessor :agent_prompts
+      
         # A map of matched attribute suggestions. This field is only available for `
         # cloud-retail` dataset. Current supported keys: * `brands` * `categories`
         # Corresponds to the JSON property `attributeResults`
@@ -2371,10 +2377,30 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_prompts = args[:agent_prompts] if args.key?(:agent_prompts)
           @attribute_results = args[:attribute_results] if args.key?(:attribute_results)
           @attribution_token = args[:attribution_token] if args.key?(:attribution_token)
           @completion_results = args[:completion_results] if args.key?(:completion_results)
           @recent_search_results = args[:recent_search_results] if args.key?(:recent_search_results)
+        end
+      end
+      
+      # A conversational prompt to trigger agents like Shopping Agent.
+      class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt
+        include Google::Apis::Core::Hashable
+      
+        # The conversational prompt string.
+        # Corresponds to the JSON property `prompt`
+        # @return [String]
+        attr_accessor :prompt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prompt = args[:prompt] if args.key?(:prompt)
         end
       end
       
@@ -2400,6 +2426,13 @@ module Google
       # Resource that represents completion results.
       class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult
         include Google::Apis::Core::Hashable
+      
+        # Deprecated: Use CompleteQueryResponse.agent_prompts instead. Conversational
+        # prompts to trigger agents like Shopping Agent. There may be multiple prompts
+        # for a single suggestion. This is an experimental feature for select customers.
+        # Corresponds to the JSON property `agentPrompts`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt>]
+        attr_accessor :agent_prompts
       
         # Custom attributes for the suggestion term. * For `user-data`, the attributes
         # are additional custom attributes ingested through BigQuery. * For `cloud-
@@ -2435,6 +2468,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_prompts = args[:agent_prompts] if args.key?(:agent_prompts)
           @attributes = args[:attributes] if args.key?(:attributes)
           @facets = args[:facets] if args.key?(:facets)
           @suggestion = args[:suggestion] if args.key?(:suggestion)
@@ -7577,6 +7611,16 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpec]
         attr_accessor :conversational_search_spec
       
+        # Optional. A set of controls that are applied dynamically to the search request.
+        # These controls are applied in addition to the controls specified in the
+        # serving config. These controls are expected to not yet be persisted in storage.
+        # A control could be applied twice if it is in both the serving config and
+        # specified here. A maximum of 5 values are allowed. Otherwise, an
+        # INVALID_ARGUMENT error is returned.
+        # Corresponds to the JSON property `dynamicControls`
+        # @return [Array<Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaControl>]
+        attr_accessor :dynamic_controls
+      
         # The specifications of dynamically generated facets.
         # Corresponds to the JSON property `dynamicFacetSpec`
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec]
@@ -7610,6 +7654,12 @@ module Google
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
+      
+        # Optional. A list of control IDs to ignore. These controls will not be applied
+        # to the search request, even if they are specified in the serving config.
+        # Corresponds to the JSON property `ignoredControlIds`
+        # @return [Array<String>]
+        attr_accessor :ignored_control_ids
       
         # The labels applied to a resource must meet the following requirements: * Each
         # resource can have multiple labels, up to a maximum of 64. * Each label must be
@@ -7802,11 +7852,13 @@ module Google
           @branch = args[:branch] if args.key?(:branch)
           @canonical_filter = args[:canonical_filter] if args.key?(:canonical_filter)
           @conversational_search_spec = args[:conversational_search_spec] if args.key?(:conversational_search_spec)
+          @dynamic_controls = args[:dynamic_controls] if args.key?(:dynamic_controls)
           @dynamic_facet_spec = args[:dynamic_facet_spec] if args.key?(:dynamic_facet_spec)
           @entity = args[:entity] if args.key?(:entity)
           @experiment_id = args[:experiment_id] if args.key?(:experiment_id)
           @facet_specs = args[:facet_specs] if args.key?(:facet_specs)
           @filter = args[:filter] if args.key?(:filter)
+          @ignored_control_ids = args[:ignored_control_ids] if args.key?(:ignored_control_ids)
           @labels = args[:labels] if args.key?(:labels)
           @language_code = args[:language_code] if args.key?(:language_code)
           @offset = args[:offset] if args.key?(:offset)

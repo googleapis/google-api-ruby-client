@@ -22,6 +22,66 @@ module Google
   module Apis
     module RecommenderV1
       
+      class CloudRecommendationsRecommendersDatabasesV1ContentChunk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1CtaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1DatabasesPresentationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Description
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Link
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1PlaybookLink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1SimpleValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Table
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1TableField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1TableRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1CostProjection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -182,6 +242,108 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1ContentChunk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table, as: 'table', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Table, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Table::Representation
+      
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1CtaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_primary, as: 'isPrimary'
+          property :label, as: 'label'
+          property :redirect_page, as: 'redirectPage'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1DatabasesPresentationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cta_configs, as: 'ctaConfigs', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1CtaConfig, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1CtaConfig::Representation
+      
+          collection :issue_content_chunks, as: 'issueContentChunks', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1ContentChunk, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1ContentChunk::Representation
+      
+          property :issue_description, as: 'issueDescription', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Description, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Description::Representation
+      
+          collection :issue_table_fields, as: 'issueTableFields', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableField, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableField::Representation
+      
+          collection :next_steps_content_chunks, as: 'nextStepsContentChunks', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1ContentChunk, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1ContentChunk::Representation
+      
+          property :next_steps_description, as: 'nextStepsDescription', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Description, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Description::Representation
+      
+          collection :next_steps_table_fields, as: 'nextStepsTableFields', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableField, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableField::Representation
+      
+          collection :playbook_links, as: 'playbookLinks', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1PlaybookLink, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1PlaybookLink::Representation
+      
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Description
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description_enum, as: 'descriptionEnum'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :redirect_page, as: 'redirectPage'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1PlaybookLink
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label, as: 'label'
+          property :link, as: 'link'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1SimpleValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enum_value, as: 'enumValue'
+          property :link_value, as: 'linkValue', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Link, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1Link::Representation
+      
+          property :number_value, as: 'numberValue'
+          property :string_value, as: 'stringValue'
+          property :timestamp_value, as: 'timestampValue'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1Table
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers'
+          collection :rows, as: 'rows', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableRow, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1TableRow::Representation
+      
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1TableField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :number_value, as: 'numberValue'
+          property :string_value, as: 'stringValue'
+          property :timestamp_value, as: 'timestampValue'
+        end
+      end
+      
+      class CloudRecommendationsRecommendersDatabasesV1TableRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cells, as: 'cells', class: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1SimpleValue, decorator: Google::Apis::RecommenderV1::CloudRecommendationsRecommendersDatabasesV1SimpleValue::Representation
+      
+        end
       end
       
       class GoogleCloudRecommenderV1CostProjection

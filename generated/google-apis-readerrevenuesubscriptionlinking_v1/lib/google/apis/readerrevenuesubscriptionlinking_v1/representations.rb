@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListReaderEntitlementsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reader
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,15 @@ module Google
           property :expire_time, as: 'expireTime'
           property :product_id, as: 'productId'
           property :subscription_token, as: 'subscriptionToken'
+        end
+      end
+      
+      class ListReaderEntitlementsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reader_entitlements, as: 'readerEntitlements', class: Google::Apis::ReaderrevenuesubscriptionlinkingV1::ReaderEntitlements, decorator: Google::Apis::ReaderrevenuesubscriptionlinkingV1::ReaderEntitlements::Representation
+      
         end
       end
       

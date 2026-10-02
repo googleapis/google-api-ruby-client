@@ -298,6 +298,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementV1FindSaasUsageBrowsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1FindSaasUsageProfilesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1FindSaasUsageReportsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementV1GraphicsAdapterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +473,30 @@ module Google
       end
       
       class GoogleChromeManagementV1RuntimeCountersReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1SaasUsageBrowser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1SaasUsageProfileReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1SaasUsageReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementV1SaasUsageReportContentTransferDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -923,6 +965,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1ScepProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1SecureGatewayConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1552,6 +1600,36 @@ module Google
         end
       end
       
+      class GoogleChromeManagementV1FindSaasUsageBrowsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saas_usage_browsers, as: 'saasUsageBrowsers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageBrowser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageBrowser::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1FindSaasUsageProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :profile_reports, as: 'profileReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageProfileReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageProfileReport::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
+      class GoogleChromeManagementV1FindSaasUsageReportsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :saas_reports, as: 'saasReports', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReport, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReport::Representation
+      
+          property :total_size, :numeric_string => true, as: 'totalSize'
+        end
+      end
+      
       class GoogleChromeManagementV1GraphicsAdapterInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1843,6 +1921,61 @@ module Google
           property :enter_sleep_count, :numeric_string => true, as: 'enterSleepCount'
           property :report_time, as: 'reportTime'
           property :uptime_runtime_duration, as: 'uptimeRuntimeDuration'
+        end
+      end
+      
+      class GoogleChromeManagementV1SaasUsageBrowser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_permanent_id, as: 'devicePermanentId'
+          property :first_navigation_time, as: 'firstNavigationTime'
+          property :last_navigation_time, as: 'lastNavigationTime'
+          property :machine, as: 'machine'
+          property :org_unit_id, as: 'orgUnitId'
+          property :os_platform, as: 'osPlatform'
+          property :os_version, as: 'osVersion'
+        end
+      end
+      
+      class GoogleChromeManagementV1SaasUsageProfileReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :first_navigation_time, as: 'firstNavigationTime'
+          property :last_navigation_time, as: 'lastNavigationTime'
+          property :org_unit_id, as: 'orgUnitId'
+          property :os_platform, as: 'osPlatform'
+          property :os_version, as: 'osVersion'
+          property :profile_permanent_id, as: 'profilePermanentId'
+        end
+      end
+      
+      class GoogleChromeManagementV1SaasUsageReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app, as: 'app'
+          property :category, as: 'category'
+          property :content_transfer_details, as: 'contentTransferDetails', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReportContentTransferDetails, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementV1SaasUsageReportContentTransferDetails::Representation
+      
+          property :distinct_browsers_count, :numeric_string => true, as: 'distinctBrowsersCount'
+          property :distinct_users_count, :numeric_string => true, as: 'distinctUsersCount'
+          collection :domains, as: 'domains'
+          collection :encryption_protocols, as: 'encryptionProtocols'
+          property :first_navigation_time, as: 'firstNavigationTime'
+          property :founded_year, as: 'foundedYear'
+          property :headquarters, as: 'headquarters'
+          property :last_navigation_time, as: 'lastNavigationTime'
+          property :org_unit_id, as: 'orgUnitId'
+          property :organization, as: 'organization'
+          property :primary_domain, as: 'primaryDomain'
+          property :visits_count, :numeric_string => true, as: 'visitsCount'
+        end
+      end
+      
+      class GoogleChromeManagementV1SaasUsageReportContentTransferDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_transfer_count, :numeric_string => true, as: 'contentTransferCount'
         end
       end
       
@@ -2375,6 +2508,8 @@ module Google
       
           property :pub_sub_xdr_config, as: 'pubSubXdrConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubXdrConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1PubSubXdrConfig::Representation
       
+          property :secure_gateway_config, as: 'secureGatewayConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SecureGatewayConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SecureGatewayConfig::Representation
+      
           property :splunk_config, as: 'splunkConfig', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SplunkConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SplunkConfig::Representation
       
         end
@@ -2713,6 +2848,14 @@ module Google
           collection :subject_alt_names, as: 'subjectAltNames', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1SubjectAltName::Representation
       
           property :subject_common_name, as: 'subjectCommonName'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1SecureGatewayConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_platforms, as: 'enabledPlatforms'
+          property :resource_id, as: 'resourceId'
         end
       end
       

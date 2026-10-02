@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyMember
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Rotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -478,6 +484,14 @@ module Google
       
           property :user_managed, as: 'userManaged', class: Google::Apis::SecretmanagerV1beta2::UserManagedStatus, decorator: Google::Apis::SecretmanagerV1beta2::UserManagedStatus::Representation
       
+        end
+      end
+      
+      class ResourcePolicyMember
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_policy_name_principal, as: 'iamPolicyNamePrincipal'
+          property :iam_policy_uid_principal, as: 'iamPolicyUidPrincipal'
         end
       end
       

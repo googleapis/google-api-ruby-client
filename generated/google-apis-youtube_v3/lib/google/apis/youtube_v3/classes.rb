@@ -106,13 +106,12 @@ module Google
         end
       end
       
-      # An *activity* resource contains information about an action that a particular
-      # channel, or user, has taken on YouTube.The actions reported in activity feeds
-      # include rating a video, sharing a video, marking a video as a favorite,
-      # commenting on a video, uploading a video, and so forth. Each activity resource
-      # identifies the type of action, the channel associated with the action, and the
-      # resource(s) associated with the action, such as the video that was rated or
-      # uploaded.
+      # An `activity` resource contains information about an action that a particular
+      # channel, or user, has taken on YouTube. The actions reported in activity feeds
+      # include sharing a video, uploading a video, and so forth. Each `activity`
+      # resource identifies the type of action, the channel associated with the action,
+      # and the resource(s) associated with the action, such as the video that was
+      # rated or uploaded.
       class Activity
         include Google::Apis::Core::Hashable
       
@@ -132,8 +131,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # activity".
+        # Identifies what kind of resource this is. Value: The fixed string `"youtube#
+        # activity"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -178,16 +177,6 @@ module Google
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsComment]
         attr_accessor :comment
       
-        # Information about a video that was marked as a favorite video.
-        # Corresponds to the JSON property `favorite`
-        # @return [Google::Apis::YoutubeV3::ActivityContentDetailsFavorite]
-        attr_accessor :favorite
-      
-        # Information about a resource that received a positive (like) rating.
-        # Corresponds to the JSON property `like`
-        # @return [Google::Apis::YoutubeV3::ActivityContentDetailsLike]
-        attr_accessor :like
-      
         # Information about a new playlist item.
         # Corresponds to the JSON property `playlistItem`
         # @return [Google::Apis::YoutubeV3::ActivityContentDetailsPlaylistItem]
@@ -227,8 +216,6 @@ module Google
           @bulletin = args[:bulletin] if args.key?(:bulletin)
           @channel_item = args[:channel_item] if args.key?(:channel_item)
           @comment = args[:comment] if args.key?(:comment)
-          @favorite = args[:favorite] if args.key?(:favorite)
-          @like = args[:like] if args.key?(:like)
           @playlist_item = args[:playlist_item] if args.key?(:playlist_item)
           @promoted_item = args[:promoted_item] if args.key?(:promoted_item)
           @recommendation = args[:recommendation] if args.key?(:recommendation)
@@ -278,44 +265,6 @@ module Google
       
       # Information about a resource that received a comment.
       class ActivityContentDetailsComment
-        include Google::Apis::Core::Hashable
-      
-        # A resource id is a generic reference that points to another YouTube resource.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::YoutubeV3::ResourceId]
-        attr_accessor :resource_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # Information about a video that was marked as a favorite video.
-      class ActivityContentDetailsFavorite
-        include Google::Apis::Core::Hashable
-      
-        # A resource id is a generic reference that points to another YouTube resource.
-        # Corresponds to the JSON property `resourceId`
-        # @return [Google::Apis::YoutubeV3::ResourceId]
-        attr_accessor :resource_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @resource_id = args[:resource_id] if args.key?(:resource_id)
-        end
-      end
-      
-      # Information about a resource that received a positive (like) rating.
-      class ActivityContentDetailsLike
         include Google::Apis::Core::Hashable
       
         # A resource id is a generic reference that points to another YouTube resource.
@@ -652,10 +601,9 @@ module Google
       
         # The group ID associated with the activity. A group ID identifies user events
         # that are associated with the same user and resource. For example, if a user
-        # rates a video and marks the same video as a favorite, the entries for those
-        # events would have the same group ID in the user's activity feed. In your user
-        # interface, you can avoid repetition by grouping events with the same groupId
-        # value.
+        # uploads a video and watches the same video, the entries for those events would
+        # have the same group ID in the user's activity feed. In your user interface,
+        # you can avoid repetition by grouping events with the same `groupId` value.
         # Corresponds to the JSON property `groupId`
         # @return [String]
         attr_accessor :group_id
@@ -694,6 +642,109 @@ module Google
           @thumbnails = args[:thumbnails] if args.key?(:thumbnails)
           @title = args[:title] if args.key?(:title)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Common proto for Live and VOD geo-restrictions
+      class AvailabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Video is available in all regions except the ones specified in the
+        # excluded_region_codes list.
+        # Corresponds to the JSON property `globalConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfigGlobalConfig]
+        attr_accessor :global_config
+      
+        # Video is available in the specified regions only.
+        # Corresponds to the JSON property `regionsConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfig]
+        attr_accessor :regions_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_config = args[:global_config] if args.key?(:global_config)
+          @regions_config = args[:regions_config] if args.key?(:regions_config)
+        end
+      end
+      
+      # Video is available in all regions except the ones specified in the
+      # excluded_region_codes list.
+      class AvailabilityConfigGlobalConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Regions where video is blocked
+        # Corresponds to the JSON property `excludedRegionCodes`
+        # @return [Array<String>]
+        attr_accessor :excluded_region_codes
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::YoutubeV3::Interval]
+        attr_accessor :interval
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @excluded_region_codes = args[:excluded_region_codes] if args.key?(:excluded_region_codes)
+          @interval = args[:interval] if args.key?(:interval)
+        end
+      end
+      
+      # Video is available in the specified regions only.
+      class AvailabilityConfigRegionsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of regions and time windows where video is available. If a
+        # region is specified multiple times, the union of all intervals is used.
+        # Corresponds to the JSON property `regionIntervals`
+        # @return [Array<Google::Apis::YoutubeV3::AvailabilityConfigRegionsConfigRegionInterval>]
+        attr_accessor :region_intervals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @region_intervals = args[:region_intervals] if args.key?(:region_intervals)
+        end
+      end
+      
+      # Region and time window where video is available for the region.
+      class AvailabilityConfigRegionsConfigRegionInterval
+        include Google::Apis::Core::Hashable
+      
+        # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+        # Timestamp end (exclusive). The start must be less than or equal to the end.
+        # When the start equals the end, the interval is empty (matches no time). When
+        # both start and end are unspecified, the interval matches any time.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::YoutubeV3::Interval]
+        attr_accessor :interval
+      
+        # Required. Region where video is available
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @interval = args[:interval] if args.key?(:interval)
+          @region_code = args[:region_code] if args.key?(:region_code)
         end
       end
       
@@ -3609,6 +3660,36 @@ module Google
         end
       end
       
+      # Represents a time interval, encoded as a Timestamp start (inclusive) and a
+      # Timestamp end (exclusive). The start must be less than or equal to the end.
+      # When the start equals the end, the interval is empty (matches no time). When
+      # both start and end are unspecified, the interval matches any time.
+      class Interval
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        # this interval will have to be before the end.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        # this interval will have to be the same or after the start.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Describes an invideo branding.
       class InvideoBranding
         include Google::Apis::Core::Hashable
@@ -3824,6 +3905,11 @@ module Google
       class LiveBroadcastContentDetails
         include Google::Apis::Core::Hashable
       
+        # Common proto for Live and VOD geo-restrictions
+        # Corresponds to the JSON property `availabilityConfig`
+        # @return [Google::Apis::YoutubeV3::AvailabilityConfig]
+        attr_accessor :availability_config
+      
         # This value uniquely identifies the live stream bound to the broadcast.
         # Corresponds to the JSON property `boundStreamId`
         # @return [String]
@@ -3958,6 +4044,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @availability_config = args[:availability_config] if args.key?(:availability_config)
           @bound_stream_id = args[:bound_stream_id] if args.key?(:bound_stream_id)
           @bound_stream_last_update_time_ms = args[:bound_stream_last_update_time_ms] if args.key?(:bound_stream_last_update_time_ms)
           @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
@@ -4084,6 +4171,11 @@ module Google
         # @return [DateTime]
         attr_accessor :actual_start_time
       
+        # The YouTube video category associated with the video broadcast.
+        # Corresponds to the JSON property `categoryId`
+        # @return [String]
+        attr_accessor :category_id
+      
         # The ID that YouTube uses to uniquely identify the channel that is publishing
         # the broadcast.
         # Corresponds to the JSON property `channelId`
@@ -4144,6 +4236,7 @@ module Google
         def update!(**args)
           @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
           @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @category_id = args[:category_id] if args.key?(:category_id)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @description = args[:description] if args.key?(:description)
           @is_default_broadcast = args[:is_default_broadcast] if args.key?(:is_default_broadcast)
@@ -7737,6 +7830,11 @@ module Google
         attr_accessor :default
       
         # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `fhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :fhd
+      
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `high`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :high
@@ -7752,9 +7850,19 @@ module Google
         attr_accessor :medium
       
         # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `qhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :qhd
+      
+        # A thumbnail is an image representing a YouTube resource.
         # Corresponds to the JSON property `standard`
         # @return [Google::Apis::YoutubeV3::Thumbnail]
         attr_accessor :standard
+      
+        # A thumbnail is an image representing a YouTube resource.
+        # Corresponds to the JSON property `uhd`
+        # @return [Google::Apis::YoutubeV3::Thumbnail]
+        attr_accessor :uhd
       
         def initialize(**args)
            update!(**args)
@@ -7763,10 +7871,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @default = args[:default] if args.key?(:default)
+          @fhd = args[:fhd] if args.key?(:fhd)
           @high = args[:high] if args.key?(:high)
           @maxres = args[:maxres] if args.key?(:maxres)
           @medium = args[:medium] if args.key?(:medium)
+          @qhd = args[:qhd] if args.key?(:qhd)
           @standard = args[:standard] if args.key?(:standard)
+          @uhd = args[:uhd] if args.key?(:uhd)
         end
       end
       
@@ -7935,7 +8046,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::VideoStatistics]
         attr_accessor :statistics
       
-        # Basic details about a video category, such as its localized title. Next Id: 19
+        # Basic details about a video category, such as its localized title. Next Id: 20
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::YoutubeV3::VideoStatus]
         attr_accessor :status
@@ -9373,7 +9484,7 @@ module Google
         end
       end
       
-      # Basic details about a video category, such as its localized title. Next Id: 19
+      # Basic details about a video category, such as its localized title. Next Id: 20
       class VideoStatus
         include Google::Apis::Core::Hashable
       

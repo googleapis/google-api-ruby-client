@@ -1098,7 +1098,7 @@ module Google
         # @return [String]
         attr_accessor :unit_filter
       
-        # Required. Immutable. UnitKind that this rollout kind corresponds to. Rollouts
+        # Optional. Immutable. UnitKind that this rollout kind corresponds to. Rollouts
         # stemming from this rollout kind will target the units of this unit kind. In
         # other words, this defines the population of target units to be upgraded by
         # rollouts.

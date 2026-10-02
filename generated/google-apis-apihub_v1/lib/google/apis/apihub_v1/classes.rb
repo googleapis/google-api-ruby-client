@@ -149,6 +149,21 @@ module Google
       class GoogleCloudApihubV1Addon
         include Google::Apis::Core::Hashable
       
+        # Output only. The Vertex AI region where the BoostSpec Gemini model calls run
+        # for this API Hub instance. Populated only for the SpecGen addon (`system-spec-
+        # generation`); other addons leave this field empty. `gemini-2.5-flash` is not
+        # available in every API Hub region, so the effective region may differ from the
+        # API Hub instance's own region. The value follows these semantics: - `""`:
+        # BoostSpec is disabled in this region (the addon is not SpecGen, or the API Hub
+        # instance region has no configured Gemini endpoint or fallback). - Equal to the
+        # API Hub instance region: BoostSpec calls run in-region. - Differs from the API
+        # Hub instance region: BoostSpec calls run in the specified fallback region.
+        # Callers rendering this field can derive the three display states from this
+        # single field combined with the API Hub instance region.
+        # Corresponds to the JSON property `boostSpecGeminiRegionId`
+        # @return [String]
+        attr_accessor :boost_spec_gemini_region_id
+      
         # Configuration for the addon.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AddonConfig]
@@ -197,6 +212,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boost_spec_gemini_region_id = args[:boost_spec_gemini_region_id] if args.key?(:boost_spec_gemini_region_id)
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @data_source = args[:data_source] if args.key?(:data_source)
@@ -296,8 +312,8 @@ module Google
         # allowed value in the same attribute resource. * If not provided, a system
         # generated id derived from the display name will be used. In this case, the
         # service will handle conflict resolution by adding a system generated suffix in
-        # case of duplicates. This value should be 4-63 characters, and valid characters
-        # are /a-z-/.
+        # case of duplicates. This value should be 3-500 characters, and valid
+        # characters are /a-z[0-9]-_/.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -410,6 +426,11 @@ module Google
         # @return [String]
         attr_accessor :selected_version
       
+        # The attribute values associated with resource.
+        # Corresponds to the JSON property `serviceType`
+        # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
+        attr_accessor :service_type
+      
         # Output only. The list of sources and metadata from the sources of the API
         # resource.
         # Corresponds to the JSON property `sourceMetadata`
@@ -459,6 +480,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @owner = args[:owner] if args.key?(:owner)
           @selected_version = args[:selected_version] if args.key?(:selected_version)
+          @service_type = args[:service_type] if args.key?(:service_type)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @target_user = args[:target_user] if args.key?(:target_user)
           @team = args[:team] if args.key?(:team)
@@ -695,6 +717,15 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The deployments linked directly to this API operation. For
+        # operations parsed from a spec, `UpdateApiOperation` returns `
+        # FAILED_PRECONDITION`; link the parent spec to the deployment via `Spec.
+        # deployments` instead. Format is `projects/`project`/locations/`location`/
+        # deployments/`deployment``
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<String>]
+        attr_accessor :deployments
+      
         # The operation details parsed from the spec.
         # Corresponds to the JSON property `details`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1OperationDetails]
@@ -733,6 +764,7 @@ module Google
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployments = args[:deployments] if args.key?(:deployments)
           @details = args[:details] if args.key?(:details)
           @name = args[:name] if args.key?(:name)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
@@ -1753,6 +1785,11 @@ module Google
       class GoogleCloudApihubV1Deployment
         include Google::Apis::Core::Hashable
       
+        # Output only. The API operations linked directly to this deployment.
+        # Corresponds to the JSON property `apiOperations`
+        # @return [Array<String>]
+        attr_accessor :api_operations
+      
         # Output only. The API versions linked to this deployment. Note: A particular
         # deployment could be linked to multiple different API versions (of same or
         # different APIs).
@@ -1848,10 +1885,25 @@ module Google
         # @return [String]
         attr_accessor :source_project
       
+        # Optional. A revision identifier for the underlying gateway configuration that
+        # this deployment serves. For Apigee gateway variants, this is typically the
+        # proxy revision number populated automatically when the deployment is
+        # discovered.
+        # Corresponds to the JSON property `sourceRevision`
+        # @return [String]
+        attr_accessor :source_revision
+      
         # The attribute values associated with resource.
         # Corresponds to the JSON property `sourceUri`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1AttributeValues]
         attr_accessor :source_uri
+      
+        # Output only. The specs linked directly to this deployment. Note: a deployment
+        # could serve multiple specs (e.g., across different revisions of the same
+        # underlying gateway configuration).
+        # Corresponds to the JSON property `specs`
+        # @return [Array<String>]
+        attr_accessor :specs
       
         # Output only. The time at which the deployment was last updated.
         # Corresponds to the JSON property `updateTime`
@@ -1864,6 +1916,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @api_operations = args[:api_operations] if args.key?(:api_operations)
           @api_versions = args[:api_versions] if args.key?(:api_versions)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
@@ -1880,7 +1933,9 @@ module Google
           @source_environment = args[:source_environment] if args.key?(:source_environment)
           @source_metadata = args[:source_metadata] if args.key?(:source_metadata)
           @source_project = args[:source_project] if args.key?(:source_project)
+          @source_revision = args[:source_revision] if args.key?(:source_revision)
           @source_uri = args[:source_uri] if args.key?(:source_uri)
+          @specs = args[:specs] if args.key?(:specs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -2322,13 +2377,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Description of the external API. Max length is 2000 characters (
+        # Optional. Description of the external API. Max length is 500000 characters (
         # Unicode Code Points).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. Display name of the external API. Max length is 63 characters (
+        # Required. Display name of the external API. Max length is 500 characters (
         # Unicode Code Points).
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4023,14 +4078,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The plugin description. Max length is 2000 characters (Unicode code
-        # points).
+        # Optional. The plugin description. Max length is 500000 characters (Unicode
+        # code points).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Required. The display name of the plugin. Max length is 50 characters (Unicode
-        # code points).
+        # Required. The display name of the plugin. Max length is 500 characters (
+        # Unicode code points).
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4177,7 +4232,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The display name for this plugin instance. Max length is 255
+        # Required. The display name for this plugin instance. Max length is 500
         # characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -4801,6 +4856,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. The deployments linked directly to this spec. Format is `projects/`
+        # project`/locations/`location`/deployments/`deployment``
+        # Corresponds to the JSON property `deployments`
+        # @return [Array<String>]
+        attr_accessor :deployments
+      
         # SpecDetails contains the details parsed from supported spec types.
         # Corresponds to the JSON property `details`
         # @return [Google::Apis::ApihubV1::GoogleCloudApihubV1SpecDetails]
@@ -4865,6 +4926,7 @@ module Google
           @attributes = args[:attributes] if args.key?(:attributes)
           @contents = args[:contents] if args.key?(:contents)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @deployments = args[:deployments] if args.key?(:deployments)
           @details = args[:details] if args.key?(:details)
           @display_name = args[:display_name] if args.key?(:display_name)
           @documentation = args[:documentation] if args.key?(:documentation)
@@ -4935,6 +4997,16 @@ module Google
       class GoogleCloudApihubV1SpecMetadata
         include Google::Apis::Core::Hashable
       
+        # Optional. The gateway-side URIs of deployments that serve this spec. If
+        # provided, the API Hub service creates links between this spec and the
+        # deployments identified by these URIs. URIs that don't match any known
+        # deployment are ignored; a subsequent ingestion cycle that includes the missing
+        # deployment will re-establish the link. The maximum number of URIs allowed is
+        # 100.
+        # Corresponds to the JSON property `deploymentResourceUris`
+        # @return [Array<String>]
+        attr_accessor :deployment_resource_uris
+      
         # Optional. Timestamp indicating when the spec was created at the source.
         # Corresponds to the JSON property `originalCreateTime`
         # @return [String]
@@ -4964,6 +5036,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deployment_resource_uris = args[:deployment_resource_uris] if args.key?(:deployment_resource_uris)
           @original_create_time = args[:original_create_time] if args.key?(:original_create_time)
           @original_id = args[:original_id] if args.key?(:original_id)
           @original_update_time = args[:original_update_time] if args.key?(:original_update_time)
@@ -5197,10 +5270,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :definitions
       
-        # Optional. The deployments linked to this API version. Note: A particular API
-        # version could be deployed to multiple deployments (for dev deployment, UAT
-        # deployment, etc) Format is `projects/`project`/locations/`location`/
-        # deployments/`deployment``
+        # Optional. The deployments linked directly to this API version. Only directly-
+        # linked deployments are returned; deployments linked to this version's specs or
+        # operations are not included. Note: A particular API version could be deployed
+        # to multiple deployments (for dev deployment, UAT deployment, etc) Format is `
+        # projects/`project`/locations/`location`/deployments/`deployment``
         # Corresponds to the JSON property `deployments`
         # @return [Array<String>]
         attr_accessor :deployments

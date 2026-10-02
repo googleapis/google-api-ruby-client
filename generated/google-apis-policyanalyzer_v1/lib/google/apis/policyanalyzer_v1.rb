@@ -23,7 +23,7 @@ module Google
     #
     # 
     #
-    # @see https://www.google.com
+    # @see https://cloud.google.com/policy-intelligence/docs/overview
     module PolicyanalyzerV1
       # Version of the Policy Analyzer API this client connects to.
       # This is NOT the gem version.

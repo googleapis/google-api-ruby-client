@@ -567,6 +567,37 @@ module Google
         end
       end
       
+      # Aggregated report at the catalog level.
+      class CatalogReport
+        include Google::Apis::Core::Hashable
+      
+        # The name of the catalog (format: projects/*/catalogs/*).
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # The type of catalog.
+        # Corresponds to the JSON property `catalogType`
+        # @return [String]
+        attr_accessor :catalog_type
+      
+        # A map of database names to their respective reports.
+        # Corresponds to the JSON property `databaseReports`
+        # @return [Hash<String,Google::Apis::MetastoreV1beta::DatabaseReport>]
+        attr_accessor :database_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @catalog_type = args[:catalog_type] if args.key?(:catalog_type)
+          @database_reports = args[:database_reports] if args.key?(:database_reports)
+        end
+      end
+      
       # Summary of results for a specific destination catalog.
       class CatalogSummary
         include Google::Apis::Core::Hashable
@@ -595,181 +626,6 @@ module Google
           @catalog = args[:catalog] if args.key?(:catalog)
           @catalog_type = args[:catalog_type] if args.key?(:catalog_type)
           @database_summaries = args[:database_summaries] if args.key?(:database_summaries)
-        end
-      end
-      
-      # Configuration information to start the Change Data Capture (CDC) streams from
-      # customer database to backend database of Dataproc Metastore.
-      class CdcConfig
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The bucket to write the intermediate stream event data in. The
-        # bucket name must be without any prefix like "gs://". See the bucket naming
-        # requirements (https://cloud.google.com/storage/docs/buckets#naming). This
-        # field is optional. If not set, the Artifacts Cloud Storage bucket will be used.
-        # Corresponds to the JSON property `bucket`
-        # @return [String]
-        attr_accessor :bucket
-      
-        # Required. Input only. The password for the user that Datastream service should
-        # use for the MySQL connection. This field is not returned on request.
-        # Corresponds to the JSON property `password`
-        # @return [String]
-        attr_accessor :password
-      
-        # Required. The URL of the subnetwork resource to create the VM instance hosting
-        # the reverse proxy in. More context in https://cloud.google.com/datastream/docs/
-        # private-connectivity#reverse-csql-proxy The subnetwork should reside in the
-        # network provided in the request that Datastream will peer to and should be in
-        # the same region as Datastream, in the following format. projects/`project_id`/
-        # regions/`region_id`/subnetworks/`subnetwork_id`
-        # Corresponds to the JSON property `reverseProxySubnet`
-        # @return [String]
-        attr_accessor :reverse_proxy_subnet
-      
-        # Optional. The root path inside the Cloud Storage bucket. The stream event data
-        # will be written to this path. The default value is /migration.
-        # Corresponds to the JSON property `rootPath`
-        # @return [String]
-        attr_accessor :root_path
-      
-        # Required. A /29 CIDR IP range for peering with datastream.
-        # Corresponds to the JSON property `subnetIpRange`
-        # @return [String]
-        attr_accessor :subnet_ip_range
-      
-        # Required. The username that the Datastream service should use for the MySQL
-        # connection.
-        # Corresponds to the JSON property `username`
-        # @return [String]
-        attr_accessor :username
-      
-        # Required. Fully qualified name of the Cloud SQL instance's VPC network or the
-        # shared VPC network that Datastream will peer to, in the following format:
-        # projects/`project_id`/locations/global/networks/`network_id`. More context in
-        # https://cloud.google.com/datastream/docs/network-connectivity-options#
-        # privateconnectivity
-        # Corresponds to the JSON property `vpcNetwork`
-        # @return [String]
-        attr_accessor :vpc_network
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @bucket = args[:bucket] if args.key?(:bucket)
-          @password = args[:password] if args.key?(:password)
-          @reverse_proxy_subnet = args[:reverse_proxy_subnet] if args.key?(:reverse_proxy_subnet)
-          @root_path = args[:root_path] if args.key?(:root_path)
-          @subnet_ip_range = args[:subnet_ip_range] if args.key?(:subnet_ip_range)
-          @username = args[:username] if args.key?(:username)
-          @vpc_network = args[:vpc_network] if args.key?(:vpc_network)
-        end
-      end
-      
-      # Configuration information to establish customer database connection before the
-      # cutover phase of migration
-      class CloudSqlConnectionConfig
-        include Google::Apis::Core::Hashable
-      
-        # Required. The hive database name.
-        # Corresponds to the JSON property `hiveDatabaseName`
-        # @return [String]
-        attr_accessor :hive_database_name
-      
-        # Required. Cloud SQL database connection name (project_id:region:instance_name)
-        # Corresponds to the JSON property `instanceConnectionName`
-        # @return [String]
-        attr_accessor :instance_connection_name
-      
-        # Required. The private IP address of the Cloud SQL instance.
-        # Corresponds to the JSON property `ipAddress`
-        # @return [String]
-        attr_accessor :ip_address
-      
-        # Required. The relative resource name of the subnetwork to be used for Private
-        # Service Connect. Note that this cannot be a regular subnet and is used only
-        # for NAT. (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-
-        # subnets) This subnet is used to publish the SOCKS5 proxy service. The subnet
-        # size must be at least /29 and it should reside in a network through which the
-        # Cloud SQL instance is accessible. The resource name should be in the format,
-        # projects/`project_id`/regions/`region_id`/subnetworks/`subnetwork_id`
-        # Corresponds to the JSON property `natSubnet`
-        # @return [String]
-        attr_accessor :nat_subnet
-      
-        # Required. Input only. The password for the user that Dataproc Metastore
-        # service will be using to connect to the database. This field is not returned
-        # on request.
-        # Corresponds to the JSON property `password`
-        # @return [String]
-        attr_accessor :password
-      
-        # Required. The network port of the database.
-        # Corresponds to the JSON property `port`
-        # @return [Fixnum]
-        attr_accessor :port
-      
-        # Required. The relative resource name of the subnetwork to deploy the SOCKS5
-        # proxy service in. The subnetwork should reside in a network through which the
-        # Cloud SQL instance is accessible. The resource name should be in the format,
-        # projects/`project_id`/regions/`region_id`/subnetworks/`subnetwork_id`
-        # Corresponds to the JSON property `proxySubnet`
-        # @return [String]
-        attr_accessor :proxy_subnet
-      
-        # Required. The username that Dataproc Metastore service will use to connect to
-        # the database.
-        # Corresponds to the JSON property `username`
-        # @return [String]
-        attr_accessor :username
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @hive_database_name = args[:hive_database_name] if args.key?(:hive_database_name)
-          @instance_connection_name = args[:instance_connection_name] if args.key?(:instance_connection_name)
-          @ip_address = args[:ip_address] if args.key?(:ip_address)
-          @nat_subnet = args[:nat_subnet] if args.key?(:nat_subnet)
-          @password = args[:password] if args.key?(:password)
-          @port = args[:port] if args.key?(:port)
-          @proxy_subnet = args[:proxy_subnet] if args.key?(:proxy_subnet)
-          @username = args[:username] if args.key?(:username)
-        end
-      end
-      
-      # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
-      # BigLake Metastore migration instead. Configuration information for migrating
-      # from self-managed hive metastore on Google Cloud using Cloud SQL as the
-      # backend database to Dataproc Metastore.
-      class CloudSqlMigrationConfig
-        include Google::Apis::Core::Hashable
-      
-        # Configuration information to start the Change Data Capture (CDC) streams from
-        # customer database to backend database of Dataproc Metastore.
-        # Corresponds to the JSON property `cdcConfig`
-        # @return [Google::Apis::MetastoreV1beta::CdcConfig]
-        attr_accessor :cdc_config
-      
-        # Configuration information to establish customer database connection before the
-        # cutover phase of migration
-        # Corresponds to the JSON property `cloudSqlConnectionConfig`
-        # @return [Google::Apis::MetastoreV1beta::CloudSqlConnectionConfig]
-        attr_accessor :cloud_sql_connection_config
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cdc_config = args[:cdc_config] if args.key?(:cdc_config)
-          @cloud_sql_connection_config = args[:cloud_sql_connection_config] if args.key?(:cloud_sql_connection_config)
         end
       end
       
@@ -968,6 +824,44 @@ module Google
         end
       end
       
+      # Aggregated report at the database level.
+      class DatabaseReport
+        include Google::Apis::Core::Hashable
+      
+        # The name of the database.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Represents the migration plan for a specific resource (e.g. Database, Table).
+        # Corresponds to the JSON property `executionPlan`
+        # @return [Google::Apis::MetastoreV1beta::ExecutionPlan]
+        attr_accessor :execution_plan
+      
+        # Represents the actual migration result for a specific resource (e.g. Database,
+        # Table).
+        # Corresponds to the JSON property `executionResult`
+        # @return [Google::Apis::MetastoreV1beta::ExecutionResult]
+        attr_accessor :execution_result
+      
+        # A map of table names to their respective reports.
+        # Corresponds to the JSON property `tableReports`
+        # @return [Hash<String,Google::Apis::MetastoreV1beta::TableReport>]
+        attr_accessor :table_reports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database = args[:database] if args.key?(:database)
+          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
+          @execution_result = args[:execution_result] if args.key?(:execution_result)
+          @table_reports = args[:table_reports] if args.key?(:table_reports)
+        end
+      end
+      
       # Summary of results for a specific database in a catalog.
       class DatabaseSummary
         include Google::Apis::Core::Hashable
@@ -1091,6 +985,69 @@ module Google
         # Update properties of this object
         def update!(**args)
           @details = args[:details] if args.key?(:details)
+        end
+      end
+      
+      # Represents the migration plan for a specific resource (e.g. Database, Table).
+      class ExecutionPlan
+        include Google::Apis::Core::Hashable
+      
+        # The action that will be taken for a resource during migration.
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # A map of field names to their respective value diff.
+        # Corresponds to the JSON property `diffs`
+        # @return [Hash<String,Google::Apis::MetastoreV1beta::ValueDiff>]
+        attr_accessor :diffs
+      
+        # A human-readable string explaining why the action was chosen.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @diffs = args[:diffs] if args.key?(:diffs)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # Represents the actual migration result for a specific resource (e.g. Database,
+      # Table).
+      class ExecutionResult
+        include Google::Apis::Core::Hashable
+      
+        # Description of the error if the state is FAILED.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Remediation steps for the error if the state is FAILED.
+        # Corresponds to the JSON property `remediation`
+        # @return [String]
+        attr_accessor :remediation
+      
+        # Output only. The state of the migration for a resource.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @remediation = args[:remediation] if args.key?(:remediation)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1468,6 +1425,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased
+      # migration, namespaces are migrated from Dataproc Metastore to a Lakehouse
+      # Iceberg REST Catalog in batches. Between and after migration phases, the
+      # metastore service operates in PROXY state where requests for migrated
+      # namespaces are forwarded to the Lakehouse catalog while unmigrated namespaces
+      # continue to be served locally by DPMS.
+      class LakehouseProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Lakehouse Iceberg REST Catalog where requests are being
+        # proxied to. Format: projects/`project_id_or_number`/catalogs/`catalog_id`.
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Output only. The list of namespaces currently proxied to the Lakehouse catalog.
+        # As each migration batch completes, newly migrated namespaces are added to
+        # this list.
+        # Corresponds to the JSON property `namespaces`
+        # @return [Array<String>]
+        attr_accessor :namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
         end
       end
       
@@ -2047,14 +2037,6 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::BigLakeMetastoreMigrationConfig]
         attr_accessor :biglake_metastore_migration_config
       
-        # Deprecated: Migrations to Dataproc Metastore are no longer supported. Use
-        # BigLake Metastore migration instead. Configuration information for migrating
-        # from self-managed hive metastore on Google Cloud using Cloud SQL as the
-        # backend database to Dataproc Metastore.
-        # Corresponds to the JSON property `cloudSqlMigrationConfig`
-        # @return [Google::Apis::MetastoreV1beta::CloudSqlMigrationConfig]
-        attr_accessor :cloud_sql_migration_config
-      
         # Output only. The time when the migration execution was started.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -2097,13 +2079,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @biglake_metastore_migration_config = args[:biglake_metastore_migration_config] if args.key?(:biglake_metastore_migration_config)
-          @cloud_sql_migration_config = args[:cloud_sql_migration_config] if args.key?(:cloud_sql_migration_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
           @name = args[:name] if args.key?(:name)
           @phase = args[:phase] if args.key?(:phase)
           @state = args[:state] if args.key?(:state)
           @state_message = args[:state_message] if args.key?(:state_message)
+        end
+      end
+      
+      # Report containing the results of a migration run. This report is generated at
+      # the specified path in the BigLakeMetastoreMigrationConfig after the backfill
+      # is complete, or when a dry run is executed.
+      class MigrationReport
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Detailed results for each catalog involved in the migration.
+        # Corresponds to the JSON property `catalogReports`
+        # @return [Array<Google::Apis::MetastoreV1beta::CatalogReport>]
+        attr_accessor :catalog_reports
+      
+        # Summary of the migration results.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::MetastoreV1beta::MigrationSummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog_reports = args[:catalog_reports] if args.key?(:catalog_reports)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
@@ -2116,7 +2124,7 @@ module Google
         # @return [Array<Google::Apis::MetastoreV1beta::CatalogSummary>]
         attr_accessor :catalog_summaries
       
-        # Output only. The UTC time when this report was finalized.
+        # Output only. The UTC time when the source metadata read was initiated.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2126,6 +2134,11 @@ module Google
         # @return [Boolean]
         attr_accessor :dry_run
         alias_method :dry_run?, :dry_run
+      
+        # Output only. The UTC time when the report was written.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
       
         # Output only. The Dataproc Metastore service name (format: projects/*/locations/
         # */services/*) on which the migration was executed.
@@ -2142,6 +2155,7 @@ module Google
           @catalog_summaries = args[:catalog_summaries] if args.key?(:catalog_summaries)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @service = args[:service] if args.key?(:service)
         end
       end
@@ -2400,6 +2414,37 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Partition migration report for a Hive table.
+      class PartitionReport
+        include Google::Apis::Core::Hashable
+      
+        # The number of partitions that failed to migrate at the target.
+        # Corresponds to the JSON property `partitionFailedCount`
+        # @return [Fixnum]
+        attr_accessor :partition_failed_count
+      
+        # The number of partitions successfully migrated at the target.
+        # Corresponds to the JSON property `partitionSuccessCount`
+        # @return [Fixnum]
+        attr_accessor :partition_success_count
+      
+        # Output only. The state of the partition migration.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_failed_count = args[:partition_failed_count] if args.key?(:partition_failed_count)
+          @partition_success_count = args[:partition_success_count] if args.key?(:partition_success_count)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2876,6 +2921,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased
+        # migration, namespaces are migrated from Dataproc Metastore to a Lakehouse
+        # Iceberg REST Catalog in batches. Between and after migration phases, the
+        # metastore service operates in PROXY state where requests for migrated
+        # namespaces are forwarded to the Lakehouse catalog while unmigrated namespaces
+        # continue to be served locally by DPMS.
+        # Corresponds to the JSON property `lakehouseProxyConfig`
+        # @return [Google::Apis::MetastoreV1beta::LakehouseProxyConfig]
+        attr_accessor :lakehouse_proxy_config
+      
         # Maintenance window. This specifies when Dataproc Metastore may perform system
         # maintenance operation to the service.
         # Corresponds to the JSON property `maintenanceWindow`
@@ -2991,6 +3046,7 @@ module Google
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
           @labels = args[:labels] if args.key?(:labels)
+          @lakehouse_proxy_config = args[:lakehouse_proxy_config] if args.key?(:lakehouse_proxy_config)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @metadata_integration = args[:metadata_integration] if args.key?(:metadata_integration)
           @metadata_management_activity = args[:metadata_management_activity] if args.key?(:metadata_management_activity)
@@ -3074,6 +3130,15 @@ module Google
         # @return [Google::Apis::MetastoreV1beta::MigrationExecution]
         attr_accessor :migration_execution
       
+        # Optional. The ID to use for the migration execution, which will become the
+        # final component of the migration execution's resource name. If not specified,
+        # a UUID will be generated.This value must be between 2 and 63 characters long
+        # inclusive, begin with a letter, end with a letter or number, and valid
+        # characters are a-z0-9-.
+        # Corresponds to the JSON property `migrationExecutionId`
+        # @return [String]
+        attr_accessor :migration_execution_id
+      
         # Optional. A request ID. Specify a unique request ID to allow the server to
         # ignore the request if it has completed. The server will ignore subsequent
         # requests that provide a duplicate request ID for at least 60 minutes after the
@@ -3093,6 +3158,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @migration_execution = args[:migration_execution] if args.key?(:migration_execution)
+          @migration_execution_id = args[:migration_execution_id] if args.key?(:migration_execution_id)
           @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
@@ -3191,6 +3257,51 @@ module Google
           @message = args[:message] if args.key?(:message)
           @message_set = args[:message_set] if args.key?(:message_set)
           @space = args[:space] if args.key?(:space)
+        end
+      end
+      
+      # Aggregated report at the table level.
+      class TableReport
+        include Google::Apis::Core::Hashable
+      
+        # Represents the migration plan for a specific resource (e.g. Database, Table).
+        # Corresponds to the JSON property `executionPlan`
+        # @return [Google::Apis::MetastoreV1beta::ExecutionPlan]
+        attr_accessor :execution_plan
+      
+        # Represents the actual migration result for a specific resource (e.g. Database,
+        # Table).
+        # Corresponds to the JSON property `executionResult`
+        # @return [Google::Apis::MetastoreV1beta::ExecutionResult]
+        attr_accessor :execution_result
+      
+        # The total number of partitions identified at the source during discovery. This
+        # is only relevant for Hive Partitioned tables.
+        # Corresponds to the JSON property `partitionDiscoveredCount`
+        # @return [Fixnum]
+        attr_accessor :partition_discovered_count
+      
+        # Partition migration report for a Hive table.
+        # Corresponds to the JSON property `partitionReport`
+        # @return [Google::Apis::MetastoreV1beta::PartitionReport]
+        attr_accessor :partition_report
+      
+        # The name of the table.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_plan = args[:execution_plan] if args.key?(:execution_plan)
+          @execution_result = args[:execution_result] if args.key?(:execution_result)
+          @partition_discovered_count = args[:partition_discovered_count] if args.key?(:partition_discovered_count)
+          @partition_report = args[:partition_report] if args.key?(:partition_report)
+          @table = args[:table] if args.key?(:table)
         end
       end
       
@@ -3299,6 +3410,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # A field-level metadata mismatch for a resource between the source and target.
+      class ValueDiff
+        include Google::Apis::Core::Hashable
+      
+        # The value of the field at the source.
+        # Corresponds to the JSON property `sourceValue`
+        # @return [String]
+        attr_accessor :source_value
+      
+        # The value of the field at the target.
+        # Corresponds to the JSON property `targetValue`
+        # @return [String]
+        attr_accessor :target_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_value = args[:source_value] if args.key?(:source_value)
+          @target_value = args[:target_value] if args.key?(:target_value)
         end
       end
     end

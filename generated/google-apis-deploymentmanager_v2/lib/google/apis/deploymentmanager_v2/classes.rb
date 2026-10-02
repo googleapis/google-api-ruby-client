@@ -672,12 +672,12 @@ module Google
         end
       end
       
-      # 
+      # Metadata for FirewallPolicyRule operations.
       class FirewallPolicyRuleOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # The priority allocated for the firewall policy rule if query parameters
-        # specified minPriority/maxPriority.
+        # Output only. [Output Only] The priority allocated for the firewall policy rule
+        # if query parameters specified minPriority/maxPriority.
         # Corresponds to the JSON property `allocatedPriority`
         # @return [Fixnum]
         attr_accessor :allocated_priority
@@ -689,6 +689,68 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allocated_priority = args[:allocated_priority] if args.key?(:allocated_priority)
+        end
+      end
+      
+      # Metadata for GetHealth operations.
+      class GetHealthOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Health information.
+        # Corresponds to the JSON property `healthInfo`
+        # @return [Google::Apis::DeploymentmanagerV2::GetHealthOperationMetadataHealthInfo]
+        attr_accessor :health_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @health_info = args[:health_info] if args.key?(:health_info)
+        end
+      end
+      
+      # Health information.
+      class GetHealthOperationMetadataHealthInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The availability SLO status.
+        # Corresponds to the JSON property `availabilitySloStatus`
+        # @return [String]
+        attr_accessor :availability_slo_status
+      
+        # Output only. The health status.
+        # Corresponds to the JSON property `healthStatus`
+        # @return [String]
+        attr_accessor :health_status
+      
+        # Output only. The repair category.
+        # Corresponds to the JSON property `repairCategory`
+        # @return [String]
+        attr_accessor :repair_category
+      
+        # Output only. The reason for unhealthy status.
+        # Corresponds to the JSON property `unhealthyReason`
+        # @return [String]
+        attr_accessor :unhealthy_reason
+      
+        # Output only. The time when health info was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability_slo_status = args[:availability_slo_status] if args.key?(:availability_slo_status)
+          @health_status = args[:health_status] if args.key?(:health_status)
+          @repair_category = args[:repair_category] if args.key?(:repair_category)
+          @unhealthy_reason = args[:unhealthy_reason] if args.key?(:unhealthy_reason)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -715,14 +777,14 @@ module Google
       class GetVersionOperationMetadataSbomInfo
         include Google::Apis::Core::Hashable
       
-        # SBOM versions currently applied to the resource. The key is the component name
-        # and the value is the version.
+        # A mapping of components to their currently-applied versions or other
+        # appropriate identifiers.
         # Corresponds to the JSON property `currentComponentVersions`
         # @return [Hash<String,String>]
         attr_accessor :current_component_versions
       
-        # SBOM versions scheduled for the next maintenance. The key is the component
-        # name and the value is the version.
+        # A mapping of components to their target versions or other appropriate
+        # identifiers.
         # Corresponds to the JSON property `targetComponentVersions`
         # @return [Hash<String,String>]
         attr_accessor :target_component_versions
@@ -903,6 +965,26 @@ module Google
         end
       end
       
+      # [Output Only] Operation metadata for instances.troubleshoot.
+      class InstancesTroubleshootOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Serialized output of the troubleshooting diagnostic
+        # run.
+        # Corresponds to the JSON property `troubleshootOutput`
+        # @return [String]
+        attr_accessor :troubleshoot_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @troubleshoot_output = args[:troubleshoot_output] if args.key?(:troubleshoot_output)
+        end
+      end
+      
       # Provides a localized error message that is safe to return to the user which
       # can be attached to an RPC error.
       class LocalizedMessage
@@ -1061,6 +1143,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Extended details about the operation's execution.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::DeploymentmanagerV2::OperationDetails]
+        attr_accessor :details
+      
         # [Output Only] The time that this operation was completed. This value is in
         # RFC3339 text format.
         # Corresponds to the JSON property `endTime`
@@ -1073,10 +1160,15 @@ module Google
         # @return [Google::Apis::DeploymentmanagerV2::Operation::Error]
         attr_accessor :error
       
-        # 
+        # Metadata for FirewallPolicyRule operations.
         # Corresponds to the JSON property `firewallPolicyRuleOperationMetadata`
         # @return [Google::Apis::DeploymentmanagerV2::FirewallPolicyRuleOperationMetadata]
         attr_accessor :firewall_policy_rule_operation_metadata
+      
+        # Metadata for GetHealth operations.
+        # Corresponds to the JSON property `getHealthOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2::GetHealthOperationMetadata]
+        attr_accessor :get_health_operation_metadata
       
         # 
         # Corresponds to the JSON property `getVersionOperationMetadata`
@@ -1112,6 +1204,11 @@ module Google
         # Corresponds to the JSON property `instancesBulkInsertOperationMetadata`
         # @return [Google::Apis::DeploymentmanagerV2::InstancesBulkInsertOperationMetadata]
         attr_accessor :instances_bulk_insert_operation_metadata
+      
+        # [Output Only] Operation metadata for instances.troubleshoot.
+        # Corresponds to the JSON property `instancesTroubleshootOperationMetadata`
+        # @return [Google::Apis::DeploymentmanagerV2::InstancesTroubleshootOperationMetadata]
+        attr_accessor :instances_troubleshoot_operation_metadata
       
         # Output only. [Output Only] Type of the resource. Always `compute#operation`
         # for Operation resources.
@@ -1232,15 +1329,18 @@ module Google
           @client_operation_id = args[:client_operation_id] if args.key?(:client_operation_id)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @details = args[:details] if args.key?(:details)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error = args[:error] if args.key?(:error)
           @firewall_policy_rule_operation_metadata = args[:firewall_policy_rule_operation_metadata] if args.key?(:firewall_policy_rule_operation_metadata)
+          @get_health_operation_metadata = args[:get_health_operation_metadata] if args.key?(:get_health_operation_metadata)
           @get_version_operation_metadata = args[:get_version_operation_metadata] if args.key?(:get_version_operation_metadata)
           @http_error_message = args[:http_error_message] if args.key?(:http_error_message)
           @http_error_status_code = args[:http_error_status_code] if args.key?(:http_error_status_code)
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
+          @instances_troubleshoot_operation_metadata = args[:instances_troubleshoot_operation_metadata] if args.key?(:instances_troubleshoot_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -1280,7 +1380,7 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -1335,7 +1435,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context specific
+            # to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -1396,7 +1497,7 @@ module Google
           attr_accessor :code
         
           # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Operation::Warning::Datum>]
           attr_accessor :data
@@ -1447,6 +1548,31 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class OperationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Machine readable data from the message.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # Human or AI readable details on execution of the operation.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @message = args[:message] if args.key?(:message)
         end
       end
       
@@ -1723,7 +1849,7 @@ module Google
           attr_accessor :code
         
           # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::Resource::Warning::Datum>]
           attr_accessor :data
@@ -1880,7 +2006,7 @@ module Google
             @errors = args[:errors] if args.key?(:errors)
           end
           
-          # 
+          # Represents a single error encountered during the processing of an operation.
           class Error
             include Google::Apis::Core::Hashable
           
@@ -1935,7 +2061,8 @@ module Google
               @message = args[:message] if args.key?(:message)
             end
             
-            # 
+            # Container for structured error details providing additional context specific
+            # to the encountered error code.
             class ErrorDetail
               include Google::Apis::Core::Hashable
             
@@ -1996,7 +2123,7 @@ module Google
           attr_accessor :code
         
           # [Output Only] Metadata about this warning in key: value format. For example: "
-          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # data": [ ` "key": "scope", "value": "zones/us-east1-d" `]
           # Corresponds to the JSON property `data`
           # @return [Array<Google::Apis::DeploymentmanagerV2::ResourceUpdate::Warning::Datum>]
           attr_accessor :data

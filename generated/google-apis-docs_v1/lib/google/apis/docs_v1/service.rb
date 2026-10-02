@@ -131,14 +131,29 @@ module Google
         # Gets the latest version of the specified document.
         # @param [String] document_id
         #   The ID of the document to retrieve.
+        # @param [String] comments_view_mode
+        #   The comments view mode to apply to the document. This allows viewing the
+        #   document with comments omitted or included. If one is not specified,
+        #   COMMENTS_VIEW_MODE_OMITTED is used. If you set comments_view_mode to any value,
+        #   you must also set include_tabs_content to `true` or use a field mask that
+        #   references the Document.tabs field (or any subfield). If you set
+        #   comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED, you must also explicitly
+        #   set suggestions_view_mode to SUGGESTIONS_INLINE. If you set comments_view_mode
+        #   to COMMENTS_VIEW_MODE_INCLUDED or
+        #   COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS, you may not set
+        #   suggestions_view_mode to PREVIEW_WITHOUT_SUGGESTIONS or
+        #   PREVIEW_SUGGESTIONS_ACCEPTED. [Developer Preview](https://developers.google.
+        #   com/workspace/preview).
         # @param [Boolean] include_tabs_content
-        #   Whether to populate the Document.tabs field instead of the text content fields
-        #   like `body` and `documentStyle` on Document. - When `True`: Document content
-        #   populates in the Document.tabs field instead of the text content fields in
-        #   Document. - When `False`: The content of the document's first tab populates
-        #   the content fields in Document excluding Document.tabs. If a document has only
-        #   one tab, then that tab is used to populate the document content. Document.tabs
-        #   will be empty.
+        #   Whether to populate the `Document.tabs` field instead of the text content
+        #   fields like `body` and `documentStyle` on `Document`. - When `true`: Document
+        #   content populates in the `Document.tabs` field instead of the text content
+        #   fields in `Document`. - When `false`: The content of the document's first tab
+        #   populates the content fields in `Document` excluding `Document.tabs`. If a
+        #   document has only one tab, then that tab is used to populate the document
+        #   content. `Document.tabs` will be empty. If you use a field mask that
+        #   references the `Document.tabs` field (or any subfield), the API implicitly
+        #   treats the request as if you set `include_tabs_content` to `true`.
         # @param [String] suggestions_view_mode
         #   The suggestions view mode to apply to the document. This allows viewing the
         #   document with all suggestions inline, accepted or rejected. If one is not
@@ -160,11 +175,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_document(document_id, include_tabs_content: nil, suggestions_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_document(document_id, comments_view_mode: nil, include_tabs_content: nil, suggestions_view_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/documents/{documentId}', options)
           command.response_representation = Google::Apis::DocsV1::Document::Representation
           command.response_class = Google::Apis::DocsV1::Document
           command.params['documentId'] = document_id unless document_id.nil?
+          command.query['commentsViewMode'] = comments_view_mode unless comments_view_mode.nil?
           command.query['includeTabsContent'] = include_tabs_content unless include_tabs_content.nil?
           command.query['suggestionsViewMode'] = suggestions_view_mode unless suggestions_view_mode.nil?
           command.query['fields'] = fields unless fields.nil?

@@ -664,6 +664,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1UrlContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -789,8 +795,10 @@ module Google
           property :diarization, as: 'diarization'
           property :language_auto, as: 'languageAuto', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto::Representation
       
+          collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints::Representation
       
+          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -1215,6 +1223,8 @@ module Google
       
           property :top_k, as: 'topK'
           property :top_p, as: 'topP'
+          property :translation_config, as: 'translationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1TranslationConfig::Representation
+      
         end
       end
       
@@ -1519,6 +1529,7 @@ module Google
       
           property :inline_data, as: 'inlineData', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Blob::Representation
       
+          property :media_processing, as: 'mediaProcessing'
           property :media_resolution, as: 'mediaResolution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution::Representation
       
           property :text, as: 'text'
@@ -1884,6 +1895,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1TranslationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :echo_target_language, as: 'echoTargetLanguage'
+          property :target_language_code, as: 'targetLanguageCode'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1UrlContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1964,6 +1983,7 @@ module Google
           property :delivery, as: 'delivery'
           property :duration, as: 'duration'
           property :gcs_uri, as: 'gcsUri'
+          property :resolution, as: 'resolution'
         end
       end
       

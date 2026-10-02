@@ -220,6 +220,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SharedDriveIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsageReport
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -602,6 +608,8 @@ module Google
       
           property :group_identity, as: 'groupIdentity', class: Google::Apis::AdminReportsV1::GroupIdentity, decorator: Google::Apis::AdminReportsV1::GroupIdentity::Representation
       
+          property :shared_drive_identity, as: 'sharedDriveIdentity', class: Google::Apis::AdminReportsV1::SharedDriveIdentity, decorator: Google::Apis::AdminReportsV1::SharedDriveIdentity::Representation
+      
           property :user_identity, as: 'userIdentity', class: Google::Apis::AdminReportsV1::UserIdentity, decorator: Google::Apis::AdminReportsV1::UserIdentity::Representation
       
         end
@@ -625,6 +633,14 @@ module Google
           property :relation, as: 'relation'
           property :title, as: 'title'
           property :type, as: 'type'
+        end
+      end
+      
+      class SharedDriveIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :shared_drive_name, as: 'sharedDriveName'
         end
       end
       

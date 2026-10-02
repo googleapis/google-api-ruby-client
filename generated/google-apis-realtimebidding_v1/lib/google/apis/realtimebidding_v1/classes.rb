@@ -88,6 +88,28 @@ module Google
         end
       end
       
+      # A request to add deals to a creative resource.
+      class AddDealsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The IDs of the deals to associate with the creative. This can
+        # include Programmatic Guaranteed, Private Auction, Preferred Deal, and
+        # Marketplace Package deal IDs. You can associate no more than 100 deal IDs per
+        # request.
+        # Corresponds to the JSON property `dealIds`
+        # @return [Array<String>]
+        attr_accessor :deal_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deal_ids = args[:deal_ids] if args.key?(:deal_ids)
+        end
+      end
+      
       # A request to start targeting the provided app IDs in a specific pretargeting
       # configuration. The pretargeting configuration itself specifies how these apps
       # are targeted. in PretargetingConfig.appTargeting.mobileAppTargeting.

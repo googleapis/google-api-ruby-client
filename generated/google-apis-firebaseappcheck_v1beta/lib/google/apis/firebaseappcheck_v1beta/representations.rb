@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaLimitedUseConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,18 @@ module Google
       end
       
       class GoogleFirebaseAppcheckV1betaListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -560,6 +578,13 @@ module Google
         end
       end
       
+      class GoogleFirebaseAppcheckV1betaLimitedUseConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :jti, as: 'jti'
+        end
+      end
+      
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -584,6 +609,23 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaService::Representation
       
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limited_use_config, as: 'limitedUseConfig', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaLimitedUseConfig, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaLimitedUseConfig::Representation
+      
+          property :token_ttl, as: 'tokenTtl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :token, as: 'token'
+          property :ttl, as: 'ttl'
         end
       end
       

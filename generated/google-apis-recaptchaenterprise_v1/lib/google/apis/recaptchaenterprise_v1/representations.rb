@@ -1227,6 +1227,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :android_package_name, as: 'androidPackageName'
+          property :client_signals_failed, as: 'clientSignalsFailed'
           property :create_time, as: 'createTime'
           property :hostname, as: 'hostname'
           property :invalid_reason, as: 'invalidReason'

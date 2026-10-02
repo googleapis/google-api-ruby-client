@@ -231,10 +231,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a build in progress. Note: This method only applies to global (non-
-        # regional) builds when using the legacy resource path `projects/`project_id`/
-        # builds/`id`:cancel`. To cancel regional builds, use the regional resource path:
-        # `projects/`project_id`/locations/`location`/builds/`id`:cancel`.
+        # Cancels a build in progress. Note: This method only cancels builds in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # builds/`id`:cancel. For all regions, use the regional resource path: `projects/
+        # `project_id`/locations/`location`/builds/`id`:cancel`.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -273,10 +273,9 @@ module Google
         # Starts a build with the specified configuration. This method returns a long-
         # running `Operation`, which includes the build ID. Pass the build ID to `
         # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note:
-        # This method only creates global (non-regional) builds when using the legacy
-        # resource path `projects/`project_id`/builds`. To create regional builds, use
-        # the regional resource path: `projects/`project_id`/locations/`location`/builds`
-        # .
+        # This method only creates builds in the "global" region when using the legacy
+        # resource path projects/`project_id`/builds. For all regions, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object
@@ -315,10 +314,10 @@ module Google
         
         # Returns information about a previously requested build. The `Build` that is
         # returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
-        # timing information. Note: This method only applies to global (non-regional)
-        # builds when using the legacy resource path `projects/`project_id`/builds/`id``.
-        # To fetch regional builds, use the regional resource path: `projects/`
-        # project_id`/locations/`location`/builds/`id``.
+        # timing information. Note: This method only gets builds in the "global" region
+        # when using the legacy resource path projects/`project_id`/builds/`id`. For all
+        # regions, use the regional resource path: `projects/`project_id`/locations/`
+        # location`/builds/`id``.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -357,9 +356,9 @@ module Google
         
         # Lists previously requested builds. Previously requested builds may still be in-
         # progress, or may have finished successfully or unsuccessfully. Note: This
-        # method only lists global (non-regional) builds when using the legacy resource
-        # path `projects/`project_id`/builds`. To list regional builds, use the regional
-        # resource path: `projects/`project_id`/locations/`location`/builds`.
+        # method only lists builds in the "global" region when using the legacy resource
+        # path projects/`project_id`/builds. For all regions, use the regional resource
+        # path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] filter
@@ -407,24 +406,24 @@ module Google
         end
         
         # Creates a new build based on the specified build. Note: This method only
-        # applies to global (non-regional) builds when using the legacy resource path `
-        # projects/`project_id`/builds/`id`:retry`. To retry regional builds, use the
-        # regional resource path: `projects/`project_id`/locations/`location`/builds/`id`
-        # :retry`. This method creates a new build using the original build request,
-        # which may or may not result in an identical build. For triggered builds: *
-        # Triggered builds resolve to a precise revision; therefore a retry of a
-        # triggered build will result in a build that uses the same revision. For non-
-        # triggered builds that specify `RepoSource`: * If the original build built from
-        # the tip of a branch, the retried build will build from the tip of that branch,
-        # which may not be the same revision as the original build. * If the original
-        # build specified a commit sha or revision ID, the retried build will use the
-        # identical source. For builds that specify `StorageSource`: * If the original
-        # build pulled source from Cloud Storage without specifying the generation of
-        # the object, the new build will use the current object, which may be different
-        # from the original build source. * If the original build pulled source from
-        # Cloud Storage and specified the generation of the object, the new build will
-        # attempt to use the same object, which may or may not be available depending on
-        # the bucket's lifecycle management settings.
+        # creates builds in the "global" region when using the legacy resource path
+        # projects/`project_id`/builds/`id`:retry. For all regions, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds/`id`:retry`.
+        # This method creates a new build using the original build request, which may or
+        # may not result in an identical build. For triggered builds: * Triggered builds
+        # resolve to a precise revision; therefore a retry of a triggered build will
+        # result in a build that uses the same revision. For non-triggered builds that
+        # specify `RepoSource`: * If the original build built from the tip of a branch,
+        # the retried build will build from the tip of that branch, which may not be the
+        # same revision as the original build. * If the original build specified a
+        # commit sha or revision ID, the retried build will use the identical source.
+        # For builds that specify `StorageSource`: * If the original build pulled source
+        # from Cloud Storage without specifying the generation of the object, the new
+        # build will use the current object, which may be different from the original
+        # build source. * If the original build pulled source from Cloud Storage and
+        # specified the generation of the object, the new build will attempt to use the
+        # same object, which may or may not be available depending on the bucket's
+        # lifecycle management settings.
         # @param [String] project_id
         #   Required. ID of the project.
         # @param [String] id
@@ -1014,10 +1013,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels a build in progress. Note: This method only applies to global (non-
-        # regional) builds when using the legacy resource path `projects/`project_id`/
-        # builds/`id`:cancel`. To cancel regional builds, use the regional resource path:
-        # `projects/`project_id`/locations/`location`/builds/`id`:cancel`.
+        # Cancels a build in progress. Note: This method only cancels builds in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # builds/`id`:cancel. For all regions, use the regional resource path: `projects/
+        # `project_id`/locations/`location`/builds/`id`:cancel`.
         # @param [String] name
         #   The name of the `Build` to cancel. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1054,10 +1053,9 @@ module Google
         # Starts a build with the specified configuration. This method returns a long-
         # running `Operation`, which includes the build ID. Pass the build ID to `
         # GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). Note:
-        # This method only creates global (non-regional) builds when using the legacy
-        # resource path `projects/`project_id`/builds`. To create regional builds, use
-        # the regional resource path: `projects/`project_id`/locations/`location`/builds`
-        # .
+        # This method only creates builds in the "global" region when using the legacy
+        # resource path projects/`project_id`/builds. For all regions, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] parent
         #   The parent resource where this build will be created. Format: `projects/`
         #   project`/locations/`location``
@@ -1096,10 +1094,10 @@ module Google
         
         # Returns information about a previously requested build. The `Build` that is
         # returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and
-        # timing information. Note: This method only applies to global (non-regional)
-        # builds when using the legacy resource path `projects/`project_id`/builds/`id``.
-        # To fetch regional builds, use the regional resource path: `projects/`
-        # project_id`/locations/`location`/builds/`id``.
+        # timing information. Note: This method only gets builds in the "global" region
+        # when using the legacy resource path projects/`project_id`/builds/`id`. For all
+        # regions, use the regional resource path: `projects/`project_id`/locations/`
+        # location`/builds/`id``.
         # @param [String] name
         #   The name of the `Build` to retrieve. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1138,9 +1136,9 @@ module Google
         
         # Lists previously requested builds. Previously requested builds may still be in-
         # progress, or may have finished successfully or unsuccessfully. Note: This
-        # method only lists global (non-regional) builds when using the legacy resource
-        # path `projects/`project_id`/builds`. To list regional builds, use the regional
-        # resource path: `projects/`project_id`/locations/`location`/builds`.
+        # method only lists builds in the "global" region when using the legacy resource
+        # path projects/`project_id`/builds. For all regions, use the regional resource
+        # path: `projects/`project_id`/locations/`location`/builds`.
         # @param [String] parent
         #   The parent of the collection of `Builds`. Format: `projects/`project`/
         #   locations/`location``
@@ -1188,24 +1186,24 @@ module Google
         end
         
         # Creates a new build based on the specified build. Note: This method only
-        # applies to global (non-regional) builds when using the legacy resource path `
-        # projects/`project_id`/builds/`id`:retry`. To retry regional builds, use the
-        # regional resource path: `projects/`project_id`/locations/`location`/builds/`id`
-        # :retry`. This method creates a new build using the original build request,
-        # which may or may not result in an identical build. For triggered builds: *
-        # Triggered builds resolve to a precise revision; therefore a retry of a
-        # triggered build will result in a build that uses the same revision. For non-
-        # triggered builds that specify `RepoSource`: * If the original build built from
-        # the tip of a branch, the retried build will build from the tip of that branch,
-        # which may not be the same revision as the original build. * If the original
-        # build specified a commit sha or revision ID, the retried build will use the
-        # identical source. For builds that specify `StorageSource`: * If the original
-        # build pulled source from Cloud Storage without specifying the generation of
-        # the object, the new build will use the current object, which may be different
-        # from the original build source. * If the original build pulled source from
-        # Cloud Storage and specified the generation of the object, the new build will
-        # attempt to use the same object, which may or may not be available depending on
-        # the bucket's lifecycle management settings.
+        # creates builds in the "global" region when using the legacy resource path
+        # projects/`project_id`/builds/`id`:retry. For all regions, use the regional
+        # resource path: `projects/`project_id`/locations/`location`/builds/`id`:retry`.
+        # This method creates a new build using the original build request, which may or
+        # may not result in an identical build. For triggered builds: * Triggered builds
+        # resolve to a precise revision; therefore a retry of a triggered build will
+        # result in a build that uses the same revision. For non-triggered builds that
+        # specify `RepoSource`: * If the original build built from the tip of a branch,
+        # the retried build will build from the tip of that branch, which may not be the
+        # same revision as the original build. * If the original build specified a
+        # commit sha or revision ID, the retried build will use the identical source.
+        # For builds that specify `StorageSource`: * If the original build pulled source
+        # from Cloud Storage without specifying the generation of the object, the new
+        # build will use the current object, which may be different from the original
+        # build source. * If the original build pulled source from Cloud Storage and
+        # specified the generation of the object, the new build will attempt to use the
+        # same object, which may or may not be available depending on the bucket's
+        # lifecycle management settings.
         # @param [String] name
         #   The name of the `Build` to retry. Format: `projects/`project`/locations/`
         #   location`/builds/`build``
@@ -1234,302 +1232,6 @@ module Google
           command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
           command.response_class = Google::Apis::CloudbuildV1::Operation
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `
-        # GitLabConfig`. This API is experimental
-        # @param [String] parent
-        #   Required. Name of the parent resource.
-        # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
-        # @param [String] gitlab_config_id
-        #   Optional. The ID to use for the GitLabConfig, which will become the final
-        #   component of the GitLabConfig’s resource name. gitlab_config_id must meet the
-        #   following requirements: + They must contain only alphanumeric characters and
-        #   dashes. + They can be 1-64 characters long. + They must begin and end with an
-        #   alphanumeric character
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_git_lab_config(parent, git_lab_config_object = nil, gitlab_config_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/gitLabConfigs', options)
-          command.request_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
-          command.request_object = git_lab_config_object
-          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['gitlabConfigId'] = gitlab_config_id unless gitlab_config_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `
-        # GitLabConfig`. This API is experimental
-        # @param [String] name
-        #   Required. The config resource name.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_git_lab_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `
-        # GitLabConfig`. This API is experimental
-        # @param [String] name
-        #   Required. The config resource name.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::GitLabConfig] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::GitLabConfig]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_git_lab_config(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
-          command.response_class = Google::Apis::CloudbuildV1::GitLabConfig
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `
-        # GitLabConfigs` for a given project. This API is experimental
-        # @param [String] parent
-        #   Required. Name of the parent resource
-        # @param [Fixnum] page_size
-        #   The maximum number of configs to return. The service may return fewer than
-        #   this value. If unspecified, at most 50 configs will be returned. The maximum
-        #   value is 1000;, values above 1000 will be coerced to 1000.
-        # @param [String] page_token
-        #   A page token, received from a previous ‘ListGitlabConfigsRequest’ call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to ‘ListGitlabConfigsRequest’ must match the call that
-        #   provided the page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::ListGitLabConfigsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::ListGitLabConfigsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_git_lab_configs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/gitLabConfigs', options)
-          command.response_representation = Google::Apis::CloudbuildV1::ListGitLabConfigsResponse::Representation
-          command.response_class = Google::Apis::CloudbuildV1::ListGitLabConfigsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an
-        # existing `GitLabConfig`. This API is experimental
-        # @param [String] name
-        #   Identifier. The resource name for the config.
-        # @param [Google::Apis::CloudbuildV1::GitLabConfig] git_lab_config_object
-        # @param [String] update_mask
-        #   Update mask for the resource. If this is set, the server will only update the
-        #   fields specified in the field mask. Otherwise, a full update of the mutable
-        #   resource fields will be performed.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_git_lab_config(name, git_lab_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::CloudbuildV1::GitLabConfig::Representation
-          command.request_object = git_lab_config_object
-          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Operation
-          command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab
-        # repository from a given GitLabConfig's connected repositories. This API is
-        # experimental.
-        # @param [String] config
-        #   Required. The name of the `GitLabConfig` to remove a connected repository.
-        #   Format: `projects/`project`/locations/`location`/gitLabConfigs/`config``
-        # @param [Google::Apis::CloudbuildV1::RemoveGitLabConnectedRepositoryRequest] remove_git_lab_connected_repository_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_git_lab_config_git_lab_connected_repository(config, remove_git_lab_connected_repository_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+config}:removeGitLabConnectedRepository', options)
-          command.request_representation = Google::Apis::CloudbuildV1::RemoveGitLabConnectedRepositoryRequest::Representation
-          command.request_object = remove_git_lab_connected_repository_request_object
-          command.response_representation = Google::Apis::CloudbuildV1::Empty::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Empty
-          command.params['config'] = config unless config.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting
-        # GitLab repositories to Cloud Build. This API is experimental.
-        # @param [String] parent
-        #   The name of the `GitLabConfig` that adds connected repositories. Format: `
-        #   projects/`project`/locations/`location`/gitLabConfigs/`config``
-        # @param [Google::Apis::CloudbuildV1::BatchCreateGitLabConnectedRepositoriesRequest] batch_create_git_lab_connected_repositories_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::Operation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::Operation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def batch_connected_repository_create_git_lab_connected_repositories(parent, batch_create_git_lab_connected_repositories_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/connectedRepositories:batchCreate', options)
-          command.request_representation = Google::Apis::CloudbuildV1::BatchCreateGitLabConnectedRepositoriesRequest::Representation
-          command.request_object = batch_create_git_lab_connected_repositories_request_object
-          command.response_representation = Google::Apis::CloudbuildV1::Operation::Representation
-          command.response_class = Google::Apis::CloudbuildV1::Operation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deprecated: CloudBuild GitLab V1 integration is deprecated. List all
-        # repositories for a given `GitLabConfig`. This API is experimental
-        # @param [String] parent
-        #   Required. Name of the parent resource.
-        # @param [Fixnum] page_size
-        #   The maximum number of repositories to return. The service may return fewer
-        #   than this value.
-        # @param [String] page_token
-        #   A page token, received from a previous ListGitLabRepositoriesRequest` call.
-        #   Provide this to retrieve the subsequent page. When paginating, all other
-        #   parameters provided to `ListGitLabRepositoriesRequest` must match the call
-        #   that provided the page token.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_git_lab_config_repos(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/repos', options)
-          command.response_representation = Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse::Representation
-          command.response_class = Google::Apis::CloudbuildV1::ListGitLabRepositoriesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

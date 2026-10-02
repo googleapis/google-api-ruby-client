@@ -512,10 +512,12 @@ module Google
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
-        #   Exadata resource by the update. The fields specified in the update_mask are
+        #   Exadata resource by the update. The fields specified in the `update_mask` are
         #   relative to the resource, not the full request. A field will be overwritten if
-        #   it is in the mask. If the user does not provide a mask then all fields will be
-        #   overwritten.
+        #   it is in the mask. If the user does not provide a mask then the service treats
+        #   this as an implied field mask equivalent to all fields that are populated (
+        #   have a non-empty value). To clear or unset a field, the field must be
+        #   explicitly specified in the `update_mask`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1889,8 +1891,10 @@ module Google
         #   UUID is not supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. A mask specifying which fields in th VM Cluster should be updated. A
-        #   field specified in the mask is overwritten. If a mask isn't provided then all
-        #   the fields in the VM Cluster are overwritten.
+        #   field specified in the mask is overwritten. If a mask isn't provided then the
+        #   service treats this as an implied field mask equivalent to all fields that are
+        #   populated (have a non-empty value). To clear or unset a field, the field must
+        #   be explicitly specified in the `update_mask`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

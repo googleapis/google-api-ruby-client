@@ -1958,8 +1958,8 @@ module Google
         attr_accessor :modifiers
       
         # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
-        # com//*" and "*.appspot.com/* forms are supported, where should be
-        # alphanumerical name.
+        # com//*" and "*.appspot.com/* forms are supported, where should be an
+        # alphanumeric name.
         # Corresponds to the JSON property `pattern`
         # @return [String]
         attr_accessor :pattern

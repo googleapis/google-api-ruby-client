@@ -274,6 +274,16 @@ module Google
         # @return [Google::Apis::ParametermanagerV1::ResourcePolicyMember]
         attr_accessor :policy_member
       
+        # Optional. Input only. Immutable. Tag keys and tag values that are bound to
+        # this Parameter. You must represent each item in the map as: `"" : ""`. For
+        # example, a single resource can have the following tags: ``` "123/environment":
+        # "production", "123/costCenter": "marketing", ``` Tags are used to organize and
+        # group resources. Tags can be used to control policy evaluation for the
+        # resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. [Output only] Update time stamp
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -291,6 +301,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @policy_member = args[:policy_member] if args.key?(:policy_member)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -298,6 +309,11 @@ module Google
       # Message describing ParameterVersion resource
       class ParameterVersion
         include Google::Apis::Core::Hashable
+      
+        # Optional. Output only. [Output only] The source of the checksum.
+        # Corresponds to the JSON property `checksumSource`
+        # @return [String]
+        attr_accessor :checksum_source
       
         # Output only. [Output only] Create time stamp
         # Corresponds to the JSON property `createTime`
@@ -343,6 +359,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @checksum_source = args[:checksum_source] if args.key?(:checksum_source)
           @create_time = args[:create_time] if args.key?(:create_time)
           @disabled = args[:disabled] if args.key?(:disabled)
           @kms_key_version = args[:kms_key_version] if args.key?(:kms_key_version)
@@ -362,6 +379,13 @@ module Google
         # @return [String]
         attr_accessor :data
       
+        # Optional. [Optional] The integrity checksum of the payload. If provided, the
+        # server will verify that the checksum matches the payload. If not provided, the
+        # server will generate the checksum.
+        # Corresponds to the JSON property `dataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :data_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -369,6 +393,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data = args[:data] if args.key?(:data)
+          @data_crc32c = args[:data_crc32c] if args.key?(:data_crc32c)
         end
       end
       

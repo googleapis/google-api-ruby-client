@@ -1795,7 +1795,7 @@ module Google
       class EnableRule
         include Google::Apis::Core::Hashable
       
-        # Client and resource project enable type.
+        # Deprecated: EnableType is not supported.
         # Corresponds to the JSON property `enableType`
         # @return [String]
         attr_accessor :enable_type
@@ -5299,7 +5299,8 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # The values removed from the parent consumer policy.
+        # Deprecated: This field is no longer populated. Use GetConsumerPolicy to verify
+        # the remaining enabled values.
         # Corresponds to the JSON property `removedValues`
         # @return [Array<String>]
         attr_accessor :removed_values

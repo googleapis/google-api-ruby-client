@@ -54,6 +54,56 @@ module Google
         end
       end
       
+      # ComponentMetrics contains sizing, timing, retries, and metrics for an exported
+      # component.
+      class ComponentMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Type of the exported component.
+        # Corresponds to the JSON property `componentType`
+        # @return [String]
+        attr_accessor :component_type
+      
+        # Duration of the component export.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # End timestamp of the component export.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Number of retries during the component export.
+        # Corresponds to the JSON property `retryCount`
+        # @return [Fixnum]
+        attr_accessor :retry_count
+      
+        # Size of the exported component in gigabytes.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Float]
+        attr_accessor :size_gb
+      
+        # Start timestamp of the component export.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_type = args[:component_type] if args.key?(:component_type)
+          @duration = args[:duration] if args.key?(:duration)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @retry_count = args[:retry_count] if args.key?(:retry_count)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
       # Controlled egress configuration.
       class ControlledEgressConfig
         include Google::Apis::Core::Hashable
@@ -301,10 +351,22 @@ module Google
       class ExportMetadata
         include Google::Apis::Core::Hashable
       
+        # Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite
+        # System Activity (ESA) direct dataset migration.
+        # Corresponds to the JSON property `esaSourceDatasetId`
+        # @return [String]
+        attr_accessor :esa_source_dataset_id
+      
         # Encryption key details for the exported artifact.
         # Corresponds to the JSON property `exportEncryptionKey`
         # @return [Google::Apis::LookerV1::ExportMetadataEncryptionKey]
         attr_accessor :export_encryption_key
+      
+        # ExportMetrics contains overall export execution metrics, timing, and component
+        # telemetry.
+        # Corresponds to the JSON property `exportMetrics`
+        # @return [Google::Apis::LookerV1::ExportMetrics]
+        attr_accessor :export_metrics
       
         # List of files created as part of export artifact (excluding the metadata). The
         # paths are relative to the folder containing the metadata.
@@ -346,7 +408,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @esa_source_dataset_id = args[:esa_source_dataset_id] if args.key?(:esa_source_dataset_id)
           @export_encryption_key = args[:export_encryption_key] if args.key?(:export_encryption_key)
+          @export_metrics = args[:export_metrics] if args.key?(:export_metrics)
           @file_paths = args[:file_paths] if args.key?(:file_paths)
           @looker_encryption_key = args[:looker_encryption_key] if args.key?(:looker_encryption_key)
           @looker_instance = args[:looker_instance] if args.key?(:looker_instance)
@@ -378,6 +442,32 @@ module Google
         def update!(**args)
           @cmek = args[:cmek] if args.key?(:cmek)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # ExportMetrics contains overall export execution metrics, timing, and component
+      # telemetry.
+      class ExportMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Metrics and telemetry for each exported component.
+        # Corresponds to the JSON property `componentMetrics`
+        # @return [Array<Google::Apis::LookerV1::ComponentMetrics>]
+        attr_accessor :component_metrics
+      
+        # Internal name of the instance being exported.
+        # Corresponds to the JSON property `instanceInternalName`
+        # @return [String]
+        attr_accessor :instance_internal_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component_metrics = args[:component_metrics] if args.key?(:component_metrics)
+          @instance_internal_name = args[:instance_internal_name] if args.key?(:instance_internal_name)
         end
       end
       
@@ -815,14 +905,14 @@ module Google
       class ListInstancesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of instances matching the request filters, up to the requested
-        # ListInstancesRequest.pageSize.
+        # The list of instances matching the request filters, up to the requested `
+        # pageSize`.
         # Corresponds to the JSON property `instances`
         # @return [Array<Google::Apis::LookerV1::Instance>]
         attr_accessor :instances
       
-        # If provided, a page token that can look up the next ListInstancesRequest.
-        # pageSize results. If empty, the results list is exhausted.
+        # If provided, a page token that can look up the next `pageSize` results. If
+        # empty, the results list is exhausted.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

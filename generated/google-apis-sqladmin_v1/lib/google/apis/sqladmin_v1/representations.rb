@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlueGreenDeployment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BlueGreenDeploymentInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloneContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +119,12 @@ module Google
       end
       
       class Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConfigDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +215,18 @@ module Google
       end
       
       class DenyMaintenancePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentTask
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeploymentTasks
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBlueGreenDeploymentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationPreference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +575,12 @@ module Google
       end
       
       class MySqlSyncConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NodeInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -664,6 +706,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestedConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reschedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -707,6 +755,18 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceRole
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceTargetPairedNode
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -826,6 +886,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlWorkloadCapturesStartReplayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStartRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStopReplayRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlWorkloadCapturesStopRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -862,7 +946,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartWorkloadCaptureContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StartWorkloadReplayContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopWorkloadCaptureContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopWorkloadReplayContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SwitchoverBlueGreenDeploymentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -875,6 +989,12 @@ module Google
       end
       
       class TargetMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetRole
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -917,6 +1037,18 @@ module Google
       end
       
       class Value
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadCapture
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadCapturesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1089,6 +1221,37 @@ module Google
         end
       end
       
+      class BlueGreenDeployment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          collection :deployment_mappings, as: 'deploymentMappings', class: Google::Apis::SqladminV1::SourceTargetPairedNode, decorator: Google::Apis::SqladminV1::SourceTargetPairedNode::Representation
+      
+          property :deployment_tasks, as: 'deploymentTasks', class: Google::Apis::SqladminV1::DeploymentTasks, decorator: Google::Apis::SqladminV1::DeploymentTasks::Representation
+      
+          property :description, as: 'description'
+          property :error_detail, as: 'errorDetail'
+          property :name, as: 'name'
+          property :requested_config, as: 'requestedConfig', class: Google::Apis::SqladminV1::RequestedConfig, decorator: Google::Apis::SqladminV1::RequestedConfig::Representation
+      
+          property :source_instance, as: 'sourceInstance'
+          property :state, as: 'state'
+          property :switchover_target_instance, as: 'switchoverTargetInstance'
+        end
+      end
+      
+      class BlueGreenDeploymentInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deployment_id, as: 'deploymentId'
+          property :source, as: 'source', class: Google::Apis::SqladminV1::SourceRole, decorator: Google::Apis::SqladminV1::SourceRole::Representation
+      
+          property :state, as: 'state'
+          property :target, as: 'target', class: Google::Apis::SqladminV1::TargetRole, decorator: Google::Apis::SqladminV1::TargetRole::Representation
+      
+        end
+      end
+      
       class CloneContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1113,6 +1276,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :type, as: 'type'
+        end
+      end
+      
+      class ConfigDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :source_value, as: 'sourceValue'
+          property :target_value, as: 'targetValue'
         end
       end
       
@@ -1213,6 +1385,8 @@ module Google
           property :database_center_integration_enabled, as: 'databaseCenterIntegrationEnabled'
           property :database_installed_version, as: 'databaseInstalledVersion'
           property :database_version, as: 'databaseVersion'
+          property :deployment_info, as: 'deploymentInfo', class: Google::Apis::SqladminV1::BlueGreenDeploymentInfo, decorator: Google::Apis::SqladminV1::BlueGreenDeploymentInfo::Representation
+      
           property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1::DiskEncryptionConfiguration::Representation
       
           property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1::DiskEncryptionStatus::Representation
@@ -1342,9 +1516,30 @@ module Google
         end
       end
       
+      class DeploymentTask
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :error_message, as: 'errorMessage'
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DeploymentTasks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :task, as: 'task', class: Google::Apis::SqladminV1::DeploymentTask, decorator: Google::Apis::SqladminV1::DeploymentTask::Representation
+      
+        end
+      end
+      
       class DiskEncryptionConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_source_log_encryption_enforced, as: 'cmekSourceLogEncryptionEnforced'
+          property :confidential_mode, as: 'confidentialMode'
           property :kind, as: 'kind'
           property :kms_key_name, as: 'kmsKeyName'
         end
@@ -1776,6 +1971,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
           property :backupdr_backup, as: 'backupdrBackup'
+          property :ignore_maintenance_version, as: 'ignoreMaintenanceVersion'
           property :restore_backup_context, as: 'restoreBackupContext', class: Google::Apis::SqladminV1::RestoreBackupContext, decorator: Google::Apis::SqladminV1::RestoreBackupContext::Representation
       
           collection :restore_instance_clear_overrides_field_names, as: 'restoreInstanceClearOverridesFieldNames'
@@ -1864,6 +2060,15 @@ module Google
         end
       end
       
+      class ListBlueGreenDeploymentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :blue_green_deployments, as: 'blueGreenDeployments', class: Google::Apis::SqladminV1::BlueGreenDeployment, decorator: Google::Apis::SqladminV1::BlueGreenDeployment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class LocationPreference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1924,6 +2129,17 @@ module Google
         end
       end
       
+      class NodeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection, as: 'connection'
+          property :dns, as: 'dns'
+          property :instance, as: 'instance'
+          collection :ip_mappings, as: 'ipMappings', class: Google::Apis::SqladminV1::IpMapping, decorator: Google::Apis::SqladminV1::IpMapping::Representation
+      
+        end
+      end
+      
       class OnPremisesConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1968,7 +2184,15 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
+          property :start_workload_capture_context, as: 'startWorkloadCaptureContext', class: Google::Apis::SqladminV1::StartWorkloadCaptureContext, decorator: Google::Apis::SqladminV1::StartWorkloadCaptureContext::Representation
+      
+          property :start_workload_replay_context, as: 'startWorkloadReplayContext', class: Google::Apis::SqladminV1::StartWorkloadReplayContext, decorator: Google::Apis::SqladminV1::StartWorkloadReplayContext::Representation
+      
           property :status, as: 'status'
+          property :stop_workload_capture_context, as: 'stopWorkloadCaptureContext', class: Google::Apis::SqladminV1::StopWorkloadCaptureContext, decorator: Google::Apis::SqladminV1::StopWorkloadCaptureContext::Representation
+      
+          property :stop_workload_replay_context, as: 'stopWorkloadReplayContext', class: Google::Apis::SqladminV1::StopWorkloadReplayContext, decorator: Google::Apis::SqladminV1::StopWorkloadReplayContext::Representation
+      
           property :sub_operation_type, as: 'subOperationType', class: Google::Apis::SqladminV1::SqlSubOperationType, decorator: Google::Apis::SqladminV1::SqlSubOperationType::Representation
       
           property :target_id, as: 'targetId'
@@ -2197,6 +2421,13 @@ module Google
         end
       end
       
+      class RequestedConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :database_version, as: 'databaseVersion'
+        end
+      end
+      
       class Reschedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2323,6 +2554,27 @@ module Google
         end
       end
       
+      class SourceRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_id, as: 'targetId', class: Google::Apis::SqladminV1::InstanceReference, decorator: Google::Apis::SqladminV1::InstanceReference::Representation
+      
+        end
+      end
+      
+      class SourceTargetPairedNode
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :diffs, as: 'diffs', class: Google::Apis::SqladminV1::ConfigDiff, decorator: Google::Apis::SqladminV1::ConfigDiff::Representation
+      
+          property :source, as: 'source', class: Google::Apis::SqladminV1::NodeInfo, decorator: Google::Apis::SqladminV1::NodeInfo::Representation
+      
+          property :state, as: 'state'
+          property :target, as: 'target', class: Google::Apis::SqladminV1::NodeInfo, decorator: Google::Apis::SqladminV1::NodeInfo::Representation
+      
+        end
+      end
+      
       class SqlActiveDirectoryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2401,12 +2653,14 @@ module Google
       class SqlInstancesResetReplicaSizeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
         end
       end
       
       class SqlInstancesStartExternalSyncRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
       
@@ -2420,6 +2674,7 @@ module Google
       class SqlInstancesVerifyExternalSyncSettingsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
           property :migration_type, as: 'migrationType'
           property :mysql_sync_config, as: 'mysqlSyncConfig', class: Google::Apis::SqladminV1::MySqlSyncConfig, decorator: Google::Apis::SqladminV1::MySqlSyncConfig::Representation
       
@@ -2503,6 +2758,38 @@ module Google
         end
       end
       
+      class SqlWorkloadCapturesStartReplayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_workload_replay_context, as: 'startWorkloadReplayContext', class: Google::Apis::SqladminV1::StartWorkloadReplayContext, decorator: Google::Apis::SqladminV1::StartWorkloadReplayContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStartRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :start_workload_capture_context, as: 'startWorkloadCaptureContext', class: Google::Apis::SqladminV1::StartWorkloadCaptureContext, decorator: Google::Apis::SqladminV1::StartWorkloadCaptureContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStopReplayRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_workload_replay_context, as: 'stopWorkloadReplayContext', class: Google::Apis::SqladminV1::StopWorkloadReplayContext, decorator: Google::Apis::SqladminV1::StopWorkloadReplayContext::Representation
+      
+        end
+      end
+      
+      class SqlWorkloadCapturesStopRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stop_workload_capture_context, as: 'stopWorkloadCaptureContext', class: Google::Apis::SqladminV1::StopWorkloadCaptureContext, decorator: Google::Apis::SqladminV1::StopWorkloadCaptureContext::Representation
+      
+        end
+      end
+      
       class SslCert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2564,12 +2851,49 @@ module Google
         end
       end
       
+      class StartWorkloadCaptureContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_live_replay, as: 'enableLiveReplay'
+          property :replay_instance, as: 'replayInstance'
+        end
+      end
+      
+      class StartWorkloadReplayContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replay_instance, as: 'replayInstance'
+          property :workload_id, as: 'workloadId'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopWorkloadCaptureContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :abort_live_replay, as: 'abortLiveReplay'
+        end
+      end
+      
+      class StopWorkloadReplayContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :replay_instance, as: 'replayInstance'
+          property :workload_id, as: 'workloadId'
+        end
+      end
+      
+      class SwitchoverBlueGreenDeploymentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2586,6 +2910,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metric, as: 'metric'
           property :target_value, as: 'targetValue'
+        end
+      end
+      
+      class TargetRole
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_id, as: 'sourceId', class: Google::Apis::SqladminV1::InstanceReference, decorator: Google::Apis::SqladminV1::InstanceReference::Representation
+      
         end
       end
       
@@ -2667,6 +2999,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :null_value, as: 'nullValue'
           property :value, as: 'value'
+        end
+      end
+      
+      class WorkloadCapture
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :replay_instance, as: 'replayInstance'
+          property :retention_days, as: 'retentionDays'
+          property :source_instance, as: 'sourceInstance'
+          property :start_time, as: 'startTime'
+          property :workload_capture_state, as: 'workloadCaptureState'
+          property :workload_id, as: 'workloadId'
+        end
+      end
+      
+      class WorkloadCapturesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :workload_captures, as: 'workloadCaptures', class: Google::Apis::SqladminV1::WorkloadCapture, decorator: Google::Apis::SqladminV1::WorkloadCapture::Representation
+      
         end
       end
     end

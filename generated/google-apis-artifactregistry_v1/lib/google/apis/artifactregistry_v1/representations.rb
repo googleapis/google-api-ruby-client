@@ -1738,6 +1738,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :file_id, as: 'fileId'
+          property :file_type, as: 'fileType'
         end
       end
       
@@ -1760,6 +1761,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :filename, as: 'filename'
           property :package_id, as: 'packageId'
+          hash :version_annotations, as: 'versionAnnotations'
           property :version_id, as: 'versionId'
         end
       end

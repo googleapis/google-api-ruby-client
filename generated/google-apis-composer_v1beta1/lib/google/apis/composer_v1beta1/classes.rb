@@ -533,6 +533,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Selects the environment mode that determines what settings are
+        # customizable and what features are available in the environment.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Identifier. The resource name of the environment, in the form: "projects/`
         # projectId`/locations/`locationId`/environments/`environmentId`" EnvironmentId
         # must start with a lowercase letter followed by up to 63 lowercase letters,
@@ -583,6 +589,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -878,6 +885,19 @@ module Google
           @is_failover_replica_available = args[:is_failover_replica_available] if args.key?(:is_failover_replica_available)
           @primary_gce_zone = args[:primary_gce_zone] if args.key?(:primary_gce_zone)
           @secondary_gce_zone = args[:secondary_gce_zone] if args.key?(:secondary_gce_zone)
+        end
+      end
+      
+      # Request to hibernate a Composer environment.
+      class HibernateEnvironmentRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1885,6 +1905,19 @@ module Google
       
       # Restart Airflow web server.
       class RestartWebServerRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Request to resume a Composer environment.
+      class ResumeEnvironmentRequest
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

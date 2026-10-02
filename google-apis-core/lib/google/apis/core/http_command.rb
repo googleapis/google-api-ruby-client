@@ -116,32 +116,30 @@ module Google
         end
 
         def do_retry(func, client)
-          
-            Retriable.retriable tries: options.retries + 1,
-                                max_elapsed_time: options.max_elapsed_time,
-                                base_interval: options.base_interval,
-                                max_interval: options.max_interval,
-                                multiplier: options.multiplier,
-                                on: RETRIABLE_ERRORS do |try|
-              # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
-              # auth to be re-attempted without having to retry all sorts of other failures like
-              # NotFound, etc
-              auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
-              Retriable.retriable tries: auth_tries,
-                                  on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
-                                  on_retry: proc { |*| refresh_authorization } do
-                send(func, client).tap do |result|
-                  yield result, nil if block_given?
-                end
+          Retriable.retriable tries: options.retries + 1,
+                              max_elapsed_time: options.max_elapsed_time,
+                              base_interval: options.base_interval,
+                              max_interval: options.max_interval,
+                              multiplier: options.multiplier,
+                              on: RETRIABLE_ERRORS do |try|
+            # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
+            # auth to be re-attempted without having to retry all sorts of other failures like
+            # NotFound, etc
+            auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
+            Retriable.retriable tries: auth_tries,
+                                on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
+                                on_retry: proc { |*| refresh_authorization } do
+              send(func, client).tap do |result|
+                yield result, nil if block_given?
               end
             end
-          rescue StandardError => e
-            if block_given?
-              yield nil, e
-            else
-              raise e
-            end
-          
+          end
+        rescue StandardError => e
+          if block_given?
+            yield nil, e
+          else
+            raise e
+          end
         end
 
         # Refresh the authorization authorization after a 401 error

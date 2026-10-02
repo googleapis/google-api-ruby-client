@@ -367,6 +367,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certification_authority, as: 'certificationAuthority'
           property :certification_code, as: 'certificationCode'
+          property :certification_document_link, as: 'certificationDocumentLink'
+          property :certification_label_link, as: 'certificationLabelLink'
           property :certification_name, as: 'certificationName'
           property :certification_value, as: 'certificationValue'
         end

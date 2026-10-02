@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddCommentReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddConditionalFormatRuleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -502,6 +514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommentAnchor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommentThread
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConditionValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -677,6 +701,18 @@ module Google
       end
       
       class DeleteBandingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteCommentReplyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteCommentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -964,6 +1000,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertCommentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertDimensionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1157,6 +1205,18 @@ module Google
       end
       
       class PointStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Post
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PostAuthor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1438,6 +1498,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateCommentPostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateConditionalFormatRuleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1622,6 +1688,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :chart, as: 'chart', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
+      
+        end
+      end
+      
+      class AddCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post, as: 'post', class: Google::Apis::SheetsV4::Post, decorator: Google::Apis::SheetsV4::Post::Representation
+      
+        end
+      end
+      
+      class AddCommentReplyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post, as: 'post', class: Google::Apis::SheetsV4::Post, decorator: Google::Apis::SheetsV4::Post::Representation
       
         end
       end
@@ -2030,6 +2113,7 @@ module Google
       class BatchUpdateSpreadsheetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comments_view_mode, as: 'commentsViewMode'
           property :include_spreadsheet_in_response, as: 'includeSpreadsheetInResponse'
           collection :requests, as: 'requests', class: Google::Apis::SheetsV4::Request, decorator: Google::Apis::SheetsV4::Request::Representation
       
@@ -2041,6 +2125,7 @@ module Google
       class BatchUpdateSpreadsheetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_update_state, as: 'commentUpdateState'
           collection :replies, as: 'replies', class: Google::Apis::SheetsV4::Response, decorator: Google::Apis::SheetsV4::Response::Representation
       
           property :spreadsheet_id, as: 'spreadsheetId'
@@ -2491,6 +2576,29 @@ module Google
         end
       end
       
+      class CommentAnchor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class CommentThread
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anchor_id, as: 'anchorId'
+          property :comment_id, as: 'commentId'
+          property :head_post, as: 'headPost', class: Google::Apis::SheetsV4::Post, decorator: Google::Apis::SheetsV4::Post::Representation
+      
+          property :plain_text_quote, as: 'plainTextQuote'
+          collection :replies, as: 'replies', class: Google::Apis::SheetsV4::Post, decorator: Google::Apis::SheetsV4::Post::Representation
+      
+          property :status, as: 'status'
+        end
+      end
+      
       class ConditionValue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2795,6 +2903,21 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :banded_range_id, as: 'bandedRangeId'
+        end
+      end
+      
+      class DeleteCommentReplyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :post_id, as: 'postId'
+        end
+      end
+      
+      class DeleteCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
         end
       end
       
@@ -3170,6 +3293,7 @@ module Google
       class GetSpreadsheetByDataFilterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :comments_view_mode, as: 'commentsViewMode'
           collection :data_filters, as: 'dataFilters', class: Google::Apis::SheetsV4::DataFilter, decorator: Google::Apis::SheetsV4::DataFilter::Representation
       
           property :exclude_tables_in_banded_ranges, as: 'excludeTablesInBandedRanges'
@@ -3265,6 +3389,24 @@ module Google
           property :bar_color_style, as: 'barColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+        end
+      end
+      
+      class InsertCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email_address, as: 'assigneeEmailAddress'
+          property :content, as: 'content'
+          property :coordinate, as: 'coordinate', class: Google::Apis::SheetsV4::GridCoordinate, decorator: Google::Apis::SheetsV4::GridCoordinate::Representation
+      
+        end
+      end
+      
+      class InsertCommentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_thread, as: 'commentThread', class: Google::Apis::SheetsV4::CommentThread, decorator: Google::Apis::SheetsV4::CommentThread::Representation
       
         end
       end
@@ -3622,6 +3764,34 @@ module Google
         end
       end
       
+      class Post
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assignee_email, as: 'assigneeEmail'
+          property :author, as: 'author', class: Google::Apis::SheetsV4::PostAuthor, decorator: Google::Apis::SheetsV4::PostAuthor::Representation
+      
+          property :comment_action, as: 'commentAction'
+          property :content, as: 'content'
+          property :content_html, as: 'contentHtml'
+          property :create_time, as: 'createTime'
+          property :deleted, as: 'deleted'
+          property :from_copied_spreadsheet, as: 'fromCopiedSpreadsheet'
+          property :from_imported_spreadsheet, as: 'fromImportedSpreadsheet'
+          property :post_id, as: 'postId'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PostAuthor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :anonymous, as: 'anonymous'
+          property :display_name, as: 'displayName'
+          property :me, as: 'me'
+          property :user, as: 'user'
+        end
+      end
+      
       class ProtectedRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3703,6 +3873,8 @@ module Google
       
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartRequest, decorator: Google::Apis::SheetsV4::AddChartRequest::Representation
       
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::SheetsV4::AddCommentReplyRequest, decorator: Google::Apis::SheetsV4::AddCommentReplyRequest::Representation
+      
           property :add_conditional_format_rule, as: 'addConditionalFormatRule', class: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::AddConditionalFormatRuleRequest::Representation
       
           property :add_data_source, as: 'addDataSource', class: Google::Apis::SheetsV4::AddDataSourceRequest, decorator: Google::Apis::SheetsV4::AddDataSourceRequest::Representation
@@ -3741,6 +3913,10 @@ module Google
       
           property :delete_banding, as: 'deleteBanding', class: Google::Apis::SheetsV4::DeleteBandingRequest, decorator: Google::Apis::SheetsV4::DeleteBandingRequest::Representation
       
+          property :delete_comment, as: 'deleteComment', class: Google::Apis::SheetsV4::DeleteCommentRequest, decorator: Google::Apis::SheetsV4::DeleteCommentRequest::Representation
+      
+          property :delete_comment_reply, as: 'deleteCommentReply', class: Google::Apis::SheetsV4::DeleteCommentReplyRequest, decorator: Google::Apis::SheetsV4::DeleteCommentReplyRequest::Representation
+      
           property :delete_conditional_format_rule, as: 'deleteConditionalFormatRule', class: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::DeleteConditionalFormatRuleRequest::Representation
       
           property :delete_data_source, as: 'deleteDataSource', class: Google::Apis::SheetsV4::DeleteDataSourceRequest, decorator: Google::Apis::SheetsV4::DeleteDataSourceRequest::Representation
@@ -3772,6 +3948,8 @@ module Google
           property :duplicate_sheet, as: 'duplicateSheet', class: Google::Apis::SheetsV4::DuplicateSheetRequest, decorator: Google::Apis::SheetsV4::DuplicateSheetRequest::Representation
       
           property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceRequest, decorator: Google::Apis::SheetsV4::FindReplaceRequest::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::SheetsV4::InsertCommentRequest, decorator: Google::Apis::SheetsV4::InsertCommentRequest::Representation
       
           property :insert_dimension, as: 'insertDimension', class: Google::Apis::SheetsV4::InsertDimensionRequest, decorator: Google::Apis::SheetsV4::InsertDimensionRequest::Representation
       
@@ -3808,6 +3986,8 @@ module Google
           property :update_cells, as: 'updateCells', class: Google::Apis::SheetsV4::UpdateCellsRequest, decorator: Google::Apis::SheetsV4::UpdateCellsRequest::Representation
       
           property :update_chart_spec, as: 'updateChartSpec', class: Google::Apis::SheetsV4::UpdateChartSpecRequest, decorator: Google::Apis::SheetsV4::UpdateChartSpecRequest::Representation
+      
+          property :update_comment_post, as: 'updateCommentPost', class: Google::Apis::SheetsV4::UpdateCommentPostRequest, decorator: Google::Apis::SheetsV4::UpdateCommentPostRequest::Representation
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleRequest::Representation
       
@@ -3847,6 +4027,8 @@ module Google
       
           property :add_chart, as: 'addChart', class: Google::Apis::SheetsV4::AddChartResponse, decorator: Google::Apis::SheetsV4::AddChartResponse::Representation
       
+          property :add_comment_reply, as: 'addCommentReply', class: Google::Apis::SheetsV4::AddCommentReplyResponse, decorator: Google::Apis::SheetsV4::AddCommentReplyResponse::Representation
+      
           property :add_data_source, as: 'addDataSource', class: Google::Apis::SheetsV4::AddDataSourceResponse, decorator: Google::Apis::SheetsV4::AddDataSourceResponse::Representation
       
           property :add_dimension_group, as: 'addDimensionGroup', class: Google::Apis::SheetsV4::AddDimensionGroupResponse, decorator: Google::Apis::SheetsV4::AddDimensionGroupResponse::Representation
@@ -3880,6 +4062,8 @@ module Google
           property :duplicate_sheet, as: 'duplicateSheet', class: Google::Apis::SheetsV4::DuplicateSheetResponse, decorator: Google::Apis::SheetsV4::DuplicateSheetResponse::Representation
       
           property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
+      
+          property :insert_comment, as: 'insertComment', class: Google::Apis::SheetsV4::InsertCommentResponse, decorator: Google::Apis::SheetsV4::InsertCommentResponse::Representation
       
           property :refresh_data_source, as: 'refreshDataSource', class: Google::Apis::SheetsV4::RefreshDataSourceResponse, decorator: Google::Apis::SheetsV4::RefreshDataSourceResponse::Representation
       
@@ -3976,6 +4160,8 @@ module Google
           collection :charts, as: 'charts', class: Google::Apis::SheetsV4::EmbeddedChart, decorator: Google::Apis::SheetsV4::EmbeddedChart::Representation
       
           collection :column_groups, as: 'columnGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
+      
+          collection :comment_anchors, as: 'commentAnchors', class: Google::Apis::SheetsV4::CommentAnchor, decorator: Google::Apis::SheetsV4::CommentAnchor::Representation
       
           collection :conditional_formats, as: 'conditionalFormats', class: Google::Apis::SheetsV4::ConditionalFormatRule, decorator: Google::Apis::SheetsV4::ConditionalFormatRule::Representation
       
@@ -4092,6 +4278,9 @@ module Google
       class Spreadsheet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :comments, as: 'comments', class: Google::Apis::SheetsV4::CommentThread, decorator: Google::Apis::SheetsV4::CommentThread::Representation
+      
+          property :comments_view_mode, as: 'commentsViewMode'
           collection :data_source_schedules, as: 'dataSourceSchedules', class: Google::Apis::SheetsV4::DataSourceRefreshSchedule, decorator: Google::Apis::SheetsV4::DataSourceRefreshSchedule::Representation
       
           collection :data_sources, as: 'dataSources', class: Google::Apis::SheetsV4::DataSource, decorator: Google::Apis::SheetsV4::DataSource::Representation
@@ -4373,6 +4562,15 @@ module Google
           property :chart_id, as: 'chartId'
           property :spec, as: 'spec', class: Google::Apis::SheetsV4::ChartSpec, decorator: Google::Apis::SheetsV4::ChartSpec::Representation
       
+        end
+      end
+      
+      class UpdateCommentPostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment_id, as: 'commentId'
+          property :content, as: 'content'
+          property :post_id, as: 'postId'
         end
       end
       

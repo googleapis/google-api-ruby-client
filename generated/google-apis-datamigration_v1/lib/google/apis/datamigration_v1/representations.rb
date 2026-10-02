@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EntityId
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityIssue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -292,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EntityStatusView
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ErrorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +311,24 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchEntitiesStatusViewResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchIssuesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchIssuesResponseIssuePosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,6 +419,18 @@ module Google
       end
       
       class IntComparisonFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Issue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IssueAggregateData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -706,6 +748,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservedPublicIpConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -779,6 +827,18 @@ module Google
       end
       
       class SequenceEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetDraftEntityDdlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SetDraftEntityDdlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1337,8 +1397,10 @@ module Google
           property :display_name, as: 'displayName'
           hash :global_settings, as: 'globalSettings'
           property :has_uncommitted_changes, as: 'hasUncommittedChanges'
+          property :latest_apply_time, as: 'latestApplyTime'
           property :latest_commit_id, as: 'latestCommitId'
           property :latest_commit_time, as: 'latestCommitTime'
+          property :latest_convert_time, as: 'latestConvertTime'
           property :name, as: 'name'
           property :source, as: 'source', class: Google::Apis::DatamigrationV1::DatabaseEngineInfo, decorator: Google::Apis::DatamigrationV1::DatabaseEngineInfo::Representation
       
@@ -1527,6 +1589,16 @@ module Google
         end
       end
       
+      class EntityId
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent_name, as: 'parentName'
+          property :parent_type, as: 'parentType'
+          property :short_name, as: 'shortName'
+          property :type, as: 'type'
+        end
+      end
+      
       class EntityIssue
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1570,6 +1642,26 @@ module Google
         end
       end
       
+      class EntityStatusView
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dependencies, as: 'dependencies', class: Google::Apis::DatamigrationV1::EntityId, decorator: Google::Apis::DatamigrationV1::EntityId::Representation
+      
+          property :draft_ddl_kind, as: 'draftDdlKind'
+          property :draft_entity, as: 'draftEntity', class: Google::Apis::DatamigrationV1::EntityId, decorator: Google::Apis::DatamigrationV1::EntityId::Representation
+      
+          property :edited_ddl_kind, as: 'editedDdlKind'
+          property :issues, as: 'issues', class: Google::Apis::DatamigrationV1::IssueAggregateData, decorator: Google::Apis::DatamigrationV1::IssueAggregateData::Representation
+      
+          property :resolved_issues, as: 'resolvedIssues', class: Google::Apis::DatamigrationV1::IssueAggregateData, decorator: Google::Apis::DatamigrationV1::IssueAggregateData::Representation
+      
+          property :source_entity, as: 'sourceEntity', class: Google::Apis::DatamigrationV1::EntityId, decorator: Google::Apis::DatamigrationV1::EntityId::Representation
+      
+          property :tested_entity, as: 'testedEntity'
+          property :was_applied, as: 'wasApplied'
+        end
+      end
+      
       class ErrorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1586,6 +1678,34 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class FetchEntitiesStatusViewResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DatamigrationV1::EntityStatusView, decorator: Google::Apis::DatamigrationV1::EntityStatusView::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchIssuesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :issues, as: 'issues', class: Google::Apis::DatamigrationV1::Issue, decorator: Google::Apis::DatamigrationV1::Issue::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchIssuesResponseIssuePosition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :column, as: 'column'
+          property :length, as: 'length'
+          property :line, as: 'line'
+          property :offset, as: 'offset'
         end
       end
       
@@ -1731,6 +1851,33 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :value, :numeric_string => true, as: 'value'
           property :value_comparison, as: 'valueComparison'
+        end
+      end
+      
+      class Issue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category_id, as: 'categoryId'
+          property :entity_full_name, as: 'entityFullName'
+          property :entity_type, as: 'entityType'
+          property :group_id, as: 'groupId'
+          property :id, as: 'id'
+          property :issue_origin, as: 'issueOrigin'
+          property :issue_state, as: 'issueState'
+          property :message, as: 'message'
+          property :position, as: 'position', class: Google::Apis::DatamigrationV1::FetchIssuesResponseIssuePosition, decorator: Google::Apis::DatamigrationV1::FetchIssuesResponseIssuePosition::Representation
+      
+          property :severity, as: 'severity'
+          property :type, as: 'type'
+        end
+      end
+      
+      class IssueAggregateData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_count, as: 'errorCount'
+          property :info_count, as: 'infoCount'
+          property :warning_count, as: 'warningCount'
         end
       end
       
@@ -2051,7 +2198,13 @@ module Google
           property :password, as: 'password'
           property :password_set, as: 'passwordSet'
           property :port, as: 'port'
+          property :private_connectivity, as: 'privateConnectivity', class: Google::Apis::DatamigrationV1::PrivateConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateConnectivity::Representation
+      
+          property :private_service_connect_connectivity, as: 'privateServiceConnectConnectivity', class: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity, decorator: Google::Apis::DatamigrationV1::PrivateServiceConnectConnectivity::Representation
+      
           property :ssl, as: 'ssl', class: Google::Apis::DatamigrationV1::SslConfig, decorator: Google::Apis::DatamigrationV1::SslConfig::Representation
+      
+          property :static_service_ip_connectivity, as: 'staticServiceIpConnectivity', class: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity, decorator: Google::Apis::DatamigrationV1::StaticServiceIpConnectivity::Representation
       
           property :username, as: 'username'
         end
@@ -2155,6 +2308,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dump_parallel_level, as: 'dumpParallelLevel'
+          property :load_parallel_level, as: 'loadParallelLevel'
         end
       end
       
@@ -2282,6 +2436,8 @@ module Google
           property :name, as: 'name'
           property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::DatamigrationV1::PscInterfaceConfig, decorator: Google::Apis::DatamigrationV1::PscInterfaceConfig::Representation
       
+          property :reserved_public_ip_config, as: 'reservedPublicIpConfig', class: Google::Apis::DatamigrationV1::ReservedPublicIpConfig, decorator: Google::Apis::DatamigrationV1::ReservedPublicIpConfig::Representation
+      
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :state, as: 'state'
@@ -2347,6 +2503,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
           property :serving_data, as: 'servingData'
+        end
+      end
+      
+      class ReservedPublicIpConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :egress_public_ips, as: 'egressPublicIps'
+          property :nat_ips_count, as: 'natIpsCount'
         end
       end
       
@@ -2456,6 +2620,24 @@ module Google
           property :max_value, :base64 => true, as: 'maxValue'
           property :min_value, :base64 => true, as: 'minValue'
           property :start_value, :base64 => true, as: 'startValue'
+        end
+      end
+      
+      class SetDraftEntityDdlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :based_on_ddl_kind, as: 'basedOnDdlKind'
+          property :ddl, as: 'ddl'
+          property :ddl_kind, as: 'ddlKind'
+          property :entity_name, as: 'entityName'
+          property :entity_type, as: 'entityType'
+          property :explanation, as: 'explanation'
+        end
+      end
+      
+      class SetDraftEntityDdlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -520,6 +520,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudKmsKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudKmsKeyAndCert
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoarseLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +808,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrollAppRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollAppResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollExistingApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnrollNewApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExpansionFile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -809,6 +851,12 @@ module Google
       end
       
       class ExternalAccountIds
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalContentLinkDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1277,6 +1325,12 @@ module Google
       end
       
       class OneTimeProductDiscountedOffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OneTimeProductGameRewardOffer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1817,6 +1871,24 @@ module Google
       end
       
       class RevokeSubscriptionPurchaseResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateAppSigningKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotateAppSigningKeyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RotatedCloudKmsKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2548,8 +2620,10 @@ module Google
       class AppStoreAppActiveApkSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :already_published_on_play, as: 'alreadyPublishedOnPlay'
           property :base_apk_id, as: 'baseApkId'
           collection :split_apk_id, as: 'splitApkId'
+          property :version_code, :numeric_string => true, as: 'versionCode'
         end
       end
       
@@ -3089,6 +3163,31 @@ module Google
         end
       end
       
+      class CertificateHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_hash_md5, as: 'certificateHashMd5'
+          property :certificate_hash_sha1, as: 'certificateHashSha1'
+          property :certificate_hash_sha256, as: 'certificateHashSha256'
+        end
+      end
+      
+      class CloudKmsKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crypto_key_version_resource, as: 'cryptoKeyVersionResource'
+        end
+      end
+      
+      class CloudKmsKeyAndCert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey', class: Google::Apis::AndroidpublisherV3::CloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKey::Representation
+      
+          property :pem_certificate, :base64 => true, as: 'pemCertificate'
+        end
+      end
+      
       class CoarseLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3519,6 +3618,43 @@ module Google
         end
       end
       
+      class EnrollAppRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enroll_existing_app, as: 'enrollExistingApp', class: Google::Apis::AndroidpublisherV3::EnrollExistingApp, decorator: Google::Apis::AndroidpublisherV3::EnrollExistingApp::Representation
+      
+          property :enroll_new_app, as: 'enrollNewApp', class: Google::Apis::AndroidpublisherV3::EnrollNewApp, decorator: Google::Apis::AndroidpublisherV3::EnrollNewApp::Representation
+      
+          property :pem_upload_certificate, :base64 => true, as: 'pemUploadCertificate'
+        end
+      end
+      
+      class EnrollAppResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :signing_certificate, as: 'signingCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+          property :upload_certificate, as: 'uploadCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+        end
+      end
+      
+      class EnrollExistingApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key, as: 'cloudKmsKey', class: Google::Apis::AndroidpublisherV3::CloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKey::Representation
+      
+        end
+      end
+      
+      class EnrollNewApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key_and_cert, as: 'cloudKmsKeyAndCert', class: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert::Representation
+      
+        end
+      end
+      
       class ExpansionFile
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3552,6 +3688,15 @@ module Google
         end
       end
       
+      class ExternalContentLinkDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_app_category, as: 'externalAppCategory'
+          property :installed_app_package, as: 'installedAppPackage'
+          property :link_type, as: 'linkType'
+        end
+      end
+      
       class ExternalOfferDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3576,6 +3721,8 @@ module Google
           property :current_pre_tax_amount, as: 'currentPreTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
       
           property :current_tax_amount, as: 'currentTaxAmount', class: Google::Apis::AndroidpublisherV3::Price, decorator: Google::Apis::AndroidpublisherV3::Price::Representation
+      
+          property :external_content_link_details, as: 'externalContentLinkDetails', class: Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalContentLinkDetails::Representation
       
           property :external_offer_details, as: 'externalOfferDetails', class: Google::Apis::AndroidpublisherV3::ExternalOfferDetails, decorator: Google::Apis::AndroidpublisherV3::ExternalOfferDetails::Representation
       
@@ -4357,6 +4504,13 @@ module Google
         end
       end
       
+      class OneTimeProductGameRewardOffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :redemption_limit, :numeric_string => true, as: 'redemptionLimit'
+        end
+      end
+      
       class OneTimeProductListing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4370,6 +4524,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :discounted_offer, as: 'discountedOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductDiscountedOffer::Representation
+      
+          property :game_reward_offer, as: 'gameRewardOffer', class: Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer, decorator: Google::Apis::AndroidpublisherV3::OneTimeProductGameRewardOffer::Representation
       
           property :offer_id, as: 'offerId'
           collection :offer_tags, as: 'offerTags', class: Google::Apis::AndroidpublisherV3::OfferTag, decorator: Google::Apis::AndroidpublisherV3::OfferTag::Representation
@@ -5215,6 +5371,32 @@ module Google
         end
       end
       
+      class RotateAppSigningKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_rotation_reason, as: 'keyRotationReason'
+          property :rotated_cloud_kms_key, as: 'rotatedCloudKmsKey', class: Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey, decorator: Google::Apis::AndroidpublisherV3::RotatedCloudKmsKey::Representation
+      
+        end
+      end
+      
+      class RotateAppSigningKeyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rotated_key_certificate, as: 'rotatedKeyCertificate', class: Google::Apis::AndroidpublisherV3::CertificateHashes, decorator: Google::Apis::AndroidpublisherV3::CertificateHashes::Representation
+      
+        end
+      end
+      
+      class RotatedCloudKmsKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_kms_key_and_cert, as: 'cloudKmsKeyAndCert', class: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert, decorator: Google::Apis::AndroidpublisherV3::CloudKmsKeyAndCert::Representation
+      
+          property :signing_certificate_lineage, :base64 => true, as: 'signingCertificateLineage'
+        end
+      end
+      
       class SafetyLabelsUpdateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -5764,6 +5946,7 @@ module Google
       class UpdateAppStoreHostedAppResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :update_id, as: 'updateId'
         end
       end
       

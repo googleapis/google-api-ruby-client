@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1beta1AnrRateMetricSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1beta1AppVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -160,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +191,18 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -366,6 +402,15 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1beta1AnonRssAndSwapMemoryUsageMetricSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :freshness_info, as: 'freshnessInfo', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1FreshnessInfo, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1FreshnessInfo::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1beta1AnrRateMetricSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -388,6 +433,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :version_code, :numeric_string => true, as: 'versionCode'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1BitmapMemoryUsageMetricSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :freshness_info, as: 'freshnessInfo', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1FreshnessInfo, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1FreshnessInfo::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -576,6 +630,29 @@ module Google
         end
       end
       
+      class GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1TimelineSpec::Representation
+      
+          property :user_cohort, as: 'userCohort'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryAnonRssAndSwapMemoryUsageMetricSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1MetricsRow, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1MetricsRow::Representation
+      
+        end
+      end
+      
       class GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -591,6 +668,29 @@ module Google
       end
       
       class GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rows, as: 'rows', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1MetricsRow, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1MetricsRow::Representation
+      
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dimensions, as: 'dimensions'
+          property :filter, as: 'filter'
+          collection :metrics, as: 'metrics'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :timeline_spec, as: 'timelineSpec', class: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1TimelineSpec, decorator: Google::Apis::PlaydeveloperreportingV1beta1::GooglePlayDeveloperReportingV1beta1TimelineSpec::Representation
+      
+          property :user_cohort, as: 'userCohort'
+        end
+      end
+      
+      class GooglePlayDeveloperReportingV1beta1QueryBitmapMemoryUsageMetricSetResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'

@@ -21,7 +21,8 @@ module Google
   module Apis
     # Agent Identity Credentials API
     #
-    # agentidentitycredentials.googleapis.com API.
+    # The Agent Identity Credentials API retrieves and finalizes authorization
+    # credentials for auth providers.
     #
     # @see https://cloud.google.com/iam/docs/
     module AgentidentitycredentialsV1

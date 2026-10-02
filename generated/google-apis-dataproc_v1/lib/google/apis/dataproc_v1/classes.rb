@@ -754,7 +754,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
-        # Optional. Disk type.
+        # Optional. Deprecated: Use type instead.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type
@@ -773,6 +773,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :provisioned_throughput
       
+        # Optional. Attached disk type. Currently only supports Hyperdisks. See https://
+        # cloud.google.com/compute/docs/disks/hyperdisks. Note: Hyperdisk Balanced High
+        # Availability is not supported.Allowed values are: hyperdisk-balanced hyperdisk-
+        # extreme hyperdisk-ml hyperdisk-throughput
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -783,6 +791,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @provisioned_iops = args[:provisioned_iops] if args.key?(:provisioned_iops)
           @provisioned_throughput = args[:provisioned_throughput] if args.key?(:provisioned_throughput)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1910,7 +1919,7 @@ module Google
       class ClusterStatus
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. Details of cluster's state.
+        # Optional. Details of cluster's state.
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
@@ -4817,8 +4826,8 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. Job state details, such as an error description if the
-        # state is ERROR.
+        # Optional. Job state details, such as an error description if the state is
+        # ERROR.
         # Corresponds to the JSON property `details`
         # @return [String]
         attr_accessor :details
@@ -5586,7 +5595,7 @@ module Google
         # dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the
         # metric course (for the SPARK metric source (any Spark metric (https://spark.
         # apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide
-        # metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use
+        # metrics in the following format:METRIC_SOURCE:INSTANCE :GROUP:METRIC Use
         # camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:
         # AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:
         # Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.

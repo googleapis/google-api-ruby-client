@@ -886,6 +886,32 @@ module Google
         end
       end
       
+      # Configuration for a limited-use App Check token.
+      class GoogleFirebaseAppcheckV1betaLimitedUseConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the desired `jti` claim (Section 4.1.7 of RFC 7519) in the
+        # returned App Check token. Limited-use App Check tokens with the same `jti`
+        # will be counted as the same token for the purposes of replay protection. The
+        # size of this field is limited to 500 bytes. If specified, its length must be
+        # at least 16 bytes. If this field is omitted or is empty, a randomly generated `
+        # jti` claim with length between 16 and 500 bytes (inclusive) will be used in
+        # the returned App Check token. Leaving this field empty is only recommended if
+        # your custom attestation provider itself is not vulnerable to replay attacks.
+        # Corresponds to the JSON property `jti`
+        # @return [String]
+        attr_accessor :jti
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @jti = args[:jti] if args.key?(:jti)
+        end
+      end
+      
       # Response message for the ListDebugTokens method.
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         include Google::Apis::Core::Hashable
@@ -970,6 +996,66 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @services = args[:services] if args.key?(:services)
+        end
+      end
+      
+      # Request message for the MintAppCheckToken method.
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a limited-use App Check token.
+        # Corresponds to the JSON property `limitedUseConfig`
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaLimitedUseConfig]
+        attr_accessor :limited_use_config
+      
+        # Optional. If specified, the returned App Check token will be a session token,
+        # valid for the specified duration. Must be between 30 minutes and 7 days,
+        # inclusive.
+        # Corresponds to the JSON property `tokenTtl`
+        # @return [String]
+        attr_accessor :token_ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limited_use_config = args[:limited_use_config] if args.key?(:limited_use_config)
+          @token_ttl = args[:token_ttl] if args.key?(:token_ttl)
+        end
+      end
+      
+      # Response message for the MintAppCheckToken method.
+      class GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
+        include Google::Apis::Core::Hashable
+      
+        # The App Check token, used to access backend services protected by App Check.
+        # App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
+        # containing claims that identify the attested app and GCP project. This token
+        # is used to access Google services protected by App Check. These tokens can
+        # also be [verified by your own custom backends](https://firebase.google.com/
+        # docs/app-check/custom-resource-backend) using the Firebase Admin SDK or third-
+        # party libraries.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # The duration from the time this token is minted until its expiration. This
+        # field is intended to ease client-side token management, since the client may
+        # have clock skew, but is still able to accurately measure a duration.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @token = args[:token] if args.key?(:token)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       

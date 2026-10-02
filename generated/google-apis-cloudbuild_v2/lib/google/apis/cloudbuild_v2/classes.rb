@@ -1077,6 +1077,203 @@ module Google
         end
       end
       
+      # Message describing PipelineRun object
+      class GoogleDevtoolsCloudbuildV2PipelineRun
+        include Google::Apis::Core::Hashable
+      
+        # User annotations. See https://google.aip.dev/128#annotations
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. List of TaskRun and Run names and PipelineTask names for children
+        # of this PipelineRun.
+        # Corresponds to the JSON property `childReferences`
+        # @return [Array<Google::Apis::CloudbuildV2::ChildStatusReference>]
+        attr_accessor :child_references
+      
+        # Output only. Time the pipeline completed.
+        # Corresponds to the JSON property `completionTime`
+        # @return [String]
+        attr_accessor :completion_time
+      
+        # Output only. Kubernetes Conditions convention for PipelineRun status and error.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition>]
+        attr_accessor :conditions
+      
+        # Output only. Time at which the request to create the `PipelineRun` was
+        # received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Needed for declarative-friendly resources.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. FinallyStartTime is when all non-finally tasks have been
+        # completed and only finally tasks are being executed. +optional
+        # Corresponds to the JSON property `finallyStartTime`
+        # @return [String]
+        attr_accessor :finally_start_time
+      
+        # Output only. GCB default params.
+        # Corresponds to the JSON property `gcbParams`
+        # @return [Hash<String,String>]
+        attr_accessor :gcb_params
+      
+        # Output only. The `PipelineRun` name with format `projects/`project`/locations/`
+        # location`/pipelineRuns/`pipeline_run``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Params is a list of parameter names and values.
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::CloudbuildV2::Param>]
+        attr_accessor :params
+      
+        # PipelineRef can be used to refer to a specific instance of a Pipeline.
+        # Corresponds to the JSON property `pipelineRef`
+        # @return [Google::Apis::CloudbuildV2::PipelineRef]
+        attr_accessor :pipeline_ref
+      
+        # Pipelinerun status the user can provide. Used for cancellation.
+        # Corresponds to the JSON property `pipelineRunStatus`
+        # @return [String]
+        attr_accessor :pipeline_run_status
+      
+        # PipelineSpec defines the desired state of Pipeline.
+        # Corresponds to the JSON property `pipelineSpec`
+        # @return [Google::Apis::CloudbuildV2::PipelineSpec]
+        attr_accessor :pipeline_spec
+      
+        # Output only. Inline pipelineSpec yaml string, used by workflow run requests.
+        # Corresponds to the JSON property `pipelineSpecYaml`
+        # @return [String]
+        attr_accessor :pipeline_spec_yaml
+      
+        # Provenance configuration.
+        # Corresponds to the JSON property `provenance`
+        # @return [Google::Apis::CloudbuildV2::Provenance]
+        attr_accessor :provenance
+      
+        # Output only. The `Record` of this `PipelineRun`. Format: `projects/`project`/
+        # locations/`location`/results/`result_id`/records/`record_id``
+        # Corresponds to the JSON property `record`
+        # @return [String]
+        attr_accessor :record
+      
+        # PipelineSpec defines the desired state of Pipeline.
+        # Corresponds to the JSON property `resolvedPipelineSpec`
+        # @return [Google::Apis::CloudbuildV2::PipelineSpec]
+        attr_accessor :resolved_pipeline_spec
+      
+        # Optional. Output only. List of results written out by the pipeline's
+        # containers
+        # Corresponds to the JSON property `results`
+        # @return [Array<Google::Apis::CloudbuildV2::PipelineRunResult>]
+        attr_accessor :results
+      
+        # Security configuration.
+        # Corresponds to the JSON property `security`
+        # @return [Google::Apis::CloudbuildV2::Security]
+        attr_accessor :security
+      
+        # Service account used in the Pipeline. Deprecated; please use security.
+        # service_account instead.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # Output only. List of tasks that were skipped due to when expressions
+        # evaluating to false.
+        # Corresponds to the JSON property `skippedTasks`
+        # @return [Array<Google::Apis::CloudbuildV2::SkippedTask>]
+        attr_accessor :skipped_tasks
+      
+        # Output only. Time the pipeline is actually started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # TimeoutFields allows granular specification of pipeline, task, and finally
+        # timeouts
+        # Corresponds to the JSON property `timeouts`
+        # @return [Google::Apis::CloudbuildV2::TimeoutFields]
+        attr_accessor :timeouts
+      
+        # Output only. A unique identifier for the `PipelineRun`.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Time at which the request to update the `PipelineRun` was
+        # received.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Configuration for the worker.
+        # Corresponds to the JSON property `worker`
+        # @return [Google::Apis::CloudbuildV2::Worker]
+        attr_accessor :worker
+      
+        # Output only. The WorkerPool used to run this PipelineRun.
+        # Corresponds to the JSON property `workerPool`
+        # @return [String]
+        attr_accessor :worker_pool
+      
+        # Output only. The Workflow used to create this PipelineRun.
+        # Corresponds to the JSON property `workflow`
+        # @return [String]
+        attr_accessor :workflow
+      
+        # Workspaces is a list of WorkspaceBindings from volumes to workspaces.
+        # Corresponds to the JSON property `workspaces`
+        # @return [Array<Google::Apis::CloudbuildV2::WorkspaceBinding>]
+        attr_accessor :workspaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @child_references = args[:child_references] if args.key?(:child_references)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @finally_start_time = args[:finally_start_time] if args.key?(:finally_start_time)
+          @gcb_params = args[:gcb_params] if args.key?(:gcb_params)
+          @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
+          @pipeline_ref = args[:pipeline_ref] if args.key?(:pipeline_ref)
+          @pipeline_run_status = args[:pipeline_run_status] if args.key?(:pipeline_run_status)
+          @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
+          @pipeline_spec_yaml = args[:pipeline_spec_yaml] if args.key?(:pipeline_spec_yaml)
+          @provenance = args[:provenance] if args.key?(:provenance)
+          @record = args[:record] if args.key?(:record)
+          @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
+          @results = args[:results] if args.key?(:results)
+          @security = args[:security] if args.key?(:security)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @skipped_tasks = args[:skipped_tasks] if args.key?(:skipped_tasks)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @timeouts = args[:timeouts] if args.key?(:timeouts)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @worker = args[:worker] if args.key?(:worker)
+          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+          @workflow = args[:workflow] if args.key?(:workflow)
+          @workspaces = args[:workspaces] if args.key?(:workspaces)
+        end
+      end
+      
       # ServiceDirectoryConfig represents Service Directory configuration for a
       # connection.
       class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig
@@ -1631,203 +1828,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Message describing PipelineRun object
-      class PipelineRun
-        include Google::Apis::Core::Hashable
-      
-        # User annotations. See https://google.aip.dev/128#annotations
-        # Corresponds to the JSON property `annotations`
-        # @return [Hash<String,String>]
-        attr_accessor :annotations
-      
-        # Output only. List of TaskRun and Run names and PipelineTask names for children
-        # of this PipelineRun.
-        # Corresponds to the JSON property `childReferences`
-        # @return [Array<Google::Apis::CloudbuildV2::ChildStatusReference>]
-        attr_accessor :child_references
-      
-        # Output only. Time the pipeline completed.
-        # Corresponds to the JSON property `completionTime`
-        # @return [String]
-        attr_accessor :completion_time
-      
-        # Output only. Kubernetes Conditions convention for PipelineRun status and error.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::CloudbuildV2::GoogleDevtoolsCloudbuildV2Condition>]
-        attr_accessor :conditions
-      
-        # Output only. Time at which the request to create the `PipelineRun` was
-        # received.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Needed for declarative-friendly resources.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Output only. FinallyStartTime is when all non-finally tasks have been
-        # completed and only finally tasks are being executed. +optional
-        # Corresponds to the JSON property `finallyStartTime`
-        # @return [String]
-        attr_accessor :finally_start_time
-      
-        # Output only. GCB default params.
-        # Corresponds to the JSON property `gcbParams`
-        # @return [Hash<String,String>]
-        attr_accessor :gcb_params
-      
-        # Output only. The `PipelineRun` name with format `projects/`project`/locations/`
-        # location`/pipelineRuns/`pipeline_run``
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Params is a list of parameter names and values.
-        # Corresponds to the JSON property `params`
-        # @return [Array<Google::Apis::CloudbuildV2::Param>]
-        attr_accessor :params
-      
-        # PipelineRef can be used to refer to a specific instance of a Pipeline.
-        # Corresponds to the JSON property `pipelineRef`
-        # @return [Google::Apis::CloudbuildV2::PipelineRef]
-        attr_accessor :pipeline_ref
-      
-        # Pipelinerun status the user can provide. Used for cancellation.
-        # Corresponds to the JSON property `pipelineRunStatus`
-        # @return [String]
-        attr_accessor :pipeline_run_status
-      
-        # PipelineSpec defines the desired state of Pipeline.
-        # Corresponds to the JSON property `pipelineSpec`
-        # @return [Google::Apis::CloudbuildV2::PipelineSpec]
-        attr_accessor :pipeline_spec
-      
-        # Output only. Inline pipelineSpec yaml string, used by workflow run requests.
-        # Corresponds to the JSON property `pipelineSpecYaml`
-        # @return [String]
-        attr_accessor :pipeline_spec_yaml
-      
-        # Provenance configuration.
-        # Corresponds to the JSON property `provenance`
-        # @return [Google::Apis::CloudbuildV2::Provenance]
-        attr_accessor :provenance
-      
-        # Output only. The `Record` of this `PipelineRun`. Format: `projects/`project`/
-        # locations/`location`/results/`result_id`/records/`record_id``
-        # Corresponds to the JSON property `record`
-        # @return [String]
-        attr_accessor :record
-      
-        # PipelineSpec defines the desired state of Pipeline.
-        # Corresponds to the JSON property `resolvedPipelineSpec`
-        # @return [Google::Apis::CloudbuildV2::PipelineSpec]
-        attr_accessor :resolved_pipeline_spec
-      
-        # Optional. Output only. List of results written out by the pipeline's
-        # containers
-        # Corresponds to the JSON property `results`
-        # @return [Array<Google::Apis::CloudbuildV2::PipelineRunResult>]
-        attr_accessor :results
-      
-        # Security configuration.
-        # Corresponds to the JSON property `security`
-        # @return [Google::Apis::CloudbuildV2::Security]
-        attr_accessor :security
-      
-        # Service account used in the Pipeline. Deprecated; please use security.
-        # service_account instead.
-        # Corresponds to the JSON property `serviceAccount`
-        # @return [String]
-        attr_accessor :service_account
-      
-        # Output only. List of tasks that were skipped due to when expressions
-        # evaluating to false.
-        # Corresponds to the JSON property `skippedTasks`
-        # @return [Array<Google::Apis::CloudbuildV2::SkippedTask>]
-        attr_accessor :skipped_tasks
-      
-        # Output only. Time the pipeline is actually started.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
-        # TimeoutFields allows granular specification of pipeline, task, and finally
-        # timeouts
-        # Corresponds to the JSON property `timeouts`
-        # @return [Google::Apis::CloudbuildV2::TimeoutFields]
-        attr_accessor :timeouts
-      
-        # Output only. A unique identifier for the `PipelineRun`.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. Time at which the request to update the `PipelineRun` was
-        # received.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        # Configuration for the worker.
-        # Corresponds to the JSON property `worker`
-        # @return [Google::Apis::CloudbuildV2::Worker]
-        attr_accessor :worker
-      
-        # Output only. The WorkerPool used to run this PipelineRun.
-        # Corresponds to the JSON property `workerPool`
-        # @return [String]
-        attr_accessor :worker_pool
-      
-        # Output only. The Workflow used to create this PipelineRun.
-        # Corresponds to the JSON property `workflow`
-        # @return [String]
-        attr_accessor :workflow
-      
-        # Workspaces is a list of WorkspaceBindings from volumes to workspaces.
-        # Corresponds to the JSON property `workspaces`
-        # @return [Array<Google::Apis::CloudbuildV2::WorkspaceBinding>]
-        attr_accessor :workspaces
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotations = args[:annotations] if args.key?(:annotations)
-          @child_references = args[:child_references] if args.key?(:child_references)
-          @completion_time = args[:completion_time] if args.key?(:completion_time)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @etag = args[:etag] if args.key?(:etag)
-          @finally_start_time = args[:finally_start_time] if args.key?(:finally_start_time)
-          @gcb_params = args[:gcb_params] if args.key?(:gcb_params)
-          @name = args[:name] if args.key?(:name)
-          @params = args[:params] if args.key?(:params)
-          @pipeline_ref = args[:pipeline_ref] if args.key?(:pipeline_ref)
-          @pipeline_run_status = args[:pipeline_run_status] if args.key?(:pipeline_run_status)
-          @pipeline_spec = args[:pipeline_spec] if args.key?(:pipeline_spec)
-          @pipeline_spec_yaml = args[:pipeline_spec_yaml] if args.key?(:pipeline_spec_yaml)
-          @provenance = args[:provenance] if args.key?(:provenance)
-          @record = args[:record] if args.key?(:record)
-          @resolved_pipeline_spec = args[:resolved_pipeline_spec] if args.key?(:resolved_pipeline_spec)
-          @results = args[:results] if args.key?(:results)
-          @security = args[:security] if args.key?(:security)
-          @service_account = args[:service_account] if args.key?(:service_account)
-          @skipped_tasks = args[:skipped_tasks] if args.key?(:skipped_tasks)
-          @start_time = args[:start_time] if args.key?(:start_time)
-          @timeouts = args[:timeouts] if args.key?(:timeouts)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
-          @worker = args[:worker] if args.key?(:worker)
-          @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
-          @workflow = args[:workflow] if args.key?(:workflow)
-          @workspaces = args[:workspaces] if args.key?(:workspaces)
         end
       end
       

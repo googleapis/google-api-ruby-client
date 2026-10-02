@@ -280,6 +280,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Hibernates (pauses) a running environment. It requests the environment to
+        # switch to the HIBERNATED state, keeping its data and minimizing cost, but not
+        # running any DAGs. This method is supported for Cloud Composer environments in
+        # development mode in versions composer-3-airflow-*.*.*-build.* and newer.
+        # @param [String] name
+        #   Required. The resource name of the environment to hibernate, in the form: "
+        #   projects/`project`/locations/`location`/environments/`environment`"
+        # @param [Google::Apis::ComposerV1beta1::HibernateEnvironmentRequest] hibernate_environment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def hibernate_environment(name, hibernate_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:hibernate', options)
+          command.request_representation = Google::Apis::ComposerV1beta1::HibernateEnvironmentRequest::Representation
+          command.request_object = hibernate_environment_request_object
+          command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ComposerV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # List environments.
         # @param [String] parent
         #   List environments in the given project and location, in the form: "projects/`
@@ -534,6 +571,43 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:restartWebServer', options)
           command.request_representation = Google::Apis::ComposerV1beta1::RestartWebServerRequest::Representation
           command.request_object = restart_web_server_request_object
+          command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ComposerV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resumes (unpauses) a hibernated environment. It requests the environment to
+        # switch to the RUNNING state, so that it is ready to use and run DAGs. This
+        # method is supported for Cloud Composer environments in development mode in
+        # versions composer-3-airflow-*.*.*-build.* and newer.
+        # @param [String] name
+        #   Required. The resource name of the environment to resume, in the form: "
+        #   projects/`project`/locations/`location`/environments/`environment`"
+        # @param [Google::Apis::ComposerV1beta1::ResumeEnvironmentRequest] resume_environment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComposerV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComposerV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resume_environment(name, resume_environment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:resume', options)
+          command.request_representation = Google::Apis::ComposerV1beta1::ResumeEnvironmentRequest::Representation
+          command.request_object = resume_environment_request_object
           command.response_representation = Google::Apis::ComposerV1beta1::Operation::Representation
           command.response_class = Google::Apis::ComposerV1beta1::Operation
           command.params['name'] = name unless name.nil?

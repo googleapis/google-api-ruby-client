@@ -1011,6 +1011,13 @@ module Google
         # @return [String]
         attr_accessor :client_version
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Unstructured key value map that can be used to organize and categorize objects.
         # User-provided labels are shared with Google's billing system, so they can be
         # used to filter, or break down billing charges by team, component, environment,
@@ -1056,6 +1063,7 @@ module Google
           @annotations = args[:annotations] if args.key?(:annotations)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @labels = args[:labels] if args.key?(:labels)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
@@ -1528,6 +1536,12 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # Optional. Enables SSH access to the Instance.
+        # Corresponds to the JSON property `sshEnabled`
+        # @return [Boolean]
+        attr_accessor :ssh_enabled
+        alias_method :ssh_enabled?, :ssh_enabled
+      
         # Defines a status condition for a resource.
         # Corresponds to the JSON property `terminalCondition`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2Condition]
@@ -1599,6 +1613,7 @@ module Google
           @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @ssh_enabled = args[:ssh_enabled] if args.key?(:ssh_enabled)
           @terminal_condition = args[:terminal_condition] if args.key?(:terminal_condition)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -1745,6 +1760,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. The functional type of the Job.
+        # Corresponds to the JSON property `functionalType`
+        # @return [String]
+        attr_accessor :functional_type
+      
         # Output only. A number that monotonically increases every time the user
         # modifies the desired state.
         # Corresponds to the JSON property `generation`
@@ -1879,6 +1899,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @execution_count = args[:execution_count] if args.key?(:execution_count)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @generation = args[:generation] if args.key?(:generation)
           @labels = args[:labels] if args.key?(:labels)
           @last_modifier = args[:last_modifier] if args.key?(:last_modifier)
@@ -2229,6 +2250,13 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2ContainerOverride>]
         attr_accessor :container_overrides
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Optional. The desired number of tasks the execution should run. Will replace
         # existing task_count value.
         # Corresponds to the JSON property `taskCount`
@@ -2249,6 +2277,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @task_count = args[:task_count] if args.key?(:task_count)
           @timeout = args[:timeout] if args.key?(:timeout)
         end
@@ -2580,6 +2609,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2622,6 +2656,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -2828,6 +2863,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2855,6 +2895,7 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -3067,6 +3108,11 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
+        # Optional. The functional type of the Service.
+        # Corresponds to the JSON property `functionalType`
+        # @return [String]
+        attr_accessor :functional_type
+      
         # Output only. A number that monotonically increases every time the user
         # modifies the desired state. Please note that unlike v1, this is an int64 value.
         # As with most Google APIs, its JSON representation will be a `string` instead
@@ -3273,6 +3319,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @functional_type = args[:functional_type] if args.key?(:functional_type)
           @generation = args[:generation] if args.key?(:generation)
           @iap_enabled = args[:iap_enabled] if args.key?(:iap_enabled)
           @ingress = args[:ingress] if args.key?(:ingress)
@@ -3850,6 +3897,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3889,6 +3941,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -3999,6 +4052,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2VpcAccess]
         attr_accessor :vpc_access
       
+        # Workload identity settings.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4015,6 +4073,7 @@ module Google
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
           @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
         end
       end
       
@@ -4098,6 +4157,44 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @type = args[:type] if args.key?(:type)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The request message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The name of Cloud Run Service upload source archive will be used for.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # The response message for the UploadSource method.
+      class GoogleCloudRunV2UploadSourceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Storage source.
+        # Corresponds to the JSON property `cloudStorageSource`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2CloudStorageSource]
+        attr_accessor :cloud_storage_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_storage_source = args[:cloud_storage_source] if args.key?(:cloud_storage_source)
         end
       end
       
@@ -4686,6 +4783,40 @@ module Google
         end
       end
       
+      # Workload identity settings.
+      class GoogleCloudRunV2WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Revision's SPIFFE workload identity. Enables provisioning of
+        # SPIFFE workload certificates.
+        # Corresponds to the JSON property `identity`
+        # @return [String]
+        attr_accessor :identity
+      
+        # Optional. Controls whether an instance receives a MWLID certificate.
+        # Corresponds to the intention of the original --[no-]identity-certificate flag.
+        # Corresponds to the JSON property `identityCertificateEnabled`
+        # @return [Boolean]
+        attr_accessor :identity_certificate_enabled
+        alias_method :identity_certificate_enabled?, :identity_certificate_enabled
+      
+        # Optional. The type of identity to use.
+        # Corresponds to the JSON property `identityType`
+        # @return [String]
+        attr_accessor :identity_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
+          @identity_type = args[:identity_type] if args.key?(:identity_type)
+        end
+      end
+      
       # ApprovalConfig describes configuration for manual approval of a build.
       class GoogleDevtoolsCloudbuildV1ApprovalConfig
         include Google::Apis::Core::Hashable
@@ -5259,6 +5390,11 @@ module Google
         # @return [String]
         attr_accessor :requested_verify_option
       
+        # Output only. Worker release resolved from the release channel.
+        # Corresponds to the JSON property `resolvedWorkerRelease`
+        # @return [String]
+        attr_accessor :resolved_worker_release
+      
         # A list of global environment variables, which are encrypted using a Cloud Key
         # Management Service crypto key. These values must be specified in the build's `
         # Secret`. These variables will be available to all build steps in this build.
@@ -5293,6 +5429,12 @@ module Google
         # @return [String]
         attr_accessor :worker_pool
       
+        # Optional. Option to specify which release or release channel (rapid|regular|
+        # stable) to use to run this build.
+        # Corresponds to the JSON property `workerRelease`
+        # @return [String]
+        attr_accessor :worker_release
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5311,11 +5453,13 @@ module Google
           @pool = args[:pool] if args.key?(:pool)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
+          @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
           @source_provenance_hash = args[:source_provenance_hash] if args.key?(:source_provenance_hash)
           @substitution_option = args[:substitution_option] if args.key?(:substitution_option)
           @volumes = args[:volumes] if args.key?(:volumes)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
+          @worker_release = args[:worker_release] if args.key?(:worker_release)
         end
       end
       
@@ -5830,6 +5974,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -5854,6 +6006,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
@@ -6156,6 +6309,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. OUTPUT_ONLY. Worker release resolved from the release channel.
+        # Corresponds to the JSON property `resolvedWorkerRelease`
+        # @return [String]
+        attr_accessor :resolved_worker_release
+      
+        # Output only. OUTPUT_ONLY. The release or release channel used to run the Build.
+        # This is set to the same value as `PrivatePoolV1Config.WorkerConfig.
+        # worker_release` for the UI to easily access.
+        # Corresponds to the JSON property `workerRelease`
+        # @return [String]
+        attr_accessor :worker_release
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6163,6 +6328,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @name = args[:name] if args.key?(:name)
+          @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
+          @worker_release = args[:worker_release] if args.key?(:worker_release)
         end
       end
       

@@ -626,7 +626,8 @@ module Google
         #   profile` Example: `users/1234567890/profile` or `users/me/profile` The `user`
         #   ID is a system-generated Google Health API user ID, a string of 1-63
         #   characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        #   The literal `me` can also be used to refer to the authenticated user.
+        #   The literal `me` can also be used to refer to the authenticated user. This
+        #   field is read-only.
         # @param [Google::Apis::HealthV4::Profile] profile_object
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
@@ -666,7 +667,8 @@ module Google
         #   settings` Example: `users/1234567890/settings` or `users/me/settings` The `
         #   user` ID is a system-generated Google Health API user ID, a string of 1-63
         #   characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        #   The literal `me` can also be used to refer to the authenticated user.
+        #   The literal `me` can also be used to refer to the authenticated user. This
+        #   field is read-only.
         # @param [Google::Apis::HealthV4::Settings] settings_object
         # @param [String] update_mask
         #   Optional. The list of fields to be updated.
@@ -1043,10 +1045,21 @@ module Google
         # @param [String] data_source_family
         #   Optional. The data source family name to reconcile. If empty, data points from
         #   all data sources will be reconciled. Format: `users/me/dataSourceFamilies/`
-        #   data_source_family`` The supported values are: - `users/me/dataSourceFamilies/
-        #   all-sources` - default value - `users/me/dataSourceFamilies/google-wearables` -
-        #   tracker devices - `users/me/dataSourceFamilies/google-sources` - Google first
-        #   party sources
+        #   data_source_family`` - `users/me/dataSourceFamilies/all-sources` - Default
+        #   value. Includes data from all available data sources. - `users/me/
+        #   dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit
+        #   tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually
+        #   logged data. - `users/me/dataSourceFamilies/google-sources` - Includes first-
+        #   party Google data, such as data from tracker devices, manually logged data,
+        #   and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes
+        #   only the data the calling client wrote through this API, that is, data points
+        #   whose data source was registered through this API with the same OAuth client
+        #   ID as the caller. Callers that were only granted write scopes for the
+        #   requested data type may only read the data they wrote themselves: their
+        #   requests are implicitly restricted to `self-sources`, and requesting any other
+        #   data source family fails with `PERMISSION_DENIED`. If no data point matches
+        #   the requested data source family, the response is an empty list rather than an
+        #   error.
         # @param [String] filter
         #   Optional. Filter expression based on https://aip.dev/160. A time range, either
         #   physical or civil, can be specified. See the ListDataPointsRequest.filter for

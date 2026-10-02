@@ -406,6 +406,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevicesandservicesHealthV4betaDataType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HeartBeat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +449,12 @@ module Google
       end
       
       class HeartRateVariability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HeartRateVariabilityMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,6 +568,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MenstrualPeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricsSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +581,12 @@ module Google
       end
       
       class MobilityMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Moods
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -599,6 +635,12 @@ module Google
       end
       
       class OutOfBedSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OvulationTest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -791,6 +833,12 @@ module Google
       end
       
       class SwimLengthsDataRollupValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Symptoms
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1363,8 +1411,14 @@ module Google
       
           property :irregular_rhythm_notification, as: 'irregularRhythmNotification', class: Google::Apis::HealthV4::IrregularRhythmNotification, decorator: Google::Apis::HealthV4::IrregularRhythmNotification::Representation
       
+          property :menstrual_period, as: 'menstrualPeriod', class: Google::Apis::HealthV4::MenstrualPeriod, decorator: Google::Apis::HealthV4::MenstrualPeriod::Representation
+      
+          property :moods, as: 'moods', class: Google::Apis::HealthV4::Moods, decorator: Google::Apis::HealthV4::Moods::Representation
+      
           property :name, as: 'name'
           property :nutrition_log, as: 'nutritionLog', class: Google::Apis::HealthV4::NutritionLog, decorator: Google::Apis::HealthV4::NutritionLog::Representation
+      
+          property :ovulation_test, as: 'ovulationTest', class: Google::Apis::HealthV4::OvulationTest, decorator: Google::Apis::HealthV4::OvulationTest::Representation
       
           property :oxygen_saturation, as: 'oxygenSaturation', class: Google::Apis::HealthV4::OxygenSaturation, decorator: Google::Apis::HealthV4::OxygenSaturation::Representation
       
@@ -1379,6 +1433,8 @@ module Google
           property :steps, as: 'steps', class: Google::Apis::HealthV4::Steps, decorator: Google::Apis::HealthV4::Steps::Representation
       
           property :swim_lengths_data, as: 'swimLengthsData', class: Google::Apis::HealthV4::SwimLengthsData, decorator: Google::Apis::HealthV4::SwimLengthsData::Representation
+      
+          property :symptoms, as: 'symptoms', class: Google::Apis::HealthV4::Symptoms, decorator: Google::Apis::HealthV4::Symptoms::Representation
       
           property :time_in_heart_rate_zone, as: 'timeInHeartRateZone', class: Google::Apis::HealthV4::TimeInHeartRateZone, decorator: Google::Apis::HealthV4::TimeInHeartRateZone::Representation
       
@@ -1632,6 +1688,28 @@ module Google
         end
       end
       
+      class GoogleDevicesandservicesHealthV4betaDataType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_response, as: 'httpResponse', class: Google::Apis::HealthV4::HttpResponse, decorator: Google::Apis::HealthV4::HttpResponse::Representation
+      
+        end
+      end
+      
       class HeartBeat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1674,10 +1752,20 @@ module Google
       class HeartRateVariability
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::HealthV4::HeartRateVariabilityMetadata, decorator: Google::Apis::HealthV4::HeartRateVariabilityMetadata::Representation
+      
           property :root_mean_square_of_successive_differences_milliseconds, as: 'rootMeanSquareOfSuccessiveDifferencesMilliseconds'
           property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
       
           property :standard_deviation_milliseconds, as: 'standardDeviationMilliseconds'
+        end
+      end
+      
+      class HeartRateVariabilityMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high_frequency_power, as: 'highFrequencyPower'
+          property :low_frequency_power, as: 'lowFrequencyPower'
         end
       end
       
@@ -1849,6 +1937,15 @@ module Google
         end
       end
       
+      class MenstrualPeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :interval, as: 'interval', class: Google::Apis::HealthV4::ObservationTimeInterval, decorator: Google::Apis::HealthV4::ObservationTimeInterval::Representation
+      
+          property :notes, as: 'notes'
+        end
+      end
+      
       class MetricsSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1877,6 +1974,16 @@ module Google
           property :avg_stride_length_millimeters, :numeric_string => true, as: 'avgStrideLengthMillimeters'
           property :avg_vertical_oscillation_millimeters, :numeric_string => true, as: 'avgVerticalOscillationMillimeters'
           property :avg_vertical_ratio, as: 'avgVerticalRatio'
+        end
+      end
+      
+      class Moods
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :moods, as: 'moods'
+          property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
+      
+          collection :valences, as: 'valences'
         end
       end
       
@@ -1980,6 +2087,15 @@ module Google
           property :end_utc_offset, as: 'endUtcOffset'
           property :start_time, as: 'startTime'
           property :start_utc_offset, as: 'startUtcOffset'
+        end
+      end
+      
+      class OvulationTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result'
+          property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
+      
         end
       end
       
@@ -2295,6 +2411,8 @@ module Google
       
           collection :out_of_bed_segments, as: 'outOfBedSegments', class: Google::Apis::HealthV4::OutOfBedSegment, decorator: Google::Apis::HealthV4::OutOfBedSegment::Representation
       
+          collection :short_awakenings, as: 'shortAwakenings', class: Google::Apis::HealthV4::SleepStage, decorator: Google::Apis::HealthV4::SleepStage::Representation
+      
           collection :stages, as: 'stages', class: Google::Apis::HealthV4::SleepStage, decorator: Google::Apis::HealthV4::SleepStage::Representation
       
           property :summary, as: 'summary', class: Google::Apis::HealthV4::SleepSummary, decorator: Google::Apis::HealthV4::SleepSummary::Representation
@@ -2436,6 +2554,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stroke_count_sum, :numeric_string => true, as: 'strokeCountSum'
+        end
+      end
+      
+      class Symptoms
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sample_time, as: 'sampleTime', class: Google::Apis::HealthV4::ObservationSampleTime, decorator: Google::Apis::HealthV4::ObservationSampleTime::Representation
+      
+          collection :symptoms, as: 'symptoms'
         end
       end
       

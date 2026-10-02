@@ -194,6 +194,7 @@ module Google
           property :name, as: 'name'
           property :policy_member, as: 'policyMember', class: Google::Apis::ParametermanagerV1::ResourcePolicyMember, decorator: Google::Apis::ParametermanagerV1::ResourcePolicyMember::Representation
       
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
@@ -201,6 +202,7 @@ module Google
       class ParameterVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :checksum_source, as: 'checksumSource'
           property :create_time, as: 'createTime'
           property :disabled, as: 'disabled'
           property :kms_key_version, as: 'kmsKeyVersion'
@@ -215,6 +217,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, :base64 => true, as: 'data'
+          property :data_crc32c, :numeric_string => true, as: 'dataCrc32c'
         end
       end
       

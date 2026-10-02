@@ -206,9 +206,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :assignee, as: 'assignee'
+          property :condition, as: 'condition', class: Google::Apis::BigqueryreservationV1::Expr, decorator: Google::Apis::BigqueryreservationV1::Expr::Representation
+      
           property :enable_gemini_in_bigquery, as: 'enableGeminiInBigquery'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
+          property :precedence, :numeric_string => true, as: 'precedence'
           property :principal, as: 'principal'
           property :scheduling_policy, as: 'schedulingPolicy', class: Google::Apis::BigqueryreservationV1::SchedulingPolicy, decorator: Google::Apis::BigqueryreservationV1::SchedulingPolicy::Representation
       
@@ -409,8 +412,10 @@ module Google
       class ReservationGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
           property :name, as: 'name'
           property :parent_group, as: 'parentGroup'
+          property :update_time, as: 'updateTime'
         end
       end
       

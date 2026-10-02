@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeneratePlatformSiteTokensRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeneratePlatformSiteTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCtasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -71,6 +83,12 @@ module Google
       end
       
       class RrmProduct
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SiteToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -123,6 +141,20 @@ module Google
         end
       end
       
+      class GeneratePlatformSiteTokensRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GeneratePlatformSiteTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :site_tokens, as: 'siteTokens', class: Google::Apis::WebcontentpublisherV1::SiteToken, decorator: Google::Apis::WebcontentpublisherV1::SiteToken::Representation
+      
+        end
+      end
+      
       class ListCtasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -147,6 +179,7 @@ module Google
           property :custom_consent_text, as: 'customConsentText'
           property :custom_message, as: 'customMessage'
           property :name_required, as: 'nameRequired'
+          property :opt_in_required, as: 'optInRequired'
           property :title, as: 'title'
         end
       end
@@ -189,6 +222,14 @@ module Google
         end
       end
       
+      class SiteToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+          property :token, as: 'token'
+        end
+      end
+      
       class SlProduct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -201,8 +242,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email_opt_in, as: 'emailOptIn'
-          property :signer, as: 'signer'
-          property :signer_title, as: 'signerTitle'
           property :user_accepted, as: 'userAccepted'
         end
       end

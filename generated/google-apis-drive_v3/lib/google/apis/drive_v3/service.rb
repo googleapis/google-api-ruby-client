@@ -385,7 +385,12 @@ module Google
         end
         
         # Lists the approvals on a file. For more information, see [Manage approvals](
-        # https://developers.google.com/workspace/drive/api/guides/approvals).
+        # https://developers.google.com/workspace/drive/api/guides/approvals). By
+        # default, this method returns a minimal response that may not include the items
+        # array. To retrieve approval details, you must explicitly specify the fields
+        # you want using the `fields` query parameter. To return the exact fields you
+        # need, see [Return specific fields](https://developers.google.com/workspace/
+        # drive/api/guides/fields-parameter).
         # @param [String] file_id
         #   Required. The ID of the file that the approval is on.
         # @param [Fixnum] page_size
@@ -1293,6 +1298,8 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV3::File] file_object
+        # @param [Boolean] copy_comments
+        #   Whether to copy the open (unresolved) comments associated with the file.
         # @param [Boolean] enforce_single_parent
         #   Deprecated: Copying files into multiple folders is no longer supported. Use
         #   shortcuts instead.
@@ -1335,13 +1342,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, copy_comments: nil, enforce_single_parent: nil, ignore_default_visibility: nil, include_labels: nil, include_permissions_for_view: nil, keep_revision_forever: nil, ocr_language: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV3::File::Representation
           command.request_object = file_object
           command.response_representation = Google::Apis::DriveV3::File::Representation
           command.response_class = Google::Apis::DriveV3::File
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['copyComments'] = copy_comments unless copy_comments.nil?
           command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ignoreDefaultVisibility'] = ignore_default_visibility unless ignore_default_visibility.nil?
           command.query['includeLabels'] = include_labels unless include_labels.nil?
@@ -2122,8 +2130,10 @@ module Google
         
         # Creates a permission for a file or shared drive. For more information, see [
         # Share files, folders, and drives](https://developers.google.com/workspace/
-        # drive/api/guides/manage-sharing). **Warning:** Concurrent permissions
-        # operations on the same file aren't supported; only the last update is applied.
+        # drive/api/guides/manage-sharing). **Warning:** Concurrent permission
+        # modifications (such as update or delete) on the same file, folder, or shared
+        # drive aren't supported across any users or clients; only the last update is
+        # applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [Google::Apis::DriveV3::Permission] permission_object
@@ -2199,8 +2209,9 @@ module Google
         
         # Deletes a permission. For more information, see [Share files, folders, and
         # drives](https://developers.google.com/workspace/drive/api/guides/manage-
-        # sharing). **Warning:** Concurrent permissions operations on the same file aren'
-        # t supported; only the last update is applied.
+        # sharing). **Warning:** Concurrent permission modifications (such as update or
+        # delete) on the same file, folder, or shared drive aren't supported across any
+        # users or clients; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id
@@ -2362,8 +2373,9 @@ module Google
         
         # Updates a permission with patch semantics. For more information, see [Share
         # files, folders, and drives](https://developers.google.com/workspace/drive/api/
-        # guides/manage-sharing). **Warning:** Concurrent permissions operations on the
-        # same file aren't supported; only the last update is applied.
+        # guides/manage-sharing). **Warning:** Concurrent permission modifications (such
+        # as update or delete) on the same file, folder, or shared drive aren't
+        # supported across any users or clients; only the last update is applied.
         # @param [String] file_id
         #   The ID of the file or shared drive.
         # @param [String] permission_id

@@ -783,6 +783,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Mints a new App Check token for the specified Firebase App. This method is
+        # intended to be called from a privileged environment where the caller can be
+        # authorized via Cloud IAM; for example, using a service account. To call this
+        # method, the caller must have the [`firebaseappcheck.googleapis.com/tokens.mint`
+        # ](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+        # permission. Returns a MintAppCheckTokenResponse.
+        # @param [String] app
+        #   Required. The relative resource name of the app, in the format: ``` projects/`
+        #   project_number`/apps/`app_id` ``` If necessary, the `project_number` element
+        #   can be replaced with the project ID of the Firebase project. Learn more about
+        #   using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/
+        #   2510) standard.
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest] google_firebase_appcheck_v1beta_mint_app_check_token_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def mint_project_app_app_check_token(app, google_firebase_appcheck_v1beta_mint_app_check_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta/{+app}:mintAppCheckToken', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenRequest::Representation
+          command.request_object = google_firebase_appcheck_v1beta_mint_app_check_token_request_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaMintAppCheckTokenResponse
+          command.params['app'] = app unless app.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Atomically gets the AppAttestConfigs for the specified list of apps.
         # @param [String] parent
         #   Required. The parent project name shared by all AppAttestConfigs being

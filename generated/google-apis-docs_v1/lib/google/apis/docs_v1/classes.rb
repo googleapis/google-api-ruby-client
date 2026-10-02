@@ -22,6 +22,81 @@ module Google
   module Apis
     module DocsV1
       
+      # Accepts a suggestion. Returns a 403 forbidden error if the requesting user
+      # does not have edit access to the document. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class AcceptSuggestionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the suggestion.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
+      # Inserts a reply Post into a CommentThread or SuggestionThread. [Developer
+      # Preview](https://developers.google.com/workspace/preview).
+      class AddCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread to add the reply to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment or suggestion thread. [Developer Preview]
+        # (https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::DocsV1::Post]
+        attr_accessor :post
+      
+        # The ID of the SuggestionThread to add the reply to.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post = args[:post] if args.key?(:post)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
+      # Response message for adding a reply. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class AddCommentReplyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single post in a comment or suggestion thread. [Developer Preview]
+        # (https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::DocsV1::Post]
+        attr_accessor :post
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post = args[:post] if args.key?(:post)
+        end
+      end
+      
       # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
       # indexes are incremented.
       class AddDocumentTabRequest
@@ -187,6 +262,12 @@ module Google
       class BatchUpdateDocumentResponse
         include Google::Apis::Core::Hashable
       
+        # Whether comment updates were applied in the batch request. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentUpdateState`
+        # @return [String]
+        attr_accessor :comment_update_state
+      
         # The ID of the document to which the updates were applied to.
         # Corresponds to the JSON property `documentId`
         # @return [String]
@@ -197,6 +278,12 @@ module Google
         # Corresponds to the JSON property `replies`
         # @return [Array<Google::Apis::DocsV1::Response>]
         attr_accessor :replies
+      
+        # The suggestions which were affected by each update. This maps 1:1 with the
+        # updates. [Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `suggestionResponses`
+        # @return [Array<Google::Apis::DocsV1::SuggestionResponse>]
+        attr_accessor :suggestion_responses
       
         # Provides control over how write requests are executed.
         # Corresponds to the JSON property `writeControl`
@@ -209,8 +296,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment_update_state = args[:comment_update_state] if args.key?(:comment_update_state)
           @document_id = args[:document_id] if args.key?(:document_id)
           @replies = args[:replies] if args.key?(:replies)
+          @suggestion_responses = args[:suggestion_responses] if args.key?(:suggestion_responses)
           @write_control = args[:write_control] if args.key?(:write_control)
         end
       end
@@ -402,6 +491,86 @@ module Google
           @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
           @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
           @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # One or more locations in the document that are tied to CommentThreads with the
+      # same anchorId. Note: Multiple anchors may refer to the same location. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class CommentAnchor
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the comment anchor.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # A collection of Ranges in the document which are tied to this anchor.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<Google::Apis::DocsV1::Range>]
+        attr_accessor :ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @ranges = args[:ranges] if args.key?(:ranges)
+        end
+      end
+      
+      # Represents a single comment thread. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class CommentThread
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentAnchor in the document that this thread is tied to.
+        # Multiple comment threads may be anchored to the same CommentAnchor.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # The unique ID of the comment thread.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment or suggestion thread. [Developer Preview]
+        # (https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `headPost`
+        # @return [Google::Apis::DocsV1::Post]
+        attr_accessor :head_post
+      
+        # The quoted text from the document when the comment was created, formatted as
+        # plain-text.
+        # Corresponds to the JSON property `plainTextQuote`
+        # @return [String]
+        attr_accessor :plain_text_quote
+      
+        # Replies to the head post.
+        # Corresponds to the JSON property `replies`
+        # @return [Array<Google::Apis::DocsV1::Post>]
+        attr_accessor :replies
+      
+        # Whether the thread is open or resolved.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @head_post = args[:head_post] if args.key?(:head_post)
+          @plain_text_quote = args[:plain_text_quote] if args.key?(:plain_text_quote)
+          @replies = args[:replies] if args.key?(:replies)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -921,6 +1090,61 @@ module Google
         end
       end
       
+      # Deletes a reply Post from a CommentThread or SuggestionThread. Returns a 400
+      # bad request error if: - The requesting user is not the author of the post. -
+      # The reply post contains an action. - The reply post contains an assignee. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class DeleteCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The ID of the reply Post being deleted.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # The ID of the SuggestionThread which the post belongs to.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
+      # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+      # user is not the author of the headPost. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class DeleteCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread that is being deleted.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+        end
+      end
+      
       # Deletes content from the document.
       class DeleteContentRangeRequest
         include Google::Apis::Core::Hashable
@@ -1091,6 +1315,27 @@ module Google
         end
       end
       
+      # Deletes a suggestion. Returns a 403 forbidden error if the requesting user is
+      # not the author of the suggestion. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class DeleteSuggestionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the suggestion.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
       # Deletes a tab. If the tab has child tabs, they are deleted as well.
       class DeleteTabRequest
         include Google::Apis::Core::Hashable
@@ -1182,6 +1427,20 @@ module Google
         # Corresponds to the JSON property `body`
         # @return [Google::Apis::DocsV1::Body]
         attr_accessor :body
+      
+        # Output only. The comments associated with the document. Only populated if the
+        # commentsViewMode parameter is set to require comments (such as `
+        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
+        # com/workspace/preview).
+        # Corresponds to the JSON property `comments`
+        # @return [Array<Google::Apis::DocsV1::CommentThread>]
+        attr_accessor :comments
+      
+        # Output only. The comments view mode applied to the document. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
       
         # Output only. The ID of the document.
         # Corresponds to the JSON property `documentId`
@@ -1295,6 +1554,14 @@ module Google
         # @return [Hash<String,Google::Apis::DocsV1::SuggestedNamedStyles>]
         attr_accessor :suggested_named_styles_changes
       
+        # Output only. The suggestions associated with the document. Only populated if
+        # the commentsViewMode parameter is set to require comments (such as `
+        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
+        # com/workspace/preview).
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::DocsV1::SuggestionThread>]
+        attr_accessor :suggestions
+      
         # Output only. The suggestions view mode applied to the document. Note: When
         # editing a document, changes must be based on a document with
         # SUGGESTIONS_INLINE.
@@ -1302,8 +1569,9 @@ module Google
         # @return [String]
         attr_accessor :suggestions_view_mode
       
-        # Tabs that are part of a document. Tabs can contain child tabs, a tab nested
-        # within another tab. Child tabs are represented by the Tab.childTabs field.
+        # Output only. Tabs that are part of a document. Tabs can contain child tabs, a
+        # tab nested within another tab. Child tabs are represented by the Tab.childTabs
+        # field.
         # Corresponds to the JSON property `tabs`
         # @return [Array<Google::Apis::DocsV1::Tab>]
         attr_accessor :tabs
@@ -1320,6 +1588,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @body = args[:body] if args.key?(:body)
+          @comments = args[:comments] if args.key?(:comments)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @document_id = args[:document_id] if args.key?(:document_id)
           @document_style = args[:document_style] if args.key?(:document_style)
           @footers = args[:footers] if args.key?(:footers)
@@ -1333,6 +1603,7 @@ module Google
           @revision_id = args[:revision_id] if args.key?(:revision_id)
           @suggested_document_style_changes = args[:suggested_document_style_changes] if args.key?(:suggested_document_style_changes)
           @suggested_named_styles_changes = args[:suggested_named_styles_changes] if args.key?(:suggested_named_styles_changes)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
           @suggestions_view_mode = args[:suggestions_view_mode] if args.key?(:suggestions_view_mode)
           @tabs = args[:tabs] if args.key?(:tabs)
           @title = args[:title] if args.key?(:title)
@@ -1686,6 +1957,14 @@ module Google
         # @return [Google::Apis::DocsV1::Body]
         attr_accessor :body
       
+        # The comment anchors in a document tab, keyed by anchor ID. Only populated if
+        # the commentsViewMode parameter is set to require comments (such as `
+        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
+        # com/workspace/preview).
+        # Corresponds to the JSON property `commentAnchors`
+        # @return [Hash<String,Google::Apis::DocsV1::CommentAnchor>]
+        attr_accessor :comment_anchors
+      
         # The style of the document.
         # Corresponds to the JSON property `documentStyle`
         # @return [Google::Apis::DocsV1::DocumentStyle]
@@ -1750,6 +2029,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @body = args[:body] if args.key?(:body)
+          @comment_anchors = args[:comment_anchors] if args.key?(:comment_anchors)
           @document_style = args[:document_style] if args.key?(:document_style)
           @footers = args[:footers] if args.key?(:footers)
           @footnotes = args[:footnotes] if args.key?(:footnotes)
@@ -2599,6 +2879,63 @@ module Google
         # Update properties of this object
         def update!(**args)
           @embedded_object_suggestion_state = args[:embedded_object_suggestion_state] if args.key?(:embedded_object_suggestion_state)
+        end
+      end
+      
+      # Inserts a CommentThread into the document. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class InsertCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the assignee of the comment. Leave empty for a
+        # non-assigned comment. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `assigneeEmailAddress`
+        # @return [String]
+        attr_accessor :assignee_email_address
+      
+        # The text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Docs editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Specifies a contiguous range of text.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::DocsV1::Range]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email_address = args[:assignee_email_address] if args.key?(:assignee_email_address)
+          @content = args[:content] if args.key?(:content)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Response message for inserting a comment. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class InsertCommentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single comment thread. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `commentThread`
+        # @return [Google::Apis::DocsV1::CommentThread]
+        attr_accessor :comment_thread
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_thread = args[:comment_thread] if args.key?(:comment_thread)
         end
       end
       
@@ -4506,6 +4843,157 @@ module Google
         end
       end
       
+      # Represents a single post in a comment or suggestion thread. [Developer Preview]
+      # (https://developers.google.com/workspace/preview).
+      class Post
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email of the user who is being newly assigned to the thread as
+        # part of this post. Returns a 400 bad request error if: - The parent thread is
+        # a CommentThread whose headPost does not have an assignee. - The parent thread
+        # is a SuggestionThread. - commentAction is specified as `RESOLVE` or `REOPEN`. -
+        # `assigneeEmail` exceeds 2048 UTF-8 code units.
+        # Corresponds to the JSON property `assigneeEmail`
+        # @return [String]
+        attr_accessor :assignee_email
+      
+        # Represents a user who authored a comment or suggestion post. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `author`
+        # @return [Google::Apis::DocsV1::PostAuthor]
+        attr_accessor :author
+      
+        # Optional. The action type for comment posts.
+        # Corresponds to the JSON property `commentAction`
+        # @return [String]
+        attr_accessor :comment_action
+      
+        # The content of the post. Required to be non-empty if commentAction is not `
+        # RESOLVE` or `REOPEN`. This text content will be handled similarly to comments
+        # created in the Docs editor. It will have similar behaviors for formatting,
+        # notifications, etc. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The content of the post as HTML.
+        # Corresponds to the JSON property `contentHtml`
+        # @return [String]
+        attr_accessor :content_html
+      
+        # Output only. The time the post was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Whether the post is deleted. If `true`, content and author fields
+        # will be empty.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Output only. Whether the post is from a copied document. This field cannot be
+        # set directly by callers.
+        # Corresponds to the JSON property `fromCopiedDocument`
+        # @return [Boolean]
+        attr_accessor :from_copied_document
+        alias_method :from_copied_document?, :from_copied_document
+      
+        # Output only. Whether the post is from a document comparison. This field cannot
+        # be set directly by callers.
+        # Corresponds to the JSON property `fromDocumentComparison`
+        # @return [Boolean]
+        attr_accessor :from_document_comparison
+        alias_method :from_document_comparison?, :from_document_comparison
+      
+        # Output only. Whether the post is from an imported document. This field cannot
+        # be set directly by callers.
+        # Corresponds to the JSON property `fromImportedDocument`
+        # @return [Boolean]
+        attr_accessor :from_imported_document
+        alias_method :from_imported_document?, :from_imported_document
+      
+        # Output only. The unique ID of the post.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # Output only. The action type for suggestion posts.
+        # Corresponds to the JSON property `suggestionAction`
+        # @return [String]
+        attr_accessor :suggestion_action
+      
+        # Output only. The time the post was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email = args[:assignee_email] if args.key?(:assignee_email)
+          @author = args[:author] if args.key?(:author)
+          @comment_action = args[:comment_action] if args.key?(:comment_action)
+          @content = args[:content] if args.key?(:content)
+          @content_html = args[:content_html] if args.key?(:content_html)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @from_copied_document = args[:from_copied_document] if args.key?(:from_copied_document)
+          @from_document_comparison = args[:from_document_comparison] if args.key?(:from_document_comparison)
+          @from_imported_document = args[:from_imported_document] if args.key?(:from_imported_document)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @suggestion_action = args[:suggestion_action] if args.key?(:suggestion_action)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a user who authored a comment or suggestion post. [Developer
+      # Preview](https://developers.google.com/workspace/preview).
+      class PostAuthor
+        include Google::Apis::Core::Hashable
+      
+        # Whether the user is anonymous.
+        # Corresponds to the JSON property `anonymous`
+        # @return [Boolean]
+        attr_accessor :anonymous
+        alias_method :anonymous?, :anonymous
+      
+        # The display name of the user. May be absent if the author is anonymous.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the user is the authenticated user making the request.
+        # Corresponds to the JSON property `me`
+        # @return [Boolean]
+        attr_accessor :me
+        alias_method :me?, :me
+      
+        # The resource name of the post author user, which can also be used to identify
+        # the user in the [Google People API](https://developers.google.com/people/api/
+        # rest/v1/people). Format: `users/`user``. Will not be populated if the
+        # anonymous field is `true` or if the post is from an imported document.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anonymous = args[:anonymous] if args.key?(:anonymous)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @me = args[:me] if args.key?(:me)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # Specifies a contiguous range of text.
       class Range
         include Google::Apis::Core::Hashable
@@ -4550,6 +5038,28 @@ module Google
           @segment_id = args[:segment_id] if args.key?(:segment_id)
           @start_index = args[:start_index] if args.key?(:start_index)
           @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Rejects a suggestion. Returns a 403 forbidden error if the requesting user
+      # does not have edit access to the document and is not the author of the
+      # suggestion. [Developer Preview](https://developers.google.com/workspace/
+      # preview).
+      class RejectSuggestionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the suggestion.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
         end
       end
       
@@ -4702,6 +5212,19 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
+        # Accepts a suggestion. Returns a 403 forbidden error if the requesting user
+        # does not have edit access to the document. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `acceptSuggestion`
+        # @return [Google::Apis::DocsV1::AcceptSuggestionRequest]
+        attr_accessor :accept_suggestion
+      
+        # Inserts a reply Post into a CommentThread or SuggestionThread. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::DocsV1::AddCommentReplyRequest]
+        attr_accessor :add_comment_reply
+      
         # Adds a document tab. When a tab is added at a given index, all subsequent tabs'
         # indexes are incremented.
         # Corresponds to the JSON property `addDocumentTab`
@@ -4747,6 +5270,21 @@ module Google
         # @return [Google::Apis::DocsV1::CreateParagraphBulletsRequest]
         attr_accessor :create_paragraph_bullets
       
+        # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+        # user is not the author of the headPost. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteComment`
+        # @return [Google::Apis::DocsV1::DeleteCommentRequest]
+        attr_accessor :delete_comment
+      
+        # Deletes a reply Post from a CommentThread or SuggestionThread. Returns a 400
+        # bad request error if: - The requesting user is not the author of the post. -
+        # The reply post contains an action. - The reply post contains an assignee. [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteCommentReply`
+        # @return [Google::Apis::DocsV1::DeleteCommentReplyRequest]
+        attr_accessor :delete_comment_reply
+      
         # Deletes content from the document.
         # Corresponds to the JSON property `deleteContentRange`
         # @return [Google::Apis::DocsV1::DeleteContentRangeRequest]
@@ -4779,6 +5317,13 @@ module Google
         # @return [Google::Apis::DocsV1::DeletePositionedObjectRequest]
         attr_accessor :delete_positioned_object
       
+        # Deletes a suggestion. Returns a 403 forbidden error if the requesting user is
+        # not the author of the suggestion. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteSuggestion`
+        # @return [Google::Apis::DocsV1::DeleteSuggestionRequest]
+        attr_accessor :delete_suggestion
+      
         # Deletes a tab. If the tab has child tabs, they are deleted as well.
         # Corresponds to the JSON property `deleteTab`
         # @return [Google::Apis::DocsV1::DeleteTabRequest]
@@ -4793,6 +5338,12 @@ module Google
         # Corresponds to the JSON property `deleteTableRow`
         # @return [Google::Apis::DocsV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
+      
+        # Inserts a CommentThread into the document. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::DocsV1::InsertCommentRequest]
+        attr_accessor :insert_comment
       
         # Inserts a date at the specified location.
         # Corresponds to the JSON property `insertDate`
@@ -4856,6 +5407,14 @@ module Google
         # @return [Google::Apis::DocsV1::PinTableHeaderRowsRequest]
         attr_accessor :pin_table_header_rows
       
+        # Rejects a suggestion. Returns a 403 forbidden error if the requesting user
+        # does not have edit access to the document and is not the author of the
+        # suggestion. [Developer Preview](https://developers.google.com/workspace/
+        # preview).
+        # Corresponds to the JSON property `rejectSuggestion`
+        # @return [Google::Apis::DocsV1::RejectSuggestionRequest]
+        attr_accessor :reject_suggestion
+      
         # Replaces all instances of text matching a criteria with replace text.
         # Corresponds to the JSON property `replaceAllText`
         # @return [Google::Apis::DocsV1::ReplaceAllTextRequest]
@@ -4882,6 +5441,14 @@ module Google
         # Corresponds to the JSON property `unmergeTableCells`
         # @return [Google::Apis::DocsV1::UnmergeTableCellsRequest]
         attr_accessor :unmerge_table_cells
+      
+        # Updates a Post in a CommentThread or SuggestionThread. Returns a 400 bad
+        # request error if: - The post is the headPost of a SuggestionThread. - The
+        # requesting user is not the author of the post. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `updateCommentPost`
+        # @return [Google::Apis::DocsV1::UpdateCommentPostRequest]
+        attr_accessor :update_comment_post
       
         # Updates the DocumentStyle.
         # Corresponds to the JSON property `updateDocumentStyle`
@@ -4934,21 +5501,27 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accept_suggestion = args[:accept_suggestion] if args.key?(:accept_suggestion)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
+          @delete_comment = args[:delete_comment] if args.key?(:delete_comment)
+          @delete_comment_reply = args[:delete_comment_reply] if args.key?(:delete_comment_reply)
           @delete_content_range = args[:delete_content_range] if args.key?(:delete_content_range)
           @delete_footer = args[:delete_footer] if args.key?(:delete_footer)
           @delete_header = args[:delete_header] if args.key?(:delete_header)
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
           @delete_paragraph_bullets = args[:delete_paragraph_bullets] if args.key?(:delete_paragraph_bullets)
           @delete_positioned_object = args[:delete_positioned_object] if args.key?(:delete_positioned_object)
+          @delete_suggestion = args[:delete_suggestion] if args.key?(:delete_suggestion)
           @delete_tab = args[:delete_tab] if args.key?(:delete_tab)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @insert_date = args[:insert_date] if args.key?(:insert_date)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
@@ -4961,10 +5534,12 @@ module Google
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @merge_table_cells = args[:merge_table_cells] if args.key?(:merge_table_cells)
           @pin_table_header_rows = args[:pin_table_header_rows] if args.key?(:pin_table_header_rows)
+          @reject_suggestion = args[:reject_suggestion] if args.key?(:reject_suggestion)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @replace_image = args[:replace_image] if args.key?(:replace_image)
           @replace_named_range_content = args[:replace_named_range_content] if args.key?(:replace_named_range_content)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
+          @update_comment_post = args[:update_comment_post] if args.key?(:update_comment_post)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_document_tab_properties = args[:update_document_tab_properties] if args.key?(:update_document_tab_properties)
           @update_named_style = args[:update_named_style] if args.key?(:update_named_style)
@@ -4980,6 +5555,12 @@ module Google
       # A single response from an update.
       class Response
         include Google::Apis::Core::Hashable
+      
+        # Response message for adding a reply. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::DocsV1::AddCommentReplyResponse]
+        attr_accessor :add_comment_reply
       
         # The result of adding a document tab.
         # Corresponds to the JSON property `addDocumentTab`
@@ -5006,6 +5587,12 @@ module Google
         # @return [Google::Apis::DocsV1::CreateNamedRangeResponse]
         attr_accessor :create_named_range
       
+        # Response message for inserting a comment. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::DocsV1::InsertCommentResponse]
+        attr_accessor :insert_comment
+      
         # The result of inserting an inline image.
         # Corresponds to the JSON property `insertInlineImage`
         # @return [Google::Apis::DocsV1::InsertInlineImageResponse]
@@ -5027,11 +5614,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_inline_sheets_chart = args[:insert_inline_sheets_chart] if args.key?(:insert_inline_sheets_chart)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
@@ -5967,6 +6556,104 @@ module Google
         def update!(**args)
           @text_style = args[:text_style] if args.key?(:text_style)
           @text_style_suggestion_state = args[:text_style_suggestion_state] if args.key?(:text_style_suggestion_state)
+        end
+      end
+      
+      # The suggestions which were affected by a given update. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class SuggestionResponse
+        include Google::Apis::Core::Hashable
+      
+        # The IDs of suggestions which were accepted during the update.
+        # Corresponds to the JSON property `acceptedSuggestionIds`
+        # @return [Array<String>]
+        attr_accessor :accepted_suggestion_ids
+      
+        # The IDs of suggestions which were created during the update.
+        # Corresponds to the JSON property `createdSuggestionIds`
+        # @return [Array<String>]
+        attr_accessor :created_suggestion_ids
+      
+        # The IDs of suggestions which were deleted during the update.
+        # Corresponds to the JSON property `deletedSuggestionIds`
+        # @return [Array<String>]
+        attr_accessor :deleted_suggestion_ids
+      
+        # The IDs of suggestions which were rejected during the update.
+        # Corresponds to the JSON property `rejectedSuggestionIds`
+        # @return [Array<String>]
+        attr_accessor :rejected_suggestion_ids
+      
+        # The IDs of suggestions whose summaries were updated during the update.
+        # Corresponds to the JSON property `updatedSummarySuggestionIds`
+        # @return [Array<String>]
+        attr_accessor :updated_summary_suggestion_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accepted_suggestion_ids = args[:accepted_suggestion_ids] if args.key?(:accepted_suggestion_ids)
+          @created_suggestion_ids = args[:created_suggestion_ids] if args.key?(:created_suggestion_ids)
+          @deleted_suggestion_ids = args[:deleted_suggestion_ids] if args.key?(:deleted_suggestion_ids)
+          @rejected_suggestion_ids = args[:rejected_suggestion_ids] if args.key?(:rejected_suggestion_ids)
+          @updated_summary_suggestion_ids = args[:updated_summary_suggestion_ids] if args.key?(:updated_summary_suggestion_ids)
+        end
+      end
+      
+      # Represents a single suggestion thread. Suggestion threads are created as a
+      # byproduct of saving changes to the document while in suggestion mode, and
+      # cannot be created directly. [Developer Preview](https://developers.google.com/
+      # workspace/preview).
+      class SuggestionThread
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single post in a comment or suggestion thread. [Developer Preview]
+        # (https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `headPost`
+        # @return [Google::Apis::DocsV1::Post]
+        attr_accessor :head_post
+      
+        # Replies to the head post.
+        # Corresponds to the JSON property `replies`
+        # @return [Array<Google::Apis::DocsV1::Post>]
+        attr_accessor :replies
+      
+        # Whether the thread is open, accepted, or rejected.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # The unique ID of the suggestion.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        # Summary of the suggested differences in the document, in HTML. May be empty.
+        # Corresponds to the JSON property `summaryHtml`
+        # @return [String]
+        attr_accessor :summary_html
+      
+        # Summary of the suggested differences in the document, in plain text. May be
+        # empty.
+        # Corresponds to the JSON property `summaryText`
+        # @return [String]
+        attr_accessor :summary_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @head_post = args[:head_post] if args.key?(:head_post)
+          @replies = args[:replies] if args.key?(:replies)
+          @status = args[:status] if args.key?(:status)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+          @summary_html = args[:summary_html] if args.key?(:summary_html)
+          @summary_text = args[:summary_text] if args.key?(:summary_text)
         end
       end
       
@@ -6962,6 +7649,49 @@ module Google
         end
       end
       
+      # Updates a Post in a CommentThread or SuggestionThread. Returns a 400 bad
+      # request error if: - The post is the headPost of a SuggestionThread. - The
+      # requesting user is not the author of the post. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class UpdateCommentPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The new text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Docs editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The ID of the post being updated.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # The ID of the SuggestionThread which the post belongs to.
+        # Corresponds to the JSON property `suggestionId`
+        # @return [String]
+        attr_accessor :suggestion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @content = args[:content] if args.key?(:content)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @suggestion_id = args[:suggestion_id] if args.key?(:suggestion_id)
+        end
+      end
+      
       # Updates the DocumentStyle.
       class UpdateDocumentStyleRequest
         include Google::Apis::Core::Hashable
@@ -7394,6 +8124,13 @@ module Google
         # @return [String]
         attr_accessor :target_revision_id
       
+        # How the request updates should be applied to the document. If unspecified, the
+        # request updates will be applied as normal edits. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `writeMode`
+        # @return [String]
+        attr_accessor :write_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7402,6 +8139,7 @@ module Google
         def update!(**args)
           @required_revision_id = args[:required_revision_id] if args.key?(:required_revision_id)
           @target_revision_id = args[:target_revision_id] if args.key?(:target_revision_id)
+          @write_mode = args[:write_mode] if args.key?(:write_mode)
         end
       end
     end

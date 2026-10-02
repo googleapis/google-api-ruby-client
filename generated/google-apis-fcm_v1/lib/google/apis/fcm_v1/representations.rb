@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FcmOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,12 @@ module Google
       end
       
       class LightSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListTopicSubscriptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -83,6 +95,12 @@ module Google
       end
       
       class SendMessageRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TopicSubscription
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -188,6 +206,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class FcmOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -202,6 +226,15 @@ module Google
       
           property :light_off_duration, as: 'lightOffDuration'
           property :light_on_duration, as: 'lightOnDuration'
+        end
+      end
+      
+      class ListTopicSubscriptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :topic_subscriptions, as: 'topicSubscriptions', class: Google::Apis::FcmV1::TopicSubscription, decorator: Google::Apis::FcmV1::TopicSubscription::Representation
+      
         end
       end
       
@@ -242,6 +275,15 @@ module Google
           property :message, as: 'message', class: Google::Apis::FcmV1::Message, decorator: Google::Apis::FcmV1::Message::Representation
       
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class TopicSubscription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :name, as: 'name'
+          property :topic_name, as: 'topicName'
         end
       end
       

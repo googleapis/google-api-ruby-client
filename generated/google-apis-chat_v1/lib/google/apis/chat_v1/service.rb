@@ -393,10 +393,19 @@ module Google
         # organization might already use this display name.
         # @param [Google::Apis::ChatV1::Space] space_object
         # @param [String] request_id
-        #   Optional. A unique identifier for this request. A random UUID is recommended.
-        #   Specifying an existing request ID returns the space created with that ID
-        #   instead of creating a new space. Specifying an existing request ID from the
-        #   same Chat app with a different authenticated user returns an error.
+        #   Optional. A unique ID for this request. A random UUID is recommended.
+        #   Specifying a request ID makes the request idempotent, which ensures that
+        #   multiple identical requests with the same request ID result in only a single
+        #   space being created. Subsequent requests with the same request ID return the
+        #   existing space and do not update the space, even if the requested details
+        #   differ from the current state. To use this field effectively: - Ensure that
+        #   subsequent requests are identical and use the same authentication credentials
+        #   as the original request. - If a space was already created with the provided
+        #   request ID, the request returns that space. Note that the returned space might
+        #   not be fully populated; the API echoes the space in your request with the
+        #   system-assigned resource name populated. To retrieve the latest metadata for
+        #   the space, call `GetSpace`. - Reusing an existing request ID with a different
+        #   authenticated user results in an error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -797,15 +806,16 @@ module Google
         #   audience). `access_settings.access_permission_settings` is not supported with `
         #   useAdminAccess`. The supported field masks include: - `access_settings.
         #   access_permission_settings.discoverSpaceSetting` - `access_settings.
-        #   access_permission_settings.joinSpaceSetting` `permission_settings`: Supports
-        #   changing the [permission settings](https://support.google.com/chat/answer/
-        #   13340792) of a space. When updating permission settings, you can only specify `
-        #   permissionSettings` field masks; you cannot update other field masks at the
-        #   same time. The supported field masks include: - `permission_settings.
+        #   access_permission_settings.joinSpaceSetting` - `access_settings.
+        #   access_permission_settings.viewSpaceMembershipSetting` `permission_settings`:
+        #   Supports changing the [permission settings](https://support.google.com/chat/
+        #   answer/13340792) of a space. When updating permission settings, you can only
+        #   specify `permissionSettings` field masks; you cannot update other field masks
+        #   at the same time. The supported field masks include: - `permission_settings.
         #   manageMembersAndGroups` - `permission_settings.modifySpaceDetails` - `
         #   permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` - `
         #   permission_settings.manageApps` - `permission_settings.manageWebhooks` - `
-        #   permission_settings.replyMessages`
+        #   permission_settings.replyMessages` - `permission_settings.viewSpaceMembership`
         # @param [Boolean] use_admin_access
         #   Optional. When `true`, the method runs using the user's Google Workspace
         #   administrator privileges. The calling user must be a Google Workspace
@@ -874,11 +884,14 @@ module Google
         #   : - `membership_count.joined_direct_human_user_count DESC` - `membership_count.
         #   joined_direct_human_user_count ASC` - `last_active_time DESC` - `
         #   last_active_time ASC` - `create_time DESC` - `create_time ASC` When `
-        #   useAdminAccess` is set to `false`: - `create_time DESC` - `relevance DESC`
+        #   useAdminAccess` is set to `false`: - `create_time DESC` - `relevance DESC` [
+        #   Developer Preview](https://developers.google.com/workspace/preview).
         # @param [Fixnum] page_size
         #   The maximum number of spaces to return. The service may return fewer than this
         #   value. If unspecified, at most 100 spaces are returned. The maximum value is
-        #   1000. If you use a value more than 1000, it's automatically changed to 1000.
+        #   1000 when `useAdminAccess` is set to `true`. Otherwise, the maximum value is
+        #   100. If you use a value more than the maximum value, it's automatically
+        #   changed to the maximum value.
         # @param [String] page_token
         #   A token, received from the previous search spaces call. Provide this parameter
         #   to retrieve the subsequent page. When paginating, all other parameters
@@ -930,7 +943,9 @@ module Google
         #   AND space_type = "SPACE" (display_name:"Hello" OR display_name:"Fun") AND
         #   space_type = "SPACE" (external_user_allowed = "true" AND space_type = "SPACE")
         #   // Returns an empty response. (external_user_allowed = "true" AND display_name:
-        #   "Hello" AND space_type = "SPACE") ```
+        #   "Hello" AND space_type = "SPACE") ``` The maximum query length is 1,000
+        #   characters. Invalid queries are rejected by the server with an `
+        #   INVALID_ARGUMENT` error.
         # @param [Boolean] use_admin_access
         #   When `true`, the method runs using the user's Google Workspace administrator
         #   privileges. The calling user must be a Google Workspace administrator with the
@@ -1405,6 +1420,132 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a message pin. Requires [user authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user) with one of the
+        # following [authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+        # @param [String] parent
+        #   Required. The parent space in which to create the message pin. Format: spaces/`
+        #   space`
+        # @param [Google::Apis::ChatV1::MessagePin] message_pin_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::MessagePin] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::MessagePin]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_space_message_pin(parent, message_pin_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/messagePins', options)
+          command.request_representation = Google::Apis::ChatV1::MessagePin::Representation
+          command.request_object = message_pin_object
+          command.response_representation = Google::Apis::ChatV1::MessagePin::Representation
+          command.response_class = Google::Apis::ChatV1::MessagePin
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a message pin. Requires [user authentication](https://developers.
+        # google.com/workspace/chat/authenticate-authorize-chat-user) with one of the
+        # following [authorization scopes](https://developers.google.com/workspace/chat/
+        # authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/
+        # chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+        # @param [String] name
+        #   Required. The resource name of the message pin to remove. Format: spaces/`
+        #   space`/messagePins/`message_pin`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_space_message_pin(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ChatV1::Empty::Representation
+          command.response_class = Google::Apis::ChatV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists message pins in a space. Users can pin important messages in spaces for
+        # easy access. For more information, see [Pin or unpin a conversation in Google
+        # Chat](https://support.google.com/chat/answer/15622437). Requires [user
+        # authentication](https://developers.google.com/workspace/chat/authenticate-
+        # authorize-chat-user) with one of the following [authorization scopes](https://
+        # developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+        # `https://www.googleapis.com/auth/chat.spaces.pins.readonly` - `https://www.
+        # googleapis.com/auth/chat.spaces.pins` - `https://www.googleapis.com/auth/chat.
+        # spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces`
+        # @param [String] parent
+        #   Required. The parent space which owns the collection of pinned items Format: `
+        #   spaces/`space``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of message pins returned. The service might
+        #   return fewer messages than this value. The maximum value is 100. If you use a
+        #   value more than 100, it's automatically changed to 100. If unspecified, at
+        #   most 100 message pins will be returned. Negative values return an `
+        #   INVALID_ARGUMENT` error.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous list message pins call.
+        #   Provide this parameter to retrieve the subsequent page. When paginating, all
+        #   other parameters provided should match the call that provided the page token.
+        #   Passing different values to the other parameters might lead to unexpected
+        #   results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ListMessagePinsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ListMessagePinsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_space_message_pins(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/messagePins', options)
+          command.response_representation = Google::Apis::ChatV1::ListMessagePinsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ListMessagePinsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a message in a Google Chat space. For an example, see [Send a message](
         # https://developers.google.com/workspace/chat/create-messages). Supports the
         # following types of [authentication](https://developers.google.com/workspace/
@@ -1454,8 +1595,19 @@ module Google
         #   is ignored. For interactions within a thread, the reply is created in the same
         #   thread. Otherwise, the reply is created as a new thread.
         # @param [String] request_id
-        #   Optional. A unique request ID for this message. Specifying an existing request
-        #   ID returns the message created with that ID instead of creating a new message.
+        #   Optional. A unique ID for this request. A random UUID is recommended.
+        #   Specifying a request ID makes the request idempotent, which ensures that
+        #   multiple identical requests with the same request ID result in only a single
+        #   message being created. Subsequent requests with the same request ID return the
+        #   existing message and do not update the message, even if the requested details
+        #   differ from the current state. To use this field effectively: - Ensure that
+        #   subsequent requests are identical and use the same authentication credentials
+        #   as the original request. - If a message was already created with the provided
+        #   request ID, the request returns that message. Note that the returned message
+        #   might not be fully populated; the API echoes the message in your request with
+        #   the system-assigned resource names populated. To retrieve the latest metadata
+        #   for the message, call `GetMessage`. - Reusing an existing request ID with a
+        #   different authenticated user results in an error.
         # @param [String] thread_key
         #   Optional. Deprecated: Use thread.thread_key instead. ID for the thread.
         #   Supports up to 4000 characters. To start or add to a thread, create a message

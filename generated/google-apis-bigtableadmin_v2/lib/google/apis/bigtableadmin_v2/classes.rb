@@ -2914,7 +2914,10 @@ module Google
         # regular expression: `\p`Ll`\p`Lo``0,62``. * Label values must be between 0 and
         # 63 characters long and must conform to the regular expression: `[\p`Ll`\p`Lo`\
         # p`N`_-]`0,63``. * No more than 64 labels can be associated with a given
-        # resource. * Keys and values must both be under 128 bytes.
+        # resource. * Keys and values must both be under 128 bytes. Labels and Tags (
+        # below) are both used to bind metadata to resources, with different use-cases.
+        # See https://cloud.google.com/resource-manager/docs/tags/tags-overview for an
+        # in-depth overview on the difference between tags and labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

@@ -749,6 +749,32 @@ module Google
         end
       end
       
+      # Configuration specific to compiled Protocol Buffer schemas.
+      class CompiledProtoSchema
+        include Google::Apis::Core::Hashable
+      
+        # Required. The compiled FileDescriptorSet binary.
+        # Corresponds to the JSON property `compiledBytes`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :compiled_bytes
+      
+        # Required. The name of the root message type in the schema.
+        # Corresponds to the JSON property `rootMessage`
+        # @return [String]
+        attr_accessor :root_message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compiled_bytes = args[:compiled_bytes] if args.key?(:compiled_bytes)
+          @root_message = args[:root_message] if args.key?(:root_message)
+        end
+      end
+      
       # Configuration for compressing/decompressing message data using a user-
       # specified compression algorithm.
       class Compression
@@ -1604,6 +1630,37 @@ module Google
         end
       end
       
+      # Telemetry about a `Publish` operation which may or may not be common across
+      # individual RPCs.
+      class PublishOperation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If the publisher client is using publish hedging, provides the
+        # attempt count for the hedge (starting at 1). A value of 0 indicates that the
+        # request was not hedged.
+        # Corresponds to the JSON property `hedgedAttemptCount`
+        # @return [Fixnum]
+        attr_accessor :hedged_attempt_count
+      
+        # Optional. Time at which the `publish()` call was initiated in the client
+        # library, meaning across all RPC retry attempts, see [grpc retries](https://
+        # grpc.io/docs/guides/retry/). Provides a sense of the end-to-end publish
+        # duration from the client perspective, across retries.
+        # Corresponds to the JSON property `publishStartTime`
+        # @return [String]
+        attr_accessor :publish_start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hedged_attempt_count = args[:hedged_attempt_count] if args.key?(:hedged_attempt_count)
+          @publish_start_time = args[:publish_start_time] if args.key?(:publish_start_time)
+        end
+      end
+      
       # Request for the Publish method.
       class PublishRequest
         include Google::Apis::Core::Hashable
@@ -1641,6 +1698,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message_ids = args[:message_ids] if args.key?(:message_ids)
+        end
+      end
+      
+      # Client-side telemetry about Pub/Sub requests, useful for debugging purposes.
+      # If the client opts to provide this information, it will be passed as a
+      # serialized proto in the `x-goog-pubsub-client-telemetry` header.
+      class PubsubClientTelemetry
+        include Google::Apis::Core::Hashable
+      
+        # Telemetry about a `Publish` operation which may or may not be common across
+        # individual RPCs.
+        # Corresponds to the JSON property `publishOperation`
+        # @return [Google::Apis::PubsubV1::PublishOperation]
+        attr_accessor :publish_operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @publish_operation = args[:publish_operation] if args.key?(:publish_operation)
         end
       end
       
@@ -1942,6 +2021,11 @@ module Google
       class Schema
         include Google::Apis::Core::Hashable
       
+        # Configuration specific to compiled Protocol Buffer schemas.
+        # Corresponds to the JSON property `compiledProtoSchema`
+        # @return [Google::Apis::PubsubV1::CompiledProtoSchema]
+        attr_accessor :compiled_proto_schema
+      
         # The definition of the schema. This should contain a string representing the
         # full definition of the schema that is a valid schema definition of the type
         # specified in `type`.
@@ -1975,6 +2059,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @compiled_proto_schema = args[:compiled_proto_schema] if args.key?(:compiled_proto_schema)
           @definition = args[:definition] if args.key?(:definition)
           @name = args[:name] if args.key?(:name)
           @revision_create_time = args[:revision_create_time] if args.key?(:revision_create_time)

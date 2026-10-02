@@ -2295,8 +2295,8 @@ module Google
         # @return [String]
         attr_accessor :series
       
-        # Output only. Whether simultaneous multithreading is enabled (see https://cloud.
-        # google.com/compute/docs/instances/set-threads-per-core).
+        # Output only. Whether simultaneous multithreading is enabled. See https://cloud.
+        # google.com/compute/docs/instances/set-threads-per-core.
         # Corresponds to the JSON property `smtEnabled`
         # @return [Boolean]
         attr_accessor :smt_enabled

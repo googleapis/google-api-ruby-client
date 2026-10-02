@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchUpdateMembersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUpdateMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConferenceRecord
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMembersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListParticipantSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +131,12 @@ module Google
       end
       
       class ListTranscriptsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Member
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -208,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateMemberRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ActiveConference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -230,6 +260,23 @@ module Google
           property :smart_notes_config, as: 'smartNotesConfig', class: Google::Apis::MeetV2::SmartNotesConfig, decorator: Google::Apis::MeetV2::SmartNotesConfig::Representation
       
           property :transcription_config, as: 'transcriptionConfig', class: Google::Apis::MeetV2::TranscriptionConfig, decorator: Google::Apis::MeetV2::TranscriptionConfig::Representation
+      
+        end
+      end
+      
+      class BatchUpdateMembersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :requests, as: 'requests', class: Google::Apis::MeetV2::UpdateMemberRequest, decorator: Google::Apis::MeetV2::UpdateMemberRequest::Representation
+      
+          property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class BatchUpdateMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members', class: Google::Apis::MeetV2::Member, decorator: Google::Apis::MeetV2::Member::Representation
       
         end
       end
@@ -290,6 +337,15 @@ module Google
         end
       end
       
+      class ListMembersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :members, as: 'members', class: Google::Apis::MeetV2::Member, decorator: Google::Apis::MeetV2::Member::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListParticipantSessionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -342,6 +398,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :transcripts, as: 'transcripts', class: Google::Apis::MeetV2::Transcript, decorator: Google::Apis::MeetV2::Transcript::Representation
       
+        end
+      end
+      
+      class Member
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :name, as: 'name'
+          property :role, as: 'role'
         end
       end
       
@@ -501,6 +566,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_transcription_generation, as: 'autoTranscriptionGeneration'
+        end
+      end
+      
+      class UpdateMemberRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member, as: 'member', class: Google::Apis::MeetV2::Member, decorator: Google::Apis::MeetV2::Member::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end

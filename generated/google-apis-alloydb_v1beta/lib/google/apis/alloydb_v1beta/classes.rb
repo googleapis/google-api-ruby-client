@@ -206,6 +206,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The edition of the cluster this backup was created from. Any
+        # restored cluster created from this backup will have the same edition.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # EncryptionConfig describes the encryption config of a cluster or a backup that
         # is encrypted with a CMEK (customer-managed encryption key).
         # Corresponds to the JSON property `encryptionConfig`
@@ -321,6 +327,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
@@ -689,6 +696,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Edition of the cluster. If left unspecified, the cluster behaves as `
+        # EDITION_ALLOYDB`.
+        # Corresponds to the JSON property `edition`
+        # @return [String]
+        attr_accessor :edition
+      
         # EncryptionConfig describes the encryption config of a cluster or a backup that
         # is encrypted with a CMEK (customer-managed encryption key).
         # Corresponds to the JSON property `encryptionConfig`
@@ -869,6 +882,7 @@ module Google
           @dataplex_config = args[:dataplex_config] if args.key?(:dataplex_config)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @edition = args[:edition] if args.key?(:edition)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
@@ -1379,6 +1393,35 @@ module Google
           @end_date = args[:end_date] if args.key?(:end_date)
           @start_date = args[:start_date] if args.key?(:start_date)
           @time = args[:time] if args.key?(:time)
+        end
+      end
+      
+      # DnsAutomationInfo contains information about the DNS automation for the
+      # instance.
+      class DnsAutomationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The fully qualified domain name of the instance for DNS
+        # automation. Example: "...alloydb.goog.". Note: The AUDIT directive is
+        # intentionally omitted because this field contains sensitive network topology
+        # information.
+        # Corresponds to the JSON property `fullyQualifiedDomainName`
+        # @return [String]
+        attr_accessor :fully_qualified_domain_name
+      
+        # Output only. The state of the DNS automation.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fully_qualified_domain_name = args[:fully_qualified_domain_name] if args.key?(:fully_qualified_domain_name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2854,6 +2897,7 @@ module Google
       
         # Indicates whether to track active query plans for an instance. If not set, the
         # default value is "off". Can only be enabled if track_active_queries is enabled.
+        # Deprecated: Use track_active_queries instead.
         # Corresponds to the JSON property `trackActiveQueryPlan`
         # @return [Boolean]
         attr_accessor :track_active_query_plan
@@ -3178,10 +3222,30 @@ module Google
         # @return [String]
         attr_accessor :consumer_project
       
+        # Output only. List of DNS automation info for the PSC auto connection.
+        # Corresponds to the JSON property `dnsAutomationInfos`
+        # @return [Array<Google::Apis::AlloydbV1beta::DnsAutomationInfo>]
+        attr_accessor :dns_automation_infos
+      
         # Output only. The IP address of the PSC service automation endpoint.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
+      
+        # Output only. The PSC service connection policy name. The format is "projects//
+        # regions//serviceConnectionPolicies/"
+        # Corresponds to the JSON property `serviceConnectionPolicy`
+        # @return [String]
+        attr_accessor :service_connection_policy
+      
+        # Output only. The creation state or result of the connection policy. Possible
+        # values include: - `ACTIVE`: The policy was created successfully. - `
+        # PERMISSION_DENIED`: Sufficient permissions were not provided. Note that this
+        # field is an unstructured output and customers should not rely on the specific
+        # string value or error message directly.
+        # Corresponds to the JSON property `serviceConnectionPolicyCreationState`
+        # @return [String]
+        attr_accessor :service_connection_policy_creation_state
       
         # Output only. The status of the PSC service automation connection. Possible
         # values: "STATE_UNSPECIFIED" - An invalid state as the default case. "ACTIVE" -
@@ -3204,7 +3268,10 @@ module Google
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
           @consumer_network_status = args[:consumer_network_status] if args.key?(:consumer_network_status)
           @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @dns_automation_infos = args[:dns_automation_infos] if args.key?(:dns_automation_infos)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @service_connection_policy = args[:service_connection_policy] if args.key?(:service_connection_policy)
+          @service_connection_policy_creation_state = args[:service_connection_policy_creation_state] if args.key?(:service_connection_policy_creation_state)
           @status = args[:status] if args.key?(:status)
         end
       end

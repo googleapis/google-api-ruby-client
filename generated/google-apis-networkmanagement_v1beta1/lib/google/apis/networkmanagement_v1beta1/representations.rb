@@ -118,6 +118,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DirectVpcIngressConnectionInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DropInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -448,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ViewerPermissionMissingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcConnectorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -563,6 +575,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -573,6 +586,7 @@ module Google
           property :location, as: 'location'
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
+          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -627,6 +641,17 @@ module Google
       end
       
       class DirectVpcEgressConnectionInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_uri, as: 'networkUri'
+          property :region, as: 'region'
+          property :selected_ip_address, as: 'selectedIpAddress'
+          property :selected_ip_range, as: 'selectedIpRange'
+          property :subnetwork_uri, as: 'subnetworkUri'
+        end
+      end
+      
+      class DirectVpcIngressConnectionInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :network_uri, as: 'networkUri'
@@ -1263,6 +1288,8 @@ module Google
           property :description, as: 'description'
           property :direct_vpc_egress_connection, as: 'directVpcEgressConnection', class: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo::Representation
       
+          property :direct_vpc_ingress_connection, as: 'directVpcIngressConnection', class: Google::Apis::NetworkmanagementV1beta1::DirectVpcIngressConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DirectVpcIngressConnectionInfo::Representation
+      
           property :dms_private_connection, as: 'dmsPrivateConnection', class: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo, decorator: Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo::Representation
       
           property :drop, as: 'drop', class: Google::Apis::NetworkmanagementV1beta1::DropInfo, decorator: Google::Apis::NetworkmanagementV1beta1::DropInfo::Representation
@@ -1319,6 +1346,8 @@ module Google
           property :state, as: 'state'
           property :storage_bucket, as: 'storageBucket', class: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo, decorator: Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo::Representation
       
+          property :viewer_permission_missing_info, as: 'viewerPermissionMissingInfo', class: Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo, decorator: Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo::Representation
+      
           property :vpc_connector, as: 'vpcConnector', class: Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo, decorator: Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo::Representation
       
           property :vpn_gateway, as: 'vpnGateway', class: Google::Apis::NetworkmanagementV1beta1::VpnGatewayInfo, decorator: Google::Apis::NetworkmanagementV1beta1::VpnGatewayInfo::Representation
@@ -1357,6 +1386,13 @@ module Google
           property :forward_trace_id, as: 'forwardTraceId'
           collection :steps, as: 'steps', class: Google::Apis::NetworkmanagementV1beta1::Step, decorator: Google::Apis::NetworkmanagementV1beta1::Step::Representation
       
+        end
+      end
+      
+      class ViewerPermissionMissingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_types, as: 'resourceTypes'
         end
       end
       

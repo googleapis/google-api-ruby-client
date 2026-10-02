@@ -16,13 +16,13 @@ module Google
   module Apis
     module CloudsupportV2
       # Version of the google-apis-cloudsupport_v2 gem
-      GEM_VERSION = "0.26.0"
+      GEM_VERSION = "0.27.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.0"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260726"
+      REVISION = "20260820"
     end
   end
 end

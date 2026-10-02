@@ -1056,6 +1056,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds a list of deals to a creative, which submits the creative for publisher
+        # review. Returns the updated creative.
+        # @param [String] name
+        #   Required. Name of the creative to add the deals to. See creative.name.
+        # @param [Google::Apis::RealtimebiddingV1::AddDealsRequest] add_deals_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RealtimebiddingV1::Creative] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RealtimebiddingV1::Creative]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_creative_deals(name, add_deals_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:addDeals', options)
+          command.request_representation = Google::Apis::RealtimebiddingV1::AddDealsRequest::Representation
+          command.request_object = add_deals_request_object
+          command.response_representation = Google::Apis::RealtimebiddingV1::Creative::Representation
+          command.response_class = Google::Apis::RealtimebiddingV1::Creative
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a creative.
         # @param [String] parent
         #   Required. The name of the parent buyer that the new creative belongs to that

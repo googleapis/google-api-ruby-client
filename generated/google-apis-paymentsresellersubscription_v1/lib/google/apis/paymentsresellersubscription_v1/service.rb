@@ -543,6 +543,9 @@ module Google
         #   Identifier. Resource name of the line item. Format: partners/`partner`/
         #   subscriptions/`subscription`/lineItems/`lineItem`
         # @param [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem] subscription_line_item_object
+        # @param [String] request_id
+        #   Optional. An idempotency ID for the request. A random UUID is recommended.
+        #   Restricted to 36 ASCII characters.
         # @param [String] update_mask
         #   Required. The list of fields to update. Only a limited set of fields can be
         #   updated. The allowed fields are the following: - `product_payload.
@@ -564,13 +567,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_partner_subscription_line_item(name, subscription_line_item_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_partner_subscription_line_item(name, subscription_line_item_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
           command.request_object = subscription_line_item_object
           command.response_representation = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem::Representation
           command.response_class = Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItem
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

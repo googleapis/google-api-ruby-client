@@ -523,6 +523,8 @@ module Google
       class BdrBackupRestoreJobLog
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_protection_policy, as: 'autoProtectionPolicy'
+          property :auto_protection_policy_binding, as: 'autoProtectionPolicyBinding'
           property :backup_consistency_time, as: 'backupConsistencyTime'
           property :backup_name, as: 'backupName'
           property :backup_plan_name, as: 'backupPlanName'

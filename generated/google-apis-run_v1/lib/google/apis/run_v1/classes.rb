@@ -1168,6 +1168,13 @@ module Google
       class ExecutionSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # Optional. Specifies the maximum desired number of tasks the execution should
         # run at given time. When the job is run, if this field is 0 or unset, the
         # maximum possible value will be used for that execution. The actual number of
@@ -1197,6 +1204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @parallelism = args[:parallelism] if args.key?(:parallelism)
           @task_count = args[:task_count] if args.key?(:task_count)
           @template = args[:template] if args.key?(:template)
@@ -2597,6 +2605,14 @@ module Google
         # @return [String]
         attr_accessor :dest_path
       
+        # Optional. True if remote tags should be fetched too (default false). Note:
+        # when depth is 1 (default), git fetch only retrieves tags pointing to commits
+        # within the shallow boundary. Set depth to -1 to fetch all historical tags.
+        # Corresponds to the JSON property `fetchTags`
+        # @return [Boolean]
+        attr_accessor :fetch_tags
+        alias_method :fetch_tags?, :fetch_tags
+      
         # Optional. True if submodules should be fetched too (default false).
         # Corresponds to the JSON property `recurseSubmodules`
         # @return [Boolean]
@@ -2621,6 +2637,7 @@ module Google
         def update!(**args)
           @depth = args[:depth] if args.key?(:depth)
           @dest_path = args[:dest_path] if args.key?(:dest_path)
+          @fetch_tags = args[:fetch_tags] if args.key?(:fetch_tags)
           @recurse_submodules = args[:recurse_submodules] if args.key?(:recurse_submodules)
           @repository = args[:repository] if args.key?(:repository)
           @revision = args[:revision] if args.key?(:revision)
@@ -4927,25 +4944,26 @@ module Google
         # source-location`: Service, Revision. * `run.googleapis.com/build-worker-pool`:
         # Service. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.
         # com/cloudsql-instances`: Revision, Execution, Instance. * `run.googleapis.com/
-        # container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`:
-        # Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.
-        # com/default-url-disabled`: Service. * `run.googleapis.com/description`:
-        # Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.
-        # googleapis.com/encryption-key`: Revision, Execution, Instance. * `run.
-        # googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.
-        # com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-redundancy-
-        # disabled`: Revision. * `run.googleapis.com/health-check-disabled`: Revision. *
-        # `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.com/invoker-
-        # iam-disabled`: Service, Instance. * `run.googleapis.com/launch-stage`: Service,
-        # Job. * `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`
-        # : Service. * `run.googleapis.com/manualInstanceCount`: Service. * `run.
-        # googleapis.com/network-interfaces`: Revision, Execution, Instance. * `run.
-        # googleapis.com/post-key-revocation-action-type`: Revision. `run.googleapis.com/
-        # scalingMode`: Service. * `run.googleapis.com/secrets`: Revision, Execution. * `
-        # run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/
-        # sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision.
-        # * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.
-        # googleapis.com/vpc-access-egress`: Revision, Execution, Instance.
+        # container-dependencies`: Revision, Instance. * `run.googleapis.com/cpu-
+        # throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `
+        # run.googleapis.com/default-url-disabled`: Service. * `run.googleapis.com/
+        # description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
+        # Revision * `run.googleapis.com/encryption-key`: Revision, Execution, Instance.
+        # * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.
+        # googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/gpu-zonal-
+        # redundancy-disabled`: Revision. * `run.googleapis.com/health-check-disabled`:
+        # Revision. * `run.googleapis.com/ingress`: Service, Instance. * `run.googleapis.
+        # com/invoker-iam-disabled`: Service, Instance. * `run.googleapis.com/launch-
+        # stage`: Service, Job. * `run.googleapis.com/minScale`: Service. * `run.
+        # googleapis.com/maxScale`: Service. * `run.googleapis.com/manualInstanceCount`:
+        # Service. * `run.googleapis.com/network-interfaces`: Revision, Execution,
+        # Instance. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `
+        # run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
+        # Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `
+        # run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-
+        # cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision,
+        # Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution,
+        # Instance.
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
@@ -5068,6 +5086,13 @@ module Google
         # @return [Array<Google::Apis::RunV1::ContainerOverride>]
         attr_accessor :container_overrides
       
+        # Optional. If true, the system will start the execution within the next 12
+        # hours depending on available capacity.
+        # Corresponds to the JSON property `delayExecution`
+        # @return [Boolean]
+        attr_accessor :delay_execution
+        alias_method :delay_execution?, :delay_execution
+      
         # The desired number of tasks the execution should run. Will replace existing
         # task_count value.
         # Corresponds to the JSON property `taskCount`
@@ -5088,6 +5113,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @container_overrides = args[:container_overrides] if args.key?(:container_overrides)
+          @delay_execution = args[:delay_execution] if args.key?(:delay_execution)
           @task_count = args[:task_count] if args.key?(:task_count)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
@@ -5319,8 +5345,8 @@ module Google
       class ResourceRecord
         include Google::Apis::Core::Hashable
       
-        # Relative name of the object affected by this record. Only applicable for `
-        # CNAME` records. Example: 'www'.
+        # Name of the resource record relative to its apex domain, e.g. `www` for `www.
+        # example.com`. Omitted for apex records.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

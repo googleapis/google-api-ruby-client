@@ -22,6 +22,54 @@ module Google
   module Apis
     module SlidesV1
       
+      # Inserts a reply Post into a CommentThread. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class AddCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread to add the reply to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::SlidesV1::Post]
+        attr_accessor :post
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post = args[:post] if args.key?(:post)
+        end
+      end
+      
+      # The result of creating a reply. [Developer Preview](https://developers.google.
+      # com/workspace/preview).
+      class AddCommentReplyResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `post`
+        # @return [Google::Apis::SlidesV1::Post]
+        attr_accessor :post
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post = args[:post] if args.key?(:post)
+        end
+      end
+      
       # AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to
       # transform source coordinates (x,y) into destination coordinates (x', y')
       # according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation,
@@ -195,6 +243,12 @@ module Google
       class BatchUpdatePresentationResponse
         include Google::Apis::Core::Hashable
       
+        # Whether comment updates were applied in the batch request. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentUpdateState`
+        # @return [String]
+        attr_accessor :comment_update_state
+      
         # The presentation the updates were applied to.
         # Corresponds to the JSON property `presentationId`
         # @return [String]
@@ -217,6 +271,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment_update_state = args[:comment_update_state] if args.key?(:comment_update_state)
           @presentation_id = args[:presentation_id] if args.key?(:presentation_id)
           @replies = args[:replies] if args.key?(:replies)
           @write_control = args[:write_control] if args.key?(:write_control)
@@ -320,6 +375,87 @@ module Google
           @alpha = args[:alpha] if args.key?(:alpha)
           @color = args[:color] if args.key?(:color)
           @position = args[:position] if args.key?(:position)
+        end
+      end
+      
+      # Contains a list of all locations in a `Page` that are anchored to a
+      # CommentThread via the same anchorId. Multiple separate anchors may refer to
+      # the same location, either within a `Page` or across different pages, [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class CommentAnchor
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique ID of the comment anchor.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # Output only. All object ID-based locations within a page that refer to the
+        # anchor ID.
+        # Corresponds to the JSON property `objectAnchors`
+        # @return [Array<Google::Apis::SlidesV1::ObjectAnchor>]
+        attr_accessor :object_anchors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @object_anchors = args[:object_anchors] if args.key?(:object_anchors)
+        end
+      end
+      
+      # Represents a single comment thread inside a presentation. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class CommentThread
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentAnchor in the presentation that this thread is tied to.
+        # Corresponds to the JSON property `anchorId`
+        # @return [String]
+        attr_accessor :anchor_id
+      
+        # The unique ID of the comment thread.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # Represents a single post in a comment thread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `headPost`
+        # @return [Google::Apis::SlidesV1::Post]
+        attr_accessor :head_post
+      
+        # The quoted text from the page element when the comment was created, formatted
+        # as plain-text.
+        # Corresponds to the JSON property `plainTextQuote`
+        # @return [String]
+        attr_accessor :plain_text_quote
+      
+        # Replies to the head post.
+        # Corresponds to the JSON property `replies`
+        # @return [Array<Google::Apis::SlidesV1::Post>]
+        attr_accessor :replies
+      
+        # Whether the thread is open or resolved.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anchor_id = args[:anchor_id] if args.key?(:anchor_id)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @head_post = args[:head_post] if args.key?(:head_post)
+          @plain_text_quote = args[:plain_text_quote] if args.key?(:plain_text_quote)
+          @replies = args[:replies] if args.key?(:replies)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -896,6 +1032,55 @@ module Google
         end
       end
       
+      # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
+      # - The requesting user is not the author of the post. - The reply post contains
+      # a comment action. - The reply post contains an assignee. [Developer Preview](
+      # https://developers.google.com/workspace/preview).
+      class DeleteCommentReplyRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The ID of the reply Post being deleted.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @post_id = args[:post_id] if args.key?(:post_id)
+        end
+      end
+      
+      # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+      # user is not the author of the headPost. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class DeleteCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread that is being deleted.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+        end
+      end
+      
       # Deletes an object, either pages or page elements, from the presentation.
       class DeleteObjectRequest
         include Google::Apis::Core::Hashable
@@ -1314,6 +1499,88 @@ module Google
           @recolor = args[:recolor] if args.key?(:recolor)
           @shadow = args[:shadow] if args.key?(:shadow)
           @transparency = args[:transparency] if args.key?(:transparency)
+        end
+      end
+      
+      # Inserts a CommentThread into the presentation. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class InsertCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email address of the assignee of the comment. Leave empty for a
+        # non-assigned comment. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `assigneeEmailAddress`
+        # @return [String]
+        attr_accessor :assignee_email_address
+      
+        # The text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Slides editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The object ID of the Page or PageElement that is tied to this comment. If the
+        # specified object_id is a Group, the comment will be anchored to at most 100 of
+        # the group's non-group descendants.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # An anchor to a specific range of text within a Shape's text. [Developer
+        # Preview](https://developers.google.com/workspace/preview). To insert comments
+        # in speaker notes, use the ShapeTextAnchor with the speaker notes object ID.
+        # Corresponds to the JSON property `shapeTextAnchor`
+        # @return [Google::Apis::SlidesV1::ShapeTextAnchor]
+        attr_accessor :shape_text_anchor
+      
+        # An anchor to a specific range of cells within a Table. Used to anchor a
+        # comment to all of the text in each cell in a range within a table. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `tableAnchor`
+        # @return [Google::Apis::SlidesV1::TableAnchor]
+        attr_accessor :table_anchor
+      
+        # An anchor to a specific range of text within a TableCell's TextElement. [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `tableCellTextAnchor`
+        # @return [Google::Apis::SlidesV1::TableCellTextAnchor]
+        attr_accessor :table_cell_text_anchor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email_address = args[:assignee_email_address] if args.key?(:assignee_email_address)
+          @content = args[:content] if args.key?(:content)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @shape_text_anchor = args[:shape_text_anchor] if args.key?(:shape_text_anchor)
+          @table_anchor = args[:table_anchor] if args.key?(:table_anchor)
+          @table_cell_text_anchor = args[:table_cell_text_anchor] if args.key?(:table_cell_text_anchor)
+        end
+      end
+      
+      # The result of creating a comment. [Developer Preview](https://developers.
+      # google.com/workspace/preview).
+      class InsertCommentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a single comment thread inside a presentation. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentThread`
+        # @return [Google::Apis::SlidesV1::CommentThread]
+        attr_accessor :comment_thread
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_thread = args[:comment_thread] if args.key?(:comment_thread)
         end
       end
       
@@ -1864,6 +2131,41 @@ module Google
         end
       end
       
+      # Represents comment anchor data tied to a Slides object, for example a `Page`
+      # or PageElement. [Developer Preview](https://developers.google.com/workspace/
+      # preview).
+      class ObjectAnchor
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The page or page element that the comment thread is anchored to.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Represents text ranges within a shape covered by a comment anchor. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `shapeTextAnchors`
+        # @return [Google::Apis::SlidesV1::ShapeTextAnchors]
+        attr_accessor :shape_text_anchors
+      
+        # Represents table cell ranges within a table covered by a comment anchor. [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `tableCellAnchors`
+        # @return [Google::Apis::SlidesV1::TableCellAnchors]
+        attr_accessor :table_cell_anchors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @shape_text_anchors = args[:shape_text_anchors] if args.key?(:shape_text_anchors)
+          @table_cell_anchors = args[:table_cell_anchors] if args.key?(:table_cell_anchors)
+        end
+      end
+      
       # A themeable solid color value.
       class OpaqueColor
         include Google::Apis::Core::Hashable
@@ -1977,6 +2279,28 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
+        # Output only. The comment anchors present on the page. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentAnchors`
+        # @return [Array<Google::Apis::SlidesV1::CommentAnchor>]
+        attr_accessor :comment_anchors
+      
+        # Output only. The comment threads associated with the page. Only populated if
+        # the page was fetched via a GetPageRequest with a populated comments_view_mode.
+        # Otherwise, comments are returned in the Presentation via the
+        # GetPresentationRequest. [Developer Preview](https://developers.google.com/
+        # workspace/preview).
+        # Corresponds to the JSON property `comments`
+        # @return [Array<Google::Apis::SlidesV1::CommentThread>]
+        attr_accessor :comments
+      
+        # Output only. The comments view mode applied to the page. Only populated if the
+        # page was fetched via a GetPageRequest with a populated comments_view_mode. [
+        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
+      
         # The properties of Page are only relevant for pages with page_type LAYOUT.
         # Corresponds to the JSON property `layoutProperties`
         # @return [Google::Apis::SlidesV1::LayoutProperties]
@@ -2041,6 +2365,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comment_anchors = args[:comment_anchors] if args.key?(:comment_anchors)
+          @comments = args[:comments] if args.key?(:comments)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @layout_properties = args[:layout_properties] if args.key?(:layout_properties)
           @master_properties = args[:master_properties] if args.key?(:master_properties)
           @notes_properties = args[:notes_properties] if args.key?(:notes_properties)
@@ -2404,9 +2731,158 @@ module Google
         end
       end
       
+      # Represents a single post in a comment thread. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class Post
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The email of the user who is being newly assigned to the thread as
+        # part of this post. Returns a 400 bad request error if: - The parent thread is
+        # a CommentThread whose headPost does not have an assignee. - commentAction is
+        # specified as `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code
+        # units.
+        # Corresponds to the JSON property `assigneeEmail`
+        # @return [String]
+        attr_accessor :assignee_email
+      
+        # Represents a user who authored a comment post. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `author`
+        # @return [Google::Apis::SlidesV1::PostAuthor]
+        attr_accessor :author
+      
+        # Action taken as part of creating the post.
+        # Corresponds to the JSON property `commentAction`
+        # @return [String]
+        attr_accessor :comment_action
+      
+        # The content of the post. Required to be non-empty if comment_action is not `
+        # RESOLVE` or `REOPEN`. This text content will be handled similarly to comments
+        # created in the Slides editor. It will have similar behaviors for formatting,
+        # notifications, etc. May not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The content of the post as HTML.
+        # Corresponds to the JSON property `contentHtml`
+        # @return [String]
+        attr_accessor :content_html
+      
+        # Output only. The time the post was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Whether the post is deleted. If `true`, content and author fields
+        # will be empty.
+        # Corresponds to the JSON property `deleted`
+        # @return [Boolean]
+        attr_accessor :deleted
+        alias_method :deleted?, :deleted
+      
+        # Output only. Whether the post is from a copied presentation. This field cannot
+        # be set directly by callers.
+        # Corresponds to the JSON property `fromCopiedPresentation`
+        # @return [Boolean]
+        attr_accessor :from_copied_presentation
+        alias_method :from_copied_presentation?, :from_copied_presentation
+      
+        # Output only. Whether the post is from an imported presentation. This field
+        # cannot be set directly by callers.
+        # Corresponds to the JSON property `fromImportedPresentation`
+        # @return [Boolean]
+        attr_accessor :from_imported_presentation
+        alias_method :from_imported_presentation?, :from_imported_presentation
+      
+        # Output only. The unique ID of the post.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        # Output only. The time the post was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assignee_email = args[:assignee_email] if args.key?(:assignee_email)
+          @author = args[:author] if args.key?(:author)
+          @comment_action = args[:comment_action] if args.key?(:comment_action)
+          @content = args[:content] if args.key?(:content)
+          @content_html = args[:content_html] if args.key?(:content_html)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @deleted = args[:deleted] if args.key?(:deleted)
+          @from_copied_presentation = args[:from_copied_presentation] if args.key?(:from_copied_presentation)
+          @from_imported_presentation = args[:from_imported_presentation] if args.key?(:from_imported_presentation)
+          @post_id = args[:post_id] if args.key?(:post_id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Represents a user who authored a comment post. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class PostAuthor
+        include Google::Apis::Core::Hashable
+      
+        # Whether the user is anonymous.
+        # Corresponds to the JSON property `anonymous`
+        # @return [Boolean]
+        attr_accessor :anonymous
+        alias_method :anonymous?, :anonymous
+      
+        # The display name of the user. May be absent if the author is anonymous.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Whether the user is the authenticated user making the request.
+        # Corresponds to the JSON property `me`
+        # @return [Boolean]
+        attr_accessor :me
+        alias_method :me?, :me
+      
+        # The resource name of the post author user, which can also be used to identify
+        # the user in the [Google People API](https://developers.google.com/people/api/
+        # rest/v1/people). Format: `users/`user``. Will not be populated if the
+        # anonymous field is `true` or if the post is from an imported presentation.
+        # Corresponds to the JSON property `user`
+        # @return [String]
+        attr_accessor :user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @anonymous = args[:anonymous] if args.key?(:anonymous)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @me = args[:me] if args.key?(:me)
+          @user = args[:user] if args.key?(:user)
+        end
+      end
+      
       # A Google Slides presentation.
       class Presentation
         include Google::Apis::Core::Hashable
+      
+        # Output only. The comment threads associated with the presentation. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `comments`
+        # @return [Array<Google::Apis::SlidesV1::CommentThread>]
+        attr_accessor :comments
+      
+        # Output only. The comments view mode applied to the presentation. [Developer
+        # Preview](https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `commentsViewMode`
+        # @return [String]
+        attr_accessor :comments_view_mode
       
         # The layouts in the presentation. A layout is a template that determines how
         # content is arranged and styled on the slides that inherit from that layout.
@@ -2477,6 +2953,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @comments = args[:comments] if args.key?(:comments)
+          @comments_view_mode = args[:comments_view_mode] if args.key?(:comments_view_mode)
           @layouts = args[:layouts] if args.key?(:layouts)
           @locale = args[:locale] if args.key?(:locale)
           @masters = args[:masters] if args.key?(:masters)
@@ -2815,6 +3293,12 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
+        # Inserts a reply Post into a CommentThread. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::SlidesV1::AddCommentReplyRequest]
+        attr_accessor :add_comment_reply
+      
         # Creates an image.
         # Corresponds to the JSON property `createImage`
         # @return [Google::Apis::SlidesV1::CreateImageRequest]
@@ -2865,6 +3349,21 @@ module Google
         # @return [Google::Apis::SlidesV1::CreateVideoRequest]
         attr_accessor :create_video
       
+        # Deletes a CommentThread. Returns a 400 bad request error if the requesting
+        # user is not the author of the headPost. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteComment`
+        # @return [Google::Apis::SlidesV1::DeleteCommentRequest]
+        attr_accessor :delete_comment
+      
+        # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
+        # - The requesting user is not the author of the post. - The reply post contains
+        # a comment action. - The reply post contains an assignee. [Developer Preview](
+        # https://developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `deleteCommentReply`
+        # @return [Google::Apis::SlidesV1::DeleteCommentReplyRequest]
+        attr_accessor :delete_comment_reply
+      
         # Deletes an object, either pages or page elements, from the presentation.
         # Corresponds to the JSON property `deleteObject`
         # @return [Google::Apis::SlidesV1::DeleteObjectRequest]
@@ -2905,6 +3404,12 @@ module Google
         # Corresponds to the JSON property `groupObjects`
         # @return [Google::Apis::SlidesV1::GroupObjectsRequest]
         attr_accessor :group_objects
+      
+        # Inserts a CommentThread into the presentation. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::SlidesV1::InsertCommentRequest]
+        attr_accessor :insert_comment
       
         # Inserts columns into a table. Other columns in the table will be resized to
         # fit the new column.
@@ -2977,6 +3482,13 @@ module Google
         # Corresponds to the JSON property `unmergeTableCells`
         # @return [Google::Apis::SlidesV1::UnmergeTableCellsRequest]
         attr_accessor :unmerge_table_cells
+      
+        # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
+        # requesting user is not the author of the post. [Developer Preview](https://
+        # developers.google.com/workspace/preview).
+        # Corresponds to the JSON property `updateCommentPost`
+        # @return [Google::Apis::SlidesV1::UpdateCommentPostRequest]
+        attr_accessor :update_comment_post
       
         # Update the properties of an Image.
         # Corresponds to the JSON property `updateImageProperties`
@@ -3075,6 +3587,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @create_image = args[:create_image] if args.key?(:create_image)
           @create_line = args[:create_line] if args.key?(:create_line)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
@@ -3083,6 +3596,8 @@ module Google
           @create_slide = args[:create_slide] if args.key?(:create_slide)
           @create_table = args[:create_table] if args.key?(:create_table)
           @create_video = args[:create_video] if args.key?(:create_video)
+          @delete_comment = args[:delete_comment] if args.key?(:delete_comment)
+          @delete_comment_reply = args[:delete_comment_reply] if args.key?(:delete_comment_reply)
           @delete_object = args[:delete_object] if args.key?(:delete_object)
           @delete_paragraph_bullets = args[:delete_paragraph_bullets] if args.key?(:delete_paragraph_bullets)
           @delete_table_column = args[:delete_table_column] if args.key?(:delete_table_column)
@@ -3090,6 +3605,7 @@ module Google
           @delete_text = args[:delete_text] if args.key?(:delete_text)
           @duplicate_object = args[:duplicate_object] if args.key?(:duplicate_object)
           @group_objects = args[:group_objects] if args.key?(:group_objects)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @insert_table_columns = args[:insert_table_columns] if args.key?(:insert_table_columns)
           @insert_table_rows = args[:insert_table_rows] if args.key?(:insert_table_rows)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
@@ -3102,6 +3618,7 @@ module Google
           @reroute_line = args[:reroute_line] if args.key?(:reroute_line)
           @ungroup_objects = args[:ungroup_objects] if args.key?(:ungroup_objects)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
+          @update_comment_post = args[:update_comment_post] if args.key?(:update_comment_post)
           @update_image_properties = args[:update_image_properties] if args.key?(:update_image_properties)
           @update_line_category = args[:update_line_category] if args.key?(:update_line_category)
           @update_line_properties = args[:update_line_properties] if args.key?(:update_line_properties)
@@ -3148,6 +3665,12 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
+        # The result of creating a reply. [Developer Preview](https://developers.google.
+        # com/workspace/preview).
+        # Corresponds to the JSON property `addCommentReply`
+        # @return [Google::Apis::SlidesV1::AddCommentReplyResponse]
+        attr_accessor :add_comment_reply
+      
         # The result of creating an image.
         # Corresponds to the JSON property `createImage`
         # @return [Google::Apis::SlidesV1::CreateImageResponse]
@@ -3193,6 +3716,12 @@ module Google
         # @return [Google::Apis::SlidesV1::GroupObjectsResponse]
         attr_accessor :group_objects
       
+        # The result of creating a comment. [Developer Preview](https://developers.
+        # google.com/workspace/preview).
+        # Corresponds to the JSON property `insertComment`
+        # @return [Google::Apis::SlidesV1::InsertCommentResponse]
+        attr_accessor :insert_comment
+      
         # The result of replacing shapes with an image.
         # Corresponds to the JSON property `replaceAllShapesWithImage`
         # @return [Google::Apis::SlidesV1::ReplaceAllShapesWithImageResponse]
@@ -3214,6 +3743,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @create_image = args[:create_image] if args.key?(:create_image)
           @create_line = args[:create_line] if args.key?(:create_line)
           @create_shape = args[:create_shape] if args.key?(:create_shape)
@@ -3223,6 +3753,7 @@ module Google
           @create_video = args[:create_video] if args.key?(:create_video)
           @duplicate_object = args[:duplicate_object] if args.key?(:duplicate_object)
           @group_objects = args[:group_objects] if args.key?(:group_objects)
+          @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @replace_all_shapes_with_image = args[:replace_all_shapes_with_image] if args.key?(:replace_all_shapes_with_image)
           @replace_all_shapes_with_sheets_chart = args[:replace_all_shapes_with_sheets_chart] if args.key?(:replace_all_shapes_with_sheets_chart)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
@@ -3471,6 +4002,54 @@ module Google
           @outline = args[:outline] if args.key?(:outline)
           @shadow = args[:shadow] if args.key?(:shadow)
           @shape_background_fill = args[:shape_background_fill] if args.key?(:shape_background_fill)
+        end
+      end
+      
+      # An anchor to a specific range of text within a Shape's text. [Developer
+      # Preview](https://developers.google.com/workspace/preview). To insert comments
+      # in speaker notes, use the ShapeTextAnchor with the speaker notes object ID.
+      class ShapeTextAnchor
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the page element containing the text.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Specifies a contiguous range of an indexed collection, such as characters in
+        # text.
+        # Corresponds to the JSON property `textRange`
+        # @return [Google::Apis::SlidesV1::Range]
+        attr_accessor :text_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @text_range = args[:text_range] if args.key?(:text_range)
+        end
+      end
+      
+      # Represents text ranges within a shape covered by a comment anchor. [Developer
+      # Preview](https://developers.google.com/workspace/preview).
+      class ShapeTextAnchors
+        include Google::Apis::Core::Hashable
+      
+        # A list of text ranges covered by the comment anchor.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<Google::Apis::SlidesV1::TextRange>]
+        attr_accessor :ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ranges = args[:ranges] if args.key?(:ranges)
         end
       end
       
@@ -3807,6 +4386,38 @@ module Google
         end
       end
       
+      # An anchor to a specific range of cells within a Table. Used to anchor a
+      # comment to all of the text in each cell in a range within a table. [Developer
+      # Preview](https://developers.google.com/workspace/preview).
+      class TableAnchor
+        include Google::Apis::Core::Hashable
+      
+        # The object ID of the table.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # A table range represents a reference to a subset of a table. It's important to
+        # note that the cells specified by a table range do not necessarily form a
+        # rectangle. For example, let's say we have a 3 x 3 table where all the cells of
+        # the last row are merged together. The table looks like this: [ ] A table range
+        # with location = (0, 0), row span = 3 and column span = 2 specifies the
+        # following cells: x x [ x x x ]
+        # Corresponds to the JSON property `tableRange`
+        # @return [Google::Apis::SlidesV1::TableRange]
+        attr_accessor :table_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @table_range = args[:table_range] if args.key?(:table_range)
+        end
+      end
+      
       # The properties of each border cell.
       class TableBorderCell
         include Google::Apis::Core::Hashable
@@ -3948,6 +4559,27 @@ module Google
         end
       end
       
+      # Represents table cell ranges within a table covered by a comment anchor. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class TableCellAnchors
+        include Google::Apis::Core::Hashable
+      
+        # A list of all table cells in a table that have text covered by the anchor in
+        # the table.
+        # Corresponds to the JSON property `cellRanges`
+        # @return [Array<Google::Apis::SlidesV1::TableCellTextRanges>]
+        attr_accessor :cell_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cell_ranges = args[:cell_ranges] if args.key?(:cell_ranges)
+        end
+      end
+      
       # The table cell background fill.
       class TableCellBackgroundFill
         include Google::Apis::Core::Hashable
@@ -4027,6 +4659,65 @@ module Google
         def update!(**args)
           @content_alignment = args[:content_alignment] if args.key?(:content_alignment)
           @table_cell_background_fill = args[:table_cell_background_fill] if args.key?(:table_cell_background_fill)
+        end
+      end
+      
+      # An anchor to a specific range of text within a TableCell's TextElement. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class TableCellTextAnchor
+        include Google::Apis::Core::Hashable
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # The object ID of the table containing the cell.
+        # Corresponds to the JSON property `objectId`
+        # @return [String]
+        attr_accessor :object_id_prop
+      
+        # Specifies a contiguous range of an indexed collection, such as characters in
+        # text.
+        # Corresponds to the JSON property `textRange`
+        # @return [Google::Apis::SlidesV1::Range]
+        attr_accessor :text_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
+          @text_range = args[:text_range] if args.key?(:text_range)
+        end
+      end
+      
+      # Represents text ranges within a table cell covered by a comment anchor. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class TableCellTextRanges
+        include Google::Apis::Core::Hashable
+      
+        # A location of a single table cell within a table.
+        # Corresponds to the JSON property `cellLocation`
+        # @return [Google::Apis::SlidesV1::TableCellLocation]
+        attr_accessor :cell_location
+      
+        # A list of all text ranges covered by the anchor in this cell.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<Google::Apis::SlidesV1::TextRange>]
+        attr_accessor :ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cell_location = args[:cell_location] if args.key?(:cell_location)
+          @ranges = args[:ranges] if args.key?(:ranges)
         end
       end
       
@@ -4207,6 +4898,34 @@ module Google
           @paragraph_marker = args[:paragraph_marker] if args.key?(:paragraph_marker)
           @start_index = args[:start_index] if args.key?(:start_index)
           @text_run = args[:text_run] if args.key?(:text_run)
+        end
+      end
+      
+      # Specifies a contiguous range of text within a shape or table cell's text. [
+      # Developer Preview](https://developers.google.com/workspace/preview).
+      class TextRange
+        include Google::Apis::Core::Hashable
+      
+        # The zero-based index of the end of the range. This field is an Int32Value in
+        # order to accommodate future use cases with open-ended ranges.
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # The zero-based index of the beginning range. This field is an Int32Value in
+        # order to accommodate future use cases with open-ended ranges.
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
         end
       end
       
@@ -4464,6 +5183,42 @@ module Google
         def update!(**args)
           @object_id_prop = args[:object_id_prop] if args.key?(:object_id_prop)
           @table_range = args[:table_range] if args.key?(:table_range)
+        end
+      end
+      
+      # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
+      # requesting user is not the author of the post. [Developer Preview](https://
+      # developers.google.com/workspace/preview).
+      class UpdateCommentPostRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the CommentThread which the post belongs to.
+        # Corresponds to the JSON property `commentId`
+        # @return [String]
+        attr_accessor :comment_id
+      
+        # The new text of the comment, as plain text. This text content will be handled
+        # similarly to comments created in the Slides editor. It will have similar
+        # behaviors for formatting, notifications, etc. This field cannot be empty, and
+        # must not exceed 2048 UTF-8 code units.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # The ID of the post being updated.
+        # Corresponds to the JSON property `postId`
+        # @return [String]
+        attr_accessor :post_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment_id = args[:comment_id] if args.key?(:comment_id)
+          @content = args[:content] if args.key?(:content)
+          @post_id = args[:post_id] if args.key?(:post_id)
         end
       end
       

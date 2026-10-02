@@ -223,6 +223,87 @@ module Google
         end
       end
       
+      # A CapabilityConfig allows managing experiences like applications and agents on
+      # a logical administrative perimeter of Projects (Boundary).
+      class CapabilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The list of Boundaries associated with this CapabilityConfig. Format:
+        # `organizations/`organization`/boundaries/`boundary`` or, `folders/`folder`/
+        # boundaries/`boundary`` or, `projects/`project`/boundaries/`boundary``
+        # Corresponds to the JSON property `boundaries`
+        # @return [Array<String>]
+        attr_accessor :boundaries
+      
+        # Output only. The creation time of the CapabilityConfig.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Human-readable non-unique display name of the CapabilityConfig. When
+        # present it must be between 4 to 30 characters. Allowed characters are:
+        # lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote,
+        # space, and exclamation point. Example: `My Capability Config`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Immutable. The Management Project associated with this
+        # CapabilityConfig. If not provided during creation, a management project will
+        # be automatically created. Cannot be modified after creation. Format: `projects/
+        # `project_number`` Example: `projects/123456789012`
+        # Corresponds to the JSON property `managementProject`
+        # @return [String]
+        attr_accessor :management_project
+      
+        # Identifier. The unique resource name of the CapabilityConfig. Format: `
+        # organizations/`organization`/capabilityConfigs/`capabilityConfig`` or, `
+        # folders/`folder`/capabilityConfigs/`capabilityConfig`` or, `projects/`project`/
+        # capabilityConfigs/`capabilityConfig``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The lifecycle state of the CapabilityConfig.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The CapabilityConfig types.
+        # Corresponds to the JSON property `types`
+        # @return [Array<String>]
+        attr_accessor :types
+      
+        # Output only. The most recent time this CapabilityConfig was modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boundaries = args[:boundaries] if args.key?(:boundaries)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @management_project = args[:management_project] if args.key?(:management_project)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @types = args[:types] if args.key?(:types)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Metadata describing a long running folder operation
       class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
         include Google::Apis::Core::Hashable
@@ -298,6 +379,34 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
           @source_parent = args[:source_parent] if args.key?(:source_parent)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateBoundary. Currently empty.
+      class CreateBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by CreateCapabilityConfig. Currently empty.
+      class CreateCapabilityConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -391,6 +500,34 @@ module Google
       
       # Runtime operation information for creating a TagValue.
       class CreateTagValueMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteBoundary. Currently empty.
+      class DeleteBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by DeleteCapabilityConfig. Currently empty.
+      class DeleteCapabilityConfigMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
@@ -654,6 +791,33 @@ module Google
         end
       end
       
+      # Response message for FetchResourceSemantics.
+      class FetchResourceSemanticsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name for which semantics are returned. Examples: "//compute.
+        # googleapis.com/projects/123/zones/us-central1-a/instances/my-instance" "//
+        # storage.googleapis.com/projects/_/buckets/my_bucket"
+        # Corresponds to the JSON property `fullResourceName`
+        # @return [String]
+        attr_accessor :full_resource_name
+      
+        # Map of resource semantics (e.g., `"ENVIRONMENT": "PRODUCTION"`).
+        # Corresponds to the JSON property `semantics`
+        # @return [Hash<String,String>]
+        attr_accessor :semantics
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
+          @semantics = args[:semantics] if args.key?(:semantics)
+        end
+      end
+      
       # A folder in an organization's resource hierarchy, used to organize that
       # organization's resources.
       class Folder
@@ -909,6 +1073,39 @@ module Google
           @parent = args[:parent] if args.key?(:parent)
           @reason = args[:reason] if args.key?(:reason)
           @restrictions = args[:restrictions] if args.key?(:restrictions)
+        end
+      end
+      
+      # A page of the response received from the ListCapabilityConfigs method. A
+      # paginated response where more pages are available has `next_page_token` set.
+      # This token can be used in a subsequent request to retrieve the next page. NOTE:
+      # A response may contain fewer elements than the request `page_size` and still
+      # have a `next_page_token`.
+      class ListCapabilityConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of CapabilityConfigs under the parent. This list can be paginated.
+        # Corresponds to the JSON property `capabilityConfigs`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::CapabilityConfig>]
+        attr_accessor :capability_configs
+      
+        # Pagination token. If the result set is too large to fit in a single response,
+        # this token is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results. When `next_page_token` is not filled in,
+        # there is no next page and the list returned is the last page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capability_configs = args[:capability_configs] if args.key?(:capability_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -1491,6 +1688,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Output only. If `true`, this project is a Management Project. A Management
+        # Project manages dedicated project groups for specific purposes (e.g., agent
+        # management or app management).
+        # Corresponds to the JSON property `isManagementProject`
+        # @return [Boolean]
+        attr_accessor :is_management_project
+        alias_method :is_management_project?, :is_management_project
+      
         # Optional. The labels associated with this project. Label keys must be between
         # 1 and 63 characters long and must conform to the following regular expression:
         # \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63
@@ -1551,6 +1756,7 @@ module Google
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @is_management_project = args[:is_management_project] if args.key?(:is_management_project)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
@@ -2187,6 +2393,48 @@ module Google
       
       # The request sent to the UndeleteProject method.
       class UndeleteProjectRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateBoundaryConfig. Currently empty.
+      class UpdateBoundaryConfigMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateBoundary. Currently empty.
+      class UpdateBoundaryMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A status object which is used as the `metadata` field for the Operation
+      # returned by UpdateCapabilityConfig. Currently empty.
+      class UpdateCapabilityConfigMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)

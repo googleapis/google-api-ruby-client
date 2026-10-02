@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -8349,6 +8361,25 @@ module Google
         end
       end
       
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_bid_adjustments_for_loyalty_members, as: 'enableBidAdjustmentsForLoyaltyMembers'
+          property :show_targeted_loyalty_member_benefits_in_pla, as: 'showTargetedLoyaltyMemberBenefitsInPla'
+          property :value_settings_override, as: 'valueSettingsOverride', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings::Representation
+      
+        end
+      end
+      
+      class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_option, as: 'targetOption'
+          property :value_settings_override, as: 'valueSettingsOverride', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings::Representation
+      
+        end
+      end
+      
       class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -14920,6 +14951,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :campaign, as: 'campaign'
+          property :campaign_loyalty_retention_settings, as: 'campaignLoyaltyRetentionSettings', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings::Representation
+      
+          property :campaign_new_customer_acquisition_settings, as: 'campaignNewCustomerAcquisitionSettings', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings::Representation
+      
           property :campaign_retention_settings, as: 'campaignRetentionSettings', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings::Representation
       
           property :goal, as: 'goal'
@@ -22078,6 +22113,8 @@ module Google
       
           property :campaign_draft_operation, as: 'campaignDraftOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignDraftOperation::Representation
       
+          property :campaign_goal_config_operation, as: 'campaignGoalConfigOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation::Representation
+      
           property :campaign_group_operation, as: 'campaignGroupOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignGroupOperation::Representation
       
           property :campaign_label_operation, as: 'campaignLabelOperation', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignLabelOperation, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesCampaignLabelOperation::Representation
@@ -22209,6 +22246,8 @@ module Google
           property :campaign_customizer_result, as: 'campaignCustomizerResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignCustomizerResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignCustomizerResult::Representation
       
           property :campaign_draft_result, as: 'campaignDraftResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult::Representation
+      
+          property :campaign_goal_config_result, as: 'campaignGoalConfigResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult::Representation
       
           property :campaign_group_result, as: 'campaignGroupResult', class: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGroupResult, decorator: Google::Apis::Searchads360V23::GoogleAdsSearchads360V23ServicesMutateCampaignGroupResult::Representation
       

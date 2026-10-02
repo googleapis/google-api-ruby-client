@@ -400,7 +400,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. The URI of the Cloud Run service that the revision belongs to.
-        # The format is: projects/`project`/locations/`location`/services/`service`
+        # The format is: projects/`project`/locations/`location`/services/`service`.
+        # Mutually exclusive with worker_pool_uri.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -412,6 +413,13 @@ module Google
         # @return [String]
         attr_accessor :uri
       
+        # Output only. The URI of the worker pool that the revision belongs to. The
+        # format is: projects/`project`/locations/`location`/workerPools/`workerPool`.
+        # Mutually exclusive with service_uri.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -420,6 +428,7 @@ module Google
         def update!(**args)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -438,7 +447,8 @@ module Google
         attr_accessor :location
       
         # URI of Cloud Run service this revision belongs to. Format: `projects/`
-        # project_id`/locations/`location`/services/`service_id``
+        # project_id`/locations/`location`/services/`service_id`` Mutually exclusive
+        # with `worker_pool_uri`.
         # Corresponds to the JSON property `serviceUri`
         # @return [String]
         attr_accessor :service_uri
@@ -448,6 +458,13 @@ module Google
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
+      
+        # URI of Cloud Run worker pool this revision belongs to. Format: `projects/`
+        # project_id`/locations/`location`/workerPools/`worker_pool_id``. Mutually
+        # exclusive with `service_uri`.
+        # Corresponds to the JSON property `workerPoolUri`
+        # @return [String]
+        attr_accessor :worker_pool_uri
       
         def initialize(**args)
            update!(**args)
@@ -459,6 +476,7 @@ module Google
           @location = args[:location] if args.key?(:location)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
+          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -699,6 +717,52 @@ module Google
         attr_accessor :selected_ip_range
       
         # URI of the subnetwork for direct egress. Format: `projects/`project_id`/
+        # regions/`region`/subnetworks/`subnetwork_id``
+        # Corresponds to the JSON property `subnetworkUri`
+        # @return [String]
+        attr_accessor :subnetwork_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @region = args[:region] if args.key?(:region)
+          @selected_ip_address = args[:selected_ip_address] if args.key?(:selected_ip_address)
+          @selected_ip_range = args[:selected_ip_range] if args.key?(:selected_ip_range)
+          @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
+        end
+      end
+      
+      # For display only. Metadata associated with a serverless direct VPC ingress
+      # connection.
+      class DirectVpcIngressConnectionInfo
+        include Google::Apis::Core::Hashable
+      
+        # URI of the VPC network for direct ingress. Format: `projects/`project_id`/
+        # global/networks/`network_id``
+        # Corresponds to the JSON property `networkUri`
+        # @return [String]
+        attr_accessor :network_uri
+      
+        # Region in which the Direct VPC ingress is deployed.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Selected destination IP address, from the selected IP range.
+        # Corresponds to the JSON property `selectedIpAddress`
+        # @return [String]
+        attr_accessor :selected_ip_address
+      
+        # Selected IP range.
+        # Corresponds to the JSON property `selectedIpRange`
+        # @return [String]
+        attr_accessor :selected_ip_range
+      
+        # URI of the subnetwork for direct ingress. Format: `projects/`project_id`/
         # regions/`region`/subnetworks/`subnetwork_id``
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
@@ -3450,6 +3514,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::DirectVpcEgressConnectionInfo]
         attr_accessor :direct_vpc_egress_connection
       
+        # For display only. Metadata associated with a serverless direct VPC ingress
+        # connection.
+        # Corresponds to the JSON property `directVpcIngressConnection`
+        # @return [Google::Apis::NetworkmanagementV1beta1::DirectVpcIngressConnectionInfo]
+        attr_accessor :direct_vpc_ingress_connection
+      
         # For display only. Metadata associated with a Private Connection.
         # Corresponds to the JSON property `dmsPrivateConnection`
         # @return [Google::Apis::NetworkmanagementV1beta1::PrivateConnectionInfo]
@@ -3608,6 +3678,12 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1beta1::StorageBucketInfo]
         attr_accessor :storage_bucket
       
+        # For display only. Metadata associated with a step that was redacted due to
+        # missing permissions.
+        # Corresponds to the JSON property `viewerPermissionMissingInfo`
+        # @return [Google::Apis::NetworkmanagementV1beta1::ViewerPermissionMissingInfo]
+        attr_accessor :viewer_permission_missing_info
+      
         # For display only. Metadata associated with a VPC connector.
         # Corresponds to the JSON property `vpcConnector`
         # @return [Google::Apis::NetworkmanagementV1beta1::VpcConnectorInfo]
@@ -3640,6 +3716,7 @@ module Google
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
           @direct_vpc_egress_connection = args[:direct_vpc_egress_connection] if args.key?(:direct_vpc_egress_connection)
+          @direct_vpc_ingress_connection = args[:direct_vpc_ingress_connection] if args.key?(:direct_vpc_ingress_connection)
           @dms_private_connection = args[:dms_private_connection] if args.key?(:dms_private_connection)
           @drop = args[:drop] if args.key?(:drop)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
@@ -3669,6 +3746,7 @@ module Google
           @serverless_neg = args[:serverless_neg] if args.key?(:serverless_neg)
           @state = args[:state] if args.key?(:state)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
+          @viewer_permission_missing_info = args[:viewer_permission_missing_info] if args.key?(:viewer_permission_missing_info)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
           @vpn_gateway = args[:vpn_gateway] if args.key?(:vpn_gateway)
           @vpn_tunnel = args[:vpn_tunnel] if args.key?(:vpn_tunnel)
@@ -3775,6 +3853,26 @@ module Google
           @endpoint_info = args[:endpoint_info] if args.key?(:endpoint_info)
           @forward_trace_id = args[:forward_trace_id] if args.key?(:forward_trace_id)
           @steps = args[:steps] if args.key?(:steps)
+        end
+      end
+      
+      # For display only. Metadata associated with a step that was redacted due to
+      # missing permissions.
+      class ViewerPermissionMissingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Types of the resources that the user does not have permission to view.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
         end
       end
       

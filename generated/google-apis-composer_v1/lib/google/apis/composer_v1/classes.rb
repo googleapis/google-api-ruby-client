@@ -525,6 +525,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Optional. Selects the environment mode that determines what settings are
+        # customizable and what features are available in the environment.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Identifier. The resource name of the environment, in the form: "projects/`
         # projectId`/locations/`locationId`/environments/`environmentId`" EnvironmentId
         # must start with a lowercase letter followed by up to 63 lowercase letters,
@@ -575,6 +581,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
+          @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)

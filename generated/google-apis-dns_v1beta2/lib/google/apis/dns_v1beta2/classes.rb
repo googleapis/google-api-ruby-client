@@ -97,7 +97,7 @@ module Google
         # @return [Array<Google::Apis::DnsV1beta2::Change>]
         attr_accessor :changes
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -299,7 +299,7 @@ module Google
         # @return [Array<Google::Apis::DnsV1beta2::DnsKey>]
         attr_accessor :dns_keys
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1128,7 +1128,7 @@ module Google
       class ManagedZoneOperationsListResponse
         include Google::Apis::Core::Hashable
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1391,7 +1391,7 @@ module Google
       class ManagedZonesListResponse
         include Google::Apis::Core::Hashable
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1555,7 +1555,7 @@ module Google
       class PoliciesListResponse
         include Google::Apis::Core::Hashable
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2464,7 +2464,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :rrdatas
       
-        # As defined in RFC 4034 (section 3.2).
+        # 
         # Corresponds to the JSON property `signatureRrdatas`
         # @return [Array<String>]
         attr_accessor :signature_rrdatas
@@ -2500,7 +2500,7 @@ module Google
       class ResourceRecordSetsListResponse
         include Google::Apis::Core::Hashable
       
-        # Type of resource.
+        # Output only. Type of resource.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

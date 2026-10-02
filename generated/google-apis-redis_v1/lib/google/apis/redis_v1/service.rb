@@ -223,7 +223,7 @@ module Google
         # @param [String] name
         #   Required. Redis ACL policy resource name using the form: `projects/`project_id`
         #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
-        #   refers to a GCP region.
+        #   refers to a Google Cloud region.
         # @param [String] etag
         #   Optional. Etag of the ACL policy. If this is different from the server's etag,
         #   the request will fail with an ABORTED error.
@@ -262,7 +262,7 @@ module Google
         # @param [String] name
         #   Required. Redis ACL policy resource name using the form: `projects/`project_id`
         #   /locations/`location_id`/aclPolicies/`acl_policy_id`` where `location_id`
-        #   refers to a GCP region.
+        #   refers to a Google Cloud region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -389,7 +389,7 @@ module Google
         # @param [String] name
         #   Required. Redis ACL policy revision resource name using the form: `projects/`
         #   project_id`/locations/`location_id`/aclPolicies/`acl_policy_id`/revisions/`
-        #   revision_id`` where `location_id` refers to a GCP region.
+        #   revision_id`` where `location_id` refers to a Google Cloud region.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

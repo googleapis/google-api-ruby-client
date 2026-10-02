@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DnsAutomationInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -856,6 +862,7 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1beta::EncryptionConfig, decorator: Google::Apis::AlloydbV1beta::EncryptionConfig::Representation
       
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1beta::EncryptionInfo, decorator: Google::Apis::AlloydbV1beta::EncryptionInfo::Representation
@@ -976,6 +983,7 @@ module Google
       
           property :delete_time, as: 'deleteTime'
           property :display_name, as: 'displayName'
+          property :edition, as: 'edition'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::AlloydbV1beta::EncryptionConfig, decorator: Google::Apis::AlloydbV1beta::EncryptionConfig::Representation
       
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1beta::EncryptionInfo, decorator: Google::Apis::AlloydbV1beta::EncryptionInfo::Representation
@@ -1138,6 +1146,14 @@ module Google
       
           property :time, as: 'time', class: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay, decorator: Google::Apis::AlloydbV1beta::GoogleTypeTimeOfDay::Representation
       
+        end
+      end
+      
+      class DnsAutomationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fully_qualified_domain_name, as: 'fullyQualifiedDomainName'
+          property :state, as: 'state'
         end
       end
       
@@ -1587,7 +1603,11 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :consumer_network_status, as: 'consumerNetworkStatus'
           property :consumer_project, as: 'consumerProject'
+          collection :dns_automation_infos, as: 'dnsAutomationInfos', class: Google::Apis::AlloydbV1beta::DnsAutomationInfo, decorator: Google::Apis::AlloydbV1beta::DnsAutomationInfo::Representation
+      
           property :ip_address, as: 'ipAddress'
+          property :service_connection_policy, as: 'serviceConnectionPolicy'
+          property :service_connection_policy_creation_state, as: 'serviceConnectionPolicyCreationState'
           property :status, as: 'status'
         end
       end

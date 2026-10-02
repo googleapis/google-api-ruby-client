@@ -51,6 +51,49 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Lists reader entitlements across parent publications via wildcard. - Returns
+        # PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if
+        # the reader does not exist.
+        # @param [String] parent
+        #   Required. The parent reader scope. Format: "publications/-/readers/`reader_id`"
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of entitlements to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 entitlements will be
+        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListReaderEntitlements` call.
+        #   Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListReaderEntitlements` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ReaderrevenuesubscriptionlinkingV1::ListReaderEntitlementsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ReaderrevenuesubscriptionlinkingV1::ListReaderEntitlementsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_publication___reader_entitlements(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/entitlements', options)
+          command.response_representation = Google::Apis::ReaderrevenuesubscriptionlinkingV1::ListReaderEntitlementsResponse::Representation
+          command.response_class = Google::Apis::ReaderrevenuesubscriptionlinkingV1::ListReaderEntitlementsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Removes a publication reader, effectively severing the association with a
         # Google user. If `force` is set to true, any entitlements for this reader will
         # also be deleted. (Otherwise, the request will only work if the reader has no

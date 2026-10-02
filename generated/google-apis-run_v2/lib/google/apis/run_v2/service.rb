@@ -1857,6 +1857,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Uploads a source archive to a Google Cloud Storage bucket through Cloud Run.
+        # The uploaded source object should be used for Cloud Run resource deployments.
+        # User is responsible for managing the lifecycle of the uploaded object. If
+        # uploading through the Cloud Run API to Cloud Storage is not desired, you can
+        # use the IAM Deny Policy to deny the `run.locations.uploadSource` permission
+        # for all principals.
+        # @param [String] parent
+        #   Required. The project and location in which the source archive should be
+        #   uploaded to, specified in the format `projects/*/locations/*`.
+        # @param [Google::Apis::RunV2::GoogleCloudRunV2UploadSourceRequest] google_cloud_run_v2_upload_source_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [IO, String] upload_source
+        #   IO stream or filename containing content to upload
+        # @param [String] content_type
+        #   Content type of the uploaded content.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV2::GoogleCloudRunV2UploadSourceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2UploadSourceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_project_location_source_upload(parent, google_cloud_run_v2_upload_source_request_object = nil, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
+          if upload_source.nil?
+            command = make_simple_command(:post, 'v2/{+parent}:uploadSource', options)
+          else
+            command = make_upload_command(:post, 'v2/{+parent}:uploadSource', options)
+            command.upload_source = upload_source
+            command.upload_content_type = content_type
+          end
+          command.request_representation = Google::Apis::RunV2::GoogleCloudRunV2UploadSourceRequest::Representation
+          command.request_object = google_cloud_run_v2_upload_source_request_object
+          command.response_representation = Google::Apis::RunV2::GoogleCloudRunV2UploadSourceResponse::Representation
+          command.response_class = Google::Apis::RunV2::GoogleCloudRunV2UploadSourceResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new WorkerPool in a given project and location.
         # @param [String] parent
         #   Required. The location and project in which this worker pool should be created.

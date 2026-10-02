@@ -570,6 +570,22 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Platform independent options for features provided by the FCM SDKs.
       class FcmOptions
         include Google::Apis::Core::Hashable
@@ -668,6 +684,32 @@ module Google
         end
       end
       
+      # Response message for ListTopicSubscriptions.
+      class ListTopicSubscriptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The topic subscriptions for the instance.
+        # Corresponds to the JSON property `topicSubscriptions`
+        # @return [Array<Google::Apis::FcmV1::TopicSubscription>]
+        attr_accessor :topic_subscriptions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @topic_subscriptions = args[:topic_subscriptions] if args.key?(:topic_subscriptions)
+        end
+      end
+      
       # Message to send by Firebase Cloud Messaging Service.
       class Message
         include Google::Apis::Core::Hashable
@@ -703,7 +745,8 @@ module Google
         # @return [Google::Apis::FcmV1::FcmOptions]
         attr_accessor :fcm_options
       
-        # Firebase Installation ID to send a message to.
+        # [Firebase Installation ID (FID)](/docs/cloud-messaging/android/get-started#
+        # access-firebase-installation-id) to send a message to.
         # Corresponds to the JSON property `fid`
         # @return [String]
         attr_accessor :fid
@@ -719,9 +762,9 @@ module Google
         # @return [Google::Apis::FcmV1::Notification]
         attr_accessor :notification
       
-        # Deprecated: Use `fid` instead. Registration token to send a message to. During
-        # the transition period, this field also accepts a Firebase Installation ID (FID)
-        # .
+        # Deprecated: Use `fid` instead. During the transition period, this field also
+        # accepts a Firebase Installation ID (FID). Registration token to send a message
+        # to.
         # Corresponds to the JSON property `token`
         # @return [String]
         attr_accessor :token
@@ -816,6 +859,41 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Represents a subscription of a single app instance to a single FCM topic.
+      class TopicSubscription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time when the subscription was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Identifier. The resource name of the subscription. Format: projects/`project`/
+        # registrations/`registration`/topicSubscriptions/`topicSubscription` The `
+        # registration` part contains the registration ID (e.g., FID).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The ID of the TopicSubscription, which is the topic name. This
+        # corresponds to the `topicSubscription` segment in the resource name. Topic
+        # names match the pattern of "[a-zA-Z0-9-_.~%]`1,900`".
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @name = args[:name] if args.key?(:name)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
         end
       end
       

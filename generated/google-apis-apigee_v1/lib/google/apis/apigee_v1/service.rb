@@ -124,13 +124,14 @@ module Google
         
         # Delete an Apigee organization. For organizations with BillingType EVALUATION,
         # an immediate deletion is performed. For paid organizations (Subscription or
-        # Pay-as-you-go), a soft-deletion is performed. The organization can be restored
-        # within the soft-deletion period, which is specified using the `retention`
-        # field in the request or by filing a support ticket with Apigee. During the
-        # data retention period specified in the request, the Apigee organization cannot
-        # be recreated in the same Google Cloud project. **IMPORTANT: The default data
-        # retention setting for this operation is 7 days. To permanently delete the
-        # organization in 24 hours, set the retention parameter to `MINIMUM`.**
+        # Pay-as-you-go), a soft-deletion is performed by default. The organization can
+        # be restored within the soft-deletion period, which is specified using the `
+        # retention` field in the request or by filing a support ticket with Apigee.
+        # During the data retention period specified in the request, the Apigee
+        # organization cannot be recreated in the same Google Cloud project. **IMPORTANT:
+        # The default data retention setting for this operation is 7 days. To
+        # permanently delete the organization in 24 hours, set the retention parameter
+        # to `MINIMUM`.**
         # @param [String] name
         #   Required. Name of the organization. Use the following structure in your
         #   request: `organizations/`org``
@@ -265,6 +266,39 @@ module Google
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1IngressConfig
           command.params['name'] = name unless name.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the deployed MCP server configuration for an organization.
+        # McpServerConfig is an org-scoped singleton (one per organization). The
+        # returned configuration may be up to 30 seconds out of date by default.
+        # @param [String] name
+        #   Required. Name of the deployed MCP server configuration for the organization
+        #   in the singleton form: `organizations/`org`/mcpServerConfig`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1McpServerConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1McpServerConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_mcp_server_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1McpServerConfig::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1McpServerConfig
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -559,7 +593,7 @@ module Google
         # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ControlPlaneAccess] google_cloud_apigee_v1_control_plane_access_object
         # @param [String] update_mask
         #   List of fields to be updated. Fields that can be updated:
-        #   synchronizer_identities, publisher_identities.
+        #   synchronizer_identities, analytics_publisher_identities, watcher_identities.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

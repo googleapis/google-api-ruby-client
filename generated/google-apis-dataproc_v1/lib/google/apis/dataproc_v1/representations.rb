@@ -1916,6 +1916,7 @@ module Google
           property :disk_type, as: 'diskType'
           property :provisioned_iops, :numeric_string => true, as: 'provisionedIops'
           property :provisioned_throughput, :numeric_string => true, as: 'provisionedThroughput'
+          property :type, as: 'type'
         end
       end
       

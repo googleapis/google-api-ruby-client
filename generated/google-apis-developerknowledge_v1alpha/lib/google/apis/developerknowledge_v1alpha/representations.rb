@@ -112,6 +112,7 @@ module Google
       class AnswerQueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
           property :query, as: 'query'
         end
       end
@@ -170,6 +171,7 @@ module Google
       
           property :id, as: 'id'
           property :parent, as: 'parent'
+          property :relevance_score, as: 'relevanceScore'
         end
       end
       

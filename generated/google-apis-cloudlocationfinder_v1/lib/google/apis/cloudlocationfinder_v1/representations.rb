@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcpAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCloudLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -60,8 +66,17 @@ module Google
           property :cloud_provider, as: 'cloudProvider'
           property :containing_cloud_location, as: 'containingCloudLocation'
           property :display_name, as: 'displayName'
+          property :gcp_attributes, as: 'gcpAttributes', class: Google::Apis::CloudlocationfinderV1::GcpAttributes, decorator: Google::Apis::CloudlocationfinderV1::GcpAttributes::Representation
+      
           property :name, as: 'name'
           property :territory_code, as: 'territoryCode'
+        end
+      end
+      
+      class GcpAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :zone_type, as: 'zoneType'
         end
       end
       

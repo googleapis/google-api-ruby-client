@@ -29,6 +29,12 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V2'
 
+      # See, edit, configure, and delete your Google Cloud API Keys data and see the email address for your Google Account
+      AUTH_APIKEYS = 'https://www.googleapis.com/auth/apikeys'
+
+      # See your Google Cloud API Keys data and the email address of your Google Account
+      AUTH_APIKEYS_READONLY = 'https://www.googleapis.com/auth/apikeys.readonly'
+
       # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
