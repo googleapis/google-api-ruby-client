@@ -357,19 +357,9 @@ module Google
           'Google::Apis::SecretmanagerV1beta1::SecretPayload'
         ].freeze
 
-        # Pattern to scan for RFC 6570 URI template expressions enclosed in curly braces {...}.
-        #
-        # Regex Mechanics:
-        # - Matches literal '{' and '}' characters.
-        # - Capture Group 1: Captures a single prefix operator character if present (one of: +, #, ., /, ;, ?, &).
-        # - Capture Group 2: Captures all characters up to the closing brace ('[^}]+').
-        #
-        # Expected Capture Format:
-        # Capture Group 2 is expected to contain a raw string block representing one or more variable
-        # definitions (e.g. "var1" or "var1,var2"). This string block may contain commas, variable names,
-        # prefix length constraints (e.g. "var1:5"), or explode modifiers (e.g. "var1*"). The commas are
-        # split at the code level during traversal.
-        TEMPLATE_VAR_PATTERN = /\{([\+#\.\/;\?&])?([^}]+)\}/.freeze
+        # Matches the two URI template expressions Discovery documents use: simple ({var})
+        # and reserved ({+var}). Group 1 is '+' for reserved expansion, group 2 the name.
+        TEMPLATE_VAR_PATTERN = /\{(\+?)(\w+)\}/.freeze
 
         module RedactingPPMethods
           def pp_object(obj)
@@ -505,10 +495,10 @@ module Google
         # leaves them literal.
         #
         # Validation Mechanism:
-        # 1. For simple variables (standard single-wildcard behavior):
+        # 1. For simple variables ({var}, standard single-wildcard behavior):
         #    - Rejects if the value is exactly '.' or '..'.
         #    - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable.
-        # 2. For reserved variables (reserved expansion like '+' or '#', double-wildcard behavior):
+        # 2. For reserved variables ({+var}, double-wildcard behavior):
         #    - Rejects values containing '?' or '#', which Addressable leaves literal and which
         #      would start a query or fragment.
         #    - Splits the value by slash ('/') and rejects any segment that is exactly '.' or '..'.
@@ -517,13 +507,8 @@ module Google
         def validate_path_parameters!
           template_pattern = url.pattern
 
-          # Parse variables and operators
-          variables = []
-          template_pattern.scan(TEMPLATE_VAR_PATTERN) do |operator, var_list|
-            var_list.split(',').each do |var|
-              var_name = var.split(':').first.split('*').first
-              variables << { name: var_name, operator: operator, reserved: ['+', '#'].include?(operator) }
-            end
+          variables = template_pattern.scan(TEMPLATE_VAR_PATTERN).map do |operator, var_name|
+            { name: var_name, reserved: operator == '+' }
           end
 
           variables.each do |v|
