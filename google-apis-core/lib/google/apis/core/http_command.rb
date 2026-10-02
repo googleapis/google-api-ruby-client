@@ -31,7 +31,7 @@ module Google
         RETRIABLE_ERRORS = [Google::Apis::ServerError,
                             Google::Apis::RateLimitError,
                             Google::Apis::TransmissionError,
-                            Google::Apis::RequestTimeOutError]
+                            Google::Apis::RequestTimeOutError].freeze
 
         begin
           require 'opencensus'
@@ -83,15 +83,15 @@ module Google
           self.url = url
           self.url = Addressable::Template.new(url) if url.is_a?(String)
           self.method = method
-          self.header = Hash.new
+          self.header = {}
           self.body = body
           self.query = {}
           self.params = {}
           @opencensus_span = nil
           if OPENCENSUS_AVAILABLE
             logger.warn  'OpenCensus support is now deprecated. ' +
-                         'Please refer https://github.com/googleapis/google-api-ruby-client#tracing for migrating to use OpenTelemetry.' 
-            
+                         'Please refer https://github.com/googleapis/google-api-ruby-client#tracing for migrating to use OpenTelemetry.'
+
           end
         end
 
@@ -114,34 +114,30 @@ module Google
           release!
         end
 
-        def do_retry func, client
-          begin
-            Retriable.retriable tries: options.retries + 1,
-                                max_elapsed_time: options.max_elapsed_time,
-                                base_interval: options.base_interval,
-                                max_interval: options.max_interval,
-                                multiplier: options.multiplier,
-                                on: RETRIABLE_ERRORS do |try|
-              # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
-              # auth to be re-attempted without having to retry all sorts of other failures like
-              # NotFound, etc
-              auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
-              Retriable.retriable tries: auth_tries,
-                                  on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
-                                  on_retry: proc { |*| refresh_authorization } do
-                send(func, client).tap do |result|
-                  if block_given?
-                    yield result, nil
-                  end
-                end
+        def do_retry(func, client)
+          Retriable.retriable tries: options.retries + 1,
+                              max_elapsed_time: options.max_elapsed_time,
+                              base_interval: options.base_interval,
+                              max_interval: options.max_interval,
+                              multiplier: options.multiplier,
+                              on: RETRIABLE_ERRORS do |try|
+            # This 2nd level retriable only catches auth errors, and supports 1 retry, which allows
+            # auth to be re-attempted without having to retry all sorts of other failures like
+            # NotFound, etc
+            auth_tries = (try == 1 && authorization_refreshable? ? 2 : 1)
+            Retriable.retriable tries: auth_tries,
+                                on: [Google::Apis::AuthorizationError, Signet::AuthorizationError, Signet::RemoteServerError, Signet::UnexpectedStatusError],
+                                on_retry: proc { |*| refresh_authorization } do
+              send(func, client).tap do |result|
+                yield result, nil if block_given?
               end
             end
-          rescue => e
-            if block_given?
-              yield nil, e
-            else
-              raise e
-            end
+          end
+        rescue StandardError => e
+          if block_given?
+            yield nil, e
+          else
+            raise e
           end
         end
 
@@ -182,17 +178,16 @@ module Google
             @form_encoded = false
           end
 
-          self.body = '' if self.body.nil? && [:post, :put, :patch].include?(method)
+          self.body = '' if self.body.nil? && %i[post put patch].include?(method)
           if defined?(::Google::Apis::Core::CompositeIO) && body.is_a?(::Google::Apis::Core::CompositeIO)
-            header["Content-Length"] ||= body.size.to_s
+            header['Content-Length'] ||= body.size.to_s
           end
         end
 
         # Release any resources used by this command
         # @private
         # @return [void]
-        def release!
-        end
+        def release!; end
 
         # Check the response and either decode body or raise error
         #
@@ -298,7 +293,7 @@ module Google
             err = Google::Apis::TransmissionError.new(err)
           end
           block.call(nil, err) if block_given?
-          fail err if rethrow || block.nil?
+          raise err if rethrow || block.nil?
         end
 
         # Execute the command once.
@@ -323,7 +318,7 @@ module Google
             logger.debug { safe_single_line_representation @http_res }
             response = process_response(@http_res.status.to_i, @http_res.headers, @http_res.body)
             success(response)
-          rescue => e
+          rescue StandardError => e
             logger.debug { sprintf('Caught error %s', e) }
             error(e, rethrow: true)
           end
@@ -343,28 +338,29 @@ module Google
         end
 
         def allow_form_encoding?
-          [:post, :put].include?(method) && body.nil?
+          %i[post put].include?(method) && body.nil?
         end
 
         # Set the API version header for the service if not empty.
         # @return [void]
-        def set_api_version_header api_version
+        def set_api_version_header(api_version)
           self.header['X-Goog-Api-Version'] = api_version unless api_version.empty?
         end
 
         private
 
         UNSAFE_CLASS_NAMES = [
-          "Google::Apis::CloudkmsV1::DecryptResponse",
-          "Google::Apis::SecretmanagerV1::SecretPayload",
-          "Google::Apis::SecretmanagerV1beta1::SecretPayload"
-        ]
+          'Google::Apis::CloudkmsV1::DecryptResponse',
+          'Google::Apis::SecretmanagerV1::SecretPayload',
+          'Google::Apis::SecretmanagerV1beta1::SecretPayload'
+        ].freeze
 
         module RedactingPPMethods
-          def pp_object obj
+          def pp_object(obj)
             return super unless UNSAFE_CLASS_NAMES.include? obj.class.name
+
             object_address_group obj do
-              text "(fields redacted)"
+              text '(fields redacted)'
             end
           end
         end
@@ -377,16 +373,16 @@ module Google
           include RedactingPPMethods
         end
 
-        def safe_pretty_representation obj
-          out = +""
+        def safe_pretty_representation(obj)
+          out = +''
           printer = RedactingPP.new out, 79
           printer.guard_inspect_key { printer.pp obj }
           printer.flush
           out << "\n"
         end
 
-        def safe_single_line_representation obj
-          out = +""
+        def safe_single_line_representation(obj)
+          out = +''
           printer = RedactingSingleLine.new out
           printer.guard_inspect_key { printer.pp obj }
           printer.flush
@@ -400,9 +396,9 @@ module Google
 
           @opencensus_span = OpenCensus::Trace.start_span url.path.to_s
           @opencensus_span.kind = OpenCensus::Trace::SpanBuilder::CLIENT
-          @opencensus_span.put_attribute "http.host", url.host.to_s
-          @opencensus_span.put_attribute "http.method", method.to_s.upcase
-          @opencensus_span.put_attribute "http.path", url.path.to_s
+          @opencensus_span.put_attribute 'http.host', url.host.to_s
+          @opencensus_span.put_attribute 'http.method', method.to_s.upcase
+          @opencensus_span.put_attribute 'http.path', url.path.to_s
           sent_size =
             if body.respond_to? :bytesize
               body.bytesize
@@ -436,7 +432,7 @@ module Google
             status = @http_res.status.to_i
             if status > 0
               @opencensus_span.set_status map_http_status status
-              @opencensus_span.put_attribute "http.status_code", status
+              @opencensus_span.put_attribute 'http.status_code', status
             end
           end
 
@@ -452,7 +448,7 @@ module Google
           @form_encoded
         end
 
-        def map_http_status http_status
+        def map_http_status(http_status)
           case http_status
           when 200..399 then 0 # OK
           when 400 then 3 # INVALID_ARGUMENT
@@ -468,9 +464,8 @@ module Google
         end
 
         def normalize_query_values(input)
-          input.inject({}) do |h, (k, v)|
+          input.each_with_object({}) do |(k, v), h|
             h[k] = normalize_query_value(v)
-            h
           end
         end
 
