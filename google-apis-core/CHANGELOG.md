@@ -1,5 +1,11 @@
 # Release History
 
+### 1.3.0 (2026-10-02)
+
+#### Features
+
+* implement path validation and traversal checks in HttpCommand ([#27476](https://github.com/googleapis/google-api-ruby-client/issues/27476)) 
+
 ### 1.2.5 (2026-07-20)
 
 #### Bug Fixes
