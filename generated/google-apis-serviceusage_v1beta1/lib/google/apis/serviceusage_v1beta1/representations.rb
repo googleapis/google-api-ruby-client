@@ -1444,7 +1444,7 @@ module Google
       class EnableRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_type, as: 'enableType'
+          collection :catalogs, as: 'catalogs'
           collection :services, as: 'services'
           collection :values, as: 'values'
         end
@@ -1796,6 +1796,7 @@ module Google
       class GoogleApiServiceusageV2betaEnableRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :catalogs, as: 'catalogs'
           collection :services, as: 'services'
         end
       end
