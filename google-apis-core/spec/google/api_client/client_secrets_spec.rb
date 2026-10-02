@@ -19,6 +19,18 @@ require 'google/api_client/client_secrets'
 FIXTURES_PATH = File.expand_path('../../../fixtures', __FILE__)
 
 RSpec.describe Google::APIClient::ClientSecrets do
+  describe '#to_json' do
+    let(:secrets) { described_class.new('installed' => { 'client_id' => 'example-client' }) }
+
+    it 'serializes the client secrets hash' do
+      expect(JSON.parse(secrets.to_json)).to eq(secrets.to_hash)
+    end
+
+    it 'accepts the JSON.generate callback arguments' do
+      expect(JSON.parse(JSON.generate(secrets))).to eq(secrets.to_hash)
+    end
+  end
+
   describe '::new' do
     let(:filename) { File.join(FIXTURES_PATH, 'files', 'client_secrets.json') }
     let(:data) { File.open(filename, 'r') { |file| JSON.load(file.read) } }
