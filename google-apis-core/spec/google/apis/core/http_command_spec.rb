@@ -679,7 +679,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:location] = 'us-central1'
         command.params[:webhook] = '..'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, "Invalid value for webhook '..'.")
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, "Invalid value for webhook '..'.")
       end
 
       it 'should percent-encode percent signs in simple parameters on the wire' do
@@ -746,14 +746,14 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123?key=val'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, /contains invalid characters/)
       end
 
       it 'should reject fragment parameter injections in reserved parameters' do
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:parent] = 'projects/sys-prod-123#fragment'
         command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::Error, /contains invalid characters/)
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, /contains invalid characters/)
       end
 
       it 'should send colons in reserved parameters literally on the wire' do
@@ -770,7 +770,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1/../../default'
         command.options.retries = 0
         expect { command.execute(client) }.to raise_error(
-          Google::Apis::Error, "Value for parent must not contain segments that are exactly '..'."
+          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
         )
       end
 
@@ -780,7 +780,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
           'projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db'
         command.options.retries = 0
         expect { command.execute(client) }.to raise_error(
-          Google::Apis::Error, "Value for parent must not contain segments that are exactly '..'."
+          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
         )
       end
 
@@ -789,7 +789,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:parent] = '../escape-db'
         command.options.retries = 0
         expect { command.execute(client) }.to raise_error(
-          Google::Apis::Error, "Value for parent must not contain segments that are exactly '..'."
+          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
         )
       end
 
@@ -798,7 +798,7 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         command.params[:parent] = 'projects/sys-prod-123/./databases/default'
         command.options.retries = 0
         expect { command.execute(client) }.to raise_error(
-          Google::Apis::Error, "Value for parent must not contain segments that are exactly '.'."
+          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '.'."
         )
       end
 

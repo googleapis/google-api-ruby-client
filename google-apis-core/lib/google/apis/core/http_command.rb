@@ -104,7 +104,6 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        # @raise [Google::Apis::Error] If path parameter validation fails.
         def execute(client, &block)
           prepare!
           opencensus_begin_span
@@ -161,7 +160,7 @@ module Google
         #
         # @private
         # @return [void]
-        # @raise [Google::Apis::Error] If path parameter validation fails.
+        # @raise [Google::Apis::ClientError] If path parameter validation fails.
         def prepare!
           normalize_unicode = true
           if options
@@ -514,7 +513,7 @@ module Google
         #      would start a query or fragment.
         #    - Splits the value by slash ('/') and rejects any segment that is exactly '.' or '..'.
         #
-        # @raise [Google::Apis::Error] If any validation check fails.
+        # @raise [Google::Apis::ClientError] If any validation check fails.
         def validate_path_parameters!
           template_pattern = url.pattern
 
@@ -536,17 +535,17 @@ module Google
 
             if v[:reserved]
               if value.include?('?') || value.include?('#')
-                raise Google::Apis::Error, "Parameter #{var_name} contains invalid characters (? or #)"
+                raise Google::Apis::ClientError, "Parameter #{var_name} contains invalid characters (? or #)"
               end
 
               value.split('/').each do |seg|
                 if ['.', '..'].include?(seg)
-                  raise Google::Apis::Error,
+                  raise Google::Apis::ClientError,
                         "Value for #{var_name} must not contain segments that are exactly '#{seg}'."
                 end
               end
             elsif ['.', '..'].include?(value)
-              raise Google::Apis::Error,
+              raise Google::Apis::ClientError,
                     "Invalid value for #{var_name} '#{value}'."
             end
           end
