@@ -160,6 +160,7 @@ module Google
         #
         # @private
         # @return [void]
+        # @raise [Google::Apis::ClientError] If path parameter validation fails.
         def prepare!
           normalize_unicode = true
           if options
@@ -167,7 +168,10 @@ module Google
             query.update(options.query) if options.query
             normalize_unicode = options.normalize_unicode
           end
-          self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
+          if url.is_a?(Addressable::Template)
+            validate_path_parameters!
+            self.url = encode_reserved_parameters(url, normalize_unicode).expand(params, nil, normalize_unicode)
+          end
           url.query_values = normalize_query_values(query).merge(url.query_values || {})
 
           if allow_form_encoding?
@@ -355,6 +359,10 @@ module Google
           'Google::Apis::SecretmanagerV1beta1::SecretPayload'
         ].freeze
 
+        # Matches the two URI template expressions Discovery documents use: simple ({var})
+        # and reserved ({+var}). Group 1 is '+' for reserved expansion, group 2 the name.
+        TEMPLATE_VAR_PATTERN = /\{(\+?)(\w+)\}/.freeze
+
         module RedactingPPMethods
           def pp_object(obj)
             return super unless UNSAFE_CLASS_NAMES.include? obj.class.name
@@ -478,6 +486,96 @@ module Google
           else
             v.to_s
           end
+        end
+
+        # Validates user-supplied path parameter values against the URL template specification
+        # to prevent directory traversal and parameter injection exploits.
+        #
+        # Validation rejects only dot segments. Other characters are percent-encoded instead.
+        #
+        # Validation Mechanism:
+        # 1. For simple variables ({var}, standard single-wildcard behavior):
+        #    - Rejects if the value is exactly '.' or '..'.
+        #    - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable.
+        # 2. For reserved variables ({+var}, double-wildcard behavior):
+        #    - Splits the value by slash ('/') and rejects any segment that is exactly '.' or '..'.
+        #    - Every character except '/' and unreserved characters is percent-encoded by
+        #      #encode_reserved_parameters.
+        #
+        # @raise [Google::Apis::ClientError] If any validation check fails.
+        def validate_path_parameters!
+          template_pattern = url.pattern
+
+          variables = template_pattern.scan(TEMPLATE_VAR_PATTERN).map do |operator, var_name|
+            { name: var_name, reserved: operator == '+' }
+          end
+
+          variables.each do |v|
+            var_name = v[:name]
+            var_key = params.key?(var_name) ? var_name : var_name.to_sym
+            next unless params.key?(var_key)
+
+            value = params[var_key].to_s
+
+            if v[:reserved]
+              value.split('/').each do |seg|
+                if ['.', '..'].include?(seg)
+                  raise Google::Apis::ClientError,
+                        "Value for #{var_name} must not contain segments that are exactly '#{seg}'."
+                end
+              end
+            elsif ['.', '..'].include?(value)
+              raise Google::Apis::ClientError,
+                    "Invalid value for #{var_name} '#{value}'."
+            end
+          end
+        end
+
+        # Substitutes percent-encoded values for reserved ({+var}) variables in the template.
+        #
+        # Addressable leaves reserved characters such as '+', ':', '?' and '#' literal in a
+        # reserved expansion, so they would reach the server unencoded. Only '/' and unreserved
+        # characters should stay literal, so these values are encoded here and written into the
+        # template's literal text, which Addressable passes through untouched when it expands
+        # the rest.
+        #
+        # @param [Addressable::Template] template
+        #   The URL template.
+        # @param [Boolean] normalize_unicode
+        #   Whether to apply Unicode NFC normalization to the values.
+        # @return [Addressable::Template]
+        #   A template with reserved variables replaced by their encoded values.
+        def encode_reserved_parameters(template, normalize_unicode)
+          pattern = template.pattern.dup
+          template.pattern.scan(TEMPLATE_VAR_PATTERN).each do |operator, var_name|
+            next unless operator == '+'
+
+            var_key = params.key?(var_name) ? var_name : var_name.to_sym
+            next unless params.key?(var_key)
+
+            # The encoded value contains no braces, so the new pattern parses cleanly and the
+            # value cannot introduce a template expression of its own.
+            pattern = pattern.gsub("{+#{var_name}}", encode_reserved_value(params[var_key], normalize_unicode))
+          end
+          Addressable::Template.new(pattern)
+        end
+
+        # Percent-encodes every character except '/' and unreserved characters.
+        #
+        # @param [Object] value
+        #   The parameter value.
+        # @param [Boolean] normalize_unicode
+        #   Whether to apply Unicode NFC normalization to the value.
+        # @return [String]
+        #   The encoded value.
+        def encode_reserved_value(value, normalize_unicode)
+          value = value.to_s
+          # Addressable only normalizes values left in the mapping, so normalize here to match.
+          value = value.unicode_normalize(:nfc) if normalize_unicode
+          # Split on '/' and keep empty segments (-1), so slashes stay literal.
+          # Each segment is then fully encoded, including '%' itself (as '%25').
+          unreserved = Addressable::URI::CharacterClasses::UNRESERVED
+          value.split('/', -1).map { |segment| Addressable::URI.encode_component(segment, unreserved) }.join('/')
         end
       end
     end

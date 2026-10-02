@@ -627,4 +627,169 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     end
   end
 
+  describe 'path parameter validation' do
+    # Runs the command against a stub and returns the path that went out on the wire.
+    # WebMock treats '+' and '%2B' as equal, so the assertions check the expanded URL instead.
+    def wire_path(command)
+      stub_request(:get, /www\.googleapis\.com/).to_return(status: [200, ''])
+      command.options.retries = 0
+      command.execute(client)
+      command.url.path
+    end
+
+    context 'with simple path variables' do
+      # Source template specification:
+      # Pattern: v1/projects/{project}/locations/{location}/webhooks/{webhook}
+      # Variable constraints (RFC 6570 simple expansion):
+      # - Must not be exactly a traversal segment ('.', '..')
+      # - Reserved characters such as '/', '?' and '#' are percent-encoded by Addressable
+      let(:template) do
+        Addressable::Template.new(
+          'https://www.googleapis.com/v1/projects/{project}/locations/{location}/webhooks/{webhook}'
+        )
+      end
+
+      def webhook_command(webhook)
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:project] = 'sys-prod-123'
+        command.params[:location] = 'us-central1'
+        command.params[:webhook] = webhook
+        command
+      end
+
+      it 'should allow safe parameter values' do
+        expect(wire_path(webhook_command('billing-webhook')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook')
+      end
+
+      it 'should percent-encode slashes in simple parameters on the wire' do
+        expect(wire_path(webhook_command('parent/child-webhook')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/parent%2Fchild-webhook')
+      end
+
+      it 'should percent-encode slashes in Cloud Storage object names on the wire' do
+        storage_template = Addressable::Template.new('https://www.googleapis.com/storage/v1/b/{bucket}/o/{object}')
+        command = Google::Apis::Core::HttpCommand.new(:get, storage_template)
+        command.params[:bucket] = 'bk'
+        command.params[:object] = 'folder/file.txt'
+        expect(wire_path(command)).to eq('/storage/v1/b/bk/o/folder%2Ffile.txt')
+      end
+
+      it 'should reject dot or double-dot in simple parameters' do
+        command = webhook_command('..')
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, "Invalid value for webhook '..'.")
+      end
+
+      it 'should percent-encode percent signs in simple parameters on the wire' do
+        expect(wire_path(webhook_command('%2e%2e')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e%252e')
+        expect(wire_path(webhook_command('%2e')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e')
+      end
+
+      it 'should percent-encode query and fragment characters in simple parameters on the wire' do
+        expect(wire_path(webhook_command('billing-webhook?key=val')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%3Fkey%3Dval')
+        expect(wire_path(webhook_command('billing-webhook#fragment')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%23fragment')
+      end
+    end
+
+    context 'with reserved path variables' do
+      # Source template specification:
+      # Pattern: v1/{+parent}/indexes
+      # Variable constraints (RFC 6570 reserved expansion):
+      # - Allows slashes (multiple path segments), including empty segments
+      # - Must not contain traversal segments ('.', '..')
+      # - Every character except '/' and unreserved characters is percent-encoded
+      let(:template) { Addressable::Template.new('https://www.googleapis.com/v1/{+parent}/indexes') }
+
+      def parent_command(parent)
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = parent
+        command
+      end
+
+      def expect_rejected(parent, message)
+        command = parent_command(parent)
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, message)
+      end
+
+      it 'should allow safe double wildcard paths' do
+        expect(wire_path(parent_command('projects/sys-prod-123/databases/default/documents/doc-1')))
+          .to eq('/v1/projects/sys-prod-123/databases/default/documents/doc-1/indexes')
+      end
+
+      it 'should percent-encode query characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/sys-prod-123?key=val')))
+          .to eq('/v1/projects/sys-prod-123%3Fkey%3Dval/indexes')
+      end
+
+      it 'should percent-encode fragment characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/sys-prod-123#fragment')))
+          .to eq('/v1/projects/sys-prod-123%23fragment/indexes')
+      end
+
+      it 'should percent-encode colons in reserved parameters' do
+        expect(wire_path(parent_command('projects/p:undelete'))).to eq('/v1/projects/p%3Aundelete/indexes')
+      end
+
+      it 'should percent-encode other reserved characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/p/topics/a+b@c,d=e')))
+          .to eq('/v1/projects/p/topics/a%2Bb%40c%2Cd%3De/indexes')
+      end
+
+      it 'should percent-encode braces in reserved parameters' do
+        expect(wire_path(parent_command('projects/{x}'))).to eq('/v1/projects/%7Bx%7D/indexes')
+      end
+
+      it 'should not normalize unicode in reserved parameters by default' do
+        expect(wire_path(parent_command("projects/Cafe\u0301"))).to eq('/v1/projects/Cafe%CC%81/indexes')
+      end
+
+      it 'should normalize unicode in reserved parameters when requested' do
+        command = parent_command("projects/Cafe\u0301")
+        command.options.normalize_unicode = true
+        expect(wire_path(command)).to eq('/v1/projects/Caf%C3%A9/indexes')
+      end
+
+      it 'should reject relative traversals inside the wildcard' do
+        expect_rejected('projects/sys-prod-123/databases/default/documents/doc-1/../../default',
+                        "Value for parent must not contain segments that are exactly '..'.")
+      end
+
+      it 'should reject traversals escaping the left parameter boundary' do
+        expect_rejected('projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db',
+                        "Value for parent must not contain segments that are exactly '..'.")
+      end
+
+      it 'should reject parameter values starting with parent directory traversals' do
+        expect_rejected('../escape-db', "Value for parent must not contain segments that are exactly '..'.")
+      end
+
+      it 'should reject invalid segments like single dot' do
+        expect_rejected('projects/sys-prod-123/./databases/default',
+                        "Value for parent must not contain segments that are exactly '.'.")
+      end
+
+      it 'should percent-encode percent signs in reserved parameters on the wire' do
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e%2e/doc2')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e%252e/doc2/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e/a')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e/a/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/..%2f..%2fescape-db')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/..%252f..%252fescape-db/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e%2e%2f%2e%2e%2fescape-db')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e%252e%252f%252e%252e%252fescape-db/indexes')
+      end
+
+      it 'should allow empty segments in reserved parameters' do
+        expect(wire_path(parent_command('projects/sys-prod-123//databases/default')))
+          .to eq('/v1/projects/sys-prod-123//databases/default/indexes')
+        expect(wire_path(parent_command('projects/sys-prod-123/'))).to eq('/v1/projects/sys-prod-123//indexes')
+      end
+    end
+  end
 end
