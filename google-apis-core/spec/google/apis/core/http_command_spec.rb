@@ -628,6 +628,15 @@ RSpec.describe Google::Apis::Core::HttpCommand do
   end
 
   describe 'path parameter validation' do
+    # Runs the command against a stub and returns the path that went out on the wire.
+    # WebMock treats '+' and '%2B' as equal, so the assertions check the expanded URL instead.
+    def wire_path(command)
+      stub_request(:get, /www\.googleapis\.com/).to_return(status: [200, ''])
+      command.options.retries = 0
+      command.execute(client)
+      command.url.path
+    end
+
     context 'with simple path variables' do
       # Source template specification:
       # Pattern: v1/projects/{project}/locations/{location}/webhooks/{webhook}
@@ -640,86 +649,50 @@ RSpec.describe Google::Apis::Core::HttpCommand do
         )
       end
 
-      it 'should allow safe parameter values' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook')
-          .to_return(status: [200, ''])
+      def webhook_command(webhook)
         command = Google::Apis::Core::HttpCommand.new(:get, template)
         command.params[:project] = 'sys-prod-123'
         command.params[:location] = 'us-central1'
-        command.params[:webhook] = 'billing-webhook'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        command.params[:webhook] = webhook
+        command
+      end
+
+      it 'should allow safe parameter values' do
+        expect(wire_path(webhook_command('billing-webhook')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook')
       end
 
       it 'should percent-encode slashes in simple parameters on the wire' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/parent%2Fchild-webhook')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = 'parent/child-webhook'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(webhook_command('parent/child-webhook')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/parent%2Fchild-webhook')
       end
 
       it 'should percent-encode slashes in Cloud Storage object names on the wire' do
         storage_template = Addressable::Template.new('https://www.googleapis.com/storage/v1/b/{bucket}/o/{object}')
-        stub_request(:get, 'https://www.googleapis.com/storage/v1/b/bk/o/folder%2Ffile.txt')
-          .to_return(status: [200, ''])
         command = Google::Apis::Core::HttpCommand.new(:get, storage_template)
         command.params[:bucket] = 'bk'
         command.params[:object] = 'folder/file.txt'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(command)).to eq('/storage/v1/b/bk/o/folder%2Ffile.txt')
       end
 
       it 'should reject dot or double-dot in simple parameters' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = '..'
+        command = webhook_command('..')
         command.options.retries = 0
         expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, "Invalid value for webhook '..'.")
       end
 
       it 'should percent-encode percent signs in simple parameters on the wire' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e%252e')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = '%2e%2e'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = '%2e'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(webhook_command('%2e%2e')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e%252e')
+        expect(wire_path(webhook_command('%2e')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/%252e')
       end
 
       it 'should percent-encode query and fragment characters in simple parameters on the wire' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%3Fkey%3Dval')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = 'billing-webhook?key=val'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%23fragment')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:project] = 'sys-prod-123'
-        command.params[:location] = 'us-central1'
-        command.params[:webhook] = 'billing-webhook#fragment'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(webhook_command('billing-webhook?key=val')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%3Fkey%3Dval')
+        expect(wire_path(webhook_command('billing-webhook#fragment')))
+          .to eq('/v1/projects/sys-prod-123/locations/us-central1/webhooks/billing-webhook%23fragment')
       end
     end
 
@@ -729,123 +702,93 @@ RSpec.describe Google::Apis::Core::HttpCommand do
       # Variable constraints (RFC 6570 reserved expansion):
       # - Allows slashes (multiple path segments), including empty segments
       # - Must not contain traversal segments ('.', '..')
-      # - Must not contain '?' or '#'. Addressable leaves them literal, so they would start a query or fragment
-      # - Other reserved characters go out literally, as Addressable has always sent them
+      # - Every character except '/' and unreserved characters is percent-encoded
       let(:template) { Addressable::Template.new('https://www.googleapis.com/v1/{+parent}/indexes') }
 
+      def parent_command(parent)
+        command = Google::Apis::Core::HttpCommand.new(:get, template)
+        command.params[:parent] = parent
+        command
+      end
+
+      def expect_rejected(parent, message)
+        command = parent_command(parent)
+        command.options.retries = 0
+        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, message)
+      end
+
       it 'should allow safe double wildcard paths' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(parent_command('projects/sys-prod-123/databases/default/documents/doc-1')))
+          .to eq('/v1/projects/sys-prod-123/databases/default/documents/doc-1/indexes')
       end
 
-      it 'should reject query parameter injections in reserved parameters' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123?key=val'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, /contains invalid characters/)
+      it 'should percent-encode query characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/sys-prod-123?key=val')))
+          .to eq('/v1/projects/sys-prod-123%3Fkey%3Dval/indexes')
       end
 
-      it 'should reject fragment parameter injections in reserved parameters' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123#fragment'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(Google::Apis::ClientError, /contains invalid characters/)
+      it 'should percent-encode fragment characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/sys-prod-123#fragment')))
+          .to eq('/v1/projects/sys-prod-123%23fragment/indexes')
       end
 
-      it 'should send colons in reserved parameters literally on the wire' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/p:undelete/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/p:undelete'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+      it 'should percent-encode colons in reserved parameters' do
+        expect(wire_path(parent_command('projects/p:undelete'))).to eq('/v1/projects/p%3Aundelete/indexes')
+      end
+
+      it 'should percent-encode other reserved characters in reserved parameters' do
+        expect(wire_path(parent_command('projects/p/topics/a+b@c,d=e')))
+          .to eq('/v1/projects/p/topics/a%2Bb%40c%2Cd%3De/indexes')
+      end
+
+      it 'should percent-encode braces in reserved parameters' do
+        expect(wire_path(parent_command('projects/{x}'))).to eq('/v1/projects/%7Bx%7D/indexes')
+      end
+
+      it 'should not normalize unicode in reserved parameters by default' do
+        expect(wire_path(parent_command("projects/Cafe\u0301"))).to eq('/v1/projects/Cafe%CC%81/indexes')
+      end
+
+      it 'should normalize unicode in reserved parameters when requested' do
+        command = parent_command("projects/Cafe\u0301")
+        command.options.normalize_unicode = true
+        expect(wire_path(command)).to eq('/v1/projects/Caf%C3%A9/indexes')
       end
 
       it 'should reject relative traversals inside the wildcard' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123/databases/default/documents/doc-1/../../default'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(
-          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
-        )
+        expect_rejected('projects/sys-prod-123/databases/default/documents/doc-1/../../default',
+                        "Value for parent must not contain segments that are exactly '..'.")
       end
 
       it 'should reject traversals escaping the left parameter boundary' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] =
-          'projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(
-          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
-        )
+        expect_rejected('projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db',
+                        "Value for parent must not contain segments that are exactly '..'.")
       end
 
       it 'should reject parameter values starting with parent directory traversals' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = '../escape-db'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(
-          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '..'."
-        )
+        expect_rejected('../escape-db', "Value for parent must not contain segments that are exactly '..'.")
       end
 
       it 'should reject invalid segments like single dot' do
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123/./databases/default'
-        command.options.retries = 0
-        expect { command.execute(client) }.to raise_error(
-          Google::Apis::ClientError, "Value for parent must not contain segments that are exactly '.'."
-        )
+        expect_rejected('projects/sys-prod-123/./databases/default',
+                        "Value for parent must not contain segments that are exactly '.'.")
       end
 
       it 'should percent-encode percent signs in reserved parameters on the wire' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/p/databases/d/documents/doc/%252e%252e/doc2/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e/doc2'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/p/databases/d/documents/doc/%252e/a/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e/a'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/p/databases/d/documents/doc/..%252f..%252fescape-db/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/p/databases/d/documents/doc/..%2f..%2fescape-db'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/p/databases/d/documents/doc/%252e%252e%252f%252e%252e%252fescape-db/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/p/databases/d/documents/doc/%2e%2e%2f%2e%2e%2fescape-db'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e%2e/doc2')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e%252e/doc2/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e/a')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e/a/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/..%2f..%2fescape-db')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/..%252f..%252fescape-db/indexes')
+        expect(wire_path(parent_command('projects/p/databases/d/documents/doc/%2e%2e%2f%2e%2e%2fescape-db')))
+          .to eq('/v1/projects/p/databases/d/documents/doc/%252e%252e%252f%252e%252e%252fescape-db/indexes')
       end
 
       it 'should allow empty segments in reserved parameters' do
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123//databases/default/indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123//databases/default'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
-
-        stub_request(:get, 'https://www.googleapis.com/v1/projects/sys-prod-123//indexes')
-          .to_return(status: [200, ''])
-        command = Google::Apis::Core::HttpCommand.new(:get, template)
-        command.params[:parent] = 'projects/sys-prod-123/'
-        command.options.retries = 0
-        expect { command.execute(client) }.not_to raise_error
+        expect(wire_path(parent_command('projects/sys-prod-123//databases/default')))
+          .to eq('/v1/projects/sys-prod-123//databases/default/indexes')
+        expect(wire_path(parent_command('projects/sys-prod-123/'))).to eq('/v1/projects/sys-prod-123//indexes')
       end
     end
   end
