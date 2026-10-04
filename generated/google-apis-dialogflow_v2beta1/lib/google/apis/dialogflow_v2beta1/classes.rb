@@ -7224,6 +7224,117 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2CompanionSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `guidances`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2CompanionSuggestionGuidance>]
+        attr_accessor :guidances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guidances = args[:guidances] if args.key?(:guidances)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2CompanionSuggestionGuidance
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # 
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GroundingMetadata]
+        attr_accessor :grounding_metadata
+      
+        # 
+        # Corresponds to the JSON property `instructionSource`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GuidanceInstruction]
+        attr_accessor :instruction_source
+      
+        # 
+        # Corresponds to the JSON property `knowledgeSources`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource>]
+        attr_accessor :knowledge_sources
+      
+        # 
+        # Corresponds to the JSON property `suggestedAction`
+        # @return [String]
+        attr_accessor :suggested_action
+      
+        # 
+        # Corresponds to the JSON property `suggestedReply`
+        # @return [String]
+        attr_accessor :suggested_reply
+      
+        # 
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2ToolCallSuggestion>]
+        attr_accessor :tool_calls
+      
+        # 
+        # Corresponds to the JSON property `triggeringToolCallAnswerRecords`
+        # @return [Array<String>]
+        attr_accessor :triggering_tool_call_answer_records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
+          @instruction_source = args[:instruction_source] if args.key?(:instruction_source)
+          @knowledge_sources = args[:knowledge_sources] if args.key?(:knowledge_sources)
+          @suggested_action = args[:suggested_action] if args.key?(:suggested_action)
+          @suggested_reply = args[:suggested_reply] if args.key?(:suggested_reply)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @triggering_tool_call_answer_records = args[:triggering_tool_call_answer_records] if args.key?(:triggering_tool_call_answer_records)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `knowledgeArticleTitle`
+        # @return [String]
+        attr_accessor :knowledge_article_title
+      
+        # 
+        # Corresponds to the JSON property `knowledgeArticleUrl`
+        # @return [String]
+        attr_accessor :knowledge_article_url
+      
+        # 
+        # Corresponds to the JSON property `knowledgeSnippet`
+        # @return [String]
+        attr_accessor :knowledge_snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_article_title = args[:knowledge_article_title] if args.key?(:knowledge_article_title)
+          @knowledge_article_url = args[:knowledge_article_url] if args.key?(:knowledge_article_url)
+          @knowledge_snippet = args[:knowledge_snippet] if args.key?(:knowledge_snippet)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2Context
         include Google::Apis::Core::Hashable
       
@@ -7804,6 +7915,43 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # 
+        # Corresponds to the JSON property `companionSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2CompanionSuggestion]
+        attr_accessor :companion_suggestion
+      
+        # 
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # 
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @companion_suggestion = args[:companion_suggestion] if args.key?(:companion_suggestion)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2GenerateSuggestionsResponse
         include Google::Apis::Core::Hashable
       
@@ -7918,6 +8066,224 @@ module Google
         def update!(**args)
           @tool_call = args[:tool_call] if args.key?(:tool_call)
           @tool_call_result = args[:tool_call_result] if args.key?(:tool_call_result)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GroundingChunk
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GroundingChunkRetrievedContext]
+        attr_accessor :retrieved_context
+      
+        # 
+        # Corresponds to the JSON property `web`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GroundingChunkWeb]
+        attr_accessor :web
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
+          @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GroundingChunkRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # 
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GroundingChunkWeb
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # 
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GroundingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groundingChunks`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GroundingChunk>]
+        attr_accessor :grounding_chunks
+      
+        # 
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GroundingSupport>]
+        attr_accessor :grounding_supports
+      
+        # 
+        # Corresponds to the JSON property `searchEntryPoint`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SearchEntryPoint]
+        attr_accessor :search_entry_point
+      
+        # 
+        # Corresponds to the JSON property `webSearchQueries`
+        # @return [Array<String>]
+        attr_accessor :web_search_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
+          @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
+          @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groundingChunkIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :grounding_chunk_indices
+      
+        # 
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Segment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_chunk_indices = args[:grounding_chunk_indices] if args.key?(:grounding_chunk_indices)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GuidanceInstruction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GuidanceInstructionAction>]
+        attr_accessor :actions
+      
+        # 
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # 
+        # Corresponds to the JSON property `disableSuggestedReply`
+        # @return [Boolean]
+        attr_accessor :disable_suggested_reply
+        alias_method :disable_suggested_reply?, :disable_suggested_reply
+      
+        # 
+        # Corresponds to the JSON property `displayDetails`
+        # @return [String]
+        attr_accessor :display_details
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @condition = args[:condition] if args.key?(:condition)
+          @disable_suggested_reply = args[:disable_suggested_reply] if args.key?(:disable_suggested_reply)
+          @display_details = args[:display_details] if args.key?(:display_details)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2GuidanceInstructionAction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
         end
       end
       
@@ -10081,6 +10447,56 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2SearchEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `renderedContent`
+        # @return [String]
+        attr_accessor :rendered_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2Segment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # 
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2Sentiment
         include Google::Apis::Core::Hashable
       
@@ -10531,6 +10947,11 @@ module Google
         attr_accessor :error
       
         # 
+        # Corresponds to the JSON property `generateCompanionSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse]
+        attr_accessor :generate_companion_suggestions_response
+      
+        # 
         # Corresponds to the JSON property `generateSuggestionsResponse`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GenerateSuggestionsResponse]
         attr_accessor :generate_suggestions_response
@@ -10562,6 +10983,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_companion_suggestions_response = args[:generate_companion_suggestions_response] if args.key?(:generate_companion_suggestions_response)
           @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_faq_answers_response = args[:suggest_faq_answers_response] if args.key?(:suggest_faq_answers_response)
@@ -10794,6 +11216,31 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2ToolCallSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `textUpdate`
+        # @return [String]
+        attr_accessor :text_update
+      
+        # 
+        # Corresponds to the JSON property `toolCallInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo]
+        attr_accessor :tool_call_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_update = args[:text_update] if args.key?(:text_update)
+          @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata
         include Google::Apis::Core::Hashable
       
@@ -11012,6 +11459,11 @@ module Google
         attr_accessor :answer_relevance
       
         # 
+        # Corresponds to the JSON property `companionFeedback`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AgentAssistantFeedbackCompanionFeedback]
+        attr_accessor :companion_feedback
+      
+        # 
         # Corresponds to the JSON property `documentCorrectness`
         # @return [String]
         attr_accessor :document_correctness
@@ -11043,11 +11495,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @answer_relevance = args[:answer_relevance] if args.key?(:answer_relevance)
+          @companion_feedback = args[:companion_feedback] if args.key?(:companion_feedback)
           @document_correctness = args[:document_correctness] if args.key?(:document_correctness)
           @document_efficiency = args[:document_efficiency] if args.key?(:document_efficiency)
           @knowledge_assist_feedback = args[:knowledge_assist_feedback] if args.key?(:knowledge_assist_feedback)
           @knowledge_search_feedback = args[:knowledge_search_feedback] if args.key?(:knowledge_search_feedback)
           @summarization_feedback = args[:summarization_feedback] if args.key?(:summarization_feedback)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1AgentAssistantFeedbackCompanionFeedback
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -11150,6 +11616,11 @@ module Google
         attr_accessor :article_suggestion_answer
       
         # 
+        # Corresponds to the JSON property `companionSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionSuggestion]
+        attr_accessor :companion_suggestion
+      
+        # 
         # Corresponds to the JSON property `dialogflowAssistAnswer`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DialogflowAssistAnswer]
         attr_accessor :dialogflow_assist_answer
@@ -11164,6 +11635,11 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorSuggestion]
         attr_accessor :generator_suggestion
       
+        # 
+        # Corresponds to the JSON property `reactiveCompanionSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse]
+        attr_accessor :reactive_companion_suggestion
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11171,9 +11647,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @article_suggestion_answer = args[:article_suggestion_answer] if args.key?(:article_suggestion_answer)
+          @companion_suggestion = args[:companion_suggestion] if args.key?(:companion_suggestion)
           @dialogflow_assist_answer = args[:dialogflow_assist_answer] if args.key?(:dialogflow_assist_answer)
           @faq_answer = args[:faq_answer] if args.key?(:faq_answer)
           @generator_suggestion = args[:generator_suggestion] if args.key?(:generator_suggestion)
+          @reactive_companion_suggestion = args[:reactive_companion_suggestion] if args.key?(:reactive_companion_suggestion)
         end
       end
       
@@ -12357,6 +12835,247 @@ module Google
         def update!(**args)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
           @suggestion_feature_type = args[:suggestion_feature_type] if args.key?(:suggestion_feature_type)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionAgent
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `cesToolSpecs`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CesToolSpec>]
+        attr_accessor :ces_tool_specs
+      
+        # 
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # 
+        # Corresponds to the JSON property `skillConfigs`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig>]
+        attr_accessor :skill_configs
+      
+        # 
+        # Corresponds to the JSON property `toolsetTools`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolsetTool>]
+        attr_accessor :toolset_tools
+      
+        # 
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ces_tool_specs = args[:ces_tool_specs] if args.key?(:ces_tool_specs)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @skill_configs = args[:skill_configs] if args.key?(:skill_configs)
+          @toolset_tools = args[:toolset_tools] if args.key?(:toolset_tools)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `guidanceInstructions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GuidanceInstruction>]
+        attr_accessor :guidance_instructions
+      
+        # 
+        # Corresponds to the JSON property `knowledgeSource`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionAgentKnowledgeSource]
+        attr_accessor :knowledge_source
+      
+        # 
+        # Corresponds to the JSON property `overarchingGuidance`
+        # @return [String]
+        attr_accessor :overarching_guidance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guidance_instructions = args[:guidance_instructions] if args.key?(:guidance_instructions)
+          @knowledge_source = args[:knowledge_source] if args.key?(:knowledge_source)
+          @overarching_guidance = args[:overarching_guidance] if args.key?(:overarching_guidance)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionAgentKnowledgeSource
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `guidanceSkillConfig`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig]
+        attr_accessor :guidance_skill_config
+      
+        # 
+        # Corresponds to the JSON property `skillTriggeringEvent`
+        # @return [String]
+        attr_accessor :skill_triggering_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guidance_skill_config = args[:guidance_skill_config] if args.key?(:guidance_skill_config)
+          @skill_triggering_event = args[:skill_triggering_event] if args.key?(:skill_triggering_event)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `guidances`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance>]
+        attr_accessor :guidances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @guidances = args[:guidances] if args.key?(:guidances)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `explanation`
+        # @return [String]
+        attr_accessor :explanation
+      
+        # 
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingMetadata]
+        attr_accessor :grounding_metadata
+      
+        # 
+        # Corresponds to the JSON property `instructionSource`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GuidanceInstruction]
+        attr_accessor :instruction_source
+      
+        # 
+        # Corresponds to the JSON property `knowledgeSources`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource>]
+        attr_accessor :knowledge_sources
+      
+        # 
+        # Corresponds to the JSON property `suggestedAction`
+        # @return [String]
+        attr_accessor :suggested_action
+      
+        # 
+        # Corresponds to the JSON property `suggestedReply`
+        # @return [String]
+        attr_accessor :suggested_reply
+      
+        # 
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolCallSuggestion>]
+        attr_accessor :tool_calls
+      
+        # 
+        # Corresponds to the JSON property `triggeringToolCallAnswerRecords`
+        # @return [Array<String>]
+        attr_accessor :triggering_tool_call_answer_records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @explanation = args[:explanation] if args.key?(:explanation)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
+          @instruction_source = args[:instruction_source] if args.key?(:instruction_source)
+          @knowledge_sources = args[:knowledge_sources] if args.key?(:knowledge_sources)
+          @suggested_action = args[:suggested_action] if args.key?(:suggested_action)
+          @suggested_reply = args[:suggested_reply] if args.key?(:suggested_reply)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
+          @triggering_tool_call_answer_records = args[:triggering_tool_call_answer_records] if args.key?(:triggering_tool_call_answer_records)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `knowledgeArticleTitle`
+        # @return [String]
+        attr_accessor :knowledge_article_title
+      
+        # 
+        # Corresponds to the JSON property `knowledgeArticleUrl`
+        # @return [String]
+        attr_accessor :knowledge_article_url
+      
+        # 
+        # Corresponds to the JSON property `knowledgeSnippet`
+        # @return [String]
+        attr_accessor :knowledge_snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_article_title = args[:knowledge_article_title] if args.key?(:knowledge_article_title)
+          @knowledge_article_url = args[:knowledge_article_url] if args.key?(:knowledge_article_url)
+          @knowledge_snippet = args[:knowledge_snippet] if args.key?(:knowledge_snippet)
         end
       end
       
@@ -13944,6 +14663,43 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `answerRecord`
+        # @return [String]
+        attr_accessor :answer_record
+      
+        # 
+        # Corresponds to the JSON property `companionSuggestion`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionSuggestion]
+        attr_accessor :companion_suggestion
+      
+        # 
+        # Corresponds to the JSON property `latestMessage`
+        # @return [String]
+        attr_accessor :latest_message
+      
+        # 
+        # Corresponds to the JSON property `suggestionIndex`
+        # @return [Fixnum]
+        attr_accessor :suggestion_index
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_record = args[:answer_record] if args.key?(:answer_record)
+          @companion_suggestion = args[:companion_suggestion] if args.key?(:companion_suggestion)
+          @latest_message = args[:latest_message] if args.key?(:latest_message)
+          @suggestion_index = args[:suggestion_index] if args.key?(:suggestion_index)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest
         include Google::Apis::Core::Hashable
       
@@ -14633,6 +15389,224 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2beta1GroundingChunk
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `retrievedContext`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext]
+        attr_accessor :retrieved_context
+      
+        # 
+        # Corresponds to the JSON property `web`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingChunkWeb]
+        attr_accessor :web
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieved_context = args[:retrieved_context] if args.key?(:retrieved_context)
+          @web = args[:web] if args.key?(:web)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        # 
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GroundingChunkWeb
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # 
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GroundingMetadata
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groundingChunks`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingChunk>]
+        attr_accessor :grounding_chunks
+      
+        # 
+        # Corresponds to the JSON property `groundingSupports`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingSupport>]
+        attr_accessor :grounding_supports
+      
+        # 
+        # Corresponds to the JSON property `searchEntryPoint`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SearchEntryPoint]
+        attr_accessor :search_entry_point
+      
+        # 
+        # Corresponds to the JSON property `webSearchQueries`
+        # @return [Array<String>]
+        attr_accessor :web_search_queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_chunks = args[:grounding_chunks] if args.key?(:grounding_chunks)
+          @grounding_supports = args[:grounding_supports] if args.key?(:grounding_supports)
+          @search_entry_point = args[:search_entry_point] if args.key?(:search_entry_point)
+          @web_search_queries = args[:web_search_queries] if args.key?(:web_search_queries)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GroundingSupport
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groundingChunkIndices`
+        # @return [Array<Fixnum>]
+        attr_accessor :grounding_chunk_indices
+      
+        # 
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Segment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_chunk_indices = args[:grounding_chunk_indices] if args.key?(:grounding_chunk_indices)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GuidanceInstruction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `actions`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GuidanceInstructionAction>]
+        attr_accessor :actions
+      
+        # 
+        # Corresponds to the JSON property `condition`
+        # @return [String]
+        attr_accessor :condition
+      
+        # 
+        # Corresponds to the JSON property `disableSuggestedReply`
+        # @return [Boolean]
+        attr_accessor :disable_suggested_reply
+        alias_method :disable_suggested_reply?, :disable_suggested_reply
+      
+        # 
+        # Corresponds to the JSON property `displayDetails`
+        # @return [String]
+        attr_accessor :display_details
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # 
+        # Corresponds to the JSON property `triggerEvent`
+        # @return [String]
+        attr_accessor :trigger_event
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actions = args[:actions] if args.key?(:actions)
+          @condition = args[:condition] if args.key?(:condition)
+          @disable_suggested_reply = args[:disable_suggested_reply] if args.key?(:disable_suggested_reply)
+          @display_details = args[:display_details] if args.key?(:display_details)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @trigger_event = args[:trigger_event] if args.key?(:trigger_event)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1GuidanceInstructionAction
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig
         include Google::Apis::Core::Hashable
       
@@ -14727,6 +15701,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `companionAgent`
+        # @return [String]
+        attr_accessor :companion_agent
+      
+        # 
         # Corresponds to the JSON property `disableHighLatencyFeaturesSyncDelivery`
         # @return [Boolean]
         attr_accessor :disable_high_latency_features_sync_delivery
@@ -14772,6 +15751,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @companion_agent = args[:companion_agent] if args.key?(:companion_agent)
           @disable_high_latency_features_sync_delivery = args[:disable_high_latency_features_sync_delivery] if args.key?(:disable_high_latency_features_sync_delivery)
           @enable_async_tool_call = args[:enable_async_tool_call] if args.key?(:enable_async_tool_call)
           @feature_configs = args[:feature_configs] if args.key?(:feature_configs)
@@ -17918,6 +18898,31 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `companionAgents`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1CompanionAgent>]
+        attr_accessor :companion_agents
+      
+        # 
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @companion_agents = args[:companion_agents] if args.key?(:companion_agents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2beta1ListContextsResponse
         include Google::Apis::Core::Hashable
       
@@ -19317,6 +20322,25 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2beta1SearchEntryPoint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `renderedContent`
+        # @return [String]
+        attr_accessor :rendered_content
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rendered_content = args[:rendered_content] if args.key?(:rendered_content)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer
         include Google::Apis::Core::Hashable
       
@@ -19756,6 +20780,37 @@ module Google
           @answers = args[:answers] if args.key?(:answers)
           @rewritten_query = args[:rewritten_query] if args.key?(:rewritten_query)
           @search_knowledge_debug_info = args[:search_knowledge_debug_info] if args.key?(:search_knowledge_debug_info)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1Segment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endIndex`
+        # @return [Fixnum]
+        attr_accessor :end_index
+      
+        # 
+        # Corresponds to the JSON property `startIndex`
+        # @return [Fixnum]
+        attr_accessor :start_index
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_index = args[:end_index] if args.key?(:end_index)
+          @start_index = args[:start_index] if args.key?(:start_index)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -20371,6 +21426,37 @@ module Google
           @end_offset = args[:end_offset] if args.key?(:end_offset)
           @start_offset = args[:start_offset] if args.key?(:start_offset)
           @word = args[:word] if args.key?(:word)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GroundingMetadata]
+        attr_accessor :grounding_metadata
+      
+        # 
+        # Corresponds to the JSON property `response`
+        # @return [String]
+        attr_accessor :response
+      
+        # 
+        # Corresponds to the JSON property `toolCalls`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ToolCallSuggestion>]
+        attr_accessor :tool_calls
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
+          @response = args[:response] if args.key?(:response)
+          @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
         end
       end
       
@@ -21121,6 +22207,11 @@ module Google
         attr_accessor :error
       
         # 
+        # Corresponds to the JSON property `generateCompanionSuggestionsResponse`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse]
+        attr_accessor :generate_companion_suggestions_response
+      
+        # 
         # Corresponds to the JSON property `generateSuggestionsResponse`
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse]
         attr_accessor :generate_suggestions_response
@@ -21162,6 +22253,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @error = args[:error] if args.key?(:error)
+          @generate_companion_suggestions_response = args[:generate_companion_suggestions_response] if args.key?(:generate_companion_suggestions_response)
           @generate_suggestions_response = args[:generate_suggestions_response] if args.key?(:generate_suggestions_response)
           @suggest_articles_response = args[:suggest_articles_response] if args.key?(:suggest_articles_response)
           @suggest_dialogflow_assists_response = args[:suggest_dialogflow_assists_response] if args.key?(:suggest_dialogflow_assists_response)
@@ -22295,6 +23387,31 @@ module Google
         def update!(**args)
           @message = args[:message] if args.key?(:message)
           @retryable = args[:retryable] if args.key?(:retryable)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2beta1ToolCallSuggestion
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `textUpdate`
+        # @return [String]
+        attr_accessor :text_update
+      
+        # 
+        # Corresponds to the JSON property `toolCallInfo`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo]
+        attr_accessor :tool_call_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text_update = args[:text_update] if args.key?(:text_update)
+          @tool_call_info = args[:tool_call_info] if args.key?(:tool_call_info)
         end
       end
       
