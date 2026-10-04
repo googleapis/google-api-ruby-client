@@ -11683,6 +11683,8 @@ module Google
       
           property :time_aggregation, as: 'timeAggregation', class: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation, decorator: Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation::Representation
       
+          property :utilization_max, as: 'utilizationMax'
+          property :utilization_min, as: 'utilizationMin'
           property :utilization_range, as: 'utilizationRange', class: Google::Apis::ComputeAlpha::UtilizationRange, decorator: Google::Apis::ComputeAlpha::UtilizationRange::Representation
       
           property :utilization_target, as: 'utilizationTarget'

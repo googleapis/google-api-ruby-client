@@ -3542,6 +3542,20 @@ module Google
         # @return [Google::Apis::ComputeAlpha::AutoscalingPolicyTimeAggregation]
         attr_accessor :time_aggregation
       
+        # The upper bound of the utilization range. Must be a float value in the
+        # range ('utilization_min', 1]. A value of 0.0 is equivalent to leaving the
+        # field unset.
+        # Corresponds to the JSON property `utilizationMax`
+        # @return [Float]
+        attr_accessor :utilization_max
+      
+        # The lower bound of the utilization range. Must be a float value in the
+        # range (0, 'utilization_max']. A value of 0.0 is equivalent to leaving the
+        # field unset.
+        # Corresponds to the JSON property `utilizationMin`
+        # @return [Float]
+        attr_accessor :utilization_min
+      
         # Represents a range of acceptable utilization values.
         # This message is used to configure range-based scaling policies,
         # allowing Autoscaler to maintain utilization within a specified range
@@ -3573,6 +3587,8 @@ module Google
           @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
           @signal_aggregation = args[:signal_aggregation] if args.key?(:signal_aggregation)
           @time_aggregation = args[:time_aggregation] if args.key?(:time_aggregation)
+          @utilization_max = args[:utilization_max] if args.key?(:utilization_max)
+          @utilization_min = args[:utilization_min] if args.key?(:utilization_min)
           @utilization_range = args[:utilization_range] if args.key?(:utilization_range)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
@@ -9786,7 +9802,8 @@ module Google
         # GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
         # GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,
-        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For
+        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,
+        # STORAGE_OPTIMIZED_Z4M. For
         # example, type MEMORY_OPTIMIZED specifies a commitment that
         # applies only to eligible resources of memory optimized M1 and M2 machine
         # series. Type GENERAL_PURPOSE specifies a commitment that
