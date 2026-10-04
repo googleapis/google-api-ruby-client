@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudBillingBudgetsV1SpendCap
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudBillingBudgetsV1ThresholdRule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,8 @@ module Google
           property :notifications_rule, as: 'notificationsRule', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule::Representation
       
           property :ownership_scope, as: 'ownershipScope'
+          property :spend_cap, as: 'spendCap', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1SpendCap, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1SpendCap::Representation
+      
           collection :threshold_rules, as: 'thresholdRules', class: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1ThresholdRule, decorator: Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1ThresholdRule::Representation
       
         end
@@ -169,6 +177,15 @@ module Google
           collection :monitoring_notification_channels, as: 'monitoringNotificationChannels'
           property :pubsub_topic, as: 'pubsubTopic'
           property :schema_version, as: 'schemaVersion'
+        end
+      end
+      
+      class GoogleCloudBillingBudgetsV1SpendCap
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :input_state, as: 'inputState'
+          property :output_state, as: 'outputState'
+          property :reconciling, as: 'reconciling'
         end
       end
       
