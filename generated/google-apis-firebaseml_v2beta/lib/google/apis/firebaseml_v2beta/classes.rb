@@ -2991,6 +2991,11 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution]
         attr_accessor :media_resolution
       
+        # Structured Metadata Sub-Message for Part
+        # Corresponds to the JSON property `speechMetadata`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechMetadata]
+        attr_accessor :speech_metadata
+      
         # Optional. The text content of the part. When sent from the VSCode Gemini Code
         # Assist extension, references to @mentioned items will be converted to markdown
         # boldface text. For example `@my-repo` will be converted to and sent as `**my-
@@ -3034,6 +3039,7 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @media_processing = args[:media_processing] if args.key?(:media_processing)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
+          @speech_metadata = args[:speech_metadata] if args.key?(:speech_metadata)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
           @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
@@ -3938,6 +3944,31 @@ module Google
         end
       end
       
+      # Structured Metadata Sub-Message for Part
+      class GoogleCloudAiplatformV1beta1SpeechMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Identifies which speaker is speaking this turn.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # Optional. Natural language description of the vocal style (e.g., "cheerful").
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @style = args[:style] if args.key?(:style)
+        end
+      end
+      
       # Configuration for text-specific output formatting.
       class GoogleCloudAiplatformV1beta1TextResponseFormat
         include Google::Apis::Core::Hashable
@@ -4076,6 +4107,11 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         include Google::Apis::Core::Hashable
       
+        # Optional. Disabled safety policies for computer use.
+        # Corresponds to the JSON property `disabledSafetyPolicies`
+        # @return [Array<String>]
+        attr_accessor :disabled_safety_policies
+      
         # Optional. Enables the prompt injection detection check on computer-use request.
         # Corresponds to the JSON property `enablePromptInjectionDetection`
         # @return [Boolean]
@@ -4103,6 +4139,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled_safety_policies = args[:disabled_safety_policies] if args.key?(:disabled_safety_policies)
           @enable_prompt_injection_detection = args[:enable_prompt_injection_detection] if args.key?(:enable_prompt_injection_detection)
           @environment = args[:environment] if args.key?(:environment)
           @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
@@ -4650,6 +4687,14 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig]
         attr_accessor :replicated_voice_config
       
+        # Optional. The speaker identifier for synthesis. Supported formats: * Speaker
+        # name for prebuilt voices (for example, `Orus` or `Kore`). * Voice ID for
+        # stored voices (for example, `voice_xxx`). * Voice replication key (for example,
+        # `voicekey_xxx`).
+        # Corresponds to the JSON property `voice`
+        # @return [String]
+        attr_accessor :voice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4658,6 +4703,7 @@ module Google
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
           @replicated_voice_config = args[:replicated_voice_config] if args.key?(:replicated_voice_config)
+          @voice = args[:voice] if args.key?(:voice)
         end
       end
       

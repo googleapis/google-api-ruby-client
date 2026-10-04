@@ -598,6 +598,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1SpeechMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1TextResponseFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1532,6 +1538,8 @@ module Google
           property :media_processing, as: 'mediaProcessing'
           property :media_resolution, as: 'mediaResolution', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1PartMediaResolution::Representation
       
+          property :speech_metadata, as: 'speechMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SpeechMetadata::Representation
+      
           property :text, as: 'text'
           property :thought, as: 'thought'
           property :thought_signature, :base64 => true, as: 'thoughtSignature'
@@ -1784,6 +1792,14 @@ module Google
         end
       end
       
+      class GoogleCloudAiplatformV1beta1SpeechMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker, as: 'speaker'
+          property :style, as: 'style'
+        end
+      end
+      
       class GoogleCloudAiplatformV1beta1TextResponseFormat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1829,6 +1845,7 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disabled_safety_policies, as: 'disabledSafetyPolicies'
           property :enable_prompt_injection_detection, as: 'enablePromptInjectionDetection'
           property :environment, as: 'environment'
           collection :excluded_predefined_functions, as: 'excludedPredefinedFunctions'
@@ -1994,6 +2011,7 @@ module Google
       
           property :replicated_voice_config, as: 'replicatedVoiceConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig::Representation
       
+          property :voice, as: 'voice'
         end
       end
       
