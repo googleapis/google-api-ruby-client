@@ -904,6 +904,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerDdlConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlServerLsnPosition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2583,6 +2589,8 @@ module Google
       class SqlServerChangeTables
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ddl_config, as: 'ddlConfig', class: Google::Apis::DatastreamV1::SqlServerDdlConfig, decorator: Google::Apis::DatastreamV1::SqlServerDdlConfig::Representation
+      
         end
       end
       
@@ -2597,6 +2605,14 @@ module Google
           property :precision, as: 'precision'
           property :primary_key, as: 'primaryKey'
           property :scale, as: 'scale'
+        end
+      end
+      
+      class SqlServerDdlConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_create_new_capture_instance_on_ddl, as: 'autoCreateNewCaptureInstanceOnDdl'
+          property :auto_delete_old_capture_instance, as: 'autoDeleteOldCaptureInstance'
         end
       end
       
