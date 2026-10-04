@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReconciliationOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RewriteObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,6 +581,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :event_based_hold, as: 'eventBasedHold'
           property :temporary_hold, as: 'temporaryHold'
+        end
+      end
+      
+      class ReconciliationOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delete_resource, as: 'deleteResource'
+          property :exclusive_action, as: 'exclusiveAction'
         end
       end
       
