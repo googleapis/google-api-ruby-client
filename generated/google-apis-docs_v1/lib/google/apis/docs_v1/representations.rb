@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateDropdownDefinitionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateDropdownDefinitionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateFooterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteDropdownDefinitionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteFooterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,6 +335,48 @@ module Google
       end
       
       class DocumentTab
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Dropdown
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownDefinitionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownDefinitionPropertiesSuggestionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DropdownPropertiesSuggestionState
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -455,6 +515,18 @@ module Google
       end
       
       class InsertDateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertDropdownRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsertDropdownResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -880,6 +952,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SuggestedDropdownDefinitionProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuggestedDropdownProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuggestedInlineObjectProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1079,6 +1163,18 @@ module Google
       end
       
       class UpdateDocumentTabPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDropdownDefinitionPropertiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateDropdownPropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1310,6 +1406,23 @@ module Google
         end
       end
       
+      class CreateDropdownDefinitionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition, as: 'dropdownDefinition', class: Google::Apis::DocsV1::DropdownDefinition, decorator: Google::Apis::DocsV1::DropdownDefinition::Representation
+      
+          property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class CreateDropdownDefinitionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition, as: 'dropdownDefinition', class: Google::Apis::DocsV1::DropdownDefinition, decorator: Google::Apis::DocsV1::DropdownDefinition::Representation
+      
+        end
+      end
+      
       class CreateFooterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1467,6 +1580,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
       
+        end
+      end
+      
+      class DeleteDropdownDefinitionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition_id, as: 'dropdownDefinitionId'
+          property :tab_id, as: 'tabId'
         end
       end
       
@@ -1669,6 +1790,8 @@ module Google
       
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
+          hash :dropdown_definitions, as: 'dropdownDefinitions', class: Google::Apis::DocsV1::DropdownDefinition, decorator: Google::Apis::DocsV1::DropdownDefinition::Representation
+      
           hash :footers, as: 'footers', class: Google::Apis::DocsV1::Footer, decorator: Google::Apis::DocsV1::Footer::Representation
       
           hash :footnotes, as: 'footnotes', class: Google::Apis::DocsV1::Footnote, decorator: Google::Apis::DocsV1::Footnote::Representation
@@ -1689,6 +1812,79 @@ module Google
       
           hash :suggested_named_styles_changes, as: 'suggestedNamedStylesChanges', class: Google::Apis::DocsV1::SuggestedNamedStyles, decorator: Google::Apis::DocsV1::SuggestedNamedStyles::Representation
       
+        end
+      end
+      
+      class Dropdown
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_id, as: 'dropdownId'
+          property :dropdown_properties, as: 'dropdownProperties', class: Google::Apis::DocsV1::DropdownProperties, decorator: Google::Apis::DocsV1::DropdownProperties::Representation
+      
+          collection :suggested_deletion_ids, as: 'suggestedDeletionIds'
+          hash :suggested_dropdown_properties_changes, as: 'suggestedDropdownPropertiesChanges', class: Google::Apis::DocsV1::SuggestedDropdownProperties, decorator: Google::Apis::DocsV1::SuggestedDropdownProperties::Representation
+      
+          collection :suggested_insertion_ids, as: 'suggestedInsertionIds'
+          hash :suggested_text_style_changes, as: 'suggestedTextStyleChanges', class: Google::Apis::DocsV1::SuggestedTextStyle, decorator: Google::Apis::DocsV1::SuggestedTextStyle::Representation
+      
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class DropdownDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition_id, as: 'dropdownDefinitionId'
+          property :dropdown_definition_properties, as: 'dropdownDefinitionProperties', class: Google::Apis::DocsV1::DropdownDefinitionProperties, decorator: Google::Apis::DocsV1::DropdownDefinitionProperties::Representation
+      
+          property :suggested_deletion_id, as: 'suggestedDeletionId'
+          hash :suggested_dropdown_definition_properties_changes, as: 'suggestedDropdownDefinitionPropertiesChanges', class: Google::Apis::DocsV1::SuggestedDropdownDefinitionProperties, decorator: Google::Apis::DocsV1::SuggestedDropdownDefinitionProperties::Representation
+      
+          property :suggested_insertion_id, as: 'suggestedInsertionId'
+        end
+      end
+      
+      class DropdownDefinitionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :options, as: 'options', class: Google::Apis::DocsV1::DropdownOption, decorator: Google::Apis::DocsV1::DropdownOption::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class DropdownDefinitionPropertiesSuggestionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :options_suggested, as: 'optionsSuggested'
+          property :title_suggested, as: 'titleSuggested'
+        end
+      end
+      
+      class DropdownOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_value, as: 'displayValue'
+          property :option_id, as: 'optionId'
+          property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
+      
+        end
+      end
+      
+      class DropdownProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_value, as: 'displayValue'
+          property :dropdown_definition_id, as: 'dropdownDefinitionId'
+          property :selected_option_id, as: 'selectedOptionId'
+        end
+      end
+      
+      class DropdownPropertiesSuggestionState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :selected_option_id_suggested, as: 'selectedOptionIdSuggested'
         end
       end
       
@@ -1947,6 +2143,26 @@ module Google
           property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
       
           property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
+      class InsertDropdownRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition_id, as: 'dropdownDefinitionId'
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :selected_option_id, as: 'selectedOptionId'
+        end
+      end
+      
+      class InsertDropdownResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown, as: 'dropdown', class: Google::Apis::DocsV1::Dropdown, decorator: Google::Apis::DocsV1::Dropdown::Representation
       
         end
       end
@@ -2296,6 +2512,8 @@ module Google
       
           property :date_element, as: 'dateElement', class: Google::Apis::DocsV1::DateElement, decorator: Google::Apis::DocsV1::DateElement::Representation
       
+          property :dropdown, as: 'dropdown', class: Google::Apis::DocsV1::Dropdown, decorator: Google::Apis::DocsV1::Dropdown::Representation
+      
           property :end_index, as: 'endIndex'
           property :equation, as: 'equation', class: Google::Apis::DocsV1::Equation, decorator: Google::Apis::DocsV1::Equation::Representation
       
@@ -2565,6 +2783,8 @@ module Google
       
           property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabRequest, decorator: Google::Apis::DocsV1::AddDocumentTabRequest::Representation
       
+          property :create_dropdown_definition, as: 'createDropdownDefinition', class: Google::Apis::DocsV1::CreateDropdownDefinitionRequest, decorator: Google::Apis::DocsV1::CreateDropdownDefinitionRequest::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteRequest, decorator: Google::Apis::DocsV1::CreateFootnoteRequest::Representation
@@ -2580,6 +2800,8 @@ module Google
           property :delete_comment_reply, as: 'deleteCommentReply', class: Google::Apis::DocsV1::DeleteCommentReplyRequest, decorator: Google::Apis::DocsV1::DeleteCommentReplyRequest::Representation
       
           property :delete_content_range, as: 'deleteContentRange', class: Google::Apis::DocsV1::DeleteContentRangeRequest, decorator: Google::Apis::DocsV1::DeleteContentRangeRequest::Representation
+      
+          property :delete_dropdown_definition, as: 'deleteDropdownDefinition', class: Google::Apis::DocsV1::DeleteDropdownDefinitionRequest, decorator: Google::Apis::DocsV1::DeleteDropdownDefinitionRequest::Representation
       
           property :delete_footer, as: 'deleteFooter', class: Google::Apis::DocsV1::DeleteFooterRequest, decorator: Google::Apis::DocsV1::DeleteFooterRequest::Representation
       
@@ -2602,6 +2824,8 @@ module Google
           property :insert_comment, as: 'insertComment', class: Google::Apis::DocsV1::InsertCommentRequest, decorator: Google::Apis::DocsV1::InsertCommentRequest::Representation
       
           property :insert_date, as: 'insertDate', class: Google::Apis::DocsV1::InsertDateRequest, decorator: Google::Apis::DocsV1::InsertDateRequest::Representation
+      
+          property :insert_dropdown, as: 'insertDropdown', class: Google::Apis::DocsV1::InsertDropdownRequest, decorator: Google::Apis::DocsV1::InsertDropdownRequest::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageRequest, decorator: Google::Apis::DocsV1::InsertInlineImageRequest::Representation
       
@@ -2641,6 +2865,10 @@ module Google
       
           property :update_document_tab_properties, as: 'updateDocumentTabProperties', class: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest::Representation
       
+          property :update_dropdown_definition_properties, as: 'updateDropdownDefinitionProperties', class: Google::Apis::DocsV1::UpdateDropdownDefinitionPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateDropdownDefinitionPropertiesRequest::Representation
+      
+          property :update_dropdown_properties, as: 'updateDropdownProperties', class: Google::Apis::DocsV1::UpdateDropdownPropertiesRequest, decorator: Google::Apis::DocsV1::UpdateDropdownPropertiesRequest::Representation
+      
           property :update_named_style, as: 'updateNamedStyle', class: Google::Apis::DocsV1::UpdateNamedStyleRequest, decorator: Google::Apis::DocsV1::UpdateNamedStyleRequest::Representation
       
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
@@ -2665,6 +2893,8 @@ module Google
       
           property :add_document_tab, as: 'addDocumentTab', class: Google::Apis::DocsV1::AddDocumentTabResponse, decorator: Google::Apis::DocsV1::AddDocumentTabResponse::Representation
       
+          property :create_dropdown_definition, as: 'createDropdownDefinition', class: Google::Apis::DocsV1::CreateDropdownDefinitionResponse, decorator: Google::Apis::DocsV1::CreateDropdownDefinitionResponse::Representation
+      
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
       
           property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteResponse, decorator: Google::Apis::DocsV1::CreateFootnoteResponse::Representation
@@ -2674,6 +2904,8 @@ module Google
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeResponse, decorator: Google::Apis::DocsV1::CreateNamedRangeResponse::Representation
       
           property :insert_comment, as: 'insertComment', class: Google::Apis::DocsV1::InsertCommentResponse, decorator: Google::Apis::DocsV1::InsertCommentResponse::Representation
+      
+          property :insert_dropdown, as: 'insertDropdown', class: Google::Apis::DocsV1::InsertDropdownResponse, decorator: Google::Apis::DocsV1::InsertDropdownResponse::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageResponse, decorator: Google::Apis::DocsV1::InsertInlineImageResponse::Representation
       
@@ -2869,6 +3101,26 @@ module Google
           property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
       
           property :document_style_suggestion_state, as: 'documentStyleSuggestionState', class: Google::Apis::DocsV1::DocumentStyleSuggestionState, decorator: Google::Apis::DocsV1::DocumentStyleSuggestionState::Representation
+      
+        end
+      end
+      
+      class SuggestedDropdownDefinitionProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition_properties, as: 'dropdownDefinitionProperties', class: Google::Apis::DocsV1::DropdownDefinitionProperties, decorator: Google::Apis::DocsV1::DropdownDefinitionProperties::Representation
+      
+          property :dropdown_definition_properties_suggestion_state, as: 'dropdownDefinitionPropertiesSuggestionState', class: Google::Apis::DocsV1::DropdownDefinitionPropertiesSuggestionState, decorator: Google::Apis::DocsV1::DropdownDefinitionPropertiesSuggestionState::Representation
+      
+        end
+      end
+      
+      class SuggestedDropdownProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_properties, as: 'dropdownProperties', class: Google::Apis::DocsV1::DropdownProperties, decorator: Google::Apis::DocsV1::DropdownProperties::Representation
+      
+          property :dropdown_properties_suggestion_state, as: 'dropdownPropertiesSuggestionState', class: Google::Apis::DocsV1::DropdownPropertiesSuggestionState, decorator: Google::Apis::DocsV1::DropdownPropertiesSuggestionState::Representation
       
         end
       end
@@ -3270,6 +3522,29 @@ module Google
           property :fields, as: 'fields'
           property :tab_properties, as: 'tabProperties', class: Google::Apis::DocsV1::TabProperties, decorator: Google::Apis::DocsV1::TabProperties::Representation
       
+        end
+      end
+      
+      class UpdateDropdownDefinitionPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_definition_id, as: 'dropdownDefinitionId'
+          property :dropdown_definition_properties, as: 'dropdownDefinitionProperties', class: Google::Apis::DocsV1::DropdownDefinitionProperties, decorator: Google::Apis::DocsV1::DropdownDefinitionProperties::Representation
+      
+          property :fields, as: 'fields'
+          hash :selected_option_id_replacements, as: 'selectedOptionIdReplacements'
+          property :tab_id, as: 'tabId'
+        end
+      end
+      
+      class UpdateDropdownPropertiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dropdown_id, as: 'dropdownId'
+          property :dropdown_properties, as: 'dropdownProperties', class: Google::Apis::DocsV1::DropdownProperties, decorator: Google::Apis::DocsV1::DropdownProperties::Representation
+      
+          property :fields, as: 'fields'
+          property :tab_id, as: 'tabId'
         end
       end
       
