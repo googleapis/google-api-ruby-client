@@ -1362,6 +1362,11 @@ module Google
         # @return [Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails]
         attr_accessor :one_time_recurrence_details
       
+        # Optional. Output only. The plan type of the line item.
+        # Corresponds to the JSON property `planType`
+        # @return [String]
+        attr_accessor :plan_type
+      
         # Required. Product resource name that identifies the product associated with
         # this line item. The format is 'partners/`partner_id`/products/`product_id`'.
         # Corresponds to the JSON property `product`
@@ -1398,6 +1403,7 @@ module Google
           @line_item_promotion_specs = args[:line_item_promotion_specs] if args.key?(:line_item_promotion_specs)
           @name = args[:name] if args.key?(:name)
           @one_time_recurrence_details = args[:one_time_recurrence_details] if args.key?(:one_time_recurrence_details)
+          @plan_type = args[:plan_type] if args.key?(:plan_type)
           @product = args[:product] if args.key?(:product)
           @product_payload = args[:product_payload] if args.key?(:product_payload)
           @recurrence_type = args[:recurrence_type] if args.key?(:recurrence_type)
