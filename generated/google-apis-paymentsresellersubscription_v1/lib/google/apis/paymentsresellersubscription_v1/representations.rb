@@ -731,6 +731,7 @@ module Google
           property :name, as: 'name'
           property :one_time_recurrence_details, as: 'oneTimeRecurrenceDetails', class: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails, decorator: Google::Apis::PaymentsresellersubscriptionV1::SubscriptionLineItemOneTimeRecurrenceDetails::Representation
       
+          property :plan_type, as: 'planType'
           property :product, as: 'product'
           property :product_payload, as: 'productPayload', class: Google::Apis::PaymentsresellersubscriptionV1::ProductPayload, decorator: Google::Apis::PaymentsresellersubscriptionV1::ProductPayload::Representation
       
