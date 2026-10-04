@@ -4230,6 +4230,8 @@ module Google
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -4275,6 +4277,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -4381,6 +4385,8 @@ module Google
           property :name, as: 'name'
           property :sample_rule, as: 'sampleRule', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleRule, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleRule::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :schedule_info, as: 'scheduleInfo', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ScheduleInfo, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ScheduleInfo::Representation
       
           property :update_time, as: 'updateTime'
@@ -4425,6 +4431,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -4435,6 +4443,8 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -4841,6 +4851,8 @@ module Google
       
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :transcript, as: 'transcript', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscript, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ConversationTranscript::Representation
       
@@ -5284,6 +5296,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :ttl, as: 'ttl'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
@@ -5521,6 +5535,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -5648,6 +5664,8 @@ module Google
           property :name, as: 'name'
           property :qa_answer_label, as: 'qaAnswerLabel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -6472,6 +6490,8 @@ module Google
       
           property :question_body, as: 'questionBody'
           property :question_type, as: 'questionType'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           collection :tags, as: 'tags'
           property :tuning_metadata, as: 'tuningMetadata', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata::Representation
       
@@ -6520,6 +6540,8 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :qa_question_ids, as: 'qaQuestionIds'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -6541,6 +6563,8 @@ module Google
           property :display_name, as: 'displayName'
           property :is_default, as: 'isDefault'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :source, as: 'source'
           property :update_time, as: 'updateTime'
         end
@@ -6594,6 +6618,8 @@ module Google
           collection :alternate_ids, as: 'alternateIds'
           property :create_time, as: 'createTime'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :snapshot, as: 'snapshot', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaScorecard::Representation
       
           property :state, as: 'state'
@@ -6958,6 +6984,8 @@ module Google
           hash :pubsub_notification_settings, as: 'pubsubNotificationSettings'
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :screen_recording_bucket_uri, as: 'screenRecordingBucketUri'
           property :speech_config, as: 'speechConfig', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SpeechConfig::Representation
       
@@ -7259,6 +7287,8 @@ module Google
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -7550,6 +7580,8 @@ module Google
       
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :transcript, as: 'transcript', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript::Representation
       
@@ -7940,6 +7972,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :ttl, as: 'ttl'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
@@ -8153,6 +8187,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -8273,6 +8309,8 @@ module Google
           property :name, as: 'name'
           property :qa_answer_label, as: 'qaAnswerLabel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -8701,6 +8739,8 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :qa_question_ids, as: 'qaQuestionIds'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -9177,6 +9217,8 @@ module Google
           property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :request_time, as: 'requestTime'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -9533,6 +9575,8 @@ module Google
       
           collection :runtime_annotations, as: 'runtimeAnnotations', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :start_time, as: 'startTime'
           property :transcript, as: 'transcript', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscript, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainConversationTranscript::Representation
       
@@ -9923,6 +9967,8 @@ module Google
           property :description, as: 'description'
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :ttl, as: 'ttl'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
@@ -10136,6 +10182,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key, as: 'kmsKey'
           property :name, as: 'name'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
         end
       end
       
@@ -10256,6 +10304,8 @@ module Google
           property :name, as: 'name'
           property :qa_answer_label, as: 'qaAnswerLabel', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue::Representation
       
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
@@ -10684,6 +10734,8 @@ module Google
           property :display_name, as: 'displayName'
           property :name, as: 'name'
           collection :qa_question_ids, as: 'qaQuestionIds'
+          property :satisfies_pzi, as: 'satisfiesPzi'
+          property :satisfies_pzs, as: 'satisfiesPzs'
           property :update_time, as: 'updateTime'
         end
       end
