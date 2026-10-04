@@ -1346,7 +1346,7 @@ module Google
         # @return [Google::Apis::ContainerV1::ControlPlaneEndpointsConfig]
         attr_accessor :control_plane_endpoints_config
       
-        # Configuration for fine-grained cost management feature.
+        # Configuration for fine-grained cost allocation feature.
         # Corresponds to the JSON property `costManagementConfig`
         # @return [Google::Apis::ContainerV1::CostManagementConfig]
         attr_accessor :cost_management_config
@@ -2124,7 +2124,7 @@ module Google
         # @return [Google::Apis::ContainerV1::ControlPlaneEndpointsConfig]
         attr_accessor :desired_control_plane_endpoints_config
       
-        # Configuration for fine-grained cost management feature.
+        # Configuration for fine-grained cost allocation feature.
         # Corresponds to the JSON property `desiredCostManagementConfig`
         # @return [Google::Apis::ContainerV1::CostManagementConfig]
         attr_accessor :desired_cost_management_config
@@ -2981,7 +2981,7 @@ module Google
         end
       end
       
-      # Configuration for fine-grained cost management feature.
+      # Configuration for fine-grained cost allocation feature.
       class CostManagementConfig
         include Google::Apis::Core::Hashable
       
