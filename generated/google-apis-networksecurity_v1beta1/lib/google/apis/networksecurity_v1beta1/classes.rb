@@ -3435,6 +3435,37 @@ module Google
         end
       end
       
+      # Contains a response to listing `RateLimitPolicy` resources.
+      class ListRateLimitPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies a token for a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Contains a list of `RateLimitPolicy` resources.
+        # Corresponds to the JSON property `rateLimitPolicies`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicy>]
+        attr_accessor :rate_limit_policies
+      
+        # Unordered list. Lists locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @rate_limit_policies = args[:rate_limit_policies] if args.key?(:rate_limit_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response for `ListSACAttachments` method.
       class ListSacAttachmentsResponse
         include Google::Apis::Core::Hashable
@@ -4425,6 +4456,722 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @target = args[:target] if args.key?(:target)
           @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Describes a `RateLimitPolicy` object.
+      class RateLimitPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Represents the create timestamp.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Provides a human-readable description of the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Specifies a list of rate limit HTTP rules to match against the
+        # incoming request.
+        # Corresponds to the JSON property `httpRules`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRule>]
+        attr_accessor :http_rules
+      
+        # Optional. Stores labels as key value pairs.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Specifies the name of the `RateLimitPolicy` resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Specifies a list of rate limit buckets to be used for rate limiting.
+        # Rate limit buckets will be referenced by the rate limit actions by name.
+        # Corresponds to the JSON property `rateLimitBuckets`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucket>]
+        attr_accessor :rate_limit_buckets
+      
+        # Required. Specifies a list of targets to which this policy applies.
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyTarget>]
+        attr_accessor :targets
+      
+        # Output only. Represents the update timestamp.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @http_rules = args[:http_rules] if args.key?(:http_rules)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @rate_limit_buckets = args[:rate_limit_buckets] if args.key?(:rate_limit_buckets)
+          @targets = args[:targets] if args.key?(:targets)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Describes properties of a rate limit bucket.
+      class RateLimitPolicyRateLimitBucket
+        include Google::Apis::Core::Hashable
+      
+        # Describes a limit for enforcement.
+        # Corresponds to the JSON property `defaultLimit`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit]
+        attr_accessor :default_limit
+      
+        # Optional. Specifies whether the rate limit bucket is in dry-run mode.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
+        # Required. Specifies the keys to use for rate limiting. At least one key is
+        # required. If multiple keys are specified, the keys will be combined and used
+        # as a single key.
+        # Corresponds to the JSON property `keys`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketKey>]
+        attr_accessor :keys
+      
+        # Required. Specifies the name of the rate limit bucket. Name will be used to
+        # reference the bucket in the RateLimitAction.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Specifies a list of user overrides to apply to the rate limit bucket.
+        # Corresponds to the JSON property `userOverrides`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverride>]
+        attr_accessor :user_overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @default_limit = args[:default_limit] if args.key?(:default_limit)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
+          @keys = args[:keys] if args.key?(:keys)
+          @name = args[:name] if args.key?(:name)
+          @user_overrides = args[:user_overrides] if args.key?(:user_overrides)
+        end
+      end
+      
+      # Describes the count limit for enforcement.
+      class RateLimitPolicyRateLimitBucketCountLimit
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the maximum number of costs allowed in the specified
+        # interval. Must be non-negative.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Required. Specifies the interval in units for which the count limit is
+        # enforced. Must be positive.
+        # Corresponds to the JSON property `interval`
+        # @return [Fixnum]
+        attr_accessor :interval
+      
+        # Required. Specifies the unit of the interval. Defaults to MINUTES.
+        # Corresponds to the JSON property `intervalUnit`
+        # @return [String]
+        attr_accessor :interval_unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @interval = args[:interval] if args.key?(:interval)
+          @interval_unit = args[:interval_unit] if args.key?(:interval_unit)
+        end
+      end
+      
+      # Describes properties of a key to use for rate limiting.
+      class RateLimitPolicyRateLimitBucketKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the header name if key_type is HTTP_HEADER.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # Required. Specifies the type of key to use for rate limiting.
+        # Corresponds to the JSON property `keyType`
+        # @return [String]
+        attr_accessor :key_type
+      
+        # Optional. Specifies the principal type if key_type is PRINCIPAL.
+        # Corresponds to the JSON property `principalType`
+        # @return [String]
+        attr_accessor :principal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @key_type = args[:key_type] if args.key?(:key_type)
+          @principal_type = args[:principal_type] if args.key?(:principal_type)
+        end
+      end
+      
+      # Describes a limit for enforcement.
+      class RateLimitPolicyRateLimitBucketLimit
+        include Google::Apis::Core::Hashable
+      
+        # Describes the count limit for enforcement.
+        # Corresponds to the JSON property `countLimit`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketCountLimit]
+        attr_accessor :count_limit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count_limit = args[:count_limit] if args.key?(:count_limit)
+        end
+      end
+      
+      # Describes properties of a user override for the rate limit bucket.
+      class RateLimitPolicyRateLimitBucketUserOverride
+        include Google::Apis::Core::Hashable
+      
+        # Describes a limit for enforcement.
+        # Corresponds to the JSON property `limit`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit]
+        attr_accessor :limit
+      
+        # Specifies the key to override. Key fields must match the key types specified
+        # in the rate limit bucket. Key type ALL does not support overrides.
+        # Corresponds to the JSON property `overrideKey`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKey]
+        attr_accessor :override_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @limit = args[:limit] if args.key?(:limit)
+          @override_key = args[:override_key] if args.key?(:override_key)
+        end
+      end
+      
+      # Specifies the key to override. Key fields must match the key types specified
+      # in the rate limit bucket. Key type ALL does not support overrides.
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the HTTP headers if the rate limit bucket keys contain
+        # keys of type HTTP_HEADER. Number of headers and header names must match the
+        # rate limit bucket key.
+        # Corresponds to the JSON property `httpHeaders`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader>]
+        attr_accessor :http_headers
+      
+        # Optional. Specifies the HTTP path if the rate limit bucket keys contain a key
+        # of type HTTP_PATH.
+        # Corresponds to the JSON property `httpPath`
+        # @return [String]
+        attr_accessor :http_path
+      
+        # Optional. Specifies the MCP tool if the rate limit bucket keys contain a key
+        # of type MCP_TOOL.
+        # Corresponds to the JSON property `mcpTool`
+        # @return [String]
+        attr_accessor :mcp_tool
+      
+        # Optional. Specifies the principals if the rate limit bucket keys contain keys
+        # of PRINCIPAL. Number of principals and principal types must match the rate
+        # limit bucket key.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal>]
+        attr_accessor :principals
+      
+        # Optional. Specifies the source IP if the rate limit bucket keys contain a key
+        # of type SOURCE_IP.
+        # Corresponds to the JSON property `sourceIp`
+        # @return [String]
+        attr_accessor :source_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_headers = args[:http_headers] if args.key?(:http_headers)
+          @http_path = args[:http_path] if args.key?(:http_path)
+          @mcp_tool = args[:mcp_tool] if args.key?(:mcp_tool)
+          @principals = args[:principals] if args.key?(:principals)
+          @source_ip = args[:source_ip] if args.key?(:source_ip)
+        end
+      end
+      
+      # Specifies the key in the type HTTP header to override.
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the header name of the key.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # Required. Specifies the header value of the key.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Specifies the key in the type PRINCIPAL to override.
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the principal value of the key.
+        # Corresponds to the JSON property `principal`
+        # @return [String]
+        attr_accessor :principal
+      
+        # Required. Specifies the principal type of the key.
+        # Corresponds to the JSON property `principalType`
+        # @return [String]
+        attr_accessor :principal_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+          @principal_type = args[:principal_type] if args.key?(:principal_type)
+        end
+      end
+      
+      # Specifies conditions to match against the incoming request.
+      class RateLimitPolicyRateLimitRule
+        include Google::Apis::Core::Hashable
+      
+        # Describes properties of the sources of a request.
+        # Corresponds to the JSON property `from`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFrom]
+        attr_accessor :from
+      
+        # Optional. Specifies the actions to take when this rule is matched.
+        # Corresponds to the JSON property `rateLimitActions`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleRateLimitAction>]
+        attr_accessor :rate_limit_actions
+      
+        # Describes properties of the targets of a request.
+        # Corresponds to the JSON property `to`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleTo]
+        attr_accessor :to
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @from = args[:from] if args.key?(:from)
+          @rate_limit_actions = args[:rate_limit_actions] if args.key?(:rate_limit_actions)
+          @to = args[:to] if args.key?(:to)
+        end
+      end
+      
+      # Describes properties of the sources of a request.
+      class RateLimitPolicyRateLimitRuleFrom
+        include Google::Apis::Core::Hashable
+      
+        # Describes the properties of a request source.
+        # Corresponds to the JSON property `notSource`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource]
+        attr_accessor :not_source
+      
+        # Describes the properties of a request source.
+        # Corresponds to the JSON property `source`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource]
+        attr_accessor :source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @not_source = args[:not_source] if args.key?(:not_source)
+          @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # Describes the properties of a request source.
+      class RateLimitPolicyRateLimitRuleFromSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Contains a list of identities derived from the client's certificate.
+        # This field does not match on a request unless frontend mutual TLS is enabled
+        # for the Gateway and the client certificate is successfully validated by mTLS.
+        # Each identity is a string whose value is matched against a list of URI SANs,
+        # DNS Name SANs, or the common name in the client's certificate. A match happens
+        # when any principal matches with the rule.
+        # Corresponds to the JSON property `principals`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRulePrincipal>]
+        attr_accessor :principals
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principals = args[:principals] if args.key?(:principals)
+        end
+      end
+      
+      # Determines how an HTTP header is matched.
+      class RateLimitPolicyRateLimitRuleHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the name of the header in the request.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Determines how a string value is matched.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Describes the properties of a principal for matching.
+      class RateLimitPolicyRateLimitRulePrincipal
+        include Google::Apis::Core::Hashable
+      
+        # Determines how a string value is matched.
+        # Corresponds to the JSON property `principal`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch]
+        attr_accessor :principal
+      
+        # Optional. Decides what principal value the principal rule will match against.
+        # If not specified, defaults to CLIENT_CERT_URI_SAN.
+        # Corresponds to the JSON property `principalSelector`
+        # @return [String]
+        attr_accessor :principal_selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @principal = args[:principal] if args.key?(:principal)
+          @principal_selector = args[:principal_selector] if args.key?(:principal_selector)
+        end
+      end
+      
+      # Describes the action to take when the rate limit rule is matched.
+      class RateLimitPolicyRateLimitRuleRateLimitAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the name of the rate limit bucket to apply when this rule
+        # is matched.
+        # Corresponds to the JSON property `rateLimitBucket`
+        # @return [String]
+        attr_accessor :rate_limit_bucket
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rate_limit_bucket = args[:rate_limit_bucket] if args.key?(:rate_limit_bucket)
+        end
+      end
+      
+      # Determines how a string value is matched.
+      class RateLimitPolicyRateLimitRuleStringMatch
+        include Google::Apis::Core::Hashable
+      
+        # Checks if the input string contains the substring specified here. Note: empty
+        # contains match is not allowed, please use regex instead. Examples: * ``abc``
+        # matches the value ``xyz.abc.def``
+        # Corresponds to the JSON property `contains`
+        # @return [String]
+        attr_accessor :contains
+      
+        # Matches the input string exactly to the string specified here. Examples: * ``
+        # abc`` only matches the value ``abc``.
+        # Corresponds to the JSON property `exact`
+        # @return [String]
+        attr_accessor :exact
+      
+        # Optional. Indicates if the exact/prefix/suffix/contains matching should be
+        # case insensitive. For example, when true, the matcher ``data`` matches both
+        # input strings ``Data`` and ``data``.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # Checks if the input string has the prefix specified here. Note: empty prefix
+        # is not allowed, please use regex instead. Examples: * ``abc`` matches the
+        # value ``abc.xyz``
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        # Checks if the input string has the suffix specified here. Note: empty suffix
+        # is not allowed, please use regex instead. Examples: * ``abc`` matches the
+        # value ``xyz.abc``
+        # Corresponds to the JSON property `suffix`
+        # @return [String]
+        attr_accessor :suffix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contains = args[:contains] if args.key?(:contains)
+          @exact = args[:exact] if args.key?(:exact)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @prefix = args[:prefix] if args.key?(:prefix)
+          @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
+      # Describes properties of the targets of a request.
+      class RateLimitPolicyRateLimitRuleTo
+        include Google::Apis::Core::Hashable
+      
+        # Describes properties of a request target.
+        # Corresponds to the JSON property `destination`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination]
+        attr_accessor :destination
+      
+        # Describes properties of a request target.
+        # Corresponds to the JSON property `notDestination`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination]
+        attr_accessor :not_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination = args[:destination] if args.key?(:destination)
+          @not_destination = args[:not_destination] if args.key?(:not_destination)
+        end
+      end
+      
+      # Describes properties of a request target.
+      class RateLimitPolicyRateLimitRuleToDestination
+        include Google::Apis::Core::Hashable
+      
+        # Describes a set of HTTP headers to match against.
+        # Corresponds to the JSON property `headerSet`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationHeaderSet]
+        attr_accessor :header_set
+      
+        # Optional. Specifies a list of HTTP Hosts to match against. The match can be
+        # one of exact, prefix, suffix, or contains (substring match). Matches are
+        # always case sensitive unless the ignoreCase is set. The match follows OR
+        # semantics which means that if any of the hosts match, the operation is
+        # considered to be matched.
+        # Corresponds to the JSON property `hosts`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch>]
+        attr_accessor :hosts
+      
+        # Describes a set of MCP protocol attributes to match against for a given MCP
+        # request. This field is only valid if the targeted Gateway or Forwarding Rule
+        # has an Agent Gateway attached to it.
+        # Corresponds to the JSON property `mcp`
+        # @return [Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcp]
+        attr_accessor :mcp
+      
+        # Optional. Specifies a list of HTTP methods to match against. Each entry must
+        # be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It
+        # only allows exact match and is always case sensitive. The match follows OR
+        # semantics which means that if any of the methods match, the operation is
+        # considered to be matched.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<String>]
+        attr_accessor :methods_prop
+      
+        # Optional. Specifies a list of paths to match against. The match can be one of
+        # exact, prefix, suffix, or contains (substring match). Matches are always case
+        # sensitive unless the ignoreCase is set. The match follows OR semantics which
+        # means that if any of the paths match, the operation is considered to be
+        # matched. Note that this path match includes the query parameters. For gRPC
+        # services, this should be a fully-qualified name of the form /package.service/
+        # method.
+        # Corresponds to the JSON property `paths`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch>]
+        attr_accessor :paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_set = args[:header_set] if args.key?(:header_set)
+          @hosts = args[:hosts] if args.key?(:hosts)
+          @mcp = args[:mcp] if args.key?(:mcp)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+          @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # Describes a set of HTTP headers to match against.
+      class RateLimitPolicyRateLimitRuleToDestinationHeaderSet
+        include Google::Apis::Core::Hashable
+      
+        # Required. Contains a list of headers to match against in http header. The
+        # match can be one of exact, prefix, suffix, or contains (substring match). The
+        # match follows AND semantics which means all the headers must match. Matches
+        # are always case sensitive unless the ignoreCase is set.
+        # Corresponds to the JSON property `headers`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleHeaderMatch>]
+        attr_accessor :headers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @headers = args[:headers] if args.key?(:headers)
+        end
+      end
+      
+      # Describes a set of MCP protocol attributes to match against for a given MCP
+      # request. This field is only valid if the targeted Gateway or Forwarding Rule
+      # has an Agent Gateway attached to it.
+      class RateLimitPolicyRateLimitRuleToDestinationMcp
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If specified, matches on the MCP protocol’s non-access specific
+        # methods namely: * initialize * completion/ * logging/ * notifications/ * ping
+        # Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
+        # Corresponds to the JSON property `baseProtocolMethodsOption`
+        # @return [String]
+        attr_accessor :base_protocol_methods_option
+      
+        # Optional. A list of MCP methods and associated parameter names to match on. It
+        # is recommended to use this field to match on tools, prompts and resource
+        # accesses while setting the baseProtocolMethodsOption to
+        # MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods.
+        # Limited to 10 MCP methods per Rate Limit Policy.
+        # Corresponds to the JSON property `methods`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcpMethod>]
+        attr_accessor :methods_prop
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_protocol_methods_option = args[:base_protocol_methods_option] if args.key?(:base_protocol_methods_option)
+          @methods_prop = args[:methods_prop] if args.key?(:methods_prop)
+        end
+      end
+      
+      # Describes a set of MCP methods to match against. This field is only valid if
+      # the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it.
+      class RateLimitPolicyRateLimitRuleToDestinationMcpMethod
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the MCP method to match against. Allowed values are as
+        # follows: 1. `tools`, `prompts`, `resources` - these will match against all sub
+        # methods under the respective methods. 2. `prompts/list`, `tools/list`, `
+        # resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `
+        # resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot
+        # be specified for categories 1 and 2.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Specifies a list of MCP method parameter names to match against. The
+        # match can be one of exact, prefix, suffix, or contains (substring match).
+        # Matches are always case sensitive unless the ignoreCase is set.
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch>]
+        attr_accessor :params
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
+        end
+      end
+      
+      # Specifies the target to which this policy applies.
+      class RateLimitPolicyTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. Reference to a Gateway or Forwarding Rule resource on which this
+        # policy will be applied.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       

@@ -526,6 +526,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListRateLimitPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListSacAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -653,6 +659,138 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketCountLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleFrom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleFromSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleHeaderMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRulePrincipal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleRateLimitAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleStringMatch
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleTo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationHeaderSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationMcp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationMcpMethod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RateLimitPolicyTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1715,6 +1853,16 @@ module Google
         end
       end
       
+      class ListRateLimitPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :rate_limit_policies, as: 'rateLimitPolicies', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicy, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicy::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListSacAttachmentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1958,6 +2106,226 @@ module Google
           property :status_message, as: 'statusMessage'
           property :target, as: 'target'
           property :verb, as: 'verb'
+        end
+      end
+      
+      class RateLimitPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          collection :http_rules, as: 'httpRules', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRule, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRule::Representation
+      
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          collection :rate_limit_buckets, as: 'rateLimitBuckets', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucket, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucket::Representation
+      
+          collection :targets, as: 'targets', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyTarget, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyTarget::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_limit, as: 'defaultLimit', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit::Representation
+      
+          property :dry_run, as: 'dryRun'
+          collection :keys, as: 'keys', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketKey, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketKey::Representation
+      
+          property :name, as: 'name'
+          collection :user_overrides, as: 'userOverrides', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverride, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverride::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketCountLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :interval, :numeric_string => true, as: 'interval'
+          property :interval_unit, as: 'intervalUnit'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header'
+          property :key_type, as: 'keyType'
+          property :principal_type, as: 'principalType'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count_limit, as: 'countLimit', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketCountLimit, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketCountLimit::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :limit, as: 'limit', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketLimit::Representation
+      
+          property :override_key, as: 'overrideKey', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKey, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKey::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :http_headers, as: 'httpHeaders', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader::Representation
+      
+          property :http_path, as: 'httpPath'
+          property :mcp_tool, as: 'mcpTool'
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal::Representation
+      
+          property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header'
+          property :value, as: 'value'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal'
+          property :principal_type, as: 'principalType'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :from, as: 'from', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFrom, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFrom::Representation
+      
+          collection :rate_limit_actions, as: 'rateLimitActions', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleRateLimitAction, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleRateLimitAction::Representation
+      
+          property :to, as: 'to', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleTo, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleTo::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleFrom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :not_source, as: 'notSource', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource::Representation
+      
+          property :source, as: 'source', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleFromSource::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleFromSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :principals, as: 'principals', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRulePrincipal, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRulePrincipal::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleHeaderMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRulePrincipal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :principal, as: 'principal', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch::Representation
+      
+          property :principal_selector, as: 'principalSelector'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleRateLimitAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rate_limit_bucket, as: 'rateLimitBucket'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleStringMatch
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contains, as: 'contains'
+          property :exact, as: 'exact'
+          property :ignore_case, as: 'ignoreCase'
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleTo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination, as: 'destination', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination::Representation
+      
+          property :not_destination, as: 'notDestination', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestination::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_set, as: 'headerSet', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationHeaderSet, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationHeaderSet::Representation
+      
+          collection :hosts, as: 'hosts', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch::Representation
+      
+          property :mcp, as: 'mcp', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcp, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcp::Representation
+      
+          collection :methods_prop, as: 'methods'
+          collection :paths, as: 'paths', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationHeaderSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :headers, as: 'headers', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleHeaderMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleHeaderMatch::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationMcp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_protocol_methods_option, as: 'baseProtocolMethodsOption'
+          collection :methods_prop, as: 'methods', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcpMethod, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleToDestinationMcpMethod::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyRateLimitRuleToDestinationMcpMethod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :params, as: 'params', class: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch, decorator: Google::Apis::NetworksecurityV1beta1::RateLimitPolicyRateLimitRuleStringMatch::Representation
+      
+        end
+      end
+      
+      class RateLimitPolicyTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource'
         end
       end
       
