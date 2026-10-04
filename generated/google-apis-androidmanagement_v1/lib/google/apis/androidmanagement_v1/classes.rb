@@ -85,8 +85,8 @@ module Google
       class AdvancedSecurityOverrides
         include Google::Apis::Core::Hashable
       
-        # Controls Common Criteria Mode—security standards defined in the Common
-        # Criteria for Information Technology Security Evaluation (https://www.
+        # Optional. Controls Common Criteria Mode—security standards defined in the
+        # Common Criteria for Information Technology Security Evaluation (https://www.
         # commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
         # certain security components on a device, see CommonCriteriaMode for details.
         # Warning: Common Criteria Mode enforces a strict security model typically only
@@ -105,8 +105,8 @@ module Google
         # @return [String]
         attr_accessor :content_protection_policy
       
-        # Controls access to developer settings: developer options and safe boot.
-        # Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
+        # Optional. Controls access to developer settings: developer options and safe
+        # boot. Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (
         # deprecated). On personally-owned devices with a work profile, setting this
         # policy will not disable safe boot. In this case, a NonComplianceDetail with
         # MANAGEMENT_MODE is reported.
@@ -114,8 +114,9 @@ module Google
         # @return [String]
         attr_accessor :developer_settings
       
-        # Whether Google Play Protect verification (https://support.google.com/accounts/
-        # answer/2812853) is enforced. Replaces ensureVerifyAppsEnabled (deprecated).
+        # Optional. Whether Google Play Protect verification (https://support.google.com/
+        # accounts/answer/2812853) is enforced. Replaces ensureVerifyAppsEnabled (
+        # deprecated).
         # Corresponds to the JSON property `googlePlayProtectVerifyApps`
         # @return [String]
         attr_accessor :google_play_protect_verify_apps
@@ -129,7 +130,7 @@ module Google
         # @return [String]
         attr_accessor :mte_policy
       
-        # Personal apps that can read work profile notifications using a
+        # Optional. Personal apps that can read work profile notifications using a
         # NotificationListenerService (https://developer.android.com/reference/android/
         # service/notification/NotificationListenerService). By default, no personal
         # apps (aside from system apps) can read work notifications. Each value in the
@@ -138,8 +139,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :personal_apps_that_can_read_work_notifications
       
-        # The policy for untrusted apps (apps from unknown sources) enforced on the
-        # device. Replaces install_unknown_sources_allowed (deprecated).
+        # Optional. The policy for untrusted apps (apps from unknown sources) enforced
+        # on the device. Replaces install_unknown_sources_allowed (deprecated).
         # Corresponds to the JSON property `untrustedAppsPolicy`
         # @return [String]
         attr_accessor :untrusted_apps_policy
@@ -1843,6 +1844,14 @@ module Google
         # @return [String]
         attr_accessor :nearby_notification_streaming
       
+        # Optional. Controls the task continuity handoff (https://developer.android.com/
+        # partners/android-17/features#handoff) feature. This policy applies to the
+        # entire device for fully managed devices, and to the work profile for devices
+        # with a work profile. Requires Android 17 QPR1 or higher.
+        # Corresponds to the JSON property `taskContinuityHandoff`
+        # @return [String]
+        attr_accessor :task_continuity_handoff
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1851,6 +1860,7 @@ module Google
         def update!(**args)
           @nearby_app_streaming = args[:nearby_app_streaming] if args.key?(:nearby_app_streaming)
           @nearby_notification_streaming = args[:nearby_notification_streaming] if args.key?(:nearby_notification_streaming)
+          @task_continuity_handoff = args[:task_continuity_handoff] if args.key?(:task_continuity_handoff)
         end
       end
       
@@ -1866,16 +1876,16 @@ module Google
         # @return [String]
         attr_accessor :cross_profile_app_functions
       
-        # Whether text copied from one profile (personal or work) can be pasted in the
-        # other profile.
+        # Optional. Whether text copied from one profile (personal or work) can be
+        # pasted in the other profile.
         # Corresponds to the JSON property `crossProfileCopyPaste`
         # @return [String]
         attr_accessor :cross_profile_copy_paste
       
-        # Whether data from one profile (personal or work) can be shared with apps in
-        # the other profile. Specifically controls simple data sharing via intents.
-        # Management of other cross-profile communication channels, such as contact
-        # search, copy/paste, or connected work & personal apps, are configured
+        # Optional. Whether data from one profile (personal or work) can be shared with
+        # apps in the other profile. Specifically controls simple data sharing via
+        # intents. Management of other cross-profile communication channels, such as
+        # contact search, copy/paste, or connected work & personal apps, are configured
         # separately.
         # Corresponds to the JSON property `crossProfileDataSharing`
         # @return [String]
@@ -1886,15 +1896,15 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
         attr_accessor :exemptions_to_show_work_contacts_in_personal_profile
       
-        # Whether personal apps can access contacts stored in the work profile.See also
-        # exemptions_to_show_work_contacts_in_personal_profile.
+        # Optional. Whether personal apps can access contacts stored in the work profile.
+        # See also exemptions_to_show_work_contacts_in_personal_profile.
         # Corresponds to the JSON property `showWorkContactsInPersonalProfile`
         # @return [String]
         attr_accessor :show_work_contacts_in_personal_profile
       
-        # Specifies the default behaviour for work profile widgets. If the policy does
-        # not specify work_profile_widgets for a specific application, it will behave
-        # according to the value specified here.
+        # Optional. Specifies the default behaviour for work profile widgets. If the
+        # policy does not specify work_profile_widgets for a specific application, it
+        # will behave according to the value specified here.
         # Corresponds to the JSON property `workProfileWidgetsDefault`
         # @return [String]
         attr_accessor :work_profile_widgets_default
@@ -3977,31 +3987,32 @@ module Google
       class KioskCustomization
         include Google::Apis::Core::Hashable
       
-        # Specifies whether the Settings app is allowed in kiosk mode.
+        # Optional. Specifies whether the Settings app is allowed in kiosk mode.
         # Corresponds to the JSON property `deviceSettings`
         # @return [String]
         attr_accessor :device_settings
       
-        # Sets the behavior of a device in kiosk mode when a user presses and holds (
-        # long-presses) the Power button.
+        # Optional. Sets the behavior of a device in kiosk mode when a user presses and
+        # holds (long-presses) the Power button.
         # Corresponds to the JSON property `powerButtonActions`
         # @return [String]
         attr_accessor :power_button_actions
       
-        # Specifies whether system info and notifications are disabled in kiosk mode.
+        # Optional. Specifies whether system info and notifications are disabled in
+        # kiosk mode.
         # Corresponds to the JSON property `statusBar`
         # @return [String]
         attr_accessor :status_bar
       
-        # Specifies whether system error dialogs for crashed or unresponsive apps are
-        # blocked in kiosk mode. When blocked, the system will force-stop the app as if
-        # the user chooses the "close app" option on the UI.
+        # Optional. Specifies whether system error dialogs for crashed or unresponsive
+        # apps are blocked in kiosk mode. When blocked, the system will force-stop the
+        # app as if the user chooses the "close app" option on the UI.
         # Corresponds to the JSON property `systemErrorWarnings`
         # @return [String]
         attr_accessor :system_error_warnings
       
-        # Specifies which navigation features are enabled (e.g. Home, Overview buttons)
-        # in kiosk mode.
+        # Optional. Specifies which navigation features are enabled (e.g. Home, Overview
+        # buttons) in kiosk mode.
         # Corresponds to the JSON property `systemNavigation`
         # @return [String]
         attr_accessor :system_navigation
@@ -5031,91 +5042,91 @@ module Google
       class PasswordRequirements
         include Google::Apis::Core::Hashable
       
-        # Number of incorrect device-unlock passwords that can be entered before a
-        # device is wiped. A value of 0 means there is no restriction.
+        # Optional. Number of incorrect device-unlock passwords that can be entered
+        # before a device is wiped. A value of 0 means there is no restriction.
         # Corresponds to the JSON property `maximumFailedPasswordsForWipe`
         # @return [Fixnum]
         attr_accessor :maximum_failed_passwords_for_wipe
       
-        # Password expiration timeout.
+        # Optional. Password expiration timeout.
         # Corresponds to the JSON property `passwordExpirationTimeout`
         # @return [String]
         attr_accessor :password_expiration_timeout
       
-        # The length of the password history. After setting this field, the user won't
-        # be able to enter a new password that is the same as any password in the
-        # history. A value of 0 means there is no restriction.
+        # Optional. The length of the password history. After setting this field, the
+        # user won't be able to enter a new password that is the same as any password in
+        # the history. A value of 0 means there is no restriction.
         # Corresponds to the JSON property `passwordHistoryLength`
         # @return [Fixnum]
         attr_accessor :password_history_length
       
-        # The minimum allowed password length. A value of 0 means there is no
+        # Optional. The minimum allowed password length. A value of 0 means there is no
         # restriction. Only enforced when password_quality is NUMERIC, NUMERIC_COMPLEX,
         # ALPHABETIC, ALPHANUMERIC, or COMPLEX.
         # Corresponds to the JSON property `passwordMinimumLength`
         # @return [Fixnum]
         attr_accessor :password_minimum_length
       
-        # Minimum number of letters required in the password. Only enforced when
-        # password_quality is COMPLEX.
+        # Optional. Minimum number of letters required in the password. Only enforced
+        # when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumLetters`
         # @return [Fixnum]
         attr_accessor :password_minimum_letters
       
-        # Minimum number of lower case letters required in the password. Only enforced
-        # when password_quality is COMPLEX.
+        # Optional. Minimum number of lower case letters required in the password. Only
+        # enforced when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumLowerCase`
         # @return [Fixnum]
         attr_accessor :password_minimum_lower_case
       
-        # Minimum number of non-letter characters (numerical digits or symbols) required
-        # in the password. Only enforced when password_quality is COMPLEX.
+        # Optional. Minimum number of non-letter characters (numerical digits or symbols)
+        # required in the password. Only enforced when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumNonLetter`
         # @return [Fixnum]
         attr_accessor :password_minimum_non_letter
       
-        # Minimum number of numerical digits required in the password. Only enforced
-        # when password_quality is COMPLEX.
+        # Optional. Minimum number of numerical digits required in the password. Only
+        # enforced when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumNumeric`
         # @return [Fixnum]
         attr_accessor :password_minimum_numeric
       
-        # Minimum number of symbols required in the password. Only enforced when
-        # password_quality is COMPLEX.
+        # Optional. Minimum number of symbols required in the password. Only enforced
+        # when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumSymbols`
         # @return [Fixnum]
         attr_accessor :password_minimum_symbols
       
-        # Minimum number of upper case letters required in the password. Only enforced
-        # when password_quality is COMPLEX.
+        # Optional. Minimum number of upper case letters required in the password. Only
+        # enforced when password_quality is COMPLEX.
         # Corresponds to the JSON property `passwordMinimumUpperCase`
         # @return [Fixnum]
         attr_accessor :password_minimum_upper_case
       
-        # The required password quality.
+        # Optional. The required password quality.
         # Corresponds to the JSON property `passwordQuality`
         # @return [String]
         attr_accessor :password_quality
       
-        # The scope that the password requirement applies to.
+        # Optional. The scope that the password requirement applies to.
         # Corresponds to the JSON property `passwordScope`
         # @return [String]
         attr_accessor :password_scope
       
-        # The length of time after a device or work profile is unlocked using a strong
-        # form of authentication (password, PIN, pattern) that it can be unlocked using
-        # any other authentication method (e.g. fingerprint, trust agents, face). After
-        # the specified time period elapses, only strong forms of authentication can be
-        # used to unlock the device or work profile.
+        # Optional. The length of time after a device or work profile is unlocked using
+        # a strong form of authentication (password, PIN, pattern) that it can be
+        # unlocked using any other authentication method (e.g. fingerprint, trust agents,
+        # face). After the specified time period elapses, only strong forms of
+        # authentication can be used to unlock the device or work profile.
         # Corresponds to the JSON property `requirePasswordUnlock`
         # @return [String]
         attr_accessor :require_password_unlock
       
-        # Controls whether a unified lock is allowed for the device and the work profile,
-        # on devices running Android 9 and above with a work profile. This can be set
-        # only if password_scope is set to SCOPE_PROFILE, the policy will be rejected
-        # otherwise. If user has not set a separate work lock and this field is set to
-        # REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with
+        # Optional. Controls whether a unified lock is allowed for the device and the
+        # work profile, on devices running Android 9 and above with a work profile. This
+        # can be set only if password_scope is set to SCOPE_PROFILE, the policy will be
+        # rejected otherwise. If user has not set a separate work lock and this field is
+        # set to REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with
         # nonComplianceReason set to USER_ACTION.
         # Corresponds to the JSON property `unifiedLockSettings`
         # @return [String]
@@ -5257,6 +5268,30 @@ module Google
         end
       end
       
+      # Policies controlling cross-device communication in the personal profile.
+      class PersonalCrossDevicePolicies
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls the task continuity handoff (https://developer.android.com/
+        # partners/android-17/features#handoff) feature for the personal profile on
+        # company-owned devices with a work profile. To disable Handoff device-wide on a
+        # company-owned device, both crossDevicePolicies.taskContinuityHandoff and this
+        # policy should be set to TASK_CONTINUITY_HANDOFF_DISALLOWED. Requires Android
+        # 17 QPR1 or higher.
+        # Corresponds to the JSON property `taskContinuityHandoff`
+        # @return [String]
+        attr_accessor :task_continuity_handoff
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @task_continuity_handoff = args[:task_continuity_handoff] if args.key?(:task_continuity_handoff)
+        end
+      end
+      
       # Policies controlling personal usage on a company-owned device with a work
       # profile.
       class PersonalUsagePolicies
@@ -5277,6 +5312,11 @@ module Google
         # @return [Boolean]
         attr_accessor :camera_disabled
         alias_method :camera_disabled?, :camera_disabled
+      
+        # Policies controlling cross-device communication in the personal profile.
+        # Corresponds to the JSON property `crossDevicePolicies`
+        # @return [Google::Apis::AndroidmanagementV1::PersonalCrossDevicePolicies]
+        attr_accessor :cross_device_policies
       
         # Controls how long the work profile can stay off. The minimum duration must be
         # at least 3 days. Other details are as follows: - If the duration is set to 0,
@@ -5320,6 +5360,7 @@ module Google
           @account_types_with_management_disabled = args[:account_types_with_management_disabled] if args.key?(:account_types_with_management_disabled)
           @bluetooth_sharing = args[:bluetooth_sharing] if args.key?(:bluetooth_sharing)
           @camera_disabled = args[:camera_disabled] if args.key?(:camera_disabled)
+          @cross_device_policies = args[:cross_device_policies] if args.key?(:cross_device_policies)
           @max_days_with_work_off = args[:max_days_with_work_off] if args.key?(:max_days_with_work_off)
           @personal_applications = args[:personal_applications] if args.key?(:personal_applications)
           @personal_play_store_mode = args[:personal_play_store_mode] if args.key?(:personal_play_store_mode)
@@ -5750,8 +5791,9 @@ module Google
         attr_accessor :outgoing_calls_disabled
         alias_method :outgoing_calls_disabled?, :outgoing_calls_disabled
       
-        # Password requirement policies. Different policies can be set for work profile
-        # or fully managed devices by setting the password_scope field in the policy.
+        # Optional. Password requirement policies. Different policies can be set for
+        # work profile or fully managed devices by setting the password_scope field in
+        # the policy.
         # Corresponds to the JSON property `passwordPolicies`
         # @return [Array<Google::Apis::AndroidmanagementV1::PasswordRequirements>]
         attr_accessor :password_policies
@@ -7435,14 +7477,14 @@ module Google
       class UsageLog
         include Google::Apis::Core::Hashable
       
-        # Specifies which log types are enabled. Note that users will receive on-device
-        # messaging when usage logging is enabled.
+        # Optional. Specifies which log types are enabled. Note that users will receive
+        # on-device messaging when usage logging is enabled.
         # Corresponds to the JSON property `enabledLogTypes`
         # @return [Array<String>]
         attr_accessor :enabled_log_types
       
-        # Specifies which of the enabled log types can be uploaded over mobile data. By
-        # default logs are queued for upload when the device connects to WiFi.
+        # Optional. Specifies which of the enabled log types can be uploaded over mobile
+        # data. By default logs are queued for upload when the device connects to WiFi.
         # Corresponds to the JSON property `uploadOnCellularAllowed`
         # @return [Array<String>]
         attr_accessor :upload_on_cellular_allowed
