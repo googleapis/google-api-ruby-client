@@ -1674,10 +1674,7 @@ module Google
         # @return [String]
         attr_accessor :help_center_url
       
-        # Whether or not the policy topic is missing a certificate. Some policy topics
-        # require a certificate to unblock serving in some regions. For more information
-        # about creative certification, refer to: https://support.google.com/
-        # authorizedbuyers/answer/7450776
+        # Whether or not the policy topic is missing a certificate.
         # Corresponds to the JSON property `missingCertificate`
         # @return [Boolean]
         attr_accessor :missing_certificate
