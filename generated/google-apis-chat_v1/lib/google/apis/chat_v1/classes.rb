@@ -7145,7 +7145,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A description of the space. For example, describe the space's
-        # discussion topic, functional purpose, or participants. Supports up to 150
+        # discussion topic, functional purpose, or participants. Supports up to 4,096
         # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
