@@ -4354,6 +4354,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectsSetNameRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -18039,6 +18045,14 @@ module Google
           property :etag, as: 'etag'
           property :result, as: 'result', class: Google::Apis::ComputeBeta::InterconnectMacsecConfig, decorator: Google::Apis::ComputeBeta::InterconnectMacsecConfig::Representation
       
+        end
+      end
+      
+      class InterconnectsSetNameRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_name, as: 'currentName'
+          property :name, as: 'name'
         end
       end
       
