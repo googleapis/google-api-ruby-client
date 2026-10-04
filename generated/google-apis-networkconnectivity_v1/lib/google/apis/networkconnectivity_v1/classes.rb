@@ -1817,6 +1817,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :prefix_length
       
+        # Optional. The purpose of this internal range. Defines the intended use of the
+        # range and any restrictions associated with it. If not specified, it defaults
+        # to VPC_SUBNET.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
+        # Output only. Status of the Internal Range.
+        # Corresponds to the JSON property `rangeStatus`
+        # @return [String]
+        attr_accessor :range_status
+      
         # Optional. Can be set to narrow down or pick a different address space while
         # searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.
         # 0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.
@@ -1866,6 +1878,8 @@ module Google
           @overlaps = args[:overlaps] if args.key?(:overlaps)
           @peering = args[:peering] if args.key?(:peering)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @purpose = args[:purpose] if args.key?(:purpose)
+          @range_status = args[:range_status] if args.key?(:range_status)
           @target_cidr_range = args[:target_cidr_range] if args.key?(:target_cidr_range)
           @update_time = args[:update_time] if args.key?(:update_time)
           @usage = args[:usage] if args.key?(:usage)
@@ -4868,7 +4882,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Optional. The list of fields waiting for hub administrator's approval.
+        # Output only. The list of fields waiting for hub administrator's approval.
         # Corresponds to the JSON property `fieldPathsPendingUpdate`
         # @return [Array<String>]
         attr_accessor :field_paths_pending_update
