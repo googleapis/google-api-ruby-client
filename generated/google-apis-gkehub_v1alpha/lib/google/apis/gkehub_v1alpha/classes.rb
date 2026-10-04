@@ -6327,6 +6327,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. If set to true, conflicting rollouts will be paused, to allow this
+        # rollout to progress through the sequence. Conflicting rollouts running on the
+        # first stage will be canceled, to allow this rollout to be created.
+        # Corresponds to the JSON property `prioritized`
+        # @return [Boolean]
+        attr_accessor :prioritized
+        alias_method :prioritized?, :prioritized
+      
         # Optional. Immutable. The full, unique resource name of the rollout sequence
         # that initiatied this Rollout. In the format of `projects/`project`/locations/
         # global/rolloutSequences/`rollout_sequence``.
@@ -6402,6 +6410,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @membership_states = args[:membership_states] if args.key?(:membership_states)
           @name = args[:name] if args.key?(:name)
+          @prioritized = args[:prioritized] if args.key?(:prioritized)
           @rollout_sequence = args[:rollout_sequence] if args.key?(:rollout_sequence)
           @stage_soak_duration_overrides = args[:stage_soak_duration_overrides] if args.key?(:stage_soak_duration_overrides)
           @stages = args[:stages] if args.key?(:stages)
@@ -7473,6 +7482,14 @@ module Google
         attr_accessor :patch_only
         alias_method :patch_only?, :patch_only
       
+        # Optional. If set to true, conflicting rollouts will be paused, to allow this
+        # rollout to progress through the sequence. Conflicting rollouts running on the
+        # first stage will be canceled, to allow this rollout to be created.
+        # Corresponds to the JSON property `prioritized`
+        # @return [Boolean]
+        attr_accessor :prioritized
+        alias_method :prioritized?, :prioritized
+      
         # Optional. Overrides the soak duration for all stages of the rollout.
         # Corresponds to the JSON property `soakDurationOverrideAllStages`
         # @return [String]
@@ -7513,6 +7530,7 @@ module Google
           @ignore_cluster_disruption_budgets = args[:ignore_cluster_disruption_budgets] if args.key?(:ignore_cluster_disruption_budgets)
           @ignore_maintenance_policies = args[:ignore_maintenance_policies] if args.key?(:ignore_maintenance_policies)
           @patch_only = args[:patch_only] if args.key?(:patch_only)
+          @prioritized = args[:prioritized] if args.key?(:prioritized)
           @soak_duration_override_all_stages = args[:soak_duration_override_all_stages] if args.key?(:soak_duration_override_all_stages)
           @soak_duration_override_per_stage = args[:soak_duration_override_per_stage] if args.key?(:soak_duration_override_per_stage)
           @upgrade_type = args[:upgrade_type] if args.key?(:upgrade_type)
