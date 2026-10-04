@@ -7927,6 +7927,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :machine_types
       
+        # Optional. Rank when prioritizing the shape flexibilities.
+        # The instance selections are considered in the ascending order of the
+        # rank. If not set, defaults to 0.
+        # Corresponds to the JSON property `rank`
+        # @return [Fixnum]
+        attr_accessor :rank
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7936,6 +7943,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @machine_types = args[:machine_types] if args.key?(:machine_types)
+          @rank = args[:rank] if args.key?(:rank)
         end
       end
       
@@ -8144,6 +8152,16 @@ module Google
       class CapacityHistoryRequestInstanceProperties
         include Google::Apis::Core::Hashable
       
+        # Local SSDs.
+        # Corresponds to the JSON property `disks`
+        # @return [Array<Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesAttachedDisk>]
+        attr_accessor :disks
+      
+        # Accelerators configuration.
+        # Corresponds to the JSON property `guestAccelerators`
+        # @return [Array<Google::Apis::ComputeV1::AcceleratorConfig>]
+        attr_accessor :guest_accelerators
+      
         # The machine type for the VM, such as `n2-standard-4`.
         # Corresponds to the JSON property `machineType`
         # @return [String]
@@ -8160,8 +8178,29 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disks = args[:disks] if args.key?(:disks)
+          @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
+        end
+      end
+      
+      # AttachedDisk modeled after Instance's AttachedDisk.
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the type of the disk.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -8564,7 +8603,8 @@ module Google
         # GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
         # GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,
-        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For
+        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,
+        # STORAGE_OPTIMIZED_Z4M. For
         # example, type MEMORY_OPTIMIZED specifies a commitment that
         # applies only to eligible resources of memory optimized M1 and M2 machine
         # series. Type GENERAL_PURPOSE specifies a commitment that
@@ -34267,6 +34307,33 @@ module Google
         end
       end
       
+      # Request to rename an interconnect.
+      class InterconnectsSetNameRequest
+        include Google::Apis::Core::Hashable
+      
+        # The current name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `currentName`
+        # @return [String]
+        attr_accessor :current_name
+      
+        # The new name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_name = args[:current_name] if args.key?(:current_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a time interval, encoded as a Timestamp start (inclusive) and a
       # Timestamp end (exclusive).
       # The start must be less than or equal to the end.
@@ -55448,10 +55515,14 @@ module Google
         # `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
         # '2.2.0.0/16')`
         # `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`
-        # The following example is a valid match expression for private NAT:
+        # The following examples are valid match expressions for private NAT:
+        # (NAT 44)
         # `nexthop.hub ==
         # '//networkconnectivity.googleapis.com/projects/my-project/locations/global/
         # hubs/hub-1'`
+        # `nexthop.is_hybrid`
+        # (NAT 64)
+        # `isIPv6(source.ip)`
         # Corresponds to the JSON property `match`
         # @return [String]
         attr_accessor :match

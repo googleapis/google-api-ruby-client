@@ -138,12 +138,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -166,7 +160,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_accelerator_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_accelerator_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList
@@ -176,11 +170,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -220,6 +214,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -299,12 +294,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -324,7 +313,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_accelerator_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::AcceleratorTypeList
@@ -334,10 +323,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -424,12 +413,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -452,7 +435,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_addresses(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_addresses(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/addresses', options)
           command.response_representation = Google::Apis::ComputeV1::AddressAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AddressAggregatedList
@@ -462,11 +445,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -519,6 +502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -558,6 +542,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -611,6 +596,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -690,12 +676,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -715,7 +695,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_addresses(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_addresses(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/addresses', options)
           command.response_representation = Google::Apis::ComputeV1::AddressList::Representation
           command.response_class = Google::Apis::ComputeV1::AddressList
@@ -725,10 +705,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -784,6 +764,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -840,6 +821,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -882,6 +864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -924,6 +907,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -965,6 +949,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1004,6 +989,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1090,12 +1076,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -1118,7 +1098,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_autoscalers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_autoscalers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/autoscalers', options)
           command.response_representation = Google::Apis::ComputeV1::AutoscalerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AutoscalerAggregatedList
@@ -1128,11 +1108,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1185,6 +1165,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1224,6 +1205,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1277,6 +1259,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1356,12 +1339,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1381,7 +1358,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_autoscalers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_autoscalers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/autoscalers', options)
           command.response_representation = Google::Apis::ComputeV1::AutoscalerList::Representation
           command.response_class = Google::Apis::ComputeV1::AutoscalerList
@@ -1391,10 +1368,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1453,6 +1430,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1495,6 +1473,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1551,6 +1530,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1605,6 +1585,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1692,12 +1673,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -1720,7 +1695,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_backend_bucket_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_backend_bucket_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/backendBuckets', options)
           command.response_representation = Google::Apis::ComputeV1::BackendBucketAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendBucketAggregatedList
@@ -1730,11 +1705,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1784,6 +1759,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1838,6 +1814,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1874,6 +1851,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1914,6 +1892,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1964,6 +1943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2041,12 +2021,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2066,7 +2040,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_backend_buckets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_backend_buckets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/backendBuckets', options)
           command.response_representation = Google::Apis::ComputeV1::BackendBucketList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendBucketList
@@ -2075,10 +2049,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2155,12 +2129,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2180,7 +2148,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_backend_bucket_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_backend_bucket_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/backendBuckets/listUsable', options)
           command.response_representation = Google::Apis::ComputeV1::BackendBucketListUsable::Representation
           command.response_class = Google::Apis::ComputeV1::BackendBucketListUsable
@@ -2189,10 +2157,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2248,6 +2216,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2301,6 +2270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2341,6 +2311,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2380,6 +2351,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2433,6 +2405,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2487,6 +2460,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2574,12 +2548,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -2602,7 +2570,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_backend_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_backend_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/backendServices', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceAggregatedList
@@ -2612,11 +2580,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2666,6 +2634,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2720,6 +2689,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2756,6 +2726,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2790,6 +2761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2833,6 +2805,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2873,6 +2846,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2924,6 +2898,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3001,12 +2976,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3026,7 +2995,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_backend_services(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_backend_services(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/backendServices', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceList
@@ -3035,10 +3004,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3118,12 +3087,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3143,7 +3106,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_backend_service_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_backend_service_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/backendServices/listUsable', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceListUsable::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceListUsable
@@ -3152,10 +3115,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3212,6 +3175,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3265,6 +3229,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3305,6 +3270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3360,6 +3326,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3399,6 +3366,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3453,6 +3421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3503,6 +3472,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3539,6 +3509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3593,6 +3564,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3669,12 +3641,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3694,7 +3660,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_cross_site_networks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_cross_site_networks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/crossSiteNetworks', options)
           command.response_representation = Google::Apis::ComputeV1::CrossSiteNetworkList::Representation
           command.response_class = Google::Apis::ComputeV1::CrossSiteNetworkList
@@ -3703,10 +3669,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3769,6 +3735,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3855,12 +3822,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -3883,7 +3844,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/diskTypes', options)
           command.response_representation = Google::Apis::ComputeV1::DiskTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskTypeAggregatedList
@@ -3893,11 +3854,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3937,6 +3898,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4016,12 +3978,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4041,7 +3997,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_disk_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_disk_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/diskTypes', options)
           command.response_representation = Google::Apis::ComputeV1::DiskTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskTypeList
@@ -4051,10 +4007,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4112,6 +4068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4198,12 +4155,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -4226,7 +4177,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/disks', options)
           command.response_representation = Google::Apis::ComputeV1::DiskAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskAggregatedList
@@ -4236,11 +4187,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4293,6 +4244,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4350,6 +4302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4412,6 +4365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4468,6 +4422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4507,6 +4462,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4550,6 +4506,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4610,6 +4567,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4689,12 +4647,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4714,7 +4666,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_disks(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_disks(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/disks', options)
           command.response_representation = Google::Apis::ComputeV1::DiskList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskList
@@ -4724,10 +4676,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4783,6 +4735,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4839,6 +4792,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4882,6 +4836,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4938,6 +4893,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4994,6 +4950,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5047,6 +5004,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5101,6 +5059,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5143,6 +5102,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5205,6 +5165,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5261,6 +5222,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5310,6 +5272,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5347,6 +5310,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5397,6 +5361,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5474,12 +5439,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5499,7 +5458,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_external_vpn_gateways(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_external_vpn_gateways(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/externalVpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::ExternalVpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeV1::ExternalVpnGatewayList
@@ -5508,10 +5467,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5553,6 +5512,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5592,6 +5552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5646,6 +5607,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5695,6 +5657,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5744,6 +5707,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5790,6 +5754,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5823,6 +5788,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5859,6 +5825,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5896,6 +5863,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5932,6 +5900,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5984,6 +5953,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6063,12 +6033,6 @@ module Google
         #   Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]"
         #   if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the
         #   parent is an organization.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6088,7 +6052,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_firewall_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_firewall_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'locations/global/firewallPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::FirewallPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::FirewallPolicyList
@@ -6097,10 +6061,10 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parentId'] = parent_id unless parent_id.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6140,6 +6104,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6191,6 +6156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6240,6 +6206,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6292,6 +6259,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6341,6 +6309,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6390,6 +6359,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6427,6 +6397,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6463,6 +6434,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6512,6 +6484,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6548,6 +6521,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6598,6 +6572,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6675,12 +6650,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6700,7 +6669,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_firewalls(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_firewalls(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/firewalls', options)
           command.response_representation = Google::Apis::ComputeV1::FirewallList::Representation
           command.response_class = Google::Apis::ComputeV1::FirewallList
@@ -6709,10 +6678,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6768,6 +6737,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6807,6 +6777,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6862,6 +6833,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6948,12 +6920,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -6976,7 +6942,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_forwarding_rules(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_forwarding_rules(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ForwardingRuleAggregatedList
@@ -6986,11 +6952,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7043,6 +7009,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7084,6 +7051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7137,6 +7105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7216,12 +7185,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7241,7 +7204,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_forwarding_rules(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_forwarding_rules(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeV1::ForwardingRuleList::Representation
           command.response_class = Google::Apis::ComputeV1::ForwardingRuleList
@@ -7251,10 +7214,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7314,6 +7277,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7371,6 +7335,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7427,6 +7392,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7513,12 +7479,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -7541,7 +7501,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_future_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_future_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/futureReservations', options)
           command.response_representation = Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::FutureReservationsAggregatedListResponse
@@ -7551,11 +7511,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7608,6 +7568,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7660,6 +7621,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7699,6 +7661,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7751,6 +7714,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7830,12 +7794,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7855,7 +7813,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_future_reservations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_future_reservations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/futureReservations', options)
           command.response_representation = Google::Apis::ComputeV1::FutureReservationsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::FutureReservationsListResponse
@@ -7865,10 +7823,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7927,6 +7885,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7976,6 +7935,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8012,6 +7972,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8062,6 +8023,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8138,12 +8100,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8163,7 +8119,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_addresses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_addresses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/addresses', options)
           command.response_representation = Google::Apis::ComputeV1::AddressList::Representation
           command.response_class = Google::Apis::ComputeV1::AddressList
@@ -8172,10 +8128,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8228,6 +8184,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8269,6 +8226,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8308,6 +8266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8357,6 +8316,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8396,6 +8356,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8446,6 +8407,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8523,12 +8485,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8548,7 +8504,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_forwarding_rules(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_forwarding_rules(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeV1::ForwardingRuleList::Representation
           command.response_class = Google::Apis::ComputeV1::ForwardingRuleList
@@ -8557,10 +8513,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8617,6 +8573,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8658,6 +8615,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8711,6 +8669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8744,6 +8703,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8786,6 +8746,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8839,6 +8800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8890,6 +8852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8943,6 +8906,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8979,6 +8943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9042,6 +9007,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9119,12 +9085,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9144,7 +9104,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_network_endpoint_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_network_endpoint_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
@@ -9153,10 +9113,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9236,12 +9196,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9261,7 +9215,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/global/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints
@@ -9271,10 +9225,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9361,12 +9315,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -9389,7 +9337,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_global_operation(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_global_operation(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationAggregatedList
@@ -9399,11 +9347,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9439,6 +9387,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9476,6 +9425,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9553,12 +9503,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9578,7 +9522,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_operations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationList
@@ -9587,10 +9531,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9642,6 +9586,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9677,6 +9622,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9715,6 +9661,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9792,12 +9739,6 @@ module Google
         #   the next page of results.
         # @param [String] parent_id
         #   Parent ID for this request.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9817,7 +9758,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_organization_operations(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_organization_operations(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'locations/global/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationList
@@ -9826,10 +9767,10 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parentId'] = parent_id unless parent_id.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9879,6 +9820,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9915,6 +9857,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9965,6 +9908,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10041,12 +9985,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10066,7 +10004,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_public_delegated_prefixes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_public_delegated_prefixes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/publicDelegatedPrefixes', options)
           command.response_representation = Google::Apis::ComputeV1::PublicDelegatedPrefixList::Representation
           command.response_class = Google::Apis::ComputeV1::PublicDelegatedPrefixList
@@ -10075,10 +10013,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10134,6 +10072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10221,12 +10160,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -10249,7 +10182,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_global_vm_extension_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_global_vm_extension_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/vmExtensionPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::VmExtensionPolicyAggregatedListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::VmExtensionPolicyAggregatedListResponse
@@ -10259,11 +10192,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10321,6 +10254,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10357,6 +10291,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10406,6 +10341,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10482,12 +10418,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10507,7 +10437,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_global_vm_extension_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_global_vm_extension_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/vmExtensionPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::GlobalVmExtensionPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::GlobalVmExtensionPolicyList
@@ -10516,10 +10446,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10572,6 +10502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10659,12 +10590,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -10687,7 +10612,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/healthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HealthChecksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthChecksAggregatedList
@@ -10697,11 +10622,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10751,6 +10676,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10787,6 +10713,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10837,6 +10764,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10914,12 +10842,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10939,7 +10861,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/healthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HealthCheckList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthCheckList
@@ -10948,10 +10870,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11007,6 +10929,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11046,6 +10969,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11099,6 +11023,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11147,6 +11072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11200,6 +11126,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11285,12 +11212,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11310,7 +11231,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_hosts(project, zone, association, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_hosts(project, zone, association, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/{association}/hosts', options)
           command.response_representation = Google::Apis::ComputeV1::HostsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::HostsListResponse
@@ -11321,10 +11242,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11374,6 +11295,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11410,6 +11332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11460,6 +11383,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11537,12 +11461,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11562,7 +11480,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_http_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_http_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/httpHealthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HttpHealthCheckList::Representation
           command.response_class = Google::Apis::ComputeV1::HttpHealthCheckList
@@ -11571,10 +11489,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11630,6 +11548,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11669,6 +11588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11722,6 +11642,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11771,6 +11692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11807,6 +11729,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11857,6 +11780,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11934,12 +11858,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11959,7 +11877,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_https_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_https_health_checks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/httpsHealthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HttpsHealthCheckList::Representation
           command.response_class = Google::Apis::ComputeV1::HttpsHealthCheckList
@@ -11968,10 +11886,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12027,6 +11945,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12066,6 +11985,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12119,6 +12039,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12159,6 +12080,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12199,6 +12121,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12278,12 +12201,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12303,7 +12220,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_image_views(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_image_views(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/imageViews', options)
           command.response_representation = Google::Apis::ComputeV1::ImageViewsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ImageViewsListResponse
@@ -12313,10 +12230,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12366,6 +12283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12419,6 +12337,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12455,6 +12374,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12494,6 +12414,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12534,6 +12455,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12587,6 +12509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12669,12 +12592,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12694,7 +12611,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/images', options)
           command.response_representation = Google::Apis::ComputeV1::ImageList::Representation
           command.response_class = Google::Apis::ComputeV1::ImageList
@@ -12703,10 +12620,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12761,6 +12678,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12801,6 +12719,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12841,6 +12760,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12880,6 +12800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12941,6 +12862,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13001,6 +12923,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13046,6 +12969,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13106,6 +13030,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13188,12 +13113,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13213,7 +13132,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_manager_resize_requests(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_manager_resize_requests(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/resizeRequests', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerResizeRequestsListResponse
@@ -13224,10 +13143,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13298,6 +13217,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13384,12 +13304,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -13412,7 +13326,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_group_managers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_group_managers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList
@@ -13422,11 +13336,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13471,6 +13385,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13534,6 +13449,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13594,6 +13510,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13667,6 +13584,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13714,6 +13632,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13754,6 +13673,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13817,6 +13737,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13897,12 +13818,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13922,7 +13837,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_managers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_managers(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerList
@@ -13932,10 +13847,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14023,12 +13938,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14048,7 +13957,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_manager_errors(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_manager_errors(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listErrors', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse
@@ -14059,10 +13968,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14152,12 +14061,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14177,7 +14080,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_manager_managed_instances(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_manager_managed_instances(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListManagedInstancesResponse
@@ -14188,10 +14091,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14275,12 +14178,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14300,7 +14197,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_manager_per_instance_configs(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListPerInstanceConfigsResp
@@ -14311,10 +14208,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14385,6 +14282,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14445,6 +14343,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14516,6 +14415,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14593,6 +14493,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14663,6 +14564,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14722,6 +14624,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14784,6 +14687,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14854,6 +14758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14938,6 +14843,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15018,6 +14924,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15078,6 +14985,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15137,6 +15045,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15223,12 +15132,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -15251,7 +15154,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_groups(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_groups(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupAggregatedList
@@ -15261,11 +15164,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15322,6 +15225,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15366,6 +15270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15420,6 +15325,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15503,12 +15409,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15528,7 +15428,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupList
@@ -15538,10 +15438,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15628,12 +15528,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15653,7 +15547,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_group_instances(project, zone, instance_group, instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_group_instances(project, zone, instance_group, instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instanceGroups/{instanceGroup}/listInstances', options)
           command.request_representation = Google::Apis::ComputeV1::InstanceGroupsListInstancesRequest::Representation
           command.request_object = instance_groups_list_instances_request_object
@@ -15666,10 +15560,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15732,6 +15626,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15788,6 +15683,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15830,6 +15726,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15866,6 +15763,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15921,6 +15819,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16008,12 +15907,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -16036,7 +15929,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_instance_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_instance_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceTemplateAggregatedList
@@ -16046,11 +15939,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16102,6 +15995,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16138,6 +16032,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16178,6 +16073,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16231,6 +16127,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16308,12 +16205,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16333,7 +16224,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_templates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_templates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceTemplateList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceTemplateList
@@ -16342,10 +16233,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16386,6 +16277,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16425,6 +16317,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16483,6 +16376,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16539,6 +16433,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16596,6 +16491,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16685,12 +16581,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -16713,7 +16603,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instances(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instances(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instances', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceAggregatedList
@@ -16723,11 +16613,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16791,6 +16681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16845,6 +16736,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16901,6 +16793,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16959,6 +16852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17019,6 +16913,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17075,6 +16970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17114,6 +17010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17156,6 +17053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17201,6 +17099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17244,6 +17143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17283,6 +17183,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17342,6 +17243,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17381,6 +17283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17456,6 +17359,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17535,12 +17439,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17560,7 +17458,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceList
@@ -17570,10 +17468,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17659,12 +17557,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17684,7 +17576,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instance_referrers(project, zone, instance, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instance_referrers(project, zone, instance, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instances/{instance}/referrers', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceListReferrers::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceListReferrers
@@ -17695,10 +17587,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17751,6 +17643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17806,6 +17699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17861,6 +17755,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17915,6 +17810,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17968,6 +17864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18005,6 +17902,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18060,6 +17958,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18119,6 +18018,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18162,6 +18062,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18218,6 +18119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18274,6 +18176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18330,6 +18233,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18386,6 +18290,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18444,6 +18349,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18499,6 +18405,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18559,6 +18466,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18617,6 +18525,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18674,6 +18583,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18732,6 +18642,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18788,6 +18699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18845,6 +18757,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18899,6 +18812,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18956,6 +18870,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19021,6 +18936,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19085,6 +19001,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19127,6 +19044,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19202,6 +19120,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19263,6 +19182,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19321,6 +19241,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19384,6 +19305,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19442,6 +19364,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19494,6 +19417,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19533,6 +19457,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19576,6 +19501,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19631,6 +19557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19710,12 +19637,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19735,7 +19656,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instant_snapshot_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instant_snapshot_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instantSnapshotGroups', options)
           command.response_representation = Google::Apis::ComputeV1::ListInstantSnapshotGroups::Representation
           command.response_class = Google::Apis::ComputeV1::ListInstantSnapshotGroups
@@ -19745,10 +19666,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19792,6 +19713,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19834,6 +19756,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19920,12 +19843,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -19948,7 +19865,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_instant_snapshot_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_instant_snapshot_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/instantSnapshots', options)
           command.response_representation = Google::Apis::ComputeV1::InstantSnapshotAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstantSnapshotAggregatedList
@@ -19958,11 +19875,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20021,6 +19938,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20060,6 +19978,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20103,6 +20022,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20155,6 +20075,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20234,12 +20155,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20259,7 +20174,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instant_snapshots(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_instant_snapshots(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/instantSnapshots', options)
           command.response_representation = Google::Apis::ComputeV1::InstantSnapshotList::Representation
           command.response_class = Google::Apis::ComputeV1::InstantSnapshotList
@@ -20269,10 +20184,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20316,6 +20231,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20373,6 +20289,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20415,6 +20332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20465,6 +20383,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20502,6 +20421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20542,6 +20462,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20579,6 +20500,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20630,6 +20552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20706,12 +20629,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20731,7 +20648,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnect_attachment_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnect_attachment_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/interconnectAttachmentGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectAttachmentGroupsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectAttachmentGroupsListResponse
@@ -20740,10 +20657,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20803,6 +20720,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20843,6 +20761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20882,6 +20801,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20968,12 +20888,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -20996,7 +20910,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_interconnect_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_interconnect_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList
@@ -21006,11 +20920,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21063,6 +20977,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21102,6 +21017,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21158,6 +21074,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21237,12 +21154,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21262,7 +21173,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnect_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnect_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectAttachmentList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectAttachmentList
@@ -21272,10 +21183,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21334,6 +21245,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21391,6 +21303,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21431,6 +21344,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21481,6 +21395,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21517,6 +21432,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21557,6 +21473,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21594,6 +21511,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21645,6 +21563,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21721,12 +21640,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21746,7 +21659,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnect_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnect_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/interconnectGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectGroupsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectGroupsListResponse
@@ -21755,10 +21668,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21818,6 +21731,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21858,6 +21772,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21897,6 +21812,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21934,6 +21850,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22011,12 +21928,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22036,7 +21947,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnect_locations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnect_locations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/interconnectLocations', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectLocationList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectLocationList
@@ -22045,10 +21956,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22086,6 +21997,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22163,12 +22075,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22188,7 +22094,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnect_remote_locations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnect_remote_locations(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/interconnectRemoteLocations', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectRemoteLocationList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectRemoteLocationList
@@ -22197,10 +22103,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22250,6 +22156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22287,6 +22194,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22330,6 +22238,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22367,6 +22276,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22417,6 +22327,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22493,12 +22404,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22518,7 +22423,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_interconnects(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_interconnects(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/interconnects', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectList
@@ -22527,10 +22432,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22586,6 +22491,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22627,6 +22533,60 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets name of an interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect
+        #   Name of the interconnect to update.
+        # @param [Google::Apis::ComputeV1::InterconnectsSetNameRequest] interconnects_set_name_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID
+        #   so that if you must retry your request, the server will know to ignore
+        #   the request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and
+        #   the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments.
+        #   The request ID must be
+        #   a valid UUID with the exception that zero UUID is not supported
+        #   (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_interconnect_name(project, interconnect, interconnects_set_name_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnects/{interconnect}/setName', options)
+          command.request_representation = Google::Apis::ComputeV1::InterconnectsSetNameRequest::Representation
+          command.request_object = interconnects_set_name_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnect'] = interconnect unless interconnect.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22667,6 +22627,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22710,6 +22671,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22753,6 +22715,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22795,6 +22758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22847,6 +22811,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22886,6 +22851,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22929,6 +22895,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22981,6 +22948,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23065,12 +23033,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23090,7 +23052,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_licenses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_licenses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/licenses', options)
           command.response_representation = Google::Apis::ComputeV1::LicensesListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::LicensesListResponse
@@ -23099,10 +23061,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23146,6 +23108,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23188,6 +23151,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23246,6 +23210,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23296,6 +23261,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23332,6 +23298,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23372,6 +23339,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23428,6 +23396,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23505,12 +23474,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23530,7 +23493,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_machine_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_machine_images(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/machineImages', options)
           command.response_representation = Google::Apis::ComputeV1::MachineImageList::Representation
           command.response_class = Google::Apis::ComputeV1::MachineImageList
@@ -23539,10 +23502,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23583,6 +23546,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23624,6 +23588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23663,6 +23628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23749,12 +23715,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -23777,7 +23737,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_machine_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_machine_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/machineTypes', options)
           command.response_representation = Google::Apis::ComputeV1::MachineTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::MachineTypeAggregatedList
@@ -23787,11 +23747,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23831,6 +23791,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23910,12 +23871,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23935,7 +23890,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_machine_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_machine_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/machineTypes', options)
           command.response_representation = Google::Apis::ComputeV1::MachineTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::MachineTypeList
@@ -23945,10 +23900,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23985,6 +23940,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24061,12 +24017,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24086,7 +24036,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_managed_rulesets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_managed_rulesets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/managedRulesets', options)
           command.response_representation = Google::Apis::ComputeV1::ManagedRulesetList::Representation
           command.response_class = Google::Apis::ComputeV1::ManagedRulesetList
@@ -24095,10 +24045,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24186,12 +24136,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -24214,7 +24158,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkAttachmentAggregatedList
@@ -24224,11 +24168,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24282,6 +24226,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24321,6 +24266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24364,6 +24310,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24418,6 +24365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24496,12 +24444,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24521,7 +24463,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/networkAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkAttachmentList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkAttachmentList
@@ -24531,10 +24473,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24594,6 +24536,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24637,6 +24580,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24679,6 +24623,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24766,12 +24711,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -24794,7 +24733,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_edge_security_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_edge_security_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkEdgeSecurityServices', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEdgeSecurityServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEdgeSecurityServiceAggregatedList
@@ -24804,11 +24743,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24861,6 +24800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24900,6 +24840,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24956,6 +24897,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25016,6 +24958,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25102,12 +25045,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -25130,7 +25067,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_endpoint_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_endpoint_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList
@@ -25140,11 +25077,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25202,6 +25139,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25259,6 +25197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25317,6 +25256,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25357,6 +25297,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25425,6 +25366,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25505,12 +25447,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25530,7 +25466,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_endpoint_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_endpoint_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
@@ -25540,10 +25476,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25627,12 +25563,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25652,7 +25582,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_endpoint_group_network_endpoints(project, zone, network_endpoint_group, network_endpoint_groups_list_endpoints_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_endpoint_group_network_endpoints(project, zone, network_endpoint_group, network_endpoint_groups_list_endpoints_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
           command.request_representation = Google::Apis::ComputeV1::NetworkEndpointGroupsListEndpointsRequest::Representation
           command.request_object = network_endpoint_groups_list_endpoints_request_object
@@ -25665,10 +25595,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25711,6 +25641,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25768,6 +25699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25830,6 +25762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25892,6 +25825,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25980,12 +25914,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -26008,7 +25936,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_firewall_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_firewall_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/firewallPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkFirewallPolicyAggregatedList
@@ -26018,11 +25946,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26075,6 +26003,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26124,6 +26053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26160,6 +26090,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26199,6 +26130,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26239,6 +26171,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26278,6 +26211,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26317,6 +26251,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26367,6 +26302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26443,12 +26379,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26468,7 +26398,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_firewall_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_firewall_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/firewallPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::FirewallPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::FirewallPolicyList
@@ -26477,10 +26407,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26533,6 +26463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26588,6 +26519,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26643,6 +26575,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26695,6 +26628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26747,6 +26681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26799,6 +26734,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26839,6 +26775,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26878,6 +26815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26914,6 +26852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26991,12 +26930,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27016,7 +26949,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_profiles(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_profiles(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/networkProfiles', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkProfilesListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkProfilesListResponse
@@ -27025,10 +26958,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27081,6 +27014,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27135,6 +27069,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27184,6 +27119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27220,6 +27156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27256,6 +27193,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27306,6 +27244,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27382,12 +27321,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27407,7 +27340,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_networks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_networks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/networks', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkList
@@ -27416,10 +27349,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27505,12 +27438,6 @@ module Google
         # @param [String] region
         #   The region of the request. The response will include all subnet routes,
         #   static routes and dynamic routes in the region.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -27530,7 +27457,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_network_peering_routes(project, network, direction: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peering_name: nil, region: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_network_peering_routes(project, network, direction: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peering_name: nil, region: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/networks/{network}/listPeeringRoutes', options)
           command.response_representation = Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Representation
           command.response_class = Google::Apis::ComputeV1::ExchangedPeeringRoutesList
@@ -27543,10 +27470,10 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['peeringName'] = peering_name unless peering_name.nil?
           command.query['region'] = region unless region.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27600,6 +27527,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27652,6 +27580,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27705,6 +27634,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27754,6 +27684,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27808,6 +27739,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27863,6 +27795,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27950,12 +27883,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -27978,7 +27905,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NodeGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeGroupAggregatedList
@@ -27988,11 +27915,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28045,6 +27972,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28100,6 +28028,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28142,6 +28071,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28185,6 +28115,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28241,6 +28172,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28320,12 +28252,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28345,7 +28271,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_node_groups(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NodeGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeGroupList
@@ -28355,10 +28281,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28439,12 +28365,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -28464,7 +28384,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_group_nodes(project, zone, node_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_node_group_nodes(project, zone, node_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/nodeGroups/{nodeGroup}/listNodes', options)
           command.response_representation = Google::Apis::ComputeV1::NodeGroupsListNodes::Representation
           command.response_class = Google::Apis::ComputeV1::NodeGroupsListNodes
@@ -28475,10 +28395,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28534,6 +28454,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28589,6 +28510,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28632,6 +28554,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28687,6 +28610,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28743,6 +28667,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28785,6 +28710,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28871,12 +28797,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -28899,7 +28819,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTemplateAggregatedList
@@ -28909,11 +28829,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28966,6 +28886,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29005,6 +28926,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29048,6 +28970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29101,6 +29024,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29180,12 +29104,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29205,7 +29123,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_node_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTemplateList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTemplateList
@@ -29215,10 +29133,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29262,6 +29180,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29304,6 +29223,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29390,12 +29310,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -29418,7 +29332,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTypeAggregatedList
@@ -29428,11 +29342,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29472,6 +29386,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29551,12 +29466,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -29576,7 +29485,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_node_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_node_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTypeList
@@ -29586,10 +29495,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29651,6 +29560,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29703,6 +29613,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29756,6 +29667,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29805,6 +29717,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29841,6 +29754,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29881,6 +29795,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29920,6 +29835,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29975,6 +29891,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30055,12 +29972,6 @@ module Google
         #   the next page of results.
         # @param [String] parent_id
         #   Parent ID for this request.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30080,7 +29991,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_organization_security_policies(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'locations/global/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPolicyList
@@ -30089,10 +30000,10 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parentId'] = parent_id unless parent_id.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30131,6 +30042,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30208,12 +30120,6 @@ module Google
         #   the next page of results.
         # @param [String] parent_id
         #   Parent ID for this request.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30233,7 +30139,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_security_policy_preconfigured_expression_sets(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_organization_security_policy_preconfigured_expression_sets(filter: nil, max_results: nil, order_by: nil, page_token: nil, parent_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'locations/global/securityPolicies/listPreconfiguredExpressionSets', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse
@@ -30242,10 +30148,10 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['parentId'] = parent_id unless parent_id.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30298,6 +30204,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30350,6 +30257,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30406,6 +30314,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30459,6 +30368,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30512,6 +30422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30598,12 +30509,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -30626,7 +30531,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_packet_mirroring_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_packet_mirroring_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/packetMirrorings', options)
           command.response_representation = Google::Apis::ComputeV1::PacketMirroringAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::PacketMirroringAggregatedList
@@ -30636,11 +30541,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30693,6 +30598,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30732,6 +30638,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30785,6 +30692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30864,12 +30772,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -30889,7 +30791,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_packet_mirrorings(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_packet_mirrorings(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/packetMirrorings', options)
           command.response_representation = Google::Apis::ComputeV1::PacketMirroringList::Representation
           command.response_class = Google::Apis::ComputeV1::PacketMirroringList
@@ -30899,10 +30801,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30961,6 +30863,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31003,6 +30906,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31039,6 +30943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31115,12 +31020,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31140,7 +31039,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_preview_features(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_preview_features(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/previewFeatures', options)
           command.response_representation = Google::Apis::ComputeV1::PreviewFeatureList::Representation
           command.response_class = Google::Apis::ComputeV1::PreviewFeatureList
@@ -31149,10 +31048,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31206,6 +31105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31250,6 +31150,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31296,6 +31197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31346,6 +31248,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31392,6 +31295,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31443,6 +31347,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31483,6 +31388,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31517,6 +31423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31594,12 +31501,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31619,7 +31520,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_xpn_resources(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_project_xpn_resources(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/getXpnResources', options)
           command.response_representation = Google::Apis::ComputeV1::ProjectsGetXpnResources::Representation
           command.response_class = Google::Apis::ComputeV1::ProjectsGetXpnResources
@@ -31628,10 +31529,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31709,12 +31610,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -31734,7 +31629,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_project_xpn_hosts(project, projects_list_xpn_hosts_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/listXpnHosts', options)
           command.request_representation = Google::Apis::ComputeV1::ProjectsListXpnHostsRequest::Representation
           command.request_object = projects_list_xpn_hosts_request_object
@@ -31745,10 +31640,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31809,6 +31704,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31866,6 +31762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31918,6 +31815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31968,6 +31866,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32019,6 +31918,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32070,6 +31970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32119,6 +32020,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32168,6 +32070,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32204,6 +32107,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32254,6 +32158,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32330,12 +32235,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32355,7 +32254,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_public_advertised_prefixes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_public_advertised_prefixes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/publicAdvertisedPrefixes', options)
           command.response_representation = Google::Apis::ComputeV1::PublicAdvertisedPrefixList::Representation
           command.response_class = Google::Apis::ComputeV1::PublicAdvertisedPrefixList
@@ -32364,10 +32263,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32423,6 +32322,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32472,6 +32372,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32559,12 +32460,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -32587,7 +32482,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_public_delegated_prefix_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_public_delegated_prefix_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/publicDelegatedPrefixes', options)
           command.response_representation = Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::PublicDelegatedPrefixAggregatedList
@@ -32597,11 +32492,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32655,6 +32550,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32707,6 +32603,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32746,6 +32643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32799,6 +32697,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32877,12 +32776,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -32902,7 +32795,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_public_delegated_prefixes(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_public_delegated_prefixes(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/publicDelegatedPrefixes', options)
           command.response_representation = Google::Apis::ComputeV1::PublicDelegatedPrefixList::Representation
           command.response_class = Google::Apis::ComputeV1::PublicDelegatedPrefixList
@@ -32912,10 +32805,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32974,6 +32867,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33027,6 +32921,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33079,6 +32974,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33118,6 +33014,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33171,6 +33068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33250,12 +33148,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33275,7 +33167,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_autoscalers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_autoscalers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/autoscalers', options)
           command.response_representation = Google::Apis::ComputeV1::RegionAutoscalerList::Representation
           command.response_class = Google::Apis::ComputeV1::RegionAutoscalerList
@@ -33285,10 +33177,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33347,6 +33239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33389,6 +33282,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33445,6 +33339,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33498,6 +33393,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33537,6 +33433,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33580,6 +33477,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33633,6 +33531,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33712,12 +33611,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33737,7 +33630,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_backend_buckets(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_backend_buckets(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/backendBuckets', options)
           command.response_representation = Google::Apis::ComputeV1::BackendBucketList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendBucketList
@@ -33747,10 +33640,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33831,12 +33724,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -33856,7 +33743,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_backend_bucket_usable(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_backend_bucket_usable(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/backendBuckets/listUsable', options)
           command.response_representation = Google::Apis::ComputeV1::BackendBucketListUsable::Representation
           command.response_class = Google::Apis::ComputeV1::BackendBucketListUsable
@@ -33866,10 +33753,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33929,6 +33816,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33972,6 +33860,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34014,6 +33903,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34066,6 +33956,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34105,6 +33996,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34147,6 +34039,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34190,6 +34083,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34244,6 +34138,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34323,12 +34218,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34348,7 +34237,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_backend_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_backend_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/backendServices', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceList
@@ -34358,10 +34247,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34444,12 +34333,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -34469,7 +34352,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_backend_service_usable(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_backend_service_usable(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/backendServices/listUsable', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceListUsable::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceListUsable
@@ -34479,10 +34362,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34542,6 +34425,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34585,6 +34469,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34643,6 +34528,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34685,6 +34571,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34743,6 +34630,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34829,12 +34717,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -34857,7 +34739,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_commitment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_commitment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/commitments', options)
           command.response_representation = Google::Apis::ComputeV1::CommitmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::CommitmentAggregatedList
@@ -34867,11 +34749,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34911,6 +34793,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34964,6 +34847,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35043,12 +34927,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35068,7 +34946,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_commitments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_commitments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/commitments', options)
           command.response_representation = Google::Apis::ComputeV1::CommitmentList::Representation
           command.response_class = Google::Apis::ComputeV1::CommitmentList
@@ -35078,10 +34956,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35144,6 +35022,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35231,12 +35110,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -35259,7 +35132,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_composite_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_composite_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/compositeHealthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::CompositeHealthCheckAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::CompositeHealthCheckAggregatedList
@@ -35269,11 +35142,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35326,6 +35199,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35365,6 +35239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35405,6 +35280,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35458,6 +35334,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35536,12 +35413,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35561,7 +35432,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_composite_health_checks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_composite_health_checks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/compositeHealthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::CompositeHealthCheckList::Representation
           command.response_class = Google::Apis::ComputeV1::CompositeHealthCheckList
@@ -35571,10 +35442,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35634,6 +35505,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35676,6 +35548,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35715,6 +35588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35793,12 +35667,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -35818,7 +35686,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_disk_types(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_disk_types(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/diskTypes', options)
           command.response_representation = Google::Apis::ComputeV1::RegionDiskTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::RegionDiskTypeList
@@ -35828,10 +35696,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35889,6 +35757,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35941,6 +35810,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35999,6 +35869,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36055,6 +35926,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36094,6 +35966,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36137,6 +36010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36193,6 +36067,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36272,12 +36147,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -36297,7 +36166,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_disks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_disks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/disks', options)
           command.response_representation = Google::Apis::ComputeV1::DiskList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskList
@@ -36307,10 +36176,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36366,6 +36235,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36421,6 +36291,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36464,6 +36335,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36519,6 +36391,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36575,6 +36448,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36628,6 +36502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36682,6 +36557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36724,6 +36600,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36785,6 +36662,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36841,6 +36719,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36928,12 +36807,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -36956,7 +36829,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_health_aggregation_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_health_aggregation_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/healthAggregationPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthAggregationPolicyAggregatedList
@@ -36966,11 +36839,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37023,6 +36896,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37062,6 +36936,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37115,6 +36990,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37193,12 +37069,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37218,7 +37088,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_health_aggregation_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_health_aggregation_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/healthAggregationPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::HealthAggregationPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthAggregationPolicyList
@@ -37228,10 +37098,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37291,6 +37161,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37333,6 +37204,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37420,12 +37292,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -37448,7 +37314,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_health_check_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_health_check_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/healthCheckServices', options)
           command.response_representation = Google::Apis::ComputeV1::HealthCheckServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthCheckServiceAggregatedList
@@ -37458,11 +37324,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37516,6 +37382,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37556,6 +37423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37609,6 +37477,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37688,12 +37557,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -37713,7 +37576,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_health_check_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_health_check_services(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/healthCheckServices', options)
           command.response_representation = Google::Apis::ComputeV1::HealthCheckServicesList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthCheckServicesList
@@ -37723,10 +37586,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37786,6 +37649,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37828,6 +37692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37880,6 +37745,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37919,6 +37785,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37972,6 +37839,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38051,12 +37919,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38076,7 +37938,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_health_checks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_health_checks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/healthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HealthCheckList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthCheckList
@@ -38086,10 +37948,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38148,6 +38010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38190,6 +38053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38246,6 +38110,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38333,12 +38198,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -38361,7 +38220,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_health_source_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_health_source_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/healthSources', options)
           command.response_representation = Google::Apis::ComputeV1::HealthSourceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthSourceAggregatedList
@@ -38371,11 +38230,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38428,6 +38287,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38467,6 +38327,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38507,6 +38368,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38560,6 +38422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38638,12 +38501,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -38663,7 +38520,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_health_sources(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_health_sources(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/healthSources', options)
           command.response_representation = Google::Apis::ComputeV1::HealthSourceList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthSourceList
@@ -38673,10 +38530,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38736,6 +38593,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38778,6 +38636,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38839,6 +38698,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38899,6 +38759,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38944,6 +38805,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39002,6 +38864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39084,12 +38947,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39109,7 +38966,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_manager_resize_requests(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_manager_resize_requests(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/resizeRequests', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagerResizeRequestsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagerResizeRequestsListResponse
@@ -39120,10 +38977,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39193,6 +39050,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39235,6 +39093,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39298,6 +39157,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39355,6 +39215,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39428,6 +39289,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39471,6 +39333,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39510,6 +39373,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39570,6 +39434,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39649,12 +39514,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39674,7 +39533,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_managers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_managers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagerList::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagerList
@@ -39684,10 +39543,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39774,12 +39633,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39799,7 +39652,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_manager_errors(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_manager_errors(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listErrors', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse
@@ -39810,10 +39663,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39899,12 +39752,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -39924,7 +39771,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_manager_managed_instances(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_manager_managed_instances(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listManagedInstances', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstancesResponse::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstancesResponse
@@ -39935,10 +39782,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40020,12 +39867,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40045,7 +39886,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_manager_per_instance_configs(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listPerInstanceConfigs', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagersListInstanceConfigsResp
@@ -40056,10 +39897,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40129,6 +39970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40187,6 +40029,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40257,6 +40100,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40325,6 +40169,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40394,6 +40239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40450,6 +40296,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40506,6 +40353,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40575,6 +40423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40658,6 +40507,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40737,6 +40587,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40795,6 +40646,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40834,6 +40686,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40913,12 +40766,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -40938,7 +40785,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupList
@@ -40948,10 +40795,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41037,12 +40884,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41062,7 +40903,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_group_instances(project, region, instance_group, region_instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_group_instances(project, region, instance_group, region_instance_groups_list_instances_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/instanceGroups/{instanceGroup}/listInstances', options)
           command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupsListInstancesRequest::Representation
           command.request_object = region_instance_groups_list_instances_request_object
@@ -41075,10 +40916,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41134,6 +40975,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41176,6 +41018,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41229,6 +41072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41268,6 +41112,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41321,6 +41166,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41400,12 +41246,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41425,7 +41265,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instance_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instance_templates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instanceTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceTemplateList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceTemplateList
@@ -41435,10 +41275,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41492,6 +41332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41544,6 +41385,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41584,6 +41426,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41627,6 +41470,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41682,6 +41526,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41761,12 +41606,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -41786,7 +41625,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instant_snapshot_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instant_snapshot_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instantSnapshotGroups', options)
           command.response_representation = Google::Apis::ComputeV1::ListInstantSnapshotGroups::Representation
           command.response_class = Google::Apis::ComputeV1::ListInstantSnapshotGroups
@@ -41796,10 +41635,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41843,6 +41682,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41885,6 +41725,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41943,6 +41784,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41982,6 +41824,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42025,6 +41868,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42077,6 +41921,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42156,12 +42001,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -42181,7 +42020,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_instant_snapshots(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_instant_snapshots(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/instantSnapshots', options)
           command.response_representation = Google::Apis::ComputeV1::InstantSnapshotList::Representation
           command.response_class = Google::Apis::ComputeV1::InstantSnapshotList
@@ -42191,10 +42030,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42238,6 +42077,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42295,6 +42135,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42337,6 +42178,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42395,6 +42237,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42450,6 +42293,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42509,6 +42353,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42549,6 +42394,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42617,6 +42463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42697,12 +42544,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -42722,7 +42563,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_network_endpoint_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_network_endpoint_groups(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
@@ -42732,10 +42573,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42818,12 +42659,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -42843,7 +42678,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_network_endpoint_group_network_endpoints(project, region, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_network_endpoint_group_network_endpoints(project, region, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints
@@ -42854,10 +42689,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42923,6 +42758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42988,6 +42824,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43043,6 +42880,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43095,6 +42933,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43134,6 +42973,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43176,6 +43016,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43215,6 +43056,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43258,6 +43100,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43300,6 +43143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43352,6 +43196,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43431,12 +43276,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -43456,7 +43295,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_network_firewall_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_network_firewall_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/firewallPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::FirewallPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::FirewallPolicyList
@@ -43466,10 +43305,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43525,6 +43364,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43580,6 +43420,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43638,6 +43479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43693,6 +43535,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43748,6 +43591,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43791,6 +43635,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43833,6 +43678,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43918,12 +43764,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -43946,7 +43786,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_notification_endpoint_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_notification_endpoint_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/notificationEndpoints', options)
           command.response_representation = Google::Apis::ComputeV1::NotificationEndpointAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NotificationEndpointAggregatedList
@@ -43956,11 +43796,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44013,6 +43853,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44052,6 +43893,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44105,6 +43947,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44183,12 +44026,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44208,7 +44045,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_notification_endpoints(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_notification_endpoints(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/notificationEndpoints', options)
           command.response_representation = Google::Apis::ComputeV1::NotificationEndpointList::Representation
           command.response_class = Google::Apis::ComputeV1::NotificationEndpointList
@@ -44218,10 +44055,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44264,6 +44101,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44302,6 +44140,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44342,6 +44181,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44421,12 +44261,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44446,7 +44280,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_operations(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_operations(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationList
@@ -44456,10 +44290,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44514,6 +44348,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44559,6 +44394,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44611,6 +44447,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44650,6 +44487,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44692,6 +44530,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44748,6 +44587,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44827,12 +44667,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -44852,7 +44686,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_security_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_security_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPolicyList
@@ -44862,10 +44696,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44928,6 +44762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44980,6 +44815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45022,6 +44858,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45079,6 +44916,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45115,6 +44953,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45170,6 +45009,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45228,6 +45068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45267,6 +45108,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45310,6 +45152,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45363,6 +45206,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45442,12 +45286,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -45467,7 +45305,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_snapshots(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_snapshots(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/snapshots', options)
           command.response_representation = Google::Apis::ComputeV1::SnapshotList::Representation
           command.response_class = Google::Apis::ComputeV1::SnapshotList
@@ -45477,10 +45315,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45524,6 +45362,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45581,6 +45420,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45623,6 +45463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45679,6 +45520,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45731,6 +45573,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45772,6 +45615,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45825,6 +45669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45904,12 +45749,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -45929,7 +45768,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_ssl_certificates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_ssl_certificates(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeV1::SslCertificateList::Representation
           command.response_class = Google::Apis::ComputeV1::SslCertificateList
@@ -45939,10 +45778,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45998,6 +45837,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46038,6 +45878,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46091,6 +45932,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46170,12 +46012,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -46195,7 +46031,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_ssl_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_ssl_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/sslPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesList::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesList
@@ -46205,10 +46041,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46288,12 +46124,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -46313,7 +46143,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_ssl_policy_available_features(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_ssl_policy_available_features(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/sslPolicies/listAvailableFeatures', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesListAvailableFeaturesResponse::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesListAvailableFeaturesResponse
@@ -46323,10 +46153,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46383,6 +46213,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46435,6 +46266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46474,6 +46306,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46527,6 +46360,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46606,12 +46440,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -46631,7 +46459,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_target_http_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_target_http_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpProxyList
@@ -46641,10 +46469,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46700,6 +46528,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46752,6 +46581,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46791,6 +46621,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46844,6 +46675,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46923,12 +46755,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -46948,7 +46774,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_target_https_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_target_https_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpsProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpsProxyList
@@ -46958,10 +46784,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47020,6 +46846,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47076,6 +46903,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47131,6 +46959,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47183,6 +47012,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47222,6 +47052,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47275,6 +47106,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47354,12 +47186,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47379,7 +47205,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_target_tcp_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_target_tcp_proxies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/targetTcpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetTcpProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetTcpProxyList
@@ -47389,10 +47215,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47436,6 +47262,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47475,6 +47302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47519,6 +47347,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47598,12 +47427,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47623,7 +47446,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_url_maps(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_url_maps(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/urlMaps', options)
           command.response_representation = Google::Apis::ComputeV1::UrlMapList::Representation
           command.response_class = Google::Apis::ComputeV1::UrlMapList
@@ -47633,10 +47456,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47686,6 +47509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47733,6 +47557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47777,6 +47602,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47856,12 +47682,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -47881,7 +47701,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_region_zones(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_region_zones(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/zones', options)
           command.response_representation = Google::Apis::ComputeV1::ZoneList::Representation
           command.response_class = Google::Apis::ComputeV1::ZoneList
@@ -47891,10 +47711,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47946,6 +47766,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48038,12 +47859,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48063,7 +47878,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_regions(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_regions(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions', options)
           command.response_representation = Google::Apis::ComputeV1::RegionList::Representation
           command.response_class = Google::Apis::ComputeV1::RegionList
@@ -48072,10 +47887,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48112,6 +47927,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48188,12 +48004,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48213,7 +48023,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reliability_risks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reliability_risks(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/reliabilityRisks', options)
           command.response_representation = Google::Apis::ComputeV1::ReliabilityRisksListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ReliabilityRisksListResponse
@@ -48222,10 +48032,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48273,6 +48083,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48319,6 +48130,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48400,12 +48212,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48425,7 +48231,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reservation_blocks(project, zone, reservation, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reservation_blocks(project, zone, reservation, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/reservations/{reservation}/reservationBlocks', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationBlocksListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationBlocksListResponse
@@ -48436,10 +48242,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48500,6 +48306,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48546,6 +48353,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48591,6 +48399,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48636,6 +48445,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48685,6 +48495,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48746,6 +48557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48828,12 +48640,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -48853,7 +48659,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reservation_slots(project, zone, parent_name, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reservation_slots(project, zone, parent_name, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/{+parentName}/reservationSlots', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationSlotsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationSlotsListResponse
@@ -48864,10 +48670,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48916,6 +48722,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48963,6 +48770,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49009,6 +48817,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49069,6 +48878,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49150,12 +48960,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -49175,7 +48979,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reservation_sub_blocks(project, zone, parent_name, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reservation_sub_blocks(project, zone, parent_name, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/{+parentName}/reservationSubBlocks', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationSubBlocksListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationSubBlocksListResponse
@@ -49186,10 +48990,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49247,6 +49051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49307,6 +49112,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49353,6 +49159,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49398,6 +49205,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49484,12 +49292,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -49512,7 +49314,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/reservations', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationAggregatedList
@@ -49522,11 +49324,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49579,6 +49381,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49618,6 +49421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49661,6 +49465,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49714,6 +49519,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49793,12 +49599,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -49818,7 +49618,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_reservations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_reservations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/reservations', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationList::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationList
@@ -49828,10 +49628,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49888,6 +49688,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49945,6 +49746,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49988,6 +49790,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50030,6 +49833,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50090,6 +49894,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50176,12 +49981,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -50204,7 +50003,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_resource_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_resource_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ResourcePolicyAggregatedList
@@ -50214,11 +50013,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50271,6 +50070,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50310,6 +50110,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50353,6 +50154,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50405,6 +50207,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50484,12 +50287,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -50509,7 +50306,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_resource_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_resource_policies(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeV1::ResourcePolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::ResourcePolicyList
@@ -50519,10 +50316,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50581,6 +50378,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50624,6 +50422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50666,6 +50465,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50715,6 +50515,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50751,6 +50552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50800,6 +50602,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50876,12 +50679,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -50901,7 +50698,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_rollout_plans(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_rollout_plans(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/rolloutPlans', options)
           command.response_representation = Google::Apis::ComputeV1::RolloutPlansListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::RolloutPlansListResponse
@@ -50910,10 +50707,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50966,6 +50763,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51022,6 +50820,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51071,6 +50870,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51107,6 +50907,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51183,12 +50984,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -51208,7 +51003,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_rollouts(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_rollouts(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/rollouts', options)
           command.response_representation = Google::Apis::ComputeV1::RolloutsListResponse::Representation
           command.response_class = Google::Apis::ComputeV1::RolloutsListResponse
@@ -51217,10 +51012,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51275,6 +51070,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51329,6 +51125,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51415,12 +51212,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -51443,7 +51234,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_router_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_router_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/routers', options)
           command.response_representation = Google::Apis::ComputeV1::RouterAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::RouterAggregatedList
@@ -51453,11 +51244,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51510,6 +51301,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51565,6 +51357,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51620,6 +51413,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51659,6 +51453,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51702,6 +51497,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51747,6 +51543,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51832,12 +51629,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -51857,7 +51648,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, nat_name: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, nat_name: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
           command.response_representation = Google::Apis::ComputeV1::VmEndpointNatMappingsList::Representation
           command.response_class = Google::Apis::ComputeV1::VmEndpointNatMappingsList
@@ -51869,10 +51660,10 @@ module Google
           command.query['natName'] = nat_name unless nat_name.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51916,6 +51707,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51955,6 +51747,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52008,6 +51801,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52086,12 +51880,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -52111,7 +51899,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_routers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_routers(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers', options)
           command.response_representation = Google::Apis::ComputeV1::RouterList::Representation
           command.response_class = Google::Apis::ComputeV1::RouterList
@@ -52121,10 +51909,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52216,12 +52004,6 @@ module Google
         # @param [Boolean] policy_applied
         #   When true, the method returns post-policy routes. Otherwise, it returns
         #   pre-policy routes.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] route_type
         #   (Required) limit results to this type of route (either LEARNED or
         #   ADVERTISED)
@@ -52244,7 +52026,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_router_bgp_routes(project, region, router, address_family: nil, destination_prefix: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peer: nil, policy_applied: nil, return_partial_success: nil, route_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_router_bgp_routes(project, region, router, address_family: nil, destination_prefix: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peer: nil, policy_applied: nil, route_type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/listBgpRoutes', options)
           command.response_representation = Google::Apis::ComputeV1::RoutersListBgpRoutes::Representation
           command.response_class = Google::Apis::ComputeV1::RoutersListBgpRoutes
@@ -52259,11 +52041,11 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['peer'] = peer unless peer.nil?
           command.query['policyApplied'] = policy_applied unless policy_applied.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['routeType'] = route_type unless route_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52346,12 +52128,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -52371,7 +52147,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_router_named_sets(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_router_named_sets(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/listNamedSets', options)
           command.response_representation = Google::Apis::ComputeV1::RoutersListNamedSets::Representation
           command.response_class = Google::Apis::ComputeV1::RoutersListNamedSets
@@ -52382,10 +52158,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52468,12 +52244,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -52493,7 +52263,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_router_route_policies(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_router_route_policies(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/routers/{router}/listRoutePolicies', options)
           command.response_representation = Google::Apis::ComputeV1::RoutersListRoutePolicies::Representation
           command.response_class = Google::Apis::ComputeV1::RoutersListRoutePolicies
@@ -52504,10 +52274,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52566,6 +52336,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52621,6 +52392,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52676,6 +52448,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52719,6 +52492,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52778,6 +52552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52833,6 +52608,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52888,6 +52664,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52937,6 +52714,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52973,6 +52751,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53023,6 +52802,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53099,12 +52879,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -53124,7 +52898,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_routes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_routes(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/routes', options)
           command.response_representation = Google::Apis::ComputeV1::RouteList::Representation
           command.response_class = Google::Apis::ComputeV1::RouteList
@@ -53133,10 +52907,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53176,6 +52950,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53218,6 +52993,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53305,12 +53081,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -53333,7 +53103,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_security_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_security_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPoliciesAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPoliciesAggregatedList
@@ -53343,11 +53113,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53397,6 +53167,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53433,6 +53204,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53472,6 +53244,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53525,6 +53298,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53601,12 +53375,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -53626,7 +53394,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_security_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_security_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPolicyList
@@ -53635,10 +53403,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53716,12 +53484,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -53741,7 +53503,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_security_policy_preconfigured_expression_sets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_security_policy_preconfigured_expression_sets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/securityPolicies/listPreconfiguredExpressionSets', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse
@@ -53750,10 +53512,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53813,6 +53575,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53862,6 +53625,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53901,6 +53665,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53942,6 +53707,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54029,12 +53795,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -54057,7 +53817,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_service_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_service_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/serviceAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::ServiceAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ServiceAttachmentAggregatedList
@@ -54067,11 +53827,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54124,6 +53884,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54166,6 +53927,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54209,6 +53971,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54262,6 +54025,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54340,12 +54104,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -54365,7 +54123,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_service_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_service_attachments(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/serviceAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::ServiceAttachmentList::Representation
           command.response_class = Google::Apis::ComputeV1::ServiceAttachmentList
@@ -54375,10 +54133,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54438,6 +54196,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54481,6 +54240,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54523,6 +54283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54556,6 +54317,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54608,6 +54370,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54663,6 +54426,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54699,6 +54463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54739,6 +54504,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54792,6 +54558,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54869,12 +54636,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -54894,7 +54655,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_snapshots(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_snapshots(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/snapshots', options)
           command.response_representation = Google::Apis::ComputeV1::SnapshotList::Representation
           command.response_class = Google::Apis::ComputeV1::SnapshotList
@@ -54903,10 +54664,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54947,6 +54708,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54987,6 +54749,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55026,6 +54789,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55079,6 +54843,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55166,12 +54931,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -55194,7 +54953,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_ssl_certificate_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_ssl_certificate_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeV1::SslCertificateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SslCertificateAggregatedList
@@ -55204,11 +54963,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55258,6 +55017,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55294,6 +55054,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55344,6 +55105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55421,12 +55183,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -55446,7 +55202,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_ssl_certificates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ssl_certificates(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeV1::SslCertificateList::Representation
           command.response_class = Google::Apis::ComputeV1::SslCertificateList
@@ -55455,10 +55211,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55546,12 +55302,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -55574,7 +55324,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_ssl_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_ssl_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/sslPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesAggregatedList
@@ -55584,11 +55334,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55641,6 +55391,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55678,6 +55429,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55727,6 +55479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55804,12 +55557,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -55829,7 +55576,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_ssl_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ssl_policies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/sslPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesList::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesList
@@ -55838,10 +55585,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55919,12 +55666,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -55944,7 +55685,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_ssl_policy_available_features(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_ssl_policy_available_features(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/sslPolicies/listAvailableFeatures', options)
           command.response_representation = Google::Apis::ComputeV1::SslPoliciesListAvailableFeaturesResponse::Representation
           command.response_class = Google::Apis::ComputeV1::SslPoliciesListAvailableFeaturesResponse
@@ -55953,10 +55694,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56010,6 +55751,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56096,12 +55838,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -56124,7 +55860,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_storage_pool_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_storage_pool_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/storagePoolTypes', options)
           command.response_representation = Google::Apis::ComputeV1::StoragePoolTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::StoragePoolTypeAggregatedList
@@ -56134,11 +55870,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56178,6 +55914,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56257,12 +55994,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -56282,7 +56013,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_storage_pool_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_storage_pool_types(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/storagePoolTypes', options)
           command.response_representation = Google::Apis::ComputeV1::StoragePoolTypeList::Representation
           command.response_class = Google::Apis::ComputeV1::StoragePoolTypeList
@@ -56292,10 +56023,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56382,12 +56113,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -56410,7 +56135,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_storage_pool_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_storage_pool_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/storagePools', options)
           command.response_representation = Google::Apis::ComputeV1::StoragePoolAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::StoragePoolAggregatedList
@@ -56420,11 +56145,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56481,6 +56206,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56521,6 +56247,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56564,6 +56291,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56617,6 +56345,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56696,12 +56425,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -56721,7 +56444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_storage_pools(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_storage_pools(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/storagePools', options)
           command.response_representation = Google::Apis::ComputeV1::StoragePoolList::Representation
           command.response_class = Google::Apis::ComputeV1::StoragePoolList
@@ -56731,10 +56454,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56815,12 +56538,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -56840,7 +56557,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_storage_pool_disks(project, zone, storage_pool, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_storage_pool_disks(project, zone, storage_pool, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/storagePools/{storagePool}/listDisks', options)
           command.response_representation = Google::Apis::ComputeV1::StoragePoolListDisks::Representation
           command.response_class = Google::Apis::ComputeV1::StoragePoolListDisks
@@ -56851,10 +56568,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56898,6 +56615,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56940,6 +56658,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57002,6 +56721,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57088,12 +56808,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -57122,7 +56836,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks', options)
           command.response_representation = Google::Apis::ComputeV1::SubnetworkAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SubnetworkAggregatedList
@@ -57132,12 +56846,12 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['views'] = views unless views.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57190,6 +56904,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57245,6 +56960,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57291,6 +57007,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57334,6 +57051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57387,6 +57105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57466,12 +57185,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Array<String>, String] views
         #   Defines the extra views returned back in the subnetwork resource.
         #   Supported values:
@@ -57497,7 +57210,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subnetworks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subnetworks(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, views: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/subnetworks', options)
           command.response_representation = Google::Apis::ComputeV1::SubnetworkList::Representation
           command.response_class = Google::Apis::ComputeV1::SubnetworkList
@@ -57507,11 +57220,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['views'] = views unless views.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57588,12 +57301,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] service_project
         #   The project id or project number in which the subnetwork is intended to be
         #   used. Only applied for Shared VPC. See [Shared VPC
@@ -57617,7 +57324,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_subnetwork_usable(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, service_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/subnetworks/listUsable', options)
           command.response_representation = Google::Apis::ComputeV1::UsableSubnetworksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::UsableSubnetworksAggregatedList
@@ -57626,11 +57333,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProject'] = service_project unless service_project.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57701,6 +57408,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57744,6 +57452,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57800,6 +57509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57842,6 +57552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57891,6 +57602,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57927,6 +57639,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57977,6 +57690,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58053,12 +57767,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -58078,7 +57786,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_grpc_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_grpc_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/targetGrpcProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetGrpcProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetGrpcProxyList
@@ -58087,10 +57795,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58146,6 +57854,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58233,12 +57942,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -58261,7 +57964,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_http_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_http_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList
@@ -58271,11 +57974,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58325,6 +58028,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58361,6 +58065,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58411,6 +58116,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58488,12 +58194,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -58513,7 +58213,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_http_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_http_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpProxyList
@@ -58522,10 +58222,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58581,6 +58281,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58633,6 +58334,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58720,12 +58422,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -58748,7 +58444,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_https_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_https_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList
@@ -58758,11 +58454,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58812,6 +58508,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58848,6 +58545,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58898,6 +58596,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58975,12 +58674,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -59000,7 +58693,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_https_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_https_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpsProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpsProxyList
@@ -59009,10 +58702,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59068,6 +58761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59121,6 +58815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59174,6 +58869,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59227,6 +58923,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59283,6 +58980,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59336,6 +59034,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59422,12 +59121,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -59450,7 +59143,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_instance(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_instance(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetInstances', options)
           command.response_representation = Google::Apis::ComputeV1::TargetInstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetInstanceAggregatedList
@@ -59460,11 +59153,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59517,6 +59210,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59556,6 +59250,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59609,6 +59304,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59688,12 +59384,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -59713,7 +59403,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_instances(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/targetInstances', options)
           command.response_representation = Google::Apis::ComputeV1::TargetInstanceList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetInstanceList
@@ -59723,10 +59413,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59785,6 +59475,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59827,6 +59518,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59882,6 +59574,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59937,6 +59630,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60023,12 +59717,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -60051,7 +59739,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_pools(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_pools(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetPools', options)
           command.response_representation = Google::Apis::ComputeV1::TargetPoolAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetPoolAggregatedList
@@ -60061,11 +59749,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60118,6 +59806,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60157,6 +59846,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60200,6 +59890,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60253,6 +59944,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60332,12 +60024,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -60357,7 +60043,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_pools(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_pools(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/targetPools', options)
           command.response_representation = Google::Apis::ComputeV1::TargetPoolList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetPoolList
@@ -60367,10 +60053,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60426,6 +60112,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60481,6 +60168,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60539,6 +60227,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60597,6 +60286,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60639,6 +60329,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60688,6 +60379,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60724,6 +60416,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60774,6 +60467,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60851,12 +60545,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -60876,7 +60564,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_ssl_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_ssl_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/targetSslProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetSslProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetSslProxyList
@@ -60885,10 +60573,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60942,6 +60630,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60995,6 +60684,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61047,6 +60737,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61100,6 +60791,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61156,6 +60848,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61195,6 +60888,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61282,12 +60976,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -61310,7 +60998,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_tcp_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_tcp_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetTcpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetTcpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetTcpProxyAggregatedList
@@ -61320,11 +61008,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61374,6 +61062,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61410,6 +61099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61460,6 +61150,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61537,12 +61228,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -61562,7 +61247,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_tcp_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_tcp_proxies(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/targetTcpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetTcpProxyList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetTcpProxyList
@@ -61571,10 +61256,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61628,6 +61313,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61680,6 +61366,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61719,6 +61406,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61805,12 +61493,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -61833,7 +61515,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_vpn_gateways(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_vpn_gateways(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList
@@ -61843,11 +61525,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61900,6 +61582,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61939,6 +61622,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61992,6 +61676,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62071,12 +61756,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -62096,7 +61775,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_target_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_target_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::TargetVpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetVpnGatewayList
@@ -62106,10 +61785,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62167,6 +61846,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62254,12 +61934,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -62282,7 +61956,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_url_map_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_url_map_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/urlMaps', options)
           command.response_representation = Google::Apis::ComputeV1::UrlMapsAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::UrlMapsAggregatedList
@@ -62292,11 +61966,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62346,6 +62020,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62382,6 +62057,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62432,6 +62108,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62487,6 +62164,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62564,12 +62242,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -62589,7 +62261,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_url_maps(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_url_maps(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/urlMaps', options)
           command.response_representation = Google::Apis::ComputeV1::UrlMapList::Representation
           command.response_class = Google::Apis::ComputeV1::UrlMapList
@@ -62598,10 +62270,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62657,6 +62329,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62696,6 +62369,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62749,6 +62423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62790,6 +62465,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62876,12 +62552,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -62904,7 +62574,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_vpn_gateway_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_vpn_gateway_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::VpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnGatewayAggregatedList
@@ -62914,11 +62584,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62971,6 +62641,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63010,6 +62681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63049,6 +62721,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63102,6 +62775,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63181,12 +62855,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -63206,7 +62874,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::VpnGatewayList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnGatewayList
@@ -63216,10 +62884,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63276,6 +62944,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63318,6 +62987,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63404,12 +63074,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [Fixnum] service_project_number
         #   The Shared VPC service project id or service project number for which
         #   aggregated list request is invoked for subnetworks list-usable api.
@@ -63432,7 +63096,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_vpn_tunnel(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_vpn_tunnel(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, service_project_number: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/aggregated/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeV1::VpnTunnelAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnTunnelAggregatedList
@@ -63442,11 +63106,11 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['serviceProjectNumber'] = service_project_number unless service_project_number.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63499,6 +63163,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63538,6 +63203,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63591,6 +63257,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63670,12 +63337,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -63695,7 +63356,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_vpn_tunnels(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_vpn_tunnels(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/regions/{region}/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeV1::VpnTunnelList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnTunnelList
@@ -63705,10 +63366,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63765,6 +63426,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63817,6 +63479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63855,6 +63518,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63911,6 +63575,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63988,12 +63653,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -64013,7 +63672,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_wire_groups(project, cross_site_network, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_wire_groups(project, cross_site_network, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/global/crossSiteNetworks/{crossSiteNetwork}/wireGroups', options)
           command.response_representation = Google::Apis::ComputeV1::WireGroupList::Representation
           command.response_class = Google::Apis::ComputeV1::WireGroupList
@@ -64023,10 +63682,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64091,6 +63750,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64129,6 +63789,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64169,6 +63830,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64248,12 +63910,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -64273,7 +63929,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_zone_operations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_zone_operations(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationList
@@ -64283,10 +63939,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64340,6 +63996,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64392,6 +64049,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64431,6 +64089,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64483,6 +64142,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64561,12 +64221,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -64586,7 +64240,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_zone_vm_extension_policies(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_zone_vm_extension_policies(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones/{zone}/vmExtensionPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::VmExtensionPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::VmExtensionPolicyList
@@ -64596,10 +64250,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64655,6 +64309,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64691,6 +64346,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64767,12 +64423,6 @@ module Google
         #   Specifies a page token to use. Set `pageToken` to the
         #   `nextPageToken` returned by a previous list request to get
         #   the next page of results.
-        # @param [Boolean] return_partial_success
-        #   Opt-in for partial success behavior which provides partial results in case
-        #   of failure. The default value is false.
-        #   For example, when partial success behavior is enabled, aggregatedList for a
-        #   single zone scope either returns all resources in the zone or no resources,
-        #   with an error code.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -64792,7 +64442,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_zones(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_zones(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{project}/zones', options)
           command.response_representation = Google::Apis::ComputeV1::ZoneList::Representation
           command.response_class = Google::Apis::ComputeV1::ZoneList
@@ -64801,10 +64451,10 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-09-01"
           execute_or_queue_command(command, &block)
         end
 
