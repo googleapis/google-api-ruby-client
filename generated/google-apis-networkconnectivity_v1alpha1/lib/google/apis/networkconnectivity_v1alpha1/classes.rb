@@ -602,6 +602,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :prefix_length
       
+        # Optional. The purpose of this internal range. Defines the intended use of the
+        # range and any restrictions associated with it. If not specified, it defaults
+        # to VPC_SUBNET.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
         # Output only. Status of the Internal Range.
         # Corresponds to the JSON property `rangeStatus`
         # @return [String]
@@ -656,6 +663,7 @@ module Google
           @overlaps = args[:overlaps] if args.key?(:overlaps)
           @peering = args[:peering] if args.key?(:peering)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @range_status = args[:range_status] if args.key?(:range_status)
           @target_cidr_range = args[:target_cidr_range] if args.key?(:target_cidr_range)
           @update_time = args[:update_time] if args.key?(:update_time)
