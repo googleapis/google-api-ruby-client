@@ -1,5 +1,9 @@
 # Release history for google-apis-firebasecrashlytics_v1alpha
 
+### v0.3.0 (2026-10-04)
+
+* Regenerated from discovery document revision 20261002
+
 ### v0.2.0 (2026-09-27)
 
 * Regenerated from discovery document revision 20260924

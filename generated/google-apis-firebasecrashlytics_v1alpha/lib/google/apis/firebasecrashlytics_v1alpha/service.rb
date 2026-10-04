@@ -162,9 +162,9 @@ module Google
         #   state" = "background"`. OR across different keys, repeating a key within an
         #   AND, NOT, and comparators other than `=` and `:` are rejected with
         #   INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*`
-        #   to match events that set a key to any value. Only supported for Android and
-        #   iOS. This filter expression applies in addition to the `filter` field above.
-        #   The syntax is a subset of AIP-160 (https://google.aip.dev/160).
+        #   to match events that set a key to any value. This filter expression applies in
+        #   addition to the `filter` field above. The syntax is a subset of AIP-160 (https:
+        #   //google.aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events per page. If omitted, defaults to 10.
         # @param [String] page_token
@@ -487,6 +487,9 @@ module Google
         # @param [String] granularity
         #   Optional. The report response will contain one data point per time grain. If
         #   omitted, the report will contain a single data point for the complete interval.
+        # @param [String] metrics_mode
+        #   Optional. Controls whether metrics are raw observed values (mobile and web) or
+        #   extrapolated values (web only). If omitted, defaults to OBSERVED.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of result groups to return. If omitted, defaults
         #   to 25.
@@ -511,7 +514,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_app_report(name, filter_browser_display_names: nil, filter_device_display_names: nil, filter_device_form_factors: nil, filter_interval_end_time: nil, filter_interval_start_time: nil, filter_issue_content: nil, filter_issue_error_types: nil, filter_issue_id: nil, filter_issue_signals: nil, filter_issue_state: nil, filter_issue_states: nil, filter_issue_variant_id: nil, filter_operating_system_display_names: nil, filter_version_display_names: nil, granularity: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_app_report(name, filter_browser_display_names: nil, filter_device_display_names: nil, filter_device_form_factors: nil, filter_interval_end_time: nil, filter_interval_start_time: nil, filter_issue_content: nil, filter_issue_error_types: nil, filter_issue_id: nil, filter_issue_signals: nil, filter_issue_state: nil, filter_issue_states: nil, filter_issue_variant_id: nil, filter_operating_system_display_names: nil, filter_version_display_names: nil, granularity: nil, metrics_mode: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::FirebasecrashlyticsV1alpha::Report::Representation
           command.response_class = Google::Apis::FirebasecrashlyticsV1alpha::Report
@@ -531,6 +534,7 @@ module Google
           command.query['filter.operatingSystem.displayNames'] = filter_operating_system_display_names unless filter_operating_system_display_names.nil?
           command.query['filter.version.displayNames'] = filter_version_display_names unless filter_version_display_names.nil?
           command.query['granularity'] = granularity unless granularity.nil?
+          command.query['metricsMode'] = metrics_mode unless metrics_mode.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
