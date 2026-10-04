@@ -101,6 +101,401 @@ module Google
         end
       end
       
+      # Represents an Accelerator Interconnect resource.
+      class AcceleratorInterconnect
+        include Google::Apis::Core::Hashable
+      
+        # The target topology shape (e.g. "4x4x8").
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # The annotations for the accelerator interconnect.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. [Output Only] The creation time of this resource inRFC3339
+        # text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. [Output Only] A unique identifier for this resource type.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The labels for the accelerator interconnect.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The name of the resource. The name must be 1-63 characters
+        # long, and comply withRFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Additional accelerator interconnect creation params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectParams]
+        attr_accessor :params
+      
+        # The reactivation mode for the accelerator interconnect.
+        # Corresponds to the JSON property `reactivationMode`
+        # @return [String]
+        attr_accessor :reactivation_mode
+      
+        # Output only. [Output Only] The fully-qualified URL of this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] The fully-qualified URL of this resource containing
+        # its
+        # unique identifier.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # Detailed status information for the interconnect resource.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatus]
+        attr_accessor :status
+      
+        # Output only. [Output Only] The URL of azone
+        # where the interconnect resides. You must specify this field as part of
+        # the HTTP request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `zone`
+        # @return [String]
+        attr_accessor :zone
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
+          @reactivation_mode = args[:reactivation_mode] if args.key?(:reactivation_mode)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+          @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Detailed status information for the interconnect resource.
+      class AcceleratorInterconnectAcceleratorInterconnectStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The accelerator type (e.g., "TPU7X").
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        # Output only. [Output Only] The current state of the interconnect.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Holds the details of the current accelerator interconnect state.
+        # Corresponds to the JSON property `stateDetails`
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails]
+        attr_accessor :state_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+          @state = args[:state] if args.key?(:state)
+          @state_details = args[:state_details] if args.key?(:state_details)
+        end
+      end
+      
+      # Holds the details of the current accelerator interconnect state.
+      class AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Encountered errors.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error]
+        attr_accessor :error
+      
+        # Output only. Timestamp is shown only if there is an error.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+        end
+        
+        # Output only. Encountered errors.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this
+          # operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # Represents a single error encountered during the processing of an
+          # operation.
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error
+            # details. There is a set of defined message types to use for providing
+            # details.The syntax depends on the error code. For example,
+            # QuotaExceededInfo will have details when the error code is
+            # QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error.
+            # This property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details.
+              # Example of an error when contacting the "pubsub.googleapis.com" API when it
+              # is not enabled:
+              # ` "reason": "API_DISABLED"
+              # "domain": "googleapis.com"
+              # "metadata": `
+              # "resource": "projects/123",
+              # "service": "pubsub.googleapis.com"
+              # `
+              # `
+              # This response indicates that the pubsub.googleapis.com API is not enabled.
+              # Example of an error that is returned when attempting to create a Spanner
+              # instance in a region that is out of stock:
+              # ` "reason": "STOCKOUT"
+              # "domain": "spanner.googleapis.com",
+              # "metadata": `
+              # "availableRegions": "us-central1,us-east2"
+              # `
+              # `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputePreview::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action.
+              # For example, if a quota check failed with an error indicating the calling
+              # project hasn't enabled the accessed service, this can contain a URL pointing
+              # directly to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputePreview::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user
+              # which can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputePreview::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputePreview::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
+      # Represents an Accelerator Interconnect Member Instance.
+      class AcceleratorInterconnectMemberInstance
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The VM instance resource URL (e.g.,
+        # https://.../instances/my-vm).
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # Output only. [Output Only] The unique server-defined ID of the VM instance.
+        # Corresponds to the JSON property `instanceId`
+        # @return [Fixnum]
+        attr_accessor :instance_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+          @instance_id = args[:instance_id] if args.key?(:instance_id)
+        end
+      end
+      
+      # Response message for AcceleratorInterconnectMemberInstances.List.
+      class AcceleratorInterconnectMemberInstancesListResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of AcceleratorInterconnectMemberInstances.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstance>]
+        attr_accessor :items
+      
+        # Token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Additional accelerator interconnect creation params.
+      class AcceleratorInterconnectParams
+        include Google::Apis::Core::Hashable
+      
+        # Structured representation of the capacity pool.
+        # Corresponds to the JSON property `capacityPool`
+        # @return [Google::Apis::ComputePreview::CapacityPool]
+        attr_accessor :capacity_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_pool = args[:capacity_pool] if args.key?(:capacity_pool)
+        end
+      end
+      
+      # Insert an Accelerator Interconnect resource.
+      class AcceleratorInterconnectsInsertRequest
+        include Google::Apis::Core::Hashable
+      
+        # Represents an Accelerator Interconnect resource.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnect]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # Response message for AcceleratorInterconnects.List.
+      class AcceleratorInterconnectsList
+        include Google::Apis::Core::Hashable
+      
+        # A list of AcceleratorInterconnect resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputePreview::AcceleratorInterconnect>]
+        attr_accessor :items
+      
+        # This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Info for accelerator topologies within a densely packed reservation.
       class AcceleratorTopologiesInfo
         include Google::Apis::Core::Hashable
@@ -1522,6 +1917,12 @@ module Google
         # @return [Google::Apis::ComputePreview::AllocationResourceStatusHealthInfo]
         attr_accessor :health_info
       
+        # The number of machines in the reservation. Only populated
+        # for families where machine to host ratio is not 1:1 such as TPU8i.
+        # Corresponds to the JSON property `machineCount`
+        # @return [Fixnum]
+        attr_accessor :machine_count
+      
         # The number of reservation blocks associated with this reservation.
         # Corresponds to the JSON property `reservationBlockCount`
         # @return [Fixnum]
@@ -1544,6 +1945,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @health_info = args[:health_info] if args.key?(:health_info)
+          @machine_count = args[:machine_count] if args.key?(:machine_count)
           @reservation_block_count = args[:reservation_block_count] if args.key?(:reservation_block_count)
           @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
           @specific_sku_allocation = args[:specific_sku_allocation] if args.key?(:specific_sku_allocation)
@@ -2980,6 +3382,20 @@ module Google
         # @return [String]
         attr_accessor :predictive_method
       
+        # The upper bound of the utilization range. Must be a float value in the
+        # range ('utilization_min', 1]. A value of 0.0 is equivalent to leaving the
+        # field unset.
+        # Corresponds to the JSON property `utilizationMax`
+        # @return [Float]
+        attr_accessor :utilization_max
+      
+        # The lower bound of the utilization range. Must be a float value in the
+        # range (0, 'utilization_max']. A value of 0.0 is equivalent to leaving the
+        # field unset.
+        # Corresponds to the JSON property `utilizationMin`
+        # @return [Float]
+        attr_accessor :utilization_min
+      
         # The target CPU utilization that the autoscaler maintains. Must be
         # a float value in the range (0, 1]. If not specified, the default is0.6.
         # If the CPU level is below the target utilization, the autoscaler scales
@@ -3001,6 +3417,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
+          @utilization_max = args[:utilization_max] if args.key?(:utilization_max)
+          @utilization_min = args[:utilization_min] if args.key?(:utilization_min)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
@@ -8354,6 +8772,32 @@ module Google
         end
       end
       
+      # Structured representation of the capacity pool.
+      class CapacityPool
+        include Google::Apis::Core::Hashable
+      
+        # The list of physical topology block identifiers.
+        # Corresponds to the JSON property `partitionIds`
+        # @return [Array<String>]
+        attr_accessor :partition_ids
+      
+        # A list of fully qualified resource names that form the logical bounds.
+        # Both full and relative URIs are supported.
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @partition_ids = args[:partition_ids] if args.key?(:partition_ids)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # Settings controlling the volume of requests, connections and retries to this
       # backend service.
       class CircuitBreakers
@@ -8603,7 +9047,8 @@ module Google
         # GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED,
         # GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         # MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,
-        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For
+        # STORAGE_OPTIMIZED_Z4DS, STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,
+        # STORAGE_OPTIMIZED_Z4M. For
         # example, type MEMORY_OPTIMIZED specifies a commitment that
         # applies only to eligible resources of memory optimized M1 and M2 machine
         # series. Type GENERAL_PURPOSE specifies a commitment that
@@ -30038,6 +30483,26 @@ module Google
         end
       end
       
+      # [Output Only] Operation metadata for instances.troubleshoot.
+      class InstancesTroubleshootOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] Serialized output of the troubleshooting diagnostic
+        # run.
+        # Corresponds to the JSON property `troubleshootOutput`
+        # @return [String]
+        attr_accessor :troubleshoot_output
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @troubleshoot_output = args[:troubleshoot_output] if args.key?(:troubleshoot_output)
+        end
+      end
+      
       # Represents a InstantSnapshot resource.
       # You can use instant snapshots to create disk rollback points quickly..
       class InstantSnapshot
@@ -35432,6 +35897,33 @@ module Google
         end
       end
       
+      # Request to rename an interconnect.
+      class InterconnectsSetNameRequest
+        include Google::Apis::Core::Hashable
+      
+        # The current name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `currentName`
+        # @return [String]
+        attr_accessor :current_name
+      
+        # The new name of the interconnect.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_name = args[:current_name] if args.key?(:current_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Represents a time interval, encoded as a Timestamp start (inclusive) and a
       # Timestamp end (exclusive).
       # The start must be less than or equal to the end.
@@ -38942,6 +39434,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional network edge security service parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputePreview::NetworkEdgeSecurityServiceParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] URL of the region where the resource resides. You
         # must
         # specify this field as part of the HTTP request URL. It is not settable as a
@@ -38979,6 +39476,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @security_policy = args[:security_policy] if args.key?(:security_policy)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -39121,6 +39619,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional network edge security service parameters.
+      class NetworkEdgeSecurityServiceParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -44294,6 +44824,11 @@ module Google
         # @return [Google::Apis::ComputePreview::InstancesBulkInsertOperationMetadata]
         attr_accessor :instances_bulk_insert_operation_metadata
       
+        # [Output Only] Operation metadata for instances.troubleshoot.
+        # Corresponds to the JSON property `instancesTroubleshootOperationMetadata`
+        # @return [Google::Apis::ComputePreview::InstancesTroubleshootOperationMetadata]
+        attr_accessor :instances_troubleshoot_operation_metadata
+      
         # Output only. [Output Only] Type of the resource. Always `compute#operation`
         # for
         # Operation resources.
@@ -44417,6 +44952,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @insert_time = args[:insert_time] if args.key?(:insert_time)
           @instances_bulk_insert_operation_metadata = args[:instances_bulk_insert_operation_metadata] if args.key?(:instances_bulk_insert_operation_metadata)
+          @instances_troubleshoot_operation_metadata = args[:instances_troubleshoot_operation_metadata] if args.key?(:instances_troubleshoot_operation_metadata)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @operation_group_id = args[:operation_group_id] if args.key?(:operation_group_id)
@@ -45842,6 +46378,232 @@ module Google
         end
       end
       
+      # Formability of a partition.
+      class PartitionFormability
+        include Google::Apis::Core::Hashable
+      
+        # Topological shape (e.g., "4x4x4").
+        # Corresponds to the JSON property `acceleratorTopology`
+        # @return [String]
+        attr_accessor :accelerator_topology
+      
+        # Partition ID of a partition that is a direct parent in the tree hierarchy.
+        # In case the partition represents a full cube, it doesn't have a parent
+        # field.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # Identifier for this topological block.
+        # Corresponds to the JSON property `partitionId`
+        # @return [String]
+        attr_accessor :partition_id
+      
+        # Status of a partition formability.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputePreview::PartitionFormabilityStatus]
+        attr_accessor :status
+      
+        # The URL of the capacity subblock.
+        # Corresponds to the JSON property `subblock`
+        # @return [String]
+        attr_accessor :subblock
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_topology = args[:accelerator_topology] if args.key?(:accelerator_topology)
+          @parent = args[:parent] if args.key?(:parent)
+          @partition_id = args[:partition_id] if args.key?(:partition_id)
+          @status = args[:status] if args.key?(:status)
+          @subblock = args[:subblock] if args.key?(:subblock)
+        end
+      end
+      
+      # Status of a partition formability.
+      class PartitionFormabilityStatus
+        include Google::Apis::Core::Hashable
+      
+        # URL of the AcceleratorInterconnect utilizing this partition.
+        # Corresponds to the JSON property `acceleratorInterconnect`
+        # @return [String]
+        attr_accessor :accelerator_interconnect
+      
+        # Detailed error status if the subblock has wrong or no provisioning.
+        # When set, only subblock and error are populated.
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::ComputePreview::PartitionFormabilityStatus::Error]
+        attr_accessor :error
+      
+        # Physical health of the underlying infrastructure.
+        # Corresponds to the JSON property `infrastructureHealth`
+        # @return [String]
+        attr_accessor :infrastructure_health
+      
+        # URL of an instance provisioned in a single-host partitionID at the lowest
+        # level of the partition tree. Empty if the instance is missing.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        # State of the instances within this partition.
+        # Corresponds to the JSON property `instanceState`
+        # @return [String]
+        attr_accessor :instance_state
+      
+        # Current formability state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Usage state indicating if the partition is occupied.
+        # Corresponds to the JSON property `usageState`
+        # @return [String]
+        attr_accessor :usage_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_interconnect = args[:accelerator_interconnect] if args.key?(:accelerator_interconnect)
+          @error = args[:error] if args.key?(:error)
+          @infrastructure_health = args[:infrastructure_health] if args.key?(:infrastructure_health)
+          @instance = args[:instance] if args.key?(:instance)
+          @instance_state = args[:instance_state] if args.key?(:instance_state)
+          @state = args[:state] if args.key?(:state)
+          @usage_state = args[:usage_state] if args.key?(:usage_state)
+        end
+        
+        # Detailed error status if the subblock has wrong or no provisioning.
+        # When set, only subblock and error are populated.
+        class Error
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] The array of errors encountered while processing this
+          # operation.
+          # Corresponds to the JSON property `errors`
+          # @return [Array<Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error>]
+          attr_accessor :errors
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @errors = args[:errors] if args.key?(:errors)
+          end
+          
+          # Represents a single error encountered during the processing of an
+          # operation.
+          class Error
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] The error type identifier for this error.
+            # Corresponds to the JSON property `code`
+            # @return [String]
+            attr_accessor :code
+          
+            # [Output Only] An optional list of messages that contain the error
+            # details. There is a set of defined message types to use for providing
+            # details.The syntax depends on the error code. For example,
+            # QuotaExceededInfo will have details when the error code is
+            # QUOTA_EXCEEDED.
+            # Corresponds to the JSON property `errorDetails`
+            # @return [Array<Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error::ErrorDetail>]
+            attr_accessor :error_details
+          
+            # [Output Only] Indicates the field in the request that caused the error.
+            # This property is optional.
+            # Corresponds to the JSON property `location`
+            # @return [String]
+            attr_accessor :location
+          
+            # [Output Only] An optional, human-readable error message.
+            # Corresponds to the JSON property `message`
+            # @return [String]
+            attr_accessor :message
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @code = args[:code] if args.key?(:code)
+              @error_details = args[:error_details] if args.key?(:error_details)
+              @location = args[:location] if args.key?(:location)
+              @message = args[:message] if args.key?(:message)
+            end
+            
+            # Container for structured error details providing additional context
+            # specific to the encountered error code.
+            class ErrorDetail
+              include Google::Apis::Core::Hashable
+            
+              # Describes the cause of the error with structured details.
+              # Example of an error when contacting the "pubsub.googleapis.com" API when it
+              # is not enabled:
+              # ` "reason": "API_DISABLED"
+              # "domain": "googleapis.com"
+              # "metadata": `
+              # "resource": "projects/123",
+              # "service": "pubsub.googleapis.com"
+              # `
+              # `
+              # This response indicates that the pubsub.googleapis.com API is not enabled.
+              # Example of an error that is returned when attempting to create a Spanner
+              # instance in a region that is out of stock:
+              # ` "reason": "STOCKOUT"
+              # "domain": "spanner.googleapis.com",
+              # "metadata": `
+              # "availableRegions": "us-central1,us-east2"
+              # `
+              # `
+              # Corresponds to the JSON property `errorInfo`
+              # @return [Google::Apis::ComputePreview::ErrorInfo]
+              attr_accessor :error_info
+            
+              # Provides links to documentation or for performing an out of band action.
+              # For example, if a quota check failed with an error indicating the calling
+              # project hasn't enabled the accessed service, this can contain a URL pointing
+              # directly to the right place in the developer console to flip the bit.
+              # Corresponds to the JSON property `help`
+              # @return [Google::Apis::ComputePreview::Help]
+              attr_accessor :help
+            
+              # Provides a localized error message that is safe to return to the user
+              # which can be attached to an RPC error.
+              # Corresponds to the JSON property `localizedMessage`
+              # @return [Google::Apis::ComputePreview::LocalizedMessage]
+              attr_accessor :localized_message
+            
+              # Additional details for quota exceeded error for resource quota.
+              # Corresponds to the JSON property `quotaInfo`
+              # @return [Google::Apis::ComputePreview::QuotaExceededInfo]
+              attr_accessor :quota_info
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @error_info = args[:error_info] if args.key?(:error_info)
+                @help = args[:help] if args.key?(:help)
+                @localized_message = args[:localized_message] if args.key?(:localized_message)
+                @quota_info = args[:quota_info] if args.key?(:quota_info)
+              end
+            end
+          end
+        end
+      end
+      
       # A matcher for the path portion of the URL. The BackendService
       # from the longest-matched rule will serve the URL. If no rule was matched, the
       # default service is used.
@@ -46826,11 +47588,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # [Output Only] Quotas assigned to this project.
-        # Corresponds to the JSON property `quotas`
-        # @return [Array<Google::Apis::ComputePreview::Quota>]
-        attr_accessor :quotas
-      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -46871,7 +47628,6 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @usage_export_location = args[:usage_export_location] if args.key?(:usage_export_location)
           @vm_dns_setting = args[:vm_dns_setting] if args.key?(:vm_dns_setting)
@@ -47972,30 +48728,15 @@ module Google
         end
       end
       
-      # A quotas entry.
-      class Quota
+      # Query formability of a given set of reservation subblocks.
+      class QueryFormabilityRequest
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Quota limit for this metric.
-        # Corresponds to the JSON property `limit`
-        # @return [Float]
-        attr_accessor :limit
-      
-        # [Output Only] Name of the quota metric.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        # [Output Only] Owning resource. This is the resource on which this quota
-        # is applied.
-        # Corresponds to the JSON property `owner`
-        # @return [String]
-        attr_accessor :owner
-      
-        # [Output Only] Current usage of this metric.
-        # Corresponds to the JSON property `usage`
-        # @return [Float]
-        attr_accessor :usage
+        # Explicit list of fully qualified reservation subblock resource URLs. Both
+        # full and relative URIs are supported.
+        # Corresponds to the JSON property `subblocks`
+        # @return [Array<String>]
+        attr_accessor :subblocks
       
         def initialize(**args)
            update!(**args)
@@ -48003,10 +48744,38 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @limit = args[:limit] if args.key?(:limit)
-          @metric = args[:metric] if args.key?(:metric)
-          @owner = args[:owner] if args.key?(:owner)
-          @usage = args[:usage] if args.key?(:usage)
+          @subblocks = args[:subblocks] if args.key?(:subblocks)
+        end
+      end
+      
+      # Response message for AcceleratorInterconnects.QueryFormability.
+      class QueryFormabilityResponse
+        include Google::Apis::Core::Hashable
+      
+        # Flattened collection of hierarchical partitions and their formability
+        # across all requested subblocks.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputePreview::PartitionFormability>]
+        attr_accessor :items
+      
+        # This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -48200,11 +48969,6 @@ module Google
         # @return [Google::Apis::ComputePreview::Region::QuotaStatusWarning]
         attr_accessor :quota_status_warning
       
-        # [Output Only] Quotas assigned to this region.
-        # Corresponds to the JSON property `quotas`
-        # @return [Array<Google::Apis::ComputePreview::Quota>]
-        attr_accessor :quotas
-      
         # [Output Only] Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -48240,7 +49004,6 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @quota_status_warning = args[:quota_status_warning] if args.key?(:quota_status_warning)
-          @quotas = args[:quotas] if args.key?(:quotas)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @supports_pzs = args[:supports_pzs] if args.key?(:supports_pzs)
@@ -51024,6 +51787,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. [Output Only] The number of machines in the reservation block.
+        # Only
+        # populated for families where machine to host ratio is not 1:1 such as
+        # TPU8i.
+        # Corresponds to the JSON property `machineCount`
+        # @return [Fixnum]
+        attr_accessor :machine_count
+      
         # Output only. [Output Only] The name of this reservation block generated by
         # Google
         # Compute Engine. The name must be 1-63 characters long, and comply with
@@ -51093,6 +51864,7 @@ module Google
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
+          @machine_count = args[:machine_count] if args.key?(:machine_count)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
           @reservation_maintenance = args[:reservation_maintenance] if args.key?(:reservation_maintenance)
@@ -51270,6 +52042,12 @@ module Google
         # @return [String]
         attr_accessor :host
       
+        # Machine hash for a given instance. Only populated for families where
+        # machine-to-host ratio is not 1:1 such as TPU8i.
+        # Corresponds to the JSON property `machine`
+        # @return [String]
+        attr_accessor :machine
+      
         # Sub block hash for a given instance
         # Corresponds to the JSON property `subBlock`
         # @return [String]
@@ -51282,6 +52060,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @host = args[:host] if args.key?(:host)
+          @machine = args[:machine] if args.key?(:machine)
           @sub_block = args[:sub_block] if args.key?(:sub_block)
         end
       end
@@ -51949,6 +52728,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Output only. [Output Only] The number of machines in the reservation subBlock.
+        # Only
+        # populated for families where machine to host ratio is not 1:1 such as
+        # TPU8i.
+        # Corresponds to the JSON property `machineCount`
+        # @return [Fixnum]
+        attr_accessor :machine_count
+      
         # Output only. [Output Only] The name of this reservation subBlock generated by
         # Google
         # Compute Engine. The name must be 1-63 characters long, and comply with
@@ -52008,6 +52795,7 @@ module Google
           @in_use_count = args[:in_use_count] if args.key?(:in_use_count)
           @in_use_host_count = args[:in_use_host_count] if args.key?(:in_use_host_count)
           @kind = args[:kind] if args.key?(:kind)
+          @machine_count = args[:machine_count] if args.key?(:machine_count)
           @name = args[:name] if args.key?(:name)
           @physical_topology = args[:physical_topology] if args.key?(:physical_topology)
           @reservation_sub_block_maintenance = args[:reservation_sub_block_maintenance] if args.key?(:reservation_sub_block_maintenance)
@@ -56989,6 +57777,13 @@ module Google
         # @return [Google::Apis::ComputePreview::BfdStatus]
         attr_accessor :bfd_status
       
+        # Output only. [Output Only] Indicates whether the BGP peer is in a
+        # depreferenced state.
+        # Corresponds to the JSON property `depreferenced`
+        # @return [Boolean]
+        attr_accessor :depreferenced
+        alias_method :depreferenced?, :depreferenced
+      
         # Output only. Enable IPv4 traffic over BGP Peer.
         # It is enabled by default if the peerIpAddress is version 4.
         # Corresponds to the JSON property `enableIpv4`
@@ -57102,6 +57897,7 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @depreferenced = args[:depreferenced] if args.key?(:depreferenced)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -58789,6 +59585,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Additional security policy parameters.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputePreview::SecurityPolicyParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] The parent of the security policy.
         # Corresponds to the JSON property `parent`
         # @return [String]
@@ -58892,6 +59693,7 @@ module Google
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @params = args[:params] if args.key?(:params)
           @parent = args[:parent] if args.key?(:parent)
           @recaptcha_options_config = args[:recaptcha_options_config] if args.key?(:recaptcha_options_config)
           @region = args[:region] if args.key?(:region)
@@ -59357,6 +60159,38 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Additional security policy parameters.
+      class SecurityPolicyParams
+        include Google::Apis::Core::Hashable
+      
+        # Tag keys/values directly bound to this resource.
+        # Tag keys and values have the same definition as resource
+        # manager tags. The field is allowed for INSERT
+        # only. The keys/values to set on the resource should be specified in
+        # either ID ` : ` or Namespaced format
+        # ` : `.
+        # For example the following are valid inputs:
+        # * `"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"`
+        # * `"123/environment" : "production", "345/abc" : "xyz"`
+        # Note:
+        # * Invalid combinations of ID & namespaced format is not supported. For
+        # instance: `"123/environment" : "tagValues/444"` is invalid.
+        # * Inconsistent format is not supported. For instance:
+        # `"tagKeys/333" : "tagValues/444", "123/env" : "prod"` is invalid.
+        # Corresponds to the JSON property `resourceManagerTags`
+        # @return [Hash<String,String>]
+        attr_accessor :resource_manager_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
       
@@ -62630,6 +63464,17 @@ module Google
         # @return [String]
         attr_accessor :certificate
       
+        # A value read into memory from a write-only private key file whose
+        # contents have been encrypted using the appropriate HPKE key distributed
+        # by Google. The underlying plaintext MUST be a PEM format private key. For
+        # security, only insert requests include this field. Exactly
+        # one of privateKey or encryptedPemPrivateKey
+        # MUST be specified when creating a self-managed certificate.
+        # Corresponds to the JSON property `encryptedPemPrivateKey`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encrypted_pem_private_key
+      
         # A write-only private key in PEM format. Only insert
         # requests will include this field.
         # Corresponds to the JSON property `privateKey`
@@ -62643,6 +63488,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @certificate = args[:certificate] if args.key?(:certificate)
+          @encrypted_pem_private_key = args[:encrypted_pem_private_key] if args.key?(:encrypted_pem_private_key)
           @private_key = args[:private_key] if args.key?(:private_key)
         end
       end

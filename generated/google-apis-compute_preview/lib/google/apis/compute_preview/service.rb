@@ -55,6 +55,502 @@ module Google
           @batch_path = 'batch/compute/v1'
         end
         
+        # Lists member instances of the AcceleratorInterconnect.
+        # @param [String] project
+        #   Project ID for the request.
+        # @param [String] zone
+        #   Zone where the AcceleratorInterconnect is located. Zone name should conform
+        #   to RFC1035.
+        # @param [String] accelerator_interconnect
+        #   Name of the parent AcceleratorInterconnect. The name should conform to
+        #   RFC1035 or be a resource ID.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions:
+        #   expressions that support regular expressions and expressions that follow
+        #   API improvement proposal AIP-160.
+        #   These two types of filter expressions cannot be mixed in one request.
+        #   If you want to use AIP-160, your expression must specify the field name, an
+        #   operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator
+        #   must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+        #   For example, if you are filtering Compute Engine instances, you can
+        #   exclude instances named `example-instance` by specifying
+        #   `name != example-instance`.
+        #   The `:*` comparison can be used to test whether a key has been defined.
+        #   For example, to find all objects with `owner` label use:
+        #   ```
+        #   labels.owner:*
+        #   ```
+        #   You can also filter nested fields. For example, you could specify
+        #   `scheduling.automaticRestart = false` to include instances only
+        #   if they are not scheduled for automatic restarts. You can use filtering
+        #   on nested fields to filter based onresource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example:
+        #   ```
+        #   (scheduling.automaticRestart = true)
+        #   (cpuPlatform = "Intel Skylake")
+        #   ```
+        #   By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly.
+        #   For example:
+        #   ```
+        #   (cpuPlatform = "Intel Skylake") OR
+        #   (cpuPlatform = "Intel Broadwell") AND
+        #   (scheduling.automaticRestart = true)
+        #   ```
+        #   If you want to use a regular expression, use the `eq` (equal) or `ne`
+        #   (not equal) operator against a single un-parenthesized expression with or
+        #   without quotes or against multiple parenthesized expressions. Examples:
+        #   `fieldname eq unquoted literal`
+        #   `fieldname eq 'single quoted literal'`
+        #   `fieldname eq "double quoted literal"`
+        #   `(fieldname1 eq literal) (fieldname2 ne "literal")`
+        #   The literal value is interpreted as a regular expression using GoogleRE2
+        #   library syntax.
+        #   The literal value must match the entire field.
+        #   For example, to filter for instances that do not end with name "instance",
+        #   you would use `name ne .*instance`.
+        #   You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned.
+        #   If the number of available results is larger than `maxResults`,
+        #   Compute Engine returns a `nextPageToken` that can be used to get
+        #   the next page of results in subsequent list requests. Acceptable values are
+        #   `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results
+        #   are returned in alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation
+        #   timestamp using `orderBy="creationTimestamp desc"`. This sorts
+        #   results based on the `creationTimestamp` field in
+        #   reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or
+        #   `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the
+        #   `nextPageToken` returned by a previous list request to get
+        #   the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstancesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstancesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_accelerator_interconnect_member_instances(project, zone, accelerator_interconnect, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/acceleratorInterconnects/{acceleratorInterconnect}/memberInstances', options)
+          command.response_representation = Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstancesListResponse::Representation
+          command.response_class = Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstancesListResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorInterconnect'] = accelerator_interconnect unless accelerator_interconnect.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified accelerator interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of thezone where the
+        #   accelerator interconnect is located. Zone name should conform to RFC1035.
+        # @param [String] accelerator_interconnect
+        #   The name of the accelerator interconnect to delete. Name should conform to
+        #   RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and
+        #   the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments.
+        #   The request ID must be
+        #   a valid UUID with the exception that zero UUID is not supported
+        #   (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_accelerator_interconnect(project, zone, accelerator_interconnect, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'projects/{project}/zones/{zone}/acceleratorInterconnects/{acceleratorInterconnect}', options)
+          command.response_representation = Google::Apis::ComputePreview::Operation::Representation
+          command.response_class = Google::Apis::ComputePreview::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorInterconnect'] = accelerator_interconnect unless accelerator_interconnect.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns all of the details about the specified accelerator interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of thezone where the
+        #   accelerator interconnect is located. Zone name should conform to RFC1035.
+        # @param [String] accelerator_interconnect
+        #   The name of the accelerator interconnect. Name should conform to RFC1035.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::AcceleratorInterconnect] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnect]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_accelerator_interconnect(project, zone, accelerator_interconnect, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/acceleratorInterconnects/{acceleratorInterconnect}', options)
+          command.response_representation = Google::Apis::ComputePreview::AcceleratorInterconnect::Representation
+          command.response_class = Google::Apis::ComputePreview::AcceleratorInterconnect
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['acceleratorInterconnect'] = accelerator_interconnect unless accelerator_interconnect.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an accelerator interconnect using the information that you specify
+        # in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone
+        #   where you want to create the accelerator interconnect. Zone name should
+        #   conform to RFC1035.
+        # @param [Google::Apis::ComputePreview::AcceleratorInterconnectsInsertRequest] accelerator_interconnects_insert_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and
+        #   the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments.
+        #   The request ID must be
+        #   a valid UUID with the exception that zero UUID is not supported
+        #   (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_accelerator_interconnect(project, zone, accelerator_interconnects_insert_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/acceleratorInterconnects', options)
+          command.request_representation = Google::Apis::ComputePreview::AcceleratorInterconnectsInsertRequest::Representation
+          command.request_object = accelerator_interconnects_insert_request_object
+          command.response_representation = Google::Apis::ComputePreview::Operation::Representation
+          command.response_class = Google::Apis::ComputePreview::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of accelerator interconnects that are contained within the
+        # specified project and zone.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of thezone where the
+        #   accelerator interconnect is located. Zone name should conform to RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions:
+        #   expressions that support regular expressions and expressions that follow
+        #   API improvement proposal AIP-160.
+        #   These two types of filter expressions cannot be mixed in one request.
+        #   If you want to use AIP-160, your expression must specify the field name, an
+        #   operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator
+        #   must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+        #   For example, if you are filtering Compute Engine instances, you can
+        #   exclude instances named `example-instance` by specifying
+        #   `name != example-instance`.
+        #   The `:*` comparison can be used to test whether a key has been defined.
+        #   For example, to find all objects with `owner` label use:
+        #   ```
+        #   labels.owner:*
+        #   ```
+        #   You can also filter nested fields. For example, you could specify
+        #   `scheduling.automaticRestart = false` to include instances only
+        #   if they are not scheduled for automatic restarts. You can use filtering
+        #   on nested fields to filter based onresource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example:
+        #   ```
+        #   (scheduling.automaticRestart = true)
+        #   (cpuPlatform = "Intel Skylake")
+        #   ```
+        #   By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly.
+        #   For example:
+        #   ```
+        #   (cpuPlatform = "Intel Skylake") OR
+        #   (cpuPlatform = "Intel Broadwell") AND
+        #   (scheduling.automaticRestart = true)
+        #   ```
+        #   If you want to use a regular expression, use the `eq` (equal) or `ne`
+        #   (not equal) operator against a single un-parenthesized expression with or
+        #   without quotes or against multiple parenthesized expressions. Examples:
+        #   `fieldname eq unquoted literal`
+        #   `fieldname eq 'single quoted literal'`
+        #   `fieldname eq "double quoted literal"`
+        #   `(fieldname1 eq literal) (fieldname2 ne "literal")`
+        #   The literal value is interpreted as a regular expression using GoogleRE2
+        #   library syntax.
+        #   The literal value must match the entire field.
+        #   For example, to filter for instances that do not end with name "instance",
+        #   you would use `name ne .*instance`.
+        #   You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned.
+        #   If the number of available results is larger than `maxResults`,
+        #   Compute Engine returns a `nextPageToken` that can be used to get
+        #   the next page of results in subsequent list requests. Acceptable values are
+        #   `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results
+        #   are returned in alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation
+        #   timestamp using `orderBy="creationTimestamp desc"`. This sorts
+        #   results based on the `creationTimestamp` field in
+        #   reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or
+        #   `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the
+        #   `nextPageToken` returned by a previous list request to get
+        #   the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::AcceleratorInterconnectsList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::AcceleratorInterconnectsList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_accelerator_interconnects(project, zone, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/zones/{zone}/acceleratorInterconnects', options)
+          command.response_representation = Google::Apis::ComputePreview::AcceleratorInterconnectsList::Representation
+          command.response_class = Google::Apis::ComputePreview::AcceleratorInterconnectsList
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Queries hierarchical formability over dense reservations.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of thezone where the
+        #   request is located. Zone name should conform to RFC1035.
+        # @param [Google::Apis::ComputePreview::QueryFormabilityRequest] query_formability_request_object
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. Most
+        #   Compute resources support two types of filter expressions:
+        #   expressions that support regular expressions and expressions that follow
+        #   API improvement proposal AIP-160.
+        #   These two types of filter expressions cannot be mixed in one request.
+        #   If you want to use AIP-160, your expression must specify the field name, an
+        #   operator, and the value that you want to use for filtering. The value
+        #   must be a string, a number, or a boolean. The operator
+        #   must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`.
+        #   For example, if you are filtering Compute Engine instances, you can
+        #   exclude instances named `example-instance` by specifying
+        #   `name != example-instance`.
+        #   The `:*` comparison can be used to test whether a key has been defined.
+        #   For example, to find all objects with `owner` label use:
+        #   ```
+        #   labels.owner:*
+        #   ```
+        #   You can also filter nested fields. For example, you could specify
+        #   `scheduling.automaticRestart = false` to include instances only
+        #   if they are not scheduled for automatic restarts. You can use filtering
+        #   on nested fields to filter based onresource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example:
+        #   ```
+        #   (scheduling.automaticRestart = true)
+        #   (cpuPlatform = "Intel Skylake")
+        #   ```
+        #   By default, each expression is an `AND` expression. However, you
+        #   can include `AND` and `OR` expressions explicitly.
+        #   For example:
+        #   ```
+        #   (cpuPlatform = "Intel Skylake") OR
+        #   (cpuPlatform = "Intel Broadwell") AND
+        #   (scheduling.automaticRestart = true)
+        #   ```
+        #   If you want to use a regular expression, use the `eq` (equal) or `ne`
+        #   (not equal) operator against a single un-parenthesized expression with or
+        #   without quotes or against multiple parenthesized expressions. Examples:
+        #   `fieldname eq unquoted literal`
+        #   `fieldname eq 'single quoted literal'`
+        #   `fieldname eq "double quoted literal"`
+        #   `(fieldname1 eq literal) (fieldname2 ne "literal")`
+        #   The literal value is interpreted as a regular expression using GoogleRE2
+        #   library syntax.
+        #   The literal value must match the entire field.
+        #   For example, to filter for instances that do not end with name "instance",
+        #   you would use `name ne .*instance`.
+        #   You cannot combine constraints on multiple fields using regular
+        #   expressions.
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned.
+        #   If the number of available results is larger than `maxResults`,
+        #   Compute Engine returns a `nextPageToken` that can be used to get
+        #   the next page of results in subsequent list requests. Acceptable values are
+        #   `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results
+        #   are returned in alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation
+        #   timestamp using `orderBy="creationTimestamp desc"`. This sorts
+        #   results based on the `creationTimestamp` field in
+        #   reverse chronological order (newest result first). Use this to sort
+        #   resources like operations so that the newest operation is returned first.
+        #   Currently, only sorting by `name` or
+        #   `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the
+        #   `nextPageToken` returned by a previous list request to get
+        #   the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::QueryFormabilityResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::QueryFormabilityResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_accelerator_interconnect_formability(project, zone, query_formability_request_object = nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/zones/{zone}/acceleratorInterconnects:queryFormability', options)
+          command.request_representation = Google::Apis::ComputePreview::QueryFormabilityRequest::Representation
+          command.request_object = query_formability_request_object
+          command.response_representation = Google::Apis::ComputePreview::QueryFormabilityResponse::Representation
+          command.response_class = Google::Apis::ComputePreview::QueryFormabilityResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of accelerator types.
         # To prevent failure, it is recommended that you set the
         # `returnPartialSuccess` parameter to `true`.
@@ -18248,6 +18744,8 @@ module Google
         #   The request ID must be
         #   a valid UUID with the exception that zero UUID is not supported
         #   (00000000-0000-0000-0000-000000000000).
+        # @param [String] reset_mode
+        #   Mode of reset operation. Defaults to HARD_RESET if not provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18267,7 +18765,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_instance(project, zone, instance, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def reset_instance(project, zone, instance, request_id: nil, reset_mode: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'projects/{project}/zones/{zone}/instances/{instance}/reset', options)
           command.response_representation = Google::Apis::ComputePreview::Operation::Representation
           command.response_class = Google::Apis::ComputePreview::Operation
@@ -18275,6 +18773,7 @@ module Google
           command.params['zone'] = zone unless zone.nil?
           command.params['instance'] = instance unless instance.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['resetMode'] = reset_mode unless reset_mode.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -23062,6 +23561,59 @@ module Google
           command.response_class = Google::Apis::ComputePreview::Operation
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-10-01-preview"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets name of an interconnect.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] interconnect
+        #   Name of the interconnect to update.
+        # @param [Google::Apis::ComputePreview::InterconnectsSetNameRequest] interconnects_set_name_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID
+        #   so that if you must retry your request, the server will know to ignore
+        #   the request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and
+        #   the request times out. If you make the request again with the same
+        #   request ID, the server can check if original operation with the same
+        #   request ID was received, and if so, will ignore the second request. This
+        #   prevents clients from accidentally creating duplicate commitments.
+        #   The request ID must be
+        #   a valid UUID with the exception that zero UUID is not supported
+        #   (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputePreview::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputePreview::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_interconnect_name(project, interconnect, interconnects_set_name_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/interconnects/{interconnect}/setName', options)
+          command.request_representation = Google::Apis::ComputePreview::InterconnectsSetNameRequest::Representation
+          command.request_object = interconnects_set_name_request_object
+          command.response_representation = Google::Apis::ComputePreview::Operation::Representation
+          command.response_class = Google::Apis::ComputePreview::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['interconnect'] = interconnect unless interconnect.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
