@@ -740,11 +740,12 @@ module Google
         #   combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. *
         #   A restriction has the form of ``field` `operator` `value``. * All fields must
         #   use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName`
-        #   * `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad
-        #   group: `adGroupId="1234"` * All ad group ads under an ad group with an
-        #   entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(
+        #   * `entityStatus` * `adGroupAdId` * `parentCreativeId` Examples: * All ad group
+        #   ads under an ad group: `adGroupId="1234"` * All ad group ads under an ad group
+        #   with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(
         #   entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
-        #   AND adGroupId="12345"` The length of this field should be no more than 500
+        #   AND adGroupId="12345"` * All ad group ads under a parent creative: `
+        #   parentCreativeId="12345"` The length of this field should be no more than 500
         #   characters. Reference our [filter `LIST` requests](/display-video/api/guides/
         #   how-tos/filters) guide for more information.
         # @param [String] order_by
