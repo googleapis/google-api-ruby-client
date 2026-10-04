@@ -574,6 +574,55 @@ module Google
         end
       end
       
+      # Creates a new DropdownDefinition in the document.
+      class CreateDropdownDefinitionRequest
+        include Google::Apis::Core::Hashable
+      
+        # A dropdown definition in the document.
+        # Corresponds to the JSON property `dropdownDefinition`
+        # @return [Google::Apis::DocsV1::DropdownDefinition]
+        attr_accessor :dropdown_definition
+      
+        # The ID of the tab to create the dropdown definition in. When omitted, the
+        # request is applied to the first tab. In a document containing a single tab: -
+        # If provided, must match the singular tab's ID. - If omitted, the request
+        # applies to the singular tab. In a document containing multiple tabs: - If
+        # provided, the request applies to the specified tab. - If omitted, the request
+        # applies to the first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition = args[:dropdown_definition] if args.key?(:dropdown_definition)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Response message for creating a dropdown definition.
+      class CreateDropdownDefinitionResponse
+        include Google::Apis::Core::Hashable
+      
+        # A dropdown definition in the document.
+        # Corresponds to the JSON property `dropdownDefinition`
+        # @return [Google::Apis::DocsV1::DropdownDefinition]
+        attr_accessor :dropdown_definition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition = args[:dropdown_definition] if args.key?(:dropdown_definition)
+        end
+      end
+      
       # Creates a Footer. The new footer is applied to the SectionStyle at the
       # location of the SectionBreak if specified, otherwise it is applied to the
       # DocumentStyle. If a footer of the specified type already exists, a 400 bad
@@ -1161,6 +1210,38 @@ module Google
         # Update properties of this object
         def update!(**args)
           @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Deletes a DropdownDefinition. If the dropdown definition is referenced by any
+      # dropdown instances (chips) in the document, a 400 bad request error is
+      # returned.
+      class DeleteDropdownDefinitionRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the DropdownDefinition to delete.
+        # Corresponds to the JSON property `dropdownDefinitionId`
+        # @return [String]
+        attr_accessor :dropdown_definition_id
+      
+        # The ID of the tab that contains the dropdown definition to delete. When
+        # omitted, the request is applied to the first tab. In a document containing a
+        # single tab: - If provided, must match the singular tab's ID. - If omitted, the
+        # request applies to the singular tab. In a document containing multiple tabs: -
+        # If provided, the request applies to the specified tab. - If omitted, the
+        # request applies to the first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition_id = args[:dropdown_definition_id] if args.key?(:dropdown_definition_id)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
@@ -1970,6 +2051,11 @@ module Google
         # @return [Google::Apis::DocsV1::DocumentStyle]
         attr_accessor :document_style
       
+        # The dropdown definitions in a document tab, keyed by dropdown definition ID.
+        # Corresponds to the JSON property `dropdownDefinitions`
+        # @return [Hash<String,Google::Apis::DocsV1::DropdownDefinition>]
+        attr_accessor :dropdown_definitions
+      
         # The footers in the document tab, keyed by footer ID.
         # Corresponds to the JSON property `footers`
         # @return [Hash<String,Google::Apis::DocsV1::Footer>]
@@ -2031,6 +2117,7 @@ module Google
           @body = args[:body] if args.key?(:body)
           @comment_anchors = args[:comment_anchors] if args.key?(:comment_anchors)
           @document_style = args[:document_style] if args.key?(:document_style)
+          @dropdown_definitions = args[:dropdown_definitions] if args.key?(:dropdown_definitions)
           @footers = args[:footers] if args.key?(:footers)
           @footnotes = args[:footnotes] if args.key?(:footnotes)
           @headers = args[:headers] if args.key?(:headers)
@@ -2041,6 +2128,273 @@ module Google
           @positioned_objects = args[:positioned_objects] if args.key?(:positioned_objects)
           @suggested_document_style_changes = args[:suggested_document_style_changes] if args.key?(:suggested_document_style_changes)
           @suggested_named_styles_changes = args[:suggested_named_styles_changes] if args.key?(:suggested_named_styles_changes)
+        end
+      end
+      
+      # A dropdown in the document. The chip is displayed as a dropdown menu that
+      # allows users to select an option from a configurable list of options.
+      class Dropdown
+        include Google::Apis::Core::Hashable
+      
+        # The ID of this dropdown.
+        # Corresponds to the JSON property `dropdownId`
+        # @return [String]
+        attr_accessor :dropdown_id
+      
+        # Properties specific to a dropdown.
+        # Corresponds to the JSON property `dropdownProperties`
+        # @return [Google::Apis::DocsV1::DropdownProperties]
+        attr_accessor :dropdown_properties
+      
+        # IDs for suggestions that remove this dropdown from the document. If empty,
+        # then this dropdown isn't suggested for deletion.
+        # Corresponds to the JSON property `suggestedDeletionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_deletion_ids
+      
+        # The suggested properties changes to this dropdown, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedDropdownPropertiesChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedDropdownProperties>]
+        attr_accessor :suggested_dropdown_properties_changes
+      
+        # IDs for suggestions that insert this dropdown into the document. If empty,
+        # then this dropdown isn't a suggested insertion.
+        # Corresponds to the JSON property `suggestedInsertionIds`
+        # @return [Array<String>]
+        attr_accessor :suggested_insertion_ids
+      
+        # The suggested text style changes to this dropdown, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedTextStyleChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedTextStyle>]
+        attr_accessor :suggested_text_style_changes
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that's contained in a table may
+        # inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_id = args[:dropdown_id] if args.key?(:dropdown_id)
+          @dropdown_properties = args[:dropdown_properties] if args.key?(:dropdown_properties)
+          @suggested_deletion_ids = args[:suggested_deletion_ids] if args.key?(:suggested_deletion_ids)
+          @suggested_dropdown_properties_changes = args[:suggested_dropdown_properties_changes] if args.key?(:suggested_dropdown_properties_changes)
+          @suggested_insertion_ids = args[:suggested_insertion_ids] if args.key?(:suggested_insertion_ids)
+          @suggested_text_style_changes = args[:suggested_text_style_changes] if args.key?(:suggested_text_style_changes)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # A dropdown definition in the document.
+      class DropdownDefinition
+        include Google::Apis::Core::Hashable
+      
+        # The ID of this dropdown definition. If you specify an ID, it must be unique
+        # among all IDs in the tab. The ID must start with `kix.` and match regex `^kix\.
+        # [a-zA-Z0-9_-]`2,14`$` (length 6-18 chars). If you don't specify an ID, a
+        # unique one is generated.
+        # Corresponds to the JSON property `dropdownDefinitionId`
+        # @return [String]
+        attr_accessor :dropdown_definition_id
+      
+        # Properties of a dropdown definition.
+        # Corresponds to the JSON property `dropdownDefinitionProperties`
+        # @return [Google::Apis::DocsV1::DropdownDefinitionProperties]
+        attr_accessor :dropdown_definition_properties
+      
+        # ID for suggestion that deletes this dropdown definition.
+        # Corresponds to the JSON property `suggestedDeletionId`
+        # @return [String]
+        attr_accessor :suggested_deletion_id
+      
+        # Suggested property changes to this definition, keyed by suggestion ID.
+        # Corresponds to the JSON property `suggestedDropdownDefinitionPropertiesChanges`
+        # @return [Hash<String,Google::Apis::DocsV1::SuggestedDropdownDefinitionProperties>]
+        attr_accessor :suggested_dropdown_definition_properties_changes
+      
+        # ID for suggestion that inserts this dropdown definition.
+        # Corresponds to the JSON property `suggestedInsertionId`
+        # @return [String]
+        attr_accessor :suggested_insertion_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition_id = args[:dropdown_definition_id] if args.key?(:dropdown_definition_id)
+          @dropdown_definition_properties = args[:dropdown_definition_properties] if args.key?(:dropdown_definition_properties)
+          @suggested_deletion_id = args[:suggested_deletion_id] if args.key?(:suggested_deletion_id)
+          @suggested_dropdown_definition_properties_changes = args[:suggested_dropdown_definition_properties_changes] if args.key?(:suggested_dropdown_definition_properties_changes)
+          @suggested_insertion_id = args[:suggested_insertion_id] if args.key?(:suggested_insertion_id)
+        end
+      end
+      
+      # Properties of a dropdown definition.
+      class DropdownDefinitionProperties
+        include Google::Apis::Core::Hashable
+      
+        # The list of options defined by this dropdown definition. A dropdown definition
+        # must have at least 2 options and at most 50 options.
+        # Corresponds to the JSON property `options`
+        # @return [Array<Google::Apis::DocsV1::DropdownOption>]
+        attr_accessor :options
+      
+        # The title of the dropdown definition.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options = args[:options] if args.key?(:options)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A mask that indicates which of the fields on the base
+      # DropdownDefinitionProperties have been changed in this suggestion. For any
+      # field set to true, there's a new suggested value.
+      class DropdownDefinitionPropertiesSuggestionState
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if there was a suggested change to options.
+        # Corresponds to the JSON property `optionsSuggested`
+        # @return [Boolean]
+        attr_accessor :options_suggested
+        alias_method :options_suggested?, :options_suggested
+      
+        # Indicates if there was a suggested change to title.
+        # Corresponds to the JSON property `titleSuggested`
+        # @return [Boolean]
+        attr_accessor :title_suggested
+        alias_method :title_suggested?, :title_suggested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @options_suggested = args[:options_suggested] if args.key?(:options_suggested)
+          @title_suggested = args[:title_suggested] if args.key?(:title_suggested)
+        end
+      end
+      
+      # An option in a Dropdown.
+      class DropdownOption
+        include Google::Apis::Core::Hashable
+      
+        # The display value of this dropdown option.
+        # Corresponds to the JSON property `displayValue`
+        # @return [String]
+        attr_accessor :display_value
+      
+        # The ID of this dropdown option. If you specify an ID, it must be unique among
+        # all options in this dropdown definition. The ID must start with `dropdownItem.`
+        # and match regex `^dropdownItem\.[a-zA-Z0-9_-]`2,14`$` (length 15-27 chars).
+        # If you don't specify an ID, a unique one is generated.
+        # Corresponds to the JSON property `optionId`
+        # @return [String]
+        attr_accessor :option_id
+      
+        # Represents the styling that can be applied to text. Inherited text styles are
+        # represented as unset fields in this message. A text style's parent depends on
+        # where the text style is defined: * The TextStyle of text in a Paragraph
+        # inherits from the paragraph's corresponding named style type. * The TextStyle
+        # on a named style inherits from the normal text named style. * The TextStyle of
+        # the normal text named style inherits from the default text style in the Docs
+        # editor. * The TextStyle on a Paragraph element that's contained in a table may
+        # inherit its text style from the table style. If the text style does not
+        # inherit from a parent, unsetting fields will revert the style to a value
+        # matching the defaults in the Docs editor.
+        # Corresponds to the JSON property `textStyle`
+        # @return [Google::Apis::DocsV1::TextStyle]
+        attr_accessor :text_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_value = args[:display_value] if args.key?(:display_value)
+          @option_id = args[:option_id] if args.key?(:option_id)
+          @text_style = args[:text_style] if args.key?(:text_style)
+        end
+      end
+      
+      # Properties specific to a dropdown.
+      class DropdownProperties
+        include Google::Apis::Core::Hashable
+      
+        # The human-readable display text of the currently selected item. This field is
+        # populated by the server based on the dropdown definition and the selected
+        # option ID. It may differ from `DropdownOption.display_value` if the underlying
+        # option definition was modified or deleted, or during pending suggested changes.
+        # Corresponds to the JSON property `displayValue`
+        # @return [String]
+        attr_accessor :display_value
+      
+        # The ID of the DropdownDefinition that defines the options for this dropdown.
+        # Corresponds to the JSON property `dropdownDefinitionId`
+        # @return [String]
+        attr_accessor :dropdown_definition_id
+      
+        # The ID of the selected option in this dropdown.
+        # Corresponds to the JSON property `selectedOptionId`
+        # @return [String]
+        attr_accessor :selected_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_value = args[:display_value] if args.key?(:display_value)
+          @dropdown_definition_id = args[:dropdown_definition_id] if args.key?(:dropdown_definition_id)
+          @selected_option_id = args[:selected_option_id] if args.key?(:selected_option_id)
+        end
+      end
+      
+      # A mask that indicates which of the fields on the base DropdownProperties have
+      # been changed in this suggestion. For any field set to true, there's a new
+      # suggested value.
+      class DropdownPropertiesSuggestionState
+        include Google::Apis::Core::Hashable
+      
+        # Indicates if there was a suggested change to selected_option_id.
+        # Corresponds to the JSON property `selectedOptionIdSuggested`
+        # @return [Boolean]
+        attr_accessor :selected_option_id_suggested
+        alias_method :selected_option_id_suggested?, :selected_option_id_suggested
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @selected_option_id_suggested = args[:selected_option_id_suggested] if args.key?(:selected_option_id_suggested)
         end
       end
       
@@ -2968,6 +3322,67 @@ module Google
           @date_element_properties = args[:date_element_properties] if args.key?(:date_element_properties)
           @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
           @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Inserts a Dropdown at the specified location.
+      class InsertDropdownRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The DropdownDefinition ID.
+        # Corresponds to the JSON property `dropdownDefinitionId`
+        # @return [String]
+        attr_accessor :dropdown_definition_id
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # Optional initial value for the dropdown. If this field is not specified, the
+        # new dropdown will default to selecting the first option defined in the
+        # dropdown definition. If this field is specified but does not reference a valid
+        # option in the dropdown definition, a 400 bad request error is returned.
+        # Corresponds to the JSON property `selectedOptionId`
+        # @return [String]
+        attr_accessor :selected_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition_id = args[:dropdown_definition_id] if args.key?(:dropdown_definition_id)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @selected_option_id = args[:selected_option_id] if args.key?(:selected_option_id)
+        end
+      end
+      
+      # The result of inserting a Dropdown.
+      class InsertDropdownResponse
+        include Google::Apis::Core::Hashable
+      
+        # A dropdown in the document. The chip is displayed as a dropdown menu that
+        # allows users to select an option from a configurable list of options.
+        # Corresponds to the JSON property `dropdown`
+        # @return [Google::Apis::DocsV1::Dropdown]
+        attr_accessor :dropdown
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown = args[:dropdown] if args.key?(:dropdown)
         end
       end
       
@@ -4143,6 +4558,12 @@ module Google
         # @return [Google::Apis::DocsV1::DateElement]
         attr_accessor :date_element
       
+        # A dropdown in the document. The chip is displayed as a dropdown menu that
+        # allows users to select an option from a configurable list of options.
+        # Corresponds to the JSON property `dropdown`
+        # @return [Google::Apis::DocsV1::Dropdown]
+        attr_accessor :dropdown
+      
         # The zero-base end index of this paragraph element, exclusive, in UTF-16 code
         # units.
         # Corresponds to the JSON property `endIndex`
@@ -4207,6 +4628,7 @@ module Google
           @auto_text = args[:auto_text] if args.key?(:auto_text)
           @column_break = args[:column_break] if args.key?(:column_break)
           @date_element = args[:date_element] if args.key?(:date_element)
+          @dropdown = args[:dropdown] if args.key?(:dropdown)
           @end_index = args[:end_index] if args.key?(:end_index)
           @equation = args[:equation] if args.key?(:equation)
           @footnote_reference = args[:footnote_reference] if args.key?(:footnote_reference)
@@ -5231,6 +5653,11 @@ module Google
         # @return [Google::Apis::DocsV1::AddDocumentTabRequest]
         attr_accessor :add_document_tab
       
+        # Creates a new DropdownDefinition in the document.
+        # Corresponds to the JSON property `createDropdownDefinition`
+        # @return [Google::Apis::DocsV1::CreateDropdownDefinitionRequest]
+        attr_accessor :create_dropdown_definition
+      
         # Creates a Footer. The new footer is applied to the SectionStyle at the
         # location of the SectionBreak if specified, otherwise it is applied to the
         # DocumentStyle. If a footer of the specified type already exists, a 400 bad
@@ -5289,6 +5716,13 @@ module Google
         # Corresponds to the JSON property `deleteContentRange`
         # @return [Google::Apis::DocsV1::DeleteContentRangeRequest]
         attr_accessor :delete_content_range
+      
+        # Deletes a DropdownDefinition. If the dropdown definition is referenced by any
+        # dropdown instances (chips) in the document, a 400 bad request error is
+        # returned.
+        # Corresponds to the JSON property `deleteDropdownDefinition`
+        # @return [Google::Apis::DocsV1::DeleteDropdownDefinitionRequest]
+        attr_accessor :delete_dropdown_definition
       
         # Deletes a Footer from the document.
         # Corresponds to the JSON property `deleteFooter`
@@ -5349,6 +5783,11 @@ module Google
         # Corresponds to the JSON property `insertDate`
         # @return [Google::Apis::DocsV1::InsertDateRequest]
         attr_accessor :insert_date
+      
+        # Inserts a Dropdown at the specified location.
+        # Corresponds to the JSON property `insertDropdown`
+        # @return [Google::Apis::DocsV1::InsertDropdownRequest]
+        attr_accessor :insert_dropdown
       
         # Inserts an InlineObject containing an image at the given location.
         # Corresponds to the JSON property `insertInlineImage`
@@ -5460,6 +5899,16 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateDocumentTabPropertiesRequest]
         attr_accessor :update_document_tab_properties
       
+        # Updates the properties of a DropdownDefinition.
+        # Corresponds to the JSON property `updateDropdownDefinitionProperties`
+        # @return [Google::Apis::DocsV1::UpdateDropdownDefinitionPropertiesRequest]
+        attr_accessor :update_dropdown_definition_properties
+      
+        # Updates the properties of a Dropdown.
+        # Corresponds to the JSON property `updateDropdownProperties`
+        # @return [Google::Apis::DocsV1::UpdateDropdownPropertiesRequest]
+        attr_accessor :update_dropdown_properties
+      
         # Updates a named style.
         # Corresponds to the JSON property `updateNamedStyle`
         # @return [Google::Apis::DocsV1::UpdateNamedStyleRequest]
@@ -5504,6 +5953,7 @@ module Google
           @accept_suggestion = args[:accept_suggestion] if args.key?(:accept_suggestion)
           @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
+          @create_dropdown_definition = args[:create_dropdown_definition] if args.key?(:create_dropdown_definition)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
@@ -5512,6 +5962,7 @@ module Google
           @delete_comment = args[:delete_comment] if args.key?(:delete_comment)
           @delete_comment_reply = args[:delete_comment_reply] if args.key?(:delete_comment_reply)
           @delete_content_range = args[:delete_content_range] if args.key?(:delete_content_range)
+          @delete_dropdown_definition = args[:delete_dropdown_definition] if args.key?(:delete_dropdown_definition)
           @delete_footer = args[:delete_footer] if args.key?(:delete_footer)
           @delete_header = args[:delete_header] if args.key?(:delete_header)
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
@@ -5523,6 +5974,7 @@ module Google
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
           @insert_date = args[:insert_date] if args.key?(:insert_date)
+          @insert_dropdown = args[:insert_dropdown] if args.key?(:insert_dropdown)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
           @insert_person = args[:insert_person] if args.key?(:insert_person)
@@ -5542,6 +5994,8 @@ module Google
           @update_comment_post = args[:update_comment_post] if args.key?(:update_comment_post)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_document_tab_properties = args[:update_document_tab_properties] if args.key?(:update_document_tab_properties)
+          @update_dropdown_definition_properties = args[:update_dropdown_definition_properties] if args.key?(:update_dropdown_definition_properties)
+          @update_dropdown_properties = args[:update_dropdown_properties] if args.key?(:update_dropdown_properties)
           @update_named_style = args[:update_named_style] if args.key?(:update_named_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_section_style = args[:update_section_style] if args.key?(:update_section_style)
@@ -5566,6 +6020,11 @@ module Google
         # Corresponds to the JSON property `addDocumentTab`
         # @return [Google::Apis::DocsV1::AddDocumentTabResponse]
         attr_accessor :add_document_tab
+      
+        # Response message for creating a dropdown definition.
+        # Corresponds to the JSON property `createDropdownDefinition`
+        # @return [Google::Apis::DocsV1::CreateDropdownDefinitionResponse]
+        attr_accessor :create_dropdown_definition
       
         # The result of creating a footer.
         # Corresponds to the JSON property `createFooter`
@@ -5593,6 +6052,11 @@ module Google
         # @return [Google::Apis::DocsV1::InsertCommentResponse]
         attr_accessor :insert_comment
       
+        # The result of inserting a Dropdown.
+        # Corresponds to the JSON property `insertDropdown`
+        # @return [Google::Apis::DocsV1::InsertDropdownResponse]
+        attr_accessor :insert_dropdown
+      
         # The result of inserting an inline image.
         # Corresponds to the JSON property `insertInlineImage`
         # @return [Google::Apis::DocsV1::InsertInlineImageResponse]
@@ -5616,11 +6080,13 @@ module Google
         def update!(**args)
           @add_comment_reply = args[:add_comment_reply] if args.key?(:add_comment_reply)
           @add_document_tab = args[:add_document_tab] if args.key?(:add_document_tab)
+          @create_dropdown_definition = args[:create_dropdown_definition] if args.key?(:create_dropdown_definition)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
           @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @insert_comment = args[:insert_comment] if args.key?(:insert_comment)
+          @insert_dropdown = args[:insert_dropdown] if args.key?(:insert_dropdown)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_inline_sheets_chart = args[:insert_inline_sheets_chart] if args.key?(:insert_inline_sheets_chart)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
@@ -6320,6 +6786,60 @@ module Google
         def update!(**args)
           @document_style = args[:document_style] if args.key?(:document_style)
           @document_style_suggestion_state = args[:document_style_suggestion_state] if args.key?(:document_style_suggestion_state)
+        end
+      end
+      
+      # A suggested change to dropdown definition properties.
+      class SuggestedDropdownDefinitionProperties
+        include Google::Apis::Core::Hashable
+      
+        # Properties of a dropdown definition.
+        # Corresponds to the JSON property `dropdownDefinitionProperties`
+        # @return [Google::Apis::DocsV1::DropdownDefinitionProperties]
+        attr_accessor :dropdown_definition_properties
+      
+        # A mask that indicates which of the fields on the base
+        # DropdownDefinitionProperties have been changed in this suggestion. For any
+        # field set to true, there's a new suggested value.
+        # Corresponds to the JSON property `dropdownDefinitionPropertiesSuggestionState`
+        # @return [Google::Apis::DocsV1::DropdownDefinitionPropertiesSuggestionState]
+        attr_accessor :dropdown_definition_properties_suggestion_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition_properties = args[:dropdown_definition_properties] if args.key?(:dropdown_definition_properties)
+          @dropdown_definition_properties_suggestion_state = args[:dropdown_definition_properties_suggestion_state] if args.key?(:dropdown_definition_properties_suggestion_state)
+        end
+      end
+      
+      # A suggested change to dropdown properties.
+      class SuggestedDropdownProperties
+        include Google::Apis::Core::Hashable
+      
+        # Properties specific to a dropdown.
+        # Corresponds to the JSON property `dropdownProperties`
+        # @return [Google::Apis::DocsV1::DropdownProperties]
+        attr_accessor :dropdown_properties
+      
+        # A mask that indicates which of the fields on the base DropdownProperties have
+        # been changed in this suggestion. For any field set to true, there's a new
+        # suggested value.
+        # Corresponds to the JSON property `dropdownPropertiesSuggestionState`
+        # @return [Google::Apis::DocsV1::DropdownPropertiesSuggestionState]
+        attr_accessor :dropdown_properties_suggestion_state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_properties = args[:dropdown_properties] if args.key?(:dropdown_properties)
+          @dropdown_properties_suggestion_state = args[:dropdown_properties_suggestion_state] if args.key?(:dropdown_properties_suggestion_state)
         end
       end
       
@@ -7755,6 +8275,112 @@ module Google
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
           @tab_properties = args[:tab_properties] if args.key?(:tab_properties)
+        end
+      end
+      
+      # Updates the properties of a DropdownDefinition.
+      class UpdateDropdownDefinitionPropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the DropdownDefinition to update.
+        # Corresponds to the JSON property `dropdownDefinitionId`
+        # @return [String]
+        attr_accessor :dropdown_definition_id
+      
+        # Properties of a dropdown definition.
+        # Corresponds to the JSON property `dropdownDefinitionProperties`
+        # @return [Google::Apis::DocsV1::DropdownDefinitionProperties]
+        attr_accessor :dropdown_definition_properties
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root `dropdown_definition_properties` is implied and should not be specified.
+        # A single `"*"` can be used as short-hand for listing every field. When `
+        # dropdown_definition_properties.options` is included in the field mask, the
+        # full, complete list of desired options must be provided in `
+        # dropdown_definition_properties.options`.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # A map of option IDs to their replacements, used to automatically reassign
+        # orphaned Dropdown chips when an option is deleted. The keys are the IDs of the
+        # options being deleted, and the values are the IDs of their replacement options.
+        # If an option being deleted is selected in one or more Dropdown chips in the
+        # document, a replacement entry for that option must be provided in this map,
+        # and the replacement option ID must exist in the updated DropdownDefinition. If
+        # a replacement is required but not provided, a 400 bad request error is
+        # returned. Options being deleted that are not selected in any Dropdown chips do
+        # not require a replacement. For example, if option A is being replaced by
+        # option B, the map should be ``"A": "B"``.
+        # Corresponds to the JSON property `selectedOptionIdReplacements`
+        # @return [Hash<String,String>]
+        attr_accessor :selected_option_id_replacements
+      
+        # The ID of the tab that contains the dropdown definition to update. When
+        # omitted, the request is applied to the first tab. In a document containing a
+        # single tab: - If provided, must match the singular tab's ID. - If omitted, the
+        # request applies to the singular tab. In a document containing multiple tabs: -
+        # If provided, the request applies to the specified tab. - If omitted, the
+        # request applies to the first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_definition_id = args[:dropdown_definition_id] if args.key?(:dropdown_definition_id)
+          @dropdown_definition_properties = args[:dropdown_definition_properties] if args.key?(:dropdown_definition_properties)
+          @fields = args[:fields] if args.key?(:fields)
+          @selected_option_id_replacements = args[:selected_option_id_replacements] if args.key?(:selected_option_id_replacements)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
+        end
+      end
+      
+      # Updates the properties of a Dropdown.
+      class UpdateDropdownPropertiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Dropdown ID.
+        # Corresponds to the JSON property `dropdownId`
+        # @return [String]
+        attr_accessor :dropdown_id
+      
+        # Properties specific to a dropdown.
+        # Corresponds to the JSON property `dropdownProperties`
+        # @return [Google::Apis::DocsV1::DropdownProperties]
+        attr_accessor :dropdown_properties
+      
+        # The fields that should be updated. At least one field must be specified. The
+        # root `dropdown_properties` is implied and should not be specified. A single `"*
+        # "` can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The ID of the tab that contains the dropdown to update. When omitted, the
+        # request is applied to the first tab. In a document containing a single tab: -
+        # If provided, must match the singular tab's ID. - If omitted, the request
+        # applies to the singular tab. In a document containing multiple tabs: - If
+        # provided, the request applies to the specified tab. - If omitted, the request
+        # applies to the first tab in the document.
+        # Corresponds to the JSON property `tabId`
+        # @return [String]
+        attr_accessor :tab_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dropdown_id = args[:dropdown_id] if args.key?(:dropdown_id)
+          @dropdown_properties = args[:dropdown_properties] if args.key?(:dropdown_properties)
+          @fields = args[:fields] if args.key?(:fields)
+          @tab_id = args[:tab_id] if args.key?(:tab_id)
         end
       end
       
