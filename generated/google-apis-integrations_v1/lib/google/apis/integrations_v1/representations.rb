@@ -754,6 +754,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudConnectorsV1AdminFilters
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudConnectorsV1AdminFiltersStringListValues
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudConnectorsV1AuthConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3265,6 +3277,25 @@ module Google
         end
       end
       
+      class GoogleCloudConnectorsV1AdminFilters
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter_key, as: 'filterKey'
+          property :filter_type, as: 'filterType'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :string_list_values, as: 'stringListValues', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFiltersStringListValues, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFiltersStringListValues::Representation
+      
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
+      class GoogleCloudConnectorsV1AdminFiltersStringListValues
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :list_values, as: 'listValues'
+        end
+      end
+      
       class GoogleCloudConnectorsV1AuthConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3384,6 +3415,8 @@ module Google
       class GoogleCloudConnectorsV1Connection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :admin_filters, as: 'adminFilters', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFilters, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFilters::Representation
+      
           property :async_operations_enabled, as: 'asyncOperationsEnabled'
           property :auth_config, as: 'authConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
       
@@ -3512,6 +3545,7 @@ module Google
       
           property :enrichment_enabled, as: 'enrichmentEnabled'
           property :events_listener_ingress_endpoint, as: 'eventsListenerIngressEndpoint'
+          property :global_event_filter, as: 'globalEventFilter'
           property :listener_auth_config, as: 'listenerAuthConfig', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig::Representation
       
           collection :private_connectivity_allowlisted_projects, as: 'privateConnectivityAllowlistedProjects'
@@ -3553,6 +3587,8 @@ module Google
           collection :additional_variables, as: 'additionalVariables', class: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable, decorator: Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1ConfigVariable::Representation
       
           property :create_time, as: 'createTime'
+          collection :event_subscriptions, as: 'eventSubscriptions'
+          collection :event_types, as: 'eventTypes'
           property :id, as: 'id'
           property :name, as: 'name'
           property :next_refresh_time, as: 'nextRefreshTime'
@@ -3944,6 +3980,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cloud_kms_config, as: 'cloudKmsConfig', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig::Representation
       
+          property :enable_euc_hardened_flow, as: 'enableEucHardenedFlow'
           property :enable_http_call, as: 'enableHttpCall'
           property :enable_managed_ai_features, as: 'enableManagedAiFeatures'
           property :enable_variable_masking, as: 'enableVariableMasking'
@@ -5076,6 +5113,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaTestIntegrationsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :async_execution, as: 'asyncExecution'
           property :client_id, as: 'clientId'
           hash :config_parameters, as: 'configParameters'
           property :deadline_seconds_time, as: 'deadlineSecondsTime'

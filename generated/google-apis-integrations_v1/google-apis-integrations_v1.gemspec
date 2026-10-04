@@ -28,6 +28,6 @@ Gem::Specification.new do |gem|
   gem.files = Dir.glob("lib/**/*.rb") + Dir.glob("*.md") + [".yardopts"]
   gem.require_paths = ["lib"]
 
-  gem.required_ruby_version = '>= 3.1'
+  gem.required_ruby_version = '>= 3.2'
   gem.add_runtime_dependency "google-apis-core", ">= 0.15.0", "< 2.a"
 end

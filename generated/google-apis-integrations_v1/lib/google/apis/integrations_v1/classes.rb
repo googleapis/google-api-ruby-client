@@ -5058,6 +5058,70 @@ module Google
         end
       end
       
+      # * AdminFilters defines a set of filters that can be applied to a connection.
+      # These are currently used by Gemini Enterprise connections.
+      class GoogleCloudConnectorsV1AdminFilters
+        include Google::Apis::Core::Hashable
+      
+        # Required. Unique name for the filter, e.g., "SharePointSiteURL", "DocumentType"
+        # , "ChatSpaceName".
+        # Corresponds to the JSON property `filterKey`
+        # @return [String]
+        attr_accessor :filter_key
+      
+        # Required. Type of the filter.
+        # Corresponds to the JSON property `filterType`
+        # @return [String]
+        attr_accessor :filter_type
+      
+        # Optional. A single integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # StringListValues is a message to store a list of string values.
+        # Corresponds to the JSON property `stringListValues`
+        # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFiltersStringListValues]
+        attr_accessor :string_list_values
+      
+        # Optional. A single string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_key = args[:filter_key] if args.key?(:filter_key)
+          @filter_type = args[:filter_type] if args.key?(:filter_type)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @string_list_values = args[:string_list_values] if args.key?(:string_list_values)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # StringListValues is a message to store a list of string values.
+      class GoogleCloudConnectorsV1AdminFiltersStringListValues
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of string values.
+        # Corresponds to the JSON property `listValues`
+        # @return [Array<String>]
+        attr_accessor :list_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @list_values = args[:list_values] if args.key?(:list_values)
+        end
+      end
+      
       # AuthConfig defines details of a authentication type.
       class GoogleCloudConnectorsV1AuthConfig
         include Google::Apis::Core::Hashable
@@ -5449,6 +5513,12 @@ module Google
       class GoogleCloudConnectorsV1Connection
         include Google::Apis::Core::Hashable
       
+        # Optional. Admin filters for the connection. These are used by Gemini
+        # Enterprise.
+        # Corresponds to the JSON property `adminFilters`
+        # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AdminFilters>]
+        attr_accessor :admin_filters
+      
         # Optional. Async operations enabled for the connection. If Async Operations is
         # enabled, Connection allows the customers to initiate async long running
         # operations using the actions API.
@@ -5531,7 +5601,7 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1AuthConfig]
         attr_accessor :eua_oauth_auth_config
       
-        # Eventing Configuration of a connection next: 20
+        # Eventing Configuration of a connection next: 21
         # Corresponds to the JSON property `eventingConfig`
         # @return [Google::Apis::IntegrationsV1::GoogleCloudConnectorsV1EventingConfig]
         attr_accessor :eventing_config
@@ -5660,6 +5730,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @admin_filters = args[:admin_filters] if args.key?(:admin_filters)
           @async_operations_enabled = args[:async_operations_enabled] if args.key?(:async_operations_enabled)
           @auth_config = args[:auth_config] if args.key?(:auth_config)
           @auth_override_enabled = args[:auth_override_enabled] if args.key?(:auth_override_enabled)
@@ -5915,7 +5986,7 @@ module Google
         end
       end
       
-      # Eventing Configuration of a connection next: 20
+      # Eventing Configuration of a connection next: 21
       class GoogleCloudConnectorsV1EventingConfig
         include Google::Apis::Core::Hashable
       
@@ -5955,6 +6026,11 @@ module Google
         # Corresponds to the JSON property `eventsListenerIngressEndpoint`
         # @return [String]
         attr_accessor :events_listener_ingress_endpoint
+      
+        # Optional. Filter to be applied on the events to be received by the connection.
+        # Corresponds to the JSON property `globalEventFilter`
+        # @return [String]
+        attr_accessor :global_event_filter
       
         # AuthConfig defines details of a authentication type.
         # Corresponds to the JSON property `listenerAuthConfig`
@@ -6001,6 +6077,7 @@ module Google
           @enrichment_config = args[:enrichment_config] if args.key?(:enrichment_config)
           @enrichment_enabled = args[:enrichment_enabled] if args.key?(:enrichment_enabled)
           @events_listener_ingress_endpoint = args[:events_listener_ingress_endpoint] if args.key?(:events_listener_ingress_endpoint)
+          @global_event_filter = args[:global_event_filter] if args.key?(:global_event_filter)
           @listener_auth_config = args[:listener_auth_config] if args.key?(:listener_auth_config)
           @private_connectivity_allowlisted_projects = args[:private_connectivity_allowlisted_projects] if args.key?(:private_connectivity_allowlisted_projects)
           @private_connectivity_enabled = args[:private_connectivity_enabled] if args.key?(:private_connectivity_enabled)
@@ -6096,6 +6173,17 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. List of event subscriptions which are using the webhook.
+        # Corresponds to the JSON property `eventSubscriptions`
+        # @return [Array<String>]
+        attr_accessor :event_subscriptions
+      
+        # Output only. List of event types for the webhook. This is the event types
+        # subscribed by the current webhook.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<String>]
+        attr_accessor :event_types
+      
         # Output only. ID to uniquely identify webhook.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -6125,6 +6213,8 @@ module Google
         def update!(**args)
           @additional_variables = args[:additional_variables] if args.key?(:additional_variables)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @event_subscriptions = args[:event_subscriptions] if args.key?(:event_subscriptions)
+          @event_types = args[:event_types] if args.key?(:event_types)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @next_refresh_time = args[:next_refresh_time] if args.key?(:next_refresh_time)
@@ -7535,6 +7625,13 @@ module Google
         # @return [Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaCloudKmsConfig]
         attr_accessor :cloud_kms_config
       
+        # Optional. True if every integration in this region should run under the
+        # hardened end-user-credential flow. See go/ip-euc-harden.
+        # Corresponds to the JSON property `enableEucHardenedFlow`
+        # @return [Boolean]
+        attr_accessor :enable_euc_hardened_flow
+        alias_method :enable_euc_hardened_flow?, :enable_euc_hardened_flow
+      
         # Optional. Indicates if the client should be allowed to make HTTP calls. True
         # if http call feature should be turned on for this region.
         # Corresponds to the JSON property `enableHttpCall`
@@ -7569,6 +7666,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_kms_config = args[:cloud_kms_config] if args.key?(:cloud_kms_config)
+          @enable_euc_hardened_flow = args[:enable_euc_hardened_flow] if args.key?(:enable_euc_hardened_flow)
           @enable_http_call = args[:enable_http_call] if args.key?(:enable_http_call)
           @enable_managed_ai_features = args[:enable_managed_ai_features] if args.key?(:enable_managed_ai_features)
           @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
@@ -7636,7 +7734,7 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # List containing String represendation for multiple file with type.
+        # List containing String representation for multiple file with type.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaSerializedFile>]
         attr_accessor :files
@@ -9042,8 +9140,9 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTaskConfig>]
         attr_accessor :task_configs
       
-        # Optional. Task configuration for the integration. It's optional, but the
-        # integration doesn't do anything without task_configs.
+        # Optional. Deprecated: Use `task_configs` instead. Task configuration for the
+        # integration. It's optional, but the integration doesn't do anything without
+        # task_configs.
         # Corresponds to the JSON property `taskConfigsInternal`
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTaskConfig>]
         attr_accessor :task_configs_internal
@@ -9060,7 +9159,7 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaTriggerConfig>]
         attr_accessor :trigger_configs
       
-        # Optional. Trigger configurations.
+        # Optional. Deprecated: Use `trigger_configs` instead. Trigger configurations.
         # Corresponds to the JSON property `triggerConfigsInternal`
         # @return [Array<Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoTriggerConfig>]
         attr_accessor :trigger_configs_internal
@@ -11506,6 +11605,30 @@ module Google
       class GoogleCloudIntegrationsV1alphaTestIntegrationsRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Runs the test asynchronously, by enqueueing it through the real
+        # execution queue under `trigger_id` instead of running the task graph inline.
+        # Default `false`, which preserves the existing synchronous behavior. The
+        # enqueued request carries no caller identity, so it is drained under the
+        # integration's run-as service account, exactly as a real Cloud Scheduler, cron,
+        # Pub/Sub, Salesforce or connector fire would be. That is the only way to verify
+        # the credential path an asynchronous trigger actually takes; a synchronous test
+        # always carries the caller's own credential and so exercises the opposite
+        # branch. When `true`: * Only the **published** (`ACTIVE`) version runs. The
+        # asynchronous path resolves the integration from storage by `trigger_id`, so a
+        # draft cannot be tested this way. `integration_version` must therefore carry
+        # only `name`; supplying any other field is rejected, rather than silently
+        # running something other than what was passed. * The response carries `
+        # execution_id` only. `execution_failed`, `event_parameters`, `parameters` and `
+        # parameter_entries` describe a finished run and are left unset, because nothing
+        # has run yet. In particular, do not read `execution_failed` as a pass signal. *
+        # The run is real, with real side effects, quota and concurrency. No actual Pub/
+        # Sub push or Cloud Scheduler tick occurs; only the enqueue is simulated, which
+        # does not change the credential path.
+        # Corresponds to the JSON property `asyncExecution`
+        # @return [Boolean]
+        attr_accessor :async_execution
+        alias_method :async_execution?, :async_execution
+      
         # Required. This is used to identify the client on whose behalf the event will
         # be executed.
         # Corresponds to the JSON property `clientId`
@@ -11562,6 +11685,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @async_execution = args[:async_execution] if args.key?(:async_execution)
           @client_id = args[:client_id] if args.key?(:client_id)
           @config_parameters = args[:config_parameters] if args.key?(:config_parameters)
           @deadline_seconds_time = args[:deadline_seconds_time] if args.key?(:deadline_seconds_time)
@@ -11867,7 +11991,7 @@ module Google
       class GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest
         include Google::Apis::Core::Hashable
       
-        # The textproto of the IntegrationVersion.
+        # Optional. The textproto of the IntegrationVersion.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
