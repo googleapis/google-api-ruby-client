@@ -903,6 +903,30 @@ module Google
         #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
         #   dataTypes/weight` For a list of the supported data types see the DataPoint
         #   data union field.
+        # @param [String] data_source_family
+        #   Optional. The data source family name to filter by. If empty, data points from
+        #   all available data sources will be returned. Format: `users/me/
+        #   dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
+        #   dataSourceFamilies/all-sources` - Default value. Includes data from all
+        #   available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        #   Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
+        #   and Pixel Watch). Excludes manually logged data. - `users/me/
+        #   dataSourceFamilies/google-sources` - Includes first-party Google data, such as
+        #   data from tracker devices, manually logged data, and Health Connect. - `users/
+        #   me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        #   client wrote through this API, that is, data points whose data source was
+        #   registered through this API with the same OAuth client ID as the caller.
+        #   Callers that were only granted write scopes for the requested data types may
+        #   only read the data they wrote themselves: their requests are implicitly
+        #   restricted to `self-sources`, and requesting any other data source family
+        #   fails with `PERMISSION_DENIED`. If no data point matches the requested data
+        #   source family, the response is an empty list rather than an error. Filtering
+        #   by data source family is not supported for the `sleep`, `food` and `food-
+        #   measurement-unit` data types, because the underlying listing implementation
+        #   cannot restrict results by data source. Such requests fail with `
+        #   INVALID_ARGUMENT` when the data source family is set explicitly, and with `
+        #   PERMISSION_DENIED` when the restriction is only implied by the caller's scopes.
+        #   For `sleep`, use ReconcileDataPoints instead.
         # @param [String] filter
         #   Optional. Filter expression following https://google.aip.dev/160. A time range
         #   (either physical or civil) can be specified. The supported filter fields are: -
@@ -979,11 +1003,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_data_type_data_points(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_user_data_type_data_points(parent, data_source_family: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v4/{+parent}/dataPoints', options)
           command.response_representation = Google::Apis::HealthV4::ListDataPointsResponse::Representation
           command.response_class = Google::Apis::HealthV4::ListDataPointsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['dataSourceFamily'] = data_source_family unless data_source_family.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
