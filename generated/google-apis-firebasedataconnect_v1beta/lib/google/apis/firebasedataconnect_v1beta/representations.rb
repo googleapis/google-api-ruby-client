@@ -220,6 +220,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MigrateSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MigrationStep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -597,6 +609,25 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class MigrateSchemaRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_mode, as: 'executionMode'
+          collection :migration_steps, as: 'migrationSteps', class: Google::Apis::FirebasedataconnectV1beta::MigrationStep, decorator: Google::Apis::FirebasedataconnectV1beta::MigrationStep::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class MigrationStep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :sql, as: 'sql'
+          property :version, as: 'version'
         end
       end
       
