@@ -2796,6 +2796,7 @@ module Google
           hash :membership_states, as: 'membershipStates', class: Google::Apis::GkehubV1::RolloutMembershipState, decorator: Google::Apis::GkehubV1::RolloutMembershipState::Representation
       
           property :name, as: 'name'
+          property :prioritized, as: 'prioritized'
           property :rollout_sequence, as: 'rolloutSequence'
           hash :stage_soak_duration_overrides, as: 'stageSoakDurationOverrides'
           collection :stages, as: 'stages', class: Google::Apis::GkehubV1::RolloutStage, decorator: Google::Apis::GkehubV1::RolloutStage::Representation
@@ -3066,6 +3067,7 @@ module Google
           property :ignore_cluster_disruption_budgets, as: 'ignoreClusterDisruptionBudgets'
           property :ignore_maintenance_policies, as: 'ignoreMaintenancePolicies'
           property :patch_only, as: 'patchOnly'
+          property :prioritized, as: 'prioritized'
           property :soak_duration_override_all_stages, as: 'soakDurationOverrideAllStages'
           property :soak_duration_override_per_stage, as: 'soakDurationOverridePerStage', class: Google::Apis::GkehubV1::PerStageSoakDurationOverrides, decorator: Google::Apis::GkehubV1::PerStageSoakDurationOverrides::Representation
       
