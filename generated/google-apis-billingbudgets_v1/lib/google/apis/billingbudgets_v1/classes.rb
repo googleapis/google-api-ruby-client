@@ -24,9 +24,11 @@ module Google
       
       # A budget is a plan that describes what you expect to spend on Cloud projects,
       # plus the rules to execute as spend is tracked against that plan, (for example,
-      # send an alert when 90% of the target spend is met). The budget time period is
-      # configurable, with options such as month (default), quarter, year, or custom
-      # time period.
+      # send an alert when 90% of the target spend is met, or pause usage of the
+      # specified service when a spend cap budget is enforced). For alerts-only
+      # budgets, the budget time period is configurable, with options such as month (
+      # default), quarter, year, or custom time period. For spend cap budgets, the
+      # budget time period is limited to month.
       class GoogleCloudBillingBudgetsV1Budget
         include Google::Apis::Core::Hashable
       
@@ -65,14 +67,24 @@ module Google
         # @return [Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1NotificationsRule]
         attr_accessor :notifications_rule
       
-        # 
+        # Optional. When `spend_cap` is set, must be `OWNERSHIP_SCOPE_UNSPECIFIED` or `
+        # ALL_USERS`. `BILLING_ACCOUNT` is not supported for spend caps.
         # Corresponds to the JSON property `ownershipScope`
         # @return [String]
         attr_accessor :ownership_scope
       
+        # SpendCap defines the spend cap configuration and state.
+        # Corresponds to the JSON property `spendCap`
+        # @return [Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1SpendCap]
+        attr_accessor :spend_cap
+      
         # Optional. Rules that trigger alerts (notifications of thresholds being crossed)
         # when spend exceeds the specified percentages of the budget. Optional for `
-        # pubsubTopic` notifications. Required if using email notifications.
+        # pubsubTopic` notifications. Required if using email notifications. Must be set
+        # when `spend_cap` is set. Spend caps must have exactly three `CURRENT_SPEND`
+        # threshold rules with `threshold_percent` values of `0.5`, `0.8`, and `1.0` (50%
+        # , 80%, and 100%). `FORECASTED_SPEND` threshold rules are not supported for
+        # spend caps.
         # Corresponds to the JSON property `thresholdRules`
         # @return [Array<Google::Apis::BillingbudgetsV1::GoogleCloudBillingBudgetsV1ThresholdRule>]
         attr_accessor :threshold_rules
@@ -90,6 +102,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notifications_rule = args[:notifications_rule] if args.key?(:notifications_rule)
           @ownership_scope = args[:ownership_scope] if args.key?(:ownership_scope)
+          @spend_cap = args[:spend_cap] if args.key?(:spend_cap)
           @threshold_rules = args[:threshold_rules] if args.key?(:threshold_rules)
         end
       end
@@ -169,7 +182,9 @@ module Google
         # assume that CalendarPeriod.QUARTER is set. The budget tracks usage from April
         # 1 to June 30, when the current calendar month is April, May, June. After that,
         # it tracks usage from July 1 to September 30 when the current calendar month is
-        # July, August, September, so on.
+        # July, August, September, so on. When `spend_cap` is set, must be `MONTH` (or `
+        # usage_period` left unset, which defaults to `MONTH`). `QUARTER` and `YEAR` are
+        # not supported for spend caps.
         # Corresponds to the JSON property `calendarPeriod`
         # @return [String]
         attr_accessor :calendar_period
@@ -177,14 +192,16 @@ module Google
         # Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this
         # is a list of credit types to be subtracted from gross cost to determine the
         # spend for threshold calculations. See [a list of acceptable credit type values]
-        # (https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#
-        # credits-type). If Filter.credit_types_treatment is **not**
-        # INCLUDE_SPECIFIED_CREDITS, this field must be empty.
+        # (https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery-tables/
+        # detailed-usage#credits-type). If Filter.credit_types_treatment is **not**
+        # INCLUDE_SPECIFIED_CREDITS, this field must be empty. Not supported when `
+        # spend_cap` is set; must be empty.
         # Corresponds to the JSON property `creditTypes`
         # @return [Array<String>]
         attr_accessor :credit_types
       
-        # Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
+        # Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`. Must be set
+        # to `EXCLUDE_ALL_CREDITS` when `spend_cap` is set.
         # Corresponds to the JSON property `creditTypesTreatment`
         # @return [String]
         attr_accessor :credit_types_treatment
@@ -198,7 +215,8 @@ module Google
         # set of labeled resources should be included in the budget. If omitted, the
         # report includes all labeled and unlabeled usage. An object containing a single
         # `"key": value` pair. Example: `` "name": "wrench" ``. _Currently, multiple
-        # entries or multiple values per entry are not allowed._
+        # entries or multiple values per entry are not allowed._ Not supported when `
+        # spend_cap` is set; must be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,Array<Object>>]
         attr_accessor :labels
@@ -206,7 +224,8 @@ module Google
         # Optional. A set of projects of the form `projects/`project``, specifying that
         # usage from only this set of projects should be included in the budget. If
         # omitted, the report includes all usage for the billing account, regardless of
-        # which project the usage occurred on.
+        # which project the usage occurred on. Must be set when `spend_cap` is set; must
+        # contain exactly one project.
         # Corresponds to the JSON property `projects`
         # @return [Array<String>]
         attr_accessor :projects
@@ -217,6 +236,7 @@ module Google
         # If omitted, the budget includes all usage that the billing account pays for.
         # If the folder or organization contains projects that are paid for by a
         # different Cloud Billing account, the budget *doesn't* apply to those projects.
+        # Not supported when `spend_cap` is set; must be empty.
         # Corresponds to the JSON property `resourceAncestors`
         # @return [Array<String>]
         attr_accessor :resource_ancestors
@@ -224,8 +244,11 @@ module Google
         # Optional. A set of services of the form `services/`service_id``, specifying
         # that usage from only this set of services should be included in the budget. If
         # omitted, the report includes usage for all the services. The service names are
-        # available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/
-        # catalog-api.
+        # available through the Catalog API: https://docs.cloud.google.com/billing/v1/
+        # how-tos/catalog-api. When `spend_cap` is set, the services filter must be set
+        # and must contain exactly one service from this list of eligible services:
+        # https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps#eligible-
+        # services.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
         attr_accessor :services
@@ -234,7 +257,8 @@ module Google
         # specifying that usage from only this set of subaccounts should be included in
         # the budget. If a subaccount is set to the name of the parent account, usage
         # from the parent account is included. If the field is omitted, the report
-        # includes usage from the parent account and all subaccounts, if they exist.
+        # includes usage from the parent account and all subaccounts, if they exist. Not
+        # supported when `spend_cap` is set; must be empty.
         # Corresponds to the JSON property `subaccounts`
         # @return [Array<String>]
         attr_accessor :subaccounts
@@ -307,7 +331,8 @@ module Google
         # Optional. When set to true, disables default notifications sent when a
         # threshold is exceeded. Default notifications are sent to those with Billing
         # Account Administrator and Billing Account User IAM roles for the target
-        # account.
+        # account. Must be `false` (or unset) when `spend_cap` is set; default
+        # notifications cannot be disabled for spend caps.
         # Corresponds to the JSON property `disableDefaultIamRecipients`
         # @return [Boolean]
         attr_accessor :disable_default_iam_recipients
@@ -317,7 +342,7 @@ module Google
         # configured, notifications will be sent to project level recipients of that
         # project. This field will be ignored if the budget has multiple or no project
         # configured. Currently, project level recipients are the users with `Owner`
-        # role on a cloud project.
+        # role on a cloud project. Must be set to `true` when `spend_cap` is set.
         # Corresponds to the JSON property `enableProjectLevelRecipients`
         # @return [Boolean]
         attr_accessor :enable_project_level_recipients
@@ -332,14 +357,15 @@ module Google
         # monitoring notification channels, you _must create the monitoring notification
         # channels before you link them to a budget_. For guidance on setting up
         # notification channels to use with budgets, see [Customize budget alert email
-        # recipients](https://cloud.google.com/billing/docs/how-to/budgets-notification-
-        # recipients). For Cloud Billing budget alerts, you _must use email notification
-        # channels_. The other types of notification channels are _not_ supported, such
-        # as Slack, SMS, or PagerDuty. If you want to [send budget notifications to
-        # Slack](https://cloud.google.com/billing/docs/how-to/notify#
-        # send_notifications_to_slack), use a pubsubTopic and configure [programmatic
-        # notifications](https://cloud.google.com/billing/docs/how-to/budgets-
-        # programmatic-notifications).
+        # recipients](https://docs.cloud.google.com/billing/docs/how-to/budgets-
+        # notification-recipients). For Cloud Billing budget alerts, you _must use email
+        # notification channels_. The other types of notification channels are _not_
+        # supported, such as Slack, SMS, or PagerDuty. If you want to [send budget
+        # notifications to Slack](https://docs.cloud.google.com/billing/docs/how-to/send-
+        # notifications-to-slack), use a pubsubTopic and configure [programmatic
+        # notifications](https://docs.cloud.google.com/billing/docs/how-to/budgets-
+        # programmatic-notifications). Not supported when `spend_cap` is set; must be
+        # empty.
         # Corresponds to the JSON property `monitoringNotificationChannels`
         # @return [Array<String>]
         attr_accessor :monitoring_notification_channels
@@ -348,29 +374,30 @@ module Google
         # published, in the form `projects/`project_id`/topics/`topic_id``. Updates are
         # sent to the topic at regular intervals; the timing of the updates is not
         # dependent on the [threshold rules](#thresholdrule) you've set. Note that if
-        # you want your [Pub/Sub JSON object](https://cloud.google.com/billing/docs/how-
-        # to/budgets-programmatic-notifications#notification_format) to contain data for
-        # `alertThresholdExceeded`, you need at least one [alert threshold rule](#
+        # you want your [Pub/Sub JSON object](https://docs.cloud.google.com/billing/docs/
+        # how-to/budgets-programmatic-notifications#notification-format) to contain data
+        # for `alertThresholdExceeded`, you need at least one [alert threshold rule](#
         # thresholdrule). When you set threshold rules, you must also enable at least
         # one of the email notification options, either using the default IAM recipients
         # or Cloud Monitoring email notification channels. To use Pub/Sub topics with
         # budgets, you must do the following: 1. Create the Pub/Sub topic before
         # connecting it to your budget. For guidance, see [Manage programmatic budget
-        # alert notifications](https://cloud.google.com/billing/docs/how-to/budgets-
+        # alert notifications](https://docs.cloud.google.com/billing/docs/how-to/budgets-
         # programmatic-notifications). 2. Grant the API caller the `pubsub.topics.
         # setIamPolicy` permission on the Pub/Sub topic. If not set, the API call fails
         # with PERMISSION_DENIED. For additional details on Pub/Sub roles and
-        # permissions, see [Permissions required for this task](https://cloud.google.com/
-        # billing/docs/how-to/budgets-programmatic-notifications#
-        # permissions_required_for_this_task).
+        # permissions, see [Permissions required for this task](https://docs.cloud.
+        # google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions).
+        # Not supported when `spend_cap` is set; must be empty.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
       
         # Optional. Required when NotificationsRule.pubsub_topic is set. The schema
         # version of the notification sent to NotificationsRule.pubsub_topic. Only "1.0"
-        # is accepted. It represents the JSON schema as defined in https://cloud.google.
-        # com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
+        # is accepted. It represents the JSON schema as defined in https://docs.cloud.
+        # google.com/billing/docs/how-to/budgets-programmatic-notifications#notification-
+        # format.
         # Corresponds to the JSON property `schemaVersion`
         # @return [String]
         attr_accessor :schema_version
@@ -389,30 +416,72 @@ module Google
         end
       end
       
+      # SpendCap defines the spend cap configuration and state.
+      class GoogleCloudBillingBudgetsV1SpendCap
+        include Google::Apis::Core::Hashable
+      
+        # Required. The desired state specified by the user. Valid values for mutation: -
+        # `CONFIGURED`: Must be set when creating a spend cap (`CreateBudget`). Also
+        # valid when updating (`UpdateBudget`) to activate the spend cap. - `
+        # AWAITING_NEXT_PERIOD`: Valid only when updating (`UpdateBudget`) to explicitly
+        # lift an enforced cap. Supplying any other value will result in an
+        # INVALID_ARGUMENT error.
+        # Corresponds to the JSON property `inputState`
+        # @return [String]
+        attr_accessor :input_state
+      
+        # Output only. The actual resting state of the spend cap.
+        # Corresponds to the JSON property `outputState`
+        # @return [String]
+        attr_accessor :output_state
+      
+        # Output only. Indicates whether the server is actively processing a state
+        # transition or async workflow.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input_state = args[:input_state] if args.key?(:input_state)
+          @output_state = args[:output_state] if args.key?(:output_state)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+        end
+      end
+      
       # ThresholdRule contains the definition of a threshold. Threshold rules define
       # the triggering events used to generate a budget notification email. When a
       # threshold is crossed (spend exceeds the specified percentages of the budget),
       # budget alert emails are sent to the email recipients you specify in the [
       # NotificationsRule](#notificationsrule). Threshold rules also affect the fields
-      # included in the [JSON data object](https://cloud.google.com/billing/docs/how-
-      # to/budgets-programmatic-notifications#notification_format) sent to a Pub/Sub
-      # topic. Threshold rules are _required_ if using email notifications. Threshold
-      # rules are _optional_ if only setting a [`pubsubTopic` NotificationsRule](#
-      # NotificationsRule), unless you want your JSON data object to include data
-      # about the thresholds you set. For more information, see [set budget threshold
-      # rules and actions](https://cloud.google.com/billing/docs/how-to/budgets#budget-
-      # actions).
+      # included in the [JSON data object](https://docs.cloud.google.com/billing/docs/
+      # how-to/budgets-programmatic-notifications#notification-format) sent to a Pub/
+      # Sub topic. Threshold rules are _required_ if using email notifications.
+      # Threshold rules are _optional_ if only setting a [`pubsubTopic`
+      # NotificationsRule](#NotificationsRule), unless you want your JSON data object
+      # to include data about the thresholds you set. For more information, see [set
+      # budget threshold rules and actions](https://docs.cloud.google.com/billing/docs/
+      # how-to/budgets#budget-actions).
       class GoogleCloudBillingBudgetsV1ThresholdRule
         include Google::Apis::Core::Hashable
       
         # Optional. The type of basis used to determine if spend has passed the
-        # threshold. Behavior defaults to CURRENT_SPEND if not set.
+        # threshold. Behavior defaults to CURRENT_SPEND if not set. When `spend_cap` is
+        # set on the budget, must be `CURRENT_SPEND` or `BASIS_UNSPECIFIED`. `
+        # FORECASTED_SPEND` is not supported.
         # Corresponds to the JSON property `spendBasis`
         # @return [String]
         attr_accessor :spend_basis
       
         # Required. Send an alert when this threshold is exceeded. This is a 1.0-based
-        # percentage, so 0.5 = 50%. Validation: non-negative number.
+        # percentage, so 0.5 = 50%. Validation: non-negative number. When `spend_cap` is
+        # set on the budget, `threshold_rules` must contain exactly three rules with `
+        # threshold_percent` values of `0.5`, `0.8`, and `1.0` (50%, 80%, and 100%).
         # Corresponds to the JSON property `thresholdPercent`
         # @return [Float]
         attr_accessor :threshold_percent
