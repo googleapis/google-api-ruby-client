@@ -45,9 +45,9 @@ module Google
       class CloudAiLargeModelsVisionExperimentsResponseProEditResult
         include Google::Apis::Core::Hashable
       
-        # The output structured prompt produced by this edit.
+        # The output structured prompt (JSON string) produced by this edit.
         # Corresponds to the JSON property `structuredPrompt`
-        # @return [Hash<String,Object>]
+        # @return [String]
         attr_accessor :structured_prompt
       
         def initialize(**args)
@@ -383,15 +383,16 @@ module Google
         # @return [String]
         attr_accessor :glob_pattern
       
-        # Horizontal offset in pixels to shift the input frame from center. Positive
-        # values shift right, negative values shift left. Optional. Default is 0 (
-        # centered).
+        # Horizontal offset in pixels of the frame's left edge from the canvas's left
+        # edge. Values outside the canvas crop the frame. Optional. Default is 0 (frame
+        # flush with the canvas's left edge).
         # Corresponds to the JSON property `horizontalOffset`
         # @return [Fixnum]
         attr_accessor :horizontal_offset
       
-        # Vertical offset in pixels to shift the input frame from center. Positive
-        # values shift down, negative values shift up. Optional. Default is 0 (centered).
+        # Vertical offset in pixels of the frame's top edge from the canvas's top edge.
+        # Values outside the canvas crop the frame. Optional. Default is 0 (frame flush
+        # with the canvas's top edge).
         # Corresponds to the JSON property `verticalOffset`
         # @return [Fixnum]
         attr_accessor :vertical_offset
@@ -424,10 +425,10 @@ module Google
         # @return [String]
         attr_accessor :from_operation_id
       
-        # A JSON object containing the user's modified URF. The URF Editing Preamble
+        # A JSON string containing the user's modified URF. The URF Editing Preamble
         # will diff this against the original URF to determine what changed.
         # Corresponds to the JSON property `structuredPrompt`
-        # @return [Hash<String,Object>]
+        # @return [String]
         attr_accessor :structured_prompt
       
         def initialize(**args)
@@ -1774,7 +1775,9 @@ module Google
       end
       
       # A tool provides a list of actions available to the Agent during the process of
-      # executing a task.
+      # executing a task. Example JSON for an MCP server tool: ` "type": "mcp_server",
+      # "name": "my-mcp-server", "url": "https://api.example.com/mcp", "headers": ` "
+      # Authorization": "Bearer token123" ` `
       class GoogleCloudAiplatformV1AgentTool
         include Google::Apis::Core::Hashable
       
@@ -1799,12 +1802,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to
-        # create the downstream AI App. Applicable when `type` is `mcp_server` or `
-        # endpoint`. It is duplicated here (the resource name is already in `name`) only
-        # because the Agent service is not yet connected to Agent Registry to derive it
-        # from `name`; the Task Service instead resolves it from Agent Registry (
-        # GetMcpServer / GetEndpoint) at task creation.
+        # Optional. Fallback for the tool's runtime reference, consumed by `CreateAgent`
+        # to create the downstream AI App. Applicable when `type` is `mcp_server` or `
+        # endpoint`, and optional: the Agent service derives the runtime reference from `
+        # name` via Agent Registry (`GetMcpServer` / `GetEndpoint`), and reads this only
+        # when that lookup yields none.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -2561,6 +2563,16 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
+        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
+        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
+        # model performs disfluency removal (eliminating filler words, repetitions, and
+        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
+        # bullet points, numbered lists), and minor user edits (inline self-corrections).
+        # Timestamps and diarization are incompatible with mode `SMART`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -2579,6 +2591,7 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -4438,6 +4451,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configures the retention behavior of GenAI implicit (automatic) context
+        # caching for this project.
+        # Corresponds to the JSON property `retentionConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfigRetentionConfig]
+        attr_accessor :retention_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4446,6 +4465,27 @@ module Google
         def update!(**args)
           @disable_cache = args[:disable_cache] if args.key?(:disable_cache)
           @name = args[:name] if args.key?(:name)
+          @retention_config = args[:retention_config] if args.key?(:retention_config)
+        end
+      end
+      
+      # Configures the retention behavior of GenAI implicit (automatic) context
+      # caching for this project.
+      class GoogleCloudAiplatformV1CacheConfigRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Retention type applied to implicit cache traffic for this project.
+        # Corresponds to the JSON property `retentionType`
+        # @return [String]
+        attr_accessor :retention_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_type = args[:retention_type] if args.key?(:retention_type)
         end
       end
       
@@ -18224,6 +18264,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :scope
       
+        # Optional. The time zone of the conversation or caller, used as the baseline
+        # for resolving relative time expressions (e.g., "yesterday") and formatting
+        # timestamps. If not set, "UTC" is used. Must be a valid IANA Time Zone Database
+        # name, e.g. "America/New_York".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # Defines an Agent Engine Session from which to generate the memories. If `scope`
         # is not provided, the scope will be extracted from the Session (i.e. `"user_id"
         # : sesison.user_id`).
@@ -18248,6 +18296,7 @@ module Google
           @revision_labels = args[:revision_labels] if args.key?(:revision_labels)
           @revision_ttl = args[:revision_ttl] if args.key?(:revision_ttl)
           @scope = args[:scope] if args.key?(:scope)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @vertex_session_source = args[:vertex_session_source] if args.key?(:vertex_session_source)
         end
       end
@@ -20188,6 +20237,24 @@ module Google
       class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource
         include Google::Apis::Core::Hashable
       
+        # Optional. Restricts the imported spans to a single agent. Accepts either of
+        # two forms, matching `OnlineEvaluator.agent_resource`: * a project-scoped
+        # resource name, matched against the `cloud.resource_id` resource attribute that
+        # Vertex AI Agent Engine agents are stamped with; * an Agent Registry agent URN,
+        # matched against the `gen_ai.main_agent.id` resource attribute that agents on
+        # GKE, and any other runtime that stamps it, are identified by. Scopes `
+        # session_ids` selection only. Traces named explicitly in `trace_ids` are
+        # imported as given and are NOT filtered by this field, because the caller has
+        # already identified them. Setting this field with only `trace_ids` therefore
+        # has no effect. When unset, spans are selected by session or trace ID alone.
+        # That is the pre-existing behavior and it remains the correct one for a session
+        # whose agents run in several deployments, because each deployment stamps its
+        # own `gen_ai.main_agent.id` and filtering on one of them would silently
+        # truncate the trajectory.
+        # Corresponds to the JSON property `agentResource`
+        # @return [String]
+        attr_accessor :agent_resource
+      
         # Required. Project ID for the Cloud Trace.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -20210,6 +20277,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_resource = args[:agent_resource] if args.key?(:agent_resource)
           @project_id = args[:project_id] if args.key?(:project_id)
           @session_ids = args[:session_ids] if args.key?(:session_ids)
           @trace_ids = args[:trace_ids] if args.key?(:trace_ids)
@@ -23333,6 +23401,31 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @semantic_governance_policies = args[:semantic_governance_policies] if args.key?(:semantic_governance_policies)
+        end
+      end
+      
+      # Response message for ServingProfileService.ListServingProfiles.
+      class GoogleCloudAiplatformV1ListServingProfilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A token to retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Output only. A list of ServingProfiles.
+        # Corresponds to the JSON property `servingProfiles`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile>]
+        attr_accessor :serving_profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @serving_profiles = args[:serving_profiles] if args.key?(:serving_profiles)
         end
       end
       
@@ -29331,8 +29424,11 @@ module Google
         # Optional. Enables sensitive logging. Sensitive logging includes customer core
         # content (prompts, model completions, tool argument payloads and tool responses)
         # . If `false`, those are sanitized and only structural attributes are recorded.
-        # No effect unless `observability_enabled` is true. Not yet enforced: `
-        # CreateAgent` and `UpdateAgent` currently reject setting this to `true`.
+        # No effect unless `observability_enabled` is true. Settable and returned, but
+        # NOT YET ENFORCED. Nothing reads it at runtime, so `true` does not currently
+        # cause content to be captured, and `false` is not what keeps content from being
+        # captured. Treat it as a recorded intention that takes effect when enforcement
+        # lands.
         # Corresponds to the JSON property `sensitiveLoggingEnabled`
         # @return [Boolean]
         attr_accessor :sensitive_logging_enabled
@@ -30319,6 +30415,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartMediaResolution]
         attr_accessor :media_resolution
       
+        # Structured Metadata Sub-Message for Part
+        # Corresponds to the JSON property `speechMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechMetadata]
+        attr_accessor :speech_metadata
+      
         # Optional. The text content of the part. When sent from the VSCode Gemini Code
         # Assist extension, references to @mentioned items will be converted to markdown
         # boldface text. For example `@my-repo` will be converted to and sent as `**my-
@@ -30361,6 +30462,7 @@ module Google
           @function_response = args[:function_response] if args.key?(:function_response)
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
+          @speech_metadata = args[:speech_metadata] if args.key?(:speech_metadata)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
           @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
@@ -45937,6 +46039,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. If true, this policy is evaluated and its result is reported, but
+        # the policy is not enforced: a violation does not block the agent's action. Use
+        # this to validate a policy against real traffic before turning enforcement on.
+        # Defaults to `false`, meaning the policy is enforced. This setting applies only
+        # to this policy. If the SemanticGovernancePolicyEngine for the project is
+        # itself in dry run, every policy behaves as dry run regardless of this field.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
         # Optional. Used to perform consistent read-modify-write transactions. If
         # provided, the request will only succeed if the etag matches the current value.
         # Otherwise, an ABORTED error will be returned.
@@ -45976,6 +46089,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
           @etag = args[:etag] if args.key?(:etag)
           @mcp_tools = args[:mcp_tools] if args.key?(:mcp_tools)
           @name = args[:name] if args.key?(:name)
@@ -46112,6 +46226,82 @@ module Google
         def update!(**args)
           @enable_custom_service_account = args[:enable_custom_service_account] if args.key?(:enable_custom_service_account)
           @service_account = args[:service_account] if args.key?(:service_account)
+        end
+      end
+      
+      # Configures the serving behavior for a resource-less GenAI serving.
+      class GoogleCloudAiplatformV1ServingProfile
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for Customer-Managed Encryption Keys (CMEK).
+        # Corresponds to the JSON property `cmekConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfileCmekConfig]
+        attr_accessor :cmek_config
+      
+        # Output only. Timestamp when the ServingProfile was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the ServingProfile.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the ServingProfile. The name can be up to 128
+        # characters long and can consist of any UTF-8 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. The resource name of the ServingProfile.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The specific API this ServingProfile applies to.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. Timestamp when the ServingProfile was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cmek_config = args[:cmek_config] if args.key?(:cmek_config)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for Customer-Managed Encryption Keys (CMEK).
+      class GoogleCloudAiplatformV1ServingProfileCmekConfig
+        include Google::Apis::Core::Hashable
+      
+        # Represents a customer-managed encryption key specification that can be applied
+        # to a Vertex AI resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec]
+        attr_accessor :encryption_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
         end
       end
       
@@ -46689,6 +46879,31 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @multi_speaker_voice_config = args[:multi_speaker_voice_config] if args.key?(:multi_speaker_voice_config)
           @voice_config = args[:voice_config] if args.key?(:voice_config)
+        end
+      end
+      
+      # Structured Metadata Sub-Message for Part
+      class GoogleCloudAiplatformV1SpeechMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Identifies which speaker is speaking this turn.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # Optional. Natural language description of the vocal style (e.g., "cheerful").
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @style = args[:style] if args.key?(:style)
         end
       end
       
@@ -49635,6 +49850,11 @@ module Google
       class GoogleCloudAiplatformV1ToolComputerUse
         include Google::Apis::Core::Hashable
       
+        # Optional. Disabled safety policies for computer use.
+        # Corresponds to the JSON property `disabledSafetyPolicies`
+        # @return [Array<String>]
+        attr_accessor :disabled_safety_policies
+      
         # Optional. Enables the prompt injection detection check on computer-use request.
         # Corresponds to the JSON property `enablePromptInjectionDetection`
         # @return [Boolean]
@@ -49662,6 +49882,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled_safety_policies = args[:disabled_safety_policies] if args.key?(:disabled_safety_policies)
           @enable_prompt_injection_detection = args[:enable_prompt_injection_detection] if args.key?(:enable_prompt_injection_detection)
           @environment = args[:environment] if args.key?(:environment)
           @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
@@ -51393,6 +51614,11 @@ module Google
         # @return [String]
         attr_accessor :experiment
       
+        # Output only. The Cloud Storage metrics URI associated with this TuningJob.
+        # Corresponds to the JSON property `gcsMetricsUri`
+        # @return [String]
+        attr_accessor :gcs_metrics_uri
+      
         # Optional. The labels with user-defined metadata to organize TuningJob and
         # generated resources such as Model and Endpoint. Label keys and values can be
         # no longer than 64 characters (Unicode codepoints), can only contain lowercase
@@ -51483,6 +51709,7 @@ module Google
           @error = args[:error] if args.key?(:error)
           @evaluate_dataset_runs = args[:evaluate_dataset_runs] if args.key?(:evaluate_dataset_runs)
           @experiment = args[:experiment] if args.key?(:experiment)
+          @gcs_metrics_uri = args[:gcs_metrics_uri] if args.key?(:gcs_metrics_uri)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @pre_tuned_model = args[:pre_tuned_model] if args.key?(:pre_tuned_model)
@@ -52817,6 +53044,14 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReplicatedVoiceConfig]
         attr_accessor :replicated_voice_config
       
+        # Optional. The speaker identifier for synthesis. Supported formats: * Speaker
+        # name for prebuilt voices (for example, `Orus` or `Kore`). * Voice ID for
+        # stored voices (for example, `voice_xxx`). * Voice replication key (for example,
+        # `voicekey_xxx`).
+        # Corresponds to the JSON property `voice`
+        # @return [String]
+        attr_accessor :voice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52825,6 +53060,7 @@ module Google
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
           @replicated_voice_config = args[:replicated_voice_config] if args.key?(:replicated_voice_config)
+          @voice = args[:voice] if args.key?(:voice)
         end
       end
       
