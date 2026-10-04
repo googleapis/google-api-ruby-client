@@ -952,6 +952,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CapacityHistoryRequestInstancePropertiesScheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4145,6 +4151,12 @@ module Google
       end
       
       class InterconnectsGetMacsecConfigResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InterconnectsSetNameRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -10843,6 +10855,7 @@ module Google
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
           collection :machine_types, as: 'machineTypes'
+          property :rank, :numeric_string => true, as: 'rank'
         end
       end
       
@@ -10918,9 +10931,20 @@ module Google
       class CapacityHistoryRequestInstanceProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disks, as: 'disks', class: Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesAttachedDisk, decorator: Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesAttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
+      
           property :machine_type, as: 'machineType'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesScheduling, decorator: Google::Apis::ComputeV1::CapacityHistoryRequestInstancePropertiesScheduling::Representation
       
+        end
+      end
+      
+      class CapacityHistoryRequestInstancePropertiesAttachedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -16904,6 +16928,14 @@ module Google
           property :etag, as: 'etag'
           property :result, as: 'result', class: Google::Apis::ComputeV1::InterconnectMacsecConfig, decorator: Google::Apis::ComputeV1::InterconnectMacsecConfig::Representation
       
+        end
+      end
+      
+      class InterconnectsSetNameRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_name, as: 'currentName'
+          property :name, as: 'name'
         end
       end
       
