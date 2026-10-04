@@ -2312,6 +2312,14 @@ module Google
         # @return [String]
         attr_accessor :channel_id
       
+        # Output only. The URL of the image or animated GIF attached to the comment, if
+        # any. This property is only present when a comment contains an image or GIF.
+        # The URL is served as a signed link with a six-hour time to live (TTL) and
+        # expires six hours after retrieval.
+        # Corresponds to the JSON property `imageUrl`
+        # @return [String]
+        attr_accessor :image_url
+      
         # The total number of likes this comment has received.
         # Corresponds to the JSON property `likeCount`
         # @return [Fixnum]
@@ -2327,11 +2335,6 @@ module Google
         # Corresponds to the JSON property `parentId`
         # @return [String]
         attr_accessor :parent_id
-      
-        # The ID of the post the comment refers to, if any.
-        # Corresponds to the JSON property `postId`
-        # @return [String]
-        attr_accessor :post_id
       
         # The date and time when the comment was originally published.
         # Corresponds to the JSON property `publishedAt`
@@ -2382,10 +2385,10 @@ module Google
           @author_profile_image_url = args[:author_profile_image_url] if args.key?(:author_profile_image_url)
           @can_rate = args[:can_rate] if args.key?(:can_rate)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
+          @image_url = args[:image_url] if args.key?(:image_url)
           @like_count = args[:like_count] if args.key?(:like_count)
           @moderation_status = args[:moderation_status] if args.key?(:moderation_status)
           @parent_id = args[:parent_id] if args.key?(:parent_id)
-          @post_id = args[:post_id] if args.key?(:post_id)
           @published_at = args[:published_at] if args.key?(:published_at)
           @text_display = args[:text_display] if args.key?(:text_display)
           @text_original = args[:text_original] if args.key?(:text_original)
@@ -2570,11 +2573,6 @@ module Google
         attr_accessor :is_public
         alias_method :is_public?, :is_public
       
-        # The ID of the post the comments refer to, if any.
-        # Corresponds to the JSON property `postId`
-        # @return [String]
-        attr_accessor :post_id
-      
         # A *comment* represents a single YouTube comment.
         # Corresponds to the JSON property `topLevelComment`
         # @return [Google::Apis::YoutubeV3::Comment]
@@ -2599,7 +2597,6 @@ module Google
           @can_reply = args[:can_reply] if args.key?(:can_reply)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @is_public = args[:is_public] if args.key?(:is_public)
-          @post_id = args[:post_id] if args.key?(:post_id)
           @top_level_comment = args[:top_level_comment] if args.key?(:top_level_comment)
           @total_reply_count = args[:total_reply_count] if args.key?(:total_reply_count)
           @video_id = args[:video_id] if args.key?(:video_id)

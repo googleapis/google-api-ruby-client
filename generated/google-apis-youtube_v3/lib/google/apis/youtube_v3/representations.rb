@@ -1929,10 +1929,10 @@ module Google
           property :author_profile_image_url, as: 'authorProfileImageUrl'
           property :can_rate, as: 'canRate'
           property :channel_id, as: 'channelId'
+          property :image_url, as: 'imageUrl'
           property :like_count, as: 'likeCount'
           property :moderation_status, as: 'moderationStatus'
           property :parent_id, as: 'parentId'
-          property :post_id, as: 'postId'
           property :published_at, as: 'publishedAt', type: DateTime
       
           property :text_display, as: 'textDisplay'
@@ -1995,7 +1995,6 @@ module Google
           property :can_reply, as: 'canReply'
           property :channel_id, as: 'channelId'
           property :is_public, as: 'isPublic'
-          property :post_id, as: 'postId'
           property :top_level_comment, as: 'topLevelComment', class: Google::Apis::YoutubeV3::Comment, decorator: Google::Apis::YoutubeV3::Comment::Representation
       
           property :total_reply_count, as: 'totalReplyCount'
