@@ -2200,6 +2200,54 @@ module Google
         end
       end
       
+      # Aggregated/summary metrics over the entire build lifecycle.
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The average CPU utilization ratio across all vCPUs over the
+        # duration of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `averageCpuUtilization`
+        # @return [Float]
+        attr_accessor :average_cpu_utilization
+      
+        # Output only. The average memory utilization ratio over the duration of the
+        # build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `averageMemoryUtilization`
+        # @return [Float]
+        attr_accessor :average_memory_utilization
+      
+        # Output only. The highest CPU utilization ratio across all vCPUs observed over
+        # the duration of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `peakCpuUtilization`
+        # @return [Float]
+        attr_accessor :peak_cpu_utilization
+      
+        # Output only. The highest memory utilization ratio observed over the duration
+        # of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `peakMemoryUtilization`
+        # @return [Float]
+        attr_accessor :peak_memory_utilization
+      
+        # Output only. Total CPU execution time consumed across all cores during build
+        # execution.
+        # Corresponds to the JSON property `totalCpuDuration`
+        # @return [String]
+        attr_accessor :total_cpu_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_cpu_utilization = args[:average_cpu_utilization] if args.key?(:average_cpu_utilization)
+          @average_memory_utilization = args[:average_memory_utilization] if args.key?(:average_memory_utilization)
+          @peak_cpu_utilization = args[:peak_cpu_utilization] if args.key?(:peak_cpu_utilization)
+          @peak_memory_utilization = args[:peak_memory_utilization] if args.key?(:peak_memory_utilization)
+          @total_cpu_duration = args[:total_cpu_duration] if args.key?(:total_cpu_duration)
+        end
+      end
+      
       # A step in the build pipeline.
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
         include Google::Apis::Core::Hashable
@@ -2968,6 +3016,11 @@ module Google
         # @return [Array<Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage>]
         attr_accessor :python_packages
       
+        # Aggregated/summary metrics over the entire build lifecycle.
+        # Corresponds to the JSON property `resourceUsage`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage]
+        attr_accessor :resource_usage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2986,6 +3039,7 @@ module Google
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
+          @resource_usage = args[:resource_usage] if args.key?(:resource_usage)
         end
       end
       
