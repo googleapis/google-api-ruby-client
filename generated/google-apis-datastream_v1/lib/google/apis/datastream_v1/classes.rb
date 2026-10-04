@@ -5010,12 +5010,18 @@ module Google
       class SqlServerChangeTables
         include Google::Apis::Core::Hashable
       
+        # DDL configuration for change tables.
+        # Corresponds to the JSON property `ddlConfig`
+        # @return [Google::Apis::DatastreamV1::SqlServerDdlConfig]
+        attr_accessor :ddl_config
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @ddl_config = args[:ddl_config] if args.key?(:ddl_config)
         end
       end
       
@@ -5079,6 +5085,39 @@ module Google
           @precision = args[:precision] if args.key?(:precision)
           @primary_key = args[:primary_key] if args.key?(:primary_key)
           @scale = args[:scale] if args.key?(:scale)
+        end
+      end
+      
+      # DDL configuration for change tables.
+      class SqlServerDdlConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If set to true, Datastream will automatically create a new capture
+        # instance when DDL is detected on a table.The customer will be responsible for
+        # deleting it so that the next set of DDLs can be handled. The default is false
+        # and it means that DDL's will not be handled .
+        # Corresponds to the JSON property `autoCreateNewCaptureInstanceOnDdl`
+        # @return [Boolean]
+        attr_accessor :auto_create_new_capture_instance_on_ddl
+        alias_method :auto_create_new_capture_instance_on_ddl?, :auto_create_new_capture_instance_on_ddl
+      
+        # Optional. If set to true, Datastream will automatically delete the old capture
+        # instance after creating a new one to support a DDL change. The default is
+        # false and means that the customer has to delete the old capture instance
+        # manually.
+        # Corresponds to the JSON property `autoDeleteOldCaptureInstance`
+        # @return [Boolean]
+        attr_accessor :auto_delete_old_capture_instance
+        alias_method :auto_delete_old_capture_instance?, :auto_delete_old_capture_instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_create_new_capture_instance_on_ddl = args[:auto_create_new_capture_instance_on_ddl] if args.key?(:auto_create_new_capture_instance_on_ddl)
+          @auto_delete_old_capture_instance = args[:auto_delete_old_capture_instance] if args.key?(:auto_delete_old_capture_instance)
         end
       end
       
