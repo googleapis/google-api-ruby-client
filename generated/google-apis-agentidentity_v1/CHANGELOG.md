@@ -1,5 +1,9 @@
 # Release history for google-apis-agentidentity_v1
 
+### v0.3.0 (2026-10-04)
+
+* Regenerated from discovery document revision 20260924
+
 ### v0.2.0 (2026-08-30)
 
 * Regenerated from discovery document revision 20260823
