@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MultiZoneConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NamespacedGkeDeploymentTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1612,6 +1618,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VirtualClusterOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkflowGraph
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1872,6 +1884,7 @@ module Google
           property :completed, as: 'completed'
           property :duration_millis, :numeric_string => true, as: 'durationMillis'
           property :end_time, as: 'endTime'
+          property :event_log_path, as: 'eventLogPath'
           property :last_updated, as: 'lastUpdated'
           property :spark_user, as: 'sparkUser'
           property :start_time, as: 'startTime'
@@ -2514,6 +2527,8 @@ module Google
       
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
+          property :multi_zone_config, as: 'multiZoneConfig', class: Google::Apis::DataprocV1::MultiZoneConfig, decorator: Google::Apis::DataprocV1::MultiZoneConfig::Representation
+      
           property :network_uri, as: 'networkUri'
           property :node_group_affinity, as: 'nodeGroupAffinity', class: Google::Apis::DataprocV1::NodeGroupAffinity, decorator: Google::Apis::DataprocV1::NodeGroupAffinity::Representation
       
@@ -3089,6 +3104,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :metric_overrides, as: 'metricOverrides'
           property :metric_source, as: 'metricSource'
+        end
+      end
+      
+      class MultiZoneConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
         end
       end
       
@@ -4834,6 +4856,20 @@ module Google
           property :kubernetes_cluster_config, as: 'kubernetesClusterConfig', class: Google::Apis::DataprocV1::KubernetesClusterConfig, decorator: Google::Apis::DataprocV1::KubernetesClusterConfig::Representation
       
           property :staging_bucket, as: 'stagingBucket'
+        end
+      end
+      
+      class VirtualClusterOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :done_time, as: 'doneTime'
+          hash :labels, as: 'labels'
+          property :operation_type, as: 'operationType'
+          property :virtual_cluster, as: 'virtualCluster'
+          property :virtual_cluster_uuid, as: 'virtualClusterUuid'
+          collection :warnings, as: 'warnings'
         end
       end
       

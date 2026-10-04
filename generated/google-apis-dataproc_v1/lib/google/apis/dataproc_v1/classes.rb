@@ -591,6 +591,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Output only. The event log path for the application attempt.
+        # Corresponds to the JSON property `eventLogPath`
+        # @return [String]
+        attr_accessor :event_log_path
+      
         # 
         # Corresponds to the JSON property `lastUpdated`
         # @return [String]
@@ -617,6 +622,7 @@ module Google
           @completed = args[:completed] if args.key?(:completed)
           @duration_millis = args[:duration_millis] if args.key?(:duration_millis)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @event_log_path = args[:event_log_path] if args.key?(:event_log_path)
           @last_updated = args[:last_updated] if args.key?(:last_updated)
           @spark_user = args[:spark_user] if args.key?(:spark_user)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -3273,6 +3279,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :metadata
       
+        # Configuration for multi-zonal clusters that can create instances across
+        # multiple Zones within the Region.
+        # Corresponds to the JSON property `multiZoneConfig`
+        # @return [Google::Apis::DataprocV1::MultiZoneConfig]
+        attr_accessor :multi_zone_config
+      
         # Optional. The Compute Engine network to be used for machine communications.
         # Cannot be specified with subnetwork_uri. If neither network_uri nor
         # subnetwork_uri is specified, the "default" network of the project is used, if
@@ -3371,6 +3383,7 @@ module Google
           @confidential_instance_config = args[:confidential_instance_config] if args.key?(:confidential_instance_config)
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @multi_zone_config = args[:multi_zone_config] if args.key?(:multi_zone_config)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
           @node_group_affinity = args[:node_group_affinity] if args.key?(:node_group_affinity)
           @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
@@ -5624,6 +5637,26 @@ module Google
         def update!(**args)
           @metric_overrides = args[:metric_overrides] if args.key?(:metric_overrides)
           @metric_source = args[:metric_source] if args.key?(:metric_source)
+        end
+      end
+      
+      # Configuration for multi-zonal clusters that can create instances across
+      # multiple Zones within the Region.
+      class MultiZoneConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The distribution shape of the nodes in the multi-zonal cluster.
+        # Corresponds to the JSON property `targetShape`
+        # @return [String]
+        attr_accessor :target_shape
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_shape = args[:target_shape] if args.key?(:target_shape)
         end
       end
       
@@ -8134,12 +8167,10 @@ module Google
         # @return [Google::Apis::DataprocV1::RuntimeInfo]
         attr_accessor :runtime_info
       
-        # Optional. The session template used by the session.Only resource names,
-        # including project ID and location, are valid.Example: * https://www.googleapis.
-        # com/compute/v1/projects/[project_id]/locations/[dataproc_region]/
-        # sessionTemplates/[template_id] * projects/[project_id]/locations/[
-        # dataproc_region]/sessionTemplates/[template_id]The template must be in the
-        # same project and Dataproc region as the session.
+        # Optional. The session template used by the session.Resource names and short
+        # template IDs are valid. Examples: * projects/[project_id]/locations/[
+        # dataproc_region]/sessionTemplates/[template_id] * [template_id]The template
+        # must be in the same project and Dataproc region as the session.
         # Corresponds to the JSON property `sessionTemplate`
         # @return [String]
         attr_accessor :session_template
@@ -12243,6 +12274,67 @@ module Google
           @auxiliary_services_config = args[:auxiliary_services_config] if args.key?(:auxiliary_services_config)
           @kubernetes_cluster_config = args[:kubernetes_cluster_config] if args.key?(:kubernetes_cluster_config)
           @staging_bucket = args[:staging_bucket] if args.key?(:staging_bucket)
+        end
+      end
+      
+      # Metadata describing the VirtualCluster operation.
+      class VirtualClusterOperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. Short description of the operation.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The time when the operation finished.
+        # Corresponds to the JSON property `doneTime`
+        # @return [String]
+        attr_accessor :done_time
+      
+        # Output only. Labels associated with the operation.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. The operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Output only. Name of the virtual cluster for the operation.
+        # Corresponds to the JSON property `virtualCluster`
+        # @return [String]
+        attr_accessor :virtual_cluster
+      
+        # Output only. VirtualCluster UUID for the operation.
+        # Corresponds to the JSON property `virtualClusterUuid`
+        # @return [String]
+        attr_accessor :virtual_cluster_uuid
+      
+        # Output only. Warnings encountered during operation execution.
+        # Corresponds to the JSON property `warnings`
+        # @return [Array<String>]
+        attr_accessor :warnings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @done_time = args[:done_time] if args.key?(:done_time)
+          @labels = args[:labels] if args.key?(:labels)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @virtual_cluster = args[:virtual_cluster] if args.key?(:virtual_cluster)
+          @virtual_cluster_uuid = args[:virtual_cluster_uuid] if args.key?(:virtual_cluster_uuid)
+          @warnings = args[:warnings] if args.key?(:warnings)
         end
       end
       
