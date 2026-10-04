@@ -737,10 +737,8 @@ module Google
         # @return [String]
         attr_accessor :until
       
-        # Optional. If set to true, the request will only perform a dry run. By default (
-        # once the behavior change is fully rolled out), this will default to true.
-        # During the transition period, the default depends on the Mendel flag status
-        # for the project.
+        # Optional. If set to `true`, the request will only perform a dry run. By
+        # default this will default to `false`.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
