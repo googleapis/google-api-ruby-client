@@ -1092,6 +1092,92 @@ module Google
         end
       end
       
+      # Request message for `MigrateSchema`. Next tag: 7
+      class MigrateSchemaRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Execution mode controlling DDL execution and ledger recording.
+        # Defaults to EXECUTE_AND_RECORD.
+        # Corresponds to the JSON property `executionMode`
+        # @return [String]
+        attr_accessor :execution_mode
+      
+        # Required. Ordered migration steps from `./sql/migrations/` (or a single ad-hoc
+        # step). Backend compares submitted versions against `firebasesql.
+        # schema_migrations`: already-applied steps are verified for SQL immutability
+        # and skipped, while unapplied steps (`version > MAX(applied_version)`) are
+        # executed. All unapplied transactional steps in a single request execute
+        # atomically within one database transaction (BEGIN ... COMMIT): either every
+        # unapplied step commits and is recorded in the ledger, or the entire request
+        # rolls back. An unapplied step containing CREATE INDEX CONCURRENTLY or DROP
+        # INDEX CONCURRENTLY cannot be mixed with other unapplied steps and must be the
+        # sole unapplied step executed in the request.
+        # Corresponds to the JSON property `migrationSteps`
+        # @return [Array<Google::Apis::FirebasedataconnectV1beta::MigrationStep>]
+        attr_accessor :migration_steps
+      
+        # Optional. When true, runs preflight validation (syntax, applied-step
+        # immutability, sequence ordering, CONCURRENTLY isolation, and SAVEPOINT catalog
+        # checks) without committing mutations to the database.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_mode = args[:execution_mode] if args.key?(:execution_mode)
+          @migration_steps = args[:migration_steps] if args.key?(:migration_steps)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # An individual unit of migration work. Next tag: 4
+      class MigrationStep
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Descriptive migration label (e.g. "create_accounts_table"). If
+        # omitted, defaults to "adhoc".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Raw multi-statement SQL script. The backend splits it into
+        # individual statements before execution; callers do not pre-split. Required
+        # whenever the request executes or records DDL, which is every publicly
+        # available execution mode; omitting it returns INVALID_ARGUMENT.
+        # Corresponds to the JSON property `sql`
+        # @return [String]
+        attr_accessor :sql
+      
+        # Optional. Monotonic 14-digit UTC timestamp (YYYYMMDDHHMMSS), matching the
+        # timestamp prefix of the developer's migration filename. Constrained to `^[0-9]`
+        # 14`$`. - When specified (file migrations): If `version` is already recorded in
+        # `firebasesql.schema_migrations`, the backend verifies that `sql` matches the
+        # recorded statements and skips execution. If `version` is unapplied, the
+        # backend validates `version > MAX(applied_version)` and records the value
+        # unchanged, so the ledger row and the on-disk filename stay identical. - When
+        # omitted (Console/ad-hoc): Backend auto-generates a 14-digit UTC timestamp.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @sql = args[:sql] if args.key?(:sql)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
