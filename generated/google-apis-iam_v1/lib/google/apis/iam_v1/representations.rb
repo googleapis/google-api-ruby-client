@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RevokeWorkforcePoolSubjectSessionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Role
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1350,6 +1356,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attestation_rule, as: 'attestationRule', class: Google::Apis::IamV1::AttestationRule, decorator: Google::Apis::IamV1::AttestationRule::Representation
       
+        end
+      end
+      
+      class RevokeWorkforcePoolSubjectSessionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

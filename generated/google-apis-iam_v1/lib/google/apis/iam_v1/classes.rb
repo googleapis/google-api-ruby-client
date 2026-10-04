@@ -2404,6 +2404,19 @@ module Google
         end
       end
       
+      # Request message for RevokeWorkforcePoolSubjectSessions.
+      class RevokeWorkforcePoolSubjectSessionsRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A role in the Identity and Access Management API.
       class Role
         include Google::Apis::Core::Hashable

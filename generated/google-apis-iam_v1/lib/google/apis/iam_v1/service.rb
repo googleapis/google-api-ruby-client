@@ -1520,6 +1520,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Revokes all sessions for a given WorkforcePoolSubject.
+        # @param [String] name
+        #   Required. The resource name of the WorkforcePoolSubject. Special characters,
+        #   like `/` and `:`, must be escaped, because all URLs need to conform to the "
+        #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
+        #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
+        #   subjects/`subject_id``
+        # @param [Google::Apis::IamV1::RevokeWorkforcePoolSubjectSessionsRequest] revoke_workforce_pool_subject_sessions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def revoke_location_workforce_pool_subject_sessions(name, revoke_workforce_pool_subject_sessions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:revokeSessions', options)
+          command.request_representation = Google::Apis::IamV1::RevokeWorkforcePoolSubjectSessionsRequest::Representation
+          command.request_object = revoke_workforce_pool_subject_sessions_request_object
+          command.response_representation = Google::Apis::IamV1::Operation::Representation
+          command.response_class = Google::Apis::IamV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30 days
         # ago.
         # @param [String] name
