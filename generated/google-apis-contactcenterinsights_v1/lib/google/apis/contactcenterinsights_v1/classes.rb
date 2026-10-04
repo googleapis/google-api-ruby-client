@@ -470,6 +470,18 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -481,6 +493,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -621,6 +635,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The most recent time at which this analysis rule was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -639,6 +665,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1038,6 +1066,18 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1SampleRule]
         attr_accessor :sample_rule
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Message for schedule info.
         # Corresponds to the JSON property `scheduleInfo`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1ScheduleInfo]
@@ -1059,6 +1099,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @sample_rule = args[:sample_rule] if args.key?(:sample_rule)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @schedule_info = args[:schedule_info] if args.key?(:schedule_info)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -1204,6 +1246,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The most recent time at which the authorized view was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1219,6 +1273,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1243,6 +1299,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Update time.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -1257,6 +1325,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -1390,8 +1460,9 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
-        # Output only. If true, the labeling rules will be re-evaluated for the
-        # conversations.
+        # Output only. Deprecated: Use `request.annotator_selector.
+        # run_auto_labeling_annotator` instead. If true, the labeling rules will be re-
+        # evaluated for the conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
         attr_accessor :relabel
@@ -1449,7 +1520,8 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Optional. If true, the labeling rules will be re-evaluated for the
+        # Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator`
+        # instead. If true, the labeling rules will be re-evaluated for the
         # conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
@@ -2646,6 +2718,18 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RuntimeAnnotation>]
         attr_accessor :runtime_annotations
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The time at which the conversation started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -2696,6 +2780,8 @@ module Google
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
           @ttl = args[:ttl] if args.key?(:ttl)
@@ -4154,6 +4240,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. Option TTL for the dataset.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -4179,6 +4277,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @ttl = args[:ttl] if args.key?(:ttl)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -4906,6 +5006,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4914,6 +5026,8 @@ module Google
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -5352,6 +5466,18 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue]
         attr_accessor :qa_answer_label
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Update time of the label.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5368,6 +5494,8 @@ module Google
           @labeled_resource = args[:labeled_resource] if args.key?(:labeled_resource)
           @name = args[:name] if args.key?(:name)
           @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -8048,6 +8176,18 @@ module Google
         # @return [String]
         attr_accessor :question_type
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Questions are tagged for categorization and scoring. Tags can either be: -
         # Default Tags: These are predefined categories. They are identified by their
         # string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER"). - Custom Tags:
@@ -8087,6 +8227,8 @@ module Google
           @qa_question_data_options = args[:qa_question_data_options] if args.key?(:qa_question_data_options)
           @question_body = args[:question_body] if args.key?(:question_body)
           @question_type = args[:question_type] if args.key?(:question_type)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @tags = args[:tags] if args.key?(:tags)
           @tuning_metadata = args[:tuning_metadata] if args.key?(:tuning_metadata)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -8239,6 +8381,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :qa_question_ids
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The most recent time at which the question tag was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -8254,6 +8408,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -8325,6 +8481,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The source of the scorecard.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -8346,6 +8514,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_default = args[:is_default] if args.key?(:is_default)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @source = args[:source] if args.key?(:source)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
@@ -8542,6 +8712,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # A QaScorecard represents a collection of questions to be scored during
         # analysis.
         # Corresponds to the JSON property `snapshot`
@@ -8563,6 +8745,8 @@ module Google
           @alternate_ids = args[:alternate_ids] if args.key?(:alternate_ids)
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @snapshot = args[:snapshot] if args.key?(:snapshot)
           @state = args[:state] if args.key?(:state)
         end
@@ -9926,6 +10110,18 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1RedactionConfig]
         attr_accessor :redaction_config
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. The path to a Cloud Storage bucket containing conversation screen
         # recordings. If provided, Insights will search in the bucket for a screen
         # recording file matching the conversation data source object name prefix. If
@@ -9970,6 +10166,8 @@ module Google
           @name = args[:name] if args.key?(:name)
           @pubsub_notification_settings = args[:pubsub_notification_settings] if args.key?(:pubsub_notification_settings)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @screen_recording_bucket_uri = args[:screen_recording_bucket_uri] if args.key?(:screen_recording_bucket_uri)
           @speech_config = args[:speech_config] if args.key?(:speech_config)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
@@ -10919,6 +11117,18 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10930,6 +11140,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -11353,8 +11565,9 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
-        # Output only. If true, the labeling rules will be re-evaluated for the
-        # conversations.
+        # Output only. Deprecated: Use `request.annotator_selector.
+        # run_auto_labeling_annotator` instead. If true, the labeling rules will be re-
+        # evaluated for the conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
         attr_accessor :relabel
@@ -11412,7 +11625,8 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Optional. If true, the labeling rules will be re-evaluated for the
+        # Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator`
+        # instead. If true, the labeling rules will be re-evaluated for the
         # conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
@@ -11919,6 +12133,18 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation>]
         attr_accessor :runtime_annotations
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The time at which the conversation started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -11969,6 +12195,8 @@ module Google
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
           @ttl = args[:ttl] if args.key?(:ttl)
@@ -13230,6 +13458,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. Option TTL for the dataset.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -13255,6 +13495,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @ttl = args[:ttl] if args.key?(:ttl)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -13919,6 +14161,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -13927,6 +14181,8 @@ module Google
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -14345,6 +14601,18 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue]
         attr_accessor :qa_answer_label
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Update time of the label.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -14361,6 +14629,8 @@ module Google
           @labeled_resource = args[:labeled_resource] if args.key?(:labeled_resource)
           @name = args[:name] if args.key?(:name)
           @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -15803,6 +16073,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :qa_question_ids
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The most recent time at which the question tag was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -15818,6 +16100,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -17556,6 +17840,18 @@ module Google
         # @return [String]
         attr_accessor :request_time
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17567,6 +17863,8 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @request_time = args[:request_time] if args.key?(:request_time)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -17990,8 +18288,9 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleRpcStatus>]
         attr_accessor :partial_errors
       
-        # Output only. If true, the labeling rules will be re-evaluated for the
-        # conversations.
+        # Output only. Deprecated: Use `request.annotator_selector.
+        # run_auto_labeling_annotator` instead. If true, the labeling rules will be re-
+        # evaluated for the conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
         attr_accessor :relabel
@@ -18049,7 +18348,8 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Optional. If true, the labeling rules will be re-evaluated for the
+        # Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator`
+        # instead. If true, the labeling rules will be re-evaluated for the
         # conversations.
         # Corresponds to the JSON property `relabel`
         # @return [Boolean]
@@ -18804,6 +19104,18 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation>]
         attr_accessor :runtime_annotations
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # The time at which the conversation started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -18854,6 +19166,8 @@ module Google
           @obfuscated_user_id = args[:obfuscated_user_id] if args.key?(:obfuscated_user_id)
           @quality_metadata = args[:quality_metadata] if args.key?(:quality_metadata)
           @runtime_annotations = args[:runtime_annotations] if args.key?(:runtime_annotations)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @start_time = args[:start_time] if args.key?(:start_time)
           @transcript = args[:transcript] if args.key?(:transcript)
           @ttl = args[:ttl] if args.key?(:ttl)
@@ -20115,6 +20429,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Optional. Option TTL for the dataset.
         # Corresponds to the JSON property `ttl`
         # @return [String]
@@ -20140,6 +20466,8 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @ttl = args[:ttl] if args.key?(:ttl)
           @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
@@ -20804,6 +21132,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20812,6 +21152,8 @@ module Google
         def update!(**args)
           @kms_key = args[:kms_key] if args.key?(:kms_key)
           @name = args[:name] if args.key?(:name)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
         end
       end
       
@@ -21230,6 +21572,18 @@ module Google
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue]
         attr_accessor :qa_answer_label
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. Update time of the label.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -21246,6 +21600,8 @@ module Google
           @labeled_resource = args[:labeled_resource] if args.key?(:labeled_resource)
           @name = args[:name] if args.key?(:name)
           @qa_answer_label = args[:qa_answer_label] if args.key?(:qa_answer_label)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -22688,6 +23044,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :qa_question_ids
       
+        # Output only. Whether this resource is zone isolated.
+        # Corresponds to the JSON property `satisfiesPzi`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzi
+        alias_method :satisfies_pzi?, :satisfies_pzi
+      
+        # Output only. Whether this resource is zone separated.
+        # Corresponds to the JSON property `satisfiesPzs`
+        # @return [Boolean]
+        attr_accessor :satisfies_pzs
+        alias_method :satisfies_pzs?, :satisfies_pzs
+      
         # Output only. The most recent time at which the question tag was updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -22703,6 +23071,8 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @qa_question_ids = args[:qa_question_ids] if args.key?(:qa_question_ids)
+          @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
+          @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
