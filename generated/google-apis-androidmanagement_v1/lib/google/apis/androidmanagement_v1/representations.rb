@@ -772,6 +772,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PersonalCrossDevicePolicies
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PersonalUsagePolicies
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1508,6 +1514,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nearby_app_streaming, as: 'nearbyAppStreaming'
           property :nearby_notification_streaming, as: 'nearbyNotificationStreaming'
+          property :task_continuity_handoff, as: 'taskContinuityHandoff'
         end
       end
       
@@ -2403,12 +2410,21 @@ module Google
         end
       end
       
+      class PersonalCrossDevicePolicies
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :task_continuity_handoff, as: 'taskContinuityHandoff'
+        end
+      end
+      
       class PersonalUsagePolicies
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :account_types_with_management_disabled, as: 'accountTypesWithManagementDisabled'
           property :bluetooth_sharing, as: 'bluetoothSharing'
           property :camera_disabled, as: 'cameraDisabled'
+          property :cross_device_policies, as: 'crossDevicePolicies', class: Google::Apis::AndroidmanagementV1::PersonalCrossDevicePolicies, decorator: Google::Apis::AndroidmanagementV1::PersonalCrossDevicePolicies::Representation
+      
           property :max_days_with_work_off, as: 'maxDaysWithWorkOff'
           collection :personal_applications, as: 'personalApplications', class: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy, decorator: Google::Apis::AndroidmanagementV1::PersonalApplicationPolicy::Representation
       
