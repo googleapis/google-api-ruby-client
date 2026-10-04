@@ -2538,10 +2538,14 @@ module Google
         # Optional. Immutable. User-facing, version-independent label for this connector.
         # May be shared by multiple connectors under the same (project, location,
         # collection, data_source); tag-based lookup returns the one with the greatest
-        # create_time. Optional at Create time. Agent Designer resolves connectors via (
-        # data_source, tag) when set, falling back to the legacy resource-name lookup
-        # when unset, so connectors created before the tag-write launch continue to work
-        # without a backfill.
+        # create_time. Optional at Create time. If the caller omits `tag`, the server
+        # auto-derives one from the collection_id (falling back to data_source, else a
+        # time-based `t-` sentinel). The auto-derived tag is subject to the same
+        # immutability guarantee as a caller-supplied one, so callers who care about the
+        # exact tag value should provide it explicitly rather than relying on the server
+        # default. Agent Designer resolves connectors via (data_source, tag) when set,
+        # falling back to the legacy resource-name lookup when unset, so connectors
+        # created before the tag-write launch continue to work without a backfill.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -8865,6 +8869,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :assist_skipped_reasons
       
+        # Output only. Maps an internal connector agent name (the machine identifier
+        # embedded in tool names, e.g. `custom_mcp__agent`) to the connector's human-
+        # readable display name. Populated at serving time for custom MCP / agent
+        # gateway connectors so user-facing surfaces (e.g. the tool-call chip) can show
+        # the connector name instead of its internal identifier. Empty when there are no
+        # such connectors.
+        # Corresponds to the JSON property `connectorDisplayNames`
+        # @return [Hash<String,String>]
+        attr_accessor :connector_display_names
+      
         # Customer policy enforcement results. Contains the results of the various
         # policy checks, like the banned phrases or the Model Armor checks.
         # Corresponds to the JSON property `customerPolicyEnforcementResult`
@@ -8896,6 +8910,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_skipped_reasons = args[:assist_skipped_reasons] if args.key?(:assist_skipped_reasons)
+          @connector_display_names = args[:connector_display_names] if args.key?(:connector_display_names)
           @customer_policy_enforcement_result = args[:customer_policy_enforcement_result] if args.key?(:customer_policy_enforcement_result)
           @name = args[:name] if args.key?(:name)
           @replies = args[:replies] if args.key?(:replies)
@@ -10964,10 +10979,14 @@ module Google
         # Optional. Immutable. User-facing, version-independent label for this connector.
         # May be shared by multiple connectors under the same (project, location,
         # collection, data_source); tag-based lookup returns the one with the greatest
-        # create_time. Optional at Create time. Agent Designer resolves connectors via (
-        # data_source, tag) when set, falling back to the legacy resource-name lookup
-        # when unset, so connectors created before the tag-write launch continue to work
-        # without a backfill.
+        # create_time. Optional at Create time. If the caller omits `tag`, the server
+        # auto-derives one from the collection_id (falling back to data_source, else a
+        # time-based `t-` sentinel). The auto-derived tag is subject to the same
+        # immutability guarantee as a caller-supplied one, so callers who care about the
+        # exact tag value should provide it explicitly rather than relying on the server
+        # default. Agent Designer resolves connectors via (data_source, tag) when set,
+        # falling back to the legacy resource-name lookup when unset, so connectors
+        # created before the tag-write launch continue to work without a backfill.
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
@@ -21252,6 +21271,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :assist_skipped_reasons
       
+        # Output only. Maps an internal connector agent name (the machine identifier
+        # embedded in tool names, e.g. `custom_mcp__agent`) to the connector's human-
+        # readable display name. Populated at serving time for custom MCP / agent
+        # gateway connectors so user-facing surfaces (e.g. the tool-call chip) can show
+        # the connector name instead of its internal identifier. Empty when there are no
+        # such connectors.
+        # Corresponds to the JSON property `connectorDisplayNames`
+        # @return [Hash<String,String>]
+        attr_accessor :connector_display_names
+      
         # Customer policy enforcement results. Contains the results of the various
         # policy checks, like the banned phrases or the Model Armor checks.
         # Corresponds to the JSON property `customerPolicyEnforcementResult`
@@ -21283,6 +21312,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assist_skipped_reasons = args[:assist_skipped_reasons] if args.key?(:assist_skipped_reasons)
+          @connector_display_names = args[:connector_display_names] if args.key?(:connector_display_names)
           @customer_policy_enforcement_result = args[:customer_policy_enforcement_result] if args.key?(:customer_policy_enforcement_result)
           @name = args[:name] if args.key?(:name)
           @replies = args[:replies] if args.key?(:replies)

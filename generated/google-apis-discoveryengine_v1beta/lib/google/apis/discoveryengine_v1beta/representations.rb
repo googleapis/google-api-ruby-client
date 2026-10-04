@@ -8047,6 +8047,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assist_skipped_reasons, as: 'assistSkippedReasons'
+          hash :connector_display_names, as: 'connectorDisplayNames'
           property :customer_policy_enforcement_result, as: 'customerPolicyEnforcementResult', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult::Representation
       
           property :name, as: 'name'
@@ -11327,6 +11328,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assist_skipped_reasons, as: 'assistSkippedReasons'
+          hash :connector_display_names, as: 'connectorDisplayNames'
           property :customer_policy_enforcement_result, as: 'customerPolicyEnforcementResult', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResult, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResult::Representation
       
           property :name, as: 'name'
