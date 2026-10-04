@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Obstacle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RoofSegmentSizeAndSunshineStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -318,6 +324,13 @@ module Google
         end
       end
       
+      class Obstacle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :polygon_geojson, as: 'polygonGeojson'
+        end
+      end
+      
       class RoofSegmentSizeAndSunshineStats
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -328,6 +341,7 @@ module Google
       
           property :pitch_degrees, as: 'pitchDegrees'
           property :plane_height_at_center_meters, as: 'planeHeightAtCenterMeters'
+          hash :polygon_geojson, as: 'polygonGeojson'
           property :stats, as: 'stats', class: Google::Apis::SolarV1::SizeAndSunshineStats, decorator: Google::Apis::SolarV1::SizeAndSunshineStats::Representation
       
         end
@@ -402,6 +416,8 @@ module Google
           property :max_array_area_meters2, as: 'maxArrayAreaMeters2'
           property :max_array_panels_count, as: 'maxArrayPanelsCount'
           property :max_sunshine_hours_per_year, as: 'maxSunshineHoursPerYear'
+          collection :obstacles, as: 'obstacles', class: Google::Apis::SolarV1::Obstacle, decorator: Google::Apis::SolarV1::Obstacle::Representation
+      
           property :panel_capacity_watts, as: 'panelCapacityWatts'
           property :panel_height_meters, as: 'panelHeightMeters'
           property :panel_lifetime_years, as: 'panelLifetimeYears'

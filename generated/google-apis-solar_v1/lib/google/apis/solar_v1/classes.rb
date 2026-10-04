@@ -748,6 +748,31 @@ module Google
         end
       end
       
+      # Details of a single detected obstacle.
+      class Obstacle
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A GeoJSON representation of the obstacle. An obstacle is defined
+        # as any non-buildable area where solar panels cannot be placed due to physical
+        # barriers (vents, chimneys, dormers, etc.). The GeoJSON data must be in RFC
+        # 7946 format and represent a Polygon for a single contiguous area. The Polygon
+        # will be represented by several loops when it contains holes. Example: ` "type":
+        # "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0]
+        # ] ] `
+        # Corresponds to the JSON property `polygonGeojson`
+        # @return [Hash<String,Object>]
+        attr_accessor :polygon_geojson
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @polygon_geojson = args[:polygon_geojson] if args.key?(:polygon_geojson)
+        end
+      end
+      
       # Information about the size and sunniness quantiles of a roof segment.
       class RoofSegmentSizeAndSunshineStats
         include Google::Apis::Core::Hashable
@@ -785,6 +810,19 @@ module Google
         # @return [Float]
         attr_accessor :plane_height_at_center_meters
       
+        # Output only. A GeoJSON representation of the detailed geometry for the roof
+        # segment plane. The polygon represents the physical roof facet, excluding
+        # overlapping vegetation and internal cutouts (e.g., courtyards). This field is
+        # only populated if ROOF_GEOMETRY is included in the request's
+        # FindClosestBuildingInsightsRequest.additional_insights parameter. The GeoJSON
+        # data must be in RFC 7946 format and represent a Polygon for a single
+        # contiguous area. The Polygon will be represented by several loops when it
+        # contains holes. Example: ` "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [
+        # -1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] `
+        # Corresponds to the JSON property `polygonGeojson`
+        # @return [Hash<String,Object>]
+        attr_accessor :polygon_geojson
+      
         # Size and sunniness quantiles of a roof, or part of a roof.
         # Corresponds to the JSON property `stats`
         # @return [Google::Apis::SolarV1::SizeAndSunshineStats]
@@ -801,6 +839,7 @@ module Google
           @center = args[:center] if args.key?(:center)
           @pitch_degrees = args[:pitch_degrees] if args.key?(:pitch_degrees)
           @plane_height_at_center_meters = args[:plane_height_at_center_meters] if args.key?(:plane_height_at_center_meters)
+          @polygon_geojson = args[:polygon_geojson] if args.key?(:polygon_geojson)
           @stats = args[:stats] if args.key?(:stats)
         end
       end
@@ -1067,6 +1106,15 @@ module Google
         # @return [Float]
         attr_accessor :max_sunshine_hours_per_year
       
+        # Details for each obstacle detected on the rooftop. An obstacle is defined as
+        # any non-buildable area where solar panels cannot be placed due to physical
+        # barriers (vents, chimneys, etc.). This field is only populated if
+        # ROOF_GEOMETRY is included in the request's FindClosestBuildingInsightsRequest.
+        # additional_insights.
+        # Corresponds to the JSON property `obstacles`
+        # @return [Array<Google::Apis::SolarV1::Obstacle>]
+        attr_accessor :obstacles
+      
         # Capacity, in watts, of the panel used in the calculations.
         # Corresponds to the JSON property `panelCapacityWatts`
         # @return [Float]
@@ -1127,6 +1175,7 @@ module Google
           @max_array_area_meters2 = args[:max_array_area_meters2] if args.key?(:max_array_area_meters2)
           @max_array_panels_count = args[:max_array_panels_count] if args.key?(:max_array_panels_count)
           @max_sunshine_hours_per_year = args[:max_sunshine_hours_per_year] if args.key?(:max_sunshine_hours_per_year)
+          @obstacles = args[:obstacles] if args.key?(:obstacles)
           @panel_capacity_watts = args[:panel_capacity_watts] if args.key?(:panel_capacity_watts)
           @panel_height_meters = args[:panel_height_meters] if args.key?(:panel_height_meters)
           @panel_lifetime_years = args[:panel_lifetime_years] if args.key?(:panel_lifetime_years)
