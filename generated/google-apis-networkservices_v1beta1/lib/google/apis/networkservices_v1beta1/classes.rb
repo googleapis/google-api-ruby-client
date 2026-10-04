@@ -61,7 +61,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Configuration for egress network traffic.
+        # Egress network config
         # Corresponds to the JSON property `egressNetworkConfig`
         # @return [Google::Apis::NetworkservicesV1beta1::EgressNetworkConfig]
         attr_accessor :egress_network_config
@@ -623,10 +623,15 @@ module Google
       class DnsPeeringConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The domain to peer.
+        # Optional. Deprecated: Use `domains` instead. The domain to peer.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
+      
+        # Optional. The domains to peer.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
       
         # Optional. The target network resource name for DNS peering. Format: projects/`
         # project`/global/networks/`network_id`
@@ -641,11 +646,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
+          @domains = args[:domains] if args.key?(:domains)
           @target_network = args[:target_network] if args.key?(:target_network)
         end
       end
       
-      # 
+      # Egress network config
       class EgressNetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -659,6 +665,11 @@ module Google
         # Corresponds to the JSON property `networkAttachment`
         # @return [String]
         attr_accessor :network_attachment
+      
+        # Configuration for TLS connections.
+        # Corresponds to the JSON property `tlsConfig`
+        # @return [Google::Apis::NetworkservicesV1beta1::EgressNetworkConfigTlsConfig]
+        attr_accessor :tls_config
       
         # Optional. Deprecated: Use tls_config instead. The trust config resource name.
         # Format: projects/`project`/locations/`location`/trustConfigs/`trust_config`
@@ -679,8 +690,35 @@ module Google
         def update!(**args)
           @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @tls_config = args[:tls_config] if args.key?(:tls_config)
           @trust_config = args[:trust_config] if args.key?(:trust_config)
           @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
+        end
+      end
+      
+      # Configuration for TLS connections.
+      class EgressNetworkConfigTlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The additional roots to trust.
+        # Corresponds to the JSON property `additionalRoots`
+        # @return [String]
+        attr_accessor :additional_roots
+      
+        # Optional. The trust config resource name. Format: projects/`project`/locations/
+        # `location`/trustConfigs/`trust_config`
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_roots = args[:additional_roots] if args.key?(:additional_roots)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
         end
       end
       
@@ -1178,8 +1216,9 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
-        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension`, `
+        # LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per
+        # extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -1352,7 +1391,9 @@ module Google
         # LbEdgeExtension` resource, this field is required and must only contain `
         # REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is
         # optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `
-        # REQUEST_HEADERS` event is assumed as supported.
+        # REQUEST_HEADERS` event is assumed as supported. For the `CdnEdgeExtension`
+        # resource, this field is optional. Eligible values are `REQUEST_HEADERS` and `
+        # RESPONSE_HEADERS`. If unspecified, both are assumed as supported.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -3195,7 +3236,7 @@ module Google
         # and extensions to execute. Match conditions for each extension chain are
         # evaluated in sequence for a given request. The first extension chain that has
         # a condition that matches the request is executed. Any subsequent extension
-        # chains do not execute. Limited to 5 extension chains per resource.
+        # chains do not execute. Limited to 1 extension chain per resource.
         # Corresponds to the JSON property `extensionChains`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionChain>]
         attr_accessor :extension_chains
