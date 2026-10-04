@@ -238,7 +238,7 @@ module Google
       class Parameter
         include Google::Apis::Core::Hashable
       
-        # Output only. [Output only] Create time stamp
+        # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -262,8 +262,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Identifier. [Output only] The resource name of the Parameter in the format `
-        # projects/*/locations/*/parameters/*`.
+        # Identifier. The resource name of the Parameter in the format `projects/*/
+        # locations/*/parameters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -284,7 +284,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :tags
       
-        # Output only. [Output only] Update time stamp
+        # Output only. Update time stamp
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -310,12 +310,12 @@ module Google
       class ParameterVersion
         include Google::Apis::Core::Hashable
       
-        # Optional. Output only. [Output only] The source of the checksum.
+        # Optional. Output only. The source of the checksum.
         # Corresponds to the JSON property `checksumSource`
         # @return [String]
         attr_accessor :checksum_source
       
-        # Output only. [Output only] Create time stamp
+        # Output only. Create time stamp
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -330,15 +330,15 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. Output only. [Output only] The resource name of the KMS key version
-        # used to encrypt the ParameterVersion payload. This field is populated only if
-        # the Parameter resource has customer managed encryption key (CMEK) configured.
+        # Optional. Output only. The resource name of the KMS key version used to
+        # encrypt the ParameterVersion payload. This field is populated only if the
+        # Parameter resource has customer managed encryption key (CMEK) configured.
         # Corresponds to the JSON property `kmsKeyVersion`
         # @return [String]
         attr_accessor :kms_key_version
       
-        # Identifier. [Output only] The resource name of the ParameterVersion in the
-        # format `projects/*/locations/*/parameters/*/versions/*`.
+        # Identifier. The resource name of the ParameterVersion in the format `projects/*
+        # /locations/*/parameters/*/versions/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -348,7 +348,7 @@ module Google
         # @return [Google::Apis::ParametermanagerV1::ParameterVersionPayload]
         attr_accessor :payload
       
-        # Output only. [Output only] Update time stamp
+        # Output only. Update time stamp
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -379,9 +379,9 @@ module Google
         # @return [String]
         attr_accessor :data
       
-        # Optional. [Optional] The integrity checksum of the payload. If provided, the
-        # server will verify that the checksum matches the payload. If not provided, the
-        # server will generate the checksum.
+        # Optional. The integrity checksum of the payload. If provided, the server will
+        # verify that the checksum matches the payload. If not provided, the server will
+        # generate the checksum.
         # Corresponds to the JSON property `dataCrc32c`
         # @return [Fixnum]
         attr_accessor :data_crc32c
@@ -397,12 +397,12 @@ module Google
         end
       end
       
-      # Message describing RenderParameterVersionResponse resource
+      # Message describing response of the `RenderParameterVersion` method
       class RenderParameterVersionResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Resource identifier of a ParameterVersion in the format `projects/
-        # */locations/*/parameters/*/versions/*`.
+        # Resource identifier of a ParameterVersion in the format `projects/*/locations/*
+        # /parameters/*/versions/*`.
         # Corresponds to the JSON property `parameterVersion`
         # @return [String]
         attr_accessor :parameter_version
@@ -412,10 +412,10 @@ module Google
         # @return [Google::Apis::ParametermanagerV1::ParameterVersionPayload]
         attr_accessor :payload
       
-        # Output only. Server generated rendered version of the user provided payload
-        # data (ParameterVersionPayload) which has substitutions of all (if any)
-        # references to a SecretManager SecretVersion resources. This substitution only
-        # works for a Parameter which is in JSON or YAML format.
+        # Server generated rendered version of the user provided payload data (
+        # ParameterVersionPayload) which has substitutions of all (if any) references to
+        # a SecretManager SecretVersion resources. This substitution only works for a
+        # Parameter which is in JSON or YAML format.
         # Corresponds to the JSON property `renderedPayload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -433,13 +433,12 @@ module Google
         end
       end
       
-      # Message describing RenderTemplateVersionResponse resource
+      # Message describing response for `RenderTemplateVersion` method
       class RenderTemplateVersionResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. The resource name of the ParameterVersion used to render the
-        # template version in the format `projects/*/locations/*/parameters/*/versions/*`
-        # .
+        # The resource name of the ParameterVersion used to render the template version
+        # in the format `projects/*/locations/*/parameters/*/versions/*`.
         # Corresponds to the JSON property `parameterVersion`
         # @return [String]
         attr_accessor :parameter_version
@@ -449,15 +448,15 @@ module Google
         # @return [Google::Apis::ParametermanagerV1::TemplateVersionPayload]
         attr_accessor :payload
       
-        # Output only. Server generated rendered version of the user provided payload
-        # data (TemplateVersionPayload) which has all the variables resolved using the
+        # Server generated rendered version of the user provided payload data (
+        # TemplateVersionPayload) which has all the variables resolved using the
         # provided parameter version.
         # Corresponds to the JSON property `renderedPayload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :rendered_payload
       
-        # Output only. Format of the template version.
+        # Format of the template version.
         # Corresponds to the JSON property `templateFormat`
         # @return [String]
         attr_accessor :template_format

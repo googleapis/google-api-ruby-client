@@ -311,8 +311,8 @@ module Google
         
         # Updates a single Parameter.
         # @param [String] name
-        #   Identifier. [Output only] The resource name of the Parameter in the format `
-        #   projects/*/locations/*/parameters/*`.
+        #   Identifier. The resource name of the Parameter in the format `projects/*/
+        #   locations/*/parameters/*`.
         # @param [Google::Apis::ParametermanagerV1::Parameter] parameter_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
@@ -537,8 +537,8 @@ module Google
         
         # Updates a single ParameterVersion.
         # @param [String] name
-        #   Identifier. [Output only] The resource name of the ParameterVersion in the
-        #   format `projects/*/locations/*/parameters/*/versions/*`.
+        #   Identifier. The resource name of the ParameterVersion in the format `projects/*
+        #   /locations/*/parameters/*/versions/*`.
         # @param [Google::Apis::ParametermanagerV1::ParameterVersion] parameter_version_object
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
