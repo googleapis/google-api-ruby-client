@@ -2842,11 +2842,8 @@ module Google
         # @return [Google::Apis::OndemandscanningV1beta1::LayerDetails]
         attr_accessor :layer_details
       
-        # The list of licenses found that are related to a given package. Note that
-        # licenses may also be stored on the BinarySourceInfo. If there is no
-        # BinarySourceInfo (because there's no concept of source vs binary), then it
-        # will be stored here, while if there are BinarySourceInfos, it will be stored
-        # there, as one source can have multiple binaries with different licenses.
+        # Deprecated: Top-level licenses is not persisted in the legacy Packages table.
+        # Licenses are captured in BinarySourceInfo or PackagesV2.
         # Corresponds to the JSON property `licenses`
         # @return [Array<String>]
         attr_accessor :licenses
