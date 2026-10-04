@@ -401,11 +401,9 @@ module Google
         end
       end
       
-      # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-      # to a Bigtable row as follows: - row key: subscription name, message ID hash,
-      # and message ID delimited by `#`. - columns: message bytes written to a single
-      # column family `data` with an empty-string column qualifier. - cell timestamp:
-      # the message publish timestamp.
+      # Configuration for a Bigtable subscription, which will write a Pub/Sub message
+      # to a Bigtable row. See the ColumnFamilyMapping documentation below for details
+      # on how the row keys and columns will be written.
       class BigtableConfig
         include Google::Apis::Core::Hashable
       
@@ -415,6 +413,24 @@ module Google
         # Corresponds to the JSON property `appProfileId`
         # @return [String]
         attr_accessor :app_profile_id
+      
+        # Configuration for writing a Pub/Sub message to a Bigtable row with a user-
+        # defined key and writing to column families. If this field is set: - The
+        # subscription messages must be formatted as JSON. - The row key mapping is
+        # configured in the `key_definition` section. - The top-level fields will be
+        # written either: - By default, they will be written to the `data` column family
+        # with the field name as the column qualifier. - But if the field name matches
+        # an existing column family (except for the default `data` column), then that
+        # field will be written to that column family, either as a scalar or its next
+        # level nested fields if it's a JSON object. - The cell timestamp will be the
+        # message publish timestamp. If the field is not set, the default behavior is to
+        # write: - row key: subscription name, message ID hash, and message ID delimited
+        # by `#`. - columns: message bytes written to a single column family `data` with
+        # an empty-string column qualifier. - cell timestamp: the message publish
+        # timestamp.
+        # Corresponds to the JSON property `columnFamilyMapping`
+        # @return [Google::Apis::PubsubV1::ColumnFamilyMapping]
+        attr_accessor :column_family_mapping
       
         # Optional. The service account to use to write to Bigtable. The subscription
         # creator or updater that specifies this field must have `iam.serviceAccounts.
@@ -455,6 +471,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_profile_id = args[:app_profile_id] if args.key?(:app_profile_id)
+          @column_family_mapping = args[:column_family_mapping] if args.key?(:column_family_mapping)
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @state = args[:state] if args.key?(:state)
           @table = args[:table] if args.key?(:table)
@@ -730,6 +747,48 @@ module Google
         end
       end
       
+      # Configuration for writing a Pub/Sub message to a Bigtable row with a user-
+      # defined key and writing to column families. If this field is set: - The
+      # subscription messages must be formatted as JSON. - The row key mapping is
+      # configured in the `key_definition` section. - The top-level fields will be
+      # written either: - By default, they will be written to the `data` column family
+      # with the field name as the column qualifier. - But if the field name matches
+      # an existing column family (except for the default `data` column), then that
+      # field will be written to that column family, either as a scalar or its next
+      # level nested fields if it's a JSON object. - The cell timestamp will be the
+      # message publish timestamp. If the field is not set, the default behavior is to
+      # write: - row key: subscription name, message ID hash, and message ID delimited
+      # by `#`. - columns: message bytes written to a single column family `data` with
+      # an empty-string column qualifier. - cell timestamp: the message publish
+      # timestamp.
+      class ColumnFamilyMapping
+        include Google::Apis::Core::Hashable
+      
+        # Row key definition based on fields from the message.
+        # Corresponds to the JSON property `delimitedKey`
+        # @return [Google::Apis::PubsubV1::DelimitedKey]
+        attr_accessor :delimited_key
+      
+        # Row key definition that reads the input message fields based on the field
+        # names of the table's structured row key (`$universe.dns_names.
+        # final_documentation_domain`/bigtable/docs/manage-row-key-schemas). Note that
+        # if the field is nullable in the structured row key, then it need not be
+        # present in the message; null will be used instead.
+        # Corresponds to the JSON property `rowKeySchema`
+        # @return [Google::Apis::PubsubV1::RowKeySchema]
+        attr_accessor :row_key_schema
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimited_key = args[:delimited_key] if args.key?(:delimited_key)
+          @row_key_schema = args[:row_key_schema] if args.key?(:row_key_schema)
+        end
+      end
+      
       # Request for CommitSchema method.
       class CommitSchemaRequest
         include Google::Apis::Core::Hashable
@@ -934,6 +993,36 @@ module Google
         def update!(**args)
           @dead_letter_topic = args[:dead_letter_topic] if args.key?(:dead_letter_topic)
           @max_delivery_attempts = args[:max_delivery_attempts] if args.key?(:max_delivery_attempts)
+        end
+      end
+      
+      # Row key definition based on fields from the message.
+      class DelimitedKey
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Byte sequence used to delimit concatenated fields. Must be specified
+        # if multiple key fields are used. The delimiter must contain at least 1
+        # character and at most 50 characters.
+        # Corresponds to the JSON property `delimiter`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :delimiter
+      
+        # Optional. The key fields to construct from the row key. The fields must be
+        # present in the message as a top-level field, i.e. JSON path expressions will
+        # not traverse into nested objects.
+        # Corresponds to the JSON property `keyFields`
+        # @return [Array<String>]
+        attr_accessor :key_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delimiter = args[:delimiter] if args.key?(:delimiter)
+          @key_fields = args[:key_fields] if args.key?(:key_fields)
         end
       end
       
@@ -2017,6 +2106,23 @@ module Google
         end
       end
       
+      # Row key definition that reads the input message fields based on the field
+      # names of the table's structured row key (`$universe.dns_names.
+      # final_documentation_domain`/bigtable/docs/manage-row-key-schemas). Note that
+      # if the field is nullable in the structured row key, then it need not be
+      # present in the message; null will be used instead.
+      class RowKeySchema
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # A schema resource.
       class Schema
         include Google::Apis::Core::Hashable
@@ -2292,11 +2398,9 @@ module Google
         # @return [Google::Apis::PubsubV1::BigQueryConfig]
         attr_accessor :bigquery_config
       
-        # Configuration for a Bigtable subscription. The Pub/Sub message will be written
-        # to a Bigtable row as follows: - row key: subscription name, message ID hash,
-        # and message ID delimited by `#`. - columns: message bytes written to a single
-        # column family `data` with an empty-string column qualifier. - cell timestamp:
-        # the message publish timestamp.
+        # Configuration for a Bigtable subscription, which will write a Pub/Sub message
+        # to a Bigtable row. See the ColumnFamilyMapping documentation below for details
+        # on how the row keys and columns will be written.
         # Corresponds to the JSON property `bigtableConfig`
         # @return [Google::Apis::PubsubV1::BigtableConfig]
         attr_accessor :bigtable_config

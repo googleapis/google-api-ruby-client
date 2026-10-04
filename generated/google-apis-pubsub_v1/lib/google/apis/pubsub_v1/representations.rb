@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColumnFamilyMapping
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CommitSchemaRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class DeadLetterPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DelimitedKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -335,6 +347,12 @@ module Google
       end
       
       class RollbackSchemaRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RowKeySchema
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -552,6 +570,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_profile_id, as: 'appProfileId'
+          property :column_family_mapping, as: 'columnFamilyMapping', class: Google::Apis::PubsubV1::ColumnFamilyMapping, decorator: Google::Apis::PubsubV1::ColumnFamilyMapping::Representation
+      
           property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
           property :table, as: 'table'
@@ -600,6 +620,16 @@ module Google
           property :service_account_email, as: 'serviceAccountEmail'
           property :state, as: 'state'
           property :text_config, as: 'textConfig', class: Google::Apis::PubsubV1::TextConfig, decorator: Google::Apis::PubsubV1::TextConfig::Representation
+      
+        end
+      end
+      
+      class ColumnFamilyMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimited_key, as: 'delimitedKey', class: Google::Apis::PubsubV1::DelimitedKey, decorator: Google::Apis::PubsubV1::DelimitedKey::Representation
+      
+          property :row_key_schema, as: 'rowKeySchema', class: Google::Apis::PubsubV1::RowKeySchema, decorator: Google::Apis::PubsubV1::RowKeySchema::Representation
       
         end
       end
@@ -654,6 +684,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dead_letter_topic, as: 'deadLetterTopic'
           property :max_delivery_attempts, as: 'maxDeliveryAttempts'
+        end
+      end
+      
+      class DelimitedKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :delimiter, :base64 => true, as: 'delimiter'
+          collection :key_fields, as: 'keyFields'
         end
       end
       
@@ -949,6 +987,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :revision_id, as: 'revisionId'
+        end
+      end
+      
+      class RowKeySchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
