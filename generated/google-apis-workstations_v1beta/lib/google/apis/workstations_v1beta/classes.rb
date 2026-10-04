@@ -580,13 +580,13 @@ module Google
       
         # Optional. Indicates how many IOPS to provision for the disk. This sets the
         # number of I/O operations per second that the disk can handle. Values must be
-        # between 3000 and 100,000.
+        # between 3,000 and 100,000.
         # Corresponds to the JSON property `provisionedIops`
         # @return [Fixnum]
         attr_accessor :provisioned_iops
       
         # Optional. Indicates how much throughput to provision for the disk. This sets
-        # the number of throughput mb per second that the disk can handle. Values must
+        # the number of throughput MB per second that the disk can handle. Values must
         # be between 1 and 2,400.
         # Corresponds to the JSON property `provisionedThroughput`
         # @return [Fixnum]
@@ -2643,7 +2643,7 @@ module Google
         # fields are independent of each other. Note that the running_timeout field
         # stops workstations after the specified time, regardless of whether or not the
         # workstations are idle. Note: This timeout applies to workstations in the
-        # following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation
+        # following states: - STATE_RUNNING - STATE_SUSPENDED Suspending a workstation
         # does not reset this timeout. Provide duration terminated by `s` for seconds—
         # for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
         # of `"0s"` indicates that workstations using this configuration should never
