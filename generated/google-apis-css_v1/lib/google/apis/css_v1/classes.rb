@@ -328,14 +328,12 @@ module Google
         # @return [String]
         attr_accessor :material
       
-        # Maximum rating score of the product. Required if `rating` is provided. This
-        # field is for an upcoming feature and is not yet used.
+        # Maximum rating score of the product. Required if `rating` is provided.
         # Corresponds to the JSON property `maxRating`
         # @return [Fixnum]
         attr_accessor :max_rating
       
-        # Minimum rating score of the product. Required if `rating` is provided. This
-        # field is for an upcoming feature and is not yet used.
+        # Minimum rating score of the product. Required if `rating` is provided.
         # Corresponds to the JSON property `minRating`
         # @return [Fixnum]
         attr_accessor :min_rating
@@ -406,13 +404,11 @@ module Google
         # min_rating`, `max_rating`], inclusive. When displayed on the product page,
         # this rating is normalized to a scale of [1, 5] with one decimal place. If
         # provided, `review_count`, `min_rating`, and `max_rating` are also required.
-        # This field is for an upcoming feature and is not yet used.
         # Corresponds to the JSON property `rating`
         # @return [Float]
         attr_accessor :rating
       
-        # Number of reviews of the product. Required if `rating` is provided. This field
-        # is for an upcoming feature and is not yet used.
+        # Number of reviews of the product. Required if `rating` is provided.
         # Corresponds to the JSON property `reviewCount`
         # @return [Fixnum]
         attr_accessor :review_count
