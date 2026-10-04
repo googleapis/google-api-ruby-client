@@ -34,6 +34,72 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AcceleratorInterconnect
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectAcceleratorInterconnectStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectMemberInstance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectMemberInstancesListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectsInsertRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AcceleratorInterconnectsList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorTopologiesInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -983,6 +1049,12 @@ module Google
       end
       
       class CapacityHistoryResponsePriceRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CapacityPool
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3670,6 +3742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstancesTroubleshootOperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstantSnapshot
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4318,6 +4396,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InterconnectsSetNameRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Interval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4764,6 +4848,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEdgeSecurityServiceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5614,6 +5704,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PartitionFormability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PartitionFormabilityStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Error
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Error
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class ErrorDetail
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5866,7 +5986,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Quota
+      class QueryFormabilityRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryFormabilityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7392,6 +7518,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -9400,6 +9532,121 @@ module Google
         end
       end
       
+      class AcceleratorInterconnect
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          hash :annotations, as: 'annotations'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputePreview::AcceleratorInterconnectParams, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectParams::Representation
+      
+          property :reactivation_mode, as: 'reactivationMode'
+          property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :status, as: 'status', class: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatus, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatus::Representation
+      
+          property :zone, as: 'zone'
+        end
+      end
+      
+      class AcceleratorInterconnectAcceleratorInterconnectStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
+          property :state, as: 'state'
+          property :state_details, as: 'stateDetails', class: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Representation
+      
+        end
+      end
+      
+      class AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error::ErrorDetail, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectAcceleratorInterconnectStatusAcceleratorInterconnectStateDetails::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputePreview::ErrorInfo, decorator: Google::Apis::ComputePreview::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputePreview::Help, decorator: Google::Apis::ComputePreview::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputePreview::LocalizedMessage, decorator: Google::Apis::ComputePreview::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputePreview::QuotaExceededInfo, decorator: Google::Apis::ComputePreview::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
+      class AcceleratorInterconnectMemberInstance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+          property :instance_id, :numeric_string => true, as: 'instanceId'
+        end
+      end
+      
+      class AcceleratorInterconnectMemberInstancesListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstance, decorator: Google::Apis::ComputePreview::AcceleratorInterconnectMemberInstance::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class AcceleratorInterconnectParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :capacity_pool, as: 'capacityPool', class: Google::Apis::ComputePreview::CapacityPool, decorator: Google::Apis::ComputePreview::CapacityPool::Representation
+      
+        end
+      end
+      
+      class AcceleratorInterconnectsInsertRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputePreview::AcceleratorInterconnect, decorator: Google::Apis::ComputePreview::AcceleratorInterconnect::Representation
+      
+        end
+      end
+      
+      class AcceleratorInterconnectsList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputePreview::AcceleratorInterconnect, decorator: Google::Apis::ComputePreview::AcceleratorInterconnect::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class AcceleratorTopologiesInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9732,6 +9979,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_info, as: 'healthInfo', class: Google::Apis::ComputePreview::AllocationResourceStatusHealthInfo, decorator: Google::Apis::ComputePreview::AllocationResourceStatusHealthInfo::Representation
       
+          property :machine_count, as: 'machineCount'
           property :reservation_block_count, as: 'reservationBlockCount'
           property :reservation_maintenance, as: 'reservationMaintenance', class: Google::Apis::ComputePreview::GroupMaintenanceInfo, decorator: Google::Apis::ComputePreview::GroupMaintenanceInfo::Representation
       
@@ -10011,6 +10259,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :predictive_method, as: 'predictiveMethod'
+          property :utilization_max, as: 'utilizationMax'
+          property :utilization_min, as: 'utilizationMin'
           property :utilization_target, as: 'utilizationTarget'
         end
       end
@@ -11170,6 +11420,14 @@ module Google
       
           property :list_price, as: 'listPrice', class: Google::Apis::ComputePreview::Money, decorator: Google::Apis::ComputePreview::Money::Representation
       
+        end
+      end
+      
+      class CapacityPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :partition_ids, as: 'partitionIds'
+          collection :resources, as: 'resources'
         end
       end
       
@@ -16177,6 +16435,13 @@ module Google
         end
       end
       
+      class InstancesTroubleshootOperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :troubleshoot_output, as: 'troubleshootOutput'
+        end
+      end
+      
       class InstantSnapshot
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -17404,6 +17669,14 @@ module Google
         end
       end
       
+      class InterconnectsSetNameRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_name, as: 'currentName'
+          property :name, as: 'name'
+        end
+      end
+      
       class Interval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -18230,6 +18503,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputePreview::NetworkEdgeSecurityServiceParams, decorator: Google::Apis::ComputePreview::NetworkEdgeSecurityServiceParams::Representation
+      
           property :region, as: 'region'
           property :security_policy, as: 'securityPolicy'
           property :self_link, as: 'selfLink'
@@ -18268,6 +18543,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEdgeSecurityServiceParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -19509,6 +19791,8 @@ module Google
           property :insert_time, as: 'insertTime'
           property :instances_bulk_insert_operation_metadata, as: 'instancesBulkInsertOperationMetadata', class: Google::Apis::ComputePreview::InstancesBulkInsertOperationMetadata, decorator: Google::Apis::ComputePreview::InstancesBulkInsertOperationMetadata::Representation
       
+          property :instances_troubleshoot_operation_metadata, as: 'instancesTroubleshootOperationMetadata', class: Google::Apis::ComputePreview::InstancesTroubleshootOperationMetadata, decorator: Google::Apis::ComputePreview::InstancesTroubleshootOperationMetadata::Representation
+      
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :operation_group_id, as: 'operationGroupId'
@@ -19882,6 +20166,65 @@ module Google
         end
       end
       
+      class PartitionFormability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_topology, as: 'acceleratorTopology'
+          property :parent, as: 'parent'
+          property :partition_id, as: 'partitionId'
+          property :status, as: 'status', class: Google::Apis::ComputePreview::PartitionFormabilityStatus, decorator: Google::Apis::ComputePreview::PartitionFormabilityStatus::Representation
+      
+          property :subblock, as: 'subblock'
+        end
+      end
+      
+      class PartitionFormabilityStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_interconnect, as: 'acceleratorInterconnect'
+          property :error, as: 'error', class: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error, decorator: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Representation
+      
+          property :infrastructure_health, as: 'infrastructureHealth'
+          property :instance, as: 'instance'
+          property :instance_state, as: 'instanceState'
+          property :state, as: 'state'
+          property :usage_state, as: 'usageState'
+        end
+        
+        class Error
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :errors, as: 'errors', class: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error, decorator: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error::Representation
+        
+          end
+          
+          class Error
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :code, as: 'code'
+              collection :error_details, as: 'errorDetails', class: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error::ErrorDetail, decorator: Google::Apis::ComputePreview::PartitionFormabilityStatus::Error::Error::ErrorDetail::Representation
+          
+              property :location, as: 'location'
+              property :message, as: 'message'
+            end
+            
+            class ErrorDetail
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :error_info, as: 'errorInfo', class: Google::Apis::ComputePreview::ErrorInfo, decorator: Google::Apis::ComputePreview::ErrorInfo::Representation
+            
+                property :help, as: 'help', class: Google::Apis::ComputePreview::Help, decorator: Google::Apis::ComputePreview::Help::Representation
+            
+                property :localized_message, as: 'localizedMessage', class: Google::Apis::ComputePreview::LocalizedMessage, decorator: Google::Apis::ComputePreview::LocalizedMessage::Representation
+            
+                property :quota_info, as: 'quotaInfo', class: Google::Apis::ComputePreview::QuotaExceededInfo, decorator: Google::Apis::ComputePreview::QuotaExceededInfo::Representation
+            
+              end
+            end
+          end
+        end
+      end
+      
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -20099,8 +20442,6 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          collection :quotas, as: 'quotas', class: Google::Apis::ComputePreview::Quota, decorator: Google::Apis::ComputePreview::Quota::Representation
-      
           property :self_link, as: 'selfLink'
           property :usage_export_location, as: 'usageExportLocation', class: Google::Apis::ComputePreview::UsageExportLocation, decorator: Google::Apis::ComputePreview::UsageExportLocation::Representation
       
@@ -20364,13 +20705,19 @@ module Google
         end
       end
       
-      class Quota
+      class QueryFormabilityRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :limit, as: 'limit'
-          property :metric, as: 'metric'
-          property :owner, as: 'owner'
-          property :usage, as: 'usage'
+          collection :subblocks, as: 'subblocks'
+        end
+      end
+      
+      class QueryFormabilityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputePreview::PartitionFormability, decorator: Google::Apis::ComputePreview::PartitionFormability::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -20415,8 +20762,6 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :quota_status_warning, as: 'quotaStatusWarning', class: Google::Apis::ComputePreview::Region::QuotaStatusWarning, decorator: Google::Apis::ComputePreview::Region::QuotaStatusWarning::Representation
-      
-          collection :quotas, as: 'quotas', class: Google::Apis::ComputePreview::Quota, decorator: Google::Apis::ComputePreview::Quota::Representation
       
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -21129,6 +21474,7 @@ module Google
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
+          property :machine_count, as: 'machineCount'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputePreview::ReservationBlockPhysicalTopology, decorator: Google::Apis::ComputePreview::ReservationBlockPhysicalTopology::Representation
       
@@ -21194,6 +21540,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
+          property :machine, as: 'machine'
           property :sub_block, as: 'subBlock'
         end
       end
@@ -21377,6 +21724,7 @@ module Google
           property :in_use_count, as: 'inUseCount'
           property :in_use_host_count, as: 'inUseHostCount'
           property :kind, as: 'kind'
+          property :machine_count, as: 'machineCount'
           property :name, as: 'name'
           property :physical_topology, as: 'physicalTopology', class: Google::Apis::ComputePreview::ReservationSubBlockPhysicalTopology, decorator: Google::Apis::ComputePreview::ReservationSubBlockPhysicalTopology::Representation
       
@@ -22587,6 +22935,7 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputePreview::BfdStatus, decorator: Google::Apis::ComputePreview::BfdStatus::Representation
       
+          property :depreferenced, as: 'depreferenced'
           property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
@@ -23015,6 +23364,8 @@ module Google
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :params, as: 'params', class: Google::Apis::ComputePreview::SecurityPolicyParams, decorator: Google::Apis::ComputePreview::SecurityPolicyParams::Representation
+      
           property :parent, as: 'parent'
           property :recaptcha_options_config, as: 'recaptchaOptionsConfig', class: Google::Apis::ComputePreview::SecurityPolicyRecaptchaOptionsConfig, decorator: Google::Apis::ComputePreview::SecurityPolicyRecaptchaOptionsConfig::Representation
       
@@ -23141,6 +23492,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SecurityPolicyParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
       
@@ -23902,6 +24260,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :certificate, as: 'certificate'
+          property :encrypted_pem_private_key, :base64 => true, as: 'encryptedPemPrivateKey'
           property :private_key, as: 'privateKey'
         end
       end
