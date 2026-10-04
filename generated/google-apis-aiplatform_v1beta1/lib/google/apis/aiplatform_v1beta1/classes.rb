@@ -45,9 +45,9 @@ module Google
       class CloudAiLargeModelsVisionExperimentsResponseProEditResult
         include Google::Apis::Core::Hashable
       
-        # The output structured prompt produced by this edit.
+        # The output structured prompt (JSON string) produced by this edit.
         # Corresponds to the JSON property `structuredPrompt`
-        # @return [Hash<String,Object>]
+        # @return [String]
         attr_accessor :structured_prompt
       
         def initialize(**args)
@@ -383,15 +383,16 @@ module Google
         # @return [String]
         attr_accessor :glob_pattern
       
-        # Horizontal offset in pixels to shift the input frame from center. Positive
-        # values shift right, negative values shift left. Optional. Default is 0 (
-        # centered).
+        # Horizontal offset in pixels of the frame's left edge from the canvas's left
+        # edge. Values outside the canvas crop the frame. Optional. Default is 0 (frame
+        # flush with the canvas's left edge).
         # Corresponds to the JSON property `horizontalOffset`
         # @return [Fixnum]
         attr_accessor :horizontal_offset
       
-        # Vertical offset in pixels to shift the input frame from center. Positive
-        # values shift down, negative values shift up. Optional. Default is 0 (centered).
+        # Vertical offset in pixels of the frame's top edge from the canvas's top edge.
+        # Values outside the canvas crop the frame. Optional. Default is 0 (frame flush
+        # with the canvas's top edge).
         # Corresponds to the JSON property `verticalOffset`
         # @return [Fixnum]
         attr_accessor :vertical_offset
@@ -424,10 +425,10 @@ module Google
         # @return [String]
         attr_accessor :from_operation_id
       
-        # A JSON object containing the user's modified URF. The URF Editing Preamble
+        # A JSON string containing the user's modified URF. The URF Editing Preamble
         # will diff this against the original URF to determine what changed.
         # Corresponds to the JSON property `structuredPrompt`
-        # @return [Hash<String,Object>]
+        # @return [String]
         attr_accessor :structured_prompt
       
         def initialize(**args)
@@ -1430,6 +1431,33 @@ module Google
         end
       end
       
+      # Audio payload used for voice creation.
+      class GenaiVertexV1beta1AudioData
+        include Google::Apis::Core::Hashable
+      
+        # Required. The raw audio bytes.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Required. The IANA MIME type of the audio data (for example, `audio/wav` or `
+        # audio/mpeg`).
+        # Corresponds to the JSON property `mimeType`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+        end
+      end
+      
       # 
       class GenaiVertexV1beta1AudioDelta
         include Google::Apis::Core::Hashable
@@ -2191,15 +2219,12 @@ module Google
         end
       end
       
-      # A network egress rule that controls which external domains the environment is
-      # allowed to reach. Each rule identifies a target domain and, optionally, a set
-      # of HTTP headers to inject into every matching outbound request.
+      # A single domain allowlist rule with optional header injection.
       class GenaiVertexV1beta1EnvironmentConfigEgressRule
         include Google::Apis::Core::Hashable
       
-        # The domain pattern to match for this rule. Use an exact hostname (e.g., `
-        # github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match
-        # all domains.
+        # Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.
+        # com'). Use '*' to allow all domains.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -3403,11 +3428,11 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The labels with user-defined metadata for the request. It is used for billing
-        # and reporting only. Label keys and values can be no longer than 63 characters (
-        # Unicode codepoints) and can only contain lowercase letters, numeric characters,
-        # underscores, and dashes. International characters are allowed. Label values
-        # are optional. Label keys must start with a letter.
+        # The labels with user-defined metadata for the request. Label keys and values
+        # can be no longer than 63 characters (Unicode codepoints) and can only contain
+        # lowercase letters, numeric characters, underscores, and dashes. International
+        # characters are allowed. Label values are optional. Label keys must start with
+        # a letter.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -3482,7 +3507,8 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1StepList]
         attr_accessor :step_list
       
-        # Required. Output only. The steps that make up the interaction.
+        # Required. Output only. The steps that make up the interaction, when included
+        # in the response.
         # Corresponds to the JSON property `steps`
         # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Step>]
         attr_accessor :steps
@@ -3549,7 +3575,9 @@ module Google
         end
       end
       
-      # 
+      # Signals that the Interaction completed. Sent when the Interaction receives
+      # Complete/Cancel or naturally terminates. No more input can be sent to the
+      # Interaction after this.
       class GenaiVertexV1beta1InteractionCompletedSseEvent
         include Google::Apis::Core::Hashable
       
@@ -3568,7 +3596,7 @@ module Google
         end
       end
       
-      # 
+      # Server response confirming that a new interaction was created.
       class GenaiVertexV1beta1InteractionCreatedSseEvent
         include Google::Apis::Core::Hashable
       
@@ -3627,14 +3655,14 @@ module Google
         # @return [String]
         attr_accessor :event_id
       
-        # The interaction data, used for interaction.completed events. Used when steps
-        # are enabled.
+        # Signals that the Interaction completed. Sent when the Interaction receives
+        # Complete/Cancel or naturally terminates. No more input can be sent to the
+        # Interaction after this.
         # Corresponds to the JSON property `interactionCompletedEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionCompletedSseEvent]
         attr_accessor :interaction_completed_event
       
-        # The interaction data, used for interaction.created events. Used when steps are
-        # enabled.
+        # Server response confirming that a new interaction was created.
         # Corresponds to the JSON property `interactionCreatedEvent`
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionCreatedSseEvent]
         attr_accessor :interaction_created_event
@@ -4824,6 +4852,31 @@ module Google
         end
       end
       
+      # Speech annotation for text content.
+      class GenaiVertexV1beta1SpeechAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The speaker to associate with this turn.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # Style instruction for the speech synthesis.
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @style = args[:style] if args.key?(:style)
+        end
+      end
+      
       # The configuration for speech interaction.
       class GenaiVertexV1beta1SpeechConfig
         include Google::Apis::Core::Hashable
@@ -5167,6 +5220,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1PlaceCitation]
         attr_accessor :place_citation
       
+        # Speech annotation for text content.
+        # Corresponds to the JSON property `speechMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1SpeechAnnotation]
+        attr_accessor :speech_metadata
+      
         # Start of segment of the response that is attributed to this source. Index
         # indicates the start of the segment, measured in bytes.
         # Corresponds to the JSON property `startIndex`
@@ -5193,6 +5251,7 @@ module Google
           @end_index = args[:end_index] if args.key?(:end_index)
           @file_citation = args[:file_citation] if args.key?(:file_citation)
           @place_citation = args[:place_citation] if args.key?(:place_citation)
+          @speech_metadata = args[:speech_metadata] if args.key?(:speech_metadata)
           @start_index = args[:start_index] if args.key?(:start_index)
           @url_citation = args[:url_citation] if args.key?(:url_citation)
           @word_info = args[:word_info] if args.key?(:word_info)
@@ -6145,6 +6204,201 @@ module Google
         end
       end
       
+      # A voice resource representing either a custom voice (created via `CreateVoice`)
+      # or a prebuilt system voice (returned by `ListVoices`).
+      class GenaiVertexV1beta1Voice
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Regional accent descriptor (e.g. "American", "British").
+        # Corresponds to the JSON property `accent`
+        # @return [String]
+        attr_accessor :accent
+      
+        # Optional. Optimal usage context or domain (e.g. "Conversational", "Audiobook",
+        # "News").
+        # Corresponds to the JSON property `context`
+        # @return [String]
+        attr_accessor :context
+      
+        # Optional. Descriptive summary of vocal timbre, personality, and tone.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User-provided display name for a stored voice (`store = true`), or
+        # the catalog name for a prebuilt voice.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. The timestamp at which a custom stored voice (`store = true`) or
+        # replicated voice key (`store = false`) expires. Unset for prebuilt catalog
+        # voices (`"prebuilt"`), which do not expire.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Optional. Perceived voice gender presentation (e.g. "female", "male", "neutral"
+        # ).
+        # Corresponds to the JSON property `gender`
+        # @return [String]
+        attr_accessor :gender
+      
+        # Output only. The unique identifier of the voice. * For Google-managed custom
+        # voices (`store = true`), this is a generated ID with prefix `voice_` (for
+        # example, `voice_abc123def456`). Pass `voices/`id`` as the `name` in `GetVoice`
+        # and `DeleteVoice`, and pass ``id`` directly to `SpeechConfig.voice_config.
+        # voice` (or `SpeechConfig.voice`) during speech synthesis. * For prebuilt
+        # catalog voices (`"prebuilt"` returned by `ListVoices`), this is the speaker
+        # name (for example, `Puck` or `Charon`). * Unset when `CreateVoice` is called
+        # with `store = false`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The client-managed voice replication key (with prefix `voicekey_`)
+        # . Returned only by `CreateVoice` when `type` is `"replicated"` and `store` is `
+        # false`. Pass this key to `SpeechConfig.voice_config.voice` (or `SpeechConfig.
+        # voice`) during speech synthesis.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Primary BCP-47 language tag (e.g. "en-US", "fr-FR").
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Optional. The model used to design or replicate the voice. If omitted in `
+        # CreateVoice`, defaults to the latest supported voice design model. Returned in
+        # `CreateVoice`, `GetVoice`, and `ListVoices` responses for custom voices (`"
+        # prompted"` and `"replicated"`); unset for `"prebuilt"` voices. Created voices
+        # can be synthesized across any supported TTS synthesis model.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. Intended persona or character archetype (e.g. "Warm, Friendly", "
+        # Narrator").
+        # Corresponds to the JSON property `persona`
+        # @return [String]
+        attr_accessor :persona
+      
+        # Optional. Voice pitch classification.
+        # Corresponds to the JSON property `pitch`
+        # @return [String]
+        attr_accessor :pitch
+      
+        # Parameters for prompted voice generation. Required in `CreateVoice` when `type`
+        # is `"prompted"`. Returned in `CreateVoice`, `GetVoice`, and `ListVoices`
+        # responses for prompted voices.
+        # Corresponds to the JSON property `prompted`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1VoicePromptedVoice]
+        attr_accessor :prompted
+      
+        # Optional. ISO 3166-1 alpha-2 or UN M.49 geographic region code (e.g. "US", "GB"
+        # , "001").
+        # Corresponds to the JSON property `regionCode`
+        # @return [String]
+        attr_accessor :region_code
+      
+        # Input only. Parameters for replicated voice generation. Required on input when
+        # `type` is `"replicated"`. Not returned in responses.
+        # Corresponds to the JSON property `replicated`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1VoiceReplicatedVoice]
+        attr_accessor :replicated
+      
+        # Audio payload used for voice creation.
+        # Corresponds to the JSON property `sampleAudio`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1AudioData]
+        attr_accessor :sample_audio
+      
+        # Required. The type of the voice. In `CreateVoice`, must be `"replicated"` or `"
+        # prompted"`. In `ListVoices` responses, may also be `"prebuilt"`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Statistics on the interaction request's token usage.
+        # Corresponds to the JSON property `usage`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionUsage]
+        attr_accessor :usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accent = args[:accent] if args.key?(:accent)
+          @context = args[:context] if args.key?(:context)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @gender = args[:gender] if args.key?(:gender)
+          @id = args[:id] if args.key?(:id)
+          @key = args[:key] if args.key?(:key)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @model = args[:model] if args.key?(:model)
+          @persona = args[:persona] if args.key?(:persona)
+          @pitch = args[:pitch] if args.key?(:pitch)
+          @prompted = args[:prompted] if args.key?(:prompted)
+          @region_code = args[:region_code] if args.key?(:region_code)
+          @replicated = args[:replicated] if args.key?(:replicated)
+          @sample_audio = args[:sample_audio] if args.key?(:sample_audio)
+          @type = args[:type] if args.key?(:type)
+          @usage = args[:usage] if args.key?(:usage)
+        end
+      end
+      
+      # Parameters for prompted voice generation. Required in `CreateVoice` when `type`
+      # is `"prompted"`. Returned in `CreateVoice`, `GetVoice`, and `ListVoices`
+      # responses for prompted voices.
+      class GenaiVertexV1beta1VoicePromptedVoice
+        include Google::Apis::Core::Hashable
+      
+        # Required. The natural-language prompt describing the desired voice, e.g. "A
+        # deep, booming male voice of a massive evil ogre in his middle years."
+        # Corresponds to the JSON property `input`
+        # @return [String]
+        attr_accessor :input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @input = args[:input] if args.key?(:input)
+        end
+      end
+      
+      # Input only. Parameters for replicated voice generation. Required on input when
+      # `type` is `"replicated"`. Not returned in responses.
+      class GenaiVertexV1beta1VoiceReplicatedVoice
+        include Google::Apis::Core::Hashable
+      
+        # Audio payload used for voice creation.
+        # Corresponds to the JSON property `consentAudio`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1AudioData]
+        attr_accessor :consent_audio
+      
+        # Audio payload used for voice creation.
+        # Corresponds to the JSON property `sourceAudio`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1AudioData]
+        attr_accessor :source_audio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consent_audio = args[:consent_audio] if args.key?(:consent_audio)
+          @source_audio = args[:source_audio] if args.key?(:source_audio)
+        end
+      end
+      
       # Word-level ASR annotation for transcription output. Carries the word text,
       # optional timing, and optional speaker attribution.
       class GenaiVertexV1beta1WordInfo
@@ -6368,7 +6622,9 @@ module Google
         attr_accessor :status
       
         # Optional. Input only. The TTL (Time To Live) for the task. If not set, the
-        # task will expire in 24 hours by default. Valid range: (0 seconds, 1000 days]
+        # task will expire in 24 hours by default. Valid range: [1 second, 1000 days],
+        # at second precision. The `nanos` component MUST be zero; sub-second TTLs are
+        # not supported because the task's expiration is persisted at second granularity.
         # Corresponds to the JSON property `ttl`
         # @return [String]
         attr_accessor :ttl
@@ -6677,7 +6933,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1A2ATaskRecordMessage]
         attr_accessor :message
       
-        # Output only. The current state of the task.
+        # Optional. The current state of the task.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -7802,7 +8058,9 @@ module Google
       end
       
       # A tool provides a list of actions available to the Agent during the process of
-      # executing a task.
+      # executing a task. Example JSON for an MCP server tool: ` "type": "mcp_server",
+      # "name": "my-mcp-server", "url": "https://api.example.com/mcp", "headers": ` "
+      # Authorization": "Bearer token123" ` `
       class GoogleCloudAiplatformV1beta1AgentTool
         include Google::Apis::Core::Hashable
       
@@ -7827,12 +8085,11 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # Optional. Temporary: the tool's runtime reference, consumed by CreateAgent to
-        # create the downstream AI App. Applicable when `type` is `mcp_server` or `
-        # endpoint`. It is duplicated here (the resource name is already in `name`) only
-        # because the Agent service is not yet connected to Agent Registry to derive it
-        # from `name`; the Task Service instead resolves it from Agent Registry (
-        # GetMcpServer / GetEndpoint) at task creation.
+        # Optional. Fallback for the tool's runtime reference, consumed by `CreateAgent`
+        # to create the downstream AI App. Applicable when `type` is `mcp_server` or `
+        # endpoint`, and optional: the Agent service derives the runtime reference from `
+        # name` via Agent Registry (`GetMcpServer` / `GetEndpoint`), and reads this only
+        # when that lookup yields none.
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
@@ -9245,6 +9502,16 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints]
         attr_accessor :language_hints
       
+        # Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`.
+        # If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the
+        # model performs disfluency removal (eliminating filler words, repetitions, and
+        # false starts), light grammatical cleanup, automatic formatting (paragraphs,
+        # bullet points, numbered lists), and minor user edits (inline self-corrections).
+        # Timestamps and diarization are incompatible with mode `SMART`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Optional. Configures word-level timestamp generation.
         # Corresponds to the JSON property `wordTimestamp`
         # @return [Boolean]
@@ -9263,6 +9530,7 @@ module Google
           @language_auto = args[:language_auto] if args.key?(:language_auto)
           @language_codes = args[:language_codes] if args.key?(:language_codes)
           @language_hints = args[:language_hints] if args.key?(:language_hints)
+          @mode = args[:mode] if args.key?(:mode)
           @word_timestamp = args[:word_timestamp] if args.key?(:word_timestamp)
         end
       end
@@ -11337,6 +11605,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configures the retention behavior of GenAI implicit (automatic) context
+        # caching for this project.
+        # Corresponds to the JSON property `retentionConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CacheConfigRetentionConfig]
+        attr_accessor :retention_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -11345,6 +11619,27 @@ module Google
         def update!(**args)
           @disable_cache = args[:disable_cache] if args.key?(:disable_cache)
           @name = args[:name] if args.key?(:name)
+          @retention_config = args[:retention_config] if args.key?(:retention_config)
+        end
+      end
+      
+      # Configures the retention behavior of GenAI implicit (automatic) context
+      # caching for this project.
+      class GoogleCloudAiplatformV1beta1CacheConfigRetentionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Retention type applied to implicit cache traffic for this project.
+        # Corresponds to the JSON property `retentionType`
+        # @return [String]
+        attr_accessor :retention_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retention_type = args[:retention_type] if args.key?(:retention_type)
         end
       end
       
@@ -14285,14 +14580,10 @@ module Google
         # Optional. The region to use for code execution. If set, the Code Execution
         # Sandbox will be invoked in the specified region regardless of the request's
         # originating region. Must be a region where the Code Execution Sandbox is
-        # available. Supported regions: northamerica-northeast1, southamerica-east1, us-
-        # central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-
-        # north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-
-        # west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-
-        # east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-
-        # southeast1, australia-southeast2. If unset, the request's originating region
-        # is used; requests from regions where the sandbox is unavailable will fail with
-        # UNIMPLEMENTED.
+        # available. For the current list of [supported regions](https://cloud.google.
+        # com/vertex-ai/generative-ai/docs/agent-engine/locations). If unset, the
+        # request's originating region is used; requests from regions where the sandbox
+        # is unavailable will fail with UNIMPLEMENTED.
         # Corresponds to the JSON property `codeExecutionRegion`
         # @return [String]
         attr_accessor :code_execution_region
@@ -19376,13 +19667,9 @@ module Google
         # Optional. The region to use for code execution. If set, the Code Execution
         # Sandbox will be invoked in the specified region regardless of the request's
         # originating region. Must be a region where the Code Execution Sandbox is
-        # available. Supported regions: northamerica-northeast1, southamerica-east1, us-
-        # central1, us-east1, us-east4, us-west1, us-west4, europe-central2, europe-
-        # north1, europe-southwest1, europe-west1, europe-west2, europe-west3, europe-
-        # west4, europe-west6, europe-west8, europe-west9, me-west1, asia-east1, asia-
-        # east2, asia-northeast1, asia-northeast3, asia-south1, asia-south2, asia-
-        # southeast1, australia-southeast2. If unset, the request's originating region
-        # is used.
+        # available. For the current list of [supported regions](https://cloud.google.
+        # com/vertex-ai/generative-ai/docs/agent-engine/locations). If unset, the
+        # request's originating region is used.
         # Corresponds to the JSON property `codeExecutionRegion`
         # @return [String]
         attr_accessor :code_execution_region
@@ -27644,6 +27931,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :scope
       
+        # Optional. The time zone of the conversation or caller, used as the baseline
+        # for resolving relative time expressions (e.g., "yesterday") and formatting
+        # timestamps. If not set, "UTC" is used. Must be a valid IANA Time Zone Database
+        # name, e.g. "America/New_York".
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # Defines an Agent Engine Session from which to generate the memories. If `scope`
         # is not provided, the scope will be extracted from the Session (i.e. `"user_id"
         # : sesison.user_id`).
@@ -27668,6 +27963,7 @@ module Google
           @revision_labels = args[:revision_labels] if args.key?(:revision_labels)
           @revision_ttl = args[:revision_ttl] if args.key?(:revision_ttl)
           @scope = args[:scope] if args.key?(:scope)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @vertex_session_source = args[:vertex_session_source] if args.key?(:vertex_session_source)
         end
       end
@@ -29633,6 +29929,24 @@ module Google
       class GoogleCloudAiplatformV1beta1ImportEvaluationSetRequestCloudTraceSource
         include Google::Apis::Core::Hashable
       
+        # Optional. Restricts the imported spans to a single agent. Accepts either of
+        # two forms, matching `OnlineEvaluator.agent_resource`: * a project-scoped
+        # resource name, matched against the `cloud.resource_id` resource attribute that
+        # Vertex AI Agent Engine agents are stamped with; * an Agent Registry agent URN,
+        # matched against the `gen_ai.main_agent.id` resource attribute that agents on
+        # GKE, and any other runtime that stamps it, are identified by. Scopes `
+        # session_ids` selection only. Traces named explicitly in `trace_ids` are
+        # imported as given and are NOT filtered by this field, because the caller has
+        # already identified them. Setting this field with only `trace_ids` therefore
+        # has no effect. When unset, spans are selected by session or trace ID alone.
+        # That is the pre-existing behavior and it remains the correct one for a session
+        # whose agents run in several deployments, because each deployment stamps its
+        # own `gen_ai.main_agent.id` and filtering on one of them would silently
+        # truncate the trajectory.
+        # Corresponds to the JSON property `agentResource`
+        # @return [String]
+        attr_accessor :agent_resource
+      
         # Required. Project ID for the Cloud Trace.
         # Corresponds to the JSON property `projectId`
         # @return [String]
@@ -29655,6 +29969,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_resource = args[:agent_resource] if args.key?(:agent_resource)
           @project_id = args[:project_id] if args.key?(:project_id)
           @session_ids = args[:session_ids] if args.key?(:session_ids)
           @trace_ids = args[:trace_ids] if args.key?(:trace_ids)
@@ -41238,8 +41553,11 @@ module Google
         # Optional. Enables sensitive logging. Sensitive logging includes customer core
         # content (prompts, model completions, tool argument payloads and tool responses)
         # . If `false`, those are sanitized and only structural attributes are recorded.
-        # No effect unless `observability_enabled` is true. Not yet enforced: `
-        # CreateAgent` and `UpdateAgent` currently reject setting this to `true`.
+        # No effect unless `observability_enabled` is true. Settable and returned, but
+        # NOT YET ENFORCED. Nothing reads it at runtime, so `true` does not currently
+        # cause content to be captured, and `false` is not what keeps content from being
+        # captured. Treat it as a recorded intention that takes effect when enforcement
+        # lands.
         # Corresponds to the JSON property `sensitiveLoggingEnabled`
         # @return [Boolean]
         attr_accessor :sensitive_logging_enabled
@@ -42281,6 +42599,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1PartMediaResolution]
         attr_accessor :media_resolution
       
+        # Structured Metadata Sub-Message for Part
+        # Corresponds to the JSON property `speechMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SpeechMetadata]
+        attr_accessor :speech_metadata
+      
         # Optional. The text content of the part. When sent from the VSCode Gemini Code
         # Assist extension, references to @mentioned items will be converted to markdown
         # boldface text. For example `@my-repo` will be converted to and sent as `**my-
@@ -42324,6 +42647,7 @@ module Google
           @inline_data = args[:inline_data] if args.key?(:inline_data)
           @media_processing = args[:media_processing] if args.key?(:media_processing)
           @media_resolution = args[:media_resolution] if args.key?(:media_resolution)
+          @speech_metadata = args[:speech_metadata] if args.key?(:speech_metadata)
           @text = args[:text] if args.key?(:text)
           @thought = args[:thought] if args.key?(:thought)
           @thought_signature = args[:thought_signature] if args.key?(:thought_signature)
@@ -44526,6 +44850,15 @@ module Google
       class GoogleCloudAiplatformV1beta1ProcessDataRequestVeoSpec
         include Google::Apis::Core::Hashable
       
+        # Optional. The mode of Veo Outpainting data processing to perform. Required (`
+        # DATA_PREPARATION` or `OUTPAINTING`) when `process_type` is `VEO_OUTPAINTING` (`
+        # OUTPAINTING_MODE_UNSPECIFIED` is rejected with `INVALID_ARGUMENT`). Must not
+        # be set when `process_type` is not `VEO_OUTPAINTING` (rejected with `
+        # INVALID_ARGUMENT`).
+        # Corresponds to the JSON property `outpaintingMode`
+        # @return [String]
+        attr_accessor :outpainting_mode
+      
         # Optional. The type of data processing to perform.
         # Corresponds to the JSON property `processType`
         # @return [String]
@@ -44537,6 +44870,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @outpainting_mode = args[:outpainting_mode] if args.key?(:outpainting_mode)
           @process_type = args[:process_type] if args.key?(:process_type)
         end
       end
@@ -52556,6 +52890,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Configuration for attaching a persistent disk (PD) to each SandboxEnvironment
+        # created from this template. A persistent disk provides durable, per-sandbox
+        # block storage whose contents survive across the sandbox lifecycle events that
+        # this service supports (e.g. pause/resume), unlike ephemeral local storage
+        # which is lost when the underlying runtime is torn down.
+        # Corresponds to the JSON property `persistentDiskConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplatePersistentDiskConfig]
+        attr_accessor :persistent_disk_config
+      
         # Output only. The state of the sandbox environment template.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -52587,6 +52930,7 @@ module Google
           @egress_control_config = args[:egress_control_config] if args.key?(:egress_control_config)
           @ingress_control_config = args[:ingress_control_config] if args.key?(:ingress_control_config)
           @name = args[:name] if args.key?(:name)
+          @persistent_disk_config = args[:persistent_disk_config] if args.key?(:persistent_disk_config)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
           @use_gke_td = args[:use_gke_td] if args.key?(:use_gke_td)
@@ -52765,6 +53109,55 @@ module Google
         def update!(**args)
           @port = args[:port] if args.key?(:port)
           @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # Configuration for attaching a persistent disk (PD) to each SandboxEnvironment
+      # created from this template. A persistent disk provides durable, per-sandbox
+      # block storage whose contents survive across the sandbox lifecycle events that
+      # this service supports (e.g. pause/resume), unlike ephemeral local storage
+      # which is lost when the underlying runtime is torn down.
+      class GoogleCloudAiplatformV1beta1SandboxEnvironmentTemplatePersistentDiskConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether a persistent disk is attached to sandboxes created from this
+        # template. Defaults to `false`. This flag lets a template carry (and preserve)
+        # disk configuration while keeping the disk detached, so it can be toggled on
+        # later without re-specifying the rest of the config. When `false`, the
+        # remaining fields in this message are ignored.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The absolute path inside the sandbox container at which the
+        # persistent disk is mounted. Defaults to `/workspace` when unset. Ignored when `
+        # enabled` is `false`. Only writes beneath this path land on the disk. Writes
+        # elsewhere go to the container's writable layer, which counts against the
+        # container's ephemeral storage and is lost when the sandbox's runtime is torn
+        # down, so this should be the directory the workload actually writes to. Paths
+        # that would shadow the container's system directories (for example `/etc`, `/
+        # proc`, or `/usr` itself) are rejected.
+        # Corresponds to the JSON property `mountPath`
+        # @return [String]
+        attr_accessor :mount_path
+      
+        # Optional. The size of the persistent disk in GB. Must be non-negative. When `
+        # enabled` is `true`, a positive value is required; when unset or zero while
+        # enabled, the service applies a default size. Ignored when `enabled` is `false`.
+        # Corresponds to the JSON property `sizeGb`
+        # @return [Fixnum]
+        attr_accessor :size_gb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @mount_path = args[:mount_path] if args.key?(:mount_path)
+          @size_gb = args[:size_gb] if args.key?(:size_gb)
         end
       end
       
@@ -60927,6 +61320,17 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. If true, this policy is evaluated and its result is reported, but
+        # the policy is not enforced: a violation does not block the agent's action. Use
+        # this to validate a policy against real traffic before turning enforcement on.
+        # Defaults to `false`, meaning the policy is enforced. This setting applies only
+        # to this policy. If the SemanticGovernancePolicyEngine for the project is
+        # itself in dry run, every policy behaves as dry run regardless of this field.
+        # Corresponds to the JSON property `dryRun`
+        # @return [Boolean]
+        attr_accessor :dry_run
+        alias_method :dry_run?, :dry_run
+      
         # Optional. Used to perform consistent read-modify-write transactions. If
         # provided, the request will only succeed if the etag matches the current value.
         # Otherwise, an ABORTED error will be returned.
@@ -60966,6 +61370,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @dry_run = args[:dry_run] if args.key?(:dry_run)
           @etag = args[:etag] if args.key?(:etag)
           @mcp_tools = args[:mcp_tools] if args.key?(:mcp_tools)
           @name = args[:name] if args.key?(:name)
@@ -62060,6 +62465,31 @@ module Google
           @language_code = args[:language_code] if args.key?(:language_code)
           @multi_speaker_voice_config = args[:multi_speaker_voice_config] if args.key?(:multi_speaker_voice_config)
           @voice_config = args[:voice_config] if args.key?(:voice_config)
+        end
+      end
+      
+      # Structured Metadata Sub-Message for Part
+      class GoogleCloudAiplatformV1beta1SpeechMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Identifies which speaker is speaking this turn.
+        # Corresponds to the JSON property `speaker`
+        # @return [String]
+        attr_accessor :speaker
+      
+        # Optional. Natural language description of the vocal style (e.g., "cheerful").
+        # Corresponds to the JSON property `style`
+        # @return [String]
+        attr_accessor :style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @speaker = args[:speaker] if args.key?(:speaker)
+          @style = args[:style] if args.key?(:style)
         end
       end
       
@@ -65736,6 +66166,11 @@ module Google
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         include Google::Apis::Core::Hashable
       
+        # Optional. Disabled safety policies for computer use.
+        # Corresponds to the JSON property `disabledSafetyPolicies`
+        # @return [Array<String>]
+        attr_accessor :disabled_safety_policies
+      
         # Optional. Enables the prompt injection detection check on computer-use request.
         # Corresponds to the JSON property `enablePromptInjectionDetection`
         # @return [Boolean]
@@ -65763,6 +66198,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled_safety_policies = args[:disabled_safety_policies] if args.key?(:disabled_safety_policies)
           @enable_prompt_injection_detection = args[:enable_prompt_injection_detection] if args.key?(:enable_prompt_injection_detection)
           @environment = args[:environment] if args.key?(:environment)
           @excluded_predefined_functions = args[:excluded_predefined_functions] if args.key?(:excluded_predefined_functions)
@@ -67607,6 +68043,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1FullFineTuningSpec]
         attr_accessor :full_fine_tuning_spec
       
+        # Output only. The Cloud Storage metrics URI associated with this TuningJob.
+        # Corresponds to the JSON property `gcsMetricsUri`
+        # @return [String]
+        attr_accessor :gcs_metrics_uri
+      
         # Optional. The labels with user-defined metadata to organize TuningJob and
         # generated resources such as Model and Endpoint. Label keys and values can be
         # no longer than 64 characters (Unicode codepoints), can only contain lowercase
@@ -67756,6 +68197,7 @@ module Google
           @evaluate_dataset_runs = args[:evaluate_dataset_runs] if args.key?(:evaluate_dataset_runs)
           @experiment = args[:experiment] if args.key?(:experiment)
           @full_fine_tuning_spec = args[:full_fine_tuning_spec] if args.key?(:full_fine_tuning_spec)
+          @gcs_metrics_uri = args[:gcs_metrics_uri] if args.key?(:gcs_metrics_uri)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @output_uri = args[:output_uri] if args.key?(:output_uri)
@@ -69531,6 +69973,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig]
         attr_accessor :replicated_voice_config
       
+        # Optional. The speaker identifier for synthesis. Supported formats: * Speaker
+        # name for prebuilt voices (for example, `Orus` or `Kore`). * Voice ID for
+        # stored voices (for example, `voice_xxx`). * Voice replication key (for example,
+        # `voicekey_xxx`).
+        # Corresponds to the JSON property `voice`
+        # @return [String]
+        attr_accessor :voice
+      
         def initialize(**args)
            update!(**args)
         end
@@ -69539,6 +69989,7 @@ module Google
         def update!(**args)
           @prebuilt_voice_config = args[:prebuilt_voice_config] if args.key?(:prebuilt_voice_config)
           @replicated_voice_config = args[:replicated_voice_config] if args.key?(:replicated_voice_config)
+          @voice = args[:voice] if args.key?(:voice)
         end
       end
       
@@ -70263,6 +70714,115 @@ module Google
         # Update properties of this object
         def update!(**args)
           @permissions = args[:permissions] if args.key?(:permissions)
+        end
+      end
+      
+      # Request message for `VoicesHttpService.CreateVoiceHttp`.
+      class GoogleLearningVertexApiInteractionsV1beta1CreateVoiceHttpTranscoderRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or an
+        # HTML page. This message can be used both in streaming and non-streaming API
+        # methods in the request as well as the response. It can be used as a top-level
+        # request field, which is convenient if one wants to extract parameters from
+        # either the URL or HTTP template into the request fields and also want access
+        # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+        # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+        # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+        # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+        # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+        # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+        # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+        # only changes how the request and response bodies are handled, all other
+        # features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_body = args[:http_body] if args.key?(:http_body)
+        end
+      end
+      
+      # Request message for `VoicesService.CreateVoice`.
+      class GoogleLearningVertexApiInteractionsV1beta1CreateVoiceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether the created voice is persisted and managed by Google. * When
+        # `true`, Google stores the voice and returns `Voice.id` (for example, `
+        # voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`, and `
+        # DeleteVoice` and referenced by ID in synthesis requests. Projects are subject
+        # to a maximum active stored voice quota; exceeding the quota returns `
+        # RESOURCE_EXHAUSTED`. * When `false` (default), the voice is not stored by
+        # Google and `Voice.key` (for example, `voicekey_...`) is returned for client-
+        # side storage and synthesis. Optional discovery metadata fields on `voice` are
+        # not persisted or returned when `store` is `false`. * Required to be `true`
+        # when `voice.type` is `"prompted"` (otherwise fails with `INVALID_ARGUMENT`).
+        # Corresponds to the JSON property `store`
+        # @return [Boolean]
+        attr_accessor :store
+        alias_method :store?, :store
+      
+        # A voice resource representing either a custom voice (created via `CreateVoice`)
+        # or a prebuilt system voice (returned by `ListVoices`).
+        # Corresponds to the JSON property `voice`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice]
+        attr_accessor :voice
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @store = args[:store] if args.key?(:store)
+          @voice = args[:voice] if args.key?(:voice)
+        end
+      end
+      
+      # Response message for `VoicesService.DeleteVoice`.
+      class GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for `VoicesService.ListVoices`.
+      class GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If empty,
+        # there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The voices from the specified collection.
+        # Corresponds to the JSON property `voices`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice>]
+        attr_accessor :voices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @voices = args[:voices] if args.key?(:voices)
         end
       end
       

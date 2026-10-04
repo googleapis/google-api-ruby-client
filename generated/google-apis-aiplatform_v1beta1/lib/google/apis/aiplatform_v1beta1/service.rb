@@ -10591,6 +10591,21 @@ module Google
         #   Identifier. Name of the cache config. Format: - `projects/`project`/
         #   cacheConfig`.
         # @param [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CacheConfig] google_cloud_aiplatform_v1beta1_cache_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields of `cache_config` to update. Supported paths are `
+        #   disable_cache`, `retention_config` (and its subfields such as `
+        #   retention_config.retention_type`), and the special value `*`; any other path
+        #   returns `INVALID_ARGUMENT`. Fields not covered by the mask keep their stored
+        #   value. If the mask is omitted, it is treated as an implied mask covering the
+        #   fields populated in `cache_config`, so updating one field never clears another.
+        #   `retention_config` is covered only when the request carries it. `
+        #   disable_cache` is always covered: it is a bare `bool`, so the server cannot
+        #   tell a request that omits it from one that sets it to `false`. `*` requests
+        #   full replacement of the resource: every settable field is written from the
+        #   request, clearing `retention_config` when the request omits it. It cannot be
+        #   combined with other paths. Prefer naming fields explicitly -- a caller that
+        #   sends `*` without knowing about a field added to `CacheConfig` later would
+        #   silently reset that field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10608,13 +10623,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_cache_config(name, google_cloud_aiplatform_v1beta1_cache_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_cache_config(name, google_cloud_aiplatform_v1beta1_cache_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CacheConfig::Representation
           command.request_object = google_cloud_aiplatform_v1beta1_cache_config_object
           command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -26149,7 +26165,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancels an interaction.
+        # Cancels an interaction by id. This only applies to background interactions
+        # that are still running.
         # @param [String] name
         #   Required. The name of the interaction to cancel. Format: `interactions/`
         #   interaction``.
@@ -26180,7 +26197,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates a set of responses from the model.
+        # Creates a new interaction.
         # @param [String] parent
         #   Required. The parent resource where this interaction will be created. Format: `
         #   projects/`project`/locations/`location`` Supported only by the Vertex API only.
@@ -26214,7 +26231,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets an interaction.
+        # Retrieves the full details of a single interaction based on its `Interaction.
+        # id`.
         # @param [String] name
         #   Required. The name of the interaction to retrieve. Format: interactions/`
         #   interaction`
@@ -46408,8 +46426,9 @@ module Google
         #   Optional. The user defined ID to use for the A2ATaskRecord, which will become
         #   the final component of the A2ATaskRecord resource name. If not provided,
         #   Vertex AI will generate a value for this ID. This value may be up to 63
-        #   characters, and valid characters are `[a-z0-9-]`. The first character must be
-        #   a letter, and the last character must be a letter or number.
+        #   characters, and valid characters are `[a-z0-9-]`. The first and last
+        #   characters must be a letter or number. This accepts A2A task IDs such as UUIDs,
+        #   which may start with a digit.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -49529,6 +49548,195 @@ module Google
           command.response_class = Google::Apis::AiplatformV1beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a custom voice from a natural-language prompt (`VOICE_TYPE_PROMPTED`)
+        # or from reference and consent audio recordings (`VOICE_TYPE_REPLICATED`).
+        # @param [String] parent
+        #   Required. The parent resource where this voice will be created. Format: `
+        #   projects/`project`/locations/`location`` Supported only by the Vertex API.
+        # @param [Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1CreateVoiceRequest] google_learning_vertex_api_interactions_v1beta1_create_voice_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_voice(parent, google_learning_vertex_api_interactions_v1beta1_create_voice_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/voices:create', options)
+          command.request_representation = Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1CreateVoiceRequest::Representation
+          command.request_object = google_learning_vertex_api_interactions_v1beta1_create_voice_request_object
+          command.response_representation = Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a custom stored voice (`store = true`) by resource name. Prebuilt
+        # catalog voices (`"prebuilt"`) cannot be deleted.
+        # @param [String] name
+        #   Required. The resource name of the custom stored voice to delete (for example,
+        #   `voices/voice_abc123def456`).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_voice(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}:delete', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1DeleteVoiceResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a custom stored voice (`store = true`) by resource name. Prebuilt catalog
+        # voices (`VOICE_TYPE_PREBUILT`) cannot be retrieved via `GetVoice`; use `
+        # ListVoices` instead.
+        # @param [String] name
+        #   Required. The resource name of the custom stored voice to retrieve (for
+        #   example, `voices/voice_abc123def456`).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_voice(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}:get', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Voice
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists custom stored voices owned by the caller as well as prebuilt system
+        # voices from Google's voice catalog.
+        # @param [String] parent
+        #   Required. The parent that owns this collection of voices. Format: `projects/`
+        #   project`/locations/`location`` Supported only by the Vertex API.
+        # @param [Array<String>, String] accent
+        #   Optional. Filter by accent description (e.g. "American", "British"). Case-
+        #   insensitive exact match. If multiple values are specified, matches voices with
+        #   any of the specified accents (OR).
+        # @param [Array<String>, String] context
+        #   Optional. Filter by intended context or domain (e.g. "News, Commercial"). Case-
+        #   insensitive exact match. If multiple values are specified, matches voices with
+        #   any of the specified contexts (OR).
+        # @param [Array<String>, String] gender
+        #   Optional. Filter by gender presentation (e.g. "female", "male", "neutral").
+        #   Case-insensitive exact match. If multiple values are specified, matches voices
+        #   with any of the specified genders (OR).
+        # @param [Array<String>, String] language_code
+        #   Optional. Filter by BCP-47 language code (e.g. "en-US"). Case-insensitive
+        #   exact match. If multiple values are specified, matches voices with any of the
+        #   specified language codes (OR).
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of voices to return per page. The service may
+        #   return fewer than this value. If unspecified, at most 50 voices are returned.
+        #   The maximum value is 1000; values above 1000 are coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListVoices` call. Provide this to
+        #   retrieve the subsequent page. When paginating, all filter query parameters (`
+        #   language_code`, `region_code`, `accent`, `persona`, `context`, `gender`, `
+        #   pitch`, `type`, and `search`) must match the call that returned this token;
+        #   otherwise the request fails with `INVALID_ARGUMENT`. `page_size` may change
+        #   between pages.
+        # @param [Array<String>, String] persona
+        #   Optional. Filter by vocal persona (e.g. "Warm, Friendly"). Case-insensitive
+        #   exact match. If multiple values are specified, matches voices with any of the
+        #   specified personas (OR).
+        # @param [Array<String>, String] pitch
+        #   Optional. Filter by vocal pitch. Accepts `"low"`, `"medium"`, `"high"` (case-
+        #   insensitive). If multiple values are specified, matches voices with any of the
+        #   specified pitches (OR).
+        # @param [Array<String>, String] region_code
+        #   Optional. Filter by ISO 3166-1 alpha-2 or UN M.49 region code (e.g. "US", "001"
+        #   ). Case-insensitive exact match. If multiple values are specified, matches
+        #   voices with any of the specified region codes (OR).
+        # @param [String] search
+        #   Optional. Free-text substring search query matched case-insensitively against
+        #   both `display_name` and `description`. Maximum 2048 bytes.
+        # @param [Array<String>, String] type
+        #   Optional. Filter by voice type. Accepts `"prebuilt"`, `"replicated"`, `"
+        #   prompted"` (case-insensitive). If multiple values are specified, matches
+        #   voices with any of the specified types (OR).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_voices(parent, accent: nil, context: nil, gender: nil, language_code: nil, page_size: nil, page_token: nil, persona: nil, pitch: nil, region_code: nil, search: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/voices:list', options)
+          command.response_representation = Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1beta1::GoogleLearningVertexApiInteractionsV1beta1ListVoicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['accent'] = accent unless accent.nil?
+          command.query['context'] = context unless context.nil?
+          command.query['gender'] = gender unless gender.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['persona'] = persona unless persona.nil?
+          command.query['pitch'] = pitch unless pitch.nil?
+          command.query['regionCode'] = region_code unless region_code.nil?
+          command.query['search'] = search unless search.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
