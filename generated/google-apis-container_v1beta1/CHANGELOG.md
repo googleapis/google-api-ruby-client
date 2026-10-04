@@ -1,5 +1,9 @@
 # Release history for google-apis-container_v1beta1
 
+### v0.109.0 (2026-10-04)
+
+* Regenerated from discovery document revision 20260922
+
 ### v0.108.0 (2026-09-20)
 
 * Regenerated from discovery document revision 20260901
