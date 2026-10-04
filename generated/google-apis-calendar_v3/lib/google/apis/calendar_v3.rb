@@ -77,6 +77,9 @@ module Google
       # See and download any calendar you can access using your Google Calendar
       AUTH_CALENDAR_READONLY = 'https://www.googleapis.com/auth/calendar.readonly'
 
+      # View and edit your Calendar settings
+      AUTH_CALENDAR_SETTINGS = 'https://www.googleapis.com/auth/calendar.settings'
+
       # View your Calendar settings
       AUTH_CALENDAR_SETTINGS_READONLY = 'https://www.googleapis.com/auth/calendar.settings.readonly'
     end
