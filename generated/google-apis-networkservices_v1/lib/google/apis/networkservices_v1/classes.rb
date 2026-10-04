@@ -61,7 +61,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Configuration for egress network traffic.
+        # Egress network config
         # Corresponds to the JSON property `egressNetworkConfig`
         # @return [Google::Apis::NetworkservicesV1::EgressNetworkConfig]
         attr_accessor :egress_network_config
@@ -705,10 +705,15 @@ module Google
       class DnsPeeringConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The domain to peer.
+        # Optional. Deprecated: Use `domains` instead. The domain to peer.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
+      
+        # Optional. The domains to peer.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
       
         # Optional. The target network resource name for DNS peering. Format: projects/`
         # project`/global/networks/`network_id`
@@ -723,11 +728,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
+          @domains = args[:domains] if args.key?(:domains)
           @target_network = args[:target_network] if args.key?(:target_network)
         end
       end
       
-      # 
+      # Egress network config
       class EgressNetworkConfig
         include Google::Apis::Core::Hashable
       
@@ -741,6 +747,11 @@ module Google
         # Corresponds to the JSON property `networkAttachment`
         # @return [String]
         attr_accessor :network_attachment
+      
+        # Configuration for TLS connections.
+        # Corresponds to the JSON property `tlsConfig`
+        # @return [Google::Apis::NetworkservicesV1::EgressNetworkConfigTlsConfig]
+        attr_accessor :tls_config
       
         # Optional. Deprecated: Use tls_config instead. The trust config resource name.
         # Format: projects/`project`/locations/`location`/trustConfigs/`trust_config`
@@ -761,8 +772,35 @@ module Google
         def update!(**args)
           @dns_peering_config = args[:dns_peering_config] if args.key?(:dns_peering_config)
           @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+          @tls_config = args[:tls_config] if args.key?(:tls_config)
           @trust_config = args[:trust_config] if args.key?(:trust_config)
           @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
+        end
+      end
+      
+      # Configuration for TLS connections.
+      class EgressNetworkConfigTlsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The additional roots to trust.
+        # Corresponds to the JSON property `additionalRoots`
+        # @return [String]
+        attr_accessor :additional_roots
+      
+        # Optional. The trust config resource name. Format: projects/`project`/locations/
+        # `location`/trustConfigs/`trust_config`
+        # Corresponds to the JSON property `trustConfig`
+        # @return [String]
+        attr_accessor :trust_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_roots = args[:additional_roots] if args.key?(:additional_roots)
+          @trust_config = args[:trust_config] if args.key?(:trust_config)
         end
       end
       
@@ -1370,8 +1408,9 @@ module Google
       
         # Required. A set of extensions to execute for the matching request. At least
         # one extension is required. Up to 3 extensions can be defined for each
-        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension` and `
-        # LbEdgeExtension` chains are limited to 1 extension per extension chain.
+        # extension chain for `LbTrafficExtension` resource. `LbRouteExtension`, `
+        # LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per
+        # extension chain.
         # Corresponds to the JSON property `extensions`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionChainExtension>]
         attr_accessor :extensions
@@ -1535,7 +1574,9 @@ module Google
         # LbEdgeExtension` resource, this field is required and must only contain `
         # REQUEST_HEADERS` event. For the `AuthzExtension` resource, this field is
         # optional. `REQUEST_HEADERS` is the only supported event. If unspecified, `
-        # REQUEST_HEADERS` event is assumed as supported.
+        # REQUEST_HEADERS` event is assumed as supported. For the `CdnEdgeExtension`
+        # resource, this field is optional. Eligible values are `REQUEST_HEADERS` and `
+        # RESPONSE_HEADERS`. If unspecified, both are assumed as supported.
         # Corresponds to the JSON property `supportedEvents`
         # @return [Array<String>]
         attr_accessor :supported_events
@@ -4487,7 +4528,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Labels as key-value pairs
+        # Optional. Labels as key-value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4532,8 +4573,9 @@ module Google
       
         # Output only. [Output only] The Google-generated UUID for the resource. This
         # value is unique across all multicast consumer association resources. If a
-        # consumer association is deleted and another with the same name is created, the
-        # new consumer association is assigned a different unique_id.
+        # multicast consumer association is deleted and another with the same name is
+        # created, the new multicast consumer association is assigned a different
+        # unique_id.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id
@@ -4580,7 +4622,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Optional. Labels as key-value pairs
+        # Optional. Labels as key-value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -4599,16 +4641,16 @@ module Google
       
         # Optional. The resource name of the multicast group created by the admin in the
         # same zone as this multicast group consumer activation. Use the following
-        # format: // `projects/*/locations/*/multicastGroups/*`. This field is
-        # deprecated. Use multicast_group_range_activation instead.
+        # format: `projects/*/locations/*/multicastGroups/*`. This field is deprecated.
+        # Use multicast_group_range_activation instead.
         # Corresponds to the JSON property `multicastGroup`
         # @return [String]
         attr_accessor :multicast_group
       
         # Required. The resource name of the multicast group range activation created by
         # the admin in the same zone as this multicast group consumer activation. Use
-        # the following format: // `projects/*/locations/*/
-        # multicastGroupRangeActivations/*`.
+        # the following format: `projects/*/locations/*/multicastGroupRangeActivations/*`
+        # .
         # Corresponds to the JSON property `multicastGroupRangeActivation`
         # @return [String]
         attr_accessor :multicast_group_range_activation
@@ -4633,8 +4675,9 @@ module Google
       
         # Output only. [Output only] The Google-generated UUID for the resource. This
         # value is unique across all multicast group consumer activation resources. If a
-        # group consumer activation is deleted and another with the same name is created,
-        # the new group consumer activation is assigned a different unique_id.
+        # multicast group consumer activation is deleted and another with the same name
+        # is created, the new multicast group consumer activation is assigned a
+        # different unique_id.
         # Corresponds to the JSON property `uniqueId`
         # @return [String]
         attr_accessor :unique_id

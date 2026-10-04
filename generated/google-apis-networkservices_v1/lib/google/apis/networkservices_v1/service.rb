@@ -702,7 +702,7 @@ module Google
         #   ID must be a valid UUID with the exception that zero UUID is not supported (
         #   00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
-        #   Required. Used to specify the fields to be overwritten in the `AuthzExtension`
+        #   Optional. Used to specify the fields to be overwritten in the `AuthzExtension`
         #   resource by the update. The fields specified in the `update_mask` are relative
         #   to the resource, not the full request. A field is overwritten if it is in the
         #   mask. If the user does not specify a mask, then all fields are overwritten.
@@ -3777,6 +3777,16 @@ module Google
         #   Required. The parent resource of the ServiceBinding. Must be in the format `
         #   projects/*/locations/*`.
         # @param [Google::Apis::NetworkservicesV1::ServiceBinding] service_binding_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees this for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request. This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID version 4 with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] service_binding_id
         #   Required. Short name of the ServiceBinding resource to be created.
         # @param [String] fields
@@ -3796,13 +3806,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_service_binding(parent, service_binding_object = nil, service_binding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_service_binding(parent, service_binding_object = nil, request_id: nil, service_binding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/serviceBindings', options)
           command.request_representation = Google::Apis::NetworkservicesV1::ServiceBinding::Representation
           command.request_object = service_binding_object
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['parent'] = parent unless parent.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['serviceBindingId'] = service_binding_id unless service_binding_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -3813,6 +3824,16 @@ module Google
         # @param [String] name
         #   Required. A name of the ServiceBinding to delete. Must be in the format `
         #   projects/*/locations/*/serviceBindings/*`.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees this for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request. This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID version 4 with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3830,11 +3851,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_service_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_service_binding(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3915,6 +3937,16 @@ module Google
         #   Identifier. Name of the ServiceBinding resource. It matches pattern `projects/*
         #   /locations/*/serviceBindings/`.
         # @param [Google::Apis::NetworkservicesV1::ServiceBinding] service_binding_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server can ignore the
+        #   request if it has already been completed. The server guarantees this for 60
+        #   minutes after the first request. For example, consider a situation where you
+        #   make an initial request and the request times out. If you make the request
+        #   again with the same request ID, the server ignores the second request. This
+        #   prevents clients from accidentally creating duplicate commitments. The request
+        #   ID must be a valid UUID version 4 with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   ServiceBinding resource by the update. The fields specified in the update_mask
@@ -3938,13 +3970,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_service_binding(name, service_binding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_service_binding(name, service_binding_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::NetworkservicesV1::ServiceBinding::Representation
           command.request_object = service_binding_object
           command.response_representation = Google::Apis::NetworkservicesV1::Operation::Representation
           command.response_class = Google::Apis::NetworkservicesV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
