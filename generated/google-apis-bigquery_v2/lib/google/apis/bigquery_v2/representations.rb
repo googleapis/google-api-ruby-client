@@ -472,6 +472,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalVolumeMount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FeatureValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1151,6 +1157,12 @@ module Google
       end
       
       class SearchStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecureContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2351,6 +2363,8 @@ module Google
           property :max_batching_rows, :numeric_string => true, as: 'maxBatchingRows'
           property :runtime_connection, as: 'runtimeConnection'
           property :runtime_version, as: 'runtimeVersion'
+          collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::BigqueryV2::ExternalVolumeMount, decorator: Google::Apis::BigqueryV2::ExternalVolumeMount::Representation
+      
         end
       end
       
@@ -2363,6 +2377,14 @@ module Google
           property :external_service, as: 'externalService'
           property :reserved_slot_count, :numeric_string => true, as: 'reservedSlotCount'
           property :slot_ms, :numeric_string => true, as: 'slotMs'
+        end
+      end
+      
+      class ExternalVolumeMount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mount_path, as: 'mountPath'
+          property :source_path, as: 'sourcePath'
         end
       end
       
@@ -2775,6 +2797,7 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :model_extract_options, as: 'modelExtractOptions', class: Google::Apis::BigqueryV2::ModelExtractOptions, decorator: Google::Apis::BigqueryV2::ModelExtractOptions::Representation
       
+          property :native_geography_export_enabled, as: 'nativeGeographyExportEnabled'
           property :print_header, as: 'printHeader'
           property :source_model, as: 'sourceModel', class: Google::Apis::BigqueryV2::ModelReference, decorator: Google::Apis::BigqueryV2::ModelReference::Representation
       
@@ -2875,6 +2898,8 @@ module Google
       
           collection :schema_update_options, as: 'schemaUpdateOptions'
           property :script_options, as: 'scriptOptions', class: Google::Apis::BigqueryV2::ScriptOptions, decorator: Google::Apis::BigqueryV2::ScriptOptions::Representation
+      
+          property :secure_context, as: 'secureContext', class: Google::Apis::BigqueryV2::SecureContext, decorator: Google::Apis::BigqueryV2::SecureContext::Representation
       
           property :system_variables, as: 'systemVariables', class: Google::Apis::BigqueryV2::SystemVariables, decorator: Google::Apis::BigqueryV2::SystemVariables::Representation
       
@@ -3064,6 +3089,8 @@ module Google
           property :query_info, as: 'queryInfo', class: Google::Apis::BigqueryV2::QueryInfo, decorator: Google::Apis::BigqueryV2::QueryInfo::Representation
       
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
+      
+          collection :referenced_logical_views, as: 'referencedLogicalViews', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           collection :referenced_property_graphs, as: 'referencedPropertyGraphs', class: Google::Apis::BigqueryV2::PropertyGraphReference, decorator: Google::Apis::BigqueryV2::PropertyGraphReference::Representation
       
@@ -3605,6 +3632,8 @@ module Google
           property :query_results_format, as: 'queryResultsFormat'
           property :request_id, as: 'requestId'
           property :reservation, as: 'reservation'
+          property :secure_context, as: 'secureContext', class: Google::Apis::BigqueryV2::SecureContext, decorator: Google::Apis::BigqueryV2::SecureContext::Representation
+      
           property :timeout_ms, as: 'timeoutMs'
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'
@@ -3877,6 +3906,13 @@ module Google
           collection :index_unused_reasons, as: 'indexUnusedReasons', class: Google::Apis::BigqueryV2::IndexUnusedReason, decorator: Google::Apis::BigqueryV2::IndexUnusedReason::Representation
       
           property :index_usage_mode, as: 'indexUsageMode'
+        end
+      end
+      
+      class SecureContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :secure_parameter_entries, as: 'secureParameterEntries'
         end
       end
       
