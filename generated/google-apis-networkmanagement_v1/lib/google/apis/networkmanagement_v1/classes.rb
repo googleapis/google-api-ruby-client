@@ -441,6 +441,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # IP address of a Cloud Run revision. If the Cloud Run revision is in dual-stack
+        # subnetwork, this is the IP address relevant to the trace. Populated for `
+        # ARRIVE_AT_CLOUD_RUN_REVISION` steps.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
         # Location in which this revision is deployed.
         # Corresponds to the JSON property `location`
         # @return [String]
@@ -460,7 +467,7 @@ module Google
         attr_accessor :uri
       
         # URI of Cloud Run worker pool this revision belongs to. Format: `projects/`
-        # project_id`/locations/`location`/workerPools/`worker_pool_id``. Mutually
+        # project_id`/locations/`location`/workerPools/`worker_pool_id`` Mutually
         # exclusive with `service_uri`.
         # Corresponds to the JSON property `workerPoolUri`
         # @return [String]
@@ -473,6 +480,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
           @location = args[:location] if args.key?(:location)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
@@ -717,52 +725,6 @@ module Google
         attr_accessor :selected_ip_range
       
         # URI of the subnetwork for direct egress. Format: `projects/`project_id`/
-        # regions/`region`/subnetworks/`subnetwork_id``
-        # Corresponds to the JSON property `subnetworkUri`
-        # @return [String]
-        attr_accessor :subnetwork_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @network_uri = args[:network_uri] if args.key?(:network_uri)
-          @region = args[:region] if args.key?(:region)
-          @selected_ip_address = args[:selected_ip_address] if args.key?(:selected_ip_address)
-          @selected_ip_range = args[:selected_ip_range] if args.key?(:selected_ip_range)
-          @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
-        end
-      end
-      
-      # For display only. Metadata associated with a serverless direct VPC ingress
-      # connection.
-      class DirectVpcIngressConnectionInfo
-        include Google::Apis::Core::Hashable
-      
-        # URI of the VPC network for direct ingress. Format: `projects/`project_id`/
-        # global/networks/`network_id``
-        # Corresponds to the JSON property `networkUri`
-        # @return [String]
-        attr_accessor :network_uri
-      
-        # Region in which the Direct VPC ingress is deployed.
-        # Corresponds to the JSON property `region`
-        # @return [String]
-        attr_accessor :region
-      
-        # Selected destination IP address, from the selected IP range.
-        # Corresponds to the JSON property `selectedIpAddress`
-        # @return [String]
-        attr_accessor :selected_ip_address
-      
-        # Selected IP range.
-        # Corresponds to the JSON property `selectedIpRange`
-        # @return [String]
-        attr_accessor :selected_ip_range
-      
-        # URI of the subnetwork for direct ingress. Format: `projects/`project_id`/
         # regions/`region`/subnetworks/`subnetwork_id``
         # Corresponds to the JSON property `subnetworkUri`
         # @return [String]
@@ -4168,12 +4130,6 @@ module Google
         # @return [Google::Apis::NetworkmanagementV1::DirectVpcEgressConnectionInfo]
         attr_accessor :direct_vpc_egress_connection
       
-        # For display only. Metadata associated with a serverless direct VPC ingress
-        # connection.
-        # Corresponds to the JSON property `directVpcIngressConnection`
-        # @return [Google::Apis::NetworkmanagementV1::DirectVpcIngressConnectionInfo]
-        attr_accessor :direct_vpc_ingress_connection
-      
         # For display only. Metadata associated with a Private Connection.
         # Corresponds to the JSON property `dmsPrivateConnection`
         # @return [Google::Apis::NetworkmanagementV1::PrivateConnectionInfo]
@@ -4370,7 +4326,6 @@ module Google
           @deliver = args[:deliver] if args.key?(:deliver)
           @description = args[:description] if args.key?(:description)
           @direct_vpc_egress_connection = args[:direct_vpc_egress_connection] if args.key?(:direct_vpc_egress_connection)
-          @direct_vpc_ingress_connection = args[:direct_vpc_ingress_connection] if args.key?(:direct_vpc_ingress_connection)
           @dms_private_connection = args[:dms_private_connection] if args.key?(:dms_private_connection)
           @drop = args[:drop] if args.key?(:drop)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
