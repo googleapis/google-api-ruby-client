@@ -130,6 +130,11 @@ module Google
         # @return [Google::Apis::BigqueryconnectionV1::AwsAccessRole]
         attr_accessor :access_role
       
+        # Options for caching cross-cloud data and metadata files.
+        # Corresponds to the JSON property `crossCloudCacheOptions`
+        # @return [Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions]
+        attr_accessor :cross_cloud_cache_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -137,6 +142,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_role = args[:access_role] if args.key?(:access_role)
+          @cross_cloud_cache_options = args[:cross_cloud_cache_options] if args.key?(:cross_cloud_cache_options)
         end
       end
       
@@ -153,6 +159,11 @@ module Google
         # Corresponds to the JSON property `clientId`
         # @return [String]
         attr_accessor :client_id
+      
+        # Options for caching cross-cloud data and metadata files.
+        # Corresponds to the JSON property `crossCloudCacheOptions`
+        # @return [Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions]
+        attr_accessor :cross_cloud_cache_options
       
         # The id of customer's directory that host the data.
         # Corresponds to the JSON property `customerTenantId`
@@ -191,6 +202,7 @@ module Google
         def update!(**args)
           @application = args[:application] if args.key?(:application)
           @client_id = args[:client_id] if args.key?(:client_id)
+          @cross_cloud_cache_options = args[:cross_cloud_cache_options] if args.key?(:cross_cloud_cache_options)
           @customer_tenant_id = args[:customer_tenant_id] if args.key?(:customer_tenant_id)
           @federated_application_client_id = args[:federated_application_client_id] if args.key?(:federated_application_client_id)
           @identity = args[:identity] if args.key?(:identity)
@@ -919,6 +931,30 @@ module Google
         end
       end
       
+      # Options for caching cross-cloud data and metadata files.
+      class CrossCloudCacheOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether cross-cloud caching is enabled. This only affects queries
+        # through BigQuery. If this value is `true`, read data and metadata are stored
+        # in a cache, which can increase performance and decrease network egress costs
+        # for cross-cloud queries. If this value is `false`, cross-cloud caching is
+        # disabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1181,6 +1217,11 @@ module Google
       class SalesforceDataCloudProperties
         include Google::Apis::Core::Hashable
       
+        # Options for caching cross-cloud data and metadata files.
+        # Corresponds to the JSON property `crossCloudCacheOptions`
+        # @return [Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions]
+        attr_accessor :cross_cloud_cache_options
+      
         # Output only. A unique Google-owned and Google-generated service account
         # identity for the connection.
         # Corresponds to the JSON property `identity`
@@ -1203,6 +1244,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cross_cloud_cache_options = args[:cross_cloud_cache_options] if args.key?(:cross_cloud_cache_options)
           @identity = args[:identity] if args.key?(:identity)
           @instance_uri = args[:instance_uri] if args.key?(:instance_uri)
           @tenant_id = args[:tenant_id] if args.key?(:tenant_id)

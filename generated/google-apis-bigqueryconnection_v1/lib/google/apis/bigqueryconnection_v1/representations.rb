@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrossCloudCacheOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -268,6 +274,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_role, as: 'accessRole', class: Google::Apis::BigqueryconnectionV1::AwsAccessRole, decorator: Google::Apis::BigqueryconnectionV1::AwsAccessRole::Representation
       
+          property :cross_cloud_cache_options, as: 'crossCloudCacheOptions', class: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions, decorator: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions::Representation
+      
         end
       end
       
@@ -276,6 +284,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :application, as: 'application'
           property :client_id, as: 'clientId'
+          property :cross_cloud_cache_options, as: 'crossCloudCacheOptions', class: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions, decorator: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions::Representation
+      
           property :customer_tenant_id, as: 'customerTenantId'
           property :federated_application_client_id, as: 'federatedApplicationClientId'
           property :identity, as: 'identity'
@@ -475,6 +485,13 @@ module Google
         end
       end
       
+      class CrossCloudCacheOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -537,6 +554,8 @@ module Google
       class SalesforceDataCloudProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cross_cloud_cache_options, as: 'crossCloudCacheOptions', class: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions, decorator: Google::Apis::BigqueryconnectionV1::CrossCloudCacheOptions::Representation
+      
           property :identity, as: 'identity'
           property :instance_uri, as: 'instanceUri'
           property :tenant_id, as: 'tenantId'
