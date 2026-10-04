@@ -913,6 +913,13 @@ module Google
         # @return [Array<Google::Apis::TpuV2::NetworkEndpoint>]
         attr_accessor :network_endpoints
       
+        # Output only. Protection tier for the workload which specifies the workload
+        # expectations in the event of infrastructure failures at data center (e.g.
+        # power and/or cooling failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # Output only. The qualified name of the QueuedResource that requested this Node.
         # Corresponds to the JSON property `queuedResource`
         # @return [String]
@@ -983,6 +990,7 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @network_configs = args[:network_configs] if args.key?(:network_configs)
           @network_endpoints = args[:network_endpoints] if args.key?(:network_endpoints)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @queued_resource = args[:queued_resource] if args.key?(:queued_resource)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
