@@ -4285,6 +4285,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Executes and materializes a cohort definition from a FHIR store. This method
+        # returns an Operation that can be used to track the status of the cohort
+        # execution by calling GetOperation. Immediate fatal errors appear in the error
+        # field, errors are also logged to Cloud Logging (see [Viewing error logs in
+        # Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        # Otherwise, when the operation finishes, a detailed response of type
+        # ExecuteCohortResponse is returned in the response field. The metadata field
+        # type for this operation is OperationMetadata.
+        # @param [String] name
+        #   Required. The name of the FHIR store to query, in the format `projects/`
+        #   project_id`/locations/`location_id`/datasets/`dataset_id`/fhirStores/`
+        #   fhir_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::ExecuteCohortRequest] execute_cohort_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_fhir_store_cohort(name, execute_cohort_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:executeCohort', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::ExecuteCohortRequest::Representation
+          command.request_object = execute_cohort_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Explains all the permitted/denied actor, purpose and environment for a given
         # resource. FHIR Consent is not supported in DSTU2 or R5.
         # @param [String] name

@@ -830,10 +830,8 @@ module Google
         # @return [String]
         attr_accessor :until
       
-        # Optional. If set to true, the request will only perform a dry run. By default (
-        # once the behavior change is fully rolled out), this will default to true.
-        # During the transition period, the default depends on the Mendel flag status
-        # for the project.
+        # Optional. If set to `true`, the request will only perform a dry run. By
+        # default this will default to `false`.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only
@@ -2518,6 +2516,80 @@ module Google
         end
       end
       
+      # Request to execute a cohort definition from a FHIR store based on provided
+      # queries and sending the resulting subset of data to a specified sink.
+      class ExecuteCohortRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If provided, the queried resources will represent the state of the
+        # FHIR store at the given past timestamp. Runs the operation against the state
+        # of the store at this timestamp. State of the store is represented by the
+        # resource versions that were the current versions during the time specified or
+        # the resources that have not been updated since. Only works if the store has
+        # history enabled. Although users should be able to use this field to reproduce
+        # previous runs of the operation and get consistent results, there are a few
+        # cases where the past state of the store can be altered, thus resulting in no
+        # guarantee of reproducibility. For example, resource versions can be deleted
+        # using the purge method, or modified using ImportResourcesHistory.
+        # Corresponds to the JSON property `_at`
+        # @return [String]
+        attr_accessor :_at
+      
+        # A set of FHIRPath expressions that are used to filter the FHIR resources.
+        # These expressions do not maintain referential integrity on the resulting
+        # resources. Users are responsible for making sure the expressions are written
+        # in a way to ensure that if desired.
+        # Corresponds to the JSON property `fhirpathQuery`
+        # @return [Google::Apis::HealthcareV1beta1::FhirPathQuery]
+        attr_accessor :fhirpath_query
+      
+        # The configuration for exporting to Cloud Storage.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination]
+        attr_accessor :gcs_destination
+      
+        # Optional. If true, the request will be validated but no cohort execution will
+        # be run.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @_at = args[:_at] if args.key?(:_at)
+          @fhirpath_query = args[:fhirpath_query] if args.key?(:fhirpath_query)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response when ExecuteCohort operation finishes querying all resources and
+      # sends them to a sink destination. This structure will be included in the
+      # response when the operation finishes successfully.
+      class ExecuteCohortResponse
+        include Google::Apis::Core::Hashable
+      
+        # The name of the queried FHIR store, in the format `projects/`project_id`/
+        # locations/`location_id`/datasets/`dataset_id`/fhirStores/`fhir_store_id``.
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
+        end
+      end
+      
       # The enforcing consent's metadata.
       class ExplainDataAccessConsentInfo
         include Google::Apis::Core::Hashable
@@ -2941,6 +3013,73 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # A FHIRPath expression.
+      class Expression
+        include Google::Apis::Core::Hashable
+      
+        # Required. FHIRPath expression used for evaluation against FHIR resources. Must
+        # be in the format `[/"Resource"/"DomainResource"].[expression]` Expressions are
+        # applied per single FHIR resource, so they can't span multiple base resource
+        # types. For example, expressions like `Patient.union(Encounter)` are invalid.
+        # For expressions involving more than one resource or resource type, consider
+        # using the FHIRPath `resolve()` method. Expressions are only allowed to
+        # evaluate to a boolean type or a single or collection of [FHIR.Resource](https:/
+        # /hl7.org/fhir/resource.html) types. Expressions evaluating to boolean would
+        # include the base resource in the result if the expression evaluates to `true`.
+        # Expressions evaluating to one or more FHIR.Resource types will include those
+        # resources in the result, e.g. `CareTeam.member.resolve()`.
+        # Corresponds to the JSON property `fhirpathExpression`
+        # @return [String]
+        attr_accessor :fhirpath_expression
+      
+        # Optional. Expressions with the same label will be grouped together under the
+        # same directory when exporting to Cloud Storage.
+        # Corresponds to the JSON property `label`
+        # @return [String]
+        attr_accessor :label
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fhirpath_expression = args[:fhirpath_expression] if args.key?(:fhirpath_expression)
+          @label = args[:label] if args.key?(:label)
+        end
+      end
+      
+      # A set of FHIRPath expressions that are used to filter the FHIR resources.
+      # These expressions do not maintain referential integrity on the resulting
+      # resources. Users are responsible for making sure the expressions are written
+      # in a way to ensure that if desired.
+      class FhirPathQuery
+        include Google::Apis::Core::Hashable
+      
+        # Optional. FHIRPath engine version number, for example "1.0". Will use the
+        # latest version if not specified. For more details about the supported versions,
+        # see https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-execute-
+        # cohort#fhirpath-engine-versions.
+        # Corresponds to the JSON property `engineVersion`
+        # @return [String]
+        attr_accessor :engine_version
+      
+        # Required. List of FHIRPath expressions used for filtering the data.
+        # Corresponds to the JSON property `expressions`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Expression>]
+        attr_accessor :expressions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @engine_version = args[:engine_version] if args.key?(:engine_version)
+          @expressions = args[:expressions] if args.key?(:expressions)
         end
       end
       

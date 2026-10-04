@@ -442,6 +442,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExecuteCohortRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteCohortResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExplainDataAccessConsentInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,6 +509,18 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FhirPathQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1963,6 +1987,25 @@ module Google
         end
       end
       
+      class ExecuteCohortRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :_at, as: '_at'
+          property :fhirpath_query, as: 'fhirpathQuery', class: Google::Apis::HealthcareV1beta1::FhirPathQuery, decorator: Google::Apis::HealthcareV1beta1::FhirPathQuery::Representation
+      
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirGcsDestination::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class ExecuteCohortResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhir_store, as: 'fhirStore'
+        end
+      end
+      
       class ExplainDataAccessConsentInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2066,6 +2109,23 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Expression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fhirpath_expression, as: 'fhirpathExpression'
+          property :label, as: 'label'
+        end
+      end
+      
+      class FhirPathQuery
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine_version, as: 'engineVersion'
+          collection :expressions, as: 'expressions', class: Google::Apis::HealthcareV1beta1::Expression, decorator: Google::Apis::HealthcareV1beta1::Expression::Representation
+      
         end
       end
       
