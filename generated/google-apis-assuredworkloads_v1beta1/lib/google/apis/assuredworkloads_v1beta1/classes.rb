@@ -46,6 +46,12 @@ module Google
         # @return [String]
         attr_accessor :non_compliant_org_policy
       
+        # Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`)
+        # for acknowledging violations.
+        # Corresponds to the JSON property `view`
+        # @return [String]
+        attr_accessor :view
+      
         def initialize(**args)
            update!(**args)
         end
@@ -55,6 +61,7 @@ module Google
           @acknowledge_type = args[:acknowledge_type] if args.key?(:acknowledge_type)
           @comment = args[:comment] if args.key?(:comment)
           @non_compliant_org_policy = args[:non_compliant_org_policy] if args.key?(:non_compliant_org_policy)
+          @view = args[:view] if args.key?(:view)
         end
       end
       
@@ -1658,6 +1665,13 @@ module Google
         # @return [String]
         attr_accessor :acknowledgement_time
       
+        # Output only. List of compliance frameworks that are affected by this violation.
+        # This field is only populated when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. "
+        # FedRAMP High", "NIST 800-53".
+        # Corresponds to the JSON property `affectedFrameworks`
+        # @return [Array<String>]
+        attr_accessor :affected_frameworks
+      
         # Optional. Output only. Violation Id of the org-policy violation due to which
         # the resource violation is caused. Empty for org-policy violations.
         # Corresponds to the JSON property `associatedOrgPolicyViolationId`
@@ -1681,6 +1695,12 @@ module Google
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
+      
+        # Optional. Output only. The number of resource violations for particular org
+        # policy violation. This will be 0 in case of resource violation.
+        # Corresponds to the JSON property `childResourceViolationCount`
+        # @return [Fixnum]
+        attr_accessor :child_resource_violation_count
       
         # Output only. Description for the Violation. e.g. OrgPolicy gcp.
         # resourceLocations has non compliant value.
@@ -1734,6 +1754,12 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation]
         attr_accessor :remediation
       
+        # Output only. Contains the remediation instructions for the violation in
+        # markdown format.
+        # Corresponds to the JSON property `remediationMarkdown`
+        # @return [String]
+        attr_accessor :remediation_markdown
+      
         # Output only. Time of the event which fixed the Violation. If the violation is
         # ACTIVE this will be empty.
         # Corresponds to the JSON property `resolveTime`
@@ -1775,10 +1801,12 @@ module Google
         def update!(**args)
           @acknowledged = args[:acknowledged] if args.key?(:acknowledged)
           @acknowledgement_time = args[:acknowledgement_time] if args.key?(:acknowledgement_time)
+          @affected_frameworks = args[:affected_frameworks] if args.key?(:affected_frameworks)
           @associated_org_policy_violation_id = args[:associated_org_policy_violation_id] if args.key?(:associated_org_policy_violation_id)
           @audit_log_link = args[:audit_log_link] if args.key?(:audit_log_link)
           @begin_time = args[:begin_time] if args.key?(:begin_time)
           @category = args[:category] if args.key?(:category)
+          @child_resource_violation_count = args[:child_resource_violation_count] if args.key?(:child_resource_violation_count)
           @description = args[:description] if args.key?(:description)
           @exception_audit_log_link = args[:exception_audit_log_link] if args.key?(:exception_audit_log_link)
           @exception_contexts = args[:exception_contexts] if args.key?(:exception_contexts)
@@ -1787,6 +1815,7 @@ module Google
           @org_policy_constraint = args[:org_policy_constraint] if args.key?(:org_policy_constraint)
           @parent_project_number = args[:parent_project_number] if args.key?(:parent_project_number)
           @remediation = args[:remediation] if args.key?(:remediation)
+          @remediation_markdown = args[:remediation_markdown] if args.key?(:remediation_markdown)
           @resolve_time = args[:resolve_time] if args.key?(:resolve_time)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
