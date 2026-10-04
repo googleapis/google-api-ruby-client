@@ -629,6 +629,7 @@ module Google
       
           collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::TpuV2::NetworkEndpoint, decorator: Google::Apis::TpuV2::NetworkEndpoint::Representation
       
+          property :protection_tier, as: 'protectionTier'
           property :queued_resource, as: 'queuedResource'
           property :runtime_version, as: 'runtimeVersion'
           property :scheduling_config, as: 'schedulingConfig', class: Google::Apis::TpuV2::SchedulingConfig, decorator: Google::Apis::TpuV2::SchedulingConfig::Representation
