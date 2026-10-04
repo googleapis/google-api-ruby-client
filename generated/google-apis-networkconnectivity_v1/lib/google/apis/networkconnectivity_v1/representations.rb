@@ -1063,6 +1063,8 @@ module Google
           collection :overlaps, as: 'overlaps'
           property :peering, as: 'peering'
           property :prefix_length, as: 'prefixLength'
+          property :purpose, as: 'purpose'
+          property :range_status, as: 'rangeStatus'
           collection :target_cidr_range, as: 'targetCidrRange'
           property :update_time, as: 'updateTime'
           property :usage, as: 'usage'
