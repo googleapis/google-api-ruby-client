@@ -1210,7 +1210,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Users/Service accounts which have access for DNS binding on the intranet VPC
-        # corresponding to the consumer project.
+        # corresponding to the consumer project. Principal can be a user or a service
+        # account. For example: For specifying user `user@example.com` use ``"user": "
+        # user@example.com"`` and for specifying service account `service-account@
+        # gserviceaccount.com` use ``"serviceAccount": "service-account@gserviceaccount.
+        # com"``.
         # Corresponds to the JSON property `principal`
         # @return [Google::Apis::VmwareengineV1::Principal]
         attr_accessor :principal
@@ -3232,7 +3236,11 @@ module Google
       end
       
       # Users/Service accounts which have access for DNS binding on the intranet VPC
-      # corresponding to the consumer project.
+      # corresponding to the consumer project. Principal can be a user or a service
+      # account. For example: For specifying user `user@example.com` use ``"user": "
+      # user@example.com"`` and for specifying service account `service-account@
+      # gserviceaccount.com` use ``"serviceAccount": "service-account@gserviceaccount.
+      # com"``.
       class Principal
         include Google::Apis::Core::Hashable
       
@@ -3583,7 +3591,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Users/Service accounts which have access for DNS binding on the intranet VPC
-        # corresponding to the consumer project.
+        # corresponding to the consumer project. Principal can be a user or a service
+        # account. For example: For specifying user `user@example.com` use ``"user": "
+        # user@example.com"`` and for specifying service account `service-account@
+        # gserviceaccount.com` use ``"serviceAccount": "service-account@gserviceaccount.
+        # com"``.
         # Corresponds to the JSON property `principal`
         # @return [Google::Apis::VmwareengineV1::Principal]
         attr_accessor :principal
@@ -3760,17 +3772,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Zone that will remain operational when connection between the two
-        # zones is lost. Specify the resource name of a zone that belongs to the region
-        # of the private cloud. For example: `projects/`project`/locations/europe-west3-
-        # a` where ``project`` can either be a project number or a project ID.
+        # zones is lost. Specify the resource name or ID of a zone that belongs to the
+        # region of the private cloud. For example: `projects/`project`/locations/europe-
+        # west3-a` or `europe-west3-a`, where ``project`` can either be a project number
+        # or a project ID.
         # Corresponds to the JSON property `preferredLocation`
         # @return [String]
         attr_accessor :preferred_location
       
         # Required. Additional zone for a higher level of availability and load
-        # balancing. Specify the resource name of a zone that belongs to the region of
-        # the private cloud. For example: `projects/`project`/locations/europe-west3-b`
-        # where ``project`` can either be a project number or a project ID.
+        # balancing. Specify the resource name or ID of a zone that belongs to the
+        # region of the private cloud. For example: `projects/`project`/locations/europe-
+        # west3-b` or `europe-west3-b`, where ``project`` can either be a project number
+        # or a project ID.
         # Corresponds to the JSON property `secondaryLocation`
         # @return [String]
         attr_accessor :secondary_location
