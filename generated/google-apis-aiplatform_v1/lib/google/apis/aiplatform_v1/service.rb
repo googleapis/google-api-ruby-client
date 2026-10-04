@@ -7701,6 +7701,21 @@ module Google
         #   Identifier. Name of the cache config. Format: - `projects/`project`/
         #   cacheConfig`.
         # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig] google_cloud_aiplatform_v1_cache_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields of `cache_config` to update. Supported paths are `
+        #   disable_cache`, `retention_config` (and its subfields such as `
+        #   retention_config.retention_type`), and the special value `*`; any other path
+        #   returns `INVALID_ARGUMENT`. Fields not covered by the mask keep their stored
+        #   value. If the mask is omitted, it is treated as an implied mask covering the
+        #   fields populated in `cache_config`, so updating one field never clears another.
+        #   `retention_config` is covered only when the request carries it. `
+        #   disable_cache` is always covered: it is a bare `bool`, so the server cannot
+        #   tell a request that omits it from one that sets it to `false`. `*` requests
+        #   full replacement of the resource: every settable field is written from the
+        #   request, clearing `retention_config` when the request omits it. It cannot be
+        #   combined with other paths. Prefer naming fields explicitly -- a caller that
+        #   sends `*` without knowing about a field added to `CacheConfig` later would
+        #   silently reset that field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7718,13 +7733,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_cache_config(name, google_cloud_aiplatform_v1_cache_config_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_cache_config(name, google_cloud_aiplatform_v1_cache_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfig::Representation
           command.request_object = google_cloud_aiplatform_v1_cache_config_object
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -32755,6 +32771,185 @@ module Google
           command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a ServingProfile.
+        # @param [String] parent
+        #   Required. The resource name of the Location to create the ServingProfile in.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile] google_cloud_aiplatform_v1_serving_profile_object
+        # @param [String] serving_profile_id
+        #   Required. The ID to use for the ServingProfile, which will become the final
+        #   component of the ServingProfile's resource name. This value should be 1-63
+        #   characters, and valid characters are `^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_serving_profile(parent, google_cloud_aiplatform_v1_serving_profile_object = nil, serving_profile_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/servingProfiles', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile::Representation
+          command.request_object = google_cloud_aiplatform_v1_serving_profile_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['servingProfileId'] = serving_profile_id unless serving_profile_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a ServingProfile.
+        # @param [String] name
+        #   Required. The name of the ServingProfile resource to be deleted. Format: `
+        #   projects/`project`/locations/`location`/servingProfiles/`serving_profile``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_serving_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a ServingProfile.
+        # @param [String] name
+        #   Required. The name of the ServingProfile resource. Format: `projects/`project`/
+        #   locations/`location`/servingProfiles/`serving_profile``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_serving_profile(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists ServingProfiles in a Location.
+        # @param [String] parent
+        #   Required. The resource name of the Location to list the ServingProfiles from.
+        #   Format: `projects/`project`/locations/`location``
+        # @param [Fixnum] page_size
+        #   Optional. The standard list page size. If unspecified, at most 100
+        #   ServingProfiles will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. The standard list page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListServingProfilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListServingProfilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_serving_profiles(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/servingProfiles', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListServingProfilesResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ListServingProfilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a ServingProfile.
+        # @param [String] name
+        #   Identifier. The resource name of the ServingProfile.
+        # @param [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile] google_cloud_aiplatform_v1_serving_profile_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update; see https://developers.google.com/
+        #   protocol-buffers/docs/reference/google.protobuf#fieldmask. If omitted, all
+        #   populated (non-empty) mutable fields are updated; if set to `["*"]`, all
+        #   mutable fields are fully replaced (unpopulated values are cleared).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_serving_profile(name, google_cloud_aiplatform_v1_serving_profile_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile::Representation
+          command.request_object = google_cloud_aiplatform_v1_serving_profile_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

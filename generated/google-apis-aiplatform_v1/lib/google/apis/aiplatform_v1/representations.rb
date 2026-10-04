@@ -790,6 +790,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1CacheConfigRetentionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1CachedContent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3809,6 +3815,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1ListSemanticGovernancePoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ListServingProfilesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7510,6 +7522,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1ServingProfile
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1ServingProfileCmekConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1Session
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7595,6 +7619,12 @@ module Google
       end
       
       class GoogleCloudAiplatformV1SpeechConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudAiplatformV1SpeechMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -8961,7 +8991,7 @@ module Google
       class CloudAiLargeModelsVisionExperimentsResponseProEditResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          hash :structured_prompt, as: 'structuredPrompt'
+          property :structured_prompt, as: 'structuredPrompt'
         end
       end
       
@@ -9065,7 +9095,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :edit_instruction_prompt, as: 'editInstructionPrompt'
           property :from_operation_id, as: 'fromOperationId'
-          hash :structured_prompt, as: 'structuredPrompt'
+          property :structured_prompt, as: 'structuredPrompt'
         end
       end
       
@@ -9659,6 +9689,7 @@ module Google
           collection :language_codes, as: 'languageCodes'
           property :language_hints, as: 'languageHints', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1AudioTranscriptionConfigLanguageHints::Representation
       
+          property :mode, as: 'mode'
           property :word_timestamp, as: 'wordTimestamp'
         end
       end
@@ -10221,6 +10252,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_cache, as: 'disableCache'
           property :name, as: 'name'
+          property :retention_config, as: 'retentionConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfigRetentionConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1CacheConfigRetentionConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1CacheConfigRetentionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retention_type, as: 'retentionType'
         end
       end
       
@@ -14102,6 +14142,7 @@ module Google
           hash :revision_labels, as: 'revisionLabels'
           property :revision_ttl, as: 'revisionTtl'
           hash :scope, as: 'scope'
+          property :time_zone, as: 'timeZone'
           property :vertex_session_source, as: 'vertexSessionSource', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource::Representation
       
         end
@@ -14648,6 +14689,7 @@ module Google
       class GoogleCloudAiplatformV1ImportEvaluationSetRequestCloudTraceSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_resource, as: 'agentResource'
           property :project_id, as: 'projectId'
           collection :session_ids, as: 'sessionIds'
           collection :trace_ids, as: 'traceIds'
@@ -15594,6 +15636,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :semantic_governance_policies, as: 'semanticGovernancePolicies', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicy, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ListServingProfilesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :serving_profiles, as: 'servingProfiles', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfile::Representation
       
         end
       end
@@ -17512,6 +17563,8 @@ module Google
           property :inline_data, as: 'inlineData', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Blob::Representation
       
           property :media_resolution, as: 'mediaResolution', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartMediaResolution, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PartMediaResolution::Representation
+      
+          property :speech_metadata, as: 'speechMetadata', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechMetadata, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SpeechMetadata::Representation
       
           property :text, as: 'text'
           property :thought, as: 'thought'
@@ -21889,6 +21942,7 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :dry_run, as: 'dryRun'
           property :etag, as: 'etag'
           collection :mcp_tools, as: 'mcpTools', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool::Representation
       
@@ -21926,6 +21980,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_custom_service_account, as: 'enableCustomServiceAccount'
           property :service_account, as: 'serviceAccount'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ServingProfile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cmek_config, as: 'cmekConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfileCmekConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ServingProfileCmekConfig::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudAiplatformV1ServingProfileCmekConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :encryption_spec, as: 'encryptionSpec', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EncryptionSpec::Representation
+      
         end
       end
       
@@ -22085,6 +22161,14 @@ module Google
       
           property :voice_config, as: 'voiceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1VoiceConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1SpeechMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :speaker, as: 'speaker'
+          property :style, as: 'style'
         end
       end
       
@@ -22921,6 +23005,7 @@ module Google
       class GoogleCloudAiplatformV1ToolComputerUse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :disabled_safety_policies, as: 'disabledSafetyPolicies'
           property :enable_prompt_injection_detection, as: 'enablePromptInjectionDetection'
           property :environment, as: 'environment'
           collection :excluded_predefined_functions, as: 'excludedPredefinedFunctions'
@@ -23499,6 +23584,7 @@ module Google
           collection :evaluate_dataset_runs, as: 'evaluateDatasetRuns', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluateDatasetRun, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EvaluateDatasetRun::Representation
       
           property :experiment, as: 'experiment'
+          property :gcs_metrics_uri, as: 'gcsMetricsUri'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :pre_tuned_model, as: 'preTunedModel', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreTunedModel, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1PreTunedModel::Representation
@@ -23958,6 +24044,7 @@ module Google
       
           property :replicated_voice_config, as: 'replicatedVoiceConfig', class: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReplicatedVoiceConfig, decorator: Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ReplicatedVoiceConfig::Representation
       
+          property :voice, as: 'voice'
         end
       end
       
