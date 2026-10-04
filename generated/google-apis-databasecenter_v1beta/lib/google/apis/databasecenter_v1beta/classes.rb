@@ -1506,8 +1506,8 @@ module Google
         # product.engine * product.version * location * labels * resource_category *
         # machine_config.cpu_count * machine_config.memory_size_bytes * machine_config.
         # shard_count * resource_name * tags * backupdr_config.backupdr_managed *
-        # edition The expression is a list of zero or more restrictions combined via
-        # logical operators `AND` and `OR`. When `AND` and `OR` are both used in the
+        # edition * modes The expression is a list of zero or more restrictions combined
+        # via logical operators `AND` and `OR`. When `AND` and `OR` are both used in the
         # expression, parentheses must be appropriately used to group the combinations.
         # Example: `location="us-east1"` Example: `container="projects/123" OR container=
         # "projects/456"` Example: `(container="projects/123" OR container="projects/456"
@@ -1522,8 +1522,8 @@ module Google
         # product.version * container * issue_count * machine_config.vcpu_count *
         # machine_config.memory_size_bytes * machine_config.shard_count * resource_name *
         # issue_severity * signal_type * location * resource_type * instance_type *
-        # edition * metrics.p99_cpu_utilization * metrics.p95_cpu_utilization * metrics.
-        # current_storage_used_bytes * metrics.node_count * metrics.
+        # edition * modes * metrics.p99_cpu_utilization * metrics.p95_cpu_utilization *
+        # metrics.current_storage_used_bytes * metrics.node_count * metrics.
         # processing_unit_count * metrics.current_memory_used_bytes * metrics.
         # peak_storage_utilization * metrics.peak_number_connections * metrics.
         # peak_memory_utilization The default order is ascending. Add "DESC" after the
