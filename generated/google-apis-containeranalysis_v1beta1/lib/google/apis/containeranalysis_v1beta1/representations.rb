@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1681,6 +1687,17 @@ module Google
         end
       end
       
+      class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cpu_utilization, as: 'averageCpuUtilization'
+          property :average_memory_utilization, as: 'averageMemoryUtilization'
+          property :peak_cpu_utilization, as: 'peakCpuUtilization'
+          property :peak_memory_utilization, as: 'peakMemoryUtilization'
+          property :total_cpu_duration, as: 'totalCpuDuration'
+        end
+      end
+      
       class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1879,6 +1896,8 @@ module Google
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage::Representation
+      
+          property :resource_usage, as: 'resourceUsage', class: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage, decorator: Google::Apis::ContaineranalysisV1beta1::ContaineranalysisGoogleDevtoolsCloudbuildV1BuildResourceUsage::Representation
       
         end
       end
