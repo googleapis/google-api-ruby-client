@@ -183,6 +183,12 @@ module Google
         
         class SoftDeletePolicy
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class HardDeletePause
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -407,6 +413,12 @@ module Google
       end
       
       class ObjectCustomContextPayload
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObjectFullContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -816,7 +828,18 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :effective_time, as: 'effectiveTime', type: DateTime
         
+            property :hard_delete_pause, as: 'hardDeletePause', class: Google::Apis::StorageV1::Bucket::SoftDeletePolicy::HardDeletePause, decorator: Google::Apis::StorageV1::Bucket::SoftDeletePolicy::HardDeletePause::Representation
+        
             property :retention_duration_seconds, :numeric_string => true, as: 'retentionDurationSeconds'
+          end
+          
+          class HardDeletePause
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :effective_time, as: 'effectiveTime', type: DateTime
+          
+              property :enabled, as: 'enabled'
+            end
           end
         end
         
@@ -1274,6 +1297,21 @@ module Google
           property :create_time, as: 'createTime', type: DateTime
       
           property :extended_data_type_url, as: 'extendedDataTypeUrl'
+          property :update_time, as: 'updateTime', type: DateTime
+      
+          property :value, as: 'value'
+        end
+      end
+      
+      class ObjectFullContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime', type: DateTime
+      
+          hash :extended_data, as: 'extendedData'
+          property :key, as: 'key'
+          property :kind, as: 'kind'
+          property :type, as: 'type'
           property :update_time, as: 'updateTime', type: DateTime
       
           property :value, as: 'value'

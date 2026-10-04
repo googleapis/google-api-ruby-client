@@ -1249,6 +1249,13 @@ module Google
           # @return [DateTime]
           attr_accessor :effective_time
         
+          # The bucket's hard delete pause configuration. If set, soft-deleted objects in
+          # the bucket will not be permanently deleted until the hard delete pause is
+          # disabled.
+          # Corresponds to the JSON property `hardDeletePause`
+          # @return [Google::Apis::StorageV1::Bucket::SoftDeletePolicy::HardDeletePause]
+          attr_accessor :hard_delete_pause
+        
           # The duration in seconds that soft-deleted objects in the bucket will be
           # retained and cannot be permanently deleted.
           # Corresponds to the JSON property `retentionDurationSeconds`
@@ -1262,7 +1269,37 @@ module Google
           # Update properties of this object
           def update!(**args)
             @effective_time = args[:effective_time] if args.key?(:effective_time)
+            @hard_delete_pause = args[:hard_delete_pause] if args.key?(:hard_delete_pause)
             @retention_duration_seconds = args[:retention_duration_seconds] if args.key?(:retention_duration_seconds)
+          end
+          
+          # The bucket's hard delete pause configuration. If set, soft-deleted objects in
+          # the bucket will not be permanently deleted until the hard delete pause is
+          # disabled.
+          class HardDeletePause
+            include Google::Apis::Core::Hashable
+          
+            # Server-determined value that indicates the time from which the hard delete
+            # pause became effective. This value is in RFC 3339 format.
+            # Corresponds to the JSON property `effectiveTime`
+            # @return [DateTime]
+            attr_accessor :effective_time
+          
+            # Whether hard deletions are paused.
+            # Corresponds to the JSON property `enabled`
+            # @return [Boolean]
+            attr_accessor :enabled
+            alias_method :enabled?, :enabled
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @effective_time = args[:effective_time] if args.key?(:effective_time)
+              @enabled = args[:enabled] if args.key?(:enabled)
+            end
           end
         end
         
@@ -3043,6 +3080,64 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @extended_data_type_url = args[:extended_data_type_url] if args.key?(:extended_data_type_url)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A full representation of an object context.
+      class ObjectFullContext
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the object context was created. This value is in RFC 3339
+        # format.
+        # Corresponds to the JSON property `createTime`
+        # @return [DateTime]
+        attr_accessor :create_time
+      
+        # The extended data of the object context.
+        # Corresponds to the JSON property `extendedData`
+        # @return [Hash<String,Object>]
+        attr_accessor :extended_data
+      
+        # The key of the object context.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The kind of item this is. For ObjectFullContext, this is always storage#
+        # objectFullContext.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The type of the object context.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The time at which the object context was last updated. This value is in RFC
+        # 3339 format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [DateTime]
+        attr_accessor :update_time
+      
+        # The value of the object context.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @extended_data = args[:extended_data] if args.key?(:extended_data)
+          @key = args[:key] if args.key?(:key)
+          @kind = args[:kind] if args.key?(:kind)
+          @type = args[:type] if args.key?(:type)
           @update_time = args[:update_time] if args.key?(:update_time)
           @value = args[:value] if args.key?(:value)
         end

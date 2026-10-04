@@ -3655,6 +3655,52 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a specific object context with its extended data for a given object.
+        # @param [String] bucket
+        #   Name of the bucket in which the object resides.
+        # @param [String] object
+        #   Name of the object. For information about how to URL encode object names to be
+        #   path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/
+        #   request-endpoints#encoding).
+        # @param [Fixnum] generation
+        #   If present, selects a specific revision of this object (as opposed to the
+        #   latest version, the default).
+        # @param [String] user_project
+        #   The project to be billed for this request. Required for Requester Pays buckets.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::StorageV1::ObjectFullContext] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::StorageV1::ObjectFullContext]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def view_object_full_context(bucket, object, generation: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'b/{bucket}/o/{object}/viewFullContext', options)
+          command.response_representation = Google::Apis::StorageV1::ObjectFullContext::Representation
+          command.response_class = Google::Apis::StorageV1::ObjectFullContext
+          command.params['bucket'] = bucket unless bucket.nil?
+          command.params['object'] = object unless object.nil?
+          command.query['contextKey'] = context_key unless context_key.nil?
+          command.query['generation'] = generation unless generation.nil?
+          command.query['userProject'] = user_project unless user_project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts asynchronous advancement of the relocate bucket operation in the case
         # of required write downtime, to allow it to lock the bucket at the source
         # location, and proceed with the bucket location swap. The server makes a best
