@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExpressConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailoverInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObservabilityInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +479,12 @@ module Google
       end
       
       class QueryInsightsInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryInsightsInstanceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1002,6 +1020,8 @@ module Google
           property :encryption_info, as: 'encryptionInfo', class: Google::Apis::AlloydbV1alpha::EncryptionInfo, decorator: Google::Apis::AlloydbV1alpha::EncryptionInfo::Representation
       
           property :etag, as: 'etag'
+          property :express_config, as: 'expressConfig', class: Google::Apis::AlloydbV1alpha::ExpressConfig, decorator: Google::Apis::AlloydbV1alpha::ExpressConfig::Representation
+      
           property :gemini_config, as: 'geminiConfig', class: Google::Apis::AlloydbV1alpha::GeminiClusterConfig, decorator: Google::Apis::AlloydbV1alpha::GeminiClusterConfig::Representation
       
           property :initial_user, as: 'initialUser', class: Google::Apis::AlloydbV1alpha::UserPassword, decorator: Google::Apis::AlloydbV1alpha::UserPassword::Representation
@@ -1226,6 +1246,13 @@ module Google
         end
       end
       
+      class ExpressConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class FailoverInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1357,6 +1384,8 @@ module Google
       
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig::Representation
       
+          property :observability_instance_info, as: 'observabilityInstanceInfo', class: Google::Apis::AlloydbV1alpha::ObservabilityInstanceInfo, decorator: Google::Apis::AlloydbV1alpha::ObservabilityInstanceInfo::Representation
+      
           collection :outbound_public_ip_addresses, as: 'outboundPublicIpAddresses'
           property :psc_instance_config, as: 'pscInstanceConfig', class: Google::Apis::AlloydbV1alpha::PscInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::PscInstanceConfig::Representation
       
@@ -1364,6 +1393,8 @@ module Google
       
           property :public_ip_address, as: 'publicIpAddress'
           property :query_insights_config, as: 'queryInsightsConfig', class: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig, decorator: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig::Representation
+      
+          property :query_insights_info, as: 'queryInsightsInfo', class: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceInfo, decorator: Google::Apis::AlloydbV1alpha::QueryInsightsInstanceInfo::Representation
       
           property :read_pool_config, as: 'readPoolConfig', class: Google::Apis::AlloydbV1alpha::ReadPoolConfig, decorator: Google::Apis::AlloydbV1alpha::ReadPoolConfig::Representation
       
@@ -1557,6 +1588,23 @@ module Google
         end
       end
       
+      class ObservabilityInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assistive_experiences_enabled, as: 'assistiveExperiencesEnabled'
+          property :enabled, as: 'enabled'
+          property :max_query_string_length, as: 'maxQueryStringLength'
+          property :preserve_comments, as: 'preserveComments'
+          property :query_plans_per_minute, as: 'queryPlansPerMinute'
+          property :record_application_tags, as: 'recordApplicationTags'
+          property :track_active_queries, as: 'trackActiveQueries'
+          property :track_active_query_plan, as: 'trackActiveQueryPlan'
+          property :track_client_address, as: 'trackClientAddress'
+          property :track_wait_event_types, as: 'trackWaitEventTypes'
+          property :track_wait_events, as: 'trackWaitEvents'
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1685,6 +1733,17 @@ module Google
       class QueryInsightsInstanceConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_plans_per_minute, as: 'queryPlansPerMinute'
+          property :query_string_length, as: 'queryStringLength'
+          property :record_application_tags, as: 'recordApplicationTags'
+          property :record_client_address, as: 'recordClientAddress'
+        end
+      end
+      
+      class QueryInsightsInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
           property :query_plans_per_minute, as: 'queryPlansPerMinute'
           property :query_string_length, as: 'queryStringLength'
           property :record_application_tags, as: 'recordApplicationTags'

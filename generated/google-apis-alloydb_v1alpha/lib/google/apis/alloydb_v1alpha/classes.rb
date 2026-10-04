@@ -738,6 +738,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Configuration that allows the user to create an AlloyDB Express cluster.
+        # Corresponds to the JSON property `expressConfig`
+        # @return [Google::Apis::AlloydbV1alpha::ExpressConfig]
+        attr_accessor :express_config
+      
         # Deprecated and unused. This message will be removed in the near future.
         # Corresponds to the JSON property `geminiConfig`
         # @return [Google::Apis::AlloydbV1alpha::GeminiClusterConfig]
@@ -912,6 +917,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @encryption_info = args[:encryption_info] if args.key?(:encryption_info)
           @etag = args[:etag] if args.key?(:etag)
+          @express_config = args[:express_config] if args.key?(:express_config)
           @gemini_config = args[:gemini_config] if args.key?(:gemini_config)
           @initial_user = args[:initial_user] if args.key?(:initial_user)
           @labels = args[:labels] if args.key?(:labels)
@@ -1680,6 +1686,26 @@ module Google
         end
       end
       
+      # Configuration that allows the user to create an AlloyDB Express cluster.
+      class ExpressConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether Express configuration is enabled for the cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Message for triggering failover on an Instance
       class FailoverInstanceRequest
         include Google::Apis::Core::Hashable
@@ -2210,6 +2236,13 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::ObservabilityInstanceConfig]
         attr_accessor :observability_config
       
+        # Output only. Instance level observability information, contains the effective
+        # values of observability settings for this instance, by merging customer's
+        # provided `ObservabilityInstanceConfig` with the Observability defaults.
+        # Corresponds to the JSON property `observabilityInstanceInfo`
+        # @return [Google::Apis::AlloydbV1alpha::ObservabilityInstanceInfo]
+        attr_accessor :observability_instance_info
+      
         # Output only. All outbound public IP addresses configured for the instance.
         # Corresponds to the JSON property `outboundPublicIpAddresses`
         # @return [Array<String>]
@@ -2236,6 +2269,12 @@ module Google
         # Corresponds to the JSON property `queryInsightsConfig`
         # @return [Google::Apis::AlloydbV1alpha::QueryInsightsInstanceConfig]
         attr_accessor :query_insights_config
+      
+        # Instance level Query Insights information, which is read-only and available in
+        # the output only.
+        # Corresponds to the JSON property `queryInsightsInfo`
+        # @return [Google::Apis::AlloydbV1alpha::QueryInsightsInstanceInfo]
+        attr_accessor :query_insights_info
       
         # Configuration for a read pool instance.
         # Corresponds to the JSON property `readPoolConfig`
@@ -2321,11 +2360,13 @@ module Google
           @network_config = args[:network_config] if args.key?(:network_config)
           @nodes = args[:nodes] if args.key?(:nodes)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
+          @observability_instance_info = args[:observability_instance_info] if args.key?(:observability_instance_info)
           @outbound_public_ip_addresses = args[:outbound_public_ip_addresses] if args.key?(:outbound_public_ip_addresses)
           @psc_instance_config = args[:psc_instance_config] if args.key?(:psc_instance_config)
           @psc_instance_info = args[:psc_instance_info] if args.key?(:psc_instance_info)
           @public_ip_address = args[:public_ip_address] if args.key?(:public_ip_address)
           @query_insights_config = args[:query_insights_config] if args.key?(:query_insights_config)
+          @query_insights_info = args[:query_insights_info] if args.key?(:query_insights_info)
           @read_pool_config = args[:read_pool_config] if args.key?(:read_pool_config)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
@@ -2980,6 +3021,97 @@ module Google
         end
       end
       
+      # 
+      class ObservabilityInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether assistive experiences are enabled for this AlloyDB
+        # instance.
+        # Corresponds to the JSON property `assistiveExperiencesEnabled`
+        # @return [Boolean]
+        attr_accessor :assistive_experiences_enabled
+        alias_method :assistive_experiences_enabled?, :assistive_experiences_enabled
+      
+        # Output only. Observability feature status for an instance.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Query string length. The default value is 10k.
+        # Corresponds to the JSON property `maxQueryStringLength`
+        # @return [Fixnum]
+        attr_accessor :max_query_string_length
+      
+        # Output only. Preserve comments in query string for an instance.
+        # Corresponds to the JSON property `preserveComments`
+        # @return [Boolean]
+        attr_accessor :preserve_comments
+        alias_method :preserve_comments?, :preserve_comments
+      
+        # Output only. Number of query execution plans captured by Insights per minute
+        # for all queries combined.
+        # Corresponds to the JSON property `queryPlansPerMinute`
+        # @return [Fixnum]
+        attr_accessor :query_plans_per_minute
+      
+        # Output only. Record application tags for an instance.
+        # Corresponds to the JSON property `recordApplicationTags`
+        # @return [Boolean]
+        attr_accessor :record_application_tags
+        alias_method :record_application_tags?, :record_application_tags
+      
+        # Output only. Track actively running queries on the instance.
+        # Corresponds to the JSON property `trackActiveQueries`
+        # @return [Boolean]
+        attr_accessor :track_active_queries
+        alias_method :track_active_queries?, :track_active_queries
+      
+        # Output only. Indicates whether to track active query plans for an instance.
+        # Deprecated: Use track_active_queries instead.
+        # Corresponds to the JSON property `trackActiveQueryPlan`
+        # @return [Boolean]
+        attr_accessor :track_active_query_plan
+        alias_method :track_active_query_plan?, :track_active_query_plan
+      
+        # Output only. Track client address for an instance.
+        # Corresponds to the JSON property `trackClientAddress`
+        # @return [Boolean]
+        attr_accessor :track_client_address
+        alias_method :track_client_address?, :track_client_address
+      
+        # Output only. Track wait event types during query execution for an instance.
+        # Corresponds to the JSON property `trackWaitEventTypes`
+        # @return [Boolean]
+        attr_accessor :track_wait_event_types
+        alias_method :track_wait_event_types?, :track_wait_event_types
+      
+        # Output only. Track wait events during query execution for an instance.
+        # Corresponds to the JSON property `trackWaitEvents`
+        # @return [Boolean]
+        attr_accessor :track_wait_events
+        alias_method :track_wait_events?, :track_wait_events
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assistive_experiences_enabled = args[:assistive_experiences_enabled] if args.key?(:assistive_experiences_enabled)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @max_query_string_length = args[:max_query_string_length] if args.key?(:max_query_string_length)
+          @preserve_comments = args[:preserve_comments] if args.key?(:preserve_comments)
+          @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
+          @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
+          @track_active_queries = args[:track_active_queries] if args.key?(:track_active_queries)
+          @track_active_query_plan = args[:track_active_query_plan] if args.key?(:track_active_query_plan)
+          @track_client_address = args[:track_client_address] if args.key?(:track_client_address)
+          @track_wait_event_types = args[:track_wait_event_types] if args.key?(:track_wait_event_types)
+          @track_wait_events = args[:track_wait_events] if args.key?(:track_wait_events)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -3554,6 +3686,53 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
+          @query_string_length = args[:query_string_length] if args.key?(:query_string_length)
+          @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
+          @record_client_address = args[:record_client_address] if args.key?(:record_client_address)
+        end
+      end
+      
+      # Instance level Query Insights information, which is read-only and available in
+      # the output only.
+      class QueryInsightsInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether Query Insights is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Output only. Number of query execution plans captured per minute.
+        # Corresponds to the JSON property `queryPlansPerMinute`
+        # @return [Fixnum]
+        attr_accessor :query_plans_per_minute
+      
+        # Output only. Maximum query string length.
+        # Corresponds to the JSON property `queryStringLength`
+        # @return [Fixnum]
+        attr_accessor :query_string_length
+      
+        # Output only. Whether to record application tags.
+        # Corresponds to the JSON property `recordApplicationTags`
+        # @return [Boolean]
+        attr_accessor :record_application_tags
+        alias_method :record_application_tags?, :record_application_tags
+      
+        # Output only. Whether to record client address.
+        # Corresponds to the JSON property `recordClientAddress`
+        # @return [Boolean]
+        attr_accessor :record_client_address
+        alias_method :record_client_address?, :record_client_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
           @query_plans_per_minute = args[:query_plans_per_minute] if args.key?(:query_plans_per_minute)
           @query_string_length = args[:query_string_length] if args.key?(:query_string_length)
           @record_application_tags = args[:record_application_tags] if args.key?(:record_application_tags)
