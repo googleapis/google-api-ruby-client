@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EgressNetworkConfigTlsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -968,6 +974,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :domain, as: 'domain'
+          collection :domains, as: 'domains'
           property :target_network, as: 'targetNetwork'
         end
       end
@@ -978,8 +985,18 @@ module Google
           property :dns_peering_config, as: 'dnsPeeringConfig', class: Google::Apis::NetworkservicesV1::DnsPeeringConfig, decorator: Google::Apis::NetworkservicesV1::DnsPeeringConfig::Representation
       
           property :network_attachment, as: 'networkAttachment'
+          property :tls_config, as: 'tlsConfig', class: Google::Apis::NetworkservicesV1::EgressNetworkConfigTlsConfig, decorator: Google::Apis::NetworkservicesV1::EgressNetworkConfigTlsConfig::Representation
+      
           property :trust_config, as: 'trustConfig'
           property :vpc_egress, as: 'vpcEgress'
+        end
+      end
+      
+      class EgressNetworkConfigTlsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :additional_roots, as: 'additionalRoots'
+          property :trust_config, as: 'trustConfig'
         end
       end
       
