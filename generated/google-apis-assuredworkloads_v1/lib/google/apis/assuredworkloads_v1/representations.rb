@@ -430,6 +430,7 @@ module Google
           property :acknowledge_type, as: 'acknowledgeType'
           property :comment, as: 'comment'
           property :non_compliant_org_policy, as: 'nonCompliantOrgPolicy'
+          property :view, as: 'view'
         end
       end
       
@@ -908,10 +909,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acknowledged, as: 'acknowledged'
           property :acknowledgement_time, as: 'acknowledgementTime'
+          collection :affected_frameworks, as: 'affectedFrameworks'
           property :associated_org_policy_violation_id, as: 'associatedOrgPolicyViolationId'
           property :audit_log_link, as: 'auditLogLink'
           property :begin_time, as: 'beginTime'
           property :category, as: 'category'
+          property :child_resource_violation_count, as: 'childResourceViolationCount'
           property :description, as: 'description'
           property :exception_audit_log_link, as: 'exceptionAuditLogLink'
           collection :exception_contexts, as: 'exceptionContexts', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationExceptionContext, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationExceptionContext::Representation
@@ -922,6 +925,7 @@ module Google
           property :parent_project_number, as: 'parentProjectNumber'
           property :remediation, as: 'remediation', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationRemediation, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1ViolationRemediation::Representation
       
+          property :remediation_markdown, as: 'remediationMarkdown'
           property :resolve_time, as: 'resolveTime'
           property :resource_name, as: 'resourceName'
           property :resource_type, as: 'resourceType'
