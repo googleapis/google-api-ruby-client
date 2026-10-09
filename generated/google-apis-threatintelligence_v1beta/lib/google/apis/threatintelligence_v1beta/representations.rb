@@ -22,6 +22,12 @@ module Google
   module Apis
     module ThreatintelligenceV1beta
       
+      class AvDetections
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Alert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class Audit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CertificateDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -166,6 +178,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DiscoveryDocument
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsRegistrationDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DocumentQuery
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,7 +202,67 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DomainMonitoringAlertDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringDnsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringDnsRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringDomain
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringDomainDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainMonitoringFeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringFindingDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringGtiDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringUrlDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DomainMonitoringWhoIsDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -233,6 +317,12 @@ module Google
       end
       
       class GetPasswordResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Infrastructure
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Relationships
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RelevanceAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ThreatAttributionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpsertConfigurationResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -428,6 +530,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvDetections
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detected_vendor_count, as: 'detectedVendorCount'
+          property :total_vendor_count, as: 'totalVendorCount'
+        end
       end
       
       class Alert
@@ -463,6 +573,8 @@ module Google
           property :data_leak, as: 'dataLeak', class: Google::Apis::ThreatintelligenceV1beta::DataLeakAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::DataLeakAlertDetail::Representation
       
           property :detail_type, as: 'detailType'
+          property :domain_monitoring, as: 'domainMonitoring', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringAlertDetail::Representation
+      
           property :initial_access_broker, as: 'initialAccessBroker', class: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerAlertDetail::Representation
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatAlertDetail::Representation
@@ -518,6 +630,14 @@ module Google
         end
       end
       
+      class CertificateDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issuer, as: 'issuer'
+          collection :subject_alternative_names, as: 'subjectAlternativeNames'
+        end
+      end
+      
       class Configuration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -544,6 +664,8 @@ module Google
       
           property :detail_type, as: 'detailType'
           property :domain_configuration, as: 'domainConfiguration', class: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration, decorator: Google::Apis::ThreatintelligenceV1beta::DomainConfiguration::Representation
+      
+          property :domain_monitoring, as: 'domainMonitoring', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringConfig, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringConfig::Representation
       
           property :technology_watchlist, as: 'technologyWatchlist', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig::Representation
       
@@ -740,6 +862,25 @@ module Google
         end
       end
       
+      class DiscoveryDocument
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId'
+          property :document_type, as: 'documentType'
+        end
+      end
+      
+      class DnsRegistrationDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :private_registration, as: 'privateRegistration'
+          property :registrant_country, as: 'registrantCountry'
+          property :registrar, as: 'registrar'
+          property :registration_time, as: 'registrationTime'
+        end
+      end
+      
       class DocumentQuery
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -756,10 +897,138 @@ module Google
         end
       end
       
+      class DomainMonitoringAlertDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_details, as: 'dnsDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails::Representation
+      
+          property :domain_details, as: 'domainDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails::Representation
+      
+          property :gti_details, as: 'gtiDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails::Representation
+      
+          property :infrastructure, as: 'infrastructure', class: Google::Apis::ThreatintelligenceV1beta::Infrastructure, decorator: Google::Apis::ThreatintelligenceV1beta::Infrastructure::Representation
+      
+          property :matched_domain, as: 'matchedDomain'
+          property :protected_brand, as: 'protectedBrand'
+          property :protected_domain, as: 'protectedDomain', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails::Representation
+      
+          property :registration_details, as: 'registrationDetails', class: Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails::Representation
+      
+          property :relationships, as: 'relationships', class: Google::Apis::ThreatintelligenceV1beta::Relationships, decorator: Google::Apis::ThreatintelligenceV1beta::Relationships::Representation
+      
+          property :threat_attribution_details, as: 'threatAttributionDetails', class: Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails, decorator: Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails::Representation
+      
+          property :url_details, as: 'urlDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails::Representation
+      
+          property :whois_details, as: 'whoisDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails::Representation
+      
+        end
+      end
+      
+      class DomainMonitoringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :domains, as: 'domains', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomain, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomain::Representation
+      
+        end
+      end
+      
+      class DomainMonitoringDnsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dns_records, as: 'dnsRecords', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsRecord, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsRecord::Representation
+      
+          property :retrieval_time, as: 'retrievalTime'
+        end
+      end
+      
+      class DomainMonitoringDnsRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asn_hosting, as: 'asnHosting'
+          property :asn_region_code, as: 'asnRegionCode'
+          property :ip_region_code, as: 'ipRegionCode'
+          property :record_data, as: 'recordData'
+          property :resolved_ip, as: 'resolvedIp'
+          property :ttl, as: 'ttl'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DomainMonitoringDomain
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+        end
+      end
+      
+      class DomainMonitoringDomainDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :domain, as: 'domain'
+        end
+      end
+      
       class DomainMonitoringFeatureConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class DomainMonitoringFindingDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_details, as: 'dnsDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails::Representation
+      
+          property :domain_details, as: 'domainDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails::Representation
+      
+          property :gti_details, as: 'gtiDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails::Representation
+      
+          property :infrastructure, as: 'infrastructure', class: Google::Apis::ThreatintelligenceV1beta::Infrastructure, decorator: Google::Apis::ThreatintelligenceV1beta::Infrastructure::Representation
+      
+          property :matched_domain, as: 'matchedDomain'
+          property :protected_brand, as: 'protectedBrand'
+          property :protected_domain, as: 'protectedDomain', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails::Representation
+      
+          property :registration_details, as: 'registrationDetails', class: Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails::Representation
+      
+          property :relationships, as: 'relationships', class: Google::Apis::ThreatintelligenceV1beta::Relationships, decorator: Google::Apis::ThreatintelligenceV1beta::Relationships::Representation
+      
+          property :threat_attribution_details, as: 'threatAttributionDetails', class: Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails, decorator: Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails::Representation
+      
+          property :url_details, as: 'urlDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails::Representation
+      
+          property :whois_details, as: 'whoisDetails', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails::Representation
+      
+        end
+      end
+      
+      class DomainMonitoringGtiDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :av_detections, as: 'avDetections', class: Google::Apis::ThreatintelligenceV1beta::AvDetections, decorator: Google::Apis::ThreatintelligenceV1beta::AvDetections::Representation
+      
+          property :domain_permutation, as: 'domainPermutation'
+          property :gti_domain_uri, as: 'gtiDomainUri'
+          property :gti_score, as: 'gtiScore'
+          property :threat_classification, as: 'threatClassification'
+          property :verdict, as: 'verdict'
+        end
+      end
+      
+      class DomainMonitoringUrlDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+        end
+      end
+      
+      class DomainMonitoringWhoIsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :retrieval_time, as: 'retrievalTime'
+          property :whois, as: 'whois'
         end
       end
       
@@ -838,6 +1107,8 @@ module Google
           property :data_leak, as: 'dataLeak', class: Google::Apis::ThreatintelligenceV1beta::DataLeakFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::DataLeakFindingDetail::Representation
       
           property :detail_type, as: 'detailType'
+          property :domain_monitoring, as: 'domainMonitoring', class: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFindingDetail::Representation
+      
           property :initial_access_broker, as: 'initialAccessBroker', class: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerFindingDetail::Representation
       
           property :insider_threat, as: 'insiderThreat', class: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail, decorator: Google::Apis::ThreatintelligenceV1beta::InsiderThreatFindingDetail::Representation
@@ -862,10 +1133,21 @@ module Google
         end
       end
       
+      class Infrastructure
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_details, as: 'certificateDetails', class: Google::Apis::ThreatintelligenceV1beta::CertificateDetails, decorator: Google::Apis::ThreatintelligenceV1beta::CertificateDetails::Representation
+      
+          property :url_response, as: 'urlResponse'
+        end
+      end
+      
       class InitialAccessBrokerAlertDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :discovery_document_ids, as: 'discoveryDocumentIds'
+          collection :discovery_documents, as: 'discoveryDocuments', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :severity, as: 'severity'
         end
       end
@@ -1052,6 +1334,15 @@ module Google
         end
       end
       
+      class Relationships
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :related_urls, as: 'relatedUrls'
+          collection :sibling_domains, as: 'siblingDomains'
+          collection :subdomains, as: 'subdomains'
+        end
+      end
+      
       class RelevanceAnalysis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1124,6 +1415,15 @@ module Google
           property :alert_threshold, as: 'alertThreshold', class: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold, decorator: Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold::Representation
       
           collection :technologies, as: 'technologies'
+        end
+      end
+      
+      class ThreatAttributionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actors, as: 'actors'
+          collection :collections, as: 'collections'
+          collection :malware, as: 'malware'
         end
       end
       

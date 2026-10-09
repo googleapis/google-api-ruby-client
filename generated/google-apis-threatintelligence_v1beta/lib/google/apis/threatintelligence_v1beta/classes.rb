@@ -22,6 +22,31 @@ module Google
   module Apis
     module ThreatintelligenceV1beta
       
+      # Details about the detection vendors.
+      class AvDetections
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of vendors that detected the threat.
+        # Corresponds to the JSON property `detectedVendorCount`
+        # @return [Fixnum]
+        attr_accessor :detected_vendor_count
+      
+        # Optional. Total number of vendors.
+        # Corresponds to the JSON property `totalVendorCount`
+        # @return [Fixnum]
+        attr_accessor :total_vendor_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detected_vendor_count = args[:detected_vendor_count] if args.key?(:detected_vendor_count)
+          @total_vendor_count = args[:total_vendor_count] if args.key?(:total_vendor_count)
+        end
+      end
+      
       # Stateful object representing a group of Findings. Key feature to an Alert is
       # that it expresses the user's intent towards the findings of that group, even
       # those that haven't occurred yet.
@@ -155,6 +180,11 @@ module Google
         # @return [String]
         attr_accessor :detail_type
       
+        # A detailed object for a Domain or URL alert.
+        # Corresponds to the JSON property `domainMonitoring`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringAlertDetail]
+        attr_accessor :domain_monitoring
+      
         # Captures the specific details of InitialAccessBroker (IAB) alert.
         # Corresponds to the JSON property `initialAccessBroker`
         # @return [Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerAlertDetail]
@@ -178,6 +208,7 @@ module Google
         def update!(**args)
           @data_leak = args[:data_leak] if args.key?(:data_leak)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @domain_monitoring = args[:domain_monitoring] if args.key?(:domain_monitoring)
           @initial_access_broker = args[:initial_access_broker] if args.key?(:initial_access_broker)
           @insider_threat = args[:insider_threat] if args.key?(:insider_threat)
           @target_technology = args[:target_technology] if args.key?(:target_technology)
@@ -365,6 +396,31 @@ module Google
         end
       end
       
+      # Details regarding the SSL certificate configuration.
+      class CertificateDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The SSL certificate issuer.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Optional. The SSL subject alternative names.
+        # Corresponds to the JSON property `subjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @subject_alternative_names = args[:subject_alternative_names] if args.key?(:subject_alternative_names)
+        end
+      end
+      
       # A configuration represents a behavior an engine should follow when producing
       # new findings.
       class Configuration
@@ -464,6 +520,11 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::DomainConfiguration]
         attr_accessor :domain_configuration
       
+        # Any account-level configuration options will go here.
+        # Corresponds to the JSON property `domainMonitoring`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringConfig]
+        attr_accessor :domain_monitoring
+      
         # TechnologyWatchListConfig is the configuration for the technology watchlist.
         # Corresponds to the JSON property `technologyWatchlist`
         # @return [Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListConfig]
@@ -479,6 +540,7 @@ module Google
           @customer_profile = args[:customer_profile] if args.key?(:customer_profile)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
           @domain_configuration = args[:domain_configuration] if args.key?(:domain_configuration)
+          @domain_monitoring = args[:domain_monitoring] if args.key?(:domain_monitoring)
           @technology_watchlist = args[:technology_watchlist] if args.key?(:technology_watchlist)
         end
       end
@@ -1119,6 +1181,78 @@ module Google
         end
       end
       
+      # Replaces the raw string ID to hold associated metadata.
+      class DiscoveryDocument
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The identifier of the discovery document.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # Output only. The classification/type of the document (e.g. `COMMUNICATION`, `
+        # DDW_COMMUNICATION`, `message`).
+        # Corresponds to the JSON property `documentType`
+        # @return [String]
+        attr_accessor :document_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @document_type = args[:document_type] if args.key?(:document_type)
+        end
+      end
+      
+      # Extracted WHOIS and DNS registration details of the domain.
+      class DnsRegistrationDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The specific timestamp when the current domain registration expires.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Optional. Indicates whether private registration is enabled on the WHOIS
+        # record.
+        # Corresponds to the JSON property `privateRegistration`
+        # @return [Boolean]
+        attr_accessor :private_registration
+        alias_method :private_registration?, :private_registration
+      
+        # Optional. The country code of the registrant (e.g., US). Use ISO 3166-1 alpha-
+        # 2 codes
+        # Corresponds to the JSON property `registrantCountry`
+        # @return [String]
+        attr_accessor :registrant_country
+      
+        # Optional. The registrar where the domain was registered (e.g., NameCheap).
+        # Corresponds to the JSON property `registrar`
+        # @return [String]
+        attr_accessor :registrar
+      
+        # Optional. The specific timestamp when the domain registration was created.
+        # Corresponds to the JSON property `registrationTime`
+        # @return [String]
+        attr_accessor :registration_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @private_registration = args[:private_registration] if args.key?(:private_registration)
+          @registrant_country = args[:registrant_country] if args.key?(:registrant_country)
+          @registrar = args[:registrar] if args.key?(:registrar)
+          @registration_time = args[:registration_time] if args.key?(:registration_time)
+        end
+      end
+      
       # Represents a query to match documents.
       class DocumentQuery
         include Google::Apis::Core::Hashable
@@ -1163,6 +1297,229 @@ module Google
         end
       end
       
+      # A detailed object for a Domain or URL alert.
+      class DomainMonitoringAlertDetail
+        include Google::Apis::Core::Hashable
+      
+        # The DNS details of the domain.
+        # Corresponds to the JSON property `dnsDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails]
+        attr_accessor :dns_details
+      
+        # Details specific to a monitored domain.
+        # Corresponds to the JSON property `domainDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails]
+        attr_accessor :domain_details
+      
+        # The GTI details of the domain.
+        # Corresponds to the JSON property `gtiDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails]
+        attr_accessor :gti_details
+      
+        # Core infrastructure observations associated with the URL or Domain.
+        # Corresponds to the JSON property `infrastructure`
+        # @return [Google::Apis::ThreatintelligenceV1beta::Infrastructure]
+        attr_accessor :infrastructure
+      
+        # Optional. The matched domain.
+        # Corresponds to the JSON property `matchedDomain`
+        # @return [String]
+        attr_accessor :matched_domain
+      
+        # The protected brand name that triggered the alert.
+        # Corresponds to the JSON property `protectedBrand`
+        # @return [String]
+        attr_accessor :protected_brand
+      
+        # Details specific to a monitored domain.
+        # Corresponds to the JSON property `protectedDomain`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails]
+        attr_accessor :protected_domain
+      
+        # Extracted WHOIS and DNS registration details of the domain.
+        # Corresponds to the JSON property `registrationDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails]
+        attr_accessor :registration_details
+      
+        # Related entities and domains observed for the target.
+        # Corresponds to the JSON property `relationships`
+        # @return [Google::Apis::ThreatintelligenceV1beta::Relationships]
+        attr_accessor :relationships
+      
+        # Threat attribution information (actor, campaign, etc.).
+        # Corresponds to the JSON property `threatAttributionDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails]
+        attr_accessor :threat_attribution_details
+      
+        # Details specific to a monitored URL.
+        # Corresponds to the JSON property `urlDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails]
+        attr_accessor :url_details
+      
+        # The whois details of the domain.
+        # Corresponds to the JSON property `whoisDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails]
+        attr_accessor :whois_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_details = args[:dns_details] if args.key?(:dns_details)
+          @domain_details = args[:domain_details] if args.key?(:domain_details)
+          @gti_details = args[:gti_details] if args.key?(:gti_details)
+          @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
+          @matched_domain = args[:matched_domain] if args.key?(:matched_domain)
+          @protected_brand = args[:protected_brand] if args.key?(:protected_brand)
+          @protected_domain = args[:protected_domain] if args.key?(:protected_domain)
+          @registration_details = args[:registration_details] if args.key?(:registration_details)
+          @relationships = args[:relationships] if args.key?(:relationships)
+          @threat_attribution_details = args[:threat_attribution_details] if args.key?(:threat_attribution_details)
+          @url_details = args[:url_details] if args.key?(:url_details)
+          @whois_details = args[:whois_details] if args.key?(:whois_details)
+        end
+      end
+      
+      # Any account-level configuration options will go here.
+      class DomainMonitoringConfig
+        include Google::Apis::Core::Hashable
+      
+        # The domains to use as "seeds" for Suspicious Domain Monitoring.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomain>]
+        attr_accessor :domains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+        end
+      end
+      
+      # The DNS details of the domain.
+      class DomainMonitoringDnsDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The DNS records of the domain.
+        # Corresponds to the JSON property `dnsRecords`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsRecord>]
+        attr_accessor :dns_records
+      
+        # Optional. The time the DNS details were retrieved.
+        # Corresponds to the JSON property `retrievalTime`
+        # @return [String]
+        attr_accessor :retrieval_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_records = args[:dns_records] if args.key?(:dns_records)
+          @retrieval_time = args[:retrieval_time] if args.key?(:retrieval_time)
+        end
+      end
+      
+      # The DNS record of the domain.
+      class DomainMonitoringDnsRecord
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ASN hosting the domain.
+        # Corresponds to the JSON property `asnHosting`
+        # @return [String]
+        attr_accessor :asn_hosting
+      
+        # Optional. The region code of the ASN. Use ISO 3166-1 alpha-2 codes.
+        # Corresponds to the JSON property `asnRegionCode`
+        # @return [String]
+        attr_accessor :asn_region_code
+      
+        # Optional. The region code associated with the resolved IP. Use ISO 3166-1
+        # alpha-2 codes.
+        # Corresponds to the JSON property `ipRegionCode`
+        # @return [String]
+        attr_accessor :ip_region_code
+      
+        # Optional. The value of the DNS record.
+        # Corresponds to the JSON property `recordData`
+        # @return [String]
+        attr_accessor :record_data
+      
+        # Optional. The resolved IP address.
+        # Corresponds to the JSON property `resolvedIp`
+        # @return [String]
+        attr_accessor :resolved_ip
+      
+        # Optional. The TTL of the DNS record.
+        # Corresponds to the JSON property `ttl`
+        # @return [Fixnum]
+        attr_accessor :ttl
+      
+        # Optional. The type of the DNS record.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asn_hosting = args[:asn_hosting] if args.key?(:asn_hosting)
+          @asn_region_code = args[:asn_region_code] if args.key?(:asn_region_code)
+          @ip_region_code = args[:ip_region_code] if args.key?(:ip_region_code)
+          @record_data = args[:record_data] if args.key?(:record_data)
+          @resolved_ip = args[:resolved_ip] if args.key?(:resolved_ip)
+          @ttl = args[:ttl] if args.key?(:ttl)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A Domain Monitoring "domain"
+      class DomainMonitoringDomain
+        include Google::Apis::Core::Hashable
+      
+        # The domain name to match against.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
+      # Details specific to a monitored domain.
+      class DomainMonitoringDomainDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The domain name to match against.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain = args[:domain] if args.key?(:domain)
+        end
+      end
+      
       # Specific configuration for the Domain Monitoring feature.
       class DomainMonitoringFeatureConfig
         include Google::Apis::Core::Hashable
@@ -1180,6 +1537,187 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # A detailed object for a Domain or URL finding.
+      class DomainMonitoringFindingDetail
+        include Google::Apis::Core::Hashable
+      
+        # The DNS details of the domain.
+        # Corresponds to the JSON property `dnsDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDnsDetails]
+        attr_accessor :dns_details
+      
+        # Details specific to a monitored domain.
+        # Corresponds to the JSON property `domainDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails]
+        attr_accessor :domain_details
+      
+        # The GTI details of the domain.
+        # Corresponds to the JSON property `gtiDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringGtiDetails]
+        attr_accessor :gti_details
+      
+        # Core infrastructure observations associated with the URL or Domain.
+        # Corresponds to the JSON property `infrastructure`
+        # @return [Google::Apis::ThreatintelligenceV1beta::Infrastructure]
+        attr_accessor :infrastructure
+      
+        # Optional. The matched domain.
+        # Corresponds to the JSON property `matchedDomain`
+        # @return [String]
+        attr_accessor :matched_domain
+      
+        # The protected brand name that triggered the alert.
+        # Corresponds to the JSON property `protectedBrand`
+        # @return [String]
+        attr_accessor :protected_brand
+      
+        # Details specific to a monitored domain.
+        # Corresponds to the JSON property `protectedDomain`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringDomainDetails]
+        attr_accessor :protected_domain
+      
+        # Extracted WHOIS and DNS registration details of the domain.
+        # Corresponds to the JSON property `registrationDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DnsRegistrationDetails]
+        attr_accessor :registration_details
+      
+        # Related entities and domains observed for the target.
+        # Corresponds to the JSON property `relationships`
+        # @return [Google::Apis::ThreatintelligenceV1beta::Relationships]
+        attr_accessor :relationships
+      
+        # Threat attribution information (actor, campaign, etc.).
+        # Corresponds to the JSON property `threatAttributionDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::ThreatAttributionDetails]
+        attr_accessor :threat_attribution_details
+      
+        # Details specific to a monitored URL.
+        # Corresponds to the JSON property `urlDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringUrlDetails]
+        attr_accessor :url_details
+      
+        # The whois details of the domain.
+        # Corresponds to the JSON property `whoisDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringWhoIsDetails]
+        attr_accessor :whois_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dns_details = args[:dns_details] if args.key?(:dns_details)
+          @domain_details = args[:domain_details] if args.key?(:domain_details)
+          @gti_details = args[:gti_details] if args.key?(:gti_details)
+          @infrastructure = args[:infrastructure] if args.key?(:infrastructure)
+          @matched_domain = args[:matched_domain] if args.key?(:matched_domain)
+          @protected_brand = args[:protected_brand] if args.key?(:protected_brand)
+          @protected_domain = args[:protected_domain] if args.key?(:protected_domain)
+          @registration_details = args[:registration_details] if args.key?(:registration_details)
+          @relationships = args[:relationships] if args.key?(:relationships)
+          @threat_attribution_details = args[:threat_attribution_details] if args.key?(:threat_attribution_details)
+          @url_details = args[:url_details] if args.key?(:url_details)
+          @whois_details = args[:whois_details] if args.key?(:whois_details)
+        end
+      end
+      
+      # The GTI details of the domain.
+      class DomainMonitoringGtiDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details about the detection vendors.
+        # Corresponds to the JSON property `avDetections`
+        # @return [Google::Apis::ThreatintelligenceV1beta::AvDetections]
+        attr_accessor :av_detections
+      
+        # Optional. The permutation technique used for the domain (e.g., dictionary,
+        # homoglyph).
+        # Corresponds to the JSON property `domainPermutation`
+        # @return [String]
+        attr_accessor :domain_permutation
+      
+        # Optional. The GTI link for the domain.
+        # Corresponds to the JSON property `gtiDomainUri`
+        # @return [String]
+        attr_accessor :gti_domain_uri
+      
+        # Optional. The GTI score of the domain. The threat score is a number between 0
+        # and 100.
+        # Corresponds to the JSON property `gtiScore`
+        # @return [Fixnum]
+        attr_accessor :gti_score
+      
+        # Optional. The threat classification of the domain, obtained from the domain
+        # report (e.g. DomainMonitoring).
+        # Corresponds to the JSON property `threatClassification`
+        # @return [String]
+        attr_accessor :threat_classification
+      
+        # Output only. The verdict of the domain.
+        # Corresponds to the JSON property `verdict`
+        # @return [String]
+        attr_accessor :verdict
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @av_detections = args[:av_detections] if args.key?(:av_detections)
+          @domain_permutation = args[:domain_permutation] if args.key?(:domain_permutation)
+          @gti_domain_uri = args[:gti_domain_uri] if args.key?(:gti_domain_uri)
+          @gti_score = args[:gti_score] if args.key?(:gti_score)
+          @threat_classification = args[:threat_classification] if args.key?(:threat_classification)
+          @verdict = args[:verdict] if args.key?(:verdict)
+        end
+      end
+      
+      # Details specific to a monitored URL.
+      class DomainMonitoringUrlDetails
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URL to match against.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # The whois details of the domain.
+      class DomainMonitoringWhoIsDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The time the whois details were retrieved.
+        # Corresponds to the JSON property `retrievalTime`
+        # @return [String]
+        attr_accessor :retrieval_time
+      
+        # Optional. The whois details of the domain.
+        # Corresponds to the JSON property `whois`
+        # @return [String]
+        attr_accessor :whois
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @retrieval_time = args[:retrieval_time] if args.key?(:retrieval_time)
+          @whois = args[:whois] if args.key?(:whois)
         end
       end
       
@@ -1448,6 +1986,11 @@ module Google
         # @return [String]
         attr_accessor :detail_type
       
+        # A detailed object for a Domain or URL finding.
+        # Corresponds to the JSON property `domainMonitoring`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DomainMonitoringFindingDetail]
+        attr_accessor :domain_monitoring
+      
         # A detail object for an Initial Access Broker (IAB) finding.
         # Corresponds to the JSON property `initialAccessBroker`
         # @return [Google::Apis::ThreatintelligenceV1beta::InitialAccessBrokerFindingDetail]
@@ -1471,6 +2014,7 @@ module Google
         def update!(**args)
           @data_leak = args[:data_leak] if args.key?(:data_leak)
           @detail_type = args[:detail_type] if args.key?(:detail_type)
+          @domain_monitoring = args[:domain_monitoring] if args.key?(:domain_monitoring)
           @initial_access_broker = args[:initial_access_broker] if args.key?(:initial_access_broker)
           @insider_threat = args[:insider_threat] if args.key?(:insider_threat)
           @target_technology = args[:target_technology] if args.key?(:target_technology)
@@ -1521,14 +2065,45 @@ module Google
         end
       end
       
+      # Core infrastructure observations associated with the URL or Domain.
+      class Infrastructure
+        include Google::Apis::Core::Hashable
+      
+        # Details regarding the SSL certificate configuration.
+        # Corresponds to the JSON property `certificateDetails`
+        # @return [Google::Apis::ThreatintelligenceV1beta::CertificateDetails]
+        attr_accessor :certificate_details
+      
+        # Optional. The raw URL response string.
+        # Corresponds to the JSON property `urlResponse`
+        # @return [String]
+        attr_accessor :url_response
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_details = args[:certificate_details] if args.key?(:certificate_details)
+          @url_response = args[:url_response] if args.key?(:url_response)
+        end
+      end
+      
       # Captures the specific details of InitialAccessBroker (IAB) alert.
       class InitialAccessBrokerAlertDetail
         include Google::Apis::Core::Hashable
       
-        # Required. Array of ids to accommodate multiple discovery documents
+        # Optional. Deprecated: Use `discovery_documents` instead. Array of ids to
+        # accommodate multiple discovery documents.
         # Corresponds to the JSON property `discoveryDocumentIds`
         # @return [Array<String>]
         attr_accessor :discovery_document_ids
+      
+        # Output only. New structured metadata payload.
+        # Corresponds to the JSON property `discoveryDocuments`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument>]
+        attr_accessor :discovery_documents
       
         # Required. The severity of the Initial Access Broker (IAB) alert. Allowed
         # values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL`
@@ -1543,6 +2118,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discovery_document_ids = args[:discovery_document_ids] if args.key?(:discovery_document_ids)
+          @discovery_documents = args[:discovery_documents] if args.key?(:discovery_documents)
           @severity = args[:severity] if args.key?(:severity)
         end
       end
@@ -2166,6 +2742,37 @@ module Google
         end
       end
       
+      # Related entities and domains observed for the target.
+      class Relationships
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Related URLs associated with the domain.
+        # Corresponds to the JSON property `relatedUrls`
+        # @return [Array<String>]
+        attr_accessor :related_urls
+      
+        # Optional. Sibling domains sharing the same IP address.
+        # Corresponds to the JSON property `siblingDomains`
+        # @return [Array<String>]
+        attr_accessor :sibling_domains
+      
+        # Optional. Subdomains associated with the target domain or URL.
+        # Corresponds to the JSON property `subdomains`
+        # @return [Array<String>]
+        attr_accessor :subdomains
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @related_urls = args[:related_urls] if args.key?(:related_urls)
+          @sibling_domains = args[:sibling_domains] if args.key?(:sibling_domains)
+          @subdomains = args[:subdomains] if args.key?(:subdomains)
+        end
+      end
+      
       # Structured relevance analysis for a threat.
       class RelevanceAnalysis
         include Google::Apis::Core::Hashable
@@ -2413,6 +3020,37 @@ module Google
         def update!(**args)
           @alert_threshold = args[:alert_threshold] if args.key?(:alert_threshold)
           @technologies = args[:technologies] if args.key?(:technologies)
+        end
+      end
+      
+      # Threat attribution information (actor, campaign, etc.).
+      class ThreatAttributionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The threat actors associated with the target.
+        # Corresponds to the JSON property `actors`
+        # @return [Array<String>]
+        attr_accessor :actors
+      
+        # Optional. The threat collections detected.
+        # Corresponds to the JSON property `collections`
+        # @return [Array<String>]
+        attr_accessor :collections
+      
+        # Optional. The malware associated with the threat.
+        # Corresponds to the JSON property `malware`
+        # @return [Array<String>]
+        attr_accessor :malware
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @actors = args[:actors] if args.key?(:actors)
+          @collections = args[:collections] if args.key?(:collections)
+          @malware = args[:malware] if args.key?(:malware)
         end
       end
       
