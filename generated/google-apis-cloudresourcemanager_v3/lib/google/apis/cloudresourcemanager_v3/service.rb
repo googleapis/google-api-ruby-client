@@ -713,8 +713,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Capability Config identified by the specified `name` (for
-        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # Retrieves the CapabilityConfig identified by the specified `name` (for example,
+        # `folders/123456789/capabilityConfigs/my-capability-config`).
         # @param [String] name
         #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
         #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
@@ -1392,8 +1392,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Capability Config identified by the specified `name` (for
-        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # Retrieves the CapabilityConfig identified by the specified `name` (for example,
+        # `folders/123456789/capabilityConfigs/my-capability-config`).
         # @param [String] name
         #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
         #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
@@ -2063,8 +2063,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the Capability Config identified by the specified `name` (for
-        # example, `folders/123456789/capabilityConfigs/my-capability-config`).
+        # Retrieves the CapabilityConfig identified by the specified `name` (for example,
+        # `folders/123456789/capabilityConfigs/my-capability-config`).
         # @param [String] name
         #   Required. The name of the CapabilityConfig to retrieve. Format: `organizations/
         #   `organization`/capabilityConfigs/`capabilityConfig`` or, `folders/`folder`/
