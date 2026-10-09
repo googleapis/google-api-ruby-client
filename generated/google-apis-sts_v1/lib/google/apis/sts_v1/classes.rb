@@ -414,7 +414,7 @@ module Google
       
       # A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/
       # rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-
-      # representation-in-the-spiffe-bundle
+      # representation-in-the-spiffe-bundle.
       class GoogleIdentityStsV1Jwk
         include Google::Apis::Core::Hashable
       
@@ -467,7 +467,7 @@ module Google
       class GoogleIdentityStsV1Jwks
         include Google::Apis::Core::Hashable
       
-        # The JWKS for this OP.
+        # The JWKs for this OP.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::StsV1::GoogleIdentityStsV1Jwk>]
         attr_accessor :keys
@@ -484,7 +484,7 @@ module Google
       
       # Response message for GetOpenIdProviderConfig. Message fields are defined in
       # https://openid.net/specs/openid-connect-discovery-1_0.html#
-      # ProviderConfigurationResponse
+      # ProviderConfigurationResponse.
       class GoogleIdentityStsV1OpenIdProviderConfig
         include Google::Apis::Core::Hashable
       
@@ -494,9 +494,9 @@ module Google
         # @return [String]
         attr_accessor :authorization_endpoint
       
-        # JSON array containing a list of the JWS signing algorithms (alg values)
-        # supported by the OP for the ID token to encode the claims in a JWT [JWT]. Note:
-        # Currently always "["RS256"]".
+        # JSON array that contains a list of the JWS signing algorithms (alg values)
+        # supported by the OP for the ID token to encode the claims in a JWT. Supported
+        # value: `RS256`.
         # Corresponds to the JSON property `id_token_signing_alg_values_supported`
         # @return [Array<String>]
         attr_accessor :id_token_signing_alg_values_supported
@@ -507,19 +507,19 @@ module Google
         # @return [String]
         attr_accessor :issuer
       
-        # URL of the OP's JWK Set [JWK] document, which MUST use the https scheme.
+        # URL of the OP's JWK Set document, which MUST use the https scheme.
         # Corresponds to the JSON property `jwks_uri`
         # @return [String]
         attr_accessor :jwks_uri
       
-        # JSON array containing a list of the OAuth 2.0 response_type values that this
-        # OP supports. Note: Currently always "["id_token"]".
+        # JSON array that contains a list of the OAuth 2.0 response_type values that
+        # this OP supports. Supported value: `id_token`.
         # Corresponds to the JSON property `response_types_supported`
         # @return [Array<String>]
         attr_accessor :response_types_supported
       
-        # JSON array containing a list of the subject identifier types that this OP
-        # supports. Note: Currently always "["public"]".
+        # JSON array that contains a list of the subject identifier types that this OP
+        # supports. Supported value: `public`.
         # Corresponds to the JSON property `subject_types_supported`
         # @return [Array<String>]
         attr_accessor :subject_types_supported
@@ -559,7 +559,7 @@ module Google
         # @return [Google::Apis::StsV1::GoogleIdentityStsV1AccessBoundary]
         attr_accessor :access_boundary
       
-        # The unpadded, url-escaped, base64-encoded SHA-256 hash of the certificate's
+        # The unpadded, URL-escaped, base64-encoded SHA-256 hash of the certificate's
         # DER encoding. It must be 43 characters long. The resulting token will be bound
         # to this value.
         # Corresponds to the JSON property `bindCertFingerprint`
