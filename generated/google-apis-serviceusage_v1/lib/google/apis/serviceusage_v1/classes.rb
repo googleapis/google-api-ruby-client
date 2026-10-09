@@ -1791,14 +1791,15 @@ module Google
         end
       end
       
-      # The consumer policy rule that defines enabled services and groups.
+      # The consumer policy rule that defines enabled services and catalogs.
       class EnableRule
         include Google::Apis::Core::Hashable
       
-        # Deprecated: EnableType is not supported.
-        # Corresponds to the JSON property `enableType`
-        # @return [String]
-        attr_accessor :enable_type
+        # The names of the catalogs that are enabled. Example: `catalogs/default-cloud-
+        # services`.
+        # Corresponds to the JSON property `catalogs`
+        # @return [Array<String>]
+        attr_accessor :catalogs
       
         # The names of the services that are enabled. Example: `services/storage.
         # googleapis.com`.
@@ -1819,7 +1820,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_type = args[:enable_type] if args.key?(:enable_type)
+          @catalogs = args[:catalogs] if args.key?(:catalogs)
           @services = args[:services] if args.key?(:services)
           @values = args[:values] if args.key?(:values)
         end
@@ -3225,6 +3226,12 @@ module Google
       class GoogleApiServiceusageV2betaEnableRule
         include Google::Apis::Core::Hashable
       
+        # The names of the catalogs that are enabled. Example: `catalogs/default-cloud-
+        # services`.
+        # Corresponds to the JSON property `catalogs`
+        # @return [Array<String>]
+        attr_accessor :catalogs
+      
         # The names of the services that are enabled. Example: `services/storage.
         # googleapis.com`.
         # Corresponds to the JSON property `services`
@@ -3237,6 +3244,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @catalogs = args[:catalogs] if args.key?(:catalogs)
           @services = args[:services] if args.key?(:services)
         end
       end
