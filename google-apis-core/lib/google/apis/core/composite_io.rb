@@ -43,6 +43,7 @@ module Google
 
         def read(length = nil, buf = nil)
           buf = buf ? buf.replace('') : +''
+          return buf if length == 0
 
           begin
             io = @ios[@index]
@@ -50,8 +51,9 @@ module Google
             result = io.read(length)
             if result
               buf << result
+              @pos += result.bytesize
               if length
-                length -= result.length
+                length -= result.bytesize
                 break if length == 0
               end
             end
