@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvroSchema
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1008,6 +1014,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cpu_utilization_percent, as: 'cpuUtilizationPercent'
           property :storage_utilization_gib_per_node, as: 'storageUtilizationGibPerNode'
+        end
+      end
+      
+      class AvroSchema
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :json_schemas, as: 'jsonSchemas'
         end
       end
       
@@ -2080,6 +2093,8 @@ module Google
       class SchemaBundle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :avro_schema, as: 'avroSchema', class: Google::Apis::BigtableadminV2::AvroSchema, decorator: Google::Apis::BigtableadminV2::AvroSchema::Representation
+      
           property :etag, as: 'etag'
           property :name, as: 'name'
           property :proto_schema, as: 'protoSchema', class: Google::Apis::BigtableadminV2::ProtoSchema, decorator: Google::Apis::BigtableadminV2::ProtoSchema::Representation
