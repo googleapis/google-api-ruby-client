@@ -125,6 +125,7 @@ module Google
         end
 
         def initiate_resumable_upload(client)
+          refresh_idempotency_token
           logger.debug { sprintf('Intiating resumable upload command to %s', url) }
 
           request_header = header.dup
@@ -168,6 +169,7 @@ module Google
         # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
+          refresh_idempotency_token
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
           remaining_content_size = upload_io.size - @offset
@@ -221,6 +223,7 @@ module Google
         end
 
         def check_resumable_upload(client)
+          refresh_idempotency_token
           # Setting up request header
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = "bytes */#{upload_io.size}"
@@ -317,6 +320,22 @@ module Google
             "#{output_key}=#{value}"
           end.join(',')
           formatted_string
+        end
+
+        private
+
+        # Refreshes the idempotency token header for resumable upload chunks.
+        #
+        # Resumable uploads involve multiple independent HTTP requests (one for each chunk),
+        # this method generates a new UUID for the `X-Goog-Gcs-Idempotency-Token` header for each
+        # specific RPC step. The token ensures that if a specific chunk request is retried due to a
+        # network error, it can be safely identified as a retry.
+        #
+        # @return [String, nil] The newly generated UUID, or nil if conditions aren't met.
+        def refresh_idempotency_token
+          return unless options&.add_invocation_id_header
+          return if options&.header&.any? { |k, _| k.to_s.casecmp?('x-goog-gcs-idempotency-token') }
+          header['X-Goog-Gcs-Idempotency-Token'] = SecureRandom.uuid
         end
       end
     end

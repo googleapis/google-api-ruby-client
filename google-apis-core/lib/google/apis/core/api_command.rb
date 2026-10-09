@@ -177,9 +177,11 @@ module Google
         end
 
         def set_idempotency_token_header
-          return if options&.header&.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
-          return if header.any? { |k, _| k.to_s.downcase == 'x-goog-gcs-idempotency-token' }
-          header['X-Goog-Gcs-Idempotency-Token'] = SecureRandom.uuid
+          return unless options&.add_invocation_id_header
+          return if options&.header&.any? { |k, _| k.to_s.casecmp?('x-goog-gcs-idempotency-token') }
+          return if header.any? { |k, _| k.to_s.casecmp?('x-goog-gcs-idempotency-token') }
+          # Reuse the invocation ID
+          header['X-Goog-Gcs-Idempotency-Token'] = @invocation_id ||= SecureRandom.uuid
         end
 
         def invocation_id_header

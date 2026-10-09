@@ -533,4 +533,76 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
   end
 
+  context 'when refreshing idempotency token' do
+    let(:file) { StringIO.new("Hello world") }
+
+    it 'does not set token if add_invocation_id_header is false' do
+      command.options.add_invocation_id_header = false
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'sets token if add_invocation_id_header is true' do
+      command.options.add_invocation_id_header = true
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
+    end
+
+    it 'generates a new token on subsequent calls' do
+      command.options.add_invocation_id_header = true
+      command.send(:refresh_idempotency_token)
+      token1 = command.header['X-Goog-Gcs-Idempotency-Token']
+      
+      command.send(:refresh_idempotency_token)
+      token2 = command.header['X-Goog-Gcs-Idempotency-Token']
+      
+      expect(token1).not_to eq(token2)
+    end
+
+    it 'does not overwrite existing token if already present in options.header' do
+      command.options.add_invocation_id_header = true
+      command.options.header = { 'X-Goog-Gcs-Idempotency-Token' => 'custom-token' }
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'calls refresh_idempotency_token in initiate_resumable_upload and send_upload_command' do
+      allow(command).to receive(:refresh_idempotency_token).and_call_original
+      
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .to_return(body: %(OK))
+
+      command.execute(client)
+      
+      expect(command).to have_received(:refresh_idempotency_token).twice
+    end
+
+    it 'calls refresh_idempotency_token in check_resumable_upload' do
+      allow(command).to receive(:refresh_idempotency_token).and_call_original
+      
+      upload_id = 'TestId'
+      upload_url = "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}"
+      
+      stub_request(:put, upload_url)
+        .with(
+          headers: {
+            'Content-Length' => '0',
+            'Content-Range' => "bytes */11"
+          }
+        )
+        .to_return(status: 200, headers: { 'Range' => 'bytes=0-10' })
+
+      stub_request(:put, upload_url)
+        .with(headers: { 'Content-Range' => "bytes */11" })
+        .to_return(status: 200)
+        
+      command.upload_id = upload_id
+      
+      command.execute(client)
+      
+      expect(command).to have_received(:refresh_idempotency_token).at_least(:once)
+    end
+  end
 end
