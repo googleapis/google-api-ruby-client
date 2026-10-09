@@ -1437,12 +1437,14 @@ module Google
       
           property :pubsub_topic, as: 'pubsubTopic'
           property :requested_verify_option, as: 'requestedVerifyOption'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
           collection :source_provenance_hash, as: 'sourceProvenanceHash'
           property :substitution_option, as: 'substitutionOption'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1Volume::Representation
       
           property :worker_pool, as: 'workerPool'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
@@ -1661,6 +1663,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          property :resolved_worker_release, as: 'resolvedWorkerRelease'
+          property :worker_release, as: 'workerRelease'
         end
       end
       
