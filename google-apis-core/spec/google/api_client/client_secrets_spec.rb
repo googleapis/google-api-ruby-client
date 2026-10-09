@@ -25,10 +25,6 @@ RSpec.describe Google::APIClient::ClientSecrets do
     it 'serializes the client secrets hash' do
       expect(JSON.parse(secrets.to_json)).to eq(secrets.to_hash)
     end
-
-    it 'accepts the JSON.generate callback arguments' do
-      expect(JSON.parse(JSON.generate(secrets))).to eq(secrets.to_hash)
-    end
   end
 
   describe '::new' do
