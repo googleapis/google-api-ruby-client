@@ -2519,6 +2519,13 @@ module Google
         # @return [Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig]
         attr_accessor :denylist_input_config
       
+        # Optional. If set to true, the conversational shopping agent prompts will be
+        # served. Default value is false.
+        # Corresponds to the JSON property `enableAgentPrompts`
+        # @return [Boolean]
+        attr_accessor :enable_agent_prompts
+        alias_method :enable_agent_prompts?, :enable_agent_prompts
+      
         # Output only. Name of the LRO corresponding to the latest allowlist import. Can
         # use GetOperation API to retrieve the latest state of the Long Running
         # Operation.
@@ -2583,6 +2590,7 @@ module Google
           @allowlist_input_config = args[:allowlist_input_config] if args.key?(:allowlist_input_config)
           @auto_learning = args[:auto_learning] if args.key?(:auto_learning)
           @denylist_input_config = args[:denylist_input_config] if args.key?(:denylist_input_config)
+          @enable_agent_prompts = args[:enable_agent_prompts] if args.key?(:enable_agent_prompts)
           @last_allowlist_import_operation = args[:last_allowlist_import_operation] if args.key?(:last_allowlist_import_operation)
           @last_denylist_import_operation = args[:last_denylist_import_operation] if args.key?(:last_denylist_import_operation)
           @last_suggestions_import_operation = args[:last_suggestions_import_operation] if args.key?(:last_suggestions_import_operation)
