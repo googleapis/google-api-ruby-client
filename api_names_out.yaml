@@ -394969,6 +394969,7 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/pool": pool
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/pubsubTopic": pubsub_topic
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/requestedVerifyOption": requested_verify_option
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/resolvedWorkerRelease": resolved_worker_release
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/secretEnv": secret_env
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/secretEnv/secret_env": secret_env
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/sourceProvenanceHash": source_provenance_hash
@@ -394977,6 +394978,7 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/volumes": volumes
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/volumes/volume": volume
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/workerPool": worker_pool
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/workerRelease": worker_release
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep": google_devtools_cloudbuild_v1_build_step
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes": allow_exit_codes
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes/allow_exit_code": allow_exit_code
@@ -395091,6 +395093,8 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1Oci/tags/tag": tag
 "/run:v1/GoogleDevtoolsCloudbuildV1PoolOption": google_devtools_cloudbuild_v1_pool_option
 "/run:v1/GoogleDevtoolsCloudbuildV1PoolOption/name": name
+"/run:v1/GoogleDevtoolsCloudbuildV1PoolOption/resolvedWorkerRelease": resolved_worker_release
+"/run:v1/GoogleDevtoolsCloudbuildV1PoolOption/workerRelease": worker_release
 "/run:v1/GoogleDevtoolsCloudbuildV1PythonPackage": google_devtools_cloudbuild_v1_python_package
 "/run:v1/GoogleDevtoolsCloudbuildV1PythonPackage/paths": paths
 "/run:v1/GoogleDevtoolsCloudbuildV1PythonPackage/paths/path": path
