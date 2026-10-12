@@ -1306,6 +1306,39 @@ module Google
         end
       end
       
+      # Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased
+      # migration, namespaces are migrated from Dataproc Metastore to a Lakehouse
+      # Iceberg REST Catalog in batches. Between and after migration phases, the
+      # metastore service operates in PROXY state where requests for migrated
+      # namespaces are forwarded to the Lakehouse catalog while unmigrated namespaces
+      # continue to be served locally by DPMS.
+      class LakehouseProxyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The Lakehouse Iceberg REST Catalog where requests are being
+        # proxied to. Format: projects/`project_id_or_number`/catalogs/`catalog_id`.
+        # Corresponds to the JSON property `catalog`
+        # @return [String]
+        attr_accessor :catalog
+      
+        # Output only. The list of namespaces currently proxied to the Lakehouse catalog.
+        # As each migration batch completes, newly migrated namespaces are added to
+        # this list.
+        # Corresponds to the JSON property `namespaces`
+        # @return [Array<String>]
+        attr_accessor :namespaces
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @catalog = args[:catalog] if args.key?(:catalog)
+          @namespaces = args[:namespaces] if args.key?(:namespaces)
+        end
+      end
+      
       # The details of the latest scheduled backup.
       class LatestBackup
         include Google::Apis::Core::Hashable
@@ -2651,6 +2684,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased
+        # migration, namespaces are migrated from Dataproc Metastore to a Lakehouse
+        # Iceberg REST Catalog in batches. Between and after migration phases, the
+        # metastore service operates in PROXY state where requests for migrated
+        # namespaces are forwarded to the Lakehouse catalog while unmigrated namespaces
+        # continue to be served locally by DPMS.
+        # Corresponds to the JSON property `lakehouseProxyConfig`
+        # @return [Google::Apis::MetastoreV1::LakehouseProxyConfig]
+        attr_accessor :lakehouse_proxy_config
+      
         # Maintenance window. This specifies when Dataproc Metastore may perform system
         # maintenance operation to the service.
         # Corresponds to the JSON property `maintenanceWindow`
@@ -2760,6 +2803,7 @@ module Google
           @endpoint_uri = args[:endpoint_uri] if args.key?(:endpoint_uri)
           @hive_metastore_config = args[:hive_metastore_config] if args.key?(:hive_metastore_config)
           @labels = args[:labels] if args.key?(:labels)
+          @lakehouse_proxy_config = args[:lakehouse_proxy_config] if args.key?(:lakehouse_proxy_config)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @metadata_integration = args[:metadata_integration] if args.key?(:metadata_integration)
           @metadata_management_activity = args[:metadata_management_activity] if args.key?(:metadata_management_activity)

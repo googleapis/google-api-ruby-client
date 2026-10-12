@@ -347912,6 +347912,10 @@
 "/metastore:v1/KerberosConfig/keytab": keytab
 "/metastore:v1/KerberosConfig/krb5ConfigGcsUri": krb5_config_gcs_uri
 "/metastore:v1/KerberosConfig/principal": principal
+"/metastore:v1/LakehouseProxyConfig": lakehouse_proxy_config
+"/metastore:v1/LakehouseProxyConfig/catalog": catalog
+"/metastore:v1/LakehouseProxyConfig/namespaces": namespaces
+"/metastore:v1/LakehouseProxyConfig/namespaces/namespace": namespace
 "/metastore:v1/LatestBackup": latest_backup
 "/metastore:v1/LatestBackup/backupId": backup_id
 "/metastore:v1/LatestBackup/duration": duration
@@ -348099,6 +348103,7 @@
 "/metastore:v1/Service/hiveMetastoreConfig": hive_metastore_config
 "/metastore:v1/Service/labels": labels
 "/metastore:v1/Service/labels/label": label
+"/metastore:v1/Service/lakehouseProxyConfig": lakehouse_proxy_config
 "/metastore:v1/Service/maintenanceWindow": maintenance_window
 "/metastore:v1/Service/metadataIntegration": metadata_integration
 "/metastore:v1/Service/metadataManagementActivity": metadata_management_activity
