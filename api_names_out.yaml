@@ -425422,6 +425422,8 @@
 "/serviceusage:v1/EnableFailure/errorMessage": error_message
 "/serviceusage:v1/EnableFailure/serviceId": service_id
 "/serviceusage:v1/EnableRule": enable_rule
+"/serviceusage:v1/EnableRule/catalogs": catalogs
+"/serviceusage:v1/EnableRule/catalogs/catalog": catalog
 "/serviceusage:v1/EnableRule/enableType": enable_type
 "/serviceusage:v1/EnableRule/groups": groups
 "/serviceusage:v1/EnableRule/groups/group": group
@@ -425622,6 +425624,8 @@
 "/serviceusage:v1/GoogleApiServiceusageV2betaConsumerPolicy/name": name
 "/serviceusage:v1/GoogleApiServiceusageV2betaConsumerPolicy/updateTime": update_time
 "/serviceusage:v1/GoogleApiServiceusageV2betaEnableRule": google_api_serviceusage_v2beta_enable_rule
+"/serviceusage:v1/GoogleApiServiceusageV2betaEnableRule/catalogs": catalogs
+"/serviceusage:v1/GoogleApiServiceusageV2betaEnableRule/catalogs/catalog": catalog
 "/serviceusage:v1/GoogleApiServiceusageV2betaEnableRule/services": services
 "/serviceusage:v1/GoogleApiServiceusageV2betaEnableRule/services/service": service
 "/serviceusage:v1/GoogleApiServiceusageV2betaImpact": google_api_serviceusage_v2beta_impact
