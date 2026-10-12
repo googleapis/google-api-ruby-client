@@ -1,5 +1,11 @@
 # Release History
 
+### 1.3.1 (2026-10-11)
+
+#### Bug Fixes
+
+* honor max for singular items in PagedResults#each ([#28073](https://github.com/googleapis/google-api-ruby-client/issues/28073)) 
+
 ### 1.3.0 (2026-10-04)
 
 #### Features
