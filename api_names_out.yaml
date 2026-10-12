@@ -391875,6 +391875,7 @@
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/allowlistInputConfig": allowlist_input_config
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/autoLearning": auto_learning
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/denylistInputConfig": denylist_input_config
+"/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/enableAgentPrompts": enable_agent_prompts
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/lastAllowlistImportOperation": last_allowlist_import_operation
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/lastDenylistImportOperation": last_denylist_import_operation
 "/retail:v2alpha/GoogleCloudRetailV2alphaCompletionConfig/lastSuggestionsImportOperation": last_suggestions_import_operation

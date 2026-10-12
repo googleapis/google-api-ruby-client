@@ -2507,6 +2507,7 @@ module Google
           property :auto_learning, as: 'autoLearning'
           property :denylist_input_config, as: 'denylistInputConfig', class: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig, decorator: Google::Apis::RetailV2alpha::GoogleCloudRetailV2alphaCompletionDataInputConfig::Representation
       
+          property :enable_agent_prompts, as: 'enableAgentPrompts'
           property :last_allowlist_import_operation, as: 'lastAllowlistImportOperation'
           property :last_denylist_import_operation, as: 'lastDenylistImportOperation'
           property :last_suggestions_import_operation, as: 'lastSuggestionsImportOperation'
