@@ -5248,6 +5248,11 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Data documentation result for data scan job.
+        # Corresponds to the JSON property `dataDocumentation`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResult]
+        attr_accessor :data_documentation
+      
         # Data profile result for data scan job.
         # Corresponds to the JSON property `dataProfile`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataProfileResult]
@@ -5331,6 +5336,7 @@ module Google
         def update!(**args)
           @catalog_publishing_status = args[:catalog_publishing_status] if args.key?(:catalog_publishing_status)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @data_documentation = args[:data_documentation] if args.key?(:data_documentation)
           @data_profile = args[:data_profile] if args.key?(:data_profile)
           @data_profile_configs = args[:data_profile_configs] if args.key?(:data_profile_configs)
           @data_quality = args[:data_quality] if args.key?(:data_quality)
@@ -5346,6 +5352,87 @@ module Google
           @state = args[:state] if args.key?(:state)
           @trigger = args[:trigger] if args.key?(:trigger)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Data documentation result for data scan job.
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResult
+        include Google::Apis::Core::Hashable
+      
+        # Captures structured token usage breakdown for LLM-powered scans.
+        # Corresponds to the JSON property `billableTokenUsage`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage]
+        attr_accessor :billable_token_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @billable_token_usage = args[:billable_token_usage] if args.key?(:billable_token_usage)
+        end
+      end
+      
+      # Captures structured token usage breakdown for LLM-powered scans.
+      class GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage
+        include Google::Apis::Core::Hashable
+      
+        # Billable cached content tokens (billed at discounted prompt caching SKU).
+        # Corresponds to the JSON property `cachedContentTokenCount`
+        # @return [Fixnum]
+        attr_accessor :cached_content_token_count
+      
+        # Generated candidate response tokens.
+        # Corresponds to the JSON property `candidatesTokenCount`
+        # @return [Fixnum]
+        attr_accessor :candidates_token_count
+      
+        # Billable non-cached input tokens.
+        # Corresponds to the JSON property `inputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :input_token_count
+      
+        # Billable output tokens (candidates + thoughts).
+        # Corresponds to the JSON property `outputTokenCount`
+        # @return [Fixnum]
+        attr_accessor :output_token_count
+      
+        # Base prompt and system instructions tokens.
+        # Corresponds to the JSON property `promptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :prompt_token_count
+      
+        # Reasoning / Chain-of-Thought tokens.
+        # Corresponds to the JSON property `thoughtsTokenCount`
+        # @return [Fixnum]
+        attr_accessor :thoughts_token_count
+      
+        # Tool use context tokens (schema, profile, query history).
+        # Corresponds to the JSON property `toolUsePromptTokenCount`
+        # @return [Fixnum]
+        attr_accessor :tool_use_prompt_token_count
+      
+        # Total billable tokens (billable_input + billable_cached + billable_output).
+        # Evaluates to 0 for failed or cancelled jobs.
+        # Corresponds to the JSON property `totalTokenCount`
+        # @return [Fixnum]
+        attr_accessor :total_token_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cached_content_token_count = args[:cached_content_token_count] if args.key?(:cached_content_token_count)
+          @candidates_token_count = args[:candidates_token_count] if args.key?(:candidates_token_count)
+          @input_token_count = args[:input_token_count] if args.key?(:input_token_count)
+          @output_token_count = args[:output_token_count] if args.key?(:output_token_count)
+          @prompt_token_count = args[:prompt_token_count] if args.key?(:prompt_token_count)
+          @thoughts_token_count = args[:thoughts_token_count] if args.key?(:thoughts_token_count)
+          @tool_use_prompt_token_count = args[:tool_use_prompt_token_count] if args.key?(:tool_use_prompt_token_count)
+          @total_token_count = args[:total_token_count] if args.key?(:total_token_count)
         end
       end
       
@@ -5388,6 +5475,11 @@ module Google
       class GoogleCloudDataplexV1DataScanEventDataProfileResult
         include Google::Apis::Core::Hashable
       
+        # Dataplex Compute Units (DCUs) used in the data scan job.
+        # Corresponds to the JSON property `dcuConsumed`
+        # @return [Float]
+        attr_accessor :dcu_consumed
+      
         # The count of rows processed in the data scan job.
         # Corresponds to the JSON property `rowCount`
         # @return [Fixnum]
@@ -5399,6 +5491,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @dcu_consumed = args[:dcu_consumed] if args.key?(:dcu_consumed)
           @row_count = args[:row_count] if args.key?(:row_count)
         end
       end
