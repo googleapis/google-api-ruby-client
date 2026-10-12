@@ -69046,6 +69046,9 @@
 "/bigtableadmin:v2/AutoscalingTargets": autoscaling_targets
 "/bigtableadmin:v2/AutoscalingTargets/cpuUtilizationPercent": cpu_utilization_percent
 "/bigtableadmin:v2/AutoscalingTargets/storageUtilizationGibPerNode": storage_utilization_gib_per_node
+"/bigtableadmin:v2/AvroSchema": avro_schema
+"/bigtableadmin:v2/AvroSchema/jsonSchemas": json_schemas
+"/bigtableadmin:v2/AvroSchema/jsonSchemas/json_schema": json_schema
 "/bigtableadmin:v2/Backup": backup
 "/bigtableadmin:v2/Backup/backupType": backup_type
 "/bigtableadmin:v2/Backup/encryptionInfo": encryption_info
@@ -69483,6 +69486,7 @@
 "/bigtableadmin:v2/RestoreTableRequest/tableId": table_id
 "/bigtableadmin:v2/RowAffinity": row_affinity
 "/bigtableadmin:v2/SchemaBundle": schema_bundle
+"/bigtableadmin:v2/SchemaBundle/avroSchema": avro_schema
 "/bigtableadmin:v2/SchemaBundle/etag": etag
 "/bigtableadmin:v2/SchemaBundle/name": name
 "/bigtableadmin:v2/SchemaBundle/protoSchema": proto_schema
