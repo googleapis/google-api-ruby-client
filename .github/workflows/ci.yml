@@ -48,7 +48,7 @@ jobs:
         ruby-version: "${{ matrix.ruby }}"
     - name: Install tools
       run: |
-        gem install --no-document toys
+        gem install --no-document toys -v '~> 0.22.0'
     - name: Hack perms
       # Hack permissions to avoid a bundler issue.
       # See https://github.com/actions/runner-images/issues/10215
