@@ -348515,6 +348515,10 @@
 "/metastore:v1alpha/KerberosConfig/principal": principal
 "/metastore:v1alpha/Lake": lake
 "/metastore:v1alpha/Lake/name": name
+"/metastore:v1alpha/LakehouseProxyConfig": lakehouse_proxy_config
+"/metastore:v1alpha/LakehouseProxyConfig/catalog": catalog
+"/metastore:v1alpha/LakehouseProxyConfig/namespaces": namespaces
+"/metastore:v1alpha/LakehouseProxyConfig/namespaces/namespace": namespace
 "/metastore:v1alpha/LatestBackup": latest_backup
 "/metastore:v1alpha/LatestBackup/backupId": backup_id
 "/metastore:v1alpha/LatestBackup/duration": duration
@@ -348715,6 +348719,7 @@
 "/metastore:v1alpha/Service/hiveMetastoreConfig": hive_metastore_config
 "/metastore:v1alpha/Service/labels": labels
 "/metastore:v1alpha/Service/labels/label": label
+"/metastore:v1alpha/Service/lakehouseProxyConfig": lakehouse_proxy_config
 "/metastore:v1alpha/Service/maintenanceWindow": maintenance_window
 "/metastore:v1alpha/Service/metadataIntegration": metadata_integration
 "/metastore:v1alpha/Service/metadataManagementActivity": metadata_management_activity
