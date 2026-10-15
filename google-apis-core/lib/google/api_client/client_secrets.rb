@@ -119,7 +119,7 @@ module Google
       # @return [String]
       #   JSON
       def to_json
-        return Json.dump(to_hash)
+        return JSON.dump(to_hash)
       end
 
       def to_hash
