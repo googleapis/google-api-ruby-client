@@ -1,5 +1,11 @@
 # Release History
 
+### 1.3.2 (2026-10-15)
+
+#### Bug Fixes
+
+* correct ClientSecrets JSON.dump constant ([#28074](https://github.com/googleapis/google-api-ruby-client/issues/28074)) 
+
 ### 1.3.1 (2026-10-11)
 
 #### Bug Fixes
