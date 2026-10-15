@@ -118,6 +118,7 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
 
     it "should respect custom X-Goog-Gcs-Idempotency-Token in options.header regardless of casing" do
+      command.options.add_invocation_id_header = true
       command.options.header = { 'x-goog-gcs-idempotency-token' => 'my-custom-token' }
       command.prepare!
       expect(command.header['x-goog-gcs-idempotency-token']).to eql 'my-custom-token'
@@ -289,11 +290,13 @@ EOF
     end
 
     it 'should keep same idempotency_token across retries' do
+      command.options.add_invocation_id_header = true
       result = command.execute(client)
       idempotency_token_header = command.header['X-Goog-Gcs-Idempotency-Token']
       expect(a_request(:get, 'https://www.googleapis.com/zoo/animals')
         .with { |req| req.headers['X-Goog-Gcs-Idempotency-Token'] == idempotency_token_header })
         .to have_been_made.times(2)
+      expect(idempotency_token_header).not_to be_nil
     end
 
     it 'should use same UUID for invocation_id header and idempotency_token' do

@@ -604,5 +604,44 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
       
       expect(command).to have_received(:refresh_idempotency_token).at_least(:once)
     end
+
+    it 'uses different tokens for distinct RPCs and keeps same token across retries' do
+      command.options.add_invocation_id_header = true
+      command.options.retries = 1
+
+      post_tokens = []
+      put_tokens = []
+
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .to_return do |request|
+          post_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK) }
+        end
+        
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .to_return do |request|
+          put_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { status: 503, body: %(Service Unavailable) }
+        end
+        .then
+        .to_return do |request|
+          put_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { status: 200, body: %(OK) }
+        end
+
+      command.execute(client)
+
+      expect(post_tokens.length).to eq(1)
+      expect(put_tokens.length).to eq(2)
+      
+      expect(post_tokens[0]).not_to be_nil
+      expect(put_tokens[0]).not_to be_nil
+      
+      #distinct RPC steps have different tokens
+      expect(post_tokens[0]).not_to eq(put_tokens[0])
+    
+      #same RPC step keeps same token across retries
+      expect(put_tokens[0]).to eq(put_tokens[1])
+    end
   end
 end

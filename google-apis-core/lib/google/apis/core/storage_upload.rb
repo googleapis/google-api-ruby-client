@@ -105,16 +105,20 @@ module Google
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
           if upload_id.nil?
+            refresh_idempotency_token
             res = do_retry :initiate_resumable_upload, client
           elsif delete_upload && !upload_id.nil?
             construct_resumable_upload_url upload_id
+            refresh_idempotency_token
             res = do_retry :cancel_resumable_upload, client
           else
             construct_resumable_upload_url upload_id
+            refresh_idempotency_token
             res = do_retry :reinitiate_resumable_upload, client
           end
 
           while @upload_incomplete
+            refresh_idempotency_token
             res = do_retry :send_upload_command, client
           end
           res
@@ -125,7 +129,6 @@ module Google
         end
 
         def initiate_resumable_upload(client)
-          refresh_idempotency_token
           logger.debug { sprintf('Intiating resumable upload command to %s', url) }
 
           request_header = header.dup
@@ -169,7 +172,6 @@ module Google
         # @return [HTTP::Message]
         # @raise [Google::Apis::ServerError] Unable to send the request
         def send_upload_command(client)
-          refresh_idempotency_token
           logger.debug { sprintf('Sending upload command to %s', @upload_url) }
 
           remaining_content_size = upload_io.size - @offset
@@ -223,7 +225,6 @@ module Google
         end
 
         def check_resumable_upload(client)
-          refresh_idempotency_token
           # Setting up request header
           request_header = header.dup
           request_header[CONTENT_RANGE_HEADER] = "bytes */#{upload_io.size}"
