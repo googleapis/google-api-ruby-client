@@ -7,8 +7,8 @@ PATH
       faraday-follow_redirects (~> 0.3)
       googleauth (~> 1.14)
       mini_mime (~> 1.1)
-      multi_json (~> 1.11)
-      representable (~> 3.0)
+      multi_json (~> 1.21)
+      representable (~> 3.3)
       retriable (>= 3.1, < 5.0)
 
 GEM
@@ -112,7 +112,7 @@ GEM
     regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
-    representable (3.2.0)
+    representable (3.3.0)
       declarative (< 0.1.0)
       trailblazer-option (>= 0.1.1, < 0.2.0)
       uber (< 0.2.0)
@@ -251,7 +251,7 @@ CHECKSUMS
   redis-client (0.29.0) sha256=0c65bf1f8f6dca22063ddb085c0bb2054feef6f03a84869f4161b18a9a15bea3
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
-  representable (3.2.0) sha256=cc29bf7eebc31653586849371a43ffe36c60b54b0a6365b5f7d95ec34d1ebace
+  representable (3.3.0) sha256=22beca7d07104d8dfe30667eb267756c764c8bdc6c0f1481922502ecc4f0d8cf
   retriable (3.8.0) sha256=9f2f1b0207594c7817f17f671587b8ec7587387ac6cebda6c941a802bb98a8e5
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rmail (1.1.4) sha256=11338a9834b207a6989826bb3d9c5505a339dcd3eacbcf8b389598b3ebbcb654
