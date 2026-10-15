@@ -471,7 +471,7 @@ EOF
       expected_body = <<EOF.gsub(/\n/, "\r\n")
 --outer
 Content-Type: application/http
-Content-Id: <[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\+0>
+Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d\\+0>
 Content-Length: \\d+
 Content-Transfer-Encoding: binary
 
