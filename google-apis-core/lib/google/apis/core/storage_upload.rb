@@ -105,16 +105,20 @@ module Google
           opencensus_begin_span
           @upload_chunk_size = options.upload_chunk_size
           if upload_id.nil?
+            refresh_idempotency_token
             res = do_retry :initiate_resumable_upload, client
           elsif delete_upload && !upload_id.nil?
             construct_resumable_upload_url upload_id
+            refresh_idempotency_token
             res = do_retry :cancel_resumable_upload, client
           else
             construct_resumable_upload_url upload_id
+            refresh_idempotency_token
             res = do_retry :reinitiate_resumable_upload, client
           end
 
           while @upload_incomplete
+            refresh_idempotency_token
             res = do_retry :send_upload_command, client
           end
           res
@@ -317,6 +321,22 @@ module Google
             "#{output_key}=#{value}"
           end.join(',')
           formatted_string
+        end
+
+        private
+
+        # Refreshes the idempotency token header for resumable upload chunks.
+        #
+        # Resumable uploads involve multiple independent HTTP requests (one for each chunk),
+        # this method generates a new UUID for the `X-Goog-Gcs-Idempotency-Token` header for each
+        # specific RPC step. The token ensures that if a specific chunk request is retried due to a
+        # network error, it can be safely identified as a retry.
+        #
+        # @return [String, nil] The newly generated UUID, or nil if conditions aren't met.
+        def refresh_idempotency_token
+          return unless options&.add_invocation_id_header
+          return if options&.header&.any? { |k, _| k.to_s.casecmp?('x-goog-gcs-idempotency-token') }
+          header['X-Goog-Gcs-Idempotency-Token'] = SecureRandom.uuid
         end
       end
     end
