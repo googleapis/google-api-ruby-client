@@ -1,5 +1,11 @@
 # Release History
 
+### 0.19.1 (2026-10-20)
+
+#### Documentation
+
+* trigger a release to verify the new publishing pipeline ([#28166](https://github.com/googleapis/google-api-ruby-client/issues/28166)) 
+
 ### 0.19.0 (2026-06-04)
 
 #### Features
