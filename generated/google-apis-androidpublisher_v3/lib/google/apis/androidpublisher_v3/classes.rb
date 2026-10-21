@@ -5054,10 +5054,8 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::Price]
         attr_accessor :default_price
       
-        # Grace period of the subscription, specified in ISO 8601 format. Allows
-        # developers to give their subscribers a grace period when the payment for the
-        # new recurrence period is declined. Acceptable values are P0D (zero days), P3D (
-        # three days), P7D (seven days), P14D (14 days), and P30D (30 days).
+        # Deprecated: Subscriptions are no longer supported in the InAppProducts API.
+        # Use the Subscriptions API instead.
         # Corresponds to the JSON property `gracePeriod`
         # @return [String]
         attr_accessor :grace_period
@@ -5099,9 +5097,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Subscription period, specified in ISO 8601 format. Acceptable values are P1W (
-        # one week), P1M (one month), P3M (three months), P6M (six months), and P1Y (one
-        # year).
+        # Deprecated: Subscriptions are no longer supported in the InAppProducts API.
+        # Use the Subscriptions API instead.
         # Corresponds to the JSON property `subscriptionPeriod`
         # @return [String]
         attr_accessor :subscription_period
@@ -5112,8 +5109,8 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::SubscriptionTaxAndComplianceSettings]
         attr_accessor :subscription_taxes_and_compliance_settings
       
-        # Trial period, specified in ISO 8601 format. Acceptable values are anything
-        # between P7D (seven days) and P999D (999 days).
+        # Deprecated: Subscriptions are no longer supported in the InAppProducts API.
+        # Use the Subscriptions API instead.
         # Corresponds to the JSON property `trialPeriod`
         # @return [String]
         attr_accessor :trial_period
@@ -5144,7 +5141,8 @@ module Google
       class InAppProductListing
         include Google::Apis::Core::Hashable
       
-        # Localized entitlement benefits for a subscription.
+        # Deprecated: Subscriptions are no longer supported in the InAppProducts API.
+        # Use the Subscriptions API instead.
         # Corresponds to the JSON property `benefits`
         # @return [Array<String>]
         attr_accessor :benefits
