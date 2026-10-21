@@ -256,6 +256,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AliasNetworkEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AliasNetworkEndpointAlias
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AliasNetworkEndpointHost
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AliasNetworkEndpointList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AliasNetworkEndpointStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocationAggregateReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2212,6 +2254,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HaControllerInstanceNetworkInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HaControllerNetworkingAutoConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2219,6 +2267,12 @@ module Google
       end
       
       class HaControllerNetworkingAutoConfigurationInternal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HaControllerParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9788,6 +9842,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_ipv6, as: 'externalIpv6'
           property :external_ipv6_prefix_length, as: 'externalIpv6PrefixLength'
+          property :ip_collection, as: 'ipCollection'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
@@ -9815,11 +9870,13 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :prefix_length, as: 'prefixLength'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_class_id, as: 'serviceClassId'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
@@ -9936,6 +9993,87 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :subnetwork_range_name, as: 'subnetworkRangeName'
+        end
+      end
+      
+      class AliasNetworkEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :aliases, as: 'aliases', class: Google::Apis::ComputePreview::AliasNetworkEndpointAlias, decorator: Google::Apis::ComputePreview::AliasNetworkEndpointAlias::Representation
+      
+          hash :annotations, as: 'annotations'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :host, as: 'host', class: Google::Apis::ComputePreview::AliasNetworkEndpointHost, decorator: Google::Apis::ComputePreview::AliasNetworkEndpointHost::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :security_tag_inheritance, as: 'securityTagInheritance'
+          property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputePreview::AliasNetworkEndpointStatus, decorator: Google::Apis::ComputePreview::AliasNetworkEndpointStatus::Representation
+      
+          property :subnetwork, as: 'subnetwork'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AliasNetworkEndpointAlias
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :effective_ip_address, as: 'effectiveIpAddress'
+          property :effective_subnetwork_range_name, as: 'effectiveSubnetworkRangeName'
+          property :ip_address, as: 'ipAddress'
+          property :ip_version, as: 'ipVersion'
+          collection :subnetwork_range_names, as: 'subnetworkRangeNames'
+        end
+      end
+      
+      class AliasNetworkEndpointHost
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance'
+        end
+      end
+      
+      class AliasNetworkEndpointList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputePreview::AliasNetworkEndpoint, decorator: Google::Apis::ComputePreview::AliasNetworkEndpoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          collection :unreachables, as: 'unreachables'
+          property :warning, as: 'warning', class: Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning, decorator: Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning::Datum, decorator: Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class AliasNetworkEndpointStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :state, as: 'state'
         end
       end
       
@@ -13575,6 +13713,8 @@ module Google
           property :name, as: 'name'
           property :networking_auto_configuration, as: 'networkingAutoConfiguration', class: Google::Apis::ComputePreview::HaControllerNetworkingAutoConfiguration, decorator: Google::Apis::ComputePreview::HaControllerNetworkingAutoConfiguration::Representation
       
+          property :params, as: 'params', class: Google::Apis::ComputePreview::HaControllerParams, decorator: Google::Apis::ComputePreview::HaControllerParams::Representation
+      
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
@@ -13583,6 +13723,14 @@ module Google
       
           hash :zone_configurations, as: 'zoneConfigurations', class: Google::Apis::ComputePreview::HaControllerZoneConfiguration, decorator: Google::Apis::ComputePreview::HaControllerZoneConfiguration::Representation
       
+        end
+      end
+      
+      class HaControllerInstanceNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ipv6_address, as: 'ipv6Address'
+          property :network_ip, as: 'networkIP'
         end
       end
       
@@ -13600,6 +13748,13 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv6_address, as: 'ipv6Address'
           property :stack_type, as: 'stackType'
+        end
+      end
+      
+      class HaControllerParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :migrate_disks_to_regional, as: 'migrateDisksToRegional'
         end
       end
       
@@ -13728,6 +13883,8 @@ module Google
       class HaControllerZoneConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :instance_network_interfaces, as: 'instanceNetworkInterfaces', class: Google::Apis::ComputePreview::HaControllerInstanceNetworkInterface, decorator: Google::Apis::ComputePreview::HaControllerInstanceNetworkInterface::Representation
+      
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputePreview::HaControllerZoneConfigurationNodeAffinity, decorator: Google::Apis::ComputePreview::HaControllerZoneConfigurationNodeAffinity::Representation
       
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputePreview::HaControllerZoneConfigurationReservationAffinity, decorator: Google::Apis::ComputePreview::HaControllerZoneConfigurationReservationAffinity::Representation
@@ -18611,12 +18768,14 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_endpoint_type, as: 'networkEndpointType'
           property :psc_data, as: 'pscData', class: Google::Apis::ComputePreview::NetworkEndpointGroupPscData, decorator: Google::Apis::ComputePreview::NetworkEndpointGroupPscData::Representation
       
           property :psc_target_service, as: 'pscTargetService'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_class_id, as: 'serviceClassId'
           property :size, as: 'size'
           property :subnetwork, as: 'subnetwork'
           property :zone, as: 'zone'
@@ -22242,6 +22401,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
           property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
+          property :protection_tier, as: 'protectionTier'
           property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
@@ -23228,6 +23388,7 @@ module Google
           property :preemptible, as: 'preemptible'
           property :preemption_notice_duration, as: 'preemptionNoticeDuration', class: Google::Apis::ComputePreview::Duration, decorator: Google::Apis::ComputePreview::Duration::Representation
       
+          property :protection_tier, as: 'protectionTier'
           property :provisioning_model, as: 'provisioningModel'
           property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'

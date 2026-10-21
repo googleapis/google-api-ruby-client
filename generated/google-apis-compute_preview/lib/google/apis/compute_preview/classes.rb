@@ -1023,6 +1023,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :external_ipv6_prefix_length
       
+        # Reference to the source of external IPv4 addresses,
+        # like a PublicDelegatedPrefix (PDP) for BYOIP.
+        # The PDP must support enhanced IPv4 allocations.
+        # Use one of the following formats to specify a PDP when allocating an
+        # external IPv4 address using BYOIP.
+        # 
+        # -
+        # Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/
+        # projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # -
+        # Partial URL, as in
+        # 
+        # 
+        # - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # - regions/region/publicDelegatedPrefixes/pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # Output only. [Output Only] Type of the resource. Alwayscompute#accessConfig
         # for access configs.
         # Corresponds to the JSON property `kind`
@@ -1098,6 +1117,7 @@ module Google
         def update!(**args)
           @external_ipv6 = args[:external_ipv6] if args.key?(:external_ipv6)
           @external_ipv6_prefix_length = args[:external_ipv6_prefix_length] if args.key?(:external_ipv6_prefix_length)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
@@ -1237,6 +1257,15 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this address comes from in
+        # the
+        # following format:
+        # projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # This signifies the networking tier used for configuring this address and
         # can only take the following values: PREMIUM orSTANDARD. Internal IP addresses
         # are always Premium Tier;
@@ -1301,6 +1330,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Optional. Producer Service's Service class ID for the region of this address.
+        # Can
+        # only be used with network_attachment. It is not possible to use on its own;
+        # however, network_attachment can be used without service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
+      
         # Output only. [Output Only] The status of the address, which can be one
         # ofRESERVING, RESERVED, or IN_USE.
         # An address that is RESERVING is currently in the process of
@@ -1342,11 +1379,13 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @users = args[:users] if args.key?(:users)
@@ -1801,6 +1840,339 @@ module Google
         def update!(**args)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @subnetwork_range_name = args[:subnetwork_range_name] if args.key?(:subnetwork_range_name)
+        end
+      end
+      
+      # Represents an Alias Network Endpoint resource.
+      # To be used for GKE pod-native endpoints in Andromeda.
+      class AliasNetworkEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Required. The map of network aliases allocated for the AliasNetworkEndpoint.
+        # This map is keyed with user-provided alias names.
+        # Corresponds to the JSON property `aliases`
+        # @return [Hash<String,Google::Apis::ComputePreview::AliasNetworkEndpointAlias>]
+        attr_accessor :aliases
+      
+        # Optional. The annotations map for the AliasNetworkEndpoint.
+        # Keys and values must follow Kubernetes limits.
+        # Keys must be a maximum of 253 characters. Keys should be dot-namespaced,
+        # following the Kubernetes annotation key format:
+        # `([DNS subdomain]/)?[RFC 1123 name]`.
+        # Values must be a maximum of 256 characters.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # Optional. An optional description of this resource. Provide this field when
+        # you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Information about the host instance.
+        # Corresponds to the JSON property `host`
+        # @return [Google::Apis::ComputePreview::AliasNetworkEndpointHost]
+        attr_accessor :host
+      
+        # Output only. [Output Only] The unique identifier for the resource. This
+        # identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # Optional. The labels map for the AliasNetworkEndpoint.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. Name of the resource. Provided by the client when the resource is
+        # created.
+        # The name must be 1-63 characters long, and comply with RFC1035.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The security tag inheritance setting for the AliasNetworkEndpoint.
+        # Corresponds to the JSON property `securityTagInheritance`
+        # @return [String]
+        attr_accessor :security_tag_inheritance
+      
+        # Output only. [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Represents the current status of the AliasNetworkEndpoint.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputePreview::AliasNetworkEndpointStatus]
+        attr_accessor :status
+      
+        # Required. The URL of the subnetwork that this alias network endpoint belongs
+        # to.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Output only. [Output Only] Update timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aliases = args[:aliases] if args.key?(:aliases)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @host = args[:host] if args.key?(:host)
+          @id = args[:id] if args.key?(:id)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @security_tag_inheritance = args[:security_tag_inheritance] if args.key?(:security_tag_inheritance)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Configuration for an IP alias.
+      class AliasNetworkEndpointAlias
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The actual IP address allocated by the system.
+        # Corresponds to the JSON property `effectiveIpAddress`
+        # @return [String]
+        attr_accessor :effective_ip_address
+      
+        # Output only. [Output Only] The actual secondary range used for allocation.
+        # Corresponds to the JSON property `effectiveSubnetworkRangeName`
+        # @return [String]
+        attr_accessor :effective_subnetwork_range_name
+      
+        # Input only. The IP address of the network endpoint. If specified, the server
+        # performs
+        # a validation check for uniqueness. If the field is omitted, the system
+        # automatically allocates an IP and populates the effective_ip_address
+        # field.
+        # Corresponds to the JSON property `ipAddress`
+        # @return [String]
+        attr_accessor :ip_address
+      
+        # Required. The IP version of the IP. It is IPv4 or IPv6.
+        # Corresponds to the JSON property `ipVersion`
+        # @return [String]
+        attr_accessor :ip_version
+      
+        # Input only. Defines candidate secondary ranges for allocating the alias IPs.
+        # If it is
+        # empty, the IP would be allocated from the primary range of the
+        # subnetwork.
+        # This field is INPUT_ONLY and used only during resource creation,
+        # hence a repeated field is acceptable as per AIP-2825. It is not mutable.
+        # Corresponds to the JSON property `subnetworkRangeNames`
+        # @return [Array<String>]
+        attr_accessor :subnetwork_range_names
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @effective_ip_address = args[:effective_ip_address] if args.key?(:effective_ip_address)
+          @effective_subnetwork_range_name = args[:effective_subnetwork_range_name] if args.key?(:effective_subnetwork_range_name)
+          @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_version = args[:ip_version] if args.key?(:ip_version)
+          @subnetwork_range_names = args[:subnetwork_range_names] if args.key?(:subnetwork_range_names)
+        end
+      end
+      
+      # Information about the host instance.
+      class AliasNetworkEndpointHost
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URL to the instance that this alias network endpoint is bound to.
+        # Corresponds to the JSON property `instance`
+        # @return [String]
+        attr_accessor :instance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
+        end
+      end
+      
+      # Response message for AliasNetworkEndpoints.List.
+      class AliasNetworkEndpointList
+        include Google::Apis::Core::Hashable
+      
+        # ETag of the resource list.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of AliasNetworkEndpoint resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputePreview::AliasNetworkEndpoint>]
+        attr_accessor :items
+      
+        # [Output Only] This token allows you to get the next page of results for
+        # list requests. If the number of results is larger thanmaxResults, use the
+        # nextPageToken as a value for
+        # the query parameter pageToken in the next list request.
+        # Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Output only. [Output Only] Unreachable resources.
+        # Corresponds to the JSON property `unreachables`
+        # @return [Array<String>]
+        attr_accessor :unreachables
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @unreachables = args[:unreachables] if args.key?(:unreachables)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute
+          # Engine returns NO_RESULTS_ON_PAGE if there
+          # are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key:
+          # value format. For example:
+          # "data": [
+          # `
+          # "key": "scope",
+          # "value": "zones/us-east1-d"
+          # `]
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputePreview::AliasNetworkEndpointList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being
+            # returned. For example, for warnings where there are no results in a list
+            # request for a particular zone, this key might be scope and
+            # the key value might be the zone name. Other examples might be a key
+            # indicating a deprecated resource and a suggested replacement, or a
+            # warning about invalid network settings (for example, if an instance
+            # attempts to perform IP forwarding but is not enabled for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents the current status of the AliasNetworkEndpoint.
+      class AliasNetworkEndpointStatus
+        include Google::Apis::Core::Hashable
+      
+        # Output only. [Output Only] The URL of the network that this alias network
+        # endpoint
+        # belongs to.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Output only. [Output Only] The state of the alias network endpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -18693,6 +19065,11 @@ module Google
         # @return [Google::Apis::ComputePreview::HaControllerNetworkingAutoConfiguration]
         attr_accessor :networking_auto_configuration
       
+        # Additional HA Controller params.
+        # Corresponds to the JSON property `params`
+        # @return [Google::Apis::ComputePreview::HaControllerParams]
+        attr_accessor :params
+      
         # Output only. [Output Only] URL of the region where the resource resides.
         # You must specify this field as part of the HTTP request URL.
         # It is not settable as a field in the request body.
@@ -18743,12 +19120,42 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @networking_auto_configuration = args[:networking_auto_configuration] if args.key?(:networking_auto_configuration)
+          @params = args[:params] if args.key?(:params)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @zone_configurations = args[:zone_configurations] if args.key?(:zone_configurations)
+        end
+      end
+      
+      # The network interface configuration of the VM instance.
+      class HaControllerInstanceNetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional IPv6 address to assign to the instance's network interface.
+        # If omitted, an ephemeral IP may be assigned depending on the instance's
+        # network interface stack type.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
+        # Optional. Optional IPv4 address to assign to the instance's network interface.
+        # If omitted, an ephemeral IP may be assigned depending on the instance's
+        # network interface stack type.
+        # Corresponds to the JSON property `networkIP`
+        # @return [String]
+        attr_accessor :network_ip
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
+          @network_ip = args[:network_ip] if args.key?(:network_ip)
         end
       end
       
@@ -18802,6 +19209,27 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @stack_type = args[:stack_type] if args.key?(:stack_type)
+        end
+      end
+      
+      # Additional HA Controller params.
+      class HaControllerParams
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether to automatically migrate all disks of an instance from
+        # zonal to regional before attempting to create the HaController.
+        # Corresponds to the JSON property `migrateDisksToRegional`
+        # @return [Boolean]
+        attr_accessor :migrate_disks_to_regional
+        alias_method :migrate_disks_to_regional?, :migrate_disks_to_regional
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @migrate_disks_to_regional = args[:migrate_disks_to_regional] if args.key?(:migrate_disks_to_regional)
         end
       end
       
@@ -19261,6 +19689,30 @@ module Google
       class HaControllerZoneConfiguration
         include Google::Apis::Core::Hashable
       
+        # Optional. The network interface configuration of a VM instance in this zone,
+        # keyed by the name of the network interface. A VM network interface
+        # uses the nicN naming format, where N is a
+        # value between 0 and 7. The default interface
+        # is nic0. Use this field to choose the internal IP
+        # addresses of the VM instance in this zone instead of letting Compute
+        # Engine assign them automatically.
+        # 
+        # 
+        # - Each key must be a name of a network interface that exists on
+        # the VM instance. Otherwise, the request fails.
+        # - Network interfaces that are omitted are assigned an ephemeral
+        # internal IP address.
+        # - Every zone must configure the same network interfaces and the
+        # same IP address families.
+        # - For the zone that currently holds the VM instance, this field
+        # is populated automatically, and any addresses you specify must
+        # match the instance's current addresses.
+        # - Only internal IP addresses are supported, and this field can
+        # only be set when the HA Controller is created.
+        # Corresponds to the JSON property `instanceNetworkInterfaces`
+        # @return [Hash<String,Google::Apis::ComputePreview::HaControllerInstanceNetworkInterface>]
+        attr_accessor :instance_network_interfaces
+      
         # A set of node affinity configurations. Refer toConfiguring node
         # affinity for more information.
         # Overrides reservationAffinity.
@@ -19281,6 +19733,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_network_interfaces = args[:instance_network_interfaces] if args.key?(:instance_network_interfaces)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
         end
@@ -39939,6 +40392,13 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this resource
+        # belongs to.projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # Type of network endpoints in this network endpoint group. Can be one
         # ofGCE_VM_IP, GCE_VM_IP_PORT,NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,
         # INTERNET_IP_PORT, SERVERLESS,PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP.
@@ -39970,6 +40430,14 @@ module Google
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
+      
+        # Optional. The service class ID associated with this resource.
+        # Can only be used with network_attachment. It is not possible to
+        # use on its own; however, network_attachment can be used without
+        # service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
       
         # Output only. [Output only] Number of network endpoints in the network endpoint
         # group.
@@ -40006,11 +40474,13 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_endpoint_type = args[:network_endpoint_type] if args.key?(:network_endpoint_type)
           @psc_data = args[:psc_data] if args.key?(:psc_data)
           @psc_target_service = args[:psc_target_service] if args.key?(:psc_target_service)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @size = args[:size] if args.key?(:size)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @zone = args[:zone] if args.key?(:zone)
@@ -54633,6 +55103,13 @@ module Google
         # @return [String]
         attr_accessor :graceful_shutdown_timestamp
       
+        # Output only. Protection tier for the workload which specifies the workload
+        # expectations in the event of infrastructure failures at data center
+        # (e.g. power and/or cooling failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # Time in future when the instance will be terminated inRFC3339 text format.
         # Corresponds to the JSON property `terminationTimestamp`
         # @return [String]
@@ -54646,6 +55123,7 @@ module Google
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
@@ -59060,6 +59538,13 @@ module Google
         # @return [Google::Apis::ComputePreview::Duration]
         attr_accessor :preemption_notice_duration
       
+        # Protection tier for the workload which specifies the workload
+        # expectations in the event of infrastructure failures at data center
+        # (e.g. power and/or cooling failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # Specifies the provisioning model of the instance.
         # Corresponds to the JSON property `provisioningModel`
         # @return [String]
@@ -59101,6 +59586,7 @@ module Google
           @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @preemption_notice_duration = args[:preemption_notice_duration] if args.key?(:preemption_notice_duration)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
