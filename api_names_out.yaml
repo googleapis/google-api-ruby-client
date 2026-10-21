@@ -60540,6 +60540,10 @@
 "/authorizedbuyersmarketplace:v1alpha/RtbMetrics/bids7Days": bids7_days
 "/authorizedbuyersmarketplace:v1alpha/RtbMetrics/filteredBidRate7Days": filtered_bid_rate7_days
 "/authorizedbuyersmarketplace:v1alpha/RtbMetrics/mustBidRateCurrentMonth": must_bid_rate_current_month
+"/authorizedbuyersmarketplace:v1alpha/SearchMediaPlannersResponse": search_media_planners_response
+"/authorizedbuyersmarketplace:v1alpha/SearchMediaPlannersResponse/mediaPlanners": media_planners
+"/authorizedbuyersmarketplace:v1alpha/SearchMediaPlannersResponse/mediaPlanners/media_planner": media_planner
+"/authorizedbuyersmarketplace:v1alpha/SearchMediaPlannersResponse/nextPageToken": next_page_token
 "/authorizedbuyersmarketplace:v1alpha/SendRfpRequest": send_rfp_request
 "/authorizedbuyersmarketplace:v1alpha/SendRfpRequest/buyerContacts": buyer_contacts
 "/authorizedbuyersmarketplace:v1alpha/SendRfpRequest/buyerContacts/buyer_contact": buyer_contact
@@ -60751,6 +60755,10 @@
 "/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.list/filter": filter
 "/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.list/pageSize": page_size
 "/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.list/pageToken": page_token
+"/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.search": search_media_planners
+"/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.search/dspSeatId": dsp_seat_id
+"/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.search/pageSize": page_size
+"/authorizedbuyersmarketplace:v1alpha/authorizedbuyersmarketplace.mediaPlanners.search/pageToken": page_token
 "/authorizedbuyersmarketplace:v1alpha/fields": fields
 "/authorizedbuyersmarketplace:v1alpha/key": key
 "/authorizedbuyersmarketplace:v1alpha/quotaUser": quota_user

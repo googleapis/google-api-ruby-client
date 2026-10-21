@@ -2644,6 +2644,33 @@ module Google
         end
       end
       
+      # A response containing media planner account information from a search.
+      class SearchMediaPlannersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of media planners matching the search criteria.
+        # Corresponds to the JSON property `mediaPlanners`
+        # @return [Array<Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner>]
+        attr_accessor :media_planners
+      
+        # A token which can be passed to a subsequent call to the `SearchMediaPlanners`
+        # method to retrieve the next page of results in SearchMediaPlannersRequest.
+        # pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @media_planners = args[:media_planners] if args.key?(:media_planners)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Request to send an RFP. All fields in this request are proposed to publisher
       # and subject to changes by publisher during later negotiation.
       class SendRfpRequest
