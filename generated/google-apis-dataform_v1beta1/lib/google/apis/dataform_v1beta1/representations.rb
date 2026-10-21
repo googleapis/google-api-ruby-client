@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchWorkspaceHistoryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FileOperation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1436,6 +1442,16 @@ module Google
         end
       end
       
+      class FetchWorkspaceHistoryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commits, as: 'commits', class: Google::Apis::DataformV1beta1::CommitLogEntry, decorator: Google::Apis::DataformV1beta1::CommitLogEntry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :reaches_shallow_boundary, as: 'reachesShallowBoundary'
+        end
+      end
+      
       class FileOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1504,6 +1520,7 @@ module Google
       class GitRemoteSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_connector, as: 'accountConnector'
           property :authentication_token_secret_version, as: 'authenticationTokenSecretVersion'
           property :default_branch, as: 'defaultBranch'
           property :effective_default_branch, as: 'effectiveDefaultBranch'

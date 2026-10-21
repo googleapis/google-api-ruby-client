@@ -192719,6 +192719,11 @@
 "/dataform:v1beta1/FetchWorkspaceBranchesResponse/branches": branches
 "/dataform:v1beta1/FetchWorkspaceBranchesResponse/branches/branch": branch
 "/dataform:v1beta1/FetchWorkspaceBranchesResponse/nextPageToken": next_page_token
+"/dataform:v1beta1/FetchWorkspaceHistoryResponse": fetch_workspace_history_response
+"/dataform:v1beta1/FetchWorkspaceHistoryResponse/commits": commits
+"/dataform:v1beta1/FetchWorkspaceHistoryResponse/commits/commit": commit
+"/dataform:v1beta1/FetchWorkspaceHistoryResponse/nextPageToken": next_page_token
+"/dataform:v1beta1/FetchWorkspaceHistoryResponse/reachesShallowBoundary": reaches_shallow_boundary
 "/dataform:v1beta1/FileOperation": file_operation
 "/dataform:v1beta1/FileOperation/deleteFile": delete_file
 "/dataform:v1beta1/FileOperation/writeFile": write_file
@@ -192746,6 +192751,7 @@
 "/dataform:v1beta1/GcsRepositorySnapshotMetadata/generation": generation
 "/dataform:v1beta1/GcsRepositorySnapshotMetadata/repositorySnapshotUri": repository_snapshot_uri
 "/dataform:v1beta1/GitRemoteSettings": git_remote_settings
+"/dataform:v1beta1/GitRemoteSettings/accountConnector": account_connector
 "/dataform:v1beta1/GitRemoteSettings/authenticationTokenSecretVersion": authentication_token_secret_version
 "/dataform:v1beta1/GitRemoteSettings/defaultBranch": default_branch
 "/dataform:v1beta1/GitRemoteSettings/effectiveDefaultBranch": effective_default_branch
@@ -193379,6 +193385,10 @@
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchGitAheadBehind": fetch_project_location_repository_workspace_git_ahead_behind
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchGitAheadBehind/name": name
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchGitAheadBehind/remoteBranch": remote_branch
+"/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchHistory": fetch_project_location_repository_workspace_history
+"/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchHistory/name": name
+"/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchHistory/pageSize": page_size
+"/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.fetchHistory/pageToken": page_token
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.get": get_project_location_repository_workspace
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.get/name": name
 "/dataform:v1beta1/dataform.projects.locations.repositories.workspaces.getIamPolicy": get_project_location_repository_workspace_iam_policy
