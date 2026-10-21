@@ -928,6 +928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplaceMessageCardsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceMessageCardsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RichLinkMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1335,6 +1347,8 @@ module Google
           property :card, as: 'card', class: Google::Apis::ChatV1::GoogleAppsCardV1Card, decorator: Google::Apis::ChatV1::GoogleAppsCardV1Card::Representation
       
           property :card_id, as: 'cardId'
+          property :owner_user, as: 'ownerUser', class: Google::Apis::ChatV1::User, decorator: Google::Apis::ChatV1::User::Representation
+      
         end
       end
       
@@ -2735,6 +2749,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reaction, as: 'reaction', class: Google::Apis::ChatV1::Reaction, decorator: Google::Apis::ChatV1::Reaction::Representation
       
+        end
+      end
+      
+      class ReplaceMessageCardsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cards_v2, as: 'cardsV2', class: Google::Apis::ChatV1::CardWithId, decorator: Google::Apis::ChatV1::CardWithId::Representation
+      
+        end
+      end
+      
+      class ReplaceMessageCardsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

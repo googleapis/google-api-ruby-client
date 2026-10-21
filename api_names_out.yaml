@@ -75664,6 +75664,7 @@
 "/chat:v1/CardWithId": card_with_id
 "/chat:v1/CardWithId/card": card
 "/chat:v1/CardWithId/cardId": card_id
+"/chat:v1/CardWithId/ownerUser": owner_user
 "/chat:v1/ChatAppLogEntry": chat_app_log_entry
 "/chat:v1/ChatAppLogEntry/deployment": deployment
 "/chat:v1/ChatAppLogEntry/deploymentFunction": deployment_function
@@ -76293,6 +76294,10 @@
 "/chat:v1/ReactionCreatedEventData/reaction": reaction
 "/chat:v1/ReactionDeletedEventData": reaction_deleted_event_data
 "/chat:v1/ReactionDeletedEventData/reaction": reaction
+"/chat:v1/ReplaceMessageCardsRequest": replace_message_cards_request
+"/chat:v1/ReplaceMessageCardsRequest/cardsV2": cards_v2
+"/chat:v1/ReplaceMessageCardsRequest/cardsV2/cards_v2": cards_v2
+"/chat:v1/ReplaceMessageCardsResponse": replace_message_cards_response
 "/chat:v1/RichLinkMetadata": rich_link_metadata
 "/chat:v1/RichLinkMetadata/calendarEventLinkData": calendar_event_link_data
 "/chat:v1/RichLinkMetadata/chatSpaceLinkData": chat_space_link_data
@@ -76608,6 +76613,8 @@
 "/chat:v1/chat.spaces.messages.reactions.list/pageSize": page_size
 "/chat:v1/chat.spaces.messages.reactions.list/pageToken": page_token
 "/chat:v1/chat.spaces.messages.reactions.list/parent": parent
+"/chat:v1/chat.spaces.messages.replaceCards": replace_space_message_cards
+"/chat:v1/chat.spaces.messages.replaceCards/name": name
 "/chat:v1/chat.spaces.messages.search": search_messages
 "/chat:v1/chat.spaces.messages.search/parent": parent
 "/chat:v1/chat.spaces.messages.update": update_space_message

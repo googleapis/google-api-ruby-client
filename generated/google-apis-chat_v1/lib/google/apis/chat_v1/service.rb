@@ -1917,6 +1917,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Replaces the cards included in a message. A Chat app can only replace cards on
+        # a human-created message if the message already contains cards, and the cards
+        # were created by the app. If the app replaces the cards with an empty list, the
+        # cards are removed. After removing the cards, the app cannot add cards back to
+        # the message. Requires [app authentication](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-app) with the [authorization scope](
+        # https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-
+        # scopes): - `https://www.googleapis.com/auth/chat.bot`
+        # @param [String] name
+        #   Required. The resource name of the message. Format: `spaces/`space`/messages/`
+        #   message``
+        # @param [Google::Apis::ChatV1::ReplaceMessageCardsRequest] replace_message_cards_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ChatV1::ReplaceMessageCardsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ChatV1::ReplaceMessageCardsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_space_message_cards(name, replace_message_cards_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:replaceCards', options)
+          command.request_representation = Google::Apis::ChatV1::ReplaceMessageCardsRequest::Representation
+          command.request_object = replace_message_cards_request_object
+          command.response_representation = Google::Apis::ChatV1::ReplaceMessageCardsResponse::Representation
+          command.response_class = Google::Apis::ChatV1::ReplaceMessageCardsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Searches for messages in Google Chat that the calling user has access to.
         # Returns a list of messages matching the search criteria. To search across all
         # spaces the user has access to, set `parent` to `spaces/-`. Using any other

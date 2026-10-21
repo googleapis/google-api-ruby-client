@@ -727,6 +727,15 @@ module Google
         # @return [String]
         attr_accessor :card_id
       
+        # If your Chat app [authenticates as a user](https://developers.google.com/
+        # workspace/chat/authenticate-authorize-chat-user), the output for a `User`
+        # resource (such as in the Messages and Memberships APIs) only populates the `
+        # name` and `type` fields for both internal and external users, unless they are
+        # members of the space or have prior affinity with the calling user.
+        # Corresponds to the JSON property `ownerUser`
+        # @return [Google::Apis::ChatV1::User]
+        attr_accessor :owner_user
+      
         def initialize(**args)
            update!(**args)
         end
@@ -735,6 +744,7 @@ module Google
         def update!(**args)
           @card = args[:card] if args.key?(:card)
           @card_id = args[:card_id] if args.key?(:card_id)
+          @owner_user = args[:owner_user] if args.key?(:owner_user)
         end
       end
       
@@ -6364,6 +6374,41 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reaction = args[:reaction] if args.key?(:reaction)
+        end
+      end
+      
+      # Request message for ReplaceMessageCards API method.
+      class ReplaceMessageCardsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. An array of [cards](https://developers.google.com/workspace/chat/api/
+        # reference/rest/v1/cards) to be included in the message. These cards will
+        # replace the existing cards of the message. If empty, the original cards
+        # included in the message will be cleared.
+        # Corresponds to the JSON property `cardsV2`
+        # @return [Array<Google::Apis::ChatV1::CardWithId>]
+        attr_accessor :cards_v2
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cards_v2 = args[:cards_v2] if args.key?(:cards_v2)
+        end
+      end
+      
+      # Response message for ReplaceMessageCards API.
+      class ReplaceMessageCardsResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
