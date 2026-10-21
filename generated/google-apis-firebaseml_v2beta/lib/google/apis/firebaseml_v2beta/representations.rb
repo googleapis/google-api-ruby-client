@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudAiplatformV1beta1GenerateContentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -905,6 +911,7 @@ module Google
       
           property :content, as: 'content', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
+          property :continuation_token, :base64 => true, as: 'continuationToken'
           property :finish_message, as: 'finishMessage'
           property :finish_reason, as: 'finishReason'
           property :grounding_metadata, as: 'groundingMetadata', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GroundingMetadata::Representation
@@ -1131,10 +1138,13 @@ module Google
           property :cached_content, as: 'cachedContent'
           collection :contents, as: 'contents', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content::Representation
       
+          property :continuation_token, :base64 => true, as: 'continuationToken'
           property :generation_config, as: 'generationConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerationConfig::Representation
       
           hash :labels, as: 'labels'
           property :model_armor_config, as: 'modelArmorConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig::Representation
+      
+          property :output_config, as: 'outputConfig', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig::Representation
       
           collection :safety_settings, as: 'safetySettings', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1SafetySetting::Representation
       
@@ -1144,6 +1154,13 @@ module Google
       
           collection :tools, as: 'tools', class: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool, decorator: Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Tool::Representation
       
+        end
+      end
+      
+      class GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :output_uri_prefix, as: 'outputUriPrefix'
         end
       end
       

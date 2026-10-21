@@ -586,6 +586,14 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
+        # Output only. An optional opaque continuation token returned when `
+        # finish_reason` is `CONTINUATION`. Clients can pass this token in a subsequent `
+        # GenerateContentRequest` to continue generation.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Output only. Describes the reason the model stopped generating tokens in more
         # detail. This field is returned only when `finish_reason` is set.
         # Corresponds to the JSON property `finishMessage`
@@ -643,6 +651,7 @@ module Google
           @avg_logprobs = args[:avg_logprobs] if args.key?(:avg_logprobs)
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @content = args[:content] if args.key?(:content)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @finish_message = args[:finish_message] if args.key?(:finish_message)
           @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
           @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
@@ -1440,6 +1449,14 @@ module Google
         # @return [Array<Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
+        # Optional. An opaque continuation token used to resume generation from a
+        # previous `GenerateContent` or `StreamGenerateContent` response that stopped
+        # with `finish_reason` set to `CONTINUATION`.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Configuration for content generation. This message contains all the parameters
         # that control how the model generates content. It allows you to influence the
         # randomness, length, and structure of the output.
@@ -1463,6 +1480,11 @@ module Google
         # Corresponds to the JSON property `modelArmorConfig`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ModelArmorConfig]
         attr_accessor :model_armor_config
+      
+        # Configuration for persisting output assets to external storage.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig]
+        attr_accessor :output_config
       
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
@@ -1498,13 +1520,37 @@ module Google
         def update!(**args)
           @cached_content = args[:cached_content] if args.key?(:cached_content)
           @contents = args[:contents] if args.key?(:contents)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @output_config = args[:output_config] if args.key?(:output_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tool_config = args[:tool_config] if args.key?(:tool_config)
           @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # Configuration for persisting output assets to external storage.
+      class GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud Storage URI prefix or directory where generated media
+        # assets should be written (e.g. `gs://my-bucket/prefix/`). Supported URI
+        # schemes: `gs://`. When set, media bytes are written directly to this location
+        # and returned as `FileData` with a `file_uri` instead of raw inline bytes.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
         end
       end
       
@@ -2923,10 +2969,10 @@ module Google
       end
       
       # A datatype containing media that is part of a multi-part Content message. A `
-      # Part` consists of data which has an associated datatype. A `Part` can only
-      # contain one of the accepted types in `Part.data`. For media types that are not
-      # text, `Part` must have a fixed IANA MIME type identifying the type and subtype
-      # of the media if `inline_data` or `file_data` field is filled with raw bytes.
+      # Part` consists of data which has an associated datatype. A `Part` must contain
+      # one of the accepted types in `Part.data`. For media types that are not text, `
+      # Part` must have a fixed IANA MIME type identifying the type and subtype of the
+      # media if `inline_data` or `file_data` field is filled with raw bytes.
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
@@ -4010,7 +4056,7 @@ module Google
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
-        # Tool to support computer use.
+        # A tool that enables the model to interact directly with a computer environment.
         # Corresponds to the JSON property `computerUse`
         # @return [Google::Apis::FirebasemlV2beta::GoogleCloudAiplatformV1beta1ToolComputerUse]
         attr_accessor :computer_use
@@ -4103,32 +4149,32 @@ module Google
         end
       end
       
-      # Tool to support computer use.
+      # A tool that enables the model to interact directly with a computer environment.
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         include Google::Apis::Core::Hashable
       
-        # Optional. Disabled safety policies for computer use.
+        # Optional. A list of safety policies to disable for the computer use tool.
         # Corresponds to the JSON property `disabledSafetyPolicies`
         # @return [Array<String>]
         attr_accessor :disabled_safety_policies
       
-        # Optional. Enables the prompt injection detection check on computer-use request.
+        # Optional. Whether to enable the prompt injection detection check on the
+        # computer use request.
         # Corresponds to the JSON property `enablePromptInjectionDetection`
         # @return [Boolean]
         attr_accessor :enable_prompt_injection_detection
         alias_method :enable_prompt_injection_detection?, :enable_prompt_injection_detection
       
-        # Required. The environment being operated.
+        # Required. The target environment where the computer use tool operates.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # Optional. By default, [predefined functions](https://cloud.google.com/vertex-
-        # ai/generative-ai/docs/computer-use#supported-actions) are included in the
-        # final model call. Some of them can be explicitly excluded from being
-        # automatically included. This can serve two purposes: 1. Using a more
-        # restricted / different action space. 2. Improving the definitions /
-        # instructions of predefined functions.
+        # Optional. A list of predefined functions to explicitly exclude from the model
+        # call. By default, [predefined functions](https://cloud.google.com/vertex-ai/
+        # generative-ai/docs/computer-use#supported-actions) are included. Excluding
+        # functions allows for a more restricted action space or custom definitions for
+        # predefined functions.
         # Corresponds to the JSON property `excludedPredefinedFunctions`
         # @return [Array<String>]
         attr_accessor :excluded_predefined_functions
