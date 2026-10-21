@@ -22,7 +22,19 @@ module Google
   module Apis
     module FcmV1
       
+      class AndroidBackgroundSyncMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidConfigV2
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -35,6 +47,18 @@ module Google
       end
       
       class AndroidNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidNotificationV2
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidRemoteNotification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -65,6 +89,12 @@ module Google
       end
       
       class FcmOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleFirebaseFcmV1AndroidNotificationV2LightSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -118,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidBackgroundSyncMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class AndroidConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -130,6 +166,25 @@ module Google
           property :notification, as: 'notification', class: Google::Apis::FcmV1::AndroidNotification, decorator: Google::Apis::FcmV1::AndroidNotification::Representation
       
           property :priority, as: 'priority'
+          property :restricted_package_name, as: 'restrictedPackageName'
+          property :restricted_satellite_ok, as: 'restrictedSatelliteOk'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class AndroidConfigV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_sync, as: 'backgroundSync', class: Google::Apis::FcmV1::AndroidBackgroundSyncMessage, decorator: Google::Apis::FcmV1::AndroidBackgroundSyncMessage::Representation
+      
+          property :bandwidth_constrained_ok, as: 'bandwidthConstrainedOk'
+          property :collapse_key, as: 'collapseKey'
+          hash :data, as: 'data'
+          property :direct_boot_ok, as: 'directBootOk'
+          property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::AndroidFcmOptions, decorator: Google::Apis::FcmV1::AndroidFcmOptions::Representation
+      
+          property :remote_notification, as: 'remoteNotification', class: Google::Apis::FcmV1::AndroidRemoteNotification, decorator: Google::Apis::FcmV1::AndroidRemoteNotification::Representation
+      
           property :restricted_package_name, as: 'restrictedPackageName'
           property :restricted_satellite_ok, as: 'restrictedSatelliteOk'
           property :ttl, as: 'ttl'
@@ -177,6 +232,49 @@ module Google
         end
       end
       
+      class AndroidNotificationV2
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, as: 'body'
+          collection :body_loc_args, as: 'bodyLocArgs'
+          property :body_loc_key, as: 'bodyLocKey'
+          property :channel_id, as: 'channelId'
+          property :click_action, as: 'clickAction'
+          property :color, as: 'color'
+          property :default_light_settings, as: 'defaultLightSettings'
+          property :default_sound, as: 'defaultSound'
+          property :default_vibrate_timings, as: 'defaultVibrateTimings'
+          property :event_time, as: 'eventTime'
+          property :icon, as: 'icon'
+          property :id, as: 'id'
+          property :image, as: 'image'
+          property :light_settings, as: 'lightSettings', class: Google::Apis::FcmV1::GoogleFirebaseFcmV1AndroidNotificationV2LightSettings, decorator: Google::Apis::FcmV1::GoogleFirebaseFcmV1AndroidNotificationV2LightSettings::Representation
+      
+          property :local_only, as: 'localOnly'
+          property :notification_count, as: 'notificationCount'
+          property :notification_priority, as: 'notificationPriority'
+          property :sound, as: 'sound'
+          property :sticky, as: 'sticky'
+          property :tag, as: 'tag'
+          property :ticker, as: 'ticker'
+          property :title, as: 'title'
+          collection :title_loc_args, as: 'titleLocArgs'
+          property :title_loc_key, as: 'titleLocKey'
+          collection :vibrate_timings, as: 'vibrateTimings'
+          property :visibility, as: 'visibility'
+        end
+      end
+      
+      class AndroidRemoteNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mutable_content, as: 'mutableContent'
+          property :notification, as: 'notification', class: Google::Apis::FcmV1::AndroidNotificationV2, decorator: Google::Apis::FcmV1::AndroidNotificationV2::Representation
+      
+          property :use_as_v1_data_message, as: 'useAsV1DataMessage'
+        end
+      end
+      
       class ApnsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -219,6 +317,16 @@ module Google
         end
       end
       
+      class GoogleFirebaseFcmV1AndroidNotificationV2LightSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::FcmV1::Color, decorator: Google::Apis::FcmV1::Color::Representation
+      
+          property :light_off_duration, as: 'lightOffDuration'
+          property :light_on_duration, as: 'lightOnDuration'
+        end
+      end
+      
       class LightSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -242,6 +350,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android, as: 'android', class: Google::Apis::FcmV1::AndroidConfig, decorator: Google::Apis::FcmV1::AndroidConfig::Representation
+      
+          property :android_v2, as: 'androidV2', class: Google::Apis::FcmV1::AndroidConfigV2, decorator: Google::Apis::FcmV1::AndroidConfigV2::Representation
       
           property :apns, as: 'apns', class: Google::Apis::FcmV1::ApnsConfig, decorator: Google::Apis::FcmV1::ApnsConfig::Representation
       
