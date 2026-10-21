@@ -570,7 +570,9 @@ module Google
           collection :allocations, as: 'allocations', class: Google::Apis::SaasservicemgmtV1beta1::Allocation, decorator: Google::Apis::SaasservicemgmtV1beta1::Allocation::Representation
       
           collection :attributes, as: 'attributes'
+          property :default_allocation, as: 'defaultAllocation'
           property :default_target, as: 'defaultTarget'
+          property :default_variant, as: 'defaultVariant'
           collection :rules, as: 'rules', class: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule, decorator: Google::Apis::SaasservicemgmtV1beta1::EvaluationRule::Representation
       
           collection :variants, as: 'variants', class: Google::Apis::SaasservicemgmtV1beta1::Variant, decorator: Google::Apis::SaasservicemgmtV1beta1::Variant::Representation
@@ -1207,6 +1209,7 @@ module Google
           property :create_time, as: 'createTime'
           collection :default_flag_revisions, as: 'defaultFlagRevisions'
           property :default_release, as: 'defaultRelease'
+          property :delete_time, as: 'deleteTime'
           collection :dependencies, as: 'dependencies', class: Google::Apis::SaasservicemgmtV1beta1::Dependency, decorator: Google::Apis::SaasservicemgmtV1beta1::Dependency::Representation
       
           property :etag, as: 'etag'
