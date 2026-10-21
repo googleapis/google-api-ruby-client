@@ -371024,7 +371024,12 @@
 "/ondemandscanning:v1beta1/Layer": layer
 "/ondemandscanning:v1beta1/Layer/arguments": arguments
 "/ondemandscanning:v1beta1/Layer/directive": directive
+"/ondemandscanning:v1beta1/LayerAttribute": layer_attribute
+"/ondemandscanning:v1beta1/LayerAttribute/plugin": plugin
+"/ondemandscanning:v1beta1/LayerAttribute/value": value
 "/ondemandscanning:v1beta1/LayerDetails": layer_details
+"/ondemandscanning:v1beta1/LayerDetails/attributes": attributes
+"/ondemandscanning:v1beta1/LayerDetails/attributes/attribute": attribute
 "/ondemandscanning:v1beta1/LayerDetails/baseImages": base_images
 "/ondemandscanning:v1beta1/LayerDetails/baseImages/base_image": base_image
 "/ondemandscanning:v1beta1/LayerDetails/chainId": chain_id
