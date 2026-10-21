@@ -652,6 +652,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetAppVolumeBackupPlanAssociationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetAppVolumeBackupProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetAppVolumeDataSourceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetAppVolumeDataSourceReferenceProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1024,6 +1048,8 @@ module Google
           collection :kms_key_versions, as: 'kmsKeyVersions'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :netapp_volume_backup_properties, as: 'netappVolumeBackupProperties', class: Google::Apis::BackupdrV1::NetAppVolumeBackupProperties, decorator: Google::Apis::BackupdrV1::NetAppVolumeBackupProperties::Representation
+      
           property :resource_size_bytes, :numeric_string => true, as: 'resourceSizeBytes'
           property :satisfies_pzi, as: 'satisfiesPzi'
           property :satisfies_pzs, as: 'satisfiesPzs'
@@ -1198,6 +1224,8 @@ module Google
           property :filestore_instance_backup_plan_association_properties, as: 'filestoreInstanceBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::FilestoreInstanceBackupPlanAssociationProperties::Representation
       
           property :name, as: 'name'
+          property :netapp_volume_backup_plan_association_properties, as: 'netappVolumeBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::NetAppVolumeBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::NetAppVolumeBackupPlanAssociationProperties::Representation
+      
           property :resource, as: 'resource'
           property :resource_type, as: 'resourceType'
           collection :rules_config_info, as: 'rulesConfigInfo', class: Google::Apis::BackupdrV1::RuleConfigInfo, decorator: Google::Apis::BackupdrV1::RuleConfigInfo::Representation
@@ -1504,6 +1532,8 @@ module Google
       
           property :gcp_resourcename, as: 'gcpResourcename'
           property :location, as: 'location'
+          property :netapp_volume_datasource_properties, as: 'netappVolumeDatasourceProperties', class: Google::Apis::BackupdrV1::NetAppVolumeDataSourceProperties, decorator: Google::Apis::BackupdrV1::NetAppVolumeDataSourceProperties::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1519,6 +1549,8 @@ module Google
       
           property :gcp_resourcename, as: 'gcpResourcename'
           property :location, as: 'location'
+          property :netapp_volume_properties, as: 'netappVolumeProperties', class: Google::Apis::BackupdrV1::NetAppVolumeDataSourceReferenceProperties, decorator: Google::Apis::BackupdrV1::NetAppVolumeDataSourceReferenceProperties::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -2059,6 +2091,36 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :items, as: 'items', class: Google::Apis::BackupdrV1::Entry, decorator: Google::Apis::BackupdrV1::Entry::Representation
       
+        end
+      end
+      
+      class NetAppVolumeBackupPlanAssociationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_resource_create_time, as: 'sourceResourceCreateTime'
+        end
+      end
+      
+      class NetAppVolumeBackupProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_resource, as: 'sourceResource'
+        end
+      end
+      
+      class NetAppVolumeDataSourceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_resource, as: 'sourceResource'
+          property :source_resource_create_time, as: 'sourceResourceCreateTime'
+        end
+      end
+      
+      class NetAppVolumeDataSourceReferenceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :source_resource, as: 'sourceResource'
+          property :source_resource_create_time, as: 'sourceResourceCreateTime'
         end
       end
       

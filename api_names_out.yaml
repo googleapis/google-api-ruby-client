@@ -61041,6 +61041,7 @@
 "/backupdr:v1/Backup/labels": labels
 "/backupdr:v1/Backup/labels/label": label
 "/backupdr:v1/Backup/name": name
+"/backupdr:v1/Backup/netappVolumeBackupProperties": netapp_volume_backup_properties
 "/backupdr:v1/Backup/resourceSizeBytes": resource_size_bytes
 "/backupdr:v1/Backup/satisfiesPzi": satisfies_pzi
 "/backupdr:v1/Backup/satisfiesPzs": satisfies_pzs
@@ -61140,6 +61141,7 @@
 "/backupdr:v1/BackupPlanAssociation/dataSource": data_source
 "/backupdr:v1/BackupPlanAssociation/filestoreInstanceBackupPlanAssociationProperties": filestore_instance_backup_plan_association_properties
 "/backupdr:v1/BackupPlanAssociation/name": name
+"/backupdr:v1/BackupPlanAssociation/netappVolumeBackupPlanAssociationProperties": netapp_volume_backup_plan_association_properties
 "/backupdr:v1/BackupPlanAssociation/resource": resource
 "/backupdr:v1/BackupPlanAssociation/resourceType": resource_type
 "/backupdr:v1/BackupPlanAssociation/rulesConfigInfo": rules_config_info
@@ -61331,6 +61333,7 @@
 "/backupdr:v1/DataSourceGcpResource/filestoreInstanceDatasourceProperties": filestore_instance_datasource_properties
 "/backupdr:v1/DataSourceGcpResource/gcpResourcename": gcp_resourcename
 "/backupdr:v1/DataSourceGcpResource/location": location
+"/backupdr:v1/DataSourceGcpResource/netappVolumeDatasourceProperties": netapp_volume_datasource_properties
 "/backupdr:v1/DataSourceGcpResource/type": type
 "/backupdr:v1/DataSourceGcpResourceInfo": data_source_gcp_resource_info
 "/backupdr:v1/DataSourceGcpResourceInfo/alloyDbClusterProperties": alloy_db_cluster_properties
@@ -61338,6 +61341,7 @@
 "/backupdr:v1/DataSourceGcpResourceInfo/filestoreInstanceProperties": filestore_instance_properties
 "/backupdr:v1/DataSourceGcpResourceInfo/gcpResourcename": gcp_resourcename
 "/backupdr:v1/DataSourceGcpResourceInfo/location": location
+"/backupdr:v1/DataSourceGcpResourceInfo/netappVolumeProperties": netapp_volume_properties
 "/backupdr:v1/DataSourceGcpResourceInfo/type": type
 "/backupdr:v1/DataSourceReference": data_source_reference
 "/backupdr:v1/DataSourceReference/createTime": create_time
@@ -61650,6 +61654,16 @@
 "/backupdr:v1/Metadata": metadata
 "/backupdr:v1/Metadata/items": items
 "/backupdr:v1/Metadata/items/item": item
+"/backupdr:v1/NetAppVolumeBackupPlanAssociationProperties": net_app_volume_backup_plan_association_properties
+"/backupdr:v1/NetAppVolumeBackupPlanAssociationProperties/sourceResourceCreateTime": source_resource_create_time
+"/backupdr:v1/NetAppVolumeBackupProperties": net_app_volume_backup_properties
+"/backupdr:v1/NetAppVolumeBackupProperties/sourceResource": source_resource
+"/backupdr:v1/NetAppVolumeDataSourceProperties": net_app_volume_data_source_properties
+"/backupdr:v1/NetAppVolumeDataSourceProperties/sourceResource": source_resource
+"/backupdr:v1/NetAppVolumeDataSourceProperties/sourceResourceCreateTime": source_resource_create_time
+"/backupdr:v1/NetAppVolumeDataSourceReferenceProperties": net_app_volume_data_source_reference_properties
+"/backupdr:v1/NetAppVolumeDataSourceReferenceProperties/sourceResource": source_resource
+"/backupdr:v1/NetAppVolumeDataSourceReferenceProperties/sourceResourceCreateTime": source_resource_create_time
 "/backupdr:v1/NetworkConfig": network_config
 "/backupdr:v1/NetworkConfig/network": network
 "/backupdr:v1/NetworkConfig/peeringMode": peering_mode
