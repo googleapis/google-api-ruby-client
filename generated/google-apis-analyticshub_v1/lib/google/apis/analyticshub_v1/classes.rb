@@ -855,7 +855,7 @@ module Google
         # @return [String]
         attr_accessor :delimiter
       
-        # Optional. The key fields to construct from the row key. The fields must be
+        # Required. The key fields to construct from the row key. The fields must be
         # present in the message as a top-level field, i.e. JSON path expressions will
         # not traverse into nested objects.
         # Corresponds to the JSON property `keyFields`
