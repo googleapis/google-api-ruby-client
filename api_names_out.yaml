@@ -465749,6 +465749,7 @@
 "/workstations:v1beta/BoostConfig/accelerators": accelerators
 "/workstations:v1beta/BoostConfig/accelerators/accelerator": accelerator
 "/workstations:v1beta/BoostConfig/bootDiskSizeGb": boot_disk_size_gb
+"/workstations:v1beta/BoostConfig/enableAutomaticFailover": enable_automatic_failover
 "/workstations:v1beta/BoostConfig/enableNestedVirtualization": enable_nested_virtualization
 "/workstations:v1beta/BoostConfig/id": id
 "/workstations:v1beta/BoostConfig/machineType": machine_type
@@ -465780,6 +465781,8 @@
 "/workstations:v1beta/Expr/location": location
 "/workstations:v1beta/Expr/title": title
 "/workstations:v1beta/GatewayConfig": gateway_config
+"/workstations:v1beta/GatewayConfig/directAccessPorts": direct_access_ports
+"/workstations:v1beta/GatewayConfig/directAccessPorts/direct_access_port": direct_access_port
 "/workstations:v1beta/GatewayConfig/http2Enabled": http2_enabled
 "/workstations:v1beta/GceConfidentialInstanceConfig": gce_confidential_instance_config
 "/workstations:v1beta/GceConfidentialInstanceConfig/enableConfidentialCompute": enable_confidential_compute
