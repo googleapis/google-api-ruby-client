@@ -421963,6 +421963,7 @@
 "/servicecontrol:v1/AuditLog/authenticationInfo": authentication_info
 "/servicecontrol:v1/AuditLog/authorizationInfo": authorization_info
 "/servicecontrol:v1/AuditLog/authorizationInfo/authorization_info": authorization_info
+"/servicecontrol:v1/AuditLog/callerAgent": caller_agent
 "/servicecontrol:v1/AuditLog/metadata": metadata
 "/servicecontrol:v1/AuditLog/metadata/metadatum": metadatum
 "/servicecontrol:v1/AuditLog/metadata/metadatum/metadatum": metadatum
@@ -422016,6 +422017,8 @@
 "/servicecontrol:v1/AuthorizationInfo/privilegedAccessManagerMetadata": privileged_access_manager_metadata
 "/servicecontrol:v1/AuthorizationInfo/resource": resource
 "/servicecontrol:v1/AuthorizationInfo/resourceAttributes": resource_attributes
+"/servicecontrol:v1/CallerAgent": caller_agent
+"/servicecontrol:v1/CallerAgent/authority": authority
 "/servicecontrol:v1/CheckError": check_error
 "/servicecontrol:v1/CheckError/code": code
 "/servicecontrol:v1/CheckError/detail": detail

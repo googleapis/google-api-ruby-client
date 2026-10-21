@@ -207,6 +207,11 @@ module Google
         # @return [Array<Google::Apis::ServicecontrolV1::AuthorizationInfo>]
         attr_accessor :authorization_info
       
+        # Information set when the caller is an agent.
+        # Corresponds to the JSON property `callerAgent`
+        # @return [Google::Apis::ServicecontrolV1::CallerAgent]
+        attr_accessor :caller_agent
+      
         # Other service-specific data about the request, response, and other information
         # associated with the current audited event.
         # Corresponds to the JSON property `metadata`
@@ -307,6 +312,7 @@ module Google
           @api_version_identifier = args[:api_version_identifier] if args.key?(:api_version_identifier)
           @authentication_info = args[:authentication_info] if args.key?(:authentication_info)
           @authorization_info = args[:authorization_info] if args.key?(:authorization_info)
+          @caller_agent = args[:caller_agent] if args.key?(:caller_agent)
           @metadata = args[:metadata] if args.key?(:metadata)
           @method_name = args[:method_name] if args.key?(:method_name)
           @num_response_items = args[:num_response_items] if args.key?(:num_response_items)
@@ -583,6 +589,25 @@ module Google
           @privileged_access_manager_metadata = args[:privileged_access_manager_metadata] if args.key?(:privileged_access_manager_metadata)
           @resource = args[:resource] if args.key?(:resource)
           @resource_attributes = args[:resource_attributes] if args.key?(:resource_attributes)
+        end
+      end
+      
+      # Information set when the caller is an agent.
+      class CallerAgent
+        include Google::Apis::Core::Hashable
+      
+        # The type of authority for the caller agent.
+        # Corresponds to the JSON property `authority`
+        # @return [String]
+        attr_accessor :authority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authority = args[:authority] if args.key?(:authority)
         end
       end
       
