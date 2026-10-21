@@ -82,10 +82,10 @@ module Google
         end
         
         # Gets the CMEK config. Gets the Customer Managed Encryption Key configured with
-        # the Cloud Tasks lcoation. By default there is no kms_key configured.
+        # the Cloud Tasks location. By default there is no `kms_key` configured.
         # @param [String] name
-        #   Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/
-        #   CmekConfig`
+        #   Required. The config. For example: `projects/PROJECT_ID/locations/LOCATION_ID/
+        #   cmekConfig`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -175,7 +175,7 @@ module Google
         # the KMS-key provided in the config.
         # @param [String] name
         #   Output only. The config resource name which includes the project and location
-        #   and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/
+        #   and must end in 'cmekConfig', in the format `projects/PROJECT_ID/locations/
         #   LOCATION_ID/cmekConfig`
         # @param [Google::Apis::CloudtasksV2::CmekConfig] cmek_config_object
         # @param [String] update_mask

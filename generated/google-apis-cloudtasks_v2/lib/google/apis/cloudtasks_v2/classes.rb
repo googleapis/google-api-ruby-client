@@ -272,7 +272,7 @@ module Google
         # Required. The list of requests to create tasks. The queue specified in parent
         # field of each CreateTaskRequest will be the same. This validation happens on
         # the client side as well as in the handler. BatchCreateTasksRequest.parent will
-        # also be the same value as the individual CreateTaskRequest.parent . The
+        # also be the same value as the individual `CreateTaskRequest.parent`. The
         # maximum number of requests is 100.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::CloudtasksV2::CreateTaskRequest>]
@@ -486,7 +486,7 @@ module Google
         attr_accessor :kms_key
       
         # Output only. The config resource name which includes the project and location
-        # and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/
+        # and must end in 'cmekConfig', in the format `projects/PROJECT_ID/locations/
         # LOCATION_ID/cmekConfig`
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -855,11 +855,11 @@ module Google
         # properties of the task. * Host: This will be computed by Cloud Tasks and
         # derived from HttpRequest.url. * Content-Length: This will be computed by Cloud
         # Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `
-        # Content-Type` to a media type when the task is created. For example,`Content-
+        # Content-Type` to a media type when the task is created. For example, `Content-
         # Type` can be set to `"application/octet-stream"` or `"application/json"`. The
-        # default value is set to "application/json"`. * User-Agent: This will be set to
-        # `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to
-        # RFC2616) can be specified using comma-separated values. The size of the
+        # default value is set to `"application/json"`. * User-Agent: This will be set
+        # to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according
+        # to RFC2616) can be specified using comma-separated values. The size of the
         # headers must be less than 80KB. Queue-level headers to override headers of all
         # the tasks in the queue. Do not put business sensitive or personally
         # identifying data in the HTTP Header Override Configuration or other similar
