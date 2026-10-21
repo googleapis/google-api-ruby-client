@@ -1382,6 +1382,7 @@ module Google
           property :connection_name, as: 'connectionName'
           property :create_time, as: 'createTime'
           property :current_disk_size, :numeric_string => true, as: 'currentDiskSize'
+          property :database_center_integration, as: 'databaseCenterIntegration'
           property :database_center_integration_enabled, as: 'databaseCenterIntegrationEnabled'
           property :database_installed_version, as: 'databaseInstalledVersion'
           property :database_version, as: 'databaseVersion'
@@ -1438,6 +1439,7 @@ module Google
           property :service_account_email_address, as: 'serviceAccountEmailAddress'
           property :settings, as: 'settings', class: Google::Apis::SqladminV1::Settings, decorator: Google::Apis::SqladminV1::Settings::Representation
       
+          property :skip_precheck, as: 'skipPrecheck'
           property :sql_network_architecture, as: 'sqlNetworkArchitecture'
           property :state, as: 'state'
           collection :suspension_reason, as: 'suspensionReason'
@@ -2329,6 +2331,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :max_runtime, as: 'maxRuntime'
           collection :pre_check_response, as: 'preCheckResponse', class: Google::Apis::SqladminV1::PreCheckResponse, decorator: Google::Apis::SqladminV1::PreCheckResponse::Representation
       
           property :target_database_version, as: 'targetDatabaseVersion'
@@ -3005,6 +3008,7 @@ module Google
       class WorkloadCapture
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_id, as: 'backupId'
           property :end_time, as: 'endTime'
           property :replay_instance, as: 'replayInstance'
           property :retention_days, as: 'retentionDays'
