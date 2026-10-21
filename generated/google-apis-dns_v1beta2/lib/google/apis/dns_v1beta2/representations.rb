@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,7 +124,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleLongrunningListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleLongrunningOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOutboundEndpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +179,12 @@ module Google
       end
       
       class ManagedZoneForwardingConfigNameServerTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZoneForwardingConfigOutboundEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OutboundEndpoint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PoliciesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +305,12 @@ module Google
       end
       
       class PolicyAlternativeNameServerConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyAlternativeNameServerConfigOutboundEndpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -501,6 +555,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -588,6 +648,16 @@ module Google
         end
       end
       
+      class GoogleLongrunningListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::DnsV1beta2::GoogleLongrunningOperation, decorator: Google::Apis::DnsV1beta2::GoogleLongrunningOperation::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class GoogleLongrunningOperation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -597,6 +667,36 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::DnsV1beta2::Location, decorator: Google::Apis::DnsV1beta2::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListOutboundEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :outbound_endpoints, as: 'outboundEndpoints', class: Google::Apis::DnsV1beta2::OutboundEndpoint, decorator: Google::Apis::DnsV1beta2::OutboundEndpoint::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class Location
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
         end
       end
       
@@ -653,6 +753,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :outbound_endpoints, as: 'outboundEndpoints', class: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigOutboundEndpoint, decorator: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigOutboundEndpoint::Representation
+      
           collection :target_name_servers, as: 'targetNameServers', class: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigNameServerTarget, decorator: Google::Apis::DnsV1beta2::ManagedZoneForwardingConfigNameServerTarget::Representation
       
         end
@@ -666,6 +768,14 @@ module Google
           property :ipv4_address, as: 'ipv4Address'
           property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ManagedZoneForwardingConfigOutboundEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
         end
       end
       
@@ -795,6 +905,35 @@ module Google
         end
       end
       
+      class OperationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :status_message, as: 'statusMessage'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
+      class OutboundEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :endpoint_ip, as: 'endpointIp'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :subnetwork, as: 'subnetwork'
+          hash :tags, as: 'tags'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class PoliciesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -843,8 +982,18 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          collection :outbound_endpoints, as: 'outboundEndpoints', class: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigOutboundEndpoint, decorator: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigOutboundEndpoint::Representation
+      
           collection :target_name_servers, as: 'targetNameServers', class: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigTargetNameServer, decorator: Google::Apis::DnsV1beta2::PolicyAlternativeNameServerConfigTargetNameServer::Representation
       
+        end
+      end
+      
+      class PolicyAlternativeNameServerConfigOutboundEndpoint
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :name, as: 'name'
         end
       end
       
@@ -911,6 +1060,8 @@ module Google
           property :networks_per_managed_zone, as: 'networksPerManagedZone'
           property :networks_per_policy, as: 'networksPerPolicy'
           property :networks_per_response_policy, as: 'networksPerResponsePolicy'
+          property :outbound_endpoints_per_managed_zone, as: 'outboundEndpointsPerManagedZone'
+          property :outbound_endpoints_per_policy, as: 'outboundEndpointsPerPolicy'
           property :peering_zones_per_target_network, as: 'peeringZonesPerTargetNetwork'
           property :policies, as: 'policies'
           property :resource_records_per_rrset, as: 'resourceRecordsPerRrset'
