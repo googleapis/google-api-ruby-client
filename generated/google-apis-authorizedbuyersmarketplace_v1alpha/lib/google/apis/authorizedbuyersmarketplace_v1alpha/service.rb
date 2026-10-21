@@ -2136,6 +2136,49 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Searches for media planner accounts matching the given DSP seat ID. For
+        # curators, this will return all matching media planners that have accepted
+        # curator terms.
+        # @param [String] dsp_seat_id
+        #   Required. The DSP seat ID to search for. The DSP seat ID is provided by the
+        #   media planner.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of media planners to return. If unspecified, at
+        #   most 100 media planners will be returned. The maximum value is 500; values
+        #   above 500 will be coerced to 500.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return. This
+        #   value is received from a previous `SearchMediaPlanners` call in `
+        #   SearchMediaPlannersResponse.nextPageToken`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::SearchMediaPlannersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AuthorizedbuyersmarketplaceV1alpha::SearchMediaPlannersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def search_media_planners(dsp_seat_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/mediaPlanners:search', options)
+          command.response_representation = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::SearchMediaPlannersResponse::Representation
+          command.response_class = Google::Apis::AuthorizedbuyersmarketplaceV1alpha::SearchMediaPlannersResponse
+          command.query['dspSeatId'] = dsp_seat_id unless dsp_seat_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

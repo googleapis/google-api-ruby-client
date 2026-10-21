@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchMediaPlannersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SendRfpRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1240,6 +1246,15 @@ module Google
           property :bids7_days, :numeric_string => true, as: 'bids7Days'
           property :filtered_bid_rate7_days, as: 'filteredBidRate7Days'
           property :must_bid_rate_current_month, as: 'mustBidRateCurrentMonth'
+        end
+      end
+      
+      class SearchMediaPlannersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :media_planners, as: 'mediaPlanners', class: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner, decorator: Google::Apis::AuthorizedbuyersmarketplaceV1alpha::MediaPlanner::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
