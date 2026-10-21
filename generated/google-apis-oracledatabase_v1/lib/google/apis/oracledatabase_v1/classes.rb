@@ -111,15 +111,16 @@ module Google
       class AutonomousDatabase
         include Google::Apis::Core::Hashable
       
-        # Optional. Immutable. The password for the default ADMIN user. Note: Only one
-        # of `admin_password_secret_version` or `admin_password` can be populated.
+        # Optional. Input only. Immutable. The password for the default ADMIN user. Note:
+        # Only one of `admin_password_secret_version` or `admin_password` can be
+        # populated.
         # Corresponds to the JSON property `adminPassword`
         # @return [String]
         attr_accessor :admin_password
       
-        # Optional. Immutable. The resource name of a secret version in Secret Manager
-        # which contains the database admin user's password. Format: projects/`project`/
-        # secrets/`secret`/versions/`version`. Note: Only one of `
+        # Optional. Input only. Immutable. The resource name of a secret version in
+        # Secret Manager which contains the database admin user's password. Format:
+        # projects/`project`/secrets/`secret`/versions/`version`. Note: Only one of `
         # admin_password_secret_version` or `admin_password` can be populated.
         # Corresponds to the JSON property `adminPasswordSecretVersion`
         # @return [String]
@@ -1326,7 +1327,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User friendly name for this resource.
+        # Optional. Immutable. User friendly name for this resource.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1337,9 +1338,9 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. The GCP Oracle zone where Oracle Exadata Infrastructure is hosted.
-        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
-        # availability.
+        # Optional. Immutable. The GCP Oracle zone where Oracle Exadata Infrastructure
+        # is hosted. Example: us-east4-b-r2. If not specified, the system will pick a
+        # zone based on availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -1593,19 +1594,19 @@ module Google
       class CloudVmCluster
         include Google::Apis::Core::Hashable
       
-        # Optional. The name of the backup OdbSubnet associated with the VM Cluster.
-        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network`/
-        # odbSubnets/`odb_subnet`
+        # Optional. Immutable. The name of the backup OdbSubnet associated with the VM
+        # Cluster. Format: projects/`project`/locations/`location`/odbNetworks/`
+        # odb_network`/odbSubnets/`odb_subnet`
         # Corresponds to the JSON property `backupOdbSubnet`
         # @return [String]
         attr_accessor :backup_odb_subnet
       
-        # Optional. CIDR range of the backup subnet.
+        # Optional. Immutable. CIDR range of the backup subnet.
         # Corresponds to the JSON property `backupSubnetCidr`
         # @return [String]
         attr_accessor :backup_subnet_cidr
       
-        # Optional. Network settings. CIDR to use for cluster IP allocation.
+        # Optional. Immutable. Network settings. CIDR to use for cluster IP allocation.
         # Corresponds to the JSON property `cidr`
         # @return [String]
         attr_accessor :cidr
@@ -1615,21 +1616,21 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. User friendly name for this resource.
+        # Optional. Immutable. User friendly name for this resource.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Required. The name of the Exadata Infrastructure resource on which VM cluster
-        # resource is created, in the following format: projects/`project`/locations/`
-        # region`/cloudExadataInfrastuctures/`cloud_extradata_infrastructure`
+        # Required. Immutable. The name of the Exadata Infrastructure resource on which
+        # VM cluster resource is created, in the following format: projects/`project`/
+        # locations/`region`/cloudExadataInfrastuctures/`cloud_extradata_infrastructure`
         # Corresponds to the JSON property `exadataInfrastructure`
         # @return [String]
         attr_accessor :exadata_infrastructure
       
-        # Optional. The name of ExascaleDbStorageVault associated with the VM Cluster.
-        # Format: projects/`project`/locations/`location`/exascaleDbStorageVaults/`
-        # exascale_db_storage_vault`
+        # Optional. Immutable. The name of ExascaleDbStorageVault associated with the VM
+        # Cluster. Format: projects/`project`/locations/`location`/
+        # exascaleDbStorageVaults/`exascale_db_storage_vault`
         # Corresponds to the JSON property `exascaleDbStorageVault`
         # @return [String]
         attr_accessor :exascale_db_storage_vault
@@ -1658,23 +1659,30 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. The name of the VPC network. Format: projects/`project`/global/
-        # networks/`network`
+        # Optional. Immutable. The name of the VPC network. Format: projects/`project`/
+        # global/networks/`network`
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Optional. The name of the OdbNetwork associated with the VM Cluster. Format:
-        # projects/`project`/locations/`location`/odbNetworks/`odb_network` It is
-        # optional but if specified, this should match the parent ODBNetwork of the
+        # Optional. Immutable. The name of the OdbDnsZone for using custom domain name
+        # for the VM Cluster. Format: projects/`project`/locations/`location`/
+        # odbNetworks/`odb_network`/odbDnsZones/`odb_dns_zone`
+        # Corresponds to the JSON property `odbDnsZone`
+        # @return [String]
+        attr_accessor :odb_dns_zone
+      
+        # Optional. Immutable. The name of the OdbNetwork associated with the VM Cluster.
+        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network` It
+        # is optional but if specified, this should match the parent ODBNetwork of the
         # odb_subnet and backup_odb_subnet.
         # Corresponds to the JSON property `odbNetwork`
         # @return [String]
         attr_accessor :odb_network
       
-        # Optional. The name of the OdbSubnet associated with the VM Cluster for IP
-        # allocation. Format: projects/`project`/locations/`location`/odbNetworks/`
-        # odb_network`/odbSubnets/`odb_subnet`
+        # Optional. Immutable. The name of the OdbSubnet associated with the VM Cluster
+        # for IP allocation. Format: projects/`project`/locations/`location`/odbNetworks/
+        # `odb_network`/odbSubnets/`odb_subnet`
         # Corresponds to the JSON property `odbSubnet`
         # @return [String]
         attr_accessor :odb_subnet
@@ -1702,6 +1710,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @odb_dns_zone = args[:odb_dns_zone] if args.key?(:odb_dns_zone)
           @odb_network = args[:odb_network] if args.key?(:odb_network)
           @odb_subnet = args[:odb_subnet] if args.key?(:odb_subnet)
           @properties = args[:properties] if args.key?(:properties)
@@ -1945,6 +1954,32 @@ module Google
         end
       end
       
+      # Contains the name and datatype of a column in a SQL Result.
+      class Column
+        include Google::Apis::Core::Hashable
+      
+        # Required. Name of the column.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Database-specific type name (e.g., "VARCHAR2(255)", "NUMBER", "DATE",
+        # "CLOB")
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The request for `CloudExadataInfrastructure.ConfigureExascale`.
       class ConfigureExascaleCloudExadataInfrastructureRequest
         include Google::Apis::Core::Hashable
@@ -2100,14 +2135,14 @@ module Google
       class Database
         include Google::Apis::Core::Hashable
       
-        # Optional. The password for the default ADMIN user. Note: Only one of `
-        # admin_password_secret_version` or `admin_password` can be populated.
+        # Optional. Input only. The password for the default ADMIN user. Note: Only one
+        # of `admin_password_secret_version` or `admin_password` can be populated.
         # Corresponds to the JSON property `adminPassword`
         # @return [String]
         attr_accessor :admin_password
       
-        # Optional. The resource name of a secret version in Secret Manager which
-        # contains the database admin user's password. Format: projects/`project`/
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the database admin user's password. Format: projects/`project`/
         # secrets/`secret`/versions/`version`. Note: Only one of `
         # admin_password_secret_version` or `admin_password` can be populated.
         # Corresponds to the JSON property `adminPasswordSecretVersion`
@@ -2191,15 +2226,16 @@ module Google
         # @return [Google::Apis::OracledatabaseV1::DatabaseProperties]
         attr_accessor :properties
       
-        # Optional. The TDE wallet password for the database. Note: Only one of `
-        # tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.
+        # Optional. Input only. The TDE wallet password for the database. Note: Only one
+        # of `tde_wallet_password_secret_version` or `tde_wallet_password` can be
+        # populated.
         # Corresponds to the JSON property `tdeWalletPassword`
         # @return [String]
         attr_accessor :tde_wallet_password
       
-        # Optional. The resource name of a secret version in Secret Manager which
-        # contains the TDE wallet password for the database. Format: projects/`project`/
-        # secrets/`secret`/versions/`version`. Note: Only one of `
+        # Optional. Input only. The resource name of a secret version in Secret Manager
+        # which contains the TDE wallet password for the database. Format: projects/`
+        # project`/secrets/`secret`/versions/`version`. Note: Only one of `
         # tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.
         # Corresponds to the JSON property `tdeWalletPasswordSecretVersion`
         # @return [String]
@@ -2263,6 +2299,102 @@ module Google
           @character_set = args[:character_set] if args.key?(:character_set)
           @character_set_type = args[:character_set_type] if args.key?(:character_set_type)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Represents DatabaseConnection resource.
+      class DatabaseConnection
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. Oracle Easy Connect or TNS connection string. Example: "
+        # your-db-host.example.com:1521/YOUR_SERVICE_NAME"
+        # Corresponds to the JSON property `connectionString`
+        # @return [String]
+        attr_accessor :connection_string
+      
+        # Output only. The create time of the resource.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Immutable. User-friendly display name for the connection.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Optional. Optional: Labels as key-value pairs to organize the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Output only. Additional information about the current state of the connection.
+        # Corresponds to the JSON property `lifecycleDetails`
+        # @return [String]
+        attr_accessor :lifecycle_details
+      
+        # Identifier. The resource name of the DatabaseConnection. Format: projects/`
+        # project`/locations/`location`/databaseConnections/`database_connection`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Immutable. For Oracle Database@Google cloud resources. Format:
+        # projects/`project`/locations/`location`/odbNetworks/`odbNetwork`
+        # Corresponds to the JSON property `odbNetwork`
+        # @return [String]
+        attr_accessor :odb_network
+      
+        # Optional. The resource name of the GCP Secret Manager secret version
+        # containing the password for the specified username. Format: projects/`project`/
+        # secrets/`secret_id`/versions/`version_id` The service's Per-Product Per-
+        # Project Service Account (P4SA) must have the 'secretmanager.secretAccessor'
+        # permission on this secret.
+        # Corresponds to the JSON property `passwordSecretVersion`
+        # @return [String]
+        attr_accessor :password_secret_version
+      
+        # Output only. The current state of the connection.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The update time of the resource.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Optional. Immutable. The default database username to use for connections.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
+        # Optional. Optional: The resource name of the GCP Secret Manager secret version
+        # containing base64 encoded content of the Oracle Wallet ZIP file required for
+        # mTLS/TLS connections. Format: projects/`project`/secrets/`secret_id`/versions/`
+        # version_id` The service's Per-Product Per-Project Service Account (P4SA) must
+        # have the 'secretmanager.secretAccessor' permission on this secret.
+        # Corresponds to the JSON property `walletSecretVersion`
+        # @return [String]
+        attr_accessor :wallet_secret_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_string = args[:connection_string] if args.key?(:connection_string)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @lifecycle_details = args[:lifecycle_details] if args.key?(:lifecycle_details)
+          @name = args[:name] if args.key?(:name)
+          @odb_network = args[:odb_network] if args.key?(:odb_network)
+          @password_secret_version = args[:password_secret_version] if args.key?(:password_secret_version)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @username = args[:username] if args.key?(:username)
+          @wallet_secret_version = args[:wallet_secret_version] if args.key?(:wallet_secret_version)
         end
       end
       
@@ -2716,8 +2848,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The display name for the System db. The name does not have to be
-        # unique within your project.
+        # Required. Immutable. The display name for the System db. The name does not
+        # have to be unique within your project.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -2728,8 +2860,8 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. The GCP Oracle zone where Oracle DbSystem is hosted. Example: us-
-        # east4-b-r2. If not specified, the system will pick a zone based on
+        # Optional. Immutable. The GCP Oracle zone where Oracle DbSystem is hosted.
+        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
         # availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
@@ -2751,17 +2883,17 @@ module Google
         # @return [String]
         attr_accessor :oci_url
       
-        # Optional. The name of the OdbNetwork associated with the DbSystem. Format:
-        # projects/`project`/locations/`location`/odbNetworks/`odb_network` It is
-        # optional but if specified, this should match the parent ODBNetwork of the
+        # Optional. Immutable. The name of the OdbNetwork associated with the DbSystem.
+        # Format: projects/`project`/locations/`location`/odbNetworks/`odb_network` It
+        # is optional but if specified, this should match the parent ODBNetwork of the
         # OdbSubnet.
         # Corresponds to the JSON property `odbNetwork`
         # @return [String]
         attr_accessor :odb_network
       
-        # Required. The name of the OdbSubnet associated with the DbSystem for IP
-        # allocation. Format: projects/`project`/locations/`location`/odbNetworks/`
-        # odb_network`/odbSubnets/`odb_subnet`
+        # Required. Immutable. The name of the OdbSubnet associated with the DbSystem
+        # for IP allocation. Format: projects/`project`/locations/`location`/odbNetworks/
+        # `odb_network`/odbSubnets/`odb_subnet`
         # Corresponds to the JSON property `odbSubnet`
         # @return [String]
         attr_accessor :odb_subnet
@@ -3707,9 +3839,9 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The display name for the ExascaleDbStorageVault. The name does not
-        # have to be unique within your project. The name must be 1-255 characters long
-        # and can only contain alphanumeric characters.
+        # Required. Immutable. The display name for the ExascaleDbStorageVault. The name
+        # does not have to be unique within your project. The name must be 1-255
+        # characters long and can only contain alphanumeric characters.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -3720,16 +3852,17 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. The Exadata Infrastructure resource on which ExascaleDbStorageVault
-        # resource is created, in the following format: projects/`project`/locations/`
-        # region`/cloudExadataInfrastuctures/`cloud_extradata_infrastructure`
+        # Optional. Immutable. The Exadata Infrastructure resource on which
+        # ExascaleDbStorageVault resource is created, in the following format: projects/`
+        # project`/locations/`region`/cloudExadataInfrastuctures/`
+        # cloud_extradata_infrastructure`
         # Corresponds to the JSON property `exadataInfrastructure`
         # @return [String]
         attr_accessor :exadata_infrastructure
       
-        # Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
-        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
-        # availability.
+        # Optional. Immutable. The GCP Oracle zone where Oracle ExascaleDbStorageVault
+        # is hosted. Example: us-east4-b-r2. If not specified, the system will pick a
+        # zone based on availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -3850,6 +3983,98 @@ module Google
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @vm_cluster_count = args[:vm_cluster_count] if args.key?(:vm_cluster_count)
           @vm_cluster_ids = args[:vm_cluster_ids] if args.key?(:vm_cluster_ids)
+        end
+      end
+      
+      # Any additional metadata information regarding the execution of the SQL
+      class ExecuteSqlMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time duration taken to execute the sql statement.
+        # Corresponds to the JSON property `executionDuration`
+        # @return [String]
+        attr_accessor :execution_duration
+      
+        # Message related to SQL execution. This field can be used to convey size limit
+        # related message.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Set to true if SQL returned a result set larger than the acceptable response
+        # size limits and the result was truncated.
+        # Corresponds to the JSON property `partialResult`
+        # @return [Boolean]
+        attr_accessor :partial_result
+        alias_method :partial_result?, :partial_result
+      
+        # Output only. Status of SQL execution.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_duration = args[:execution_duration] if args.key?(:execution_duration)
+          @message = args[:message] if args.key?(:message)
+          @partial_result = args[:partial_result] if args.key?(:partial_result)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The request for `DatabaseConnection.ExecuteSql`.
+      class ExecuteSqlRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Optional: Bind variables (parameters) to be used with the SQL
+        # statement. Supports named bind variables (e.g., :dept_id, :status in Oracle
+        # SQL) or positional parameters (:1, :2).
+        # Corresponds to the JSON property `params`
+        # @return [Array<Google::Apis::OracledatabaseV1::SqlParameter>]
+        attr_accessor :params
+      
+        # Required. The SQL statement to execute.
+        # Corresponds to the JSON property `sqlStatement`
+        # @return [String]
+        attr_accessor :sql_statement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @params = args[:params] if args.key?(:params)
+          @sql_statement = args[:sql_statement] if args.key?(:sql_statement)
+        end
+      end
+      
+      # Execute a SQL statement response.
+      class ExecuteSqlResponse
+        include Google::Apis::Core::Hashable
+      
+        # Any additional metadata information regarding the execution of the SQL
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::OracledatabaseV1::ExecuteSqlMetadata]
+        attr_accessor :metadata
+      
+        # SqlResult represents the results for the execution of sql statements.
+        # Corresponds to the JSON property `sqlResults`
+        # @return [Array<Google::Apis::OracledatabaseV1::SqlResult>]
+        attr_accessor :sql_results
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @sql_results = args[:sql_results] if args.key?(:sql_results)
         end
       end
       
@@ -4305,9 +4530,9 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. The GCP Oracle zone where Oracle GoldengateConnection is hosted.
-        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
-        # availability.
+        # Optional. Immutable. The GCP Oracle zone where Oracle GoldengateConnection is
+        # hosted. Example: us-east4-b-r2. If not specified, the system will pick a zone
+        # based on availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -4329,17 +4554,17 @@ module Google
         # @return [String]
         attr_accessor :oci_url
       
-        # Optional. The name of the OdbNetwork associated with the GoldengateConnection.
-        # The format is projects/`project`/locations/`location`/odbNetworks/`odb_network`
-        # . It is optional but if specified, this should match the parent ODBNetwork of
-        # the OdbSubnet.
+        # Optional. Immutable. The name of the OdbNetwork associated with the
+        # GoldengateConnection. The format is projects/`project`/locations/`location`/
+        # odbNetworks/`odb_network`. It is optional but if specified, this should match
+        # the parent ODBNetwork of the OdbSubnet.
         # Corresponds to the JSON property `odbNetwork`
         # @return [String]
         attr_accessor :odb_network
       
-        # Optional. The name of the OdbSubnet associated with the GoldengateConnection
-        # for IP allocation. Format: projects/`project`/locations/`location`/odbNetworks/
-        # `odb_network`/odbSubnets/`odb_subnet`
+        # Optional. Immutable. The name of the OdbSubnet associated with the
+        # GoldengateConnection for IP allocation. Format: projects/`project`/locations/`
+        # location`/odbNetworks/`odb_network`/odbSubnets/`odb_subnet`
         # Corresponds to the JSON property `odbSubnet`
         # @return [String]
         attr_accessor :odb_subnet
@@ -4376,7 +4601,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The display name for the GoldengateConnectionAssignment.
+        # Optional. Immutable. The display name for the GoldengateConnectionAssignment.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4910,7 +5135,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The display name for the GoldengateDeployment.
+        # Required. Immutable. The display name for the GoldengateDeployment.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -4921,9 +5146,9 @@ module Google
         # @return [String]
         attr_accessor :entitlement_id
       
-        # Optional. The GCP Oracle zone where Oracle GoldengateDeployment is hosted.
-        # Example: us-east4-b-r2. If not specified, the system will pick a zone based on
-        # availability.
+        # Optional. Immutable. The GCP Oracle zone where Oracle GoldengateDeployment is
+        # hosted. Example: us-east4-b-r2. If not specified, the system will pick a zone
+        # based on availability.
         # Corresponds to the JSON property `gcpOracleZone`
         # @return [String]
         attr_accessor :gcp_oracle_zone
@@ -4945,13 +5170,14 @@ module Google
         # @return [String]
         attr_accessor :oci_url
       
-        # Optional. The name of the OdbNetwork associated with the GoldengateDeployment.
+        # Optional. Immutable. The name of the OdbNetwork associated with the
+        # GoldengateDeployment.
         # Corresponds to the JSON property `odbNetwork`
         # @return [String]
         attr_accessor :odb_network
       
-        # Required. The name of the OdbSubnet associated with the GoldengateDeployment
-        # for IP allocation.
+        # Required. Immutable. The name of the OdbSubnet associated with the
+        # GoldengateDeployment for IP allocation.
         # Corresponds to the JSON property `odbSubnet`
         # @return [String]
         attr_accessor :odb_subnet
@@ -6776,7 +7002,7 @@ module Google
       class GoldengateOggDeployment
         include Google::Apis::Core::Hashable
       
-        # Optional. The Goldengate deployment console password in plain text.
+        # Optional. Input only. The Goldengate deployment console password in plain text.
         # Corresponds to the JSON property `adminPassword`
         # @return [String]
         attr_accessor :admin_password
@@ -7757,6 +7983,38 @@ module Google
         end
       end
       
+      # The response for `DatabaseConnection.List`.
+      class ListDatabaseConnectionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of DatabaseConnections.
+        # Corresponds to the JSON property `databaseConnections`
+        # @return [Array<Google::Apis::OracledatabaseV1::DatabaseConnection>]
+        attr_accessor :database_connections
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @database_connections = args[:database_connections] if args.key?(:database_connections)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response for `Database.List`.
       class ListDatabasesResponse
         include Google::Apis::Core::Hashable
@@ -8329,6 +8587,38 @@ module Google
         end
       end
       
+      # The response for `OdbDnsZone.List`.
+      class ListOdbDnsZonesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of OdbDnsZones.
+        # Corresponds to the JSON property `odbDnsZones`
+        # @return [Array<Google::Apis::OracledatabaseV1::OdbDnsZone>]
+        attr_accessor :odb_dns_zones
+      
+        # Unreachable locations when listing resources across all locations using
+        # wildcard location '-'.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @odb_dns_zones = args[:odb_dns_zones] if args.key?(:odb_dns_zones)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # The response for `OdbNetwork.List`.
       class ListOdbNetworksResponse
         include Google::Apis::Core::Hashable
@@ -8684,6 +8974,51 @@ module Google
         end
       end
       
+      # Represents OdbDnsZone resource.
+      class OdbDnsZone
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The date and time that the OdbDnsZone was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. The DNS suffix for the zone. Ex: abc.example.com.
+        # Corresponds to the JSON property `domain`
+        # @return [String]
+        attr_accessor :domain
+      
+        # Optional. Labels or tags associated with the resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The name of the OdbDnsZone resource in the following format:
+        # projects/`project`/locations/`location`/odbNetworks/`odb_network`/odbDnsZones/`
+        # odb_dns_zone`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. State of the OdbDnsZone.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @domain = args[:domain] if args.key?(:domain)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Represents OdbNetwork resource.
       class OdbNetwork
         include Google::Apis::Core::Hashable
@@ -8722,6 +9057,21 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. Indicates whether the OdbNetwork is currently reconciling changes.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Configuration to enable the service (Oracledatabase@Google Cloud) to establish
+        # connectivity to the database. This should be specified if you intend to
+        # associate this OdbNetwork with a DatabaseConnection resource to `ExecuteSQL`
+        # on the database, or to create a ServiceIntegration with the Database. Please
+        # don't specify it otherwise to avoid complicating the network setup.
+        # Corresponds to the JSON property `serviceConnectivityConfig`
+        # @return [Google::Apis::OracledatabaseV1::ServiceConnectivityConfig]
+        attr_accessor :service_connectivity_config
+      
         # Output only. State of the ODB Network.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -8739,6 +9089,8 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @service_connectivity_config = args[:service_connectivity_config] if args.key?(:service_connectivity_config)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -8747,7 +9099,7 @@ module Google
       class OdbSubnet
         include Google::Apis::Core::Hashable
       
-        # Required. The CIDR range of the subnet.
+        # Required. Immutable. The CIDR range of the subnet.
         # Corresponds to the JSON property `cidrRange`
         # @return [String]
         attr_accessor :cidr_range
@@ -8769,7 +9121,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Purpose of the subnet.
+        # Required. Immutable. Purpose of the subnet.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -9164,6 +9516,29 @@ module Google
         end
       end
       
+      # Configuration for a Private Service Connect (PSC) interface used by
+      # Oracledatabase@Google Cloud to establish private connectivity to the database.
+      class PscInterfaceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The resource name of the Network Attachment that Oracledatabase@
+        # Google Cloud will use to establish private connectivity to the database via a
+        # Private Service Connect Interface (PSC-I). Format: projects/`project`/regions/`
+        # region`/networkAttachments/`network_attachment`
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
+        end
+      end
+      
       # Request message for RefreshAutonomousDatabase method.
       class RefreshAutonomousDatabaseRequest
         include Google::Apis::Core::Hashable
@@ -9274,6 +9649,25 @@ module Google
         end
       end
       
+      # A single row from a sql result.
+      class Row
+        include Google::Apis::Core::Hashable
+      
+        # List of values in a row of sql result.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::OracledatabaseV1::Value>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Details of scheduled operation. https://docs.oracle.com/en-us/iaas/api/#/en/
       # database/20160918/datatypes/ScheduledOperationDetails
       class ScheduledOperationDetails
@@ -9307,6 +9701,30 @@ module Google
           @day_of_week = args[:day_of_week] if args.key?(:day_of_week)
           @start_time = args[:start_time] if args.key?(:start_time)
           @stop_time = args[:stop_time] if args.key?(:stop_time)
+        end
+      end
+      
+      # Configuration to enable the service (Oracledatabase@Google Cloud) to establish
+      # connectivity to the database. This should be specified if you intend to
+      # associate this OdbNetwork with a DatabaseConnection resource to `ExecuteSQL`
+      # on the database, or to create a ServiceIntegration with the Database. Please
+      # don't specify it otherwise to avoid complicating the network setup.
+      class ServiceConnectivityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for a Private Service Connect (PSC) interface used by
+        # Oracledatabase@Google Cloud to establish private connectivity to the database.
+        # Corresponds to the JSON property `pscInterfaceConfig`
+        # @return [Google::Apis::OracledatabaseV1::PscInterfaceConfig]
+        attr_accessor :psc_interface_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @psc_interface_config = args[:psc_interface_config] if args.key?(:psc_interface_config)
         end
       end
       
@@ -9401,6 +9819,74 @@ module Google
           @refreshable_mode = args[:refreshable_mode] if args.key?(:refreshable_mode)
           @source_type = args[:source_type] if args.key?(:source_type)
           @use_latest_available_backup = args[:use_latest_available_backup] if args.key?(:use_latest_available_backup)
+        end
+      end
+      
+      # Represents a bind variable (parameter) for SQL execution.
+      class SqlParameter
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the SQL bind parameter (excluding the leading colon, e.g.
+        # "id"). If omitted, parameters bind positionally based on their order in the
+        # list.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Optional: Datatype hint for the parameter (e.g., "VARCHAR2", "NUMBER"
+        # , "DATE", "TIMESTAMP"). If omitted, the Oracle driver will infer the type from
+        # the value string.
+        # Corresponds to the JSON property `typeName`
+        # @return [String]
+        attr_accessor :type_name
+      
+        # Required. Use protobuf.Value so clients can pass ints, bools, and strings
+        # natively.
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @type_name = args[:type_name] if args.key?(:type_name)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # SqlResult represents the result for the execution of a sql statement.
+      class SqlResult
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The number of rows affected by DML statements (e.g., INSERT, UPDATE,
+        # DELETE, MERGE). Unset or 0 for SELECT / DDL statements.
+        # Corresponds to the JSON property `affectedRowCount`
+        # @return [Fixnum]
+        attr_accessor :affected_row_count
+      
+        # List of columns included in the result, including data type.
+        # Corresponds to the JSON property `columns`
+        # @return [Array<Google::Apis::OracledatabaseV1::Column>]
+        attr_accessor :columns
+      
+        # Rows returned by the SQL statement.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::OracledatabaseV1::Row>]
+        attr_accessor :rows
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @affected_row_count = args[:affected_row_count] if args.key?(:affected_row_count)
+          @columns = args[:columns] if args.key?(:columns)
+          @rows = args[:rows] if args.key?(:rows)
         end
       end
       
@@ -9580,6 +10066,45 @@ module Google
         end
       end
       
+      # Request message for `DatabaseConnection.TestDatabaseConnection`.
+      class TestDatabaseConnectionRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Response message for `DatabaseConnection.TestDatabaseConnection`.
+      class TestDatabaseConnectionResponse
+        include Google::Apis::Core::Hashable
+      
+        # Error message if the test connection failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Whether the test connection was successful.
+        # Corresponds to the JSON property `success`
+        # @return [Boolean]
+        attr_accessor :success
+        alias_method :success?, :success
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @success = args[:success] if args.key?(:success)
+        end
+      end
+      
       # Request message for TestGoldengateConnectionAssignment.
       class TestGoldengateConnectionAssignmentRequest
         include Google::Apis::Core::Hashable
@@ -9700,6 +10225,33 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A single value in a row from a sql result.
+      class Value
+        include Google::Apis::Core::Hashable
+      
+        # Set to true if the cell value is NULL.
+        # Corresponds to the JSON property `nullValue`
+        # @return [Boolean]
+        attr_accessor :null_value
+        alias_method :null_value?, :null_value
+      
+        # The cell value represented in string format. Timestamps should be converted
+        # using RFC3339Nano format.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @null_value = args[:null_value] if args.key?(:null_value)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end

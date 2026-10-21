@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Column
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigureExascaleCloudExadataInfrastructureRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +197,12 @@ module Google
       end
       
       class DatabaseCharacterSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -371,6 +383,24 @@ module Google
       end
       
       class ExascaleDbStorageVaultProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteSqlMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteSqlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExecuteSqlResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -766,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListDatabaseConnectionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -886,6 +922,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOdbDnsZonesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOdbNetworksResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -946,6 +988,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OdbDnsZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OdbNetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1000,6 +1048,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PscInterfaceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RefreshAutonomousDatabaseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1030,13 +1084,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScheduledOperationDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceConnectivityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1090,6 +1168,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestDatabaseConnectionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TestDatabaseConnectionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestGoldengateConnectionAssignmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1109,6 +1199,12 @@ module Google
       end
       
       class TimeZone
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Value
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1462,6 +1558,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :odb_dns_zone, as: 'odbDnsZone'
           property :odb_network, as: 'odbNetwork'
           property :odb_subnet, as: 'odbSubnet'
           property :properties, as: 'properties', class: Google::Apis::OracledatabaseV1::CloudVmClusterProperties, decorator: Google::Apis::OracledatabaseV1::CloudVmClusterProperties::Representation
@@ -1510,6 +1607,14 @@ module Google
       
           property :vm_backup_storage_type, as: 'vmBackupStorageType'
           property :vm_file_system_storage_type, as: 'vmFileSystemStorageType'
+        end
+      end
+      
+      class Column
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type, as: 'type'
         end
       end
       
@@ -1586,6 +1691,24 @@ module Google
           property :character_set, as: 'characterSet'
           property :character_set_type, as: 'characterSetType'
           property :name, as: 'name'
+        end
+      end
+      
+      class DatabaseConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_string, as: 'connectionString'
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :lifecycle_details, as: 'lifecycleDetails'
+          property :name, as: 'name'
+          property :odb_network, as: 'odbNetwork'
+          property :password_secret_version, as: 'passwordSecretVersion'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+          property :username, as: 'username'
+          property :wallet_secret_version, as: 'walletSecretVersion'
         end
       end
       
@@ -1972,6 +2095,35 @@ module Google
       
           property :vm_cluster_count, as: 'vmClusterCount'
           collection :vm_cluster_ids, as: 'vmClusterIds'
+        end
+      end
+      
+      class ExecuteSqlMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_duration, as: 'executionDuration'
+          property :message, as: 'message'
+          property :partial_result, as: 'partialResult'
+          property :status, as: 'status'
+        end
+      end
+      
+      class ExecuteSqlRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :params, as: 'params', class: Google::Apis::OracledatabaseV1::SqlParameter, decorator: Google::Apis::OracledatabaseV1::SqlParameter::Representation
+      
+          property :sql_statement, as: 'sqlStatement'
+        end
+      end
+      
+      class ExecuteSqlResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::OracledatabaseV1::ExecuteSqlMetadata, decorator: Google::Apis::OracledatabaseV1::ExecuteSqlMetadata::Representation
+      
+          collection :sql_results, as: 'sqlResults', class: Google::Apis::OracledatabaseV1::SqlResult, decorator: Google::Apis::OracledatabaseV1::SqlResult::Representation
+      
         end
       end
       
@@ -2895,6 +3047,16 @@ module Google
         end
       end
       
+      class ListDatabaseConnectionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :database_connections, as: 'databaseConnections', class: Google::Apis::OracledatabaseV1::DatabaseConnection, decorator: Google::Apis::OracledatabaseV1::DatabaseConnection::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListDatabasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3085,6 +3247,16 @@ module Google
         end
       end
       
+      class ListOdbDnsZonesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :odb_dns_zones, as: 'odbDnsZones', class: Google::Apis::OracledatabaseV1::OdbDnsZone, decorator: Google::Apis::OracledatabaseV1::OdbDnsZone::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListOdbNetworksResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3182,6 +3354,17 @@ module Google
         end
       end
       
+      class OdbDnsZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :domain, as: 'domain'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :state, as: 'state'
+        end
+      end
+      
       class OdbNetwork
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3191,6 +3374,9 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :reconciling, as: 'reconciling'
+          property :service_connectivity_config, as: 'serviceConnectivityConfig', class: Google::Apis::OracledatabaseV1::ServiceConnectivityConfig, decorator: Google::Apis::OracledatabaseV1::ServiceConnectivityConfig::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -3296,6 +3482,13 @@ module Google
         end
       end
       
+      class PscInterfaceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_attachment, as: 'networkAttachment'
+        end
+      end
+      
       class RefreshAutonomousDatabaseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3332,6 +3525,14 @@ module Google
         end
       end
       
+      class Row
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values', class: Google::Apis::OracledatabaseV1::Value, decorator: Google::Apis::OracledatabaseV1::Value::Representation
+      
+        end
+      end
+      
       class ScheduledOperationDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3339,6 +3540,14 @@ module Google
           property :start_time, as: 'startTime', class: Google::Apis::OracledatabaseV1::TimeOfDay, decorator: Google::Apis::OracledatabaseV1::TimeOfDay::Representation
       
           property :stop_time, as: 'stopTime', class: Google::Apis::OracledatabaseV1::TimeOfDay, decorator: Google::Apis::OracledatabaseV1::TimeOfDay::Representation
+      
+        end
+      end
+      
+      class ServiceConnectivityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :psc_interface_config, as: 'pscInterfaceConfig', class: Google::Apis::OracledatabaseV1::PscInterfaceConfig, decorator: Google::Apis::OracledatabaseV1::PscInterfaceConfig::Representation
       
         end
       end
@@ -3357,6 +3566,26 @@ module Google
           property :refreshable_mode, as: 'refreshableMode'
           property :source_type, as: 'sourceType'
           property :use_latest_available_backup, as: 'useLatestAvailableBackup'
+        end
+      end
+      
+      class SqlParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :type_name, as: 'typeName'
+          property :value, as: 'value'
+        end
+      end
+      
+      class SqlResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :affected_row_count, :numeric_string => true, as: 'affectedRowCount'
+          collection :columns, as: 'columns', class: Google::Apis::OracledatabaseV1::Column, decorator: Google::Apis::OracledatabaseV1::Column::Representation
+      
+          collection :rows, as: 'rows', class: Google::Apis::OracledatabaseV1::Row, decorator: Google::Apis::OracledatabaseV1::Row::Representation
+      
         end
       end
       
@@ -3418,6 +3647,20 @@ module Google
         end
       end
       
+      class TestDatabaseConnectionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class TestDatabaseConnectionResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          property :success, as: 'success'
+        end
+      end
+      
       class TestGoldengateConnectionAssignmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3451,6 +3694,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :version, as: 'version'
+        end
+      end
+      
+      class Value
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :null_value, as: 'nullValue'
+          property :value, as: 'value'
         end
       end
     end
