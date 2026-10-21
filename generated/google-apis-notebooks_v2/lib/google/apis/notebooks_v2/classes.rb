@@ -1237,6 +1237,13 @@ module Google
         # @return [Array<Google::Apis::NotebooksV2::AccessConfig>]
         attr_accessor :access_configs
       
+        # Optional. An internal IP address associated with this instance. Specify an
+        # unused static internal IP address available to the subnet this instance is in,
+        # or leave this field undefined to use an IP from the subnet's ephemeral range.
+        # Corresponds to the JSON property `internalIp`
+        # @return [String]
+        attr_accessor :internal_ip
+      
         # Optional. The name of the VPC that this VM instance is in. Format: `projects/`
         # project_id`/global/networks/`network_id``
         # Corresponds to the JSON property `network`
@@ -1262,6 +1269,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_configs = args[:access_configs] if args.key?(:access_configs)
+          @internal_ip = args[:internal_ip] if args.key?(:internal_ip)
           @network = args[:network] if args.key?(:network)
           @nic_type = args[:nic_type] if args.key?(:nic_type)
           @subnet = args[:subnet] if args.key?(:subnet)
@@ -2034,6 +2042,12 @@ module Google
         # @return [String]
         attr_accessor :image_description
       
+        # Output only. The ID of the specific Compute Engine VM image the instance is
+        # currently running (for example, "workbench-instances-2603-20260918-2130-rc0").
+        # Corresponds to the JSON property `imageId`
+        # @return [String]
+        attr_accessor :image_id
+      
         # Optional. Use VM image name to find the image.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2053,6 +2067,7 @@ module Google
         def update!(**args)
           @family = args[:family] if args.key?(:family)
           @image_description = args[:image_description] if args.key?(:image_description)
+          @image_id = args[:image_id] if args.key?(:image_id)
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
         end
