@@ -1040,8 +1040,8 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the upstream remote repository, for ex: "https:/
-        # /my.apt.registry/".
+        # An https uri reference to the upstream remote repository, for ex: "https://my.
+        # apt.registry/".
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1086,7 +1086,7 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the custom remote repository, for ex: "https://
+        # An https uri reference to the custom remote repository, for ex: "https://
         # registry-1.docker.io".
         # Corresponds to the JSON property `uri`
         # @return [String]
@@ -1106,8 +1106,8 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the upstream remote repository, for ex: "https:/
-        # /my.maven.registry/".
+        # An https uri reference to the upstream remote repository, for ex: "https://my.
+        # maven.registry/".
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1126,8 +1126,8 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the upstream remote repository, for ex: "https:/
-        # /my.npm.registry/".
+        # An https uri reference to the upstream remote repository, for ex: "https://my.
+        # npm.registry/".
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1146,8 +1146,8 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the upstream remote repository, for ex: "https:/
-        # /my.python.registry/".
+        # An https uri reference to the upstream remote repository, for ex: "https://my.
+        # python.registry/".
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -1166,8 +1166,8 @@ module Google
       class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
         include Google::Apis::Core::Hashable
       
-        # An http/https uri reference to the upstream remote repository, for ex: "https:/
-        # /my.yum.registry/".
+        # An https uri reference to the upstream remote repository, for ex: "https://my.
+        # yum.registry/".
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
