@@ -1611,6 +1611,25 @@ module Google
         end
       end
       
+      # Settings for grounding extractions.
+      class GoogleCloudDocumentaiUiv1beta3GroundingSettings
+        include Google::Apis::Core::Hashable
+      
+        # The type of grounding to apply.
+        # Corresponds to the JSON property `groundingType`
+        # @return [String]
+        attr_accessor :grounding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_type = args[:grounding_type] if args.key?(:grounding_type)
+        end
+      end
+      
       # Metadata for human review labeling config.
       class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
         include Google::Apis::Core::Hashable
@@ -1959,6 +1978,11 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
+        # Settings for grounding extractions.
+        # Corresponds to the JSON property `groundingSettings`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3GroundingSettings]
+        attr_accessor :grounding_settings
+      
         # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -2021,6 +2045,7 @@ module Google
           @document_schema = args[:document_schema] if args.key?(:document_schema)
           @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @grounding_settings = args[:grounding_settings] if args.key?(:grounding_settings)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
@@ -7963,6 +7988,25 @@ module Google
         end
       end
       
+      # Settings for grounding extractions.
+      class GoogleCloudDocumentaiV1beta3GroundingSettings
+        include Google::Apis::Core::Hashable
+      
+        # The type of grounding to apply.
+        # Corresponds to the JSON property `groundingType`
+        # @return [String]
+        attr_accessor :grounding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_type = args[:grounding_type] if args.key?(:grounding_type)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -9250,6 +9294,11 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
+        # Settings for grounding extractions.
+        # Corresponds to the JSON property `groundingSettings`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings]
+        attr_accessor :grounding_settings
+      
         # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -9306,6 +9355,7 @@ module Google
           @document_schema = args[:document_schema] if args.key?(:document_schema)
           @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @grounding_settings = args[:grounding_settings] if args.key?(:grounding_settings)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
@@ -9445,6 +9495,25 @@ module Google
         def update!(**args)
           @finetuning_allowed = args[:finetuning_allowed] if args.key?(:finetuning_allowed)
           @min_train_labeled_documents = args[:min_train_labeled_documents] if args.key?(:min_train_labeled_documents)
+        end
+      end
+      
+      # Overrides to apply when creating a new processor version.
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Settings for grounding extractions.
+        # Corresponds to the JSON property `groundingSettings`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings]
+        attr_accessor :grounding_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_settings = args[:grounding_settings] if args.key?(:grounding_settings)
         end
       end
       
@@ -9978,6 +10047,11 @@ module Google
         # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion]
         attr_accessor :processor_version
       
+        # Overrides to apply when creating a new processor version.
+        # Corresponds to the JSON property `processorVersionOverrides`
+        # @return [Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides]
+        attr_accessor :processor_version_overrides
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9990,6 +10064,7 @@ module Google
           @foundation_model_tuning_options = args[:foundation_model_tuning_options] if args.key?(:foundation_model_tuning_options)
           @input_data = args[:input_data] if args.key?(:input_data)
           @processor_version = args[:processor_version] if args.key?(:processor_version)
+          @processor_version_overrides = args[:processor_version_overrides] if args.key?(:processor_version_overrides)
         end
       end
       

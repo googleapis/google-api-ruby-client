@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiUiv1beta3GroundingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1492,6 +1498,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDocumentaiV1beta3GroundingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1727,6 +1739,12 @@ module Google
       end
       
       class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2500,6 +2518,13 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiUiv1beta3GroundingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grounding_type, as: 'groundingType'
+        end
+      end
+      
       class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2602,6 +2627,8 @@ module Google
           property :gen_ai_model_info, as: 'genAiModelInfo', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3ProcessorVersionGenAiModelInfo::Representation
       
           property :google_managed, as: 'googleManaged'
+          property :grounding_settings, as: 'groundingSettings', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3GroundingSettings, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3GroundingSettings::Representation
+      
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiUiv1beta3EvaluationReference::Representation
@@ -4436,6 +4463,13 @@ module Google
         end
       end
       
+      class GoogleCloudDocumentaiV1beta3GroundingSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grounding_type, as: 'groundingType'
+        end
+      end
+      
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4800,6 +4834,8 @@ module Google
           property :gen_ai_model_info, as: 'genAiModelInfo', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo::Representation
       
           property :google_managed, as: 'googleManaged'
+          property :grounding_settings, as: 'groundingSettings', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings::Representation
+      
           property :kms_key_name, as: 'kmsKeyName'
           property :kms_key_version_name, as: 'kmsKeyVersionName'
           property :latest_evaluation, as: 'latestEvaluation', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationReference, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3EvaluationReference::Representation
@@ -4851,6 +4887,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finetuning_allowed, as: 'finetuningAllowed'
           property :min_train_labeled_documents, as: 'minTrainLabeledDocuments'
+        end
+      end
+      
+      class GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :grounding_settings, as: 'groundingSettings', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3GroundingSettings::Representation
+      
         end
       end
       
@@ -5022,6 +5066,8 @@ module Google
           property :input_data, as: 'inputData', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestInputData::Representation
       
           property :processor_version, as: 'processorVersion', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersion::Representation
+      
+          property :processor_version_overrides, as: 'processorVersionOverrides', class: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides, decorator: Google::Apis::DocumentaiV1beta3::GoogleCloudDocumentaiV1beta3ProcessorVersionOverrides::Representation
       
         end
       end
