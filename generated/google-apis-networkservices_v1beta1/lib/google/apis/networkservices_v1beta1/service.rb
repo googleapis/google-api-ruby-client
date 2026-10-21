@@ -3965,6 +3965,200 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new TelemetryPolicy in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource where this policy will be created. Must be in
+        #   the format `projects/`project`/locations/`location``.
+        # @param [Google::Apis::NetworkservicesV1beta1::TelemetryPolicy] telemetry_policy_object
+        # @param [String] telemetry_policy_id
+        #   Required. The ID to use for the telemetry policy, which will become the final
+        #   component of the telemetry policy's resource name. This value must be 4-63
+        #   characters long, and match the regular expression `[a-z]([-a-z0-9]`2,61`[a-z0-
+        #   9])`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_telemetry_policy(parent, telemetry_policy_object = nil, telemetry_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/telemetryPolicies', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::TelemetryPolicy::Representation
+          command.request_object = telemetry_policy_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['telemetryPolicyId'] = telemetry_policy_id unless telemetry_policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single TelemetryPolicy.
+        # @param [String] name
+        #   Required. A name of the TelemetryPolicy to delete. Must be in the format `
+        #   projects/`project`/locations/`location`/telemetryPolicies/`telemetry_policy``.
+        # @param [String] etag
+        #   Optional. The etag of the TelemetryPolicy. If this is provided, it must match
+        #   the server's etag.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_telemetry_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single TelemetryPolicy.
+        # @param [String] name
+        #   Required. A name of the TelemetryPolicy to get. Must be in the format `
+        #   projects/`project`/locations/`location`/telemetryPolicies/`telemetry_policy``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::TelemetryPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::TelemetryPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_telemetry_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::TelemetryPolicy::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::TelemetryPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists TelemetryPolicies in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location from which the TelemetryPolicies should be
+        #   listed, specified in the format `projects/`project`/locations/`location``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of policies to return. The service may return
+        #   fewer than this value. If unspecified, at most 50 policies will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListTelemetryPolicies` call.
+        #   Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::ListTelemetryPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::ListTelemetryPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_telemetry_policies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/telemetryPolicies', options)
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::ListTelemetryPoliciesResponse::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::ListTelemetryPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single TelemetryPolicy.
+        # @param [String] name
+        #   Identifier. Represents the resource name of the policy. Format: `projects/`
+        #   project`/locations/`location`/telemetryPolicies/`telemetry_policy``
+        # @param [Google::Apis::NetworkservicesV1beta1::TelemetryPolicy] telemetry_policy_object
+        # @param [Boolean] allow_missing
+        #   Optional. If set to true, and the telemetry policy is not found, a new
+        #   telemetry policy will be created. In this situation, `update_mask` is ignored.
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   TelemetryPolicy resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the `update_mask` is not provided, the
+        #   service will treat it as an implied field mask equivalent to all fields
+        #   provided in the request message. This means that only the fields populated in
+        #   the `telemetry_policy` field will be updated. The special value `*` can be
+        #   used to indicate full replacement.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::NetworkservicesV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::NetworkservicesV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_telemetry_policy(name, telemetry_policy_object = nil, allow_missing: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::NetworkservicesV1beta1::TelemetryPolicy::Representation
+          command.request_object = telemetry_policy_object
+          command.response_representation = Google::Apis::NetworkservicesV1beta1::Operation::Representation
+          command.response_class = Google::Apis::NetworkservicesV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new TlsRoute in a given project and location.
         # @param [String] parent
         #   Required. The parent resource of the TlsRoute. Must be in the format `projects/

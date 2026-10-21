@@ -26,7 +26,7 @@ module Google
       class AgentConnectivityTemplate
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The path of the access. Maps roughly to ingress/egress,
+        # Optional. Immutable. The path of the access. Maps roughly to ingress/egress,
         # though we keep CLIENT_TO_AGENT and AGENT_TO_ANYWHERE as carryovers from Agent
         # Gateway's original resource model. The path is immutable once set. Exactly one
         # path can be set.
@@ -51,7 +51,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The deployment model for the gateway.
+        # Optional. The deployment model for the gateway.
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
@@ -902,9 +902,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. A list of match conditions to match against the incoming request.
-        # The extension will be invoked if at least one condition matches the request,
-        # or if no match conditions are specified. Limited to 5 conditions.
+        # Optional. A list of match conditions to evaluate against the incoming request.
+        # The extension is invoked if the request matches at least one condition, or if
+        # no match conditions are specified. A request matches a condition only if it
+        # matches every field that is set in that condition. Limited to 5 conditions.
         # Corresponds to the JSON property `matchConditions`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchCondition>]
         attr_accessor :match_conditions
@@ -916,22 +917,24 @@ module Google
         attr_accessor :name
       
         # Optional. Priority of the extension binding. Lower numbers indicate higher
-        # priority. Priority of extension bindings are used to determine the order in
-        # which extension bindings are applied to a request.
+        # priority. The priority determines the order in which extension bindings are
+        # applied to a request.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
         # Required. The name of the extension that this binding should attach to target
         # resources. Format: For Google-provided extensions, specify the service
-        # endpoint (see [Model Armor integration](https://docs.cloud.google.com/model-
-        # armor/integrations))
+        # endpoint, for example `modelarmor.us-central1.rep.googleapis.com`.
         # Corresponds to the JSON property `producerExtension`
         # @return [String]
         attr_accessor :producer_extension
       
         # Optional. Additional metadata that should be passed to the attached extension
-        # with each request.
+        # with each request. This field is subject to the following limitations: * The
+        # total size of the metadata must be less than 1 KiB. * The total number of keys
+        # must be less than 16. * The length of each key must be less than 64 characters.
+        # * The length of each value must be less than 1024 characters.
         # Corresponds to the JSON property `producerMetadata`
         # @return [Hash<String,String>]
         attr_accessor :producer_metadata
@@ -1015,36 +1018,34 @@ module Google
       class ExtensionBindingMatchConditionStringMatch
         include Google::Apis::Core::Hashable
       
-        # Optional. The input string must have the substring specified here. Note: empty
-        # contains match is not allowed, please use regex instead. Examples: * ``abc``
-        # matches the value ``xyz.abc.def``
+        # Optional. The input string must contain the substring specified here. An empty
+        # substring is not allowed. Examples: * `abc` matches the value `xyz.abc.def`.
         # Corresponds to the JSON property `contains`
         # @return [String]
         attr_accessor :contains
       
         # Optional. The input string must match exactly the string specified here.
-        # Examples: * ``abc`` only matches the value ``abc``.
+        # Examples: * `abc` only matches the value `abc`.
         # Corresponds to the JSON property `exact`
         # @return [String]
         attr_accessor :exact
       
-        # Optional. If true, indicates the exact/prefix/suffix/contains matching should
-        # be case insensitive. For example, the matcher ``data`` will match both input
-        # string ``Data`` and ``data`` if set to true.
+        # Optional. If true, the `exact`, `prefix`, `suffix`, or `contains` match is
+        # case insensitive. For example, the matcher `data` matches both `Data` and `
+        # data` when set to true.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
         alias_method :ignore_case?, :ignore_case
       
-        # Optional. The input string must have the prefix specified here. Note: empty
-        # prefix is not allowed. Examples: * ``abc`` matches the value ``abc.xyz``
+        # Optional. The input string must have the prefix specified here. An empty
+        # prefix is not allowed. Examples: * `abc` matches the value `abc.xyz`.
         # Corresponds to the JSON property `prefix`
         # @return [String]
         attr_accessor :prefix
       
-        # Optional. The input string must have the suffix specified here. Note: empty
-        # prefix is not allowed, please use regex instead. Examples: * ``abc`` matches
-        # the value ``xyz.abc``
+        # Optional. The input string must have the suffix specified here. An empty
+        # suffix is not allowed. Examples: * `abc` matches the value `xyz.abc`.
         # Corresponds to the JSON property `suffix`
         # @return [String]
         attr_accessor :suffix
@@ -1139,9 +1140,9 @@ module Google
       class ExtensionBindingMatchConditionToDestinationHeaderSet
         include Google::Apis::Core::Hashable
       
-        # Required. A list of headers to match against in http header. If multiple
-        # header matches are provided, they will be evaluated as an AND, i.e. all header
-        # matches must match for the request to match.
+        # Required. A list of HTTP headers to match against. If multiple header matches
+        # are provided, they are evaluated as an AND, meaning that all header matches
+        # must match for the request to match. Limited to 10 headers.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::NetworkservicesV1beta1::ExtensionBindingMatchConditionHeaderMatch>]
         attr_accessor :headers
@@ -1160,8 +1161,10 @@ module Google
       class ExtensionBindingTarget
         include Google::Apis::Core::Hashable
       
-        # Optional. The reference to the target resource, to which this binding should
-        # attach. Exactly one of `resources` or `scope` must be set.
+        # Optional. The references to the target resources to which this binding should
+        # attach. Exactly one of `resources` or `scope` must be set. For AI Application
+        # resources, specify the full resource name in the format: `projects/`project`/
+        # locations/`location`/applications/`application``. Limited to 1 resource.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1186,14 +1189,17 @@ module Google
       class ExtensionBindingTargetScope
         include Google::Apis::Core::Hashable
       
-        # Required. Parent resource name specification, in the format: `projects/`
-        # project_number``.
+        # Required. The parent resource that defines the scope, in the format `projects/`
+        # project_number``. When the scope is a project, the binding applies to the
+        # resources that meet all of the following conditions: * The resource belongs to
+        # the specified project. * The resource is in the same location as the `
+        # ExtensionBinding`. * The resource type is listed in `resource_types`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # Required. Type of the resource to which the binding should attach. Limited to
-        # 1 resource type.
+        # Required. The types of resources to which the binding should attach. Limited
+        # to 1 resource type.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
         attr_accessor :resource_types
@@ -4121,6 +4127,41 @@ module Google
         end
       end
       
+      # Response returned by the ListTelemetryPolicies method.
+      class ListTelemetryPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there might be more results than those appearing in this response, then `
+        # next_page_token` is included. To get the next set of results, call this method
+        # again using the value of `next_page_token` as `page_token`.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # List of TelemetryPolicy resources.
+        # Corresponds to the JSON property `telemetryPolicies`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TelemetryPolicy>]
+        attr_accessor :telemetry_policies
+      
+        # Unreachable resources. Populated when the request attempts to list all
+        # resources across all supported locations, while some locations are temporarily
+        # unavailable.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @telemetry_policies = args[:telemetry_policies] if args.key?(:telemetry_policies)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response returned by the ListTlsRoutes method.
       class ListTlsRoutesResponse
         include Google::Apis::Core::Hashable
@@ -4472,6 +4513,27 @@ module Google
         def update!(**args)
           @label_name = args[:label_name] if args.key?(:label_name)
           @label_value = args[:label_value] if args.key?(:label_value)
+        end
+      end
+      
+      # Configuration for metrics collection.
+      class MetricsConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Indicates whether metrics are enabled or disabled. Set to true to
+        # explicitly enable, or false to explicitly disable.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -5180,6 +5242,131 @@ module Google
         end
       end
       
+      # Provides a configuration for telemetry.
+      class TelemetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-provided annotations.
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. Indicates the timestamp when the resource was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time when this resource was soft-deleted. Only populated if
+        # the resource is in the process of being deleted.
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
+        # Optional. Provides a human-readable name for the policy.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Provides a mechanism for optimistic concurrency control. If this is provided,
+        # it must match the server's etag. If the provided etag does not match the
+        # server's etag, the request will fail with a 409 ABORTED error.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. Set of label tags associated with the TelemetryPolicy resource.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Configuration for metrics collection.
+        # Corresponds to the JSON property `metricsConfiguration`
+        # @return [Google::Apis::NetworkservicesV1beta1::MetricsConfiguration]
+        attr_accessor :metrics_configuration
+      
+        # Identifier. Represents the resource name of the policy. Format: `projects/`
+        # project`/locations/`location`/telemetryPolicies/`telemetry_policy``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. If true, the service is currently reconciling the resource to the
+        # desired state.
+        # Corresponds to the JSON property `reconciling`
+        # @return [Boolean]
+        attr_accessor :reconciling
+        alias_method :reconciling?, :reconciling
+      
+        # Specifies the set of targets to which the TelemetryPolicy should be applied.
+        # Corresponds to the JSON property `telemetryTarget`
+        # @return [Google::Apis::NetworkservicesV1beta1::TelemetryTarget]
+        attr_accessor :telemetry_target
+      
+        # Configuration for tracing collection.
+        # Corresponds to the JSON property `tracingConfiguration`
+        # @return [Google::Apis::NetworkservicesV1beta1::TracingConfiguration]
+        attr_accessor :tracing_configuration
+      
+        # Output only. Specifies the server-assigned unique identifier for the policy.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Indicates the timestamp when the resource was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @labels = args[:labels] if args.key?(:labels)
+          @metrics_configuration = args[:metrics_configuration] if args.key?(:metrics_configuration)
+          @name = args[:name] if args.key?(:name)
+          @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @telemetry_target = args[:telemetry_target] if args.key?(:telemetry_target)
+          @tracing_configuration = args[:tracing_configuration] if args.key?(:tracing_configuration)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the set of targets to which the TelemetryPolicy should be applied.
+      class TelemetryTarget
+        include Google::Apis::Core::Hashable
+      
+        # Required. Lists references to the resources that are targeted by the policy.
+        # Types of resources supported: - `run.googleapis.com/` - `compute.googleapis.
+        # com/` - `networkservices.googleapis.com/` The format must be the full resource
+        # name of a supported resource. Examples: `//run.googleapis.com/projects/`
+        # project`/locations/`location`/services/`service`` `//compute.googleapis.com/
+        # projects/my-project/global/forwardingRules/my-fr-1` `//compute.googleapis.com/
+        # projects/my-project/regions/us-central1/forwardingRules/my-fr-1` `//
+        # networkservices.googleapis.com/projects/my-project/locations/us-central1/
+        # gateways/my-secure-web-proxy-gateway` `//networkservices.googleapis.com/
+        # projects/my-project/locations/us-east1/agentGateways/my-agent-gateway`
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # TlsRoute defines how traffic should be routed based on SNI and other matching
       # L3 attributes.
       class TlsRoute
@@ -5380,6 +5567,106 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @matches = args[:matches] if args.key?(:matches)
+        end
+      end
+      
+      # Configuration for tracing collection.
+      class TracingConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provides key-value pairs for adding context to spans. Supports
+        # literalValue (static) and fromHeaderValue (dynamic extraction).
+        # Corresponds to the JSON property `customSpanAttributes`
+        # @return [Array<Google::Apis::NetworkservicesV1beta1::TracingConfigurationCustomSpanAttribute>]
+        attr_accessor :custom_span_attributes
+      
+        # Configures honoring a sampled bit in downstream traceparentID headers.
+        # Corresponds to the JSON property `parentBasedSampling`
+        # @return [Google::Apis::NetworkservicesV1beta1::TracingConfigurationParentBasedSampling]
+        attr_accessor :parent_based_sampling
+      
+        # Optional. Specifies the tracing sampling rate. The sampling rate is a float
+        # number in the interval [0, 1]. The sampling rate is applied to all requests to
+        # the targeted resources. The default value is 0.0.
+        # Corresponds to the JSON property `samplingRate`
+        # @return [Float]
+        attr_accessor :sampling_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_span_attributes = args[:custom_span_attributes] if args.key?(:custom_span_attributes)
+          @parent_based_sampling = args[:parent_based_sampling] if args.key?(:parent_based_sampling)
+          @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
+        end
+      end
+      
+      # Key-value pairs for adding context to spans. Supports literal_value (static)
+      # and from_header_value (dynamic extraction). Note: literal_value and
+      # from_header_value are mutually exclusive, but at least one of them must be set.
+      class TracingConfigurationCustomSpanAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Required. Defines the key for a custom attribute that is added to the trace
+        # spans generated by the Google Cloud Load Balancer (GCLB).
+        # Corresponds to the JSON property `attributeName`
+        # @return [String]
+        attr_accessor :attribute_name
+      
+        # Optional. Specifies an incoming request header name from which the value for
+        # the custom span attribute should be dynamically extracted. Note: the value of
+        # the header might be changed during the request processing; in this case the
+        # resulting value will be stored.
+        # Corresponds to the JSON property `fromHeaderValue`
+        # @return [String]
+        attr_accessor :from_header_value
+      
+        # Optional. Assigns a static, constant value to the custom trace span attribute
+        # defined by the corresponding attribute_name.
+        # Corresponds to the JSON property `literalValue`
+        # @return [String]
+        attr_accessor :literal_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_name = args[:attribute_name] if args.key?(:attribute_name)
+          @from_header_value = args[:from_header_value] if args.key?(:from_header_value)
+          @literal_value = args[:literal_value] if args.key?(:literal_value)
+        end
+      end
+      
+      # Configures honoring a sampled bit in downstream traceparentID headers.
+      class TracingConfigurationParentBasedSampling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Provides a master switch to respect a sampled bit in incoming
+        # traceparentID headers. Default is false.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. Specifies the sampling rate to use when the sampled bit is set in
+        # the incoming traceparentID header.
+        # Corresponds to the JSON property `samplingRate`
+        # @return [Float]
+        attr_accessor :sampling_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @sampling_rate = args[:sampling_rate] if args.key?(:sampling_rate)
         end
       end
       
