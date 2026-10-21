@@ -360522,6 +360522,7 @@
 "/networkmanagement:v1beta1/EdgeLocation/metropolitanArea": metropolitan_area
 "/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig": effective_vpc_flow_logs_config
 "/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig/aggregationInterval": aggregation_interval
+"/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig/connectionLogging": connection_logging
 "/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig/crossProjectMetadata": cross_project_metadata
 "/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig/filterExpr": filter_expr
 "/networkmanagement:v1beta1/EffectiveVpcFlowLogsConfig/flowSampling": flow_sampling
@@ -360950,6 +360951,7 @@
 "/networkmanagement:v1beta1/VpcConnectorInfo/uri": uri
 "/networkmanagement:v1beta1/VpcFlowLogsConfig": vpc_flow_logs_config
 "/networkmanagement:v1beta1/VpcFlowLogsConfig/aggregationInterval": aggregation_interval
+"/networkmanagement:v1beta1/VpcFlowLogsConfig/connectionLogging": connection_logging
 "/networkmanagement:v1beta1/VpcFlowLogsConfig/createTime": create_time
 "/networkmanagement:v1beta1/VpcFlowLogsConfig/crossProjectMetadata": cross_project_metadata
 "/networkmanagement:v1beta1/VpcFlowLogsConfig/description": description
