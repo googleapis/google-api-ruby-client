@@ -702,6 +702,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # NetAppVolumeBackupProperties represents NetApp Volume backup properties in
+        # Backup. .
+        # Corresponds to the JSON property `netappVolumeBackupProperties`
+        # @return [Google::Apis::BackupdrV1::NetAppVolumeBackupProperties]
+        attr_accessor :netapp_volume_backup_properties
+      
         # Output only. source resource size in bytes at the time of the backup.
         # Corresponds to the JSON property `resourceSizeBytes`
         # @return [Fixnum]
@@ -761,6 +767,7 @@ module Google
           @kms_key_versions = args[:kms_key_versions] if args.key?(:kms_key_versions)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @netapp_volume_backup_properties = args[:netapp_volume_backup_properties] if args.key?(:netapp_volume_backup_properties)
           @resource_size_bytes = args[:resource_size_bytes] if args.key?(:resource_size_bytes)
           @satisfies_pzi = args[:satisfies_pzi] if args.key?(:satisfies_pzi)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
@@ -1431,6 +1438,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # NetAppVolumeBackupPlanAssociationProperties represents NetApp Volume backup
+        # plan association properties in BackupPlanAssociation. .
+        # Corresponds to the JSON property `netappVolumeBackupPlanAssociationProperties`
+        # @return [Google::Apis::BackupdrV1::NetAppVolumeBackupPlanAssociationProperties]
+        attr_accessor :netapp_volume_backup_plan_association_properties
+      
         # Required. Immutable. Resource name of workload on which the backup plan is
         # applied. The format can either be the resource name (e.g., "projects/my-
         # project/zones/us-central1-a/instances/my-instance") or the full resource URI (
@@ -1475,6 +1488,7 @@ module Google
           @data_source = args[:data_source] if args.key?(:data_source)
           @filestore_instance_backup_plan_association_properties = args[:filestore_instance_backup_plan_association_properties] if args.key?(:filestore_instance_backup_plan_association_properties)
           @name = args[:name] if args.key?(:name)
+          @netapp_volume_backup_plan_association_properties = args[:netapp_volume_backup_plan_association_properties] if args.key?(:netapp_volume_backup_plan_association_properties)
           @resource = args[:resource] if args.key?(:resource)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @rules_config_info = args[:rules_config_info] if args.key?(:rules_config_info)
@@ -2753,6 +2767,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # NetAppVolumeDataSourceProperties represents NetApp Volume properties stored in
+        # DataSource. .
+        # Corresponds to the JSON property `netappVolumeDatasourceProperties`
+        # @return [Google::Apis::BackupdrV1::NetAppVolumeDataSourceProperties]
+        attr_accessor :netapp_volume_datasource_properties
+      
         # The type of the Google Cloud resource. Use the Unified Resource Type, eg.
         # compute.googleapis.com/Instance.
         # Corresponds to the JSON property `type`
@@ -2772,6 +2792,7 @@ module Google
           @filestore_instance_datasource_properties = args[:filestore_instance_datasource_properties] if args.key?(:filestore_instance_datasource_properties)
           @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
           @location = args[:location] if args.key?(:location)
+          @netapp_volume_datasource_properties = args[:netapp_volume_datasource_properties] if args.key?(:netapp_volume_datasource_properties)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -2810,6 +2831,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # NetAppVolumeDataSourceReferenceProperties represents NetApp Volume properties
+        # stored in DataSourceReference. .
+        # Corresponds to the JSON property `netappVolumeProperties`
+        # @return [Google::Apis::BackupdrV1::NetAppVolumeDataSourceReferenceProperties]
+        attr_accessor :netapp_volume_properties
+      
         # Output only. The type of the Google Cloud resource. Ex: compute.googleapis.com/
         # Instance
         # Corresponds to the JSON property `type`
@@ -2827,6 +2854,7 @@ module Google
           @filestore_instance_properties = args[:filestore_instance_properties] if args.key?(:filestore_instance_properties)
           @gcp_resourcename = args[:gcp_resourcename] if args.key?(:gcp_resourcename)
           @location = args[:location] if args.key?(:location)
+          @netapp_volume_properties = args[:netapp_volume_properties] if args.key?(:netapp_volume_properties)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -4836,6 +4864,98 @@ module Google
         # Update properties of this object
         def update!(**args)
           @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # NetAppVolumeBackupPlanAssociationProperties represents NetApp Volume backup
+      # plan association properties in BackupPlanAssociation. .
+      class NetAppVolumeBackupPlanAssociationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of the source resource.
+        # Corresponds to the JSON property `sourceResourceCreateTime`
+        # @return [String]
+        attr_accessor :source_resource_create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_resource_create_time = args[:source_resource_create_time] if args.key?(:source_resource_create_time)
+        end
+      end
+      
+      # NetAppVolumeBackupProperties represents NetApp Volume backup properties in
+      # Backup. .
+      class NetAppVolumeBackupProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The source volume of the Backup.
+        # Corresponds to the JSON property `sourceResource`
+        # @return [String]
+        attr_accessor :source_resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_resource = args[:source_resource] if args.key?(:source_resource)
+        end
+      end
+      
+      # NetAppVolumeDataSourceProperties represents NetApp Volume properties stored in
+      # DataSource. .
+      class NetAppVolumeDataSourceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The source volume represented by this DataSource.
+        # Corresponds to the JSON property `sourceResource`
+        # @return [String]
+        attr_accessor :source_resource
+      
+        # Output only. The volume creation timestamp.
+        # Corresponds to the JSON property `sourceResourceCreateTime`
+        # @return [String]
+        attr_accessor :source_resource_create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_resource = args[:source_resource] if args.key?(:source_resource)
+          @source_resource_create_time = args[:source_resource_create_time] if args.key?(:source_resource_create_time)
+        end
+      end
+      
+      # NetAppVolumeDataSourceReferenceProperties represents NetApp Volume properties
+      # stored in DataSourceReference. .
+      class NetAppVolumeDataSourceReferenceProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The source volume represented by this DataSourceReference.
+        # Corresponds to the JSON property `sourceResource`
+        # @return [String]
+        attr_accessor :source_resource
+      
+        # Output only. The volume creation timestamp.
+        # Corresponds to the JSON property `sourceResourceCreateTime`
+        # @return [String]
+        attr_accessor :source_resource_create_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_resource = args[:source_resource] if args.key?(:source_resource)
+          @source_resource_create_time = args[:source_resource_create_time] if args.key?(:source_resource_create_time)
         end
       end
       
