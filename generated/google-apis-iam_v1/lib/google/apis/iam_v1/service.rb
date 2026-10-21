@@ -1520,13 +1520,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Revokes all sessions for a given WorkforcePoolSubject.
+        # Revokes all sessions for the specified WorkforcePoolSubject. Revoking sessions
+        # invalidates all active sessions and previously issued credentials for the
+        # subject, requiring the user to re-authenticate with the identity provider.
         # @param [String] name
         #   Required. The resource name of the WorkforcePoolSubject. Special characters,
-        #   like `/` and `:`, must be escaped, because all URLs need to conform to the "
-        #   When to Escape and Unescape" section of [RFC3986](https://www.ietf.org/rfc/
-        #   rfc2396.txt). Format: `locations/`location`/workforcePools/`workforce_pool_id`/
-        #   subjects/`subject_id``
+        #   such as `/` and `:`, must be escaped, because all URLs must conform to the "
+        #   When to Escape and Unescape" section of [RFC 3986](https://www.rfc-editor.org/
+        #   info/rfc3986/). Format: `locations/`location`/workforcePools/`
+        #   workforce_pool_id`/subjects/`subject_id``
         # @param [Google::Apis::IamV1::RevokeWorkforcePoolSubjectSessionsRequest] revoke_workforce_pool_subject_sessions_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
