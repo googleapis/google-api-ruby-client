@@ -70,18 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,18 +239,6 @@ module Google
       end
       
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -487,25 +463,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :applied_update, as: 'appliedUpdate', class: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate, decorator: Google::Apis::AssuredworkloadsV1::GoogleCloudAssuredworkloadsV1WorkloadUpdate::Representation
       
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :archive_time, as: 'archiveTime'
-          property :batch_size, as: 'batchSize'
-          property :event_cutoff_time, as: 'eventCutoffTime'
-          property :max_events_move, as: 'maxEventsMove'
-          property :organization_id, :numeric_string => true, as: 'organizationId'
-          property :region, as: 'region'
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1ArchiveResourceEventsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :moved_events_count, as: 'movedEventsCount'
         end
       end
       
@@ -828,25 +785,6 @@ module Google
       class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :archive_end_time, as: 'archiveEndTime'
-          property :archive_start_time, as: 'archiveStartTime'
-          property :batch_size, as: 'batchSize'
-          property :max_events_move, as: 'maxEventsMove'
-          property :organization_id, :numeric_string => true, as: 'organizationId'
-          property :region, as: 'region'
-        end
-      end
-      
-      class GoogleCloudAssuredworkloadsV1RevertArchivedResourceEventsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :moved_events_count, as: 'movedEventsCount'
         end
       end
       
