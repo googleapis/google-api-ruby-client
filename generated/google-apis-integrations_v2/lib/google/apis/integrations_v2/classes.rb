@@ -376,7 +376,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # LINT.IfChange Use this request to post all workflows associated with a given
-        # trigger id. Next available id: 13
+        # trigger id. Next available id: 14
         # Corresponds to the JSON property `postToQueueWithTriggerIdRequest`
         # @return [Google::Apis::IntegrationsV2::GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest]
         attr_accessor :post_to_queue_with_trigger_id_request
@@ -3533,7 +3533,7 @@ module Google
       end
       
       # LINT.IfChange Use this request to post all workflows associated with a given
-      # trigger id. Next available id: 13
+      # trigger id. Next available id: 14
       class GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
         include Google::Apis::Core::Hashable
       
@@ -3616,6 +3616,14 @@ module Google
         # @return [String]
         attr_accessor :user_generated_execution_id
       
+        # Optional. Pins the enqueue to this exact version. Requires client_id, and only
+        # an ACTIVE version is accepted: the drain re-resolves by trigger id, so nothing
+        # else could run. Unset by every caller today; draft support is b/570602030. See
+        # integrationplatform/api/executionsservice/README.md.
+        # Corresponds to the JSON property `workflowId`
+        # @return [String]
+        attr_accessor :workflow_id
+      
         # Optional. If provided, the workflow_name is used to filter all the matched
         # workflows having same trigger_id+client_id. A combination of trigger_id,
         # client_id and workflow_name identifies a unique workflow.
@@ -3640,6 +3648,7 @@ module Google
           @test_mode = args[:test_mode] if args.key?(:test_mode)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
           @user_generated_execution_id = args[:user_generated_execution_id] if args.key?(:user_generated_execution_id)
+          @workflow_id = args[:workflow_id] if args.key?(:workflow_id)
           @workflow_name = args[:workflow_name] if args.key?(:workflow_name)
         end
       end

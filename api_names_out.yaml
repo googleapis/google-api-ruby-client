@@ -336665,6 +336665,7 @@
 "/integrations:v2/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/testMode": test_mode
 "/integrations:v2/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/triggerId": trigger_id
 "/integrations:v2/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/userGeneratedExecutionId": user_generated_execution_id
+"/integrations:v2/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/workflowId": workflow_id
 "/integrations:v2/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/workflowName": workflow_name
 "/integrations:v2/fields": fields
 "/integrations:v2/integrations.projects.locations.generateIntegration": generate_project_location_integration
