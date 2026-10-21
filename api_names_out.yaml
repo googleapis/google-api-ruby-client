@@ -434644,6 +434644,7 @@
 "/sqladmin:v1beta4/DatabaseInstance/connectionName": connection_name
 "/sqladmin:v1beta4/DatabaseInstance/createTime": create_time
 "/sqladmin:v1beta4/DatabaseInstance/currentDiskSize": current_disk_size
+"/sqladmin:v1beta4/DatabaseInstance/databaseCenterIntegration": database_center_integration
 "/sqladmin:v1beta4/DatabaseInstance/databaseCenterIntegrationEnabled": database_center_integration_enabled
 "/sqladmin:v1beta4/DatabaseInstance/databaseInstalledVersion": database_installed_version
 "/sqladmin:v1beta4/DatabaseInstance/databaseVersion": database_version
@@ -434692,6 +434693,7 @@
 "/sqladmin:v1beta4/DatabaseInstance/serverCaCert": server_ca_cert
 "/sqladmin:v1beta4/DatabaseInstance/serviceAccountEmailAddress": service_account_email_address
 "/sqladmin:v1beta4/DatabaseInstance/settings": settings
+"/sqladmin:v1beta4/DatabaseInstance/skipPrecheck": skip_precheck
 "/sqladmin:v1beta4/DatabaseInstance/sqlNetworkArchitecture": sql_network_architecture
 "/sqladmin:v1beta4/DatabaseInstance/state": state
 "/sqladmin:v1beta4/DatabaseInstance/suspensionReason": suspension_reason
@@ -435140,6 +435142,7 @@
 "/sqladmin:v1beta4/PoolNodeConfig/state": state
 "/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext": pre_check_major_version_upgrade_context
 "/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext/kind": kind
+"/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext/maxRuntime": max_runtime
 "/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext/preCheckResponse": pre_check_response
 "/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext/preCheckResponse/pre_check_response": pre_check_response
 "/sqladmin:v1beta4/PreCheckMajorVersionUpgradeContext/targetDatabaseVersion": target_database_version
@@ -435478,6 +435481,7 @@
 "/sqladmin:v1beta4/Value/nullValue": null_value
 "/sqladmin:v1beta4/Value/value": value
 "/sqladmin:v1beta4/WorkloadCapture": workload_capture
+"/sqladmin:v1beta4/WorkloadCapture/backupId": backup_id
 "/sqladmin:v1beta4/WorkloadCapture/endTime": end_time
 "/sqladmin:v1beta4/WorkloadCapture/replayInstance": replay_instance
 "/sqladmin:v1beta4/WorkloadCapture/retentionDays": retention_days

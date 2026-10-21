@@ -1390,6 +1390,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_disk_size
       
+        # Optional. State of the Database Center integration for this instance. When
+        # unspecified, Database Center integration is enabled by default.
+        # Corresponds to the JSON property `databaseCenterIntegration`
+        # @return [String]
+        attr_accessor :database_center_integration
+      
         # Optional. If true, instance metadata is sent to the Database Center. If false,
         # instance metadata is not sent to the Database Center.
         # Corresponds to the JSON property `databaseCenterIntegrationEnabled`
@@ -1625,6 +1631,13 @@ module Google
         # @return [Google::Apis::SqladminV1beta4::Settings]
         attr_accessor :settings
       
+        # Optional. Input only. Determines whether the precheck step is skipped during a
+        # major version upgrade.
+        # Corresponds to the JSON property `skipPrecheck`
+        # @return [Boolean]
+        attr_accessor :skip_precheck
+        alias_method :skip_precheck?, :skip_precheck
+      
         # The SQL network architecture for the instance.
         # Corresponds to the JSON property `sqlNetworkArchitecture`
         # @return [String]
@@ -1678,6 +1691,7 @@ module Google
           @connection_name = args[:connection_name] if args.key?(:connection_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_disk_size = args[:current_disk_size] if args.key?(:current_disk_size)
+          @database_center_integration = args[:database_center_integration] if args.key?(:database_center_integration)
           @database_center_integration_enabled = args[:database_center_integration_enabled] if args.key?(:database_center_integration_enabled)
           @database_installed_version = args[:database_installed_version] if args.key?(:database_installed_version)
           @database_version = args[:database_version] if args.key?(:database_version)
@@ -1719,6 +1733,7 @@ module Google
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)
           @settings = args[:settings] if args.key?(:settings)
+          @skip_precheck = args[:skip_precheck] if args.key?(:skip_precheck)
           @sql_network_architecture = args[:sql_network_architecture] if args.key?(:sql_network_architecture)
           @state = args[:state] if args.key?(:state)
           @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
@@ -2179,7 +2194,8 @@ module Google
         attr_accessor :auto_iam_authn
         alias_method :auto_iam_authn?, :auto_iam_authn
       
-        # Optional. Name of the database on which the statement will be executed.
+        # Optional. Name of the database on which the statement will be executed. For
+        # Postgres and SQL Server it's required, for MySQL it's optional.
         # Corresponds to the JSON property `database`
         # @return [String]
         attr_accessor :database
@@ -5103,6 +5119,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Optional. The maximum allowed runtime for the precheck operation.
+        # Corresponds to the JSON property `maxRuntime`
+        # @return [String]
+        attr_accessor :max_runtime
+      
         # Output only. The responses from the precheck operation.
         # Corresponds to the JSON property `preCheckResponse`
         # @return [Array<Google::Apis::SqladminV1beta4::PreCheckResponse>]
@@ -5120,6 +5141,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @max_runtime = args[:max_runtime] if args.key?(:max_runtime)
           @pre_check_response = args[:pre_check_response] if args.key?(:pre_check_response)
           @target_database_version = args[:target_database_version] if args.key?(:target_database_version)
         end
@@ -7642,6 +7664,11 @@ module Google
       class WorkloadCapture
         include Google::Apis::Core::Hashable
       
+        # Output only. The base backup ID associated with the workload capture.
+        # Corresponds to the JSON property `backupId`
+        # @return [String]
+        attr_accessor :backup_id
+      
         # Output only. The end time of the workload capture.
         # Corresponds to the JSON property `endTime`
         # @return [String]
@@ -7683,6 +7710,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backup_id = args[:backup_id] if args.key?(:backup_id)
           @end_time = args[:end_time] if args.key?(:end_time)
           @replay_instance = args[:replay_instance] if args.key?(:replay_instance)
           @retention_days = args[:retention_days] if args.key?(:retention_days)
