@@ -3580,6 +3580,12 @@ module Google
         attr_accessor :dataset
       
         # 
+        # Corresponds to the JSON property `deletionNotificationsEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_notifications_enabled
+        alias_method :deletion_notifications_enabled?, :deletion_notifications_enabled
+      
+        # 
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3617,6 +3623,7 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @deletion_notifications_enabled = args[:deletion_notifications_enabled] if args.key?(:deletion_notifications_enabled)
           @description = args[:description] if args.key?(:description)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
@@ -3982,6 +3989,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `deletedFinding`
+        # @return [Boolean]
+        attr_accessor :deleted_finding
+        alias_method :deleted_finding?, :deleted_finding
+      
+        # 
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1::Finding]
         attr_accessor :finding
@@ -4002,6 +4015,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deleted_finding = args[:deleted_finding] if args.key?(:deleted_finding)
           @finding = args[:finding] if args.key?(:finding)
           @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
           @resource = args[:resource] if args.key?(:resource)
@@ -5707,6 +5721,12 @@ module Google
         attr_accessor :dataset
       
         # 
+        # Corresponds to the JSON property `deletionNotificationsEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_notifications_enabled
+        alias_method :deletion_notifications_enabled?, :deletion_notifications_enabled
+      
+        # 
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -5745,6 +5765,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @crypto_key_name = args[:crypto_key_name] if args.key?(:crypto_key_name)
           @dataset = args[:dataset] if args.key?(:dataset)
+          @deletion_notifications_enabled = args[:deletion_notifications_enabled] if args.key?(:deletion_notifications_enabled)
           @description = args[:description] if args.key?(:description)
           @filter = args[:filter] if args.key?(:filter)
           @most_recent_editor = args[:most_recent_editor] if args.key?(:most_recent_editor)
@@ -9193,6 +9214,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `deletedFinding`
+        # @return [Boolean]
+        attr_accessor :deleted_finding
+        alias_method :deleted_finding?, :deleted_finding
+      
+        # 
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV2Finding]
         attr_accessor :finding
@@ -9213,6 +9240,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deleted_finding = args[:deleted_finding] if args.key?(:deleted_finding)
           @finding = args[:finding] if args.key?(:finding)
           @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
           @resource = args[:resource] if args.key?(:resource)
@@ -11967,6 +11995,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `deletionNotificationsEnabled`
+        # @return [Boolean]
+        attr_accessor :deletion_notifications_enabled
+        alias_method :deletion_notifications_enabled?, :deletion_notifications_enabled
+      
+        # 
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -11997,6 +12031,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @deletion_notifications_enabled = args[:deletion_notifications_enabled] if args.key?(:deletion_notifications_enabled)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
