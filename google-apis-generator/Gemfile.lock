@@ -1,7 +1,7 @@
 PATH
   remote: ../google-apis-core
   specs:
-    google-apis-core (1.2.5)
+    google-apis-core (1.3.2)
       addressable (~> 2.9)
       faraday (~> 2.13)
       faraday-follow_redirects (~> 0.3)
@@ -14,7 +14,7 @@ PATH
 PATH
   remote: .
   specs:
-    google-apis-generator (0.19.0)
+    google-apis-generator (0.19.1)
       activesupport (>= 5.0)
       gems (~> 1.2)
       google-apis-core (>= 0.15.0, < 2.a)
@@ -273,9 +273,9 @@ CHECKSUMS
   fiddle (1.1.8) sha256=7fa8ee3627271497f3add5503acdbc3f40b32f610fc1cf49634f083ef3f32eee
   gems (1.3.0) sha256=37e7fb834365f39d3c2c649f0a7017288b0fe9ca69d3056b6760b53468b585ae
   github-markup (1.7.0) sha256=97eb27c70662d9cc1d5997cd6c99832026fae5d4913b5dce1ce6c9f65078e69d
-  google-apis-core (1.2.5)
+  google-apis-core (1.3.2)
   google-apis-discovery_v1 (0.21.0) sha256=fce49cb075013609485047f15e331a6db69ff42e202f154249cded2a2bfe8f3c
-  google-apis-generator (0.19.0)
+  google-apis-generator (0.19.1)
   google-cloud-env (2.4.0) sha256=01cb35ecee5d1c4d1cd4deaed8bb5bddc838e296bcc2a35c5d1ddd07ce40d28d
   google-id-token (1.4.2) sha256=d088ebe1a213a15511d4a9bf71261b1ff7ed6e8dbca52a3a71223ad03f8e69d1
   google-logging-utils (0.2.0) sha256=675462b4ea5affa825a3442694ca2d75d0069455a1d0956127207498fca3df7b
