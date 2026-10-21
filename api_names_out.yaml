@@ -363809,6 +363809,8 @@
 "/networksecurity:v1beta1/MTLSPolicy/clientValidationCa": client_validation_ca
 "/networksecurity:v1beta1/MTLSPolicy/clientValidationCa/client_validation_ca": client_validation_ca
 "/networksecurity:v1beta1/MTLSPolicy/clientValidationMode": client_validation_mode
+"/networksecurity:v1beta1/MTLSPolicy/clientValidationRelaxations": client_validation_relaxations
+"/networksecurity:v1beta1/MTLSPolicy/clientValidationRelaxations/client_validation_relaxation": client_validation_relaxation
 "/networksecurity:v1beta1/MTLSPolicy/clientValidationTrustConfig": client_validation_trust_config
 "/networksecurity:v1beta1/MirroringDeployment": mirroring_deployment
 "/networksecurity:v1beta1/MirroringDeployment/createTime": create_time

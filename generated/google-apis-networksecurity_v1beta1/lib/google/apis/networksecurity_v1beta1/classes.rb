@@ -3780,6 +3780,12 @@ module Google
         # @return [String]
         attr_accessor :client_validation_mode
       
+        # A list of validation relaxations to apply when `client_validation_mode` is set
+        # to ALLOW_VALIDATION_RELAXATIONS.
+        # Corresponds to the JSON property `clientValidationRelaxations`
+        # @return [Array<String>]
+        attr_accessor :client_validation_relaxations
+      
         # Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
         # If specified, the chain validation will be performed against certificates
         # configured in the given TrustConfig. Allowed only if the policy is to be used
@@ -3796,6 +3802,7 @@ module Google
         def update!(**args)
           @client_validation_ca = args[:client_validation_ca] if args.key?(:client_validation_ca)
           @client_validation_mode = args[:client_validation_mode] if args.key?(:client_validation_mode)
+          @client_validation_relaxations = args[:client_validation_relaxations] if args.key?(:client_validation_relaxations)
           @client_validation_trust_config = args[:client_validation_trust_config] if args.key?(:client_validation_trust_config)
         end
       end

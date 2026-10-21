@@ -1958,6 +1958,7 @@ module Google
           collection :client_validation_ca, as: 'clientValidationCa', class: Google::Apis::NetworksecurityV1beta1::ValidationCa, decorator: Google::Apis::NetworksecurityV1beta1::ValidationCa::Representation
       
           property :client_validation_mode, as: 'clientValidationMode'
+          collection :client_validation_relaxations, as: 'clientValidationRelaxations'
           property :client_validation_trust_config, as: 'clientValidationTrustConfig'
         end
       end
