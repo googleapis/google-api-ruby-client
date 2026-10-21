@@ -1660,6 +1660,13 @@ module Google
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :master_config
       
+        # The configuration for High Obtainability (HO) flexible instance groups.
+        # Flexible instance group configs serve as the single source of truth for
+        # desired state.
+        # Corresponds to the JSON property `masterFlexibleConfig`
+        # @return [Google::Apis::DataprocV1::FlexibleInstanceGroupConfig]
+        attr_accessor :master_flexible_config
+      
         # Specifies a Metastore configuration.
         # Corresponds to the JSON property `metastoreConfig`
         # @return [Google::Apis::DataprocV1::MetastoreConfig]
@@ -1670,6 +1677,13 @@ module Google
         # Corresponds to the JSON property `secondaryWorkerConfig`
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :secondary_worker_config
+      
+        # The configuration for High Obtainability (HO) flexible instance groups.
+        # Flexible instance group configs serve as the single source of truth for
+        # desired state.
+        # Corresponds to the JSON property `secondaryWorkerFlexibleConfig`
+        # @return [Google::Apis::DataprocV1::FlexibleInstanceGroupConfig]
+        attr_accessor :secondary_worker_flexible_config
       
         # Security related configuration, including encryption, Kerberos, etc.
         # Corresponds to the JSON property `securityConfig`
@@ -1701,6 +1715,13 @@ module Google
         # @return [Google::Apis::DataprocV1::InstanceGroupConfig]
         attr_accessor :worker_config
       
+        # The configuration for High Obtainability (HO) flexible instance groups.
+        # Flexible instance group configs serve as the single source of truth for
+        # desired state.
+        # Corresponds to the JSON property `workerFlexibleConfig`
+        # @return [Google::Apis::DataprocV1::FlexibleInstanceGroupConfig]
+        attr_accessor :worker_flexible_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1722,12 +1743,15 @@ module Google
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
           @master_config = args[:master_config] if args.key?(:master_config)
+          @master_flexible_config = args[:master_flexible_config] if args.key?(:master_flexible_config)
           @metastore_config = args[:metastore_config] if args.key?(:metastore_config)
           @secondary_worker_config = args[:secondary_worker_config] if args.key?(:secondary_worker_config)
+          @secondary_worker_flexible_config = args[:secondary_worker_flexible_config] if args.key?(:secondary_worker_flexible_config)
           @security_config = args[:security_config] if args.key?(:security_config)
           @software_config = args[:software_config] if args.key?(:software_config)
           @temp_bucket = args[:temp_bucket] if args.key?(:temp_bucket)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
+          @worker_flexible_config = args[:worker_flexible_config] if args.key?(:worker_flexible_config)
         end
       end
       
@@ -3169,6 +3193,52 @@ module Google
         def update!(**args)
           @fallback_node = args[:fallback_node] if args.key?(:fallback_node)
           @fallback_reason = args[:fallback_reason] if args.key?(:fallback_reason)
+        end
+      end
+      
+      # The configuration for High Obtainability (HO) flexible instance groups.
+      # Flexible instance group configs serve as the single source of truth for
+      # desired state.
+      class FlexibleInstanceGroupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The boot disk size in GB. This is a create-time specification and is
+        # not currently mutable via update masks.
+        # Corresponds to the JSON property `bootDiskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :boot_disk_size_gb
+      
+        # Optional. The number of vCPUs per instance. Must be a power of 2 (2, 4, 8, 16,
+        # 32). This is a create-time specification and is not currently mutable via
+        # update masks.
+        # Corresponds to the JSON property `coreCount`
+        # @return [Fixnum]
+        attr_accessor :core_count
+      
+        # Optional. The hardware class of the instances. This is a create-time
+        # specification and is not currently mutable via update masks.
+        # Corresponds to the JSON property `hardwareClass`
+        # @return [String]
+        attr_accessor :hardware_class
+      
+        # Optional. The number of VM instances requested.For master instances, this must
+        # be 1. For worker and secondary worker instances, this represents the desired
+        # capacity of the group and is mutable via cluster update operations and
+        # autoscaling.
+        # Corresponds to the JSON property `numInstances`
+        # @return [Fixnum]
+        attr_accessor :num_instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @core_count = args[:core_count] if args.key?(:core_count)
+          @hardware_class = args[:hardware_class] if args.key?(:hardware_class)
+          @num_instances = args[:num_instances] if args.key?(:num_instances)
         end
       end
       
@@ -8348,6 +8418,12 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. User-friendly display name for the session template. Can be up to 63
+        # characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
         # Environment configuration for a workload.
         # Corresponds to the JSON property `environmentConfig`
         # @return [Google::Apis::DataprocV1::EnvironmentConfig]
@@ -8402,6 +8478,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @creator = args[:creator] if args.key?(:creator)
           @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @environment_config = args[:environment_config] if args.key?(:environment_config)
           @jupyter_session = args[:jupyter_session] if args.key?(:jupyter_session)
           @labels = args[:labels] if args.key?(:labels)
