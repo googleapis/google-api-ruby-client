@@ -471,12 +471,12 @@ module Google
         # google-agent - AI_AGENT * browser-base - AI_AGENT * chat-gpt - AI_AGENT * aws-
         # bedrock - AI_AGENT * cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk -
         # AI_AGENT * duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER *
-        # marker-io - AI_AGENT * broadcom - AI_AGENT * anchor-browser - AI_AGENT *
-        # shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-
-        # sh - AI_AGENT * zvelo - SEARCH_INDEXER Ensure that your applications can
-        # handle identifier values not explicitly listed here. Deprecated values might
-        # take some time to stop showing up in responses. New values can be pushed so
-        # this list should be taken as non exhaustive.
+        # marker-io - AI_AGENT * anchor-browser - AI_AGENT * shopify - AI_AGENT *
+        # stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh - AI_AGENT * zvelo
+        # - SEARCH_INDEXER Ensure that your applications can handle identifier values
+        # not explicitly listed here. Deprecated values might take some time to stop
+        # showing up in responses. New values can be pushed so this list should be taken
+        # as non exhaustive.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2265,8 +2265,14 @@ module Google
         # @return [String]
         attr_accessor :android_package_name
       
+        # Information collected by the reCAPTCHA Enterprise client-side integration when
+        # the token is generated.
+        # Corresponds to the JSON property `clientProperties`
+        # @return [Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties]
+        attr_accessor :client_properties
+      
         # Output only. Indicates a failure collecting reCAPTCHA signals at token
-        # generation. This might be a transient condition, or persistent for a user’s
+        # generation. This might be a transient condition, or persistent for a user's
         # environment.
         # Corresponds to the JSON property `clientSignalsFailed`
         # @return [Boolean]
@@ -2311,12 +2317,43 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @android_package_name = args[:android_package_name] if args.key?(:android_package_name)
+          @client_properties = args[:client_properties] if args.key?(:client_properties)
           @client_signals_failed = args[:client_signals_failed] if args.key?(:client_signals_failed)
           @create_time = args[:create_time] if args.key?(:create_time)
           @hostname = args[:hostname] if args.key?(:hostname)
           @invalid_reason = args[:invalid_reason] if args.key?(:invalid_reason)
           @ios_bundle_id = args[:ios_bundle_id] if args.key?(:ios_bundle_id)
           @valid = args[:valid] if args.key?(:valid)
+        end
+      end
+      
+      # Information collected by the reCAPTCHA Enterprise client-side integration when
+      # the token is generated.
+      class GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The `User-Agent` header string observed by reCAPTCHA during token
+        # generation. This string is truncated to a maximum length of 1000 characters.
+        # Corresponds to the JSON property `userAgent`
+        # @return [String]
+        attr_accessor :user_agent
+      
+        # Output only. The user's IP address at token generation. This can be either an
+        # IPv4 address (e.g., `192.0.2.1`) or an IPv6 address in canonical format per
+        # RFC 5952 section 4 (e.g., `2001:db8::1`). IPv4-mapped IPv6 addresses are
+        # canonicalized to standard IPv4.
+        # Corresponds to the JSON property `userIpAddress`
+        # @return [String]
+        attr_accessor :user_ip_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @user_agent = args[:user_agent] if args.key?(:user_agent)
+          @user_ip_address = args[:user_ip_address] if args.key?(:user_ip_address)
         end
       end
       

@@ -460,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecaptchaenterpriseV1TransactionData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1227,12 +1233,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :android_package_name, as: 'androidPackageName'
+          property :client_properties, as: 'clientProperties', class: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties, decorator: Google::Apis::RecaptchaenterpriseV1::GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties::Representation
+      
           property :client_signals_failed, as: 'clientSignalsFailed'
           property :create_time, as: 'createTime'
           property :hostname, as: 'hostname'
           property :invalid_reason, as: 'invalidReason'
           property :ios_bundle_id, as: 'iosBundleId'
           property :valid, as: 'valid'
+        end
+      end
+      
+      class GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :user_agent, as: 'userAgent'
+          property :user_ip_address, as: 'userIpAddress'
         end
       end
       
