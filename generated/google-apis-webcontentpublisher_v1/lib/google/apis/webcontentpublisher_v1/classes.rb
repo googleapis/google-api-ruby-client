@@ -22,6 +22,44 @@ module Google
   module Apis
     module WebcontentpublisherV1
       
+      # A predefined answer choice template for a catalog question.
+      class AnswerChoiceTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Category of the answer based on the IAB Audience Taxonomy.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Text label used for aggregating responses by category in
+        # analytics.
+        # Corresponds to the JSON property `categoryLabel`
+        # @return [String]
+        attr_accessor :category_label
+      
+        # Output only. Localized answer choice text displayed to readers.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        # Output only. Unique identifier of the answer choice within the question.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @category_label = args[:category_label] if args.key?(:category_label)
+          @display_text = args[:display_text] if args.key?(:display_text)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Response message for CheckFreeAccess
       class CheckFreeAccessResponse
         include Google::Apis::Core::Hashable
@@ -92,6 +130,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Configuration for survey calls-to-action (CTAs).
+        # Corresponds to the JSON property `surveyConfig`
+        # @return [Google::Apis::WebcontentpublisherV1::SurveyConfig]
+        attr_accessor :survey_config
+      
         # Required. The type of this CTA.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -107,7 +150,65 @@ module Google
           @name = args[:name] if args.key?(:name)
           @newsletter_config = args[:newsletter_config] if args.key?(:newsletter_config)
           @state = args[:state] if args.key?(:state)
+          @survey_config = args[:survey_config] if args.key?(:survey_config)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An answer choice for a custom survey question.
+      class CustomAnswerChoice
+        include Google::Apis::Core::Hashable
+      
+        # Required. The display text of the answer choice shown to readers.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_text = args[:display_text] if args.key?(:display_text)
+        end
+      end
+      
+      # A custom question defined by the publisher.
+      class CustomQuestion
+        include Google::Apis::Core::Hashable
+      
+        # Required. Ordered list of answer choices for the custom question (2-5 items).
+        # Corresponds to the JSON property `answerChoices`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::CustomAnswerChoice>]
+        attr_accessor :answer_choices
+      
+        # Optional. Reporting category label sent to Google Analytics (up to 100
+        # characters).
+        # Corresponds to the JSON property `categoryLabel`
+        # @return [String]
+        attr_accessor :category_label
+      
+        # Required. The question prompt displayed to readers.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        # Output only. Server-assigned unique identifier for the custom question.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_choices = args[:answer_choices] if args.key?(:answer_choices)
+          @category_label = args[:category_label] if args.key?(:category_label)
+          @display_text = args[:display_text] if args.key?(:display_text)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -268,6 +369,33 @@ module Google
         end
       end
       
+      # A preset question referencing a template in the survey question catalog.
+      class PresetQuestion
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Selected answer choice IDs from the question template. Required (2-5
+        # unique IDs) when the catalog question is `CONFIGURABLE_CHOICES`, and must be
+        # omitted for `FIXED_CHOICES`.
+        # Corresponds to the JSON property `answerIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :answer_ids
+      
+        # Required. ID of the question template from `SurveyQuestionCatalog`.
+        # Corresponds to the JSON property `questionId`
+        # @return [Fixnum]
+        attr_accessor :question_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_ids = args[:answer_ids] if args.key?(:answer_ids)
+          @question_id = args[:question_id] if args.key?(:question_id)
+        end
+      end
+      
       # Represents a publisher's publication in Reader Revenue Manager.
       class Publication
         include Google::Apis::Core::Hashable
@@ -389,6 +517,56 @@ module Google
         end
       end
       
+      # A predefined question template in the survey question catalog.
+      class QuestionTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Possible answer choices for this question.
+        # Corresponds to the JSON property `answerChoices`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::AnswerChoiceTemplate>]
+        attr_accessor :answer_choices
+      
+        # Output only. Category of the question based on the IAB Audience Taxonomy.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Text label used for aggregating responses by category in
+        # analytics.
+        # Corresponds to the JSON property `categoryLabel`
+        # @return [String]
+        attr_accessor :category_label
+      
+        # Output only. The type of answer choice configuration for this question.
+        # Corresponds to the JSON property `configurationType`
+        # @return [String]
+        attr_accessor :configuration_type
+      
+        # Output only. Localized question text displayed to readers.
+        # Corresponds to the JSON property `displayText`
+        # @return [String]
+        attr_accessor :display_text
+      
+        # Output only. Unique identifier of the question template.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @answer_choices = args[:answer_choices] if args.key?(:answer_choices)
+          @category = args[:category] if args.key?(:category)
+          @category_label = args[:category_label] if args.key?(:category_label)
+          @configuration_type = args[:configuration_type] if args.key?(:configuration_type)
+          @display_text = args[:display_text] if args.key?(:display_text)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
       # Configuration and status of the Reader Revenue Manager (RRM) product for a
       # publication.
       class RrmProduct
@@ -470,6 +648,87 @@ module Google
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
           @gcp_project_number = args[:gcp_project_number] if args.key?(:gcp_project_number)
+        end
+      end
+      
+      # Configuration for survey calls-to-action (CTAs).
+      class SurveyConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Header prompt shown to readers. If omitted, the server populates the
+        # default prompt localized to the parent publication's configured primary
+        # language.
+        # Corresponds to the JSON property `customMessage`
+        # @return [String]
+        attr_accessor :custom_message
+      
+        # Optional. Ordered list of questions presented in the survey (1-3 items when `
+        # ACTIVE`; 0-3 when `DRAFT`).
+        # Corresponds to the JSON property `questions`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::SurveyQuestion>]
+        attr_accessor :questions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_message = args[:custom_message] if args.key?(:custom_message)
+          @questions = args[:questions] if args.key?(:questions)
+        end
+      end
+      
+      # A single question within a survey, which can be either a preset question from
+      # the catalog or a custom publisher-defined question.
+      class SurveyQuestion
+        include Google::Apis::Core::Hashable
+      
+        # A custom question defined by the publisher.
+        # Corresponds to the JSON property `customQuestion`
+        # @return [Google::Apis::WebcontentpublisherV1::CustomQuestion]
+        attr_accessor :custom_question
+      
+        # A preset question referencing a template in the survey question catalog.
+        # Corresponds to the JSON property `presetQuestion`
+        # @return [Google::Apis::WebcontentpublisherV1::PresetQuestion]
+        attr_accessor :preset_question
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_question = args[:custom_question] if args.key?(:custom_question)
+          @preset_question = args[:preset_question] if args.key?(:preset_question)
+        end
+      end
+      
+      # Represents the catalog of predefined survey questions and localized answer
+      # choices available for a publication.
+      class SurveyQuestionCatalog
+        include Google::Apis::Core::Hashable
+      
+        # Identifier. The resource name of the survey question catalog. Format: `
+        # organizations/`organization`/publications/`publication`/surveyQuestionCatalog`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The list of available predefined question templates.
+        # Corresponds to the JSON property `questions`
+        # @return [Array<Google::Apis::WebcontentpublisherV1::QuestionTemplate>]
+        attr_accessor :questions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @questions = args[:questions] if args.key?(:questions)
         end
       end
       

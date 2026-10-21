@@ -120,6 +120,43 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the catalog of predefined survey questions and answer choices
+        # available for a publication.
+        # @param [String] name
+        #   Required. The resource name of the survey question catalog to retrieve. Format:
+        #   `organizations/`organization`/publications/`publication`/
+        #   surveyQuestionCatalog`.
+        # @param [String] language_code
+        #   Optional. The BCP-47 language code (e.g., "en-US", "es-419") to override the
+        #   publication's configured primary language.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::WebcontentpublisherV1::SurveyQuestionCatalog] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::WebcontentpublisherV1::SurveyQuestionCatalog]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_publication_survey_question_catalog(name, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::WebcontentpublisherV1::SurveyQuestionCatalog::Representation
+          command.response_class = Google::Apis::WebcontentpublisherV1::SurveyQuestionCatalog
+          command.params['name'] = name unless name.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists publications.
         # @param [String] parent
         #   Required. The parent organization whose publications to list, or "
