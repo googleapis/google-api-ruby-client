@@ -184,12 +184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -791,16 +785,6 @@ module Google
       class GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
-          property :resource_info, as: 'resourceInfo', class: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo, decorator: Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo::Representation
-      
-          property :validate_only, as: 'validateOnly'
         end
       end
       
