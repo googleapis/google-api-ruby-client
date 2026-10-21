@@ -1268,6 +1268,7 @@ module Google
       class DailyRollUpDataPointsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :rollup_data_points, as: 'rollupDataPoints', class: Google::Apis::HealthV4::DailyRollupDataPoint, decorator: Google::Apis::HealthV4::DailyRollupDataPoint::Representation
       
         end
