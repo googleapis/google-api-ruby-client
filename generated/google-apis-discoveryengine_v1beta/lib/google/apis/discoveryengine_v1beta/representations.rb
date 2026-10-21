@@ -6540,6 +6540,7 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notebooks, as: 'notebooks'
           property :search_config, as: 'searchConfig'
         end
       end
@@ -8805,6 +8806,7 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notebooks, as: 'notebooks'
           property :search_config, as: 'searchConfig'
         end
       end
@@ -9307,6 +9309,8 @@ module Google
           property :indexable_option, as: 'indexableOption'
           property :key_property_type, as: 'keyPropertyType'
           property :metatag_name, as: 'metatagName'
+          property :partial_matchable_option, as: 'partialMatchableOption'
+          property :prefix_matchable_option, as: 'prefixMatchableOption'
           property :recs_filterable_option, as: 'recsFilterableOption'
           property :retrievable_option, as: 'retrievableOption'
           collection :schema_org_paths, as: 'schemaOrgPaths'
@@ -12317,6 +12321,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :notebooks, as: 'notebooks'
           property :search_config, as: 'searchConfig'
         end
       end
@@ -12832,6 +12837,9 @@ module Google
       
           property :question_index, as: 'questionIndex'
           property :session, as: 'session'
+          property :step_seq_num, :numeric_string => true, as: 'stepSeqNum'
+          property :task_name, as: 'taskName'
+          property :trajectory_id, as: 'trajectoryId'
         end
       end
       

@@ -3283,6 +3283,16 @@ module Google
       class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Restricts this data store to the given notebooks. When empty, the
+        # data store covers every notebook the querying user can access, which is the
+        # existing behaviour. Each entry is a full notebook resource name, such as `
+        # projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as
+        # requested upstream, so a notebook outside this list cannot appear in a search
+        # response through this data store even if the backend returns one.
+        # Corresponds to the JSON property `notebooks`
+        # @return [Array<String>]
+        attr_accessor :notebooks
+      
         # Required. Search config name. Format: projects/*/locations/global/
         # notebookLmSearchConfigs/*
         # Corresponds to the JSON property `searchConfig`
@@ -3295,6 +3305,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @notebooks = args[:notebooks] if args.key?(:notebooks)
           @search_config = args[:search_config] if args.key?(:search_config)
         end
       end
@@ -4086,7 +4097,7 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications`
+        # `in-app-notifications` * `code-extraction`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -11747,6 +11758,16 @@ module Google
       class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Restricts this data store to the given notebooks. When empty, the
+        # data store covers every notebook the querying user can access, which is the
+        # existing behaviour. Each entry is a full notebook resource name, such as `
+        # projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as
+        # requested upstream, so a notebook outside this list cannot appear in a search
+        # response through this data store even if the backend returns one.
+        # Corresponds to the JSON property `notebooks`
+        # @return [Array<String>]
+        attr_accessor :notebooks
+      
         # Required. Search config name. Format: projects/*/locations/global/
         # notebookLmSearchConfigs/*
         # Corresponds to the JSON property `searchConfig`
@@ -11759,6 +11780,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @notebooks = args[:notebooks] if args.key?(:notebooks)
           @search_config = args[:search_config] if args.key?(:search_config)
         end
       end
@@ -12698,7 +12720,7 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications`
+        # `in-app-notifications` * `code-extraction`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -13586,6 +13608,28 @@ module Google
         # @return [String]
         attr_accessor :metatag_name
       
+        # Optional. If partial_matchable_option is PARTIAL_MATCHABLE_OPTION_ENABLED,
+        # field values are partial matchable. If partial_matchable_option is unset, the
+        # server behavior defaults to PARTIAL_MATCHABLE_OPTION_DISABLED for fields that
+        # support setting partial matchable options. For those fields that do not
+        # support setting partial matchable options, the server will skip partial
+        # matchable option setting, and setting partial_matchable_option for those
+        # fields will throw `INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `partialMatchableOption`
+        # @return [String]
+        attr_accessor :partial_matchable_option
+      
+        # Optional. If prefix_matchable_option is PREFIX_MATCHABLE_OPTION_ENABLED, field
+        # values are prefix matchable. If prefix_matchable_option is unset, the server
+        # behavior defaults to PREFIX_MATCHABLE_OPTION_DISABLED for fields that support
+        # setting prefix matchable options. For those fields that do not support setting
+        # prefix matchable options, the server will skip prefix matchable option setting,
+        # and setting prefix_matchable_option for those fields will throw `
+        # INVALID_ARGUMENT` error.
+        # Corresponds to the JSON property `prefixMatchableOption`
+        # @return [String]
+        attr_accessor :prefix_matchable_option
+      
         # If recs_filterable_option is FILTERABLE_ENABLED, field values are filterable
         # by filter expression in RecommendationService.Recommend. If FILTERABLE_ENABLED
         # but the field type is numerical, field values are not filterable by text
@@ -13658,6 +13702,8 @@ module Google
           @indexable_option = args[:indexable_option] if args.key?(:indexable_option)
           @key_property_type = args[:key_property_type] if args.key?(:key_property_type)
           @metatag_name = args[:metatag_name] if args.key?(:metatag_name)
+          @partial_matchable_option = args[:partial_matchable_option] if args.key?(:partial_matchable_option)
+          @prefix_matchable_option = args[:prefix_matchable_option] if args.key?(:prefix_matchable_option)
           @recs_filterable_option = args[:recs_filterable_option] if args.key?(:recs_filterable_option)
           @retrievable_option = args[:retrievable_option] if args.key?(:retrievable_option)
           @schema_org_paths = args[:schema_org_paths] if args.key?(:schema_org_paths)
@@ -16341,7 +16387,11 @@ module Google
         # Specifications that define the specific DataStores to be searched, along with
         # configurations for those data stores. This is only considered for Engines with
         # multiple data stores. For engines with a single data store, the specs directly
-        # under SearchRequest should be used.
+        # under SearchRequest should be used. On an engine with multiple data stores,
+        # this field is optional. If it's empty, all of the engine's data stores are
+        # searched (blended search). Unless it specifies exactly one data store, some
+        # request fields, such as `order_by` and `query_expansion_spec`, aren't
+        # supported and return an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
@@ -24829,6 +24879,16 @@ module Google
       class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Restricts this data store to the given notebooks. When empty, the
+        # data store covers every notebook the querying user can access, which is the
+        # existing behaviour. Each entry is a full notebook resource name, such as `
+        # projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as
+        # requested upstream, so a notebook outside this list cannot appear in a search
+        # response through this data store even if the backend returns one.
+        # Corresponds to the JSON property `notebooks`
+        # @return [Array<String>]
+        attr_accessor :notebooks
+      
         # Required. Search config name. Format: projects/*/locations/global/
         # notebookLmSearchConfigs/*
         # Corresponds to the JSON property `searchConfig`
@@ -24841,6 +24901,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @notebooks = args[:notebooks] if args.key?(:notebooks)
           @search_config = args[:search_config] if args.key?(:search_config)
         end
       end
@@ -25932,7 +25993,7 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications`
+        # `in-app-notifications` * `code-extraction`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -26725,6 +26786,26 @@ module Google
         # @return [String]
         attr_accessor :session
       
+        # Optional. The `TaskServerEvent.seq_num` of the step that opened the rated
+        # agent task reply.
+        # Corresponds to the JSON property `stepSeqNum`
+        # @return [Fixnum]
+        attr_accessor :step_seq_num
+      
+        # Optional. The full resource name of the Sobi task if the conversation was
+        # handled by a long-running agent task. Format (canonical, or the short alias
+        # the Task API also accepts): projects/`project`/locations/`location`/agents/`
+        # agent`/tasks/`task` projects/`project`/locations/`location`/tasks/`task`
+        # Corresponds to the JSON property `taskName`
+        # @return [String]
+        attr_accessor :task_name
+      
+        # Optional. The runtime trajectory id of the rated agent task turn, as set on `
+        # TaskServerEvent.trajectory_id`. Shared by all steps of the turn.
+        # Corresponds to the JSON property `trajectoryId`
+        # @return [String]
+        attr_accessor :trajectory_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -26736,6 +26817,9 @@ module Google
           @query = args[:query] if args.key?(:query)
           @question_index = args[:question_index] if args.key?(:question_index)
           @session = args[:session] if args.key?(:session)
+          @step_seq_num = args[:step_seq_num] if args.key?(:step_seq_num)
+          @task_name = args[:task_name] if args.key?(:task_name)
+          @trajectory_id = args[:trajectory_id] if args.key?(:trajectory_id)
         end
       end
       
@@ -31009,7 +31093,11 @@ module Google
         # Specifications that define the specific DataStores to be searched, along with
         # configurations for those data stores. This is only considered for Engines with
         # multiple data stores. For engines with a single data store, the specs directly
-        # under SearchRequest should be used.
+        # under SearchRequest should be used. On an engine with multiple data stores,
+        # this field is optional. If it's empty, all of the engine's data stores are
+        # searched (blended search). Unless it specifies exactly one data store, some
+        # request fields, such as `order_by` and `query_expansion_spec`, aren't
+        # supported and return an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `dataStoreSpecs`
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>]
         attr_accessor :data_store_specs
