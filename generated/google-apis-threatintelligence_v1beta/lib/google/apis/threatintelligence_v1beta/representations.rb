@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommunicationContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Configuration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +161,12 @@ module Google
       end
       
       class CustomerProfileSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerProfileTechnology
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -564,6 +576,7 @@ module Google
           property :severity_analysis, as: 'severityAnalysis', class: Google::Apis::ThreatintelligenceV1beta::SeverityAnalysis, decorator: Google::Apis::ThreatintelligenceV1beta::SeverityAnalysis::Representation
       
           property :state, as: 'state'
+          collection :tags, as: 'tags'
         end
       end
       
@@ -635,6 +648,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :issuer, as: 'issuer'
           collection :subject_alternative_names, as: 'subjectAlternativeNames'
+        end
+      end
+      
+      class CommunicationContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel_description, as: 'channelDescription'
+          property :channel_name, as: 'channelName'
+          property :channel_path, as: 'channelPath'
+          property :channel_url, as: 'channelUrl'
+          property :service_name, as: 'serviceName'
+          property :thread_id, as: 'threadId'
         end
       end
       
@@ -745,6 +770,8 @@ module Google
       
           property :summary, as: 'summary', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileSummary, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileSummary::Representation
       
+          collection :technologies, as: 'technologies', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileTechnology, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileTechnology::Representation
+      
           property :technology_presence, as: 'technologyPresence'
           collection :web_presences, as: 'webPresences', class: Google::Apis::ThreatintelligenceV1beta::CustomerProfileWebPresence, decorator: Google::Apis::ThreatintelligenceV1beta::CustomerProfileWebPresence::Representation
       
@@ -837,6 +864,14 @@ module Google
         end
       end
       
+      class CustomerProfileTechnology
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citation_ids, as: 'citationIds'
+          property :technology, as: 'technology'
+        end
+      end
+      
       class CustomerProfileWebPresence
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -849,6 +884,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :discovery_document_ids, as: 'discoveryDocumentIds'
+          collection :discovery_documents, as: 'discoveryDocuments', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :severity, as: 'severity'
         end
       end
@@ -856,6 +893,8 @@ module Google
       class DataLeakFindingDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_document, as: 'discoveryDocument', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'
@@ -865,6 +904,8 @@ module Google
       class DiscoveryDocument
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :communication_context, as: 'communicationContext', class: Google::Apis::ThreatintelligenceV1beta::CommunicationContext, decorator: Google::Apis::ThreatintelligenceV1beta::CommunicationContext::Representation
+      
           property :document_id, as: 'documentId'
           property :document_type, as: 'documentType'
         end
@@ -1155,6 +1196,8 @@ module Google
       class InitialAccessBrokerFindingDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_document, as: 'discoveryDocument', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'
@@ -1165,6 +1208,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :discovery_document_ids, as: 'discoveryDocumentIds'
+          collection :discovery_documents, as: 'discoveryDocuments', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :severity, as: 'severity'
         end
       end
@@ -1172,6 +1217,8 @@ module Google
       class InsiderThreatFindingDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :discovery_document, as: 'discoveryDocument', class: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument, decorator: Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument::Representation
+      
           property :document_id, as: 'documentId'
           property :match_score, as: 'matchScore'
           property :severity, as: 'severity'

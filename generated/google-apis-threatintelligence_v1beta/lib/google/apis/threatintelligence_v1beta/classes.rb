@@ -140,6 +140,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. System taxonomy tags associated with this alert.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
         def initialize(**args)
            update!(**args)
         end
@@ -162,6 +167,7 @@ module Google
           @relevance_analysis = args[:relevance_analysis] if args.key?(:relevance_analysis)
           @severity_analysis = args[:severity_analysis] if args.key?(:severity_analysis)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       
@@ -418,6 +424,57 @@ module Google
         def update!(**args)
           @issuer = args[:issuer] if args.key?(:issuer)
           @subject_alternative_names = args[:subject_alternative_names] if args.key?(:subject_alternative_names)
+        end
+      end
+      
+      # Detailed communication context metadata for documents originating from deep
+      # and dark web communication channels.
+      class CommunicationContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the communication channel.
+        # Corresponds to the JSON property `channelDescription`
+        # @return [String]
+        attr_accessor :channel_description
+      
+        # Optional. Name of the communication channel.
+        # Corresponds to the JSON property `channelName`
+        # @return [String]
+        attr_accessor :channel_name
+      
+        # Optional. Channel path (e.g. forum path or sub-channel).
+        # Corresponds to the JSON property `channelPath`
+        # @return [String]
+        attr_accessor :channel_path
+      
+        # Optional. URL of the communication channel.
+        # Corresponds to the JSON property `channelUrl`
+        # @return [String]
+        attr_accessor :channel_url
+      
+        # Optional. Service from the collection event origin (e.g. forum or chat service
+        # name).
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Optional. Conversation thread identifier.
+        # Corresponds to the JSON property `threadId`
+        # @return [String]
+        attr_accessor :thread_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel_description = args[:channel_description] if args.key?(:channel_description)
+          @channel_name = args[:channel_name] if args.key?(:channel_name)
+          @channel_path = args[:channel_path] if args.key?(:channel_path)
+          @channel_url = args[:channel_url] if args.key?(:channel_url)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @thread_id = args[:thread_id] if args.key?(:thread_id)
         end
       end
       
@@ -777,6 +834,11 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::CustomerProfileSummary]
         attr_accessor :summary
       
+        # Optional. Technologies associated with the organization.
+        # Corresponds to the JSON property `technologies`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::CustomerProfileTechnology>]
+        attr_accessor :technologies
+      
         # Optional. Technology presence of the organization.
         # Corresponds to the JSON property `technologyPresence`
         # @return [String]
@@ -804,6 +866,7 @@ module Google
           @products = args[:products] if args.key?(:products)
           @security_considerations = args[:security_considerations] if args.key?(:security_considerations)
           @summary = args[:summary] if args.key?(:summary)
+          @technologies = args[:technologies] if args.key?(:technologies)
           @technology_presence = args[:technology_presence] if args.key?(:technology_presence)
           @web_presences = args[:web_presences] if args.key?(:web_presences)
         end
@@ -1093,6 +1156,31 @@ module Google
         end
       end
       
+      # Technology information for the customer profile.
+      class CustomerProfileTechnology
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The citation ids for the technology.
+        # Corresponds to the JSON property `citationIds`
+        # @return [Array<String>]
+        attr_accessor :citation_ids
+      
+        # Required. The name of the technology.
+        # Corresponds to the JSON property `technology`
+        # @return [String]
+        attr_accessor :technology
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_ids = args[:citation_ids] if args.key?(:citation_ids)
+          @technology = args[:technology] if args.key?(:technology)
+        end
+      end
+      
       # Web presence information for the customer profile.
       class CustomerProfileWebPresence
         include Google::Apis::Core::Hashable
@@ -1122,10 +1210,16 @@ module Google
       class DataLeakAlertDetail
         include Google::Apis::Core::Hashable
       
-        # Required. Array of ids to accommodate multiple discovery documents
+        # Optional. Deprecated: Use `discovery_documents` instead. Array of ids to
+        # accommodate multiple discovery documents.
         # Corresponds to the JSON property `discoveryDocumentIds`
         # @return [Array<String>]
         attr_accessor :discovery_document_ids
+      
+        # Output only. New structured metadata payload.
+        # Corresponds to the JSON property `discoveryDocuments`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument>]
+        attr_accessor :discovery_documents
       
         # Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `
         # MEDIUM` * `HIGH` * `CRITICAL`
@@ -1140,6 +1234,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discovery_document_ids = args[:discovery_document_ids] if args.key?(:discovery_document_ids)
+          @discovery_documents = args[:discovery_documents] if args.key?(:discovery_documents)
           @severity = args[:severity] if args.key?(:severity)
         end
       end
@@ -1148,9 +1243,14 @@ module Google
       class DataLeakFindingDetail
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of the document that triggered the Data Leak
-        # finding. This ID can be used to retrieve the content of the document for
-        # further analysis.
+        # Replaces the raw string ID to hold associated metadata.
+        # Corresponds to the JSON property `discoveryDocument`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument]
+        attr_accessor :discovery_document
+      
+        # Optional. Deprecated: Use `discovery_document` instead. The unique identifier
+        # of the document that triggered the Data Leak finding. This ID can be used to
+        # retrieve the content of the document for further analysis.
         # Corresponds to the JSON property `documentId`
         # @return [String]
         attr_accessor :document_id
@@ -1175,6 +1275,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @discovery_document = args[:discovery_document] if args.key?(:discovery_document)
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
@@ -1184,6 +1285,12 @@ module Google
       # Replaces the raw string ID to hold associated metadata.
       class DiscoveryDocument
         include Google::Apis::Core::Hashable
+      
+        # Detailed communication context metadata for documents originating from deep
+        # and dark web communication channels.
+        # Corresponds to the JSON property `communicationContext`
+        # @return [Google::Apis::ThreatintelligenceV1beta::CommunicationContext]
+        attr_accessor :communication_context
       
         # Output only. The identifier of the discovery document.
         # Corresponds to the JSON property `documentId`
@@ -1202,6 +1309,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @communication_context = args[:communication_context] if args.key?(:communication_context)
           @document_id = args[:document_id] if args.key?(:document_id)
           @document_type = args[:document_type] if args.key?(:document_type)
         end
@@ -2127,9 +2235,14 @@ module Google
       class InitialAccessBrokerFindingDetail
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of the document that triggered the IAB finding.
-        # This ID can be used to retrieve the content of the document for further
-        # analysis.
+        # Replaces the raw string ID to hold associated metadata.
+        # Corresponds to the JSON property `discoveryDocument`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument]
+        attr_accessor :discovery_document
+      
+        # Optional. Deprecated: Use `discovery_document` instead. The unique identifier
+        # of the document that triggered the IAB finding. This ID can be used to
+        # retrieve the content of the document for further analysis.
         # Corresponds to the JSON property `documentId`
         # @return [String]
         attr_accessor :document_id
@@ -2153,6 +2266,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @discovery_document = args[:discovery_document] if args.key?(:discovery_document)
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
@@ -2163,10 +2277,16 @@ module Google
       class InsiderThreatAlertDetail
         include Google::Apis::Core::Hashable
       
-        # Required. Array of ids to accommodate multiple discovery documents
+        # Optional. Deprecated: Use `discovery_documents` instead. Array of ids to
+        # accommodate multiple discovery documents.
         # Corresponds to the JSON property `discoveryDocumentIds`
         # @return [Array<String>]
         attr_accessor :discovery_document_ids
+      
+        # Output only. New structured metadata payload.
+        # Corresponds to the JSON property `discoveryDocuments`
+        # @return [Array<Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument>]
+        attr_accessor :discovery_documents
       
         # Required. The severity of the Insider Threat alert. Allowed values are: * `LOW`
         # * `MEDIUM` * `HIGH` * `CRITICAL`
@@ -2181,6 +2301,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @discovery_document_ids = args[:discovery_document_ids] if args.key?(:discovery_document_ids)
+          @discovery_documents = args[:discovery_documents] if args.key?(:discovery_documents)
           @severity = args[:severity] if args.key?(:severity)
         end
       end
@@ -2189,9 +2310,14 @@ module Google
       class InsiderThreatFindingDetail
         include Google::Apis::Core::Hashable
       
-        # Required. The unique identifier of the document that triggered the
-        # InsiderThreat finding. This ID can be used to retrieve the content of the
-        # document for further analysis.
+        # Replaces the raw string ID to hold associated metadata.
+        # Corresponds to the JSON property `discoveryDocument`
+        # @return [Google::Apis::ThreatintelligenceV1beta::DiscoveryDocument]
+        attr_accessor :discovery_document
+      
+        # Optional. Deprecated: Use `discovery_document` instead. The unique identifier
+        # of the document that triggered the InsiderThreat finding. This ID can be used
+        # to retrieve the content of the document for further analysis.
         # Corresponds to the JSON property `documentId`
         # @return [String]
         attr_accessor :document_id
@@ -2216,6 +2342,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @discovery_document = args[:discovery_document] if args.key?(:discovery_document)
           @document_id = args[:document_id] if args.key?(:document_id)
           @match_score = args[:match_score] if args.key?(:match_score)
           @severity = args[:severity] if args.key?(:severity)
