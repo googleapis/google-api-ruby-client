@@ -2169,9 +2169,39 @@ module Google
         end
       end
       
+      # An attribute attached to a layer by a plugin.
+      class LayerAttribute
+        include Google::Apis::Core::Hashable
+      
+        # The name of the plugin that generated this attribute.
+        # Corresponds to the JSON property `plugin`
+        # @return [String]
+        attr_accessor :plugin
+      
+        # The value of the attribute, with a meaning defined by the plugin.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plugin = args[:plugin] if args.key?(:plugin)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Details about the layer a package was found in.
       class LayerDetails
         include Google::Apis::Core::Hashable
+      
+        # Attributes attached to this layer by plugins.
+        # Corresponds to the JSON property `attributes`
+        # @return [Array<Google::Apis::OndemandscanningV1::LayerAttribute>]
+        attr_accessor :attributes
       
         # The base images the layer is found within.
         # Corresponds to the JSON property `baseImages`
@@ -2206,6 +2236,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
           @base_images = args[:base_images] if args.key?(:base_images)
           @chain_id = args[:chain_id] if args.key?(:chain_id)
           @command = args[:command] if args.key?(:command)
