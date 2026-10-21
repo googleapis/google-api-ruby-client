@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildResourceUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -921,6 +927,17 @@ module Google
         end
       end
       
+      class BuildResourceUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cpu_utilization, as: 'averageCpuUtilization'
+          property :average_memory_utilization, as: 'averageMemoryUtilization'
+          property :peak_cpu_utilization, as: 'peakCpuUtilization'
+          property :peak_memory_utilization, as: 'peakMemoryUtilization'
+          property :total_cpu_duration, as: 'totalCpuDuration'
+        end
+      end
+      
       class BuildStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1582,6 +1599,8 @@ module Google
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::CloudbuildV1::UploadedPythonPackage, decorator: Google::Apis::CloudbuildV1::UploadedPythonPackage::Representation
+      
+          property :resource_usage, as: 'resourceUsage', class: Google::Apis::CloudbuildV1::BuildResourceUsage, decorator: Google::Apis::CloudbuildV1::BuildResourceUsage::Representation
       
         end
       end
