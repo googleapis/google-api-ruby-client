@@ -36153,6 +36153,7 @@
 "/alloydb:v1beta/Backup/etag": etag
 "/alloydb:v1beta/Backup/expiryQuantity": expiry_quantity
 "/alloydb:v1beta/Backup/expiryTime": expiry_time
+"/alloydb:v1beta/Backup/expressConfig": express_config
 "/alloydb:v1beta/Backup/labels": labels
 "/alloydb:v1beta/Backup/labels/label": label
 "/alloydb:v1beta/Backup/name": name

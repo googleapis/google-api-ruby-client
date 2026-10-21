@@ -889,6 +889,8 @@ module Google
           property :expiry_quantity, as: 'expiryQuantity', class: Google::Apis::AlloydbV1beta::QuantityBasedExpiry, decorator: Google::Apis::AlloydbV1beta::QuantityBasedExpiry::Representation
       
           property :expiry_time, as: 'expiryTime'
+          property :express_config, as: 'expressConfig', class: Google::Apis::AlloydbV1beta::ExpressConfig, decorator: Google::Apis::AlloydbV1beta::ExpressConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
