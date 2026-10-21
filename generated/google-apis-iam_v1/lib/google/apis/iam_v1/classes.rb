@@ -1776,6 +1776,23 @@ module Google
         # @return [Array<String>]
         attr_accessor :allowed_audiences
       
+        # Optional. The URL to fetch the OIDC discovery document from, overriding the
+        # default URL derived from `issuer_uri`. If not set, `discovery_uri` defaults to
+        # `issuer_uri` with `/.well-known/openid-configuration` appended, as per the
+        # OpenID Connect Discovery 1.0 specification. If set, `discovery_uri` must meet
+        # the following requirements: - Must start with `https://`. - Must not exceed
+        # 2000 characters. - The scheme, host, and port must match `issuer_uri`. - The
+        # path must contain `/.well-known/` (where `` is not empty, such as `openid-
+        # configuration`) and conform to the `issuer_uri` topology: - The well-known
+        # path segment is inserted before the issuer path (for example, `https://example.
+        # com/.well-known/openid-configuration/tenant1` for issuer `https://example.com/
+        # tenant1`), or - The well-known path segment is appended under the issuer path (
+        # for example, `https://example.com/tenant1/.well-known/openid-configuration`
+        # for issuer `https://example.com/tenant1`).
+        # Corresponds to the JSON property `discoveryUri`
+        # @return [String]
+        attr_accessor :discovery_uri
+      
         # Required. The OIDC `issuer_uri`. Must be an HTTPS endpoint. Per OpenID Connect
         # Discovery 1.0 spec, the OIDC issuer URL is used to locate the provider's
         # public keys (via `jwks_uri`) for verifying tokens like the OIDC ID token.
@@ -1802,6 +1819,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allowed_audiences = args[:allowed_audiences] if args.key?(:allowed_audiences)
+          @discovery_uri = args[:discovery_uri] if args.key?(:discovery_uri)
           @issuer_uri = args[:issuer_uri] if args.key?(:issuer_uri)
           @jwks_json = args[:jwks_json] if args.key?(:jwks_json)
         end
@@ -3508,6 +3526,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. The vendor type of the third-party identity provider.
+        # Corresponds to the JSON property `vendorType`
+        # @return [String]
+        attr_accessor :vendor_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3528,6 +3551,7 @@ module Google
           @saml = args[:saml] if args.key?(:saml)
           @scim_usage = args[:scim_usage] if args.key?(:scim_usage)
           @state = args[:state] if args.key?(:state)
+          @vendor_type = args[:vendor_type] if args.key?(:vendor_type)
         end
       end
       
@@ -3904,6 +3928,14 @@ module Google
       class WorkloadIdentityPoolProvider
         include Google::Apis::Core::Hashable
       
+        # Optional. A list of the resource names of WorkloadIdentityPoolProviders in the
+        # same pool that are authorized to issue actor tokens for this provider. An
+        # actor token represents the identity of the acting party to whom authority is
+        # delegated. At most 3 actor providers can be specified.
+        # Corresponds to the JSON property `actorProviders`
+        # @return [Array<String>]
+        attr_accessor :actor_providers
+      
         # Optional. [A Common Expression Language](https://opensource.google/projects/
         # cel) expression, in plain text, to restrict what otherwise valid
         # authentication credentials issued by the provider should not be accepted. The
@@ -4026,6 +4058,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actor_providers = args[:actor_providers] if args.key?(:actor_providers)
           @attribute_condition = args[:attribute_condition] if args.key?(:attribute_condition)
           @attribute_mapping = args[:attribute_mapping] if args.key?(:attribute_mapping)
           @aws = args[:aws] if args.key?(:aws)

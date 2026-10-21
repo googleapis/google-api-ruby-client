@@ -327092,6 +327092,7 @@
 "/iam:v1/Oidc": oidc
 "/iam:v1/Oidc/allowedAudiences": allowed_audiences
 "/iam:v1/Oidc/allowedAudiences/allowed_audience": allowed_audience
+"/iam:v1/Oidc/discoveryUri": discovery_uri
 "/iam:v1/Oidc/issuerUri": issuer_uri
 "/iam:v1/Oidc/jwksJson": jwks_json
 "/iam:v1/Operation": operation
@@ -327293,6 +327294,7 @@
 "/iam:v1/WorkforcePoolProvider/saml": saml
 "/iam:v1/WorkforcePoolProvider/scimUsage": scim_usage
 "/iam:v1/WorkforcePoolProvider/state": state
+"/iam:v1/WorkforcePoolProvider/vendorType": vendor_type
 "/iam:v1/WorkforcePoolProviderKey": workforce_pool_provider_key
 "/iam:v1/WorkforcePoolProviderKey/expireTime": expire_time
 "/iam:v1/WorkforcePoolProviderKey/keyData": key_data
@@ -327340,6 +327342,8 @@
 "/iam:v1/WorkloadIdentityPoolNamespace/state": state
 "/iam:v1/WorkloadIdentityPoolOperationMetadata": workload_identity_pool_operation_metadata
 "/iam:v1/WorkloadIdentityPoolProvider": workload_identity_pool_provider
+"/iam:v1/WorkloadIdentityPoolProvider/actorProviders": actor_providers
+"/iam:v1/WorkloadIdentityPoolProvider/actorProviders/actor_provider": actor_provider
 "/iam:v1/WorkloadIdentityPoolProvider/attributeCondition": attribute_condition
 "/iam:v1/WorkloadIdentityPoolProvider/attributeMapping": attribute_mapping
 "/iam:v1/WorkloadIdentityPoolProvider/attributeMapping/attribute_mapping": attribute_mapping

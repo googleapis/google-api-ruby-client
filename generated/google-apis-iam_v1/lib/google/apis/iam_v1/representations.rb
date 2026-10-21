@@ -1203,6 +1203,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :allowed_audiences, as: 'allowedAudiences'
+          property :discovery_uri, as: 'discoveryUri'
           property :issuer_uri, as: 'issuerUri'
           property :jwks_json, as: 'jwksJson'
         end
@@ -1645,6 +1646,7 @@ module Google
       
           property :scim_usage, as: 'scimUsage'
           property :state, as: 'state'
+          property :vendor_type, as: 'vendorType'
         end
       end
       
@@ -1734,6 +1736,7 @@ module Google
       class WorkloadIdentityPoolProvider
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :actor_providers, as: 'actorProviders'
           property :attribute_condition, as: 'attributeCondition'
           hash :attribute_mapping, as: 'attributeMapping'
           property :aws, as: 'aws', class: Google::Apis::IamV1::Aws, decorator: Google::Apis::IamV1::Aws::Representation
