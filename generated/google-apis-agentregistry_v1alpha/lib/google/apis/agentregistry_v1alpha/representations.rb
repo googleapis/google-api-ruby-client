@@ -40,13 +40,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AiApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Annotations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ArchiveUploadSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,6 +94,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Channel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ContactInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Criticality
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,7 +130,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Environment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExtendedMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +215,30 @@ module Google
       end
       
       class ListAgentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAiApplicationAgentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAiApplicationEndpointsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAiApplicationMcpServersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAiApplicationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchSkillsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchSkillsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -381,6 +459,23 @@ module Google
         end
       end
       
+      class AiApplication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_properties, as: 'applicationProperties', class: Google::Apis::AgentregistryV1alpha::ApplicationProperties, decorator: Google::Apis::AgentregistryV1alpha::ApplicationProperties::Representation
+      
+          property :attributes, as: 'attributes', class: Google::Apis::AgentregistryV1alpha::Attributes, decorator: Google::Apis::AgentregistryV1alpha::Attributes::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Annotations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -392,10 +487,34 @@ module Google
         end
       end
       
+      class ApplicationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::AgentregistryV1alpha::ExtendedMetadata, decorator: Google::Apis::AgentregistryV1alpha::ExtendedMetadata::Representation
+      
+        end
+      end
+      
       class ArchiveUploadSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :archive_content, :base64 => true, as: 'archiveContent'
+        end
+      end
+      
+      class Attributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :business_owners, as: 'businessOwners', class: Google::Apis::AgentregistryV1alpha::ContactInfo, decorator: Google::Apis::AgentregistryV1alpha::ContactInfo::Representation
+      
+          property :criticality, as: 'criticality', class: Google::Apis::AgentregistryV1alpha::Criticality, decorator: Google::Apis::AgentregistryV1alpha::Criticality::Representation
+      
+          collection :developer_owners, as: 'developerOwners', class: Google::Apis::AgentregistryV1alpha::ContactInfo, decorator: Google::Apis::AgentregistryV1alpha::ContactInfo::Representation
+      
+          property :environment, as: 'environment', class: Google::Apis::AgentregistryV1alpha::Environment, decorator: Google::Apis::AgentregistryV1alpha::Environment::Representation
+      
+          collection :operator_owners, as: 'operatorOwners', class: Google::Apis::AgentregistryV1alpha::ContactInfo, decorator: Google::Apis::AgentregistryV1alpha::ContactInfo::Representation
+      
         end
       end
       
@@ -439,6 +558,32 @@ module Google
         end
       end
       
+      class Channel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class ContactInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel', class: Google::Apis::AgentregistryV1alpha::Channel, decorator: Google::Apis::AgentregistryV1alpha::Channel::Representation
+      
+          property :display_name, as: 'displayName'
+          property :email, as: 'email'
+        end
+      end
+      
+      class Criticality
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :level, as: 'level'
+          property :mission_critical, as: 'missionCritical'
+          property :type, as: 'type'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -468,6 +613,14 @@ module Google
         end
       end
       
+      class Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :environment, as: 'environment'
+          property :type, as: 'type'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -475,6 +628,13 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExtendedMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata_struct, as: 'metadataStruct'
         end
       end
       
@@ -582,6 +742,43 @@ module Google
           collection :agents, as: 'agents', class: Google::Apis::AgentregistryV1alpha::Agent, decorator: Google::Apis::AgentregistryV1alpha::Agent::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAiApplicationAgentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :agents, as: 'agents', class: Google::Apis::AgentregistryV1alpha::Agent, decorator: Google::Apis::AgentregistryV1alpha::Agent::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAiApplicationEndpointsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoints, as: 'endpoints', class: Google::Apis::AgentregistryV1alpha::Endpoint, decorator: Google::Apis::AgentregistryV1alpha::Endpoint::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAiApplicationMcpServersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mcp_servers, as: 'mcpServers', class: Google::Apis::AgentregistryV1alpha::McpServer, decorator: Google::Apis::AgentregistryV1alpha::McpServer::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAiApplicationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ai_applications, as: 'aiApplications', class: Google::Apis::AgentregistryV1alpha::AiApplication, decorator: Google::Apis::AgentregistryV1alpha::AiApplication::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -784,6 +981,17 @@ module Google
           collection :mcp_servers, as: 'mcpServers', class: Google::Apis::AgentregistryV1alpha::McpServer, decorator: Google::Apis::AgentregistryV1alpha::McpServer::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class SearchSkillsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :search_string, as: 'searchString'
+          property :search_type, as: 'searchType'
         end
       end
       
