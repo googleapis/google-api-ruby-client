@@ -130,8 +130,8 @@ module Google
         #   project-number` or `project-id` can be provided. For ``instance``, either
         #   Compute Engine `instance-id` or `instance-name` can be provided.
         # @param [String] view
-        #   Inventory view indicating what information should be included in the inventory
-        #   resource. If unspecified, the default view is BASIC.
+        #   Optional. Inventory view indicating what information should be included in the
+        #   inventory resource. If unspecified, the default view is BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -166,16 +166,16 @@ module Google
         #   location`/instances/-` For ``project``, either `project-number` or `project-id`
         #   can be provided.
         # @param [String] filter
-        #   If provided, this field specifies the criteria that must be met by a `
-        #   Inventory` API resource to be included in the response.
+        #   Optional. If provided, this field specifies the criteria that must be met by a
+        #   `Inventory` API resource to be included in the response.
         # @param [Fixnum] page_size
-        #   The maximum number of results to return.
+        #   Optional. The maximum number of results to return.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to `ListInventories` that
-        #   indicates where this listing should continue from.
+        #   Optional. A pagination token returned from a previous call to `ListInventories`
+        #   that indicates where this listing should continue from.
         # @param [String] view
-        #   Inventory view indicating what information should be included in the inventory
-        #   resource. If unspecified, the default view is BASIC.
+        #   Optional. Inventory view indicating what information should be included in the
+        #   inventory resource. If unspecified, the default view is BASIC.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
