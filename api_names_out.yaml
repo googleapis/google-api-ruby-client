@@ -202090,12 +202090,15 @@
 "/dataproc:v1/ClusterConfig/initializationActions/initialization_action": initialization_action
 "/dataproc:v1/ClusterConfig/lifecycleConfig": lifecycle_config
 "/dataproc:v1/ClusterConfig/masterConfig": master_config
+"/dataproc:v1/ClusterConfig/masterFlexibleConfig": master_flexible_config
 "/dataproc:v1/ClusterConfig/metastoreConfig": metastore_config
 "/dataproc:v1/ClusterConfig/secondaryWorkerConfig": secondary_worker_config
+"/dataproc:v1/ClusterConfig/secondaryWorkerFlexibleConfig": secondary_worker_flexible_config
 "/dataproc:v1/ClusterConfig/securityConfig": security_config
 "/dataproc:v1/ClusterConfig/softwareConfig": software_config
 "/dataproc:v1/ClusterConfig/tempBucket": temp_bucket
 "/dataproc:v1/ClusterConfig/workerConfig": worker_config
+"/dataproc:v1/ClusterConfig/workerFlexibleConfig": worker_flexible_config
 "/dataproc:v1/ClusterMetrics": cluster_metrics
 "/dataproc:v1/ClusterMetrics/hdfsMetrics": hdfs_metrics
 "/dataproc:v1/ClusterMetrics/hdfsMetrics/hdfs_metric": hdfs_metric
@@ -202320,6 +202323,11 @@
 "/dataproc:v1/FallbackReason": fallback_reason
 "/dataproc:v1/FallbackReason/fallbackNode": fallback_node
 "/dataproc:v1/FallbackReason/fallbackReason": fallback_reason
+"/dataproc:v1/FlexibleInstanceGroupConfig": flexible_instance_group_config
+"/dataproc:v1/FlexibleInstanceGroupConfig/bootDiskSizeGb": boot_disk_size_gb
+"/dataproc:v1/FlexibleInstanceGroupConfig/coreCount": core_count
+"/dataproc:v1/FlexibleInstanceGroupConfig/hardwareClass": hardware_class
+"/dataproc:v1/FlexibleInstanceGroupConfig/numInstances": num_instances
 "/dataproc:v1/FlinkJob": flink_job
 "/dataproc:v1/FlinkJob/args": args
 "/dataproc:v1/FlinkJob/args/arg": arg
@@ -203083,6 +203091,7 @@
 "/dataproc:v1/SessionTemplate/createTime": create_time
 "/dataproc:v1/SessionTemplate/creator": creator
 "/dataproc:v1/SessionTemplate/description": description
+"/dataproc:v1/SessionTemplate/displayName": display_name
 "/dataproc:v1/SessionTemplate/environmentConfig": environment_config
 "/dataproc:v1/SessionTemplate/jupyterSession": jupyter_session
 "/dataproc:v1/SessionTemplate/labels": labels

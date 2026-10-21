@@ -454,6 +454,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FlexibleInstanceGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FlinkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2144,9 +2150,13 @@ module Google
       
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
       
+          property :master_flexible_config, as: 'masterFlexibleConfig', class: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig, decorator: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig::Representation
+      
           property :metastore_config, as: 'metastoreConfig', class: Google::Apis::DataprocV1::MetastoreConfig, decorator: Google::Apis::DataprocV1::MetastoreConfig::Representation
       
           property :secondary_worker_config, as: 'secondaryWorkerConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
+      
+          property :secondary_worker_flexible_config, as: 'secondaryWorkerFlexibleConfig', class: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig, decorator: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig::Representation
       
           property :security_config, as: 'securityConfig', class: Google::Apis::DataprocV1::SecurityConfig, decorator: Google::Apis::DataprocV1::SecurityConfig::Representation
       
@@ -2154,6 +2164,8 @@ module Google
       
           property :temp_bucket, as: 'tempBucket'
           property :worker_config, as: 'workerConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
+      
+          property :worker_flexible_config, as: 'workerFlexibleConfig', class: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig, decorator: Google::Apis::DataprocV1::FlexibleInstanceGroupConfig::Representation
       
         end
       end
@@ -2502,6 +2514,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fallback_node, as: 'fallbackNode'
           property :fallback_reason, as: 'fallbackReason'
+        end
+      end
+      
+      class FlexibleInstanceGroupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :core_count, as: 'coreCount'
+          property :hardware_class, as: 'hardwareClass'
+          property :num_instances, as: 'numInstances'
         end
       end
       
@@ -3844,6 +3866,7 @@ module Google
           property :create_time, as: 'createTime'
           property :creator, as: 'creator'
           property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :environment_config, as: 'environmentConfig', class: Google::Apis::DataprocV1::EnvironmentConfig, decorator: Google::Apis::DataprocV1::EnvironmentConfig::Representation
       
           property :jupyter_session, as: 'jupyterSession', class: Google::Apis::DataprocV1::JupyterConfig, decorator: Google::Apis::DataprocV1::JupyterConfig::Representation
