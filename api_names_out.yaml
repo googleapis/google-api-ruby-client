@@ -83459,6 +83459,12 @@
 "/cloudbuild:v1/BuildOptions/volumes/volume": volume
 "/cloudbuild:v1/BuildOptions/workerPool": worker_pool
 "/cloudbuild:v1/BuildOptions/workerRelease": worker_release
+"/cloudbuild:v1/BuildResourceUsage": build_resource_usage
+"/cloudbuild:v1/BuildResourceUsage/averageCpuUtilization": average_cpu_utilization
+"/cloudbuild:v1/BuildResourceUsage/averageMemoryUtilization": average_memory_utilization
+"/cloudbuild:v1/BuildResourceUsage/peakCpuUtilization": peak_cpu_utilization
+"/cloudbuild:v1/BuildResourceUsage/peakMemoryUtilization": peak_memory_utilization
+"/cloudbuild:v1/BuildResourceUsage/totalCpuDuration": total_cpu_duration
 "/cloudbuild:v1/BuildStep": build_step
 "/cloudbuild:v1/BuildStep/allowExitCodes": allow_exit_codes
 "/cloudbuild:v1/BuildStep/allowExitCodes/allow_exit_code": allow_exit_code
@@ -83921,6 +83927,7 @@
 "/cloudbuild:v1/Results/numArtifacts": num_artifacts
 "/cloudbuild:v1/Results/pythonPackages": python_packages
 "/cloudbuild:v1/Results/pythonPackages/python_package": python_package
+"/cloudbuild:v1/Results/resourceUsage": resource_usage
 "/cloudbuild:v1/RetryBuildRequest": retry_build_request
 "/cloudbuild:v1/RetryBuildRequest/id": id
 "/cloudbuild:v1/RetryBuildRequest/name": name
