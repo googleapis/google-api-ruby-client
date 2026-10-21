@@ -590,12 +590,12 @@ module Google
         # @return [String]
         attr_accessor :approval_id
       
-        # Output only. The time the approval was completed.
+        # The time the approval was completed.
         # Corresponds to the JSON property `completeTime`
         # @return [String]
         attr_accessor :complete_time
       
-        # Output only. The time the approval was created.
+        # The time the approval was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -605,7 +605,7 @@ module Google
         # @return [String]
         attr_accessor :due_time
       
-        # Output only. The behavior of the approval when the file content changes.
+        # The behavior of the approval when the file content changes.
         # Corresponds to the JSON property `fileContentChangeBehavior`
         # @return [String]
         attr_accessor :file_content_change_behavior
@@ -620,7 +620,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Output only. The most recent time the approval was modified.
+        # The most recent time the approval was modified.
         # Corresponds to the JSON property `modifyTime`
         # @return [String]
         attr_accessor :modify_time
@@ -630,8 +630,7 @@ module Google
         # @return [Array<Google::Apis::DriveV3::ReviewerResponse>]
         attr_accessor :reviewer_responses
       
-        # Output only. The status of the approval at the time this resource was
-        # requested.
+        # The status of the approval at the time this resource was requested.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
