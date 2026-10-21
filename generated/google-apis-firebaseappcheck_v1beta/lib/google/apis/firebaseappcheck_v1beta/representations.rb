@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaAutomation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -202,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleFirebaseAppcheckV1betaListAutomationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleFirebaseAppcheckV1betaListDebugTokensResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,6 +368,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attestation_token, as: 'attestationToken'
           property :ttl, as: 'ttl'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaAutomation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :origin, as: 'origin'
+          property :state, as: 'state'
+          property :trigger_time, as: 'triggerTime'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -582,6 +607,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :jti, as: 'jti'
+        end
+      end
+      
+      class GoogleFirebaseAppcheckV1betaListAutomationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :automations, as: 'automations', class: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation, decorator: Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

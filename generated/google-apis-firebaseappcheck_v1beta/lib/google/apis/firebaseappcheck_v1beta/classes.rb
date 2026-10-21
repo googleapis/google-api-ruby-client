@@ -130,6 +130,104 @@ module Google
         end
       end
       
+      # An **enforcement automation** is useful for automatically enforcing a service
+      # or a resource policy within a service when a certain condition is met. For
+      # example, you may create an automation that automatically turns on enforcement
+      # for your Cloud Firestore service at a specified timestamp in the future. For
+      # your security, an automation object may be created by the system in order to
+      # protect sensitive services by default. These *system-created* automations can
+      # be opted out, if you so choose, by calling the SuspendAutomation method on
+      # them. Suspending a system-created automation is not recommended, but is
+      # supported for advanced use cases. The system will not execute nor modify any
+      # suspended automations. Also, system-created automations **cannot** be deleted,
+      # but can be freely modified, which is also not recommended, as the system may
+      # later overwrite your changes with its own default settings without notice (
+      # assuming it has not been suspended). An automation's condition is evaluated
+      # periodically; the frequency of this periodic evaluation depends on the exact
+      # condition. While the details are unspecified, evaluations will be conducted
+      # reasonably frequently so that a satisfied condition will be detected in a
+      # timely fashion. Once a condition has been detected to be satisfied, the
+      # enforcement action will be executed immediately. Currently, the only
+      # enforcement action supported is to **enforce** App Check protections on the
+      # associated parent service or parent resource policy. Once executed, the
+      # automation becomes immutable, and serves as a historical record of that
+      # execution. Its `update_time` field will be populated with the timestamp at
+      # which the execution occurred, and its `state` field will be set to `SUCCEEDED`.
+      # Successful automations not created by the system can still be deleted. If,
+      # during the evaluation or execution of an automation, App Check discovers that
+      # it is no longer possible for the service or resource to receive App Check
+      # protection, App Check may suspend your automation without warning. For example,
+      # if you have disabled a service, or have deleted all resources within a
+      # service, and that service does not support storing your App Check preferences
+      # while it is in such a state, then an automation created for this service may
+      # be suspended. Please ensure that the service or resource is correctly
+      # configured and operating normally throughout the lifetime of the automation to
+      # avoid suspension.
+      class GoogleFirebaseAppcheckV1betaAutomation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Timestamp at which this automation object was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding. This etag is strongly validated as defined by
+        # RFC 7232.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The relative resource name of the automation object, in one of the
+        # following supported formats: ``` projects/`project_number`/services/`
+        # service_id`/automations/`automation_id` projects/`project_number`/services/`
+        # service_id`/resourcePolicies/`resource_policy_id`/automations/`automation_id` `
+        # ``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The original creator of this automation object.
+        # Corresponds to the JSON property `origin`
+        # @return [String]
+        attr_accessor :origin
+      
+        # Output only. The state that this automation object is currently in.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A condition that is satisfied if the current time is greater than or equal to
+        # the specified timestamp.
+        # Corresponds to the JSON property `triggerTime`
+        # @return [String]
+        attr_accessor :trigger_time
+      
+        # Output only. Timestamp at which this automation object was most recently
+        # updated, either by the system or by the user. If this automation has already
+        # been executed, this field indicates the exact timestamp at which it was
+        # executed.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @origin = args[:origin] if args.key?(:origin)
+          @state = args[:state] if args.key?(:state)
+          @trigger_time = args[:trigger_time] if args.key?(:trigger_time)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Response message for the BatchGetAppAttestConfigs method.
       class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse
         include Google::Apis::Core::Hashable
@@ -909,6 +1007,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @jti = args[:jti] if args.key?(:jti)
+        end
+      end
+      
+      # Response message for the ListAutomations method.
+      class GoogleFirebaseAppcheckV1betaListAutomationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Automations retrieved.
+        # Corresponds to the JSON property `automations`
+        # @return [Array<Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation>]
+        attr_accessor :automations
+      
+        # If the result list is too large to fit in a single response, then a token is
+        # returned. If the string is empty or omitted, then this response is the last
+        # page of results. This token can be used in a subsequent call to
+        # ListAutomations to find the next group of Automations. Page tokens are short-
+        # lived and should not be persisted.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @automations = args[:automations] if args.key?(:automations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
