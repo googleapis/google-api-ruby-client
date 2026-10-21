@@ -790,6 +790,12 @@ module Google
         # @return [Google::Apis::TravelimpactmodelV1::Scope3FlightSegment]
         attr_accessor :flight
       
+        # Travel Impact Model version. For more information about the model versioning
+        # see [GitHub](https://github.com/google/travel-impact-model/#versioning).
+        # Corresponds to the JSON property `modelVersion`
+        # @return [Google::Apis::TravelimpactmodelV1::ModelVersion]
+        attr_accessor :model_version
+      
         # Optional. The source of the emissions data.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -822,6 +828,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @flight = args[:flight] if args.key?(:flight)
+          @model_version = args[:model_version] if args.key?(:model_version)
           @source = args[:source] if args.key?(:source)
           @ttw_emissions_grams_per_pax = args[:ttw_emissions_grams_per_pax] if args.key?(:ttw_emissions_grams_per_pax)
           @wtt_emissions_grams_per_pax = args[:wtt_emissions_grams_per_pax] if args.key?(:wtt_emissions_grams_per_pax)

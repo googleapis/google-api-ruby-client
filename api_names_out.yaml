@@ -445380,6 +445380,7 @@
 "/travelimpactmodel:v1/ModelVersion/patch": patch
 "/travelimpactmodel:v1/Scope3FlightEmissions": scope3_flight_emissions
 "/travelimpactmodel:v1/Scope3FlightEmissions/flight": flight
+"/travelimpactmodel:v1/Scope3FlightEmissions/modelVersion": model_version
 "/travelimpactmodel:v1/Scope3FlightEmissions/source": source
 "/travelimpactmodel:v1/Scope3FlightEmissions/ttwEmissionsGramsPerPax": ttw_emissions_grams_per_pax
 "/travelimpactmodel:v1/Scope3FlightEmissions/wttEmissionsGramsPerPax": wtt_emissions_grams_per_pax
