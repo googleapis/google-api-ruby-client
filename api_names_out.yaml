@@ -118067,6 +118067,11 @@
 "/compute:alpha/compute.organizationSnapshotRecycleBinPolicy.patch/organization": organization
 "/compute:alpha/compute.organizationSnapshotRecycleBinPolicy.patch/requestId": request_id
 "/compute:alpha/compute.organizationSnapshotRecycleBinPolicy.patch/updateMask": update_mask
+"/compute:alpha/compute.organizationZoneVmExtensionPolicies.delete": delete_organization_zone_vm_extension_policy
+"/compute:alpha/compute.organizationZoneVmExtensionPolicies.delete/organization": organization
+"/compute:alpha/compute.organizationZoneVmExtensionPolicies.delete/requestId": request_id
+"/compute:alpha/compute.organizationZoneVmExtensionPolicies.delete/vmExtensionPolicy": vm_extension_policy
+"/compute:alpha/compute.organizationZoneVmExtensionPolicies.delete/zone": zone
 "/compute:alpha/compute.organizationZoneVmExtensionPolicies.get": get_organization_zone_vm_extension_policy
 "/compute:alpha/compute.organizationZoneVmExtensionPolicies.get/organization": organization
 "/compute:alpha/compute.organizationZoneVmExtensionPolicies.get/vmExtensionPolicy": vm_extension_policy

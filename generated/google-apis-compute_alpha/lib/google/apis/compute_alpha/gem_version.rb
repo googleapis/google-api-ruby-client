@@ -16,13 +16,13 @@ module Google
   module Apis
     module ComputeAlpha
       # Version of the google-apis-compute_alpha gem
-      GEM_VERSION = "0.148.0"
+      GEM_VERSION = "0.149.0"
 
       # Version of the code generator used to generate this client
-      GENERATOR_VERSION = "0.19.0"
+      GENERATOR_VERSION = "0.19.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20260922"
+      REVISION = "20261007"
     end
   end
 end
