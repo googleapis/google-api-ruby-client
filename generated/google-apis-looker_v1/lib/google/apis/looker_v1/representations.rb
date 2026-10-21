@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +263,14 @@ module Google
         end
       end
       
+      class AuthType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :google_auth_enabled, as: 'googleAuthEnabled'
+          property :workforce_auth_enabled, as: 'workforceAuthEnabled'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -408,6 +422,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerated_security_patch_enabled, as: 'acceleratedSecurityPatchEnabled'
           property :admin_settings, as: 'adminSettings', class: Google::Apis::LookerV1::AdminSettings, decorator: Google::Apis::LookerV1::AdminSettings::Representation
+      
+          property :auth_type, as: 'authType', class: Google::Apis::LookerV1::AuthType, decorator: Google::Apis::LookerV1::AuthType::Representation
       
           property :catalog_integration_opt_out, as: 'catalogIntegrationOptOut'
           property :class_type, as: 'classType'

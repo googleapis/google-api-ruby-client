@@ -41,6 +41,33 @@ module Google
         end
       end
       
+      # Auth type for the Looker instance.
+      class AuthType
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether google auth is enabled on the Looker instance.
+        # Corresponds to the JSON property `googleAuthEnabled`
+        # @return [Boolean]
+        attr_accessor :google_auth_enabled
+        alias_method :google_auth_enabled?, :google_auth_enabled
+      
+        # Optional. Whether Workforce auth is enabled on the Looker instance.
+        # Corresponds to the JSON property `workforceAuthEnabled`
+        # @return [Boolean]
+        attr_accessor :workforce_auth_enabled
+        alias_method :workforce_auth_enabled?, :workforce_auth_enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @google_auth_enabled = args[:google_auth_enabled] if args.key?(:google_auth_enabled)
+          @workforce_auth_enabled = args[:workforce_auth_enabled] if args.key?(:workforce_auth_enabled)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -565,6 +592,11 @@ module Google
         # @return [Google::Apis::LookerV1::AdminSettings]
         attr_accessor :admin_settings
       
+        # Auth type for the Looker instance.
+        # Corresponds to the JSON property `authType`
+        # @return [Google::Apis::LookerV1::AuthType]
+        attr_accessor :auth_type
+      
         # Optional. Indicates whether catalog integration is disabled for the Looker
         # instance.
         # Corresponds to the JSON property `catalogIntegrationOptOut`
@@ -782,6 +814,7 @@ module Google
         def update!(**args)
           @accelerated_security_patch_enabled = args[:accelerated_security_patch_enabled] if args.key?(:accelerated_security_patch_enabled)
           @admin_settings = args[:admin_settings] if args.key?(:admin_settings)
+          @auth_type = args[:auth_type] if args.key?(:auth_type)
           @catalog_integration_opt_out = args[:catalog_integration_opt_out] if args.key?(:catalog_integration_opt_out)
           @class_type = args[:class_type] if args.key?(:class_type)
           @consumer_network = args[:consumer_network] if args.key?(:consumer_network)

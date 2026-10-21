@@ -341837,6 +341837,9 @@
 "/looker:v1/AuditLogConfig/exemptedMembers": exempted_members
 "/looker:v1/AuditLogConfig/exemptedMembers/exempted_member": exempted_member
 "/looker:v1/AuditLogConfig/logType": log_type
+"/looker:v1/AuthType": auth_type
+"/looker:v1/AuthType/googleAuthEnabled": google_auth_enabled
+"/looker:v1/AuthType/workforceAuthEnabled": workforce_auth_enabled
 "/looker:v1/Binding": binding
 "/looker:v1/Binding/condition": condition
 "/looker:v1/Binding/members": members
@@ -341913,6 +341916,7 @@
 "/looker:v1/Instance": instance
 "/looker:v1/Instance/acceleratedSecurityPatchEnabled": accelerated_security_patch_enabled
 "/looker:v1/Instance/adminSettings": admin_settings
+"/looker:v1/Instance/authType": auth_type
 "/looker:v1/Instance/catalogIntegrationEnabled": catalog_integration_enabled
 "/looker:v1/Instance/catalogIntegrationOptOut": catalog_integration_opt_out
 "/looker:v1/Instance/classType": class_type
