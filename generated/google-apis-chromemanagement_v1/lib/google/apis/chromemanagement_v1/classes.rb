@@ -4858,6 +4858,96 @@ module Google
         end
       end
       
+      # A specific installation of Chrome on a device with managed Chrome browsers.
+      class GoogleChromeManagementVersionsV1Browser
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Browser version installed.
+        # Corresponds to the JSON property `browserVersion`
+        # @return [String]
+        attr_accessor :browser_version
+      
+        # Output only. The channel of the browser installed.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # Output only. The path to the Chrome.exe executable for this browser.
+        # Corresponds to the JSON property `executablePath`
+        # @return [String]
+        attr_accessor :executable_path
+      
+        # Output only. The time when the last request to fetch policies succeeded on
+        # this Chrome browser.
+        # Corresponds to the JSON property `lastPolicyFetchTime`
+        # @return [String]
+        attr_accessor :last_policy_fetch_time
+      
+        # Output only. The time when the last report was received from this Chrome
+        # browser.
+        # Corresponds to the JSON property `lastStatusReportTime`
+        # @return [String]
+        attr_accessor :last_status_report_time
+      
+        # Output only. Pending version of a browser is installed. This field is only set
+        # when the current active browser has a different version as in "browser_version"
+        # .
+        # Corresponds to the JSON property `pendingInstallVersion`
+        # @return [String]
+        attr_accessor :pending_install_version
+      
+        # Output only. List of all plugins installed on this Chrome browser.
+        # Corresponds to the JSON property `plugins`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Plugin>]
+        attr_accessor :plugins
+      
+        # Output only. The list of profiles for this browser.
+        # Corresponds to the JSON property `profiles`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Profile>]
+        attr_accessor :profiles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @browser_version = args[:browser_version] if args.key?(:browser_version)
+          @channel = args[:channel] if args.key?(:channel)
+          @executable_path = args[:executable_path] if args.key?(:executable_path)
+          @last_policy_fetch_time = args[:last_policy_fetch_time] if args.key?(:last_policy_fetch_time)
+          @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @pending_install_version = args[:pending_install_version] if args.key?(:pending_install_version)
+          @plugins = args[:plugins] if args.key?(:plugins)
+          @profiles = args[:profiles] if args.key?(:profiles)
+        end
+      end
+      
+      # A Chrome browser user.
+      class GoogleChromeManagementVersionsV1BrowserUser
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time when this user info last reported a status.
+        # Corresponds to the JSON property `lastStatusReportTime`
+        # @return [String]
+        attr_accessor :last_status_report_time
+      
+        # Output only. The user name of the user that signed into chrome.
+        # Corresponds to the JSON property `userName`
+        # @return [String]
+        attr_accessor :user_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @user_name = args[:user_name] if args.key?(:user_name)
+        end
+      end
+      
       # A certificate provisioning process.
       class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
         include Google::Apis::Core::Hashable
@@ -4997,6 +5087,203 @@ module Google
         # Update properties of this object
         def update!(**args)
           @insights_state = args[:insights_state] if args.key?(:insights_state)
+        end
+      end
+      
+      # A device with managed Chrome Browsers.
+      class GoogleChromeManagementVersionsV1ChromeBrowser
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Asset identifier as annotated by the administrator or specified
+        # during enrollment.
+        # Corresponds to the JSON property `annotatedAssetId`
+        # @return [String]
+        attr_accessor :annotated_asset_id
+      
+        # Optional. Address or location of the device as annotated by the administrator.
+        # Corresponds to the JSON property `annotatedLocation`
+        # @return [String]
+        attr_accessor :annotated_location
+      
+        # Optional. Notes about this device as annotated by the administrator.
+        # Corresponds to the JSON property `annotatedNotes`
+        # @return [String]
+        attr_accessor :annotated_notes
+      
+        # Optional. User of the device as annotated by the administrator.
+        # Corresponds to the JSON property `annotatedUser`
+        # @return [String]
+        attr_accessor :annotated_user
+      
+        # Information of public key associated with a Chrome browser profile.
+        # Corresponds to the JSON property `attestationCredential`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1AttestationCredential]
+        attr_accessor :attestation_credential
+      
+        # Output only. Unique identifier of Chrome Browser.
+        # Corresponds to the JSON property `browserPermanentId`
+        # @return [String]
+        attr_accessor :browser_permanent_id
+      
+        # Output only. List of all browser versions installed on this device.
+        # Corresponds to the JSON property `browserVersions`
+        # @return [Array<String>]
+        attr_accessor :browser_versions
+      
+        # Output only. List of Chrome browsers installed on this device.
+        # Corresponds to the JSON property `browsers`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Browser>]
+        attr_accessor :browsers
+      
+        # History of device identifiers reported from a device.
+        # Corresponds to the JSON property `deviceIdentifiersHistory`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersHistory]
+        attr_accessor :device_identifiers_history
+      
+        # Output only. The number of distinct extensions installed on all the Chrome
+        # browsers of this device.
+        # Corresponds to the JSON property `extensionCount`
+        # @return [Fixnum]
+        attr_accessor :extension_count
+      
+        # Output only. The time of the last activity on the device device either from
+        # reporting, policy fetching or registration.
+        # Corresponds to the JSON property `lastActivityTime`
+        # @return [String]
+        attr_accessor :last_activity_time
+      
+        # Output only. The last user who logged into a Chrome browser on this device.
+        # Corresponds to the JSON property `lastDeviceUser`
+        # @return [String]
+        attr_accessor :last_device_user
+      
+        # Output only. List of recent browser users, in descending order by last report
+        # time.
+        # Corresponds to the JSON property `lastDeviceUsers`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1BrowserUser>]
+        attr_accessor :last_device_users
+      
+        # Output only. The time the last policy fetch succeeded on this device.
+        # Corresponds to the JSON property `lastPolicyFetchTime`
+        # @return [String]
+        attr_accessor :last_policy_fetch_time
+      
+        # Output only. The time the device last tried to register.
+        # Corresponds to the JSON property `lastRegistrationTime`
+        # @return [String]
+        attr_accessor :last_registration_time
+      
+        # Output only. The time the device last sent a status report.
+        # Corresponds to the JSON property `lastStatusReportTime`
+        # @return [String]
+        attr_accessor :last_status_report_time
+      
+        # Output only. The list of all device level policies set for extensions
+        # installed in Chrome on this device.
+        # Corresponds to the JSON property `machineExtensionPolicies`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy>]
+        attr_accessor :machine_extension_policies
+      
+        # Output only. Machine name.
+        # Corresponds to the JSON property `machineName`
+        # @return [String]
+        attr_accessor :machine_name
+      
+        # Output only. The list of all device level policies set for Chrome browsers on
+        # this device.
+        # Corresponds to the JSON property `machinePolicies`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy>]
+        attr_accessor :machine_policies
+      
+        # Identifier. Format: customers/`customer_id`/chromeBrowsers/`
+        # browser_permanent_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Recent policy fetch activity by Omaha. Not necessarily the last
+        # fetch since this field is only updated daily.
+        # Corresponds to the JSON property `omahaRecentFetchTime`
+        # @return [String]
+        attr_accessor :omaha_recent_fetch_time
+      
+        # Output only. The obfuscated organizational unit ID of the browser.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Output only. Device CPU architecture.
+        # Corresponds to the JSON property `osArchitecture`
+        # @return [String]
+        attr_accessor :os_architecture
+      
+        # Output only. Device Os platform.
+        # Corresponds to the JSON property `osPlatform`
+        # @return [String]
+        attr_accessor :os_platform
+      
+        # Output only. Device Os platform and version combined.
+        # Corresponds to the JSON property `osPlatformVersion`
+        # @return [String]
+        attr_accessor :os_platform_version
+      
+        # Output only. Device Os Version.
+        # Corresponds to the JSON property `osVersion`
+        # @return [String]
+        attr_accessor :os_version
+      
+        # Output only. The number of distinct policies set on all the Chrome browsers of
+        # this device.
+        # Corresponds to the JSON property `policyCount`
+        # @return [Fixnum]
+        attr_accessor :policy_count
+      
+        # Output only. The device's serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        # Output only. The initial device id sent by the first Chrome browser that
+        # enrolled this device.
+        # Corresponds to the JSON property `virtualDeviceId`
+        # @return [String]
+        attr_accessor :virtual_device_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotated_asset_id = args[:annotated_asset_id] if args.key?(:annotated_asset_id)
+          @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
+          @annotated_notes = args[:annotated_notes] if args.key?(:annotated_notes)
+          @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
+          @attestation_credential = args[:attestation_credential] if args.key?(:attestation_credential)
+          @browser_permanent_id = args[:browser_permanent_id] if args.key?(:browser_permanent_id)
+          @browser_versions = args[:browser_versions] if args.key?(:browser_versions)
+          @browsers = args[:browsers] if args.key?(:browsers)
+          @device_identifiers_history = args[:device_identifiers_history] if args.key?(:device_identifiers_history)
+          @extension_count = args[:extension_count] if args.key?(:extension_count)
+          @last_activity_time = args[:last_activity_time] if args.key?(:last_activity_time)
+          @last_device_user = args[:last_device_user] if args.key?(:last_device_user)
+          @last_device_users = args[:last_device_users] if args.key?(:last_device_users)
+          @last_policy_fetch_time = args[:last_policy_fetch_time] if args.key?(:last_policy_fetch_time)
+          @last_registration_time = args[:last_registration_time] if args.key?(:last_registration_time)
+          @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @machine_extension_policies = args[:machine_extension_policies] if args.key?(:machine_extension_policies)
+          @machine_name = args[:machine_name] if args.key?(:machine_name)
+          @machine_policies = args[:machine_policies] if args.key?(:machine_policies)
+          @name = args[:name] if args.key?(:name)
+          @omaha_recent_fetch_time = args[:omaha_recent_fetch_time] if args.key?(:omaha_recent_fetch_time)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @os_architecture = args[:os_architecture] if args.key?(:os_architecture)
+          @os_platform = args[:os_platform] if args.key?(:os_platform)
+          @os_platform_version = args[:os_platform_version] if args.key?(:os_platform_version)
+          @os_version = args[:os_version] if args.key?(:os_version)
+          @policy_count = args[:policy_count] if args.key?(:policy_count)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+          @virtual_device_id = args[:virtual_device_id] if args.key?(:virtual_device_id)
         end
       end
       
@@ -5684,6 +5971,102 @@ module Google
         end
       end
       
+      # Collection of device identifiers.
+      class GoogleChromeManagementVersionsV1DeviceIdentifiers
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The device's host name.
+        # Corresponds to the JSON property `hostName`
+        # @return [String]
+        attr_accessor :host_name
+      
+        # Output only. The name of the machine associated with the device.
+        # Corresponds to the JSON property `machineName`
+        # @return [String]
+        attr_accessor :machine_name
+      
+        # Output only. The device's serial number.
+        # Corresponds to the JSON property `serialNumber`
+        # @return [String]
+        attr_accessor :serial_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_name = args[:host_name] if args.key?(:host_name)
+          @machine_name = args[:machine_name] if args.key?(:machine_name)
+          @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # History of device identifiers reported from a device.
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersHistory
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The device id is potentially being used by multiple devices.
+        # Corresponds to the JSON property `deviceIdCollision`
+        # @return [Boolean]
+        attr_accessor :device_id_collision
+        alias_method :device_id_collision?, :device_id_collision
+      
+        # Output only. The last time we detected the device id collision.
+        # Corresponds to the JSON property `lastDeviceIdCollisionDetectionTime`
+        # @return [String]
+        attr_accessor :last_device_id_collision_detection_time
+      
+        # Output only. List of device identifiers sent by this device. In descending
+        # order by last_activity_time.
+        # Corresponds to the JSON property `records`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersRecord>]
+        attr_accessor :records
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_id_collision = args[:device_id_collision] if args.key?(:device_id_collision)
+          @last_device_id_collision_detection_time = args[:last_device_id_collision_detection_time] if args.key?(:last_device_id_collision_detection_time)
+          @records = args[:records] if args.key?(:records)
+        end
+      end
+      
+      # Record of the device identifiers and when they were reported.
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersRecord
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The first time these identifiers were reported.
+        # Corresponds to the JSON property `firstRecordTime`
+        # @return [String]
+        attr_accessor :first_record_time
+      
+        # Collection of device identifiers.
+        # Corresponds to the JSON property `identifiers`
+        # @return [Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiers]
+        attr_accessor :identifiers
+      
+        # Output only. The time of the last activity of these identifiers either from
+        # reporting, policy fetching or registration.
+        # Corresponds to the JSON property `lastActivityTime`
+        # @return [String]
+        attr_accessor :last_activity_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first_record_time = args[:first_record_time] if args.key?(:first_record_time)
+          @identifiers = args[:identifiers] if args.key?(:identifiers)
+          @last_activity_time = args[:last_activity_time] if args.key?(:last_activity_time)
+        end
+      end
+      
       # Information of a device that runs a Chrome browser profile.
       class GoogleChromeManagementVersionsV1DeviceInfo
         include Google::Apis::Core::Hashable
@@ -5843,6 +6226,236 @@ module Google
         end
       end
       
+      # Enrollment token for a chrome device.
+      class GoogleChromeManagementVersionsV1EnrollmentToken
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation time of the token.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The id of the user who created the token.
+        # Corresponds to the JSON property `creatorId`
+        # @return [String]
+        attr_accessor :creator_id
+      
+        # Output only. The obfuscated ID of the customer to whom this token is
+        # associated.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        # Identifier. The resource name of the enrollment token. Format: customers/`
+        # customer`/enrollmentTokens/`token_permanent_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Obfuscated ID of the organization unit this token is associated with.
+        # If not set, the token is created for the root organization unit.
+        # Corresponds to the JSON property `orgUnitId`
+        # @return [String]
+        attr_accessor :org_unit_id
+      
+        # Output only. The revocation time of the token, null if the token is not
+        # revoked.
+        # Corresponds to the JSON property `revokeTime`
+        # @return [String]
+        attr_accessor :revoke_time
+      
+        # Output only. The id of the user who revoked the token, null if the token is
+        # not revoked.
+        # Corresponds to the JSON property `revokerId`
+        # @return [String]
+        attr_accessor :revoker_id
+      
+        # Output only. The state of the token.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The value of the token stored on the device and used to identify
+        # it to the management service handling the enrollment request.
+        # Corresponds to the JSON property `token`
+        # @return [String]
+        attr_accessor :token
+      
+        # Output only. Unique identifier of the enrollment token used to access
+        # information on tokens.
+        # Corresponds to the JSON property `tokenPermanentId`
+        # @return [String]
+        attr_accessor :token_permanent_id
+      
+        # Optional. The device type this token is used for. If not set, defaults to `
+        # ENROLLMENT_TOKEN_TYPE_CHROME_BROWSER`.
+        # Corresponds to the JSON property `tokenType`
+        # @return [String]
+        attr_accessor :token_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @creator_id = args[:creator_id] if args.key?(:creator_id)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @name = args[:name] if args.key?(:name)
+          @org_unit_id = args[:org_unit_id] if args.key?(:org_unit_id)
+          @revoke_time = args[:revoke_time] if args.key?(:revoke_time)
+          @revoker_id = args[:revoker_id] if args.key?(:revoker_id)
+          @state = args[:state] if args.key?(:state)
+          @token = args[:token] if args.key?(:token)
+          @token_permanent_id = args[:token_permanent_id] if args.key?(:token_permanent_id)
+          @token_type = args[:token_type] if args.key?(:token_type)
+        end
+      end
+      
+      # Information about extensions installed on profile reported on an installed
+      # Chrome on a device with managed chrome browsers.
+      class GoogleChromeManagementVersionsV1Extension
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The type of the extension.
+        # Corresponds to the JSON property `appType`
+        # @return [String]
+        attr_accessor :app_type
+      
+        # Output only. If the extension is controlled by a browser policy.
+        # Corresponds to the JSON property `configuredAppPolicy`
+        # @return [String]
+        attr_accessor :configured_app_policy
+      
+        # Output only. The localized description of this extension.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. Whether the extension is disabled.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Output only. The id of the extension.
+        # Corresponds to the JSON property `extensionId`
+        # @return [String]
+        attr_accessor :extension_id
+      
+        # Output only. The localized name of this extension as reported by Chrome.
+        # Corresponds to the JSON property `extensionName`
+        # @return [String]
+        attr_accessor :extension_name
+      
+        # Output only. The URL of the homepage for this extension.
+        # Corresponds to the JSON property `homepageUri`
+        # @return [String]
+        attr_accessor :homepage_uri
+      
+        # Output only. The list of icons available for this extension.
+        # Corresponds to the JSON property `icons`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionIcon>]
+        attr_accessor :icons
+      
+        # Output only. The way the extension was installed.
+        # Corresponds to the JSON property `installType`
+        # @return [String]
+        attr_accessor :install_type
+      
+        # Output only. The manifest version of this extension.
+        # Corresponds to the JSON property `manifestVersion`
+        # @return [Fixnum]
+        attr_accessor :manifest_version
+      
+        # Output only. The list of permissions required for this extension.
+        # Corresponds to the JSON property `permissions`
+        # @return [Array<String>]
+        attr_accessor :permissions
+      
+        # Output only. The version of the extension.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_type = args[:app_type] if args.key?(:app_type)
+          @configured_app_policy = args[:configured_app_policy] if args.key?(:configured_app_policy)
+          @description = args[:description] if args.key?(:description)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @extension_id = args[:extension_id] if args.key?(:extension_id)
+          @extension_name = args[:extension_name] if args.key?(:extension_name)
+          @homepage_uri = args[:homepage_uri] if args.key?(:homepage_uri)
+          @icons = args[:icons] if args.key?(:icons)
+          @install_type = args[:install_type] if args.key?(:install_type)
+          @manifest_version = args[:manifest_version] if args.key?(:manifest_version)
+          @permissions = args[:permissions] if args.key?(:permissions)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An icon of a Chrome browser extension.
+      class GoogleChromeManagementVersionsV1ExtensionIcon
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The size of the extension icon.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # Output only. The URL to the extension icon.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @size = args[:size] if args.key?(:size)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The reported policies applied to an extension installed on a Chrome profile.
+      class GoogleChromeManagementVersionsV1ExtensionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The id of the extension the policies are applied to.
+        # Corresponds to the JSON property `extensionId`
+        # @return [String]
+        attr_accessor :extension_id
+      
+        # Output only. The name of the extension the policies are applied to.
+        # Corresponds to the JSON property `extensionName`
+        # @return [String]
+        attr_accessor :extension_name
+      
+        # Output only. List of policies applied to this extension.
+        # Corresponds to the JSON property `policies`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy>]
+        attr_accessor :policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extension_id = args[:extension_id] if args.key?(:extension_id)
+          @extension_name = args[:extension_name] if args.key?(:extension_name)
+          @policies = args[:policies] if args.key?(:policies)
+        end
+      end
+      
       # Describes a generic Certificate Authority Connection.
       class GoogleChromeManagementVersionsV1GenericCaConnection
         include Google::Apis::Core::Hashable
@@ -5980,6 +6593,31 @@ module Google
         end
       end
       
+      # Response to ListChromeBrowsers method.
+      class GoogleChromeManagementVersionsV1ListChromeBrowsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Chrome Browser device objects.
+        # Corresponds to the JSON property `chromeBrowsers`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowser>]
+        attr_accessor :chrome_browsers
+      
+        # Token used to access next page of this result.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_browsers = args[:chrome_browsers] if args.key?(:chrome_browsers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to ListConnectorConfigs method.
       class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
         include Google::Apis::Core::Hashable
@@ -6002,6 +6640,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @connector_configs = args[:connector_configs] if args.key?(:connector_configs)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response that contains a list of tokens.
+      class GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of Chrome device enrollment tokens.
+        # Corresponds to the JSON property `enrollmentTokens`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnrollmentToken>]
+        attr_accessor :enrollment_tokens
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enrollment_tokens = args[:enrollment_tokens] if args.key?(:enrollment_tokens)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -6030,6 +6694,45 @@ module Google
         def update!(**args)
           @domains = args[:domains] if args.key?(:domains)
           @microsoft_tenant_id = args[:microsoft_tenant_id] if args.key?(:microsoft_tenant_id)
+        end
+      end
+      
+      # Request to MoveChromeBrowsers method.
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. ID of the destination organizational unit.
+        # Corresponds to the JSON property `destinationOrgUnitId`
+        # @return [String]
+        attr_accessor :destination_org_unit_id
+      
+        # Required. List of resource IDs of Chrome Browser Devices to move. A maximum of
+        # 600 browsers may be moved per request.
+        # Corresponds to the JSON property `resourceIds`
+        # @return [Array<String>]
+        attr_accessor :resource_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @destination_org_unit_id = args[:destination_org_unit_id] if args.key?(:destination_org_unit_id)
+          @resource_ids = args[:resource_ids] if args.key?(:resource_ids)
+        end
+      end
+      
+      # Response to MoveChromeBrowsers method.
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -6103,6 +6806,160 @@ module Google
           @api_key = args[:api_key] if args.key?(:api_key)
           @host = args[:host] if args.key?(:host)
           @reporting_settings = args[:reporting_settings] if args.key?(:reporting_settings)
+        end
+      end
+      
+      # Information about a Chrome browser plugin installed on a reported Chrome
+      # installation on a device with managed Chrome browsers.
+      class GoogleChromeManagementVersionsV1Plugin
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The description of the installed plugin.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The filename of the installed plugin.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Output only. The name of the installed plugin.
+        # Corresponds to the JSON property `pluginName`
+        # @return [String]
+        attr_accessor :plugin_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @filename = args[:filename] if args.key?(:filename)
+          @plugin_name = args[:plugin_name] if args.key?(:plugin_name)
+        end
+      end
+      
+      # The applied policy reported by a managed Chrome browser. The policy can be
+      # applied at various scopes (machine, profile, extension).
+      class GoogleChromeManagementVersionsV1Policy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A localized string with all the errors reported when trying to
+        # apply this policy, if any.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        # Output only. The name of the policy.
+        # Corresponds to the JSON property `policyName`
+        # @return [String]
+        attr_accessor :policy_name
+      
+        # Output only. The source of the policy.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Output only. The value of the policy.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
+          @policy_name = args[:policy_name] if args.key?(:policy_name)
+          @source = args[:source] if args.key?(:source)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A profile reported on an installation of Chrome on a device with managed
+      # chrome browsers.
+      class GoogleChromeManagementVersionsV1Profile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The email of the user signed in to this profile, if any.
+        # Corresponds to the JSON property `chromeSignedInUserEmail`
+        # @return [String]
+        attr_accessor :chrome_signed_in_user_email
+      
+        # Output only. The list of extensions with applied extension policies.
+        # Corresponds to the JSON property `extensionPolicies`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy>]
+        attr_accessor :extension_policies
+      
+        # Output only. The list of extensions installed for this profile.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Extension>]
+        attr_accessor :extensions
+      
+        # Output only. A unique ID for this profile.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The time when the last request to fetch policies succeeded for
+        # this profile.
+        # Corresponds to the JSON property `lastPolicyFetchTime`
+        # @return [String]
+        attr_accessor :last_policy_fetch_time
+      
+        # Output only. The time when the last report was received from this profile.
+        # Corresponds to the JSON property `lastStatusReportTime`
+        # @return [String]
+        attr_accessor :last_status_report_time
+      
+        # Output only. The name given to this profile.
+        # Corresponds to the JSON property `profileName`
+        # @return [String]
+        attr_accessor :profile_name
+      
+        # Output only. The number of safe browsing warnings that were shown on this
+        # profile.
+        # Corresponds to the JSON property `safeBrowsingWarnings`
+        # @return [Fixnum]
+        attr_accessor :safe_browsing_warnings
+      
+        # Output only. The number of safe browsing warnings that were clicked through on
+        # this profile.
+        # Corresponds to the JSON property `safeBrowsingWarningsClickThroughs`
+        # @return [Fixnum]
+        attr_accessor :safe_browsing_warnings_click_throughs
+      
+        # Output only. The last time the safe browsing warning info was reset to 0.
+        # Corresponds to the JSON property `safeBrowsingWarningsResetTime`
+        # @return [String]
+        attr_accessor :safe_browsing_warnings_reset_time
+      
+        # Output only. The list of Chrome browser policies applied to this profile.
+        # Corresponds to the JSON property `userPolicies`
+        # @return [Array<Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy>]
+        attr_accessor :user_policies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @chrome_signed_in_user_email = args[:chrome_signed_in_user_email] if args.key?(:chrome_signed_in_user_email)
+          @extension_policies = args[:extension_policies] if args.key?(:extension_policies)
+          @extensions = args[:extensions] if args.key?(:extensions)
+          @id = args[:id] if args.key?(:id)
+          @last_policy_fetch_time = args[:last_policy_fetch_time] if args.key?(:last_policy_fetch_time)
+          @last_status_report_time = args[:last_status_report_time] if args.key?(:last_status_report_time)
+          @profile_name = args[:profile_name] if args.key?(:profile_name)
+          @safe_browsing_warnings = args[:safe_browsing_warnings] if args.key?(:safe_browsing_warnings)
+          @safe_browsing_warnings_click_throughs = args[:safe_browsing_warnings_click_throughs] if args.key?(:safe_browsing_warnings_click_throughs)
+          @safe_browsing_warnings_reset_time = args[:safe_browsing_warnings_reset_time] if args.key?(:safe_browsing_warnings_reset_time)
+          @user_policies = args[:user_policies] if args.key?(:user_policies)
         end
       end
       
@@ -6508,6 +7365,19 @@ module Google
           @enabled_default_events = args[:enabled_default_events] if args.key?(:enabled_default_events)
           @enabled_device_events = args[:enabled_device_events] if args.key?(:enabled_device_events)
           @enabled_opt_in_events = args[:enabled_opt_in_events] if args.key?(:enabled_opt_in_events)
+        end
+      end
+      
+      # Request to revoke a token.
+      class GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

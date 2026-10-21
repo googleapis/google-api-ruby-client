@@ -688,6 +688,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1Browser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1BrowserUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -695,6 +707,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1CheckEnablementStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeBrowser
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -790,6 +808,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1DeviceIdentifiers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersHistory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersRecord
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1DeviceInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -826,6 +862,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1EnrollmentToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1Extension
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ExtensionIcon
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1ExtensionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1GenericCaConnection
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -856,13 +916,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ListChromeBrowsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleChromeManagementVersionsV1MipLabelConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -881,6 +965,24 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1Plugin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1Profile
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -953,6 +1055,12 @@ module Google
       end
       
       class GoogleChromeManagementVersionsV1ReportingSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2350,6 +2458,30 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1Browser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :browser_version, as: 'browserVersion'
+          property :channel, as: 'channel'
+          property :executable_path, as: 'executablePath'
+          property :last_policy_fetch_time, as: 'lastPolicyFetchTime'
+          property :last_status_report_time, as: 'lastStatusReportTime'
+          property :pending_install_version, as: 'pendingInstallVersion'
+          collection :plugins, as: 'plugins', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Plugin, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Plugin::Representation
+      
+          collection :profiles, as: 'profiles', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Profile, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Profile::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1BrowserUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_status_report_time, as: 'lastStatusReportTime'
+          property :user_name, as: 'userName'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1CertificateProvisioningProcess
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2381,6 +2513,47 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :insights_state, as: 'insightsState'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ChromeBrowser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotated_asset_id, as: 'annotatedAssetId'
+          property :annotated_location, as: 'annotatedLocation'
+          property :annotated_notes, as: 'annotatedNotes'
+          property :annotated_user, as: 'annotatedUser'
+          property :attestation_credential, as: 'attestationCredential', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1AttestationCredential, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1AttestationCredential::Representation
+      
+          property :browser_permanent_id, as: 'browserPermanentId'
+          collection :browser_versions, as: 'browserVersions'
+          collection :browsers, as: 'browsers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Browser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Browser::Representation
+      
+          property :device_identifiers_history, as: 'deviceIdentifiersHistory', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersHistory, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersHistory::Representation
+      
+          property :extension_count, :numeric_string => true, as: 'extensionCount'
+          property :last_activity_time, as: 'lastActivityTime'
+          property :last_device_user, as: 'lastDeviceUser'
+          collection :last_device_users, as: 'lastDeviceUsers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1BrowserUser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1BrowserUser::Representation
+      
+          property :last_policy_fetch_time, as: 'lastPolicyFetchTime'
+          property :last_registration_time, as: 'lastRegistrationTime'
+          property :last_status_report_time, as: 'lastStatusReportTime'
+          collection :machine_extension_policies, as: 'machineExtensionPolicies', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy::Representation
+      
+          property :machine_name, as: 'machineName'
+          collection :machine_policies, as: 'machinePolicies', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy::Representation
+      
+          property :name, as: 'name'
+          property :omaha_recent_fetch_time, as: 'omahaRecentFetchTime'
+          property :org_unit_id, as: 'orgUnitId'
+          property :os_architecture, as: 'osArchitecture'
+          property :os_platform, as: 'osPlatform'
+          property :os_platform_version, as: 'osPlatformVersion'
+          property :os_version, as: 'osVersion'
+          property :policy_count, :numeric_string => true, as: 'policyCount'
+          property :serial_number, as: 'serialNumber'
+          property :virtual_device_id, as: 'virtualDeviceId'
         end
       end
       
@@ -2573,6 +2746,35 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1DeviceIdentifiers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host_name, as: 'hostName'
+          property :machine_name, as: 'machineName'
+          property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersHistory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_id_collision, as: 'deviceIdCollision'
+          property :last_device_id_collision_detection_time, as: 'lastDeviceIdCollisionDetectionTime'
+          collection :records, as: 'records', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersRecord, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiersRecord::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1DeviceIdentifiersRecord
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first_record_time, as: 'firstRecordTime'
+          property :identifiers, as: 'identifiers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiers, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1DeviceIdentifiers::Representation
+      
+          property :last_activity_time, as: 'lastActivityTime'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1DeviceInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2620,6 +2822,60 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1EnrollmentToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :creator_id, as: 'creatorId'
+          property :customer_id, as: 'customerId'
+          property :name, as: 'name'
+          property :org_unit_id, as: 'orgUnitId'
+          property :revoke_time, as: 'revokeTime'
+          property :revoker_id, as: 'revokerId'
+          property :state, as: 'state'
+          property :token, as: 'token'
+          property :token_permanent_id, as: 'tokenPermanentId'
+          property :token_type, as: 'tokenType'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1Extension
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_type, as: 'appType'
+          property :configured_app_policy, as: 'configuredAppPolicy'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :extension_id, as: 'extensionId'
+          property :extension_name, as: 'extensionName'
+          property :homepage_uri, as: 'homepageUri'
+          collection :icons, as: 'icons', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionIcon, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionIcon::Representation
+      
+          property :install_type, as: 'installType'
+          property :manifest_version, as: 'manifestVersion'
+          collection :permissions, as: 'permissions'
+          property :version, as: 'version'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ExtensionIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :size, as: 'size'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ExtensionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :extension_id, as: 'extensionId'
+          property :extension_name, as: 'extensionName'
+          collection :policies, as: 'policies', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy::Representation
+      
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1GenericCaConnection
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2664,10 +2920,28 @@ module Google
         end
       end
       
+      class GoogleChromeManagementVersionsV1ListChromeBrowsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :chrome_browsers, as: 'chromeBrowsers', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowser, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ChromeBrowser::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :connector_configs, as: 'connectorConfigs', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ConnectorConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrollment_tokens, as: 'enrollmentTokens', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnrollmentToken, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1EnrollmentToken::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
@@ -2678,6 +2952,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :domains, as: 'domains'
           property :microsoft_tenant_id, as: 'microsoftTenantId'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :destination_org_unit_id, as: 'destinationOrgUnitId'
+          collection :resource_ids, as: 'resourceIds'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -2702,6 +2990,45 @@ module Google
           property :api_key, as: 'apiKey'
           property :host, as: 'host'
           property :reporting_settings, as: 'reportingSettings', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ReportingSettings::Representation
+      
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1Plugin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :filename, as: 'filename'
+          property :plugin_name, as: 'pluginName'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error'
+          property :policy_name, as: 'policyName'
+          property :source, as: 'source'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1Profile
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :chrome_signed_in_user_email, as: 'chromeSignedInUserEmail'
+          collection :extension_policies, as: 'extensionPolicies', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1ExtensionPolicy::Representation
+      
+          collection :extensions, as: 'extensions', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Extension, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Extension::Representation
+      
+          property :id, as: 'id'
+          property :last_policy_fetch_time, as: 'lastPolicyFetchTime'
+          property :last_status_report_time, as: 'lastStatusReportTime'
+          property :profile_name, as: 'profileName'
+          property :safe_browsing_warnings, :numeric_string => true, as: 'safeBrowsingWarnings'
+          property :safe_browsing_warnings_click_throughs, :numeric_string => true, as: 'safeBrowsingWarningsClickThroughs'
+          property :safe_browsing_warnings_reset_time, as: 'safeBrowsingWarningsResetTime'
+          collection :user_policies, as: 'userPolicies', class: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy, decorator: Google::Apis::ChromemanagementV1::GoogleChromeManagementVersionsV1Policy::Representation
       
         end
       end
@@ -2825,6 +3152,12 @@ module Google
           collection :enabled_default_events, as: 'enabledDefaultEvents'
           collection :enabled_device_events, as: 'enabledDeviceEvents'
           collection :enabled_opt_in_events, as: 'enabledOptInEvents'
+        end
+      end
+      
+      class GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
