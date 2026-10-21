@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoScalingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutomatedBackupPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +137,12 @@ module Google
       end
       
       class ContinuousBackupSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CpuUtilization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrimaryConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,6 +485,12 @@ module Google
       end
       
       class RestoreFromCloudSqlRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Schedule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -785,6 +809,16 @@ module Google
         end
       end
       
+      class AutoScalingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy', class: Google::Apis::AlloydbV1::Policy, decorator: Google::Apis::AlloydbV1::Policy::Representation
+      
+          collection :schedules, as: 'schedules', class: Google::Apis::AlloydbV1::Schedule, decorator: Google::Apis::AlloydbV1::Schedule::Representation
+      
+        end
+      end
+      
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1042,6 +1076,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster, as: 'cluster'
           property :point_in_time, as: 'pointInTime'
+        end
+      end
+      
+      class CpuUtilization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :utilization_target, as: 'utilizationTarget'
         end
       end
       
@@ -1477,6 +1518,17 @@ module Google
         end
       end
       
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cool_down_period_sec, :numeric_string => true, as: 'coolDownPeriodSec'
+          property :cpu_utilization, as: 'cpuUtilization', class: Google::Apis::AlloydbV1::CpuUtilization, decorator: Google::Apis::AlloydbV1::CpuUtilization::Representation
+      
+          property :enabled, as: 'enabled'
+          property :max_node_count, :numeric_string => true, as: 'maxNodeCount'
+        end
+      end
+      
       class PrimaryConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1587,6 +1639,8 @@ module Google
       class ReadPoolConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_scaling_config, as: 'autoScalingConfig', class: Google::Apis::AlloydbV1::AutoScalingConfig, decorator: Google::Apis::AlloydbV1::AutoScalingConfig::Representation
+      
           property :node_count, as: 'nodeCount'
         end
       end
@@ -1635,6 +1689,19 @@ module Google
           property :cluster, as: 'cluster', class: Google::Apis::AlloydbV1::Cluster, decorator: Google::Apis::AlloydbV1::Cluster::Representation
       
           property :cluster_id, as: 'clusterId'
+        end
+      end
+      
+      class Schedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cron_expression, as: 'cronExpression'
+          property :description, as: 'description'
+          property :disabled, as: 'disabled'
+          property :duration_sec, :numeric_string => true, as: 'durationSec'
+          property :min_node_count, :numeric_string => true, as: 'minNodeCount'
+          property :name, as: 'name'
+          property :time_zone, as: 'timeZone'
         end
       end
       
