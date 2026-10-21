@@ -23,8 +23,7 @@ module Google
     module DocsV1
       
       # Accepts a suggestion. Returns a 403 forbidden error if the requesting user
-      # does not have edit access to the document. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # does not have edit access to the document.
       class AcceptSuggestionRequest
         include Google::Apis::Core::Hashable
       
@@ -43,8 +42,7 @@ module Google
         end
       end
       
-      # Inserts a reply Post into a CommentThread or SuggestionThread. [Developer
-      # Preview](https://developers.google.com/workspace/preview).
+      # Inserts a reply Post into a CommentThread or SuggestionThread.
       class AddCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -53,8 +51,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment or suggestion thread. [Developer Preview]
-        # (https://developers.google.com/workspace/preview).
+        # Represents a single post in a comment or suggestion thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::DocsV1::Post]
         attr_accessor :post
@@ -76,13 +73,11 @@ module Google
         end
       end
       
-      # Response message for adding a reply. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # Response message for adding a reply.
       class AddCommentReplyResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single post in a comment or suggestion thread. [Developer Preview]
-        # (https://developers.google.com/workspace/preview).
+        # Represents a single post in a comment or suggestion thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::DocsV1::Post]
         attr_accessor :post
@@ -262,8 +257,7 @@ module Google
       class BatchUpdateDocumentResponse
         include Google::Apis::Core::Hashable
       
-        # Whether comment updates were applied in the batch request. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Whether comment updates were applied in the batch request.
         # Corresponds to the JSON property `commentUpdateState`
         # @return [String]
         attr_accessor :comment_update_state
@@ -280,7 +274,7 @@ module Google
         attr_accessor :replies
       
         # The suggestions which were affected by each update. This maps 1:1 with the
-        # updates. [Developer Preview](https://developers.google.com/workspace/preview).
+        # updates.
         # Corresponds to the JSON property `suggestionResponses`
         # @return [Array<Google::Apis::DocsV1::SuggestionResponse>]
         attr_accessor :suggestion_responses
@@ -495,8 +489,7 @@ module Google
       end
       
       # One or more locations in the document that are tied to CommentThreads with the
-      # same anchorId. Note: Multiple anchors may refer to the same location. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # same anchorId. Note: Multiple anchors may refer to the same location.
       class CommentAnchor
         include Google::Apis::Core::Hashable
       
@@ -521,8 +514,7 @@ module Google
         end
       end
       
-      # Represents a single comment thread. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # Represents a single comment thread.
       class CommentThread
         include Google::Apis::Core::Hashable
       
@@ -537,8 +529,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment or suggestion thread. [Developer Preview]
-        # (https://developers.google.com/workspace/preview).
+        # Represents a single post in a comment or suggestion thread.
         # Corresponds to the JSON property `headPost`
         # @return [Google::Apis::DocsV1::Post]
         attr_accessor :head_post
@@ -1141,8 +1132,7 @@ module Google
       
       # Deletes a reply Post from a CommentThread or SuggestionThread. Returns a 400
       # bad request error if: - The requesting user is not the author of the post. -
-      # The reply post contains an action. - The reply post contains an assignee. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # The reply post contains an action. - The reply post contains an assignee.
       class DeleteCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -1174,8 +1164,7 @@ module Google
       end
       
       # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-      # user is not the author of the headPost. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # user is not the author of the headPost.
       class DeleteCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -1397,8 +1386,7 @@ module Google
       end
       
       # Deletes a suggestion. Returns a 403 forbidden error if the requesting user is
-      # not the author of the suggestion. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # not the author of the suggestion.
       class DeleteSuggestionRequest
         include Google::Apis::Core::Hashable
       
@@ -1511,14 +1499,12 @@ module Google
       
         # Output only. The comments associated with the document. Only populated if the
         # commentsViewMode parameter is set to require comments (such as `
-        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
-        # com/workspace/preview).
+        # COMMENTS_VIEW_MODE_INCLUDED`).
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::DocsV1::CommentThread>]
         attr_accessor :comments
       
-        # Output only. The comments view mode applied to the document. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Output only. The comments view mode applied to the document.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -1637,8 +1623,7 @@ module Google
       
         # Output only. The suggestions associated with the document. Only populated if
         # the commentsViewMode parameter is set to require comments (such as `
-        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
-        # com/workspace/preview).
+        # COMMENTS_VIEW_MODE_INCLUDED`).
         # Corresponds to the JSON property `suggestions`
         # @return [Array<Google::Apis::DocsV1::SuggestionThread>]
         attr_accessor :suggestions
@@ -2040,8 +2025,7 @@ module Google
       
         # The comment anchors in a document tab, keyed by anchor ID. Only populated if
         # the commentsViewMode parameter is set to require comments (such as `
-        # COMMENTS_VIEW_MODE_INCLUDED`). [Developer Preview](https://developers.google.
-        # com/workspace/preview).
+        # COMMENTS_VIEW_MODE_INCLUDED`).
         # Corresponds to the JSON property `commentAnchors`
         # @return [Hash<String,Google::Apis::DocsV1::CommentAnchor>]
         attr_accessor :comment_anchors
@@ -3236,8 +3220,7 @@ module Google
         end
       end
       
-      # Inserts a CommentThread into the document. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Inserts a CommentThread into the document.
       class InsertCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -3272,13 +3255,11 @@ module Google
         end
       end
       
-      # Response message for inserting a comment. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Response message for inserting a comment.
       class InsertCommentResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single comment thread. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # Represents a single comment thread.
         # Corresponds to the JSON property `commentThread`
         # @return [Google::Apis::DocsV1::CommentThread]
         attr_accessor :comment_thread
@@ -5265,8 +5246,7 @@ module Google
         end
       end
       
-      # Represents a single post in a comment or suggestion thread. [Developer Preview]
-      # (https://developers.google.com/workspace/preview).
+      # Represents a single post in a comment or suggestion thread.
       class Post
         include Google::Apis::Core::Hashable
       
@@ -5279,8 +5259,7 @@ module Google
         # @return [String]
         attr_accessor :assignee_email
       
-        # Represents a user who authored a comment or suggestion post. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Represents a user who authored a comment or suggestion post.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::DocsV1::PostAuthor]
         attr_accessor :author
@@ -5373,8 +5352,7 @@ module Google
         end
       end
       
-      # Represents a user who authored a comment or suggestion post. [Developer
-      # Preview](https://developers.google.com/workspace/preview).
+      # Represents a user who authored a comment or suggestion post.
       class PostAuthor
         include Google::Apis::Core::Hashable
       
@@ -5465,8 +5443,7 @@ module Google
       
       # Rejects a suggestion. Returns a 403 forbidden error if the requesting user
       # does not have edit access to the document and is not the author of the
-      # suggestion. [Developer Preview](https://developers.google.com/workspace/
-      # preview).
+      # suggestion.
       class RejectSuggestionRequest
         include Google::Apis::Core::Hashable
       
@@ -5635,14 +5612,12 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Accepts a suggestion. Returns a 403 forbidden error if the requesting user
-        # does not have edit access to the document. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # does not have edit access to the document.
         # Corresponds to the JSON property `acceptSuggestion`
         # @return [Google::Apis::DocsV1::AcceptSuggestionRequest]
         attr_accessor :accept_suggestion
       
-        # Inserts a reply Post into a CommentThread or SuggestionThread. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Inserts a reply Post into a CommentThread or SuggestionThread.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::DocsV1::AddCommentReplyRequest]
         attr_accessor :add_comment_reply
@@ -5698,16 +5673,14 @@ module Google
         attr_accessor :create_paragraph_bullets
       
         # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-        # user is not the author of the headPost. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # user is not the author of the headPost.
         # Corresponds to the JSON property `deleteComment`
         # @return [Google::Apis::DocsV1::DeleteCommentRequest]
         attr_accessor :delete_comment
       
         # Deletes a reply Post from a CommentThread or SuggestionThread. Returns a 400
         # bad request error if: - The requesting user is not the author of the post. -
-        # The reply post contains an action. - The reply post contains an assignee. [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # The reply post contains an action. - The reply post contains an assignee.
         # Corresponds to the JSON property `deleteCommentReply`
         # @return [Google::Apis::DocsV1::DeleteCommentReplyRequest]
         attr_accessor :delete_comment_reply
@@ -5752,8 +5725,7 @@ module Google
         attr_accessor :delete_positioned_object
       
         # Deletes a suggestion. Returns a 403 forbidden error if the requesting user is
-        # not the author of the suggestion. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # not the author of the suggestion.
         # Corresponds to the JSON property `deleteSuggestion`
         # @return [Google::Apis::DocsV1::DeleteSuggestionRequest]
         attr_accessor :delete_suggestion
@@ -5773,8 +5745,7 @@ module Google
         # @return [Google::Apis::DocsV1::DeleteTableRowRequest]
         attr_accessor :delete_table_row
       
-        # Inserts a CommentThread into the document. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Inserts a CommentThread into the document.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::DocsV1::InsertCommentRequest]
         attr_accessor :insert_comment
@@ -5848,8 +5819,7 @@ module Google
       
         # Rejects a suggestion. Returns a 403 forbidden error if the requesting user
         # does not have edit access to the document and is not the author of the
-        # suggestion. [Developer Preview](https://developers.google.com/workspace/
-        # preview).
+        # suggestion.
         # Corresponds to the JSON property `rejectSuggestion`
         # @return [Google::Apis::DocsV1::RejectSuggestionRequest]
         attr_accessor :reject_suggestion
@@ -5883,8 +5853,7 @@ module Google
       
         # Updates a Post in a CommentThread or SuggestionThread. Returns a 400 bad
         # request error if: - The post is the headPost of a SuggestionThread. - The
-        # requesting user is not the author of the post. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # requesting user is not the author of the post.
         # Corresponds to the JSON property `updateCommentPost`
         # @return [Google::Apis::DocsV1::UpdateCommentPostRequest]
         attr_accessor :update_comment_post
@@ -6010,8 +5979,7 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
-        # Response message for adding a reply. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # Response message for adding a reply.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::DocsV1::AddCommentReplyResponse]
         attr_accessor :add_comment_reply
@@ -6046,8 +6014,7 @@ module Google
         # @return [Google::Apis::DocsV1::CreateNamedRangeResponse]
         attr_accessor :create_named_range
       
-        # Response message for inserting a comment. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Response message for inserting a comment.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::DocsV1::InsertCommentResponse]
         attr_accessor :insert_comment
@@ -7079,8 +7046,7 @@ module Google
         end
       end
       
-      # The suggestions which were affected by a given update. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # The suggestions which were affected by a given update.
       class SuggestionResponse
         include Google::Apis::Core::Hashable
       
@@ -7125,13 +7091,11 @@ module Google
       
       # Represents a single suggestion thread. Suggestion threads are created as a
       # byproduct of saving changes to the document while in suggestion mode, and
-      # cannot be created directly. [Developer Preview](https://developers.google.com/
-      # workspace/preview).
+      # cannot be created directly.
       class SuggestionThread
         include Google::Apis::Core::Hashable
       
-        # Represents a single post in a comment or suggestion thread. [Developer Preview]
-        # (https://developers.google.com/workspace/preview).
+        # Represents a single post in a comment or suggestion thread.
         # Corresponds to the JSON property `headPost`
         # @return [Google::Apis::DocsV1::Post]
         attr_accessor :head_post
@@ -8171,8 +8135,7 @@ module Google
       
       # Updates a Post in a CommentThread or SuggestionThread. Returns a 400 bad
       # request error if: - The post is the headPost of a SuggestionThread. - The
-      # requesting user is not the author of the post. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # requesting user is not the author of the post.
       class UpdateCommentPostRequest
         include Google::Apis::Core::Hashable
       
@@ -8751,8 +8714,7 @@ module Google
         attr_accessor :target_revision_id
       
         # How the request updates should be applied to the document. If unspecified, the
-        # request updates will be applied as normal edits. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # request updates will be applied as normal edits.
         # Corresponds to the JSON property `writeMode`
         # @return [String]
         attr_accessor :write_mode
