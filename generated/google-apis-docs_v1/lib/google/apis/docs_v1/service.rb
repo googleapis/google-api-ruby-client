@@ -142,8 +142,7 @@ module Google
         #   to COMMENTS_VIEW_MODE_INCLUDED or
         #   COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS, you may not set
         #   suggestions_view_mode to PREVIEW_WITHOUT_SUGGESTIONS or
-        #   PREVIEW_SUGGESTIONS_ACCEPTED. [Developer Preview](https://developers.google.
-        #   com/workspace/preview).
+        #   PREVIEW_SUGGESTIONS_ACCEPTED.
         # @param [Boolean] include_tabs_content
         #   Whether to populate the `Document.tabs` field instead of the text content
         #   fields like `body` and `documentStyle` on `Document`. - When `true`: Document
