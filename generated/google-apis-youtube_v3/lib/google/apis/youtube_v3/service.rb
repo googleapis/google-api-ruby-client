@@ -433,7 +433,8 @@ module Google
         #   credentials for each individual channel. The actual CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -544,7 +545,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1236,7 +1238,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1297,7 +1300,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1356,7 +1360,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1417,7 +1422,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1495,7 +1501,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1569,7 +1576,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1640,7 +1648,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -1747,7 +1756,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a chat message.
+        # Deletes a chat message. A call to this method has a quota cost of 20 units.
         # @param [String] id
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1774,11 +1783,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a new resource into this collection.
+        # Inserts a new resource into this collection. A call to this method has a quota
+        # cost of 20 units.
         # @param [Array<String>, String] part
-        #   The *part* parameter serves two purposes. It identifies the properties that
-        #   the write operation will set as well as the properties that the API response
-        #   will include. Set the parameter value to snippet.
+        #   The `part` parameter serves two purposes. It identifies the properties that
+        #   the write operation sets as well as the properties that the API response
+        #   includes. Set the parameter value to `snippet`.
         # @param [Google::Apis::YoutubeV3::LiveChatMessage] live_chat_message_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1809,22 +1819,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of resources, possibly filtered.
+        # Retrieves a list of resources, possibly filtered. A call to this method has a
+        # quota cost of 5 units.
         # @param [String] live_chat_id
-        #   The id of the live chat for which comments should be returned.
+        #   The ID of the live chat for which messages should be returned.
         # @param [Array<String>, String] part
-        #   The *part* parameter specifies the liveChatComment resource parts that the API
-        #   response will include. Supported values are id, snippet, and authorDetails.
+        #   The `part` parameter specifies the `liveChatMessage` resource parts that the
+        #   API response includes. Supported values are `id`, `snippet`, and `
+        #   authorDetails`.
         # @param [String] hl
         #   Specifies the localization language in which the system messages should be
         #   returned.
         # @param [Fixnum] max_results
-        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   The `maxResults` parameter specifies the maximum number of items that should
         #   be returned in the result set. Not used in the streaming RPC.
         # @param [String] page_token
-        #   The *pageToken* parameter identifies a specific page in the result set that
-        #   should be returned. In an API response, the nextPageToken property identify
-        #   other pages that could be retrieved.
+        #   The `pageToken` parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the `nextPageToken` property
+        #   identifies other pages that could be retrieved.
         # @param [Fixnum] profile_image_size
         #   Specifies the size of the profile image that should be returned for each user.
         # @param [String] fields
@@ -1859,9 +1871,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Transition a durable chat event.
+        # Transitions a durable chat event. A call to this method has a quota cost of 20
+        # units.
         # @param [String] id
-        #   The ID that uniquely identify the chat message event to transition.
+        #   The ID that uniquely identifies the chat message event to transition.
         # @param [String] status
         #   The status to which the chat event is going to transition.
         # @param [String] fields
@@ -2010,7 +2023,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2069,7 +2083,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2137,7 +2152,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2210,7 +2226,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2388,7 +2405,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2461,7 +2479,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2831,7 +2850,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -2907,7 +2927,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -3242,7 +3263,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -3844,7 +3866,8 @@ module Google
         #   credentials for each individual channel. The CMS account that the user
         #   authenticates with must be linked to the specified YouTube content owner.
         # @param [String] on_behalf_of_content_owner_channel
-        #   This parameter can only be used in a properly authorized request. *Note:* This
+        #   This parameter can only be used in a properly [authorized request](https://
+        #   developers.google.com/youtube/data/guides/authentication). *Note:* This
         #   parameter is intended exclusively for YouTube content partners. The *
         #   onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of
         #   the channel to which a video is being added. This parameter is required when a
@@ -3928,8 +3951,11 @@ module Google
         # @param [Fixnum] max_results
         #   The *maxResults* parameter specifies the maximum number of items that should
         #   be returned in the result set. *Note:* This parameter is supported for use in
-        #   conjunction with the myRating and chart parameters, but it is not supported
-        #   for use in conjunction with the id parameter.
+        #   conjunction with the [`myRating`](https://developers.google.com/youtube/data/
+        #   reference/rest/v3/videos/list#myRating) and [`chart`](https://developers.
+        #   google.com/youtube/data/reference/rest/v3/videos/list#chart) parameters, but
+        #   it is not supported for use in conjunction with the [`id`](https://developers.
+        #   google.com/youtube/data/reference/rest/v3/videos/list#id) parameter.
         # @param [Fixnum] max_width
         #   Return the player with maximum height specified in
         # @param [String] my_rating
@@ -3949,9 +3975,12 @@ module Google
         #   The *pageToken* parameter identifies a specific page in the result set that
         #   should be returned. In an API response, the nextPageToken and prevPageToken
         #   properties identify other pages that could be retrieved. *Note:* This
-        #   parameter is supported for use in conjunction with the myRating and chart
-        #   parameters, but it is not supported for use in conjunction with the id
-        #   parameter.
+        #   parameter is supported for use in conjunction with the [`myRating`](https://
+        #   developers.google.com/youtube/data/reference/rest/v3/videos/list#myRating) and
+        #   [`chart`](https://developers.google.com/youtube/data/reference/rest/v3/videos/
+        #   list#chart) parameters, but it is not supported for use in conjunction with
+        #   the [`id`](https://developers.google.com/youtube/data/reference/rest/v3/videos/
+        #   list#id) parameter.
         # @param [String] region_code
         #   Use a chart that is specific to the specified region
         # @param [String] video_category_id
@@ -4211,22 +4240,24 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Allows a user to load live chat through a server-streamed RPC.
+        # Allows a user to load live chat through a server-streamed RPC. A call to this
+        # method has a quota cost of 5 units.
         # @param [String] hl
         #   Specifies the localization language in which the system messages should be
         #   returned.
         # @param [String] live_chat_id
-        #   The id of the live chat for which comments should be returned.
+        #   The ID of the live chat for which messages should be returned.
         # @param [Fixnum] max_results
-        #   The *maxResults* parameter specifies the maximum number of items that should
+        #   The `maxResults` parameter specifies the maximum number of items that should
         #   be returned in the result set. Not used in the streaming RPC.
         # @param [String] page_token
-        #   The *pageToken* parameter identifies a specific page in the result set that
-        #   should be returned. In an API response, the nextPageToken property identify
-        #   other pages that could be retrieved.
+        #   The `pageToken` parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the `nextPageToken` property
+        #   identifies other pages that could be retrieved.
         # @param [Array<String>, String] part
-        #   The *part* parameter specifies the liveChatComment resource parts that the API
-        #   response will include. Supported values are id, snippet, and authorDetails.
+        #   The `part` parameter specifies the `liveChatMessage` resource parts that the
+        #   API response includes. Supported values are `id`, `snippet`, and `
+        #   authorDetails`.
         # @param [Fixnum] profile_image_size
         #   Specifies the size of the profile image that should be returned for each user.
         # @param [String] fields

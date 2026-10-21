@@ -1268,37 +1268,47 @@ module Google
         class RelatedPlaylists
           include Google::Apis::Core::Hashable
         
-          # The ID of the playlist that contains the channel"s favorite videos. Use the
-          # playlistItems.insert and playlistItems.delete to add or remove items from that
-          # list.
+          # The ID of the playlist that contains the channel"s favorite videos. Use the [`
+          # playlistItems.insert`](https://developers.google.com/youtube/data/reference/
+          # rest/v3/playlistItems/insert) and [`playlistItems.delete`](https://developers.
+          # google.com/youtube/data/reference/rest/v3/playlistItems/delete) to add or
+          # remove items from that list.
           # Corresponds to the JSON property `favorites`
           # @return [String]
           attr_accessor :favorites
         
-          # The ID of the playlist that contains the channel"s liked videos. Use the
-          # playlistItems.insert and playlistItems.delete to add or remove items from that
-          # list.
+          # The ID of the playlist that contains the channel"s liked videos. Use the [`
+          # playlistItems.insert`](https://developers.google.com/youtube/data/reference/
+          # rest/v3/playlistItems/insert) and [`playlistItems.delete`](https://developers.
+          # google.com/youtube/data/reference/rest/v3/playlistItems/delete) to add or
+          # remove items from that list.
           # Corresponds to the JSON property `likes`
           # @return [String]
           attr_accessor :likes
         
-          # The ID of the playlist that contains the channel"s uploaded videos. Use the
-          # videos.insert method to upload new videos and the videos.delete method to
+          # The ID of the playlist that contains the channel"s uploaded videos. Use the [`
+          # videos.insert`](https://developers.google.com/youtube/data/reference/rest/v3/
+          # videos/insert) method to upload new videos and the [`videos.delete`](https://
+          # developers.google.com/youtube/data/reference/rest/v3/videos/delete) method to
           # delete previously uploaded videos.
           # Corresponds to the JSON property `uploads`
           # @return [String]
           attr_accessor :uploads
         
-          # The ID of the playlist that contains the channel"s watch history. Use the
-          # playlistItems.insert and playlistItems.delete to add or remove items from that
-          # list.
+          # The ID of the playlist that contains the channel"s watch history. Use the [`
+          # playlistItems.insert`](https://developers.google.com/youtube/data/reference/
+          # rest/v3/playlistItems/insert) and [`playlistItems.delete`](https://developers.
+          # google.com/youtube/data/reference/rest/v3/playlistItems/delete) to add or
+          # remove items from that list.
           # Corresponds to the JSON property `watchHistory`
           # @return [String]
           attr_accessor :watch_history
         
           # The ID of the playlist that contains the channel"s watch later playlist. Use
-          # the playlistItems.insert and playlistItems.delete to add or remove items from
-          # that list.
+          # the [`playlistItems.insert`](https://developers.google.com/youtube/data/
+          # reference/rest/v3/playlistItems/insert) and [`playlistItems.delete`](https://
+          # developers.google.com/youtube/data/reference/rest/v3/playlistItems/delete) to
+          # add or remove items from that list.
           # Corresponds to the JSON property `watchLater`
           # @return [String]
           attr_accessor :watch_later
@@ -3907,7 +3917,8 @@ module Google
         # @return [Google::Apis::YoutubeV3::AvailabilityConfig]
         attr_accessor :availability_config
       
-        # This value uniquely identifies the live stream bound to the broadcast.
+        # This value uniquely identifies the [`live stream`](https://developers.google.
+        # com/youtube/data/live/reference/rest/v3/liveStreams) bound to the broadcast.
         # Corresponds to the JSON property `boundStreamId`
         # @return [String]
         attr_accessor :bound_stream_id
@@ -3991,9 +4002,10 @@ module Google
       
         # The mesh for projecting the video if projection is mesh. The mesh value must
         # be a UTF-8 string containing the base-64 encoding of 3D mesh data that follows
-        # the Spherical Video V2 RFC specification for an mshp box, excluding the box
-        # size and type but including the following four reserved zero bytes for the
-        # version and flags.
+        # the [Spherical Video V2 RFC specification](https://github.com/google/spatial-
+        # media/blob/master/docs/spherical-video-v2-rfc.md) for an mshp box, excluding
+        # the box size and type but including the following four reserved zero bytes for
+        # the version and flags.
         # Corresponds to the JSON property `mesh`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4021,10 +4033,12 @@ module Google
         alias_method :record_from_start?, :record_from_start
       
         # This setting indicates whether the broadcast should automatically begin with
-        # an in-stream slate when you update the broadcast's status to live. After
-        # updating the status, you then need to send a liveCuepoints.insert request that
-        # sets the cuepoint's eventState to end to remove the in-stream slate and make
-        # your broadcast stream visible to viewers.
+        # an [in-stream slate](https://developers.google.com/youtube/data/live/getting-
+        # started#Displaying_Slates) when you update the broadcast's status to live.
+        # After updating the status, you then need to send a [`liveCuepoints.insert`](
+        # https://developers.google.com/youtube/data/live/reference/rest/v3/
+        # liveCuepoints/insert) request that sets the cuepoint's eventState to end to
+        # remove the in-stream slate and make your broadcast stream visible to viewers.
         # Corresponds to the JSON property `startWithSlate`
         # @return [Boolean]
         attr_accessor :start_with_slate
@@ -4168,7 +4182,8 @@ module Google
         # @return [DateTime]
         attr_accessor :actual_start_time
       
-        # The YouTube video category associated with the video broadcast.
+        # The YouTube [video category](https://developers.google.com/youtube/data/
+        # reference/rest/v3/videoCategories/list) associated with the video broadcast.
         # Corresponds to the JSON property `categoryId`
         # @return [String]
         attr_accessor :category_id
@@ -4180,8 +4195,9 @@ module Google
         attr_accessor :channel_id
       
         # The broadcast's description. As with the title, you can set this field by
-        # modifying the broadcast resource or by setting the description field of the
-        # corresponding video resource.
+        # modifying the broadcast resource or by setting the [`description`](https://
+        # developers.google.com/youtube/data/reference/rest/v3/videos#snippet.
+        # description) field of the corresponding video resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4220,7 +4236,8 @@ module Google
       
         # The broadcast's title. Note that the broadcast represents exactly one YouTube
         # video. You can set this field by modifying the broadcast resource or by
-        # setting the title field of the corresponding video resource.
+        # setting the [`title`](https://developers.google.com/youtube/data/reference/
+        # rest/v3/videos#snippet.title) field of the corresponding video resource.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -4275,8 +4292,9 @@ module Google
       class LiveBroadcastStatus
         include Google::Apis::Core::Hashable
       
-        # The broadcast's status. The status can be updated using the API's
-        # liveBroadcasts.transition method.
+        # The broadcast's status. The status can be updated using the API's [`
+        # liveBroadcasts.transition`](https://developers.google.com/youtube/data/live/
+        # reference/rest/v3/liveBroadcasts/transition) method.
         # Corresponds to the JSON property `lifeCycleStatus`
         # @return [String]
         attr_accessor :life_cycle_status
@@ -4296,8 +4314,9 @@ module Google
         # The broadcast's privacy status. Note that the broadcast represents exactly one
         # YouTube video, so the privacy settings are identical to those supported for
         # videos. In addition, you can set this field by modifying the broadcast
-        # resource or by setting the privacyStatus field of the corresponding video
-        # resource.
+        # resource or by setting the [`privacyStatus`](https://developers.google.com/
+        # youtube/data/reference/rest/v3/videos#status.privacyStatus) field of the
+        # corresponding video resource.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
         attr_accessor :privacy_status
@@ -4441,7 +4460,7 @@ module Google
         end
       end
       
-      # Details about the gift event, this is only set if the type is 'giftEvent'.
+      # Details about the gift event, this is only set if the type is `giftEvent`.
       class LiveChatGiftDetails
         include Google::Apis::Core::Hashable
       
@@ -4508,8 +4527,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The ID of the membership gifting message that is related to this gift
-        # membership. This ID will always refer to a message whose type is '
-        # membershipGiftingEvent'.
+        # membership. This ID will always refer to a message whose type is `
+        # membershipGiftingEvent`.
         # Corresponds to the JSON property `associatedMembershipGiftingMessageId`
         # @return [String]
         attr_accessor :associated_membership_gifting_message_id
@@ -4756,8 +4775,8 @@ module Google
         # @return [Array<Google::Apis::YoutubeV3::LiveChatMessage>]
         attr_accessor :items
       
-        # Identifies what kind of resource this is. Value: the fixed string "youtube#
-        # liveChatMessageListResponse".
+        # Identifies what kind of resource this is. Value: the fixed string `"youtube#
+        # liveChatMessageListResponse"`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -4788,7 +4807,7 @@ module Google
         # @return [Google::Apis::YoutubeV3::TokenPagination]
         attr_accessor :token_pagination
       
-        # The visitorId identifies the visitor.
+        # Identifies the visitor.
         # Corresponds to the JSON property `visitorId`
         # @return [String]
         attr_accessor :visitor_id
@@ -4858,19 +4877,19 @@ module Google
         # @return [String]
         attr_accessor :display_message
       
-        # Details about the funding event, this is only set if the type is '
-        # fanFundingEvent'.
+        # Details about the funding event, this is only set if the type is `
+        # fanFundingEvent`.
         # Corresponds to the JSON property `fanFundingEventDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatFanFundingEventDetails]
         attr_accessor :fan_funding_event_details
       
-        # Details about the gift event, this is only set if the type is 'giftEvent'.
+        # Details about the gift event, this is only set if the type is `giftEvent`.
         # Corresponds to the JSON property `giftDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatGiftDetails]
         attr_accessor :gift_details
       
         # Details about the Gift Membership Received event, this is only set if the type
-        # is 'giftMembershipReceivedEvent'.
+        # is `giftMembershipReceivedEvent`.
         # Corresponds to the JSON property `giftMembershipReceivedDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatGiftMembershipReceivedDetails]
         attr_accessor :gift_membership_received_details
@@ -4887,13 +4906,13 @@ module Google
         attr_accessor :live_chat_id
       
         # Details about the Member Milestone Chat event, this is only set if the type is
-        # 'memberMilestoneChatEvent'.
+        # `memberMilestoneChatEvent`.
         # Corresponds to the JSON property `memberMilestoneChatDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMemberMilestoneChatDetails]
         attr_accessor :member_milestone_chat_details
       
-        # Details about the Membership Gifting event, this is only set if the type is '
-        # membershipGiftingEvent'.
+        # Details about the Membership Gifting event, this is only set if the type is `
+        # membershipGiftingEvent`.
         # Corresponds to the JSON property `membershipGiftingDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatMembershipGiftingDetails]
         attr_accessor :membership_gifting_details
@@ -4909,12 +4928,12 @@ module Google
         attr_accessor :message_retracted_details
       
         # Details about the New Member Announcement event, this is only set if the type
-        # is 'newSponsorEvent'. Please note that "member" is the new term for "sponsor".
+        # is `newSponsorEvent`. The term "member" replaces "sponsor".
         # Corresponds to the JSON property `newSponsorDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatNewSponsorDetails]
         attr_accessor :new_sponsor_details
       
-        # Details about the poll event, this is only set if the type is 'pollEvent'.
+        # Details about the poll event, this is only set if the type is `pollEvent`.
         # Corresponds to the JSON property `pollDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatPollDetails]
         attr_accessor :poll_details
@@ -4924,20 +4943,20 @@ module Google
         # @return [DateTime]
         attr_accessor :published_at
       
-        # Details about the Super Chat event, this is only set if the type is '
-        # superChatEvent'.
+        # Details about the Super Chat event, this is only set if the type is `
+        # superChatEvent`.
         # Corresponds to the JSON property `superChatDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatSuperChatDetails]
         attr_accessor :super_chat_details
       
-        # Details about the Super Sticker event, this is only set if the type is '
-        # superStickerEvent'.
+        # Details about the Super Sticker event, this is only set if the type is `
+        # superStickerEvent`.
         # Corresponds to the JSON property `superStickerDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatSuperStickerDetails]
         attr_accessor :super_sticker_details
       
-        # Details about the text message, this is only set if the type is '
-        # textMessageEvent'.
+        # Details about the text message, this is only set if the type is `
+        # textMessageEvent`.
         # Corresponds to the JSON property `textMessageDetails`
         # @return [Google::Apis::YoutubeV3::LiveChatTextMessageDetails]
         attr_accessor :text_message_details
@@ -5241,7 +5260,7 @@ module Google
         attr_accessor :currency
       
         # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
-        # lowest tier is 1.
+        # lowest tier is `1`.
         # Corresponds to the JSON property `tier`
         # @return [Fixnum]
         attr_accessor :tier
@@ -5290,7 +5309,7 @@ module Google
         attr_accessor :super_sticker_metadata
       
         # The tier in which the amount belongs. Lower amounts belong to lower tiers. The
-        # lowest tier is 1.
+        # lowest tier is `1`.
         # Corresponds to the JSON property `tier`
         # @return [Fixnum]
         attr_accessor :tier
@@ -5332,8 +5351,8 @@ module Google
       class LiveChatUserBannedMessageDetails
         include Google::Apis::Core::Hashable
       
-        # The duration of the ban. This property is only present if the banType is
-        # temporary.
+        # The duration of the ban. This property is only present if the `banType` is `
+        # temporary`.
         # Corresponds to the JSON property `banDurationSeconds`
         # @return [Fixnum]
         attr_accessor :ban_duration_seconds
@@ -5468,12 +5487,14 @@ module Google
         # for many different broadcasts if those broadcasts occur at different times. If
         # you set this value to false, then the stream will not be reusable, which means
         # that it can only be bound to one broadcast. Non-reusable streams differ from
-        # reusable streams in the following ways: - A non-reusable stream can only be
-        # bound to one broadcast. - A non-reusable stream might be deleted by an
-        # automated process after the broadcast ends. - The liveStreams.list method does
-        # not list non-reusable streams if you call the method and set the mine
-        # parameter to true. The only way to use that method to retrieve the resource
-        # for a non-reusable stream is to use the id parameter to identify the stream.
+        # reusable streams in the following ways: * A non-reusable stream can only be
+        # bound to one broadcast. * A non-reusable stream might be deleted by an
+        # automated process after the broadcast ends. * The [`liveStreams.list`](https://
+        # developers.google.com/youtube/data/live/reference/rest/v3/liveStreams/list)
+        # method does not list non-reusable streams if you call the method and set the
+        # mine parameter to true. The only way to use that method to retrieve the
+        # resource for a non-reusable stream is to use the id parameter to identify the
+        # stream.
         # Corresponds to the JSON property `isReusable`
         # @return [Boolean]
         attr_accessor :is_reusable
@@ -6064,7 +6085,9 @@ module Google
       class MonitorStreamInfo
         include Google::Apis::Core::Hashable
       
-        # If you have set the enableMonitorStream property to true, then this property
+        # If you have set the [`enableMonitorStream`](https://developers.google.com/
+        # youtube/data/live/reference/rest/v3/liveBroadcasts#contentDetails.
+        # monitorStream.enableMonitorStream) property to true, then this property
         # determines the length of the live broadcast delay.
         # Corresponds to the JSON property `broadcastStreamDelayMs`
         # @return [Fixnum]
@@ -6131,14 +6154,18 @@ module Google
       # number of playlists that each user creates. By default, playlists are publicly
       # visible to other users, but playlists can be public or private. YouTube also
       # uses playlists to identify special collections of videos for a channel, such
-      # as: - uploaded videos - favorite videos - positively rated (liked) videos -
-      # watch history - watch later To be more specific, these lists are associated
+      # as: * uploaded videos * favorite videos * positively rated (liked) videos *
+      # watch history * watch later To be more specific, these lists are associated
       # with a channel, which is a collection of a person, group, or company's videos,
       # playlists, and other YouTube information. You can retrieve the playlist IDs
-      # for each of these lists from the channel resource for a given channel. You can
-      # then use the playlistItems.list method to retrieve any of those lists. You can
-      # also add or remove items from those lists by calling the playlistItems.insert
-      # and playlistItems.delete methods.
+      # for each of these lists from the [`channel resource`](https://developers.
+      # google.com/youtube/data/reference/rest/v3/channels) for a given channel. You
+      # can then use the [`playlistItems.list`](https://developers.google.com/youtube/
+      # data/reference/rest/v3/playlistItems/list) method to retrieve any of those
+      # lists. You can also add or remove items from those lists by calling the [`
+      # playlistItems.insert`](https://developers.google.com/youtube/data/reference/
+      # rest/v3/playlistItems/insert) and [`playlistItems.delete`](https://developers.
+      # google.com/youtube/data/reference/rest/v3/playlistItems/delete) methods.
       class Playlist
         include Google::Apis::Core::Hashable
       
@@ -6239,15 +6266,19 @@ module Google
         # is associated with a playlist. In addition, the playlistImage resource
         # contains details about the included resource that pertain specifically to how
         # that resource is used in that playlist. YouTube uses playlists to identify
-        # special collections of videos for a channel, such as: - uploaded videos -
-        # favorite videos - positively rated (liked) videos - watch history To be more
+        # special collections of videos for a channel, such as: * uploaded videos *
+        # favorite videos * positively rated (liked) videos * watch history To be more
         # specific, these lists are associated with a channel, which is a collection of
         # a person, group, or company's videos, playlists, and other YouTube information.
-        # You can retrieve the playlist IDs for each of these lists from the channel
-        # resource for a given channel. You can then use the playlistImages.list method
-        # to retrieve image data for any of those playlists. You can also add or remove
-        # images from those lists by calling the playlistImages.insert and
-        # playlistImages.delete methods.
+        # You can retrieve the playlist IDs for each of these lists from the [`channel
+        # resource`](https://developers.google.com/youtube/data/reference/rest/v3/
+        # channels) for a given channel. You can then use the [`playlistImages.list`](
+        # https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/
+        # list) method to retrieve image data for any of those playlists. You can also
+        # add or remove images from those lists by calling the [`playlistImages.insert`](
+        # https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/
+        # insert) and [`playlistImages.delete`](https://developers.google.com/youtube/
+        # data/reference/rest/v3/playlistImages/delete) methods.
         # Corresponds to the JSON property `snippet`
         # @return [Google::Apis::YoutubeV3::PlaylistImageSnippet]
         attr_accessor :snippet
@@ -6315,15 +6346,19 @@ module Google
       # is associated with a playlist. In addition, the playlistImage resource
       # contains details about the included resource that pertain specifically to how
       # that resource is used in that playlist. YouTube uses playlists to identify
-      # special collections of videos for a channel, such as: - uploaded videos -
-      # favorite videos - positively rated (liked) videos - watch history To be more
+      # special collections of videos for a channel, such as: * uploaded videos *
+      # favorite videos * positively rated (liked) videos * watch history To be more
       # specific, these lists are associated with a channel, which is a collection of
       # a person, group, or company's videos, playlists, and other YouTube information.
-      # You can retrieve the playlist IDs for each of these lists from the channel
-      # resource for a given channel. You can then use the playlistImages.list method
-      # to retrieve image data for any of those playlists. You can also add or remove
-      # images from those lists by calling the playlistImages.insert and
-      # playlistImages.delete methods.
+      # You can retrieve the playlist IDs for each of these lists from the [`channel
+      # resource`](https://developers.google.com/youtube/data/reference/rest/v3/
+      # channels) for a given channel. You can then use the [`playlistImages.list`](
+      # https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/
+      # list) method to retrieve image data for any of those playlists. You can also
+      # add or remove images from those lists by calling the [`playlistImages.insert`](
+      # https://developers.google.com/youtube/data/reference/rest/v3/playlistImages/
+      # insert) and [`playlistImages.delete`](https://developers.google.com/youtube/
+      # data/reference/rest/v3/playlistImages/delete) methods.
       class PlaylistImageSnippet
         include Google::Apis::Core::Hashable
       
@@ -6364,17 +6399,21 @@ module Google
       # is included in a playlist. In addition, the playlistItem resource contains
       # details about the included resource that pertain specifically to how that
       # resource is used in that playlist. YouTube uses playlists to identify special
-      # collections of videos for a channel, such as: - uploaded videos - favorite
-      # videos - positively rated (liked) videos - watch history - watch later To be
+      # collections of videos for a channel, such as: * uploaded videos * favorite
+      # videos * positively rated (liked) videos * watch history * watch later To be
       # more specific, these lists are associated with a channel, which is a
       # collection of a person, group, or company's videos, playlists, and other
       # YouTube information. You can retrieve the playlist IDs for each of these lists
-      # from the channel resource for a given channel. You can then use the
-      # playlistItems.list method to retrieve any of those lists. You can also add or
-      # remove items from those lists by calling the playlistItems.insert and
-      # playlistItems.delete methods. For example, if a user gives a positive rating
-      # to a video, you would insert that video into the liked videos playlist for
-      # that user's channel.
+      # from the [`channel resource`](https://developers.google.com/youtube/data/
+      # reference/rest/v3/channels) for a given channel. You can then use the [`
+      # playlistItems.list`](https://developers.google.com/youtube/data/reference/rest/
+      # v3/playlistItems/list) method to retrieve any of those lists. You can also add
+      # or remove items from those lists by calling the [`playlistItems.insert`](https:
+      # //developers.google.com/youtube/data/reference/rest/v3/playlistItems/insert)
+      # and [`playlistItems.delete`](https://developers.google.com/youtube/data/
+      # reference/rest/v3/playlistItems/delete) methods. For example, if a user gives
+      # a positive rating to a video, you would insert that video into the liked
+      # videos playlist for that user's channel.
       class PlaylistItem
         include Google::Apis::Core::Hashable
       
@@ -6451,8 +6490,9 @@ module Google
         # @return [String]
         attr_accessor :start_at
       
-        # The ID that YouTube uses to uniquely identify a video. To retrieve the video
-        # resource, set the id query parameter to this value in your API request.
+        # The ID that YouTube uses to uniquely identify a video. To [retrieve the `video`
+        # resource](https://developers.google.com/youtube/data/reference/rest/v3/videos/
+        # list), set the id query parameter to this value in your API request.
         # Corresponds to the JSON property `videoId`
         # @return [String]
         attr_accessor :video_id
@@ -9221,7 +9261,8 @@ module Google
       class VideoSnippet
         include Google::Apis::Core::Hashable
       
-        # The YouTube video category associated with the video.
+        # The YouTube [video category](https://developers.google.com/youtube/data/
+        # reference/rest/v3/videoCategories/list) associated with the video.
         # Corresponds to the JSON property `categoryId`
         # @return [String]
         attr_accessor :category_id
@@ -9499,7 +9540,7 @@ module Google
         alias_method :embeddable?, :embeddable
       
         # This value explains why a video failed to upload. This property is only
-        # present if the uploadStatus property indicates that the upload failed.
+        # present if the `uploadStatus` property indicates that the upload failed.
         # Corresponds to the JSON property `failureReason`
         # @return [String]
         attr_accessor :failure_reason
@@ -9515,7 +9556,12 @@ module Google
         attr_accessor :made_for_kids
         alias_method :made_for_kids?, :made_for_kids
       
-        # The video's privacy status.
+        # The video's privacy status. In a `videos.insert` request, if you don't specify
+        # a value for this property, the uploaded video's privacy status defaults to `
+        # public`. Certain uploads might default to `private` based on creator account
+        # settings, as explained in the [YouTube Help Center](https://support.google.com/
+        # youtube/answer/157177). Videos uploaded from unverified API projects are not
+        # restricted to private viewing mode.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
         attr_accessor :privacy_status
@@ -9535,7 +9581,7 @@ module Google
         attr_accessor :publish_at
       
         # This value explains why YouTube rejected an uploaded video. This property is
-        # only present if the uploadStatus property indicates that the upload was
+        # only present if the `uploadStatus` property indicates that the upload was
         # rejected.
         # Corresponds to the JSON property `rejectionReason`
         # @return [String]
