@@ -94920,6 +94920,8 @@
 "/cloudresourcemanager:v2/CreateProjectMetadata/createTime": create_time
 "/cloudresourcemanager:v2/CreateProjectMetadata/gettable": gettable
 "/cloudresourcemanager:v2/CreateProjectMetadata/ready": ready
+"/cloudresourcemanager:v2/CreateSemanticTagBindingMetadata": create_semantic_tag_binding_metadata
+"/cloudresourcemanager:v2/CreateSemanticTagValueMetadata": create_semantic_tag_value_metadata
 "/cloudresourcemanager:v2/CreateTagBindingMetadata": create_tag_binding_metadata
 "/cloudresourcemanager:v2/CreateTagKeyMetadata": create_tag_key_metadata
 "/cloudresourcemanager:v2/CreateTagValueMetadata": create_tag_value_metadata
@@ -94928,6 +94930,8 @@
 "/cloudresourcemanager:v2/DeleteFolderMetadata": delete_folder_metadata
 "/cloudresourcemanager:v2/DeleteOrganizationMetadata": delete_organization_metadata
 "/cloudresourcemanager:v2/DeleteProjectMetadata": delete_project_metadata
+"/cloudresourcemanager:v2/DeleteSemanticTagBindingMetadata": delete_semantic_tag_binding_metadata
+"/cloudresourcemanager:v2/DeleteSemanticTagValueMetadata": delete_semantic_tag_value_metadata
 "/cloudresourcemanager:v2/DeleteTagBindingMetadata": delete_tag_binding_metadata
 "/cloudresourcemanager:v2/DeleteTagKeyMetadata": delete_tag_key_metadata
 "/cloudresourcemanager:v2/DeleteTagValueMetadata": delete_tag_value_metadata
