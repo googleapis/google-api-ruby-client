@@ -65510,6 +65510,13 @@
 "/biglake:v1/biglake.projects.catalogs.namespaces.tables.testIamPermissions/resource": resource
 "/biglake:v1/biglake.projects.catalogs.namespaces.testIamPermissions": test_namespace_iam_permissions
 "/biglake:v1/biglake.projects.catalogs.namespaces.testIamPermissions/resource": resource
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.getIamPolicy": get_project_catalog_namespace_view_iam_policy
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.getIamPolicy/options.requestedPolicyVersion": options_requested_policy_version
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.getIamPolicy/resource": resource
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.setIamPolicy": set_view_iam_policy
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.setIamPolicy/resource": resource
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.testIamPermissions": test_view_iam_permissions
+"/biglake:v1/biglake.projects.catalogs.namespaces.views.testIamPermissions/resource": resource
 "/biglake:v1/biglake.projects.catalogs.setIamPolicy": set_catalog_iam_policy
 "/biglake:v1/biglake.projects.catalogs.setIamPolicy/resource": resource
 "/biglake:v1/biglake.projects.catalogs.testIamPermissions": test_catalog_iam_permissions
