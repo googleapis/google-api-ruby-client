@@ -304326,6 +304326,9 @@
 "/firebasecrashlytics:v1alpha/Browser/browser": browser
 "/firebasecrashlytics:v1alpha/Browser/displayName": display_name
 "/firebasecrashlytics:v1alpha/Browser/displayVersion": display_version
+"/firebasecrashlytics:v1alpha/CustomAttribute": custom_attribute
+"/firebasecrashlytics:v1alpha/CustomAttribute/key": key
+"/firebasecrashlytics:v1alpha/CustomAttribute/value": value
 "/firebasecrashlytics:v1alpha/DeleteUserCrashReportsResponse": delete_user_crash_reports_response
 "/firebasecrashlytics:v1alpha/DeleteUserCrashReportsResponse/targetCompleteTime": target_complete_time
 "/firebasecrashlytics:v1alpha/Device": device
@@ -304492,6 +304495,7 @@
 "/firebasecrashlytics:v1alpha/Report/usage": usage
 "/firebasecrashlytics:v1alpha/ReportGroup": report_group
 "/firebasecrashlytics:v1alpha/ReportGroup/browser": browser
+"/firebasecrashlytics:v1alpha/ReportGroup/customAttribute": custom_attribute
 "/firebasecrashlytics:v1alpha/ReportGroup/device": device
 "/firebasecrashlytics:v1alpha/ReportGroup/issue": issue
 "/firebasecrashlytics:v1alpha/ReportGroup/metrics": metrics
@@ -304588,13 +304592,16 @@
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/filter.issue.variantId": filter_issue_variant_id
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/filter.operatingSystem.displayNames": filter_operating_system_display_names
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/filter.version.displayNames": filter_version_display_names
+"/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/filterExpression": filter_expression
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/granularity": granularity
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/metricsMode": metrics_mode
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/name": name
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/pageSize": page_size
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/pageToken": page_token
+"/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.get/view": view
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.list": list_project_app_reports
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.list/parent": parent
+"/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.reports.list/view": view
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.users.deleteCrashReports": delete_project_app_user_crash_reports
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.users.deleteCrashReports/name": name
 "/firebasecrashlytics:v1alpha/key": key

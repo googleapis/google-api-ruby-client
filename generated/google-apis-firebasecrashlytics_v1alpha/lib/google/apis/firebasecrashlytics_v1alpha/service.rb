@@ -154,17 +154,17 @@ module Google
         # @param [String] filter_expression
         #   Optional. Filters events by custom keys (https://firebase.google.com/docs/
         #   crashlytics/customize-crash-reports#add-keys). Supported forms: * Equality: `
-        #   custom_keys.level = "vip"` or `custom_keys.level:"vip"` * Presence: `
-        #   custom_keys.level:*` * OR across values of one key: `custom_keys.level = "vip"
-        #   OR custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.
-        #   level = "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and
-        #   values containing spaces must be double-quoted, for example `custom_keys."app
-        #   state" = "background"`. OR across different keys, repeating a key within an
-        #   AND, NOT, and comparators other than `=` and `:` are rejected with
-        #   INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*`
-        #   to match events that set a key to any value. This filter expression applies in
-        #   addition to the `filter` field above. The syntax is a subset of AIP-160 (https:
-        #   //google.aip.dev/160).
+        #   custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"` (matches the same
+        #   events as equality) * Presence: `custom_keys.level:*` * OR across values of
+        #   one key: `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND
+        #   across different keys: `custom_keys.level = "vip" AND custom_keys.region = "us"
+        #   ` Keys are case-sensitive. Keys and values containing spaces must be double-
+        #   quoted, for example `custom_keys."app state" = "background"`. OR across
+        #   different keys, repeating a key within an AND, NOT, and comparators other than
+        #   `=` and `:` are rejected with INVALID_ARGUMENT. Wildcards are not supported in
+        #   values; use `custom_keys.:*` to match events that set a key to any value. This
+        #   filter expression applies in addition to the `filter` field above. The syntax
+        #   is a subset of AIP-160 (https://google.aip.dev/160).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of events per page. If omitted, defaults to 10.
         # @param [String] page_token
@@ -484,6 +484,23 @@ module Google
         # @param [Array<String>, String] filter_version_display_names
         #   Only counts events in the given app version. This string matches Version.
         #   display_name. Format: "display_version (build_version)" e.g. "1.2.3 (456)".
+        # @param [String] filter_expression
+        #   Optional. Filters the events counted in the report by custom keys. Not all
+        #   reports support this filter. It is currently only supported for web apps, for
+        #   the `webMetrics`, `topBrowsers`, `topOperatingSystems`, `topVersions`, and `
+        #   topCustomKeys` reports. Requests for other apps or reports that set this field
+        #   are rejected with INVALID_ARGUMENT. Supported forms: * Equality: `custom_keys.
+        #   level = "vip"` * Has: `custom_keys.level:"vip"` (matches the same events as
+        #   equality) * Presence: `custom_keys.level:*` * OR across values of one key: `
+        #   custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across
+        #   different keys: `custom_keys.level = "vip" AND custom_keys.region = "us"` Keys
+        #   are case-sensitive. Keys and values containing spaces must be double-quoted,
+        #   for example `custom_keys."app state" = "background"`. OR across different keys,
+        #   repeating a key within an AND, NOT, and comparators other than `=` and `:`
+        #   are rejected with INVALID_ARGUMENT. Wildcards are not supported in values; use
+        #   `custom_keys.:*` to match events that set a key to any value. This filter
+        #   expression applies in addition to the `filter` field above. The syntax is a
+        #   subset of AIP-160 (https://google.aip.dev/160).
         # @param [String] granularity
         #   Optional. The report response will contain one data point per time grain. If
         #   omitted, the report will contain a single data point for the complete interval.
@@ -491,12 +508,14 @@ module Google
         #   Optional. Controls whether metrics are raw observed values (mobile and web) or
         #   extrapolated values (web only). If omitted, defaults to OBSERVED.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of result groups to return. If omitted, defaults
-        #   to 25.
+        #   Optional. The maximum number of result groups to return. The maximum value is
+        #   100; values above 100 will be coerced to 100. If omitted, defaults to 25.
         # @param [String] page_token
         #   Optional. A page token, received from a previous call. The page token is only
         #   valid for the exact same set of filters, which must also be sent in subsequent
         #   requests. This token is valid for 10 minutes after the first request.
+        # @param [String] view
+        #   Optional. Response view. If not set, defaults to `REPORT_VIEW_FULL`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -514,7 +533,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_app_report(name, filter_browser_display_names: nil, filter_device_display_names: nil, filter_device_form_factors: nil, filter_interval_end_time: nil, filter_interval_start_time: nil, filter_issue_content: nil, filter_issue_error_types: nil, filter_issue_id: nil, filter_issue_signals: nil, filter_issue_state: nil, filter_issue_states: nil, filter_issue_variant_id: nil, filter_operating_system_display_names: nil, filter_version_display_names: nil, granularity: nil, metrics_mode: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_app_report(name, filter_browser_display_names: nil, filter_device_display_names: nil, filter_device_form_factors: nil, filter_interval_end_time: nil, filter_interval_start_time: nil, filter_issue_content: nil, filter_issue_error_types: nil, filter_issue_id: nil, filter_issue_signals: nil, filter_issue_state: nil, filter_issue_states: nil, filter_issue_variant_id: nil, filter_operating_system_display_names: nil, filter_version_display_names: nil, filter_expression: nil, granularity: nil, metrics_mode: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+name}', options)
           command.response_representation = Google::Apis::FirebasecrashlyticsV1alpha::Report::Representation
           command.response_class = Google::Apis::FirebasecrashlyticsV1alpha::Report
@@ -533,10 +552,12 @@ module Google
           command.query['filter.issue.variantId'] = filter_issue_variant_id unless filter_issue_variant_id.nil?
           command.query['filter.operatingSystem.displayNames'] = filter_operating_system_display_names unless filter_operating_system_display_names.nil?
           command.query['filter.version.displayNames'] = filter_version_display_names unless filter_version_display_names.nil?
+          command.query['filterExpression'] = filter_expression unless filter_expression.nil?
           command.query['granularity'] = granularity unless granularity.nil?
           command.query['metricsMode'] = metrics_mode unless metrics_mode.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -545,6 +566,9 @@ module Google
         # List all of the available reports.
         # @param [String] parent
         #   Required. The firebase application. Format: "projects/`project`/apps/`app_id`".
+        # @param [String] view
+        #   Optional. Response view. If not set, defaults to `REPORT_VIEW_BASIC`. `
+        #   REPORT_VIEW_FULL` is not supported for list operations.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -562,11 +586,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_app_reports(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_app_reports(parent, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha/{+parent}/reports', options)
           command.response_representation = Google::Apis::FirebasecrashlyticsV1alpha::ListReportsResponse::Representation
           command.response_class = Google::Apis::FirebasecrashlyticsV1alpha::ListReportsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -151,6 +151,31 @@ module Google
         end
       end
       
+      # Developer-provided custom key-value pair metadata.
+      class CustomAttribute
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Custom attribute key name.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Output only. Custom attribute value.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Response message for the DeleteUserCrashReports method. All crash reports
       # associated with the specified user will be deleted typically within 24 hours
       # of receiving the crash report.
@@ -1295,6 +1320,11 @@ module Google
         # @return [Google::Apis::FirebasecrashlyticsV1alpha::Browser]
         attr_accessor :browser
       
+        # Developer-provided custom key-value pair metadata.
+        # Corresponds to the JSON property `customAttribute`
+        # @return [Google::Apis::FirebasecrashlyticsV1alpha::CustomAttribute]
+        attr_accessor :custom_attribute
+      
         # Mobile device metadata.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::FirebasecrashlyticsV1alpha::Device]
@@ -1348,6 +1378,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @browser = args[:browser] if args.key?(:browser)
+          @custom_attribute = args[:custom_attribute] if args.key?(:custom_attribute)
           @device = args[:device] if args.key?(:device)
           @issue = args[:issue] if args.key?(:issue)
           @metrics = args[:metrics] if args.key?(:metrics)

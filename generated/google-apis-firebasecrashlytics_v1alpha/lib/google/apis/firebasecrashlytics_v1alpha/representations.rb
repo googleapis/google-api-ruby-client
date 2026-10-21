@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteUserCrashReportsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -260,6 +266,14 @@ module Google
           property :browser, as: 'browser'
           property :display_name, as: 'displayName'
           property :display_version, as: 'displayVersion'
+        end
+      end
+      
+      class CustomAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -548,6 +562,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :browser, as: 'browser', class: Google::Apis::FirebasecrashlyticsV1alpha::Browser, decorator: Google::Apis::FirebasecrashlyticsV1alpha::Browser::Representation
+      
+          property :custom_attribute, as: 'customAttribute', class: Google::Apis::FirebasecrashlyticsV1alpha::CustomAttribute, decorator: Google::Apis::FirebasecrashlyticsV1alpha::CustomAttribute::Representation
       
           property :device, as: 'device', class: Google::Apis::FirebasecrashlyticsV1alpha::Device, decorator: Google::Apis::FirebasecrashlyticsV1alpha::Device::Representation
       
