@@ -79021,6 +79021,11 @@
 "/classroom:v1/Link/thumbnailUrl": thumbnail_url
 "/classroom:v1/Link/title": title
 "/classroom:v1/Link/url": url
+"/classroom:v1/ListAddOnAttachmentStudentSubmissionsResponse": list_add_on_attachment_student_submissions_response
+"/classroom:v1/ListAddOnAttachmentStudentSubmissionsResponse/addOnAttachmentStudentSubmissions": add_on_attachment_student_submissions
+? "/classroom:v1/ListAddOnAttachmentStudentSubmissionsResponse/addOnAttachmentStudentSubmissions/add_on_attachment_student_submission"
+: add_on_attachment_student_submission
+"/classroom:v1/ListAddOnAttachmentStudentSubmissionsResponse/nextPageToken": next_page_token
 "/classroom:v1/ListAddOnAttachmentsResponse": list_add_on_attachments_response
 "/classroom:v1/ListAddOnAttachmentsResponse/addOnAttachments": add_on_attachments
 "/classroom:v1/ListAddOnAttachmentsResponse/addOnAttachments/add_on_attachment": add_on_attachment
@@ -79314,6 +79319,12 @@
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.get/itemId": item_id
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.get/postId": post_id
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.get/submissionId": submission_id
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list": list_course_course_work_add_on_attachment_student_submissions
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list/attachmentId": attachment_id
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list/courseId": course_id
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list/itemId": item_id
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list/pageSize": page_size
+"/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.list/pageToken": page_token
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.patch": patch_course_course_work_add_on_attachment_student_submission
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.patch/attachmentId": attachment_id
 "/classroom:v1/classroom.courses.courseWork.addOnAttachments.studentSubmissions.patch/courseId": course_id

@@ -1803,6 +1803,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns a list of student submissions that the requester is permitted to view.
+        # This method returns the following error codes: * `PERMISSION_DENIED` for
+        # access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
+        # if one of the identified resources does not exist.
+        # @param [String] course_id
+        #   Required. Identifier of the course.
+        # @param [String] item_id
+        #   Required. Identifier of the `CourseWork` under which the attachment is
+        #   attached.
+        # @param [String] attachment_id
+        #   Required. Identifier of the add-on attachment.
+        # @param [Fixnum] page_size
+        #   Optional. Maximum number of submissions to return. Zero or unspecified
+        #   indicates that the server may assign a maximum. The server may return fewer
+        #   than the specified number of results.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListAddOnAttachmentStudentSubmissions` call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   ListAddOnAttachmentStudentSubmissions` must match the call that provided the
+        #   page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListAddOnAttachmentStudentSubmissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListAddOnAttachmentStudentSubmissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_course_work_add_on_attachment_student_submissions(course_id, item_id, attachment_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListAddOnAttachmentStudentSubmissionsResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListAddOnAttachmentStudentSubmissionsResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['itemId'] = item_id unless item_id.nil?
+          command.params['attachmentId'] = attachment_id unless attachment_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates data associated with an add-on attachment submission. Requires the add-
         # on to have been the original creator of the attachment and the attachment to
         # have a positive `max_points` value set. This method returns the following
