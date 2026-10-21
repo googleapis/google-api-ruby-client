@@ -5214,6 +5214,14 @@ module Google
       class PromoteMigrationJobRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. If true, the promote operation will perform a failback promote from
+        # destination back to source (only supported when the migration job is in
+        # FAILBACK phase).
+        # Corresponds to the JSON property `failback`
+        # @return [Boolean]
+        attr_accessor :failback
+        alias_method :failback?, :failback
+      
         # Configuration for the objects to be migrated.
         # Corresponds to the JSON property `objectsFilter`
         # @return [Google::Apis::DatamigrationV1::MigrationJobObjectsConfig]
@@ -5225,6 +5233,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @failback = args[:failback] if args.key?(:failback)
           @objects_filter = args[:objects_filter] if args.key?(:objects_filter)
         end
       end
@@ -6815,8 +6824,9 @@ module Google
       
         # Optional. SSL flags used for establishing SSL connection to the source
         # database. Only source specific flags are supported. An object containing a
-        # list of "key": "value" pairs. Example: ` "server_certificate_hostname": "
-        # server.com"`.
+        # list of "key": "value" pairs. Examples: ` "server_certificate_dn": "CN=server.
+        # com,OU=RDS,O=Amazon.com,C=US"` or ` "server_certificate_hostname": "server.com"
+        # `.
         # Corresponds to the JSON property `sslFlags`
         # @return [Hash<String,String>]
         attr_accessor :ssl_flags

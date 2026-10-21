@@ -2464,6 +2464,7 @@ module Google
       class PromoteMigrationJobRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :failback, as: 'failback'
           property :objects_filter, as: 'objectsFilter', class: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig, decorator: Google::Apis::DatamigrationV1::MigrationJobObjectsConfig::Representation
       
         end

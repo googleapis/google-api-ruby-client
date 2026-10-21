@@ -197869,6 +197869,7 @@
 "/datamigration:v1/PrivateServiceConnectConnectivity": private_service_connect_connectivity
 "/datamigration:v1/PrivateServiceConnectConnectivity/serviceAttachment": service_attachment
 "/datamigration:v1/PromoteMigrationJobRequest": promote_migration_job_request
+"/datamigration:v1/PromoteMigrationJobRequest/failback": failback
 "/datamigration:v1/PromoteMigrationJobRequest/objectsFilter": objects_filter
 "/datamigration:v1/PscInterfaceConfig": psc_interface_config
 "/datamigration:v1/PscInterfaceConfig/networkAttachment": network_attachment
