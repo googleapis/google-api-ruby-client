@@ -430460,6 +430460,8 @@
 "/spanner:v1/Instance/replicaComputeCapacity": replica_compute_capacity
 "/spanner:v1/Instance/replicaComputeCapacity/replica_compute_capacity": replica_compute_capacity
 "/spanner:v1/Instance/state": state
+"/spanner:v1/Instance/tags": tags
+"/spanner:v1/Instance/tags/tag": tag
 "/spanner:v1/Instance/updateTime": update_time
 "/spanner:v1/InstanceConfig": instance_config
 "/spanner:v1/InstanceConfig/baseConfig": base_config

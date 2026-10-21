@@ -1929,6 +1929,7 @@ module Google
           collection :replica_compute_capacity, as: 'replicaComputeCapacity', class: Google::Apis::SpannerV1::ReplicaComputeCapacity, decorator: Google::Apis::SpannerV1::ReplicaComputeCapacity::Representation
       
           property :state, as: 'state'
+          hash :tags, as: 'tags'
           property :update_time, as: 'updateTime'
         end
       end
