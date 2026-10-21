@@ -22,6 +22,32 @@ module Google
   module Apis
     module RunV2
       
+      # Configuration for Ambient Networking.
+      class GoogleCloudRunV2AmbientNetworking
+        include Google::Apis::Core::Hashable
+      
+        # The ambient networking scope of the instance.
+        # Corresponds to the JSON property `ambientScope`
+        # @return [String]
+        attr_accessor :ambient_scope
+      
+        # Optional. Whether ambient networking is enabled.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ambient_scope = args[:ambient_scope] if args.key?(:ambient_scope)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Settings for Binary Authorization feature.
       class GoogleCloudRunV2BinaryAuthorization
         include Google::Apis::Core::Hashable
@@ -2394,6 +2420,11 @@ module Google
       class GoogleCloudRunV2Revision
         include Google::Apis::Core::Hashable
       
+        # Configuration for Ambient Networking.
+        # Corresponds to the JSON property `ambientNetworking`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking]
+        attr_accessor :ambient_networking
+      
         # Output only. Unstructured key value map that may be set by external tools to
         # store and arbitrary metadata. They are not queryable and should be preserved
         # when modifying objects.
@@ -2620,6 +2651,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ambient_networking = args[:ambient_networking] if args.key?(:ambient_networking)
           @annotations = args[:annotations] if args.key?(:annotations)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
@@ -2729,6 +2761,11 @@ module Google
       # template.
       class GoogleCloudRunV2RevisionTemplate
         include Google::Apis::Core::Hashable
+      
+        # Configuration for Ambient Networking.
+        # Corresponds to the JSON property `ambientNetworking`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking]
+        attr_accessor :ambient_networking
       
         # Optional. Unstructured key value map that may be set by external tools to
         # store and arbitrary metadata. They are not queryable and should be preserved
@@ -2874,6 +2911,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ambient_networking = args[:ambient_networking] if args.key?(:ambient_networking)
           @annotations = args[:annotations] if args.key?(:annotations)
           @client = args[:client] if args.key?(:client)
           @client_version = args[:client_version] if args.key?(:client_version)
@@ -5385,6 +5423,15 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Optional. Ranked list (earlier items have higher priority) of Machine Series
+        # to consider when provisioning Worker VMs. A concrete machine type will be
+        # selected based on machine availability in the given region. This field must be
+        # empty for the Build to be eligible to be paired with a pre-provisioned worker
+        # VM.
+        # Corresponds to the JSON property `rankedMachineSeries`
+        # @return [Array<String>]
+        attr_accessor :ranked_machine_series
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -5452,6 +5499,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @ranked_machine_series = args[:ranked_machine_series] if args.key?(:ranked_machine_series)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -5460,6 +5508,54 @@ module Google
           @volumes = args[:volumes] if args.key?(:volumes)
           @worker_pool = args[:worker_pool] if args.key?(:worker_pool)
           @worker_release = args[:worker_release] if args.key?(:worker_release)
+        end
+      end
+      
+      # Aggregated/summary metrics over the entire build lifecycle.
+      class GoogleDevtoolsCloudbuildV1BuildResourceUsage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The average CPU utilization ratio across all vCPUs over the
+        # duration of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `averageCpuUtilization`
+        # @return [Float]
+        attr_accessor :average_cpu_utilization
+      
+        # Output only. The average memory utilization ratio over the duration of the
+        # build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `averageMemoryUtilization`
+        # @return [Float]
+        attr_accessor :average_memory_utilization
+      
+        # Output only. The highest CPU utilization ratio across all vCPUs observed over
+        # the duration of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `peakCpuUtilization`
+        # @return [Float]
+        attr_accessor :peak_cpu_utilization
+      
+        # Output only. The highest memory utilization ratio observed over the duration
+        # of the build, expressed as a fraction in the range [0.0, 1.0].
+        # Corresponds to the JSON property `peakMemoryUtilization`
+        # @return [Float]
+        attr_accessor :peak_memory_utilization
+      
+        # Output only. Total CPU execution time consumed across all cores during build
+        # execution.
+        # Corresponds to the JSON property `totalCpuDuration`
+        # @return [String]
+        attr_accessor :total_cpu_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_cpu_utilization = args[:average_cpu_utilization] if args.key?(:average_cpu_utilization)
+          @average_memory_utilization = args[:average_memory_utilization] if args.key?(:average_memory_utilization)
+          @peak_cpu_utilization = args[:peak_cpu_utilization] if args.key?(:peak_cpu_utilization)
+          @peak_memory_utilization = args[:peak_memory_utilization] if args.key?(:peak_memory_utilization)
+          @total_cpu_duration = args[:total_cpu_duration] if args.key?(:total_cpu_duration)
         end
       end
       
@@ -5878,7 +5974,8 @@ module Google
       class GoogleDevtoolsCloudbuildV1GenericArtifactDependency
         include Google::Apis::Core::Hashable
       
-        # Required. Where the artifact files should be placed on the worker.
+        # Optional. Where the artifact files should be placed on the worker. Required
+        # when specified in `Build.dependencies`.
         # Corresponds to the JSON property `destPath`
         # @return [String]
         attr_accessor :dest_path
@@ -6506,6 +6603,11 @@ module Google
         # @return [Array<Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedPythonPackage>]
         attr_accessor :python_packages
       
+        # Aggregated/summary metrics over the entire build lifecycle.
+        # Corresponds to the JSON property `resourceUsage`
+        # @return [Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildResourceUsage]
+        attr_accessor :resource_usage
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6524,6 +6626,7 @@ module Google
           @npm_packages = args[:npm_packages] if args.key?(:npm_packages)
           @num_artifacts = args[:num_artifacts] if args.key?(:num_artifacts)
           @python_packages = args[:python_packages] if args.key?(:python_packages)
+          @resource_usage = args[:resource_usage] if args.key?(:resource_usage)
         end
       end
       

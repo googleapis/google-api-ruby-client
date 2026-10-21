@@ -22,6 +22,12 @@ module Google
   module Apis
     module RunV2
       
+      class GoogleCloudRunV2AmbientNetworking
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2BinaryAuthorization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildResourceUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1BuildStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -884,6 +896,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2AmbientNetworking
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ambient_scope, as: 'ambientScope'
+          property :enabled, as: 'enabled'
+        end
       end
       
       class GoogleCloudRunV2BinaryAuthorization
@@ -1456,6 +1476,8 @@ module Google
       class GoogleCloudRunV2Revision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ambient_networking, as: 'ambientNetworking', class: Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking, decorator: Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking::Representation
+      
           hash :annotations, as: 'annotations'
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
@@ -1525,6 +1547,8 @@ module Google
       class GoogleCloudRunV2RevisionTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ambient_networking, as: 'ambientNetworking', class: Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking, decorator: Google::Apis::RunV2::GoogleCloudRunV2AmbientNetworking::Representation
+      
           hash :annotations, as: 'annotations'
           property :client, as: 'client'
           property :client_version, as: 'clientVersion'
@@ -2115,6 +2139,7 @@ module Google
           property :pool, as: 'pool', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PoolOption, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1PoolOption::Representation
       
           property :pubsub_topic, as: 'pubsubTopic'
+          collection :ranked_machine_series, as: 'rankedMachineSeries'
           property :requested_verify_option, as: 'requestedVerifyOption'
           property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
@@ -2124,6 +2149,17 @@ module Google
       
           property :worker_pool, as: 'workerPool'
           property :worker_release, as: 'workerRelease'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildResourceUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cpu_utilization, as: 'averageCpuUtilization'
+          property :average_memory_utilization, as: 'averageMemoryUtilization'
+          property :peak_cpu_utilization, as: 'peakCpuUtilization'
+          property :peak_memory_utilization, as: 'peakMemoryUtilization'
+          property :total_cpu_duration, as: 'totalCpuDuration'
         end
       end
       
@@ -2391,6 +2427,8 @@ module Google
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedPythonPackage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1UploadedPythonPackage::Representation
+      
+          property :resource_usage, as: 'resourceUsage', class: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildResourceUsage, decorator: Google::Apis::RunV2::GoogleDevtoolsCloudbuildV1BuildResourceUsage::Representation
       
         end
       end
