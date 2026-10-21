@@ -674,8 +674,9 @@ module Google
       
         # Optional. You can use String Type annotations to specify special meaning to
         # string fields. The following values are supported: richText: The field must be
-        # interpreted as a rich text field. url: A fully qualified URL link. resource: A
-        # service qualified resource reference.
+        # interpreted as a rich text field. markdown: The field must be interpreted as a
+        # markdown field. url: A fully qualified URL link. resource: A service qualified
+        # resource reference.
         # Corresponds to the JSON property `stringType`
         # @return [String]
         attr_accessor :string_type
@@ -1201,6 +1202,172 @@ module Google
         end
       end
       
+      # Request message for batch changing metadata. Requires permission to perform
+      # the underlying change, depending on the type and content of the change. Per
+      # operation, required permissions are: - for CreateEntry: dataplex.entries.
+      # create - for UpdateEntry: dataplex.entries.update - for DeleteEntry: dataplex.
+      # entries.delete - for CreateEntryLink: dataplex.entryLinks.create - for
+      # UpdateEntryLink: dataplex.entryLinks.update - for DeleteEntryLink: dataplex.
+      # entryLinks.deleteAnd per used type permissions are: - for EntryType: dataplex.
+      # entryTypes.use or dataplex.entryGroups.useEntry for reusable built-in types, -
+      # for AspectType: dataplex.aspectTypes.use or dataplex.entryGroups.useAspect for
+      # reusable built-in types and - for EntryLinkType: dataplex.entryLinkTypes.use
+      # or dataplex.entryGroups.useEntryLink for reusable built-in types.
+      class GoogleCloudDataplexV1BatchChangeMetadataRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The list of changes to apply. Only a single change per resource is
+        # supported. Maximum number of changes supported is 250.
+        # Corresponds to the JSON property `changes`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequestChange>]
+        attr_accessor :changes
+      
+        # Description of the batch change.
+        # Corresponds to the JSON property `description`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequestDescription]
+        attr_accessor :description
+      
+        # Required. The resource name of the EntryGroup on which the batch change
+        # applies. Format: projects/`project_number_or_id`/locations/`location_id`/
+        # entryGroups/`entry_group_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @changes = args[:changes] if args.key?(:changes)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Detailed description of an individual change.
+      class GoogleCloudDataplexV1BatchChangeMetadataRequestChange
+        include Google::Apis::Core::Hashable
+      
+        # Request message for CreateEntryLink.
+        # Corresponds to the JSON property `createEntryLinkRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryLinkRequest]
+        attr_accessor :create_entry_link_request
+      
+        # Create Entry request.
+        # Corresponds to the JSON property `createEntryRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1CreateEntryRequest]
+        attr_accessor :create_entry_request
+      
+        # Request message for DeleteEntryLink.
+        # Corresponds to the JSON property `deleteEntryLinkRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryLinkRequest]
+        attr_accessor :delete_entry_link_request
+      
+        # Delete Entry request.
+        # Corresponds to the JSON property `deleteEntryRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DeleteEntryRequest]
+        attr_accessor :delete_entry_request
+      
+        # Request message for UpdateEntryLink method.
+        # Corresponds to the JSON property `updateEntryLinkRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryLinkRequest]
+        attr_accessor :update_entry_link_request
+      
+        # Update Entry request.
+        # Corresponds to the JSON property `updateEntryRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UpdateEntryRequest]
+        attr_accessor :update_entry_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_entry_link_request = args[:create_entry_link_request] if args.key?(:create_entry_link_request)
+          @create_entry_request = args[:create_entry_request] if args.key?(:create_entry_request)
+          @delete_entry_link_request = args[:delete_entry_link_request] if args.key?(:delete_entry_link_request)
+          @delete_entry_request = args[:delete_entry_request] if args.key?(:delete_entry_request)
+          @update_entry_link_request = args[:update_entry_link_request] if args.key?(:update_entry_link_request)
+          @update_entry_request = args[:update_entry_request] if args.key?(:update_entry_request)
+        end
+      end
+      
+      # Description of the batch change.
+      class GoogleCloudDataplexV1BatchChangeMetadataRequestDescription
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The text description content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Description of the job that created the batch change.
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequestDescriptionJob]
+        attr_accessor :job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @job = args[:job] if args.key?(:job)
+        end
+      end
+      
+      # Description of the job that created the batch change.
+      class GoogleCloudDataplexV1BatchChangeMetadataRequestDescriptionJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The name of the job that created the batch change. For example:
+        # projects/`project_number`/locations/`location_id`/enrichmentTasks/`
+        # enrichment_task_id`/runs/`enrichment_run_id`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The start time of the job run that created the batch change.
+        # Corresponds to the JSON property `runTime`
+        # @return [String]
+        attr_accessor :run_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @run_time = args[:run_time] if args.key?(:run_time)
+        end
+      end
+      
+      # Response message for BatchChangeMetadata.
+      class GoogleCloudDataplexV1BatchChangeMetadataResponse
+        include Google::Apis::Core::Hashable
+      
+        # A map of failed requests for a batch change, where the key is the 0-based
+        # index of the failed request in the batch and the value is the error status. If
+        # all operations succeeded, this map is empty.
+        # Corresponds to the JSON property `failedRequests`
+        # @return [Hash<String,Google::Apis::DataplexV1::GoogleRpcStatus>]
+        attr_accessor :failed_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_requests = args[:failed_requests] if args.key?(:failed_requests)
+        end
+      end
+      
       # Payload associated with Business Glossary related log events.
       class GoogleCloudDataplexV1BusinessGlossaryEvent
         include Google::Apis::Core::Hashable
@@ -1298,6 +1465,26 @@ module Google
         # Corresponds to the JSON property `author`
         # @return [String]
         attr_accessor :author
+      
+        # Request message for batch changing metadata. Requires permission to perform
+        # the underlying change, depending on the type and content of the change. Per
+        # operation, required permissions are: - for CreateEntry: dataplex.entries.
+        # create - for UpdateEntry: dataplex.entries.update - for DeleteEntry: dataplex.
+        # entries.delete - for CreateEntryLink: dataplex.entryLinks.create - for
+        # UpdateEntryLink: dataplex.entryLinks.update - for DeleteEntryLink: dataplex.
+        # entryLinks.deleteAnd per used type permissions are: - for EntryType: dataplex.
+        # entryTypes.use or dataplex.entryGroups.useEntry for reusable built-in types, -
+        # for AspectType: dataplex.aspectTypes.use or dataplex.entryGroups.useAspect for
+        # reusable built-in types and - for EntryLinkType: dataplex.entryLinkTypes.use
+        # or dataplex.entryGroups.useEntryLink for reusable built-in types.
+        # Corresponds to the JSON property `batchChangeMetadataRequest`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequest]
+        attr_accessor :batch_change_metadata_request
+      
+        # Response message for BatchChangeMetadata.
+        # Corresponds to the JSON property `batchChangeMetadataResponse`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataResponse]
+        attr_accessor :batch_change_metadata_response
       
         # Output only. The type of change represented by the change_payload. This field
         # is derived from the populated field in the change_payload oneof.
@@ -1452,6 +1639,8 @@ module Google
         def update!(**args)
           @approver = args[:approver] if args.key?(:approver)
           @author = args[:author] if args.key?(:author)
+          @batch_change_metadata_request = args[:batch_change_metadata_request] if args.key?(:batch_change_metadata_request)
+          @batch_change_metadata_response = args[:batch_change_metadata_response] if args.key?(:batch_change_metadata_response)
           @change_type = args[:change_type] if args.key?(:change_type)
           @create_entry = args[:create_entry] if args.key?(:create_entry)
           @create_entry_link = args[:create_entry_link] if args.key?(:create_entry_link)
@@ -1724,31 +1913,6 @@ module Google
         end
       end
       
-      # DataAccessSpec holds the access control configuration to be enforced on data
-      # stored within resources (eg: rows, columns in BigQuery Tables). When
-      # associated with data, the data is only accessible to principals explicitly
-      # granted access through the DataAccessSpec. Principals with access to the
-      # containing resource are not implicitly granted access.
-      class GoogleCloudDataplexV1DataAccessSpec
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The format of strings follows the pattern followed by IAM in the
-        # bindings. user:`email`, serviceAccount:`email` group:`email`. The set of
-        # principals to be granted reader role on data stored within resources.
-        # Corresponds to the JSON property `readers`
-        # @return [Array<String>]
-        attr_accessor :readers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @readers = args[:readers] if args.key?(:readers)
-        end
-      end
-      
       # Represents a data asset resource that can be packaged and shared via a data
       # product.
       class GoogleCloudDataplexV1DataAsset
@@ -1841,6 +2005,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :iam_roles
       
+        # Output only. The state of the iam role application.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1848,232 +2017,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @iam_roles = args[:iam_roles] if args.key?(:iam_roles)
-        end
-      end
-      
-      # Denotes one dataAttribute in a dataTaxonomy, for example, PII. DataAttribute
-      # resources can be defined in a hierarchy. A single dataAttribute resource can
-      # contain specs of multiple types PII - ResourceAccessSpec : - readers :foo@bar.
-      # com - DataAccessSpec : - readers :bar@foo.com
-      class GoogleCloudDataplexV1DataAttribute
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The number of child attributes present for this attribute.
-        # Corresponds to the JSON property `attributeCount`
-        # @return [Fixnum]
-        attr_accessor :attribute_count
-      
-        # Output only. The time when the DataAttribute was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # DataAccessSpec holds the access control configuration to be enforced on data
-        # stored within resources (eg: rows, columns in BigQuery Tables). When
-        # associated with data, the data is only accessible to principals explicitly
-        # granted access through the DataAccessSpec. Principals with access to the
-        # containing resource are not implicitly granted access.
-        # Corresponds to the JSON property `dataAccessSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAccessSpec]
-        attr_accessor :data_access_spec
-      
-        # Optional. Description of the DataAttribute.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. User friendly display name.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Optional. User-defined labels for the DataAttribute.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Output only. The relative resource name of the dataAttribute, of the form:
-        # projects/`project_number`/locations/`location_id`/dataTaxonomies/`dataTaxonomy`
-        # /attributes/`data_attribute_id`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Optional. The ID of the parent DataAttribute resource, should belong to the
-        # same data taxonomy. Circular dependency in parent chain is not valid. Maximum
-        # depth of the hierarchy allowed is 4. a -> b -> c -> d -> e, depth = 4
-        # Corresponds to the JSON property `parentId`
-        # @return [String]
-        attr_accessor :parent_id
-      
-        # ResourceAccessSpec holds the access control configuration to be enforced on
-        # the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery
-        # table.
-        # Corresponds to the JSON property `resourceAccessSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1ResourceAccessSpec]
-        attr_accessor :resource_access_spec
-      
-        # Output only. System generated globally unique ID for the DataAttribute. This
-        # ID will be different if the DataAttribute is deleted and re-created with the
-        # same name.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. The time when the DataAttribute was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attribute_count = args[:attribute_count] if args.key?(:attribute_count)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @data_access_spec = args[:data_access_spec] if args.key?(:data_access_spec)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @etag = args[:etag] if args.key?(:etag)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @parent_id = args[:parent_id] if args.key?(:parent_id)
-          @resource_access_spec = args[:resource_access_spec] if args.key?(:resource_access_spec)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # DataAttributeBinding represents binding of attributes to resources. Eg: Bind '
-      # CustomerInfo' entity with 'PII' attribute.
-      class GoogleCloudDataplexV1DataAttributeBinding
-        include Google::Apis::Core::Hashable
-      
-        # Optional. List of attributes to be associated with the resource, provided in
-        # the form: projects/`project`/locations/`location`/dataTaxonomies/`dataTaxonomy`
-        # /attributes/`data_attribute_id`
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<String>]
-        attr_accessor :attributes
-      
-        # Output only. The time when the DataAttributeBinding was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. Description of the DataAttributeBinding.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. User friendly display name.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding. Etags must be used when calling the
-        # DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Optional. User-defined labels for the DataAttributeBinding.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Output only. The relative resource name of the Data Attribute Binding, of the
-        # form: projects/`project_number`/locations/`location`/dataAttributeBindings/`
-        # data_attribute_binding_id`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Optional. The list of paths for items within the associated resource (eg.
-        # columns and partitions within a table) along with attribute bindings.
-        # Corresponds to the JSON property `paths`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBindingPath>]
-        attr_accessor :paths
-      
-        # Optional. Immutable. The resource name of the resource that is associated to
-        # attributes. Presently, only entity resource is supported in the form: projects/
-        # `project`/locations/`location`/lakes/`lake`/zones/`zone`/entities/`entity_id`
-        # Must belong in the same project and region as the attribute binding, and there
-        # can only exist one active binding for a resource.
-        # Corresponds to the JSON property `resource`
-        # @return [String]
-        attr_accessor :resource
-      
-        # Output only. System generated globally unique ID for the DataAttributeBinding.
-        # This ID will be different if the DataAttributeBinding is deleted and re-
-        # created with the same name.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. The time when the DataAttributeBinding was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @etag = args[:etag] if args.key?(:etag)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @paths = args[:paths] if args.key?(:paths)
-          @resource = args[:resource] if args.key?(:resource)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
-      # Represents a subresource of the given resource, and associated bindings with
-      # it. Currently supported subresources are column and partition schema fields
-      # within a table.
-      class GoogleCloudDataplexV1DataAttributeBindingPath
-        include Google::Apis::Core::Hashable
-      
-        # Optional. List of attributes to be associated with the path of the resource,
-        # provided in the form: projects/`project`/locations/`location`/dataTaxonomies/`
-        # dataTaxonomy`/attributes/`data_attribute_id`
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<String>]
-        attr_accessor :attributes
-      
-        # Required. The name identifier of the path. Nested columns should be of the
-        # form: 'address.city'.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2308,11 +2252,6 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions]
         attr_accessor :json_options
       
-        # Describes options for unstructured data discovery.
-        # Corresponds to the JSON property `unstructuredDataOptions`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions]
-        attr_accessor :unstructured_data_options
-      
         def initialize(**args)
            update!(**args)
         end
@@ -2323,7 +2262,6 @@ module Google
           @exclude_patterns = args[:exclude_patterns] if args.key?(:exclude_patterns)
           @include_patterns = args[:include_patterns] if args.key?(:include_patterns)
           @json_options = args[:json_options] if args.key?(:json_options)
-          @unstructured_data_options = args[:unstructured_data_options] if args.key?(:unstructured_data_options)
         end
       end
       
@@ -2401,34 +2339,6 @@ module Google
         def update!(**args)
           @encoding = args[:encoding] if args.key?(:encoding)
           @type_inference_disabled = args[:type_inference_disabled] if args.key?(:type_inference_disabled)
-        end
-      end
-      
-      # Describes options for unstructured data discovery.
-      class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Whether to use the global model endpoint.
-        # Corresponds to the JSON property `globalEndpointEnabled`
-        # @return [Boolean]
-        attr_accessor :global_endpoint_enabled
-        alias_method :global_endpoint_enabled?, :global_endpoint_enabled
-      
-        # Optional. Specifies whether deeper semantic inference over the objects'
-        # contents using GenAI is enabled.
-        # Corresponds to the JSON property `semanticInferenceEnabled`
-        # @return [Boolean]
-        attr_accessor :semantic_inference_enabled
-        alias_method :semantic_inference_enabled?, :semantic_inference_enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @global_endpoint_enabled = args[:global_endpoint_enabled] if args.key?(:global_endpoint_enabled)
-          @semantic_inference_enabled = args[:semantic_inference_enabled] if args.key?(:semantic_inference_enabled)
         end
       end
       
@@ -2982,6 +2892,11 @@ module Google
       class GoogleCloudDataplexV1DataProductAccessGroup
         include Google::Apis::Core::Hashable
       
+        # Default IAM role configuration for an access group.
+        # Corresponds to the JSON property `defaultIamRoleConfig`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig]
+        attr_accessor :default_iam_role_config
+      
         # Optional. Description of the access group.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -3011,10 +2926,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_iam_role_config = args[:default_iam_role_config] if args.key?(:default_iam_role_config)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
           @principal = args[:principal] if args.key?(:principal)
+        end
+      end
+      
+      # Default IAM role configuration for an access group.
+      class GoogleCloudDataplexV1DataProductAccessGroupDefaultIamRoleConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IAM role resource name to be applied as default. Example: "roles/
+        # bigquery.dataViewer".
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @role = args[:role] if args.key?(:role)
         end
       end
       
@@ -5163,16 +5099,6 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Contains the result of an unstructured data profile scan.
-        # Corresponds to the JSON property `unstructuredDataProfileResult`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult]
-        attr_accessor :unstructured_data_profile_result
-      
-        # Contains the specification for an unstructured data profile scan.
-        # Corresponds to the JSON property `unstructuredDataProfileSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec]
-        attr_accessor :unstructured_data_profile_spec
-      
         # Output only. The time when the scan was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -5204,8 +5130,6 @@ module Google
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
-          @unstructured_data_profile_result = args[:unstructured_data_profile_result] if args.key?(:unstructured_data_profile_result)
-          @unstructured_data_profile_spec = args[:unstructured_data_profile_spec] if args.key?(:unstructured_data_profile_spec)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -5776,16 +5700,6 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Contains the result of an unstructured data profile scan.
-        # Corresponds to the JSON property `unstructuredDataProfileResult`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileResult]
-        attr_accessor :unstructured_data_profile_result
-      
-        # Contains the specification for an unstructured data profile scan.
-        # Corresponds to the JSON property `unstructuredDataProfileSpec`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1UnstructuredDataProfileSpec]
-        attr_accessor :unstructured_data_profile_spec
-      
         def initialize(**args)
            update!(**args)
         end
@@ -5809,8 +5723,6 @@ module Google
           @state = args[:state] if args.key?(:state)
           @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
-          @unstructured_data_profile_result = args[:unstructured_data_profile_result] if args.key?(:unstructured_data_profile_result)
-          @unstructured_data_profile_spec = args[:unstructured_data_profile_spec] if args.key?(:unstructured_data_profile_spec)
         end
       end
       
@@ -5846,87 +5758,6 @@ module Google
         def update!(**args)
           @entity = args[:entity] if args.key?(:entity)
           @resource = args[:resource] if args.key?(:resource)
-        end
-      end
-      
-      # DataTaxonomy represents a set of hierarchical DataAttributes resources,
-      # grouped with a common theme Eg: 'SensitiveDataTaxonomy' can have attributes to
-      # manage PII data. It is defined at project level.
-      class GoogleCloudDataplexV1DataTaxonomy
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The number of attributes in the DataTaxonomy.
-        # Corresponds to the JSON property `attributeCount`
-        # @return [Fixnum]
-        attr_accessor :attribute_count
-      
-        # Output only. The number of classes in the DataTaxonomy.
-        # Corresponds to the JSON property `classCount`
-        # @return [Fixnum]
-        attr_accessor :class_count
-      
-        # Output only. The time when the DataTaxonomy was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. Description of the DataTaxonomy.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Optional. User friendly display name.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # This checksum is computed by the server based on the value of other fields,
-        # and may be sent on update and delete requests to ensure the client has an up-
-        # to-date value before proceeding.
-        # Corresponds to the JSON property `etag`
-        # @return [String]
-        attr_accessor :etag
-      
-        # Optional. User-defined labels for the DataTaxonomy.
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # Output only. The relative resource name of the DataTaxonomy, of the form:
-        # projects/`project_number`/locations/`location_id`/dataTaxonomies/`
-        # data_taxonomy_id`.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. System generated globally unique ID for the dataTaxonomy. This ID
-        # will be different if the DataTaxonomy is deleted and re-created with the same
-        # name.
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        # Output only. The time when the DataTaxonomy was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @attribute_count = args[:attribute_count] if args.key?(:attribute_count)
-          @class_count = args[:class_count] if args.key?(:class_count)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @description = args[:description] if args.key?(:description)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @etag = args[:etag] if args.key?(:etag)
-          @labels = args[:labels] if args.key?(:labels)
-          @name = args[:name] if args.key?(:name)
-          @uid = args[:uid] if args.key?(:uid)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -6625,6 +6456,12 @@ module Google
       class GoogleCloudDataplexV1EntryGroup
         include Google::Apis::Core::Hashable
       
+        # Specifies the configuration for requesting changes in the metadata belonging
+        # to the Entry Group.
+        # Corresponds to the JSON property `changeRequestConfig`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryGroupChangeRequestConfig]
+        attr_accessor :change_request_config
+      
         # Output only. The time when the EntryGroup was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -6682,6 +6519,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @change_request_config = args[:change_request_config] if args.key?(:change_request_config)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
@@ -6691,6 +6529,28 @@ module Google
           @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Specifies the configuration for requesting changes in the metadata belonging
+      # to the Entry Group.
+      class GoogleCloudDataplexV1EntryGroupChangeRequestConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifies the email addresses of users who are potential approvers
+        # and are notified when a change request is created for the metadata belonging
+        # to the Entry Group. The maximum number of emails allowed is 10.
+        # Corresponds to the JSON property `approverEmails`
+        # @return [Array<String>]
+        attr_accessor :approver_emails
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @approver_emails = args[:approver_emails] if args.key?(:approver_emails)
         end
       end
       
@@ -7491,317 +7351,6 @@ module Google
         end
       end
       
-      # Contains the strict structure for graph-profile for semantic inference scan
-      # result.
-      class GoogleCloudDataplexV1GraphProfile
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Edge types.
-        # Corresponds to the JSON property `edgeTypes`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeType>]
-        attr_accessor :edge_types
-      
-        # Output only. Node types.
-        # Corresponds to the JSON property `nodeTypes`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeType>]
-        attr_accessor :node_types
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @edge_types = args[:edge_types] if args.key?(:edge_types)
-          @node_types = args[:node_types] if args.key?(:node_types)
-        end
-      end
-      
-      # Represents a type of edge (relationship) in the graph.
-      class GoogleCloudDataplexV1GraphProfileEdgeType
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Description of the edge type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Extraction hints (edge-level).
-        # Corresponds to the JSON property `extractionHints`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints]
-        attr_accessor :extraction_hints
-      
-        # Output only. Fields of the edge type.
-        # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField>]
-        attr_accessor :fields
-      
-        # Output only. Defines the Foreign Key constraints for the edge.
-        # Corresponds to the JSON property `foreignKeys`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey>]
-        attr_accessor :foreign_keys
-      
-        # Output only. Name of the edge type.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Source node type.
-        # Corresponds to the JSON property `sourceNodeType`
-        # @return [String]
-        attr_accessor :source_node_type
-      
-        # Output only. Target node type.
-        # Corresponds to the JSON property `targetNodeType`
-        # @return [String]
-        attr_accessor :target_node_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @extraction_hints = args[:extraction_hints] if args.key?(:extraction_hints)
-          @fields = args[:fields] if args.key?(:fields)
-          @foreign_keys = args[:foreign_keys] if args.key?(:foreign_keys)
-          @name = args[:name] if args.key?(:name)
-          @source_node_type = args[:source_node_type] if args.key?(:source_node_type)
-          @target_node_type = args[:target_node_type] if args.key?(:target_node_type)
-        end
-      end
-      
-      # Extraction hints (edge-level).
-      class GoogleCloudDataplexV1GraphProfileEdgeTypeExtractionHints
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Expected connectivity topology and bounds of this relationship.
-        # Format: "Topology - Description" Example: "1:N - One company can have multiple
-        # financial reports."
-        # Corresponds to the JSON property `cardinality`
-        # @return [String]
-        attr_accessor :cardinality
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cardinality = args[:cardinality] if args.key?(:cardinality)
-        end
-      end
-      
-      # Represents a foreign key constraint.
-      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Description of the foreign key.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Output only. Field Mappings. Mappings between local fields and the fields they
-        # reference in the referenced node type.
-        # Corresponds to the JSON property `fieldMappings`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping>]
-        attr_accessor :field_mappings
-      
-        # Output only. Name of the foreign key constraint.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The node type this constraint references.
-        # Corresponds to the JSON property `referencedNodeType`
-        # @return [String]
-        attr_accessor :referenced_node_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @field_mappings = args[:field_mappings] if args.key?(:field_mappings)
-          @name = args[:name] if args.key?(:name)
-          @referenced_node_type = args[:referenced_node_type] if args.key?(:referenced_node_type)
-        end
-      end
-      
-      # Maps a local field to a referenced field.
-      class GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Local field name forming part of the foreign key.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # Output only. Field name in the referenced node type.
-        # Corresponds to the JSON property `referencedField`
-        # @return [String]
-        attr_accessor :referenced_field
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field = args[:field] if args.key?(:field)
-          @referenced_field = args[:referenced_field] if args.key?(:referenced_field)
-        end
-      end
-      
-      # Represents a field in a node or edge type.
-      class GoogleCloudDataplexV1GraphProfileField
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The data type of the field, e.g., STRING, INTEGER, DATE.
-        # Corresponds to the JSON property `dataType`
-        # @return [String]
-        attr_accessor :data_type
-      
-        # Output only. Description of the field.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Extraction hints (field-level).
-        # Corresponds to the JSON property `extractionHints`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileFieldExtractionHints]
-        attr_accessor :extraction_hints
-      
-        # Output only. Sub-fields of this field (for STRUCT types).
-        # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField>]
-        attr_accessor :fields
-      
-        # Output only. The mapped metadata type.
-        # Corresponds to the JSON property `metadataType`
-        # @return [String]
-        attr_accessor :metadata_type
-      
-        # Output only. The mode of the field.
-        # Corresponds to the JSON property `mode`
-        # @return [String]
-        attr_accessor :mode
-      
-        # Output only. Name of the field.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_type = args[:data_type] if args.key?(:data_type)
-          @description = args[:description] if args.key?(:description)
-          @extraction_hints = args[:extraction_hints] if args.key?(:extraction_hints)
-          @fields = args[:fields] if args.key?(:fields)
-          @metadata_type = args[:metadata_type] if args.key?(:metadata_type)
-          @mode = args[:mode] if args.key?(:mode)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Extraction hints (field-level).
-      class GoogleCloudDataplexV1GraphProfileFieldExtractionHints
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Standardizes extracted data (e.g., to ISO 3166-1 alpha-2).
-        # Corresponds to the JSON property `normalization`
-        # @return [String]
-        attr_accessor :normalization
-      
-        # Output only. Generates value from other data instead of direct extraction (e.g.
-        # , hashing).
-        # Corresponds to the JSON property `synthesis`
-        # @return [String]
-        attr_accessor :synthesis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @normalization = args[:normalization] if args.key?(:normalization)
-          @synthesis = args[:synthesis] if args.key?(:synthesis)
-        end
-      end
-      
-      # Represents a type of node in the graph.
-      class GoogleCloudDataplexV1GraphProfileNodeType
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Description of the node type.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Extraction hints (node-level).
-        # Corresponds to the JSON property `extractionHints`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints]
-        attr_accessor :extraction_hints
-      
-        # Output only. Fields of the node type.
-        # Corresponds to the JSON property `fields`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfileField>]
-        attr_accessor :fields
-      
-        # Output only. Name of the node type.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. Field names forming the primary keys. The order in this array
-        # defines the key's ordinal positions for composite keys.
-        # Corresponds to the JSON property `primaryKeys`
-        # @return [Array<String>]
-        attr_accessor :primary_keys
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @extraction_hints = args[:extraction_hints] if args.key?(:extraction_hints)
-          @fields = args[:fields] if args.key?(:fields)
-          @name = args[:name] if args.key?(:name)
-          @primary_keys = args[:primary_keys] if args.key?(:primary_keys)
-        end
-      end
-      
-      # Extraction hints (node-level).
-      class GoogleCloudDataplexV1GraphProfileNodeTypeExtractionHints
-        include Google::Apis::Core::Hashable
-      
-        # Output only. Expected occurrence frequency of this node type within a document.
-        # Format: "Bounds - Description" Example: "0:N - A document may contain
-        # multiple people names."
-        # Corresponds to the JSON property `cardinality`
-        # @return [String]
-        attr_accessor :cardinality
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cardinality = args[:cardinality] if args.key?(:cardinality)
-        end
-      end
-      
       # An object that describes the values that you want to set for an entry and its
       # attached aspects when you import metadata. Used when you run a metadata import
       # job. See CreateMetadataJob.You provide a collection of import items in a
@@ -8324,70 +7873,6 @@ module Google
         end
       end
       
-      # List DataAttributeBindings response.
-      class GoogleCloudDataplexV1ListDataAttributeBindingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # DataAttributeBindings under the given parent Location.
-        # Corresponds to the JSON property `dataAttributeBindings`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttributeBinding>]
-        attr_accessor :data_attribute_bindings
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachableLocations`
-        # @return [Array<String>]
-        attr_accessor :unreachable_locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_attribute_bindings = args[:data_attribute_bindings] if args.key?(:data_attribute_bindings)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
-        end
-      end
-      
-      # List DataAttributes response.
-      class GoogleCloudDataplexV1ListDataAttributesResponse
-        include Google::Apis::Core::Hashable
-      
-        # DataAttributes under the given parent DataTaxonomy.
-        # Corresponds to the JSON property `dataAttributes`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataAttribute>]
-        attr_accessor :data_attributes
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachableLocations`
-        # @return [Array<String>]
-        attr_accessor :unreachable_locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_attributes = args[:data_attributes] if args.key?(:data_attributes)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
-        end
-      end
-      
       # List DataDomainBindings response.
       class GoogleCloudDataplexV1ListDataDomainBindingsResponse
         include Google::Apis::Core::Hashable
@@ -8525,38 +8010,6 @@ module Google
           @data_scans = args[:data_scans] if args.key?(:data_scans)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # List DataTaxonomies response.
-      class GoogleCloudDataplexV1ListDataTaxonomiesResponse
-        include Google::Apis::Core::Hashable
-      
-        # DataTaxonomies under the given parent location.
-        # Corresponds to the JSON property `dataTaxonomies`
-        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataTaxonomy>]
-        attr_accessor :data_taxonomies
-      
-        # Token to retrieve the next page of results, or empty if there are no more
-        # results in the list.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachableLocations`
-        # @return [Array<String>]
-        attr_accessor :unreachable_locations
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_taxonomies = args[:data_taxonomies] if args.key?(:data_taxonomies)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @unreachable_locations = args[:unreachable_locations] if args.key?(:unreachable_locations)
         end
       end
       
@@ -9890,6 +9343,67 @@ module Google
         end
       end
       
+      # Request message for submitting a set of catalog changes proposals.
+      class GoogleCloudDataplexV1RequestBatchMetadataChangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Request message for batch changing metadata. Requires permission to perform
+        # the underlying change, depending on the type and content of the change. Per
+        # operation, required permissions are: - for CreateEntry: dataplex.entries.
+        # create - for UpdateEntry: dataplex.entries.update - for DeleteEntry: dataplex.
+        # entries.delete - for CreateEntryLink: dataplex.entryLinks.create - for
+        # UpdateEntryLink: dataplex.entryLinks.update - for DeleteEntryLink: dataplex.
+        # entryLinks.deleteAnd per used type permissions are: - for EntryType: dataplex.
+        # entryTypes.use or dataplex.entryGroups.useEntry for reusable built-in types, -
+        # for AspectType: dataplex.aspectTypes.use or dataplex.entryGroups.useAspect for
+        # reusable built-in types and - for EntryLinkType: dataplex.entryLinkTypes.use
+        # or dataplex.entryGroups.useEntryLink for reusable built-in types.
+        # Corresponds to the JSON property `changePayload`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequest]
+        attr_accessor :change_payload
+      
+        # Optional. Justification for the metadata change request.
+        # Corresponds to the JSON property `justification`
+        # @return [String]
+        attr_accessor :justification
+      
+        # Optional. User-defined labels for the metadata change request.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_payload = args[:change_payload] if args.key?(:change_payload)
+          @justification = args[:justification] if args.key?(:justification)
+          @labels = args[:labels] if args.key?(:labels)
+        end
+      end
+      
+      # Response message containing the reference to the created change request.
+      class GoogleCloudDataplexV1RequestBatchMetadataChangeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the created ChangeRequest. Format: projects/`project`/
+        # locations/`location`/changeRequests/`change_request`
+        # Corresponds to the JSON property `changeRequest`
+        # @return [String]
+        attr_accessor :change_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @change_request = args[:change_request] if args.key?(:change_request)
+        end
+      end
+      
       # Message for requesting access to a Data Product.
       class GoogleCloudDataplexV1RequestDataProductAccessRequest
         include Google::Apis::Core::Hashable
@@ -9934,41 +9448,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @change_request_name = args[:change_request_name] if args.key?(:change_request_name)
-        end
-      end
-      
-      # ResourceAccessSpec holds the access control configuration to be enforced on
-      # the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery
-      # table.
-      class GoogleCloudDataplexV1ResourceAccessSpec
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The set of principals to be granted owner role on the resource.
-        # Corresponds to the JSON property `owners`
-        # @return [Array<String>]
-        attr_accessor :owners
-      
-        # Optional. The format of strings follows the pattern followed by IAM in the
-        # bindings. user:`email`, serviceAccount:`email` group:`email`. The set of
-        # principals to be granted reader role on the resource.
-        # Corresponds to the JSON property `readers`
-        # @return [Array<String>]
-        attr_accessor :readers
-      
-        # Optional. The set of principals to be granted writer role on the resource.
-        # Corresponds to the JSON property `writers`
-        # @return [Array<String>]
-        attr_accessor :writers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @owners = args[:owners] if args.key?(:owners)
-          @readers = args[:readers] if args.key?(:readers)
-          @writers = args[:writers] if args.key?(:writers)
         end
       end
       
@@ -11170,26 +10649,29 @@ module Google
         end
       end
       
-      # Contains the result of an unstructured data profile scan.
-      class GoogleCloudDataplexV1UnstructuredDataProfileResult
+      # Request message for UpdateEntryLink method.
+      class GoogleCloudDataplexV1UpdateEntryLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Output only. The inferred description.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
+        # Optional. If set to true and the entry link doesn't exist, the service will
+        # create it.
+        # Corresponds to the JSON property `allowMissing`
+        # @return [Boolean]
+        attr_accessor :allow_missing
+        alias_method :allow_missing?, :allow_missing
       
-        # Contains the strict structure for graph-profile for semantic inference scan
-        # result.
-        # Corresponds to the JSON property `graphProfile`
-        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1GraphProfile]
-        attr_accessor :graph_profile
+        # Optional. The map keys of the Aspects which the service should modify. It
+        # should be the aspect type reference in the format `project_id_or_number`.`
+        # location_id`.`aspect_type_id`.If this field is left empty, the service treats
+        # it as specifying exactly those Aspects present in the request.
+        # Corresponds to the JSON property `aspectKeys`
+        # @return [Array<String>]
+        attr_accessor :aspect_keys
       
-        # Output only. Optional message for partial failures (e.g. node type extraction
-        # failed).
-        # Corresponds to the JSON property `partialFailureMessage`
-        # @return [String]
-        attr_accessor :partial_failure_message
+        # EntryLink represents a link between two Entries.
+        # Corresponds to the JSON property `entryLink`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1EntryLink]
+        attr_accessor :entry_link
       
         def initialize(**args)
            update!(**args)
@@ -11197,44 +10679,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @graph_profile = args[:graph_profile] if args.key?(:graph_profile)
-          @partial_failure_message = args[:partial_failure_message] if args.key?(:partial_failure_message)
-        end
-      end
-      
-      # Contains the specification for an unstructured data profile scan.
-      class GoogleCloudDataplexV1UnstructuredDataProfileSpec
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Customized prompt for unstructured data profile. The field will be
-        # used as part of the prompt, could be some instruction, specifying skill, or
-        # specific area to focus.
-        # Corresponds to the JSON property `customizedPrompt`
-        # @return [String]
-        attr_accessor :customized_prompt
-      
-        # Optional. Whether to use the global model.
-        # Corresponds to the JSON property `globalEndpointEnabled`
-        # @return [Boolean]
-        attr_accessor :global_endpoint_enabled
-        alias_method :global_endpoint_enabled?, :global_endpoint_enabled
-      
-        # Optional. Whether to publish graph-profile as aspect on the catalog entry.
-        # Corresponds to the JSON property `graphProfilePublishingEnabled`
-        # @return [Boolean]
-        attr_accessor :graph_profile_publishing_enabled
-        alias_method :graph_profile_publishing_enabled?, :graph_profile_publishing_enabled
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @customized_prompt = args[:customized_prompt] if args.key?(:customized_prompt)
-          @global_endpoint_enabled = args[:global_endpoint_enabled] if args.key?(:global_endpoint_enabled)
-          @graph_profile_publishing_enabled = args[:graph_profile_publishing_enabled] if args.key?(:graph_profile_publishing_enabled)
+          @allow_missing = args[:allow_missing] if args.key?(:allow_missing)
+          @aspect_keys = args[:aspect_keys] if args.key?(:aspect_keys)
+          @entry_link = args[:entry_link] if args.key?(:entry_link)
         end
       end
       
