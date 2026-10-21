@@ -959,7 +959,7 @@ module Google
       
         # Targeting details for inventory source. This will be populated in the details
         # field of an AssignedTargetingOption when targeting_type is `
-        # TARGETING_TYPE_INVENTORY_SOURCE`.
+        # TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
         # Corresponds to the JSON property `inventorySourceDetails`
         # @return [Google::Apis::DisplayvideoV2::InventorySourceAssignedTargetingOptionDetails]
         attr_accessor :inventory_source_details
@@ -1300,7 +1300,9 @@ module Google
         # @return [String]
         attr_accessor :final_url
       
-        # The URL address loaded in the background for tracking purposes.
+        # The URL address loaded in the background for tracking purposes. In v4 and
+        # earlier, this field represents the tracking URL specified by the user manually.
+        # This can be found at userSpecifiedTrackingUrl in v5.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
@@ -1551,6 +1553,11 @@ module Google
         # @return [Google::Apis::DisplayvideoV2::PerformanceGoalBidStrategy]
         attr_accessor :performance_goal_auto_bid
       
+        # Settings that control the bid strategy for YouTube and Partners resources.
+        # Corresponds to the JSON property `youtubeAndPartnersBid`
+        # @return [Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy]
+        attr_accessor :youtube_and_partners_bid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1561,6 +1568,7 @@ module Google
           @fixed_bid = args[:fixed_bid] if args.key?(:fixed_bid)
           @maximize_spend_auto_bid = args[:maximize_spend_auto_bid] if args.key?(:maximize_spend_auto_bid)
           @performance_goal_auto_bid = args[:performance_goal_auto_bid] if args.key?(:performance_goal_auto_bid)
+          @youtube_and_partners_bid = args[:youtube_and_partners_bid] if args.key?(:youtube_and_partners_bid)
         end
       end
       
@@ -1679,7 +1687,8 @@ module Google
         # CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL`
         # Corresponds to the JSON property `createRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::CreateAssignedTargetingOptionsRequest>]
         attr_accessor :create_requests
@@ -1688,7 +1697,8 @@ module Google
         # DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `
         # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `
         # TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `
-        # TARGETING_TYPE_KEYWORD`
+        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `
+        # TARGETING_TYPE_YOUTUBE_CHANNEL`
         # Corresponds to the JSON property `deleteRequests`
         # @return [Array<Google::Apis::DisplayvideoV2::DeleteAssignedTargetingOptionsRequest>]
         attr_accessor :delete_requests
@@ -1839,20 +1849,21 @@ module Google
         # The assigned targeting options to create in batch, specified as a list of
         # CreateAssignedTargetingOptionsRequest. Supported targeting types include: * `
         # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
-        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
-        # TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`
-        # * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `
-        # TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `
-        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `
-        # TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `
+        # TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `
+        # TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        # TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `
+        # TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
         # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `
         # TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `
         # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `
         # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
         # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
         # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
-        # TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`
+        # * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
         # TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
         # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `
         # TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `
@@ -1870,20 +1881,21 @@ module Google
         # The assigned targeting options to delete in batch, specified as a list of
         # DeleteAssignedTargetingOptionsRequest. Supported targeting types include: * `
         # TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `
-        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `
-        # TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`
-        # * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `
-        # TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `
-        # TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `
-        # TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
+        # TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `
+        # TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `
+        # TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `
+        # TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `
+        # TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `
+        # TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `
+        # TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `
         # TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `
         # TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `
         # TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `
         # TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT`
         # * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `
         # TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `
-        # TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `
-        # TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
+        # TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`
+        # * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `
         # TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `
         # TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `
         # TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `
@@ -3027,7 +3039,8 @@ module Google
       class CommonInStreamAttribute
         include Google::Apis::Core::Hashable
       
-        # Optional. The text on the call-to-action button.
+        # Optional. The text on the call-to-action button. Must be set if actionHeadline
+        # is set.
         # Corresponds to the JSON property `actionButtonLabel`
         # @return [String]
         attr_accessor :action_button_label
@@ -3054,6 +3067,8 @@ module Google
         attr_accessor :final_url
       
         # Output only. The URL address loaded in the background for tracking purposes.
+        # In v4 and earlier, this field represents the tracking URL specified by the
+        # user manually. This can be found at userSpecifiedTrackingUrl in v5.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
@@ -4570,13 +4585,13 @@ module Google
         # @return [String]
         attr_accessor :device_type
       
-        # Optional. Bid multiplier allows you to show your ads more or less frequently
-        # based on the device type. It will apply a multiplier on the original bid price.
-        # When this field is 0, it indicates this field is not applicable instead of
-        # multiplying 0 on the original bid price. For example, if the bid price without
-        # multiplier is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid
-        # price for Tablet will be $15.0. Only applicable to YouTube and Partners line
-        # items.
+        # Output only. Bid multiplier allows you to show your ads more or less
+        # frequently based on the device type. It will apply a multiplier on the
+        # original bid price. When this field is 0, it indicates this field is not
+        # applicable instead of multiplying 0 on the original bid price. For example, if
+        # the bid price without multiplier is $10.0 and the multiplier is 1.5 for Tablet,
+        # the resulting bid price for Tablet will be $15.0. Only applicable to YouTube
+        # and Partners line items.
         # Corresponds to the JSON property `youtubeAndPartnersBidMultiplier`
         # @return [Float]
         attr_accessor :youtube_and_partners_bid_multiplier
@@ -4620,9 +4635,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The display name of the digital content label rating tier to be
-        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept the
-        # value `CONTENT_RATING_TIER_UNRATED`. All other values will be deprecated and
-        # no longer be accepted.**
+        # EXCLUDED. This field only accepts the value `CONTENT_RATING_TIER_UNRATED`.
         # Corresponds to the JSON property `excludedContentRatingTier`
         # @return [String]
         attr_accessor :excluded_content_rating_tier
@@ -6334,7 +6347,7 @@ module Google
       
       # Targeting details for inventory source. This will be populated in the details
       # field of an AssignedTargetingOption when targeting_type is `
-      # TARGETING_TYPE_INVENTORY_SOURCE`.
+      # TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
       class InventorySourceAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
@@ -8911,7 +8924,7 @@ module Google
         attr_accessor :fee_type
       
         # The invoice type for this partner cost. * Required when cost_type is one of: -
-        # `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `
+        # `PARTNER_COST_TYPE_PEER39` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `
         # PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.
         # Corresponds to the JSON property `invoiceType`
         # @return [String]
@@ -9831,10 +9844,9 @@ module Google
       class SensitiveCategoryAssignedTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Required. An enum for the DV360 Sensitive category content classified to be
-        # EXCLUDED. **Starting on *October 1, 2026*, this field will only accept `
-        # SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
-        # . All other values will be deprecated and no longer be accepted.**
+        # Required. An enum for the Display & Video 360 Sensitive category content
+        # classified to be EXCLUDED. This field only accepts the following values: * `
+        # SENSITIVE_CATEGORY_EMBEDDED_VIDEO` * `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
         # Corresponds to the JSON property `excludedSensitiveCategory`
         # @return [String]
         attr_accessor :excluded_sensitive_category
@@ -9855,7 +9867,8 @@ module Google
       class SensitiveCategoryTargetingOptionDetails
         include Google::Apis::Core::Hashable
       
-        # Output only. An enum for the DV360 Sensitive category content classifier.
+        # Output only. An enum for the Display & Video 360 Sensitive category content
+        # classifier.
         # Corresponds to the JSON property `sensitiveCategory`
         # @return [String]
         attr_accessor :sensitive_category
@@ -10011,14 +10024,14 @@ module Google
         attr_accessor :target_count
       
         # The unit of time in which the target frequency will be applied. The following
-        # time unit is applicable: * `TIME_UNIT_WEEKS`
+        # time unit is applicable: * `TIME_UNIT_WEEKS` * `TIME_UNIT_MONTHS`
         # Corresponds to the JSON property `timeUnit`
         # @return [String]
         attr_accessor :time_unit
       
         # The number of time_unit the target frequency will last. The following
         # restrictions apply based on the value of time_unit: * `TIME_UNIT_WEEKS` - must
-        # be 1
+        # be 1 * `TIME_UNIT_MONTHS` - must be 1
         # Corresponds to the JSON property `timeUnitCount`
         # @return [Fixnum]
         attr_accessor :time_unit_count
@@ -10972,7 +10985,8 @@ module Google
       class VideoPerformanceAd
         include Google::Apis::Core::Hashable
       
-        # Optional. The list of text assets shown on the call-to-action button.
+        # Optional. The list of text assets shown on the call-to-action button. Must be
+        # set if headlines is set.
         # Corresponds to the JSON property `actionButtonLabels`
         # @return [Array<String>]
         attr_accessor :action_button_labels
@@ -10988,7 +11002,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :custom_parameters
       
-        # Optional. The list of descriptions shown on the call-to-action banner.
+        # Optional. The list of descriptions shown on the call-to-action banner. Must be
+        # set unless the parent line item's lineItemType is `
+        # LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field
+        # cannot be set.
         # Corresponds to the JSON property `descriptions`
         # @return [Array<String>]
         attr_accessor :descriptions
@@ -10998,7 +11015,8 @@ module Google
         # @return [String]
         attr_accessor :display_url_breadcrumb1
       
-        # Optional. The second piece after the domain in the display URL.
+        # Optional. The second piece after the domain in the display URL. Can only be
+        # set if displayUrlBreadcrumb1 is also set.
         # Corresponds to the JSON property `displayUrlBreadcrumb2`
         # @return [String]
         attr_accessor :display_url_breadcrumb2
@@ -11019,12 +11037,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
-        # Optional. The list of long headlines shown on the call-to-action banner.
+        # Optional. The list of long headlines shown on the call-to-action banner. Must
+        # be set unless the parent line item's lineItemType is `
+        # LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field
+        # cannot be set.
         # Corresponds to the JSON property `longHeadlines`
         # @return [Array<String>]
         attr_accessor :long_headlines
       
         # Output only. The URL address loaded in the background for tracking purposes.
+        # In v4 and earlier, this field represents the tracking URL specified by the
+        # user manually. This can be found at userSpecifiedTrackingUrl in v5.
         # Corresponds to the JSON property `trackingUrl`
         # @return [String]
         attr_accessor :tracking_url
