@@ -206,8 +206,9 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The edition of the cluster this backup was created from. Any
-        # restored cluster created from this backup will have the same edition.
+        # Output only. Deprecated: Use `express_config` instead. Output only. The
+        # edition of the cluster this backup was created from. Any restored cluster
+        # created from this backup will have the same edition.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
@@ -245,6 +246,11 @@ module Google
         # Corresponds to the JSON property `expiryTime`
         # @return [String]
         attr_accessor :expiry_time
+      
+        # Configuration that allows the user to create an AlloyDB Express cluster.
+        # Corresponds to the JSON property `expressConfig`
+        # @return [Google::Apis::AlloydbV1alpha::ExpressConfig]
+        attr_accessor :express_config
       
         # Labels as key value pairs
         # Corresponds to the JSON property `labels`
@@ -339,6 +345,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @expiry_quantity = args[:expiry_quantity] if args.key?(:expiry_quantity)
           @expiry_time = args[:expiry_time] if args.key?(:expiry_time)
+          @express_config = args[:express_config] if args.key?(:express_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
@@ -716,8 +723,8 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Edition of the cluster. If left unspecified, the cluster behaves as `
-        # EDITION_ALLOYDB`.
+        # Optional. Deprecated: Use `express_config` instead. Edition of the cluster. If
+        # left unspecified, the cluster behaves as `EDITION_ALLOYDB`.
         # Corresponds to the JSON property `edition`
         # @return [String]
         attr_accessor :edition
@@ -2258,9 +2265,10 @@ module Google
         # @return [Google::Apis::AlloydbV1alpha::PscInstanceInfo]
         attr_accessor :psc_instance_info
       
-        # Output only. The public IP addresses for the Instance. This is available ONLY
-        # when enable_public_ip is set. This is the connection endpoint for an end-user
-        # application.
+        # Output only. The public IP address for the Instance. This is available ONLY
+        # when `enable_public_ip` is set or when you have upgraded from an Express
+        # Instance that has public DNS enabled. This field is not available for Express
+        # Instances. This is the connection endpoint for an end-user application.
         # Corresponds to the JSON property `publicIpAddress`
         # @return [String]
         attr_accessor :public_ip_address
