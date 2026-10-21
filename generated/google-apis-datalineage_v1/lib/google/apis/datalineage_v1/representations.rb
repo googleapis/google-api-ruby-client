@@ -545,6 +545,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :dependency_types, as: 'dependencyTypes'
           property :entity_set, as: 'entitySet'
+          collection :projects, as: 'projects'
           property :time_range, as: 'timeRange', class: Google::Apis::DatalineageV1::GoogleTypeInterval, decorator: Google::Apis::DatalineageV1::GoogleTypeInterval::Representation
       
         end

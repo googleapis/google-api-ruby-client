@@ -959,6 +959,13 @@ module Google
         # @return [String]
         attr_accessor :entity_set
       
+        # Optional. Projects to restrict lineage links to. Callers can provide project
+        # IDs (for example, `projects/my-project`) or project numbers (for example, `
+        # projects/123456789`). If unspecified, lineage is returned from all projects.
+        # Corresponds to the JSON property `projects`
+        # @return [Array<String>]
+        attr_accessor :projects
+      
         # Represents a time interval, encoded as a Timestamp start (inclusive) and a
         # Timestamp end (exclusive). The start must be less than or equal to the end.
         # When the start equals the end, the interval is empty (matches no time). When
@@ -975,6 +982,7 @@ module Google
         def update!(**args)
           @dependency_types = args[:dependency_types] if args.key?(:dependency_types)
           @entity_set = args[:entity_set] if args.key?(:entity_set)
+          @projects = args[:projects] if args.key?(:projects)
           @time_range = args[:time_range] if args.key?(:time_range)
         end
       end
