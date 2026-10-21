@@ -289476,6 +289476,8 @@
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3FieldExtractionMetadataEntityQuery/userEntityQuery": user_entity_query
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3FieldTierMetadata": google_cloud_documentai_uiv1beta3_field_tier_metadata
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3FieldTierMetadata/tierLevel": tier_level
+"/documentai:v1/GoogleCloudDocumentaiUiv1beta3GroundingSettings": google_cloud_documentai_uiv1beta3_grounding_settings
+"/documentai:v1/GoogleCloudDocumentaiUiv1beta3GroundingSettings/groundingType": grounding_type
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata": google_cloud_documentai_uiv1beta3_human_review_labeling_metadata
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata/enableNormalizationEditing": enable_normalization_editing
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3HumanReviewValidationMetadata": google_cloud_documentai_uiv1beta3_human_review_validation_metadata
@@ -289524,6 +289526,7 @@
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/documentSchema": document_schema
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/genAiModelInfo": gen_ai_model_info
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/googleManaged": google_managed
+"/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/groundingSettings": grounding_settings
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/kmsKeyName": kms_key_name
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/kmsKeyVersionName": kms_key_version_name
 "/documentai:v1/GoogleCloudDocumentaiUiv1beta3ProcessorVersion/latestEvaluation": latest_evaluation
@@ -291288,6 +291291,8 @@
 "/documentai:v1/GoogleCloudDocumentaiV1beta3FieldExtractionMetadata/summaryOptions": summary_options
 "/documentai:v1/GoogleCloudDocumentaiV1beta3GcsPrefix": google_cloud_documentai_v1beta3_gcs_prefix
 "/documentai:v1/GoogleCloudDocumentaiV1beta3GcsPrefix/gcsUriPrefix": gcs_uri_prefix
+"/documentai:v1/GoogleCloudDocumentaiV1beta3GroundingSettings": google_cloud_documentai_v1beta3_grounding_settings
+"/documentai:v1/GoogleCloudDocumentaiV1beta3GroundingSettings/groundingType": grounding_type
 "/documentai:v1/GoogleCloudDocumentaiV1beta3HumanReviewStatus": google_cloud_documentai_v1beta3_human_review_status
 "/documentai:v1/GoogleCloudDocumentaiV1beta3HumanReviewStatus/humanReviewOperation": human_review_operation
 "/documentai:v1/GoogleCloudDocumentaiV1beta3HumanReviewStatus/state": state
@@ -291332,6 +291337,7 @@
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/documentSchema": document_schema
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/genAiModelInfo": gen_ai_model_info
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/googleManaged": google_managed
+"/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/groundingSettings": grounding_settings
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/kmsKeyName": kms_key_name
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/kmsKeyVersionName": kms_key_version_name
 "/documentai:v1/GoogleCloudDocumentaiV1beta3ProcessorVersion/latestEvaluation": latest_evaluation
