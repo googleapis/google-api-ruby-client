@@ -135,8 +135,7 @@ module Google
         # @param [String] comments_view_mode
         #   The comments view mode to apply to the presentation. This allows viewing the
         #   presentation with comments omitted or included. If one is not specified,
-        #   COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
-        #   google.com/workspace/preview).
+        #   COMMENTS_VIEW_MODE_OMITTED is used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -173,8 +172,7 @@ module Google
         # @param [String] comments_view_mode
         #   The comments view mode to apply to the page. This allows viewing the page with
         #   comments omitted or included. If one is not specified,
-        #   COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
-        #   google.com/workspace/preview).
+        #   COMMENTS_VIEW_MODE_OMITTED is used.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

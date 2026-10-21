@@ -22,8 +22,7 @@ module Google
   module Apis
     module SlidesV1
       
-      # Inserts a reply Post into a CommentThread. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Inserts a reply Post into a CommentThread.
       class AddCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -32,8 +31,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::SlidesV1::Post]
         attr_accessor :post
@@ -49,13 +47,11 @@ module Google
         end
       end
       
-      # The result of creating a reply. [Developer Preview](https://developers.google.
-      # com/workspace/preview).
+      # The result of creating a reply.
       class AddCommentReplyResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::SlidesV1::Post]
         attr_accessor :post
@@ -243,8 +239,7 @@ module Google
       class BatchUpdatePresentationResponse
         include Google::Apis::Core::Hashable
       
-        # Whether comment updates were applied in the batch request. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Whether comment updates were applied in the batch request.
         # Corresponds to the JSON property `commentUpdateState`
         # @return [String]
         attr_accessor :comment_update_state
@@ -380,8 +375,7 @@ module Google
       
       # Contains a list of all locations in a `Page` that are anchored to a
       # CommentThread via the same anchorId. Multiple separate anchors may refer to
-      # the same location, either within a `Page` or across different pages, [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # the same location, either within a `Page` or across different pages,
       class CommentAnchor
         include Google::Apis::Core::Hashable
       
@@ -407,8 +401,7 @@ module Google
         end
       end
       
-      # Represents a single comment thread inside a presentation. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # Represents a single comment thread inside a presentation.
       class CommentThread
         include Google::Apis::Core::Hashable
       
@@ -422,8 +415,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `headPost`
         # @return [Google::Apis::SlidesV1::Post]
         attr_accessor :head_post
@@ -1034,8 +1026,7 @@ module Google
       
       # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
       # - The requesting user is not the author of the post. - The reply post contains
-      # a comment action. - The reply post contains an assignee. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # a comment action. - The reply post contains an assignee.
       class DeleteCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -1061,8 +1052,7 @@ module Google
       end
       
       # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-      # user is not the author of the headPost. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # user is not the author of the headPost.
       class DeleteCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -1502,8 +1492,7 @@ module Google
         end
       end
       
-      # Inserts a CommentThread into the presentation. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Inserts a CommentThread into the presentation.
       class InsertCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -1528,22 +1517,20 @@ module Google
         # @return [String]
         attr_accessor :object_id_prop
       
-        # An anchor to a specific range of text within a Shape's text. [Developer
-        # Preview](https://developers.google.com/workspace/preview). To insert comments
-        # in speaker notes, use the ShapeTextAnchor with the speaker notes object ID.
+        # An anchor to a specific range of text within a Shape's text. To insert
+        # comments in speaker notes, use the ShapeTextAnchor with the speaker notes
+        # object ID.
         # Corresponds to the JSON property `shapeTextAnchor`
         # @return [Google::Apis::SlidesV1::ShapeTextAnchor]
         attr_accessor :shape_text_anchor
       
         # An anchor to a specific range of cells within a Table. Used to anchor a
-        # comment to all of the text in each cell in a range within a table. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # comment to all of the text in each cell in a range within a table.
         # Corresponds to the JSON property `tableAnchor`
         # @return [Google::Apis::SlidesV1::TableAnchor]
         attr_accessor :table_anchor
       
-        # An anchor to a specific range of text within a TableCell's TextElement. [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # An anchor to a specific range of text within a TableCell's TextElement.
         # Corresponds to the JSON property `tableCellTextAnchor`
         # @return [Google::Apis::SlidesV1::TableCellTextAnchor]
         attr_accessor :table_cell_text_anchor
@@ -1563,13 +1550,11 @@ module Google
         end
       end
       
-      # The result of creating a comment. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # The result of creating a comment.
       class InsertCommentResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single comment thread inside a presentation. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Represents a single comment thread inside a presentation.
         # Corresponds to the JSON property `commentThread`
         # @return [Google::Apis::SlidesV1::CommentThread]
         attr_accessor :comment_thread
@@ -2132,8 +2117,7 @@ module Google
       end
       
       # Represents comment anchor data tied to a Slides object, for example a `Page`
-      # or PageElement. [Developer Preview](https://developers.google.com/workspace/
-      # preview).
+      # or PageElement.
       class ObjectAnchor
         include Google::Apis::Core::Hashable
       
@@ -2142,14 +2126,12 @@ module Google
         # @return [String]
         attr_accessor :object_id_prop
       
-        # Represents text ranges within a shape covered by a comment anchor. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Represents text ranges within a shape covered by a comment anchor.
         # Corresponds to the JSON property `shapeTextAnchors`
         # @return [Google::Apis::SlidesV1::ShapeTextAnchors]
         attr_accessor :shape_text_anchors
       
-        # Represents table cell ranges within a table covered by a comment anchor. [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # Represents table cell ranges within a table covered by a comment anchor.
         # Corresponds to the JSON property `tableCellAnchors`
         # @return [Google::Apis::SlidesV1::TableCellAnchors]
         attr_accessor :table_cell_anchors
@@ -2279,8 +2261,7 @@ module Google
       class Page
         include Google::Apis::Core::Hashable
       
-        # Output only. The comment anchors present on the page. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Output only. The comment anchors present on the page.
         # Corresponds to the JSON property `commentAnchors`
         # @return [Array<Google::Apis::SlidesV1::CommentAnchor>]
         attr_accessor :comment_anchors
@@ -2288,15 +2269,13 @@ module Google
         # Output only. The comment threads associated with the page. Only populated if
         # the page was fetched via a GetPageRequest with a populated comments_view_mode.
         # Otherwise, comments are returned in the Presentation via the
-        # GetPresentationRequest. [Developer Preview](https://developers.google.com/
-        # workspace/preview).
+        # GetPresentationRequest.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::SlidesV1::CommentThread>]
         attr_accessor :comments
       
         # Output only. The comments view mode applied to the page. Only populated if the
-        # page was fetched via a GetPageRequest with a populated comments_view_mode. [
-        # Developer Preview](https://developers.google.com/workspace/preview).
+        # page was fetched via a GetPageRequest with a populated comments_view_mode.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -2731,8 +2710,7 @@ module Google
         end
       end
       
-      # Represents a single post in a comment thread. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Represents a single post in a comment thread.
       class Post
         include Google::Apis::Core::Hashable
       
@@ -2745,8 +2723,7 @@ module Google
         # @return [String]
         attr_accessor :assignee_email
       
-        # Represents a user who authored a comment post. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a user who authored a comment post.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::SlidesV1::PostAuthor]
         attr_accessor :author
@@ -2825,8 +2802,7 @@ module Google
         end
       end
       
-      # Represents a user who authored a comment post. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Represents a user who authored a comment post.
       class PostAuthor
         include Google::Apis::Core::Hashable
       
@@ -2872,14 +2848,12 @@ module Google
       class Presentation
         include Google::Apis::Core::Hashable
       
-        # Output only. The comment threads associated with the presentation. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Output only. The comment threads associated with the presentation.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::SlidesV1::CommentThread>]
         attr_accessor :comments
       
-        # Output only. The comments view mode applied to the presentation. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Output only. The comments view mode applied to the presentation.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -3293,8 +3267,7 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
-        # Inserts a reply Post into a CommentThread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Inserts a reply Post into a CommentThread.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::SlidesV1::AddCommentReplyRequest]
         attr_accessor :add_comment_reply
@@ -3350,16 +3323,14 @@ module Google
         attr_accessor :create_video
       
         # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-        # user is not the author of the headPost. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # user is not the author of the headPost.
         # Corresponds to the JSON property `deleteComment`
         # @return [Google::Apis::SlidesV1::DeleteCommentRequest]
         attr_accessor :delete_comment
       
         # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
         # - The requesting user is not the author of the post. - The reply post contains
-        # a comment action. - The reply post contains an assignee. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # a comment action. - The reply post contains an assignee.
         # Corresponds to the JSON property `deleteCommentReply`
         # @return [Google::Apis::SlidesV1::DeleteCommentReplyRequest]
         attr_accessor :delete_comment_reply
@@ -3405,8 +3376,7 @@ module Google
         # @return [Google::Apis::SlidesV1::GroupObjectsRequest]
         attr_accessor :group_objects
       
-        # Inserts a CommentThread into the presentation. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Inserts a CommentThread into the presentation.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::SlidesV1::InsertCommentRequest]
         attr_accessor :insert_comment
@@ -3484,8 +3454,7 @@ module Google
         attr_accessor :unmerge_table_cells
       
         # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
-        # requesting user is not the author of the post. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # requesting user is not the author of the post.
         # Corresponds to the JSON property `updateCommentPost`
         # @return [Google::Apis::SlidesV1::UpdateCommentPostRequest]
         attr_accessor :update_comment_post
@@ -3665,8 +3634,7 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
-        # The result of creating a reply. [Developer Preview](https://developers.google.
-        # com/workspace/preview).
+        # The result of creating a reply.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::SlidesV1::AddCommentReplyResponse]
         attr_accessor :add_comment_reply
@@ -3716,8 +3684,7 @@ module Google
         # @return [Google::Apis::SlidesV1::GroupObjectsResponse]
         attr_accessor :group_objects
       
-        # The result of creating a comment. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # The result of creating a comment.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::SlidesV1::InsertCommentResponse]
         attr_accessor :insert_comment
@@ -4005,9 +3972,9 @@ module Google
         end
       end
       
-      # An anchor to a specific range of text within a Shape's text. [Developer
-      # Preview](https://developers.google.com/workspace/preview). To insert comments
-      # in speaker notes, use the ShapeTextAnchor with the speaker notes object ID.
+      # An anchor to a specific range of text within a Shape's text. To insert
+      # comments in speaker notes, use the ShapeTextAnchor with the speaker notes
+      # object ID.
       class ShapeTextAnchor
         include Google::Apis::Core::Hashable
       
@@ -4033,8 +4000,7 @@ module Google
         end
       end
       
-      # Represents text ranges within a shape covered by a comment anchor. [Developer
-      # Preview](https://developers.google.com/workspace/preview).
+      # Represents text ranges within a shape covered by a comment anchor.
       class ShapeTextAnchors
         include Google::Apis::Core::Hashable
       
@@ -4387,8 +4353,7 @@ module Google
       end
       
       # An anchor to a specific range of cells within a Table. Used to anchor a
-      # comment to all of the text in each cell in a range within a table. [Developer
-      # Preview](https://developers.google.com/workspace/preview).
+      # comment to all of the text in each cell in a range within a table.
       class TableAnchor
         include Google::Apis::Core::Hashable
       
@@ -4559,8 +4524,7 @@ module Google
         end
       end
       
-      # Represents table cell ranges within a table covered by a comment anchor. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # Represents table cell ranges within a table covered by a comment anchor.
       class TableCellAnchors
         include Google::Apis::Core::Hashable
       
@@ -4662,8 +4626,7 @@ module Google
         end
       end
       
-      # An anchor to a specific range of text within a TableCell's TextElement. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # An anchor to a specific range of text within a TableCell's TextElement.
       class TableCellTextAnchor
         include Google::Apis::Core::Hashable
       
@@ -4695,8 +4658,7 @@ module Google
         end
       end
       
-      # Represents text ranges within a table cell covered by a comment anchor. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # Represents text ranges within a table cell covered by a comment anchor.
       class TableCellTextRanges
         include Google::Apis::Core::Hashable
       
@@ -4901,8 +4863,7 @@ module Google
         end
       end
       
-      # Specifies a contiguous range of text within a shape or table cell's text. [
-      # Developer Preview](https://developers.google.com/workspace/preview).
+      # Specifies a contiguous range of text within a shape or table cell's text.
       class TextRange
         include Google::Apis::Core::Hashable
       
@@ -5187,8 +5148,7 @@ module Google
       end
       
       # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
-      # requesting user is not the author of the post. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # requesting user is not the author of the post.
       class UpdateCommentPostRequest
         include Google::Apis::Core::Hashable
       
