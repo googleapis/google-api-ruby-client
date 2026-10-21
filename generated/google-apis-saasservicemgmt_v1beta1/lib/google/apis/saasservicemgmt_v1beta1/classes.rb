@@ -144,14 +144,14 @@ module Google
       
       # Blueprints are OCI Images that contain all of the artifacts needed to
       # provision a unit. Metadata such as, type of the engine used to actuate the
-      # blueprint (e.g. terraform, helm etc) and version will come from the image
+      # blueprint (Terraform, for example) and version will come from the image
       # manifest. If the hostname is omitted, it will be assumed to be the regional
       # path to Artifact Registry (eg. us-east1-docker.pkg.dev).
       class Blueprint
         include Google::Apis::Core::Hashable
       
-        # Output only. Type of the engine used to actuate the blueprint. e.g. terraform,
-        # helm etc.
+        # Output only. Type of the engine used to actuate the blueprint. (Terraform, for
+        # example)
         # Corresponds to the JSON property `engine`
         # @return [String]
         attr_accessor :engine
@@ -450,11 +450,21 @@ module Google
         # @return [Array<String>]
         attr_accessor :attributes
       
+        # Optional. The ID of an allocation to use as the default.
+        # Corresponds to the JSON property `defaultAllocation`
+        # @return [String]
+        attr_accessor :default_allocation
+      
         # Optional. Deprecated: Use `base_target` instead. Default variant or allocation
         # of the flag.
         # Corresponds to the JSON property `defaultTarget`
         # @return [String]
         attr_accessor :default_target
+      
+        # Optional. The name of a variant to use as the default.
+        # Corresponds to the JSON property `defaultVariant`
+        # @return [String]
+        attr_accessor :default_variant
       
         # Optional. Evaluation rules define the logic for evaluating the flag against a
         # given context. The rules are evaluated sequentially in their specified order.
@@ -475,7 +485,9 @@ module Google
         def update!(**args)
           @allocations = args[:allocations] if args.key?(:allocations)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @default_allocation = args[:default_allocation] if args.key?(:default_allocation)
           @default_target = args[:default_target] if args.key?(:default_target)
+          @default_variant = args[:default_variant] if args.key?(:default_variant)
           @rules = args[:rules] if args.key?(:rules)
           @variants = args[:variants] if args.key?(:variants)
         end
@@ -1713,8 +1725,7 @@ module Google
       end
       
       # A new version to be propagated and deployed to units. This includes pointers
-      # to packaged blueprints for actuation (e.g Helm or Terraform configuration
-      # packages) via artifact registry.
+      # to packaged blueprints for actuation via Artifact Registry.
       class Release
         include Google::Apis::Core::Hashable
       
@@ -1733,7 +1744,7 @@ module Google
       
         # Blueprints are OCI Images that contain all of the artifacts needed to
         # provision a unit. Metadata such as, type of the engine used to actuate the
-        # blueprint (e.g. terraform, helm etc) and version will come from the image
+        # blueprint (Terraform, for example) and version will come from the image
         # manifest. If the hostname is omitted, it will be assumed to be the regional
         # path to Artifact Registry (eg. us-east1-docker.pkg.dev).
         # Corresponds to the JSON property `blueprint`
@@ -1908,9 +1919,7 @@ module Google
         attr_accessor :etag
       
         # Optional. Immutable. Name of the FlagRelease to be rolled out to the target
-        # Units. Release and FlagRelease are mutually exclusive. Note: `release` comment
-        # needs to be adjusted to mention that "Release and FlagRelease are mutually
-        # exclusive" when visibility restriction will be lifted.
+        # Units. Release and FlagRelease are mutually exclusive.
         # Corresponds to the JSON property `flagRelease`
         # @return [String]
         attr_accessor :flag_release
@@ -2139,7 +2148,7 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Optional. CEL(https://github.com/google/cel-spec) formatted filter string
+        # Optional. [CEL](https://github.com/google/cel-spec) formatted filter string
         # against Unit. The filter will be applied to determine the eligible unit
         # population. This filter can only reduce, but not expand the scope of the
         # rollout.
@@ -2680,9 +2689,8 @@ module Google
       end
       
       # A unit of deployment that has its lifecycle via a CRUD API using an actuation
-      # engine under the hood (e.g. based on Terraform, Helm or a custom
-      # implementation provided by a service producer). A building block of a SaaS
-      # Tenant.
+      # engine under the hood (e.g. based on Terraform, or a custom implementation
+      # provided by a service producer). A building block of a SaaS Tenant.
       class Unit
         include Google::Apis::Core::Hashable
       
@@ -2781,8 +2789,8 @@ module Google
       
         # Optional. Output only. Set of key/value pairs corresponding to output
         # variables from execution of actuation templates. The variables are declared in
-        # actuation configs (e.g in helm chart or terraform) and the values are fetched
-        # and returned by the actuation engine upon completion of execution.
+        # actuation configs (in Terraform for example) and the values are fetched and
+        # returned by the actuation engine upon completion of execution.
         # Corresponds to the JSON property `outputVariables`
         # @return [Array<Google::Apis::SaasservicemgmtV1beta1::UnitVariable>]
         attr_accessor :output_variables
@@ -3168,6 +3176,12 @@ module Google
         # @return [String]
         attr_accessor :default_release
       
+        # Output only. The timestamp when the resource was marked for deletion (deletion
+        # is an asynchronous operation).
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
+      
         # Optional. Immutable. List of other unit kinds that this release will depend on.
         # Dependencies will be automatically provisioned if not found. Maximum 10.
         # Corresponds to the JSON property `dependencies`
@@ -3243,6 +3257,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_flag_revisions = args[:default_flag_revisions] if args.key?(:default_flag_revisions)
           @default_release = args[:default_release] if args.key?(:default_release)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @dependencies = args[:dependencies] if args.key?(:dependencies)
           @etag = args[:etag] if args.key?(:etag)
           @input_variable_mappings = args[:input_variable_mappings] if args.key?(:input_variable_mappings)

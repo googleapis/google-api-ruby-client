@@ -400085,6 +400085,7 @@
 "/saasservicemgmt:v1beta1/UnitKind/defaultFlagRevisions": default_flag_revisions
 "/saasservicemgmt:v1beta1/UnitKind/defaultFlagRevisions/default_flag_revision": default_flag_revision
 "/saasservicemgmt:v1beta1/UnitKind/defaultRelease": default_release
+"/saasservicemgmt:v1beta1/UnitKind/deleteTime": delete_time
 "/saasservicemgmt:v1beta1/UnitKind/dependencies": dependencies
 "/saasservicemgmt:v1beta1/UnitKind/dependencies/dependency": dependency
 "/saasservicemgmt:v1beta1/UnitKind/etag": etag
