@@ -311,9 +311,9 @@ module Google
         # @return [Google::Apis::GmailV1::HardwareKeyMetadata]
         attr_accessor :hardware_key_metadata
       
-        # Metadata for private keys managed by an external key access control list
-        # service. For details about managing key access, see [Google Workspace CSE API
-        # Reference](https://developers.google.com/workspace/cse/reference).
+        # Metadata for a cryptographic key managed by an external key access control
+        # list service. For details about managing key access, see [Google Workspace CSE
+        # API Reference](https://developers.google.com/workspace/cse/reference).
         # Corresponds to the JSON property `kaclsKeyMetadata`
         # @return [Google::Apis::GmailV1::KaclsKeyMetadata]
         attr_accessor :kacls_key_metadata
@@ -790,19 +790,18 @@ module Google
         end
       end
       
-      # Metadata for private keys managed by an external key access control list
-      # service. For details about managing key access, see [Google Workspace CSE API
-      # Reference](https://developers.google.com/workspace/cse/reference).
+      # Metadata for a cryptographic key managed by an external key access control
+      # list service. For details about managing key access, see [Google Workspace CSE
+      # API Reference](https://developers.google.com/workspace/cse/reference).
       class KaclsKeyMetadata
         include Google::Apis::Core::Hashable
       
-        # Opaque data generated and used by the key access control list service. Maximum
-        # size: 8 KiB.
+        # Opaque data generated and used by the key access control list service.
         # Corresponds to the JSON property `kaclsData`
         # @return [String]
         attr_accessor :kacls_data
       
-        # The URI of the key access control list service that manages the private key.
+        # The URI of the key access control list service that manages the key.
         # Corresponds to the JSON property `kaclsUri`
         # @return [String]
         attr_accessor :kacls_uri
