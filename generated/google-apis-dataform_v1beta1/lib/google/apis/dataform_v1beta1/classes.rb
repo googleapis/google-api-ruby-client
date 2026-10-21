@@ -1702,6 +1702,39 @@ module Google
         end
       end
       
+      # `FetchWorkspaceHistory` response message.
+      class FetchWorkspaceHistoryResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of commit logs, ordered by 'git log' default order.
+        # Corresponds to the JSON property `commits`
+        # @return [Array<Google::Apis::DataformV1beta1::CommitLogEntry>]
+        attr_accessor :commits
+      
+        # Optional. A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Whether this response reaches the shallow boundary of the repository.
+        # Corresponds to the JSON property `reachesShallowBoundary`
+        # @return [Boolean]
+        attr_accessor :reaches_shallow_boundary
+        alias_method :reaches_shallow_boundary?, :reaches_shallow_boundary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commits = args[:commits] if args.key?(:commits)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reaches_shallow_boundary = args[:reaches_shallow_boundary] if args.key?(:reaches_shallow_boundary)
+        end
+      end
+      
       # Represents a single file operation to the repository.
       class FileOperation
         include Google::Apis::Core::Hashable
@@ -1925,6 +1958,13 @@ module Google
       class GitRemoteSettings
         include Google::Apis::Core::Hashable
       
+        # Optional. Resource name for the Account Connector used for personal
+        # authentication. Must be in the format `projects/*/locations/*/
+        # accountConnectors/*`
+        # Corresponds to the JSON property `accountConnector`
+        # @return [String]
+        attr_accessor :account_connector
+      
         # Optional. The name of the Secret Manager secret version to use as an
         # authentication token for Git operations. Must be in the format `projects/*/
         # secrets/*/versions/*`.
@@ -1974,6 +2014,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @account_connector = args[:account_connector] if args.key?(:account_connector)
           @authentication_token_secret_version = args[:authentication_token_secret_version] if args.key?(:authentication_token_secret_version)
           @default_branch = args[:default_branch] if args.key?(:default_branch)
           @effective_default_branch = args[:effective_default_branch] if args.key?(:effective_default_branch)
