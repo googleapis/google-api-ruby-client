@@ -256,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchMediaPlannersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Sort
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -709,6 +715,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :report_result, as: 'reportResult'
+        end
+      end
+      
+      class SearchMediaPlannersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :media_planners, as: 'mediaPlanners', class: Google::Apis::CurationpartnersV1::MediaPlanner, decorator: Google::Apis::CurationpartnersV1::MediaPlanner::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
