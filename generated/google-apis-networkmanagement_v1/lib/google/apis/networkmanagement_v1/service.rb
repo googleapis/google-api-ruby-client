@@ -594,7 +594,7 @@ module Google
         # in the network, or you don't have read permissions to the network
         # configurations of listed projects), then the reachability result returns a
         # value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are
-        # incomplete, the reachability result returns a value of AMBIGUOUS. For more
+        # incomplete, the reachability result returns a value of `AMBIGUOUS`. For more
         # information, see the Connectivity Test documentation.
         # @param [String] parent
         #   Required. The parent resource of the Connectivity Test to create: `projects/`
@@ -747,21 +747,21 @@ module Google
         #   Required. The parent resource of the Connectivity Tests: `projects/`project_id`
         #   /locations/global`
         # @param [String] filter
-        #   Lists the `ConnectivityTests` that match the filter expression. A filter
-        #   expression filters the resources listed in the response. The expression must
-        #   be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are
-        #   supported (colon `:` represents a HAS operator which is roughly synonymous
+        #   Optional. Lists the `ConnectivityTests` that match the filter expression. A
+        #   filter expression filters the resources listed in the response. The expression
+        #   must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`
+        #   are supported (colon `:` represents a HAS operator which is roughly synonymous
         #   with equality). can refer to a proto or JSON field, or a synthetic field.
         #   Field names can be camelCase or snake_case. Examples: - Filter by name: name =
         #   "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels:
         #   - Resources that have a key called `foo` labels.foo:* - Resources that have a
         #   key called `foo` whose value is `bar` labels.foo = bar
         # @param [String] order_by
-        #   Field to use to sort the list.
+        #   Optional. Field to use to sort the list.
         # @param [Fixnum] page_size
-        #   Number of `ConnectivityTests` to return.
+        #   Optional. Number of `ConnectivityTests` to return.
         # @param [String] page_token
-        #   Page token from an earlier query, as returned in `next_page_token`.
+        #   Optional. Page token from an earlier query, as returned in `next_page_token`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -800,9 +800,10 @@ module Google
         # specifications in `ConnectivityTest` are invalid (for example, they contain
         # non-existent resources in the network, or the user does not have read
         # permissions to the network configurations of listed projects), then the
-        # reachability result returns a value of UNKNOWN. If the endpoint specifications
-        # in `ConnectivityTest` are incomplete, the reachability result returns a value
-        # of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details.
+        # reachability result returns a value of `UNKNOWN`. If the endpoint
+        # specifications in `ConnectivityTest` are incomplete, the reachability result
+        # returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest`
+        # for more details.
         # @param [String] name
         #   Identifier. Unique name of the resource using the form: `projects/`project_id`/
         #   locations/global/connectivityTests/`test_id``
