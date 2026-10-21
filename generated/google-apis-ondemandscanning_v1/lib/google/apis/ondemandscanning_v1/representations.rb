@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LayerAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LayerDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1323,9 +1329,19 @@ module Google
         end
       end
       
+      class LayerAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plugin, as: 'plugin'
+          property :value, as: 'value'
+        end
+      end
+      
       class LayerDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::OndemandscanningV1::LayerAttribute, decorator: Google::Apis::OndemandscanningV1::LayerAttribute::Representation
+      
           collection :base_images, as: 'baseImages', class: Google::Apis::OndemandscanningV1::BaseImage, decorator: Google::Apis::OndemandscanningV1::BaseImage::Representation
       
           property :chain_id, as: 'chainId'
