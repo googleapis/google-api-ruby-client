@@ -413,13 +413,6 @@ module Google
         # @return [String]
         attr_accessor :uri
       
-        # Output only. The URI of the worker pool that the revision belongs to. The
-        # format is: projects/`project`/locations/`location`/workerPools/`workerPool`.
-        # Mutually exclusive with service_uri.
-        # Corresponds to the JSON property `workerPoolUri`
-        # @return [String]
-        attr_accessor :worker_pool_uri
-      
         def initialize(**args)
            update!(**args)
         end
@@ -428,7 +421,6 @@ module Google
         def update!(**args)
           @service_uri = args[:service_uri] if args.key?(:service_uri)
           @uri = args[:uri] if args.key?(:uri)
-          @worker_pool_uri = args[:worker_pool_uri] if args.key?(:worker_pool_uri)
         end
       end
       
@@ -831,6 +823,11 @@ module Google
         # @return [String]
         attr_accessor :aggregation_interval
       
+        # Optional. Configures whether connection logging is enabled for VPC Flow Logs.
+        # Corresponds to the JSON property `connectionLogging`
+        # @return [String]
+        attr_accessor :connection_logging
+      
         # Determines whether to include cross project annotations in the logs. This
         # field is available only for organization configurations. If not specified in
         # org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
@@ -917,6 +914,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @connection_logging = args[:connection_logging] if args.key?(:connection_logging)
           @cross_project_metadata = args[:cross_project_metadata] if args.key?(:cross_project_metadata)
           @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
@@ -2322,7 +2320,8 @@ module Google
         # @return [String]
         attr_accessor :router_uri
       
-        # The number of the NAT rule that was matched.
+        # The number of the NAT rule that was matched. Only valid when `type` is
+        # CLOUD_NAT.
         # Corresponds to the JSON property `ruleNumber`
         # @return [Fixnum]
         attr_accessor :rule_number
@@ -3873,6 +3872,11 @@ module Google
         # @return [String]
         attr_accessor :aggregation_interval
       
+        # Optional. Configures whether connection logging is enabled for VPC Flow Logs.
+        # Corresponds to the JSON property `connectionLogging`
+        # @return [String]
+        attr_accessor :connection_logging
+      
         # Output only. The time the config was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -3979,6 +3983,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
+          @connection_logging = args[:connection_logging] if args.key?(:connection_logging)
           @create_time = args[:create_time] if args.key?(:create_time)
           @cross_project_metadata = args[:cross_project_metadata] if args.key?(:cross_project_metadata)
           @description = args[:description] if args.key?(:description)
