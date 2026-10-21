@@ -214,7 +214,8 @@ module Google
       
         # Optional. Specifies the priority of the schedule. If two schedules overlap,
         # the one with the higher priority will be used. The higher the value, the
-        # higher the priority of the schedule.
+        # higher the priority of the schedule. The value must be non-negative; the
+        # lowest priority is `0`, which is the default.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
