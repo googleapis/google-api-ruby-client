@@ -294,61 +294,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new AppConnection in a given project and location.
-        # @param [String] parent
-        #   Required. The resource project name of the AppConnection location using the
-        #   form: `projects/`project_id`/locations/`location_id``
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection] google_cloud_beyondcorp_appconnections_v1_app_connection_object
-        # @param [String] app_connection_id
-        #   Optional. User-settable AppConnection resource ID. * Must start with a letter.
-        #   * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
-        #   or a letter.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if the
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_app_connection(parent, google_cloud_beyondcorp_appconnections_v1_app_connection_object = nil, app_connection_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/appConnections', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection::Representation
-          command.request_object = google_cloud_beyondcorp_appconnections_v1_app_connection_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['appConnectionId'] = app_connection_id unless app_connection_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Deletes a single AppConnection.
         # @param [String] name
         #   Required. BeyondCorp Connector name using the form: `projects/`project_id`/
@@ -521,65 +466,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single AppConnection.
-        # @param [String] name
-        #   Required. Unique resource name of the AppConnection. The name is ignored when
-        #   creating a AppConnection.
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection] google_cloud_beyondcorp_appconnections_v1_app_connection_object
-        # @param [Boolean] allow_missing
-        #   Optional. If set as true, will create the resource if it is not found.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if the
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. The elements of the repeated paths field may only include these fields
-        #   from [BeyondCorp.AppConnection]: * `labels` * `display_name` * `
-        #   application_endpoint` * `connectors`
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_app_connection(name, google_cloud_beyondcorp_appconnections_v1_app_connection_object = nil, allow_missing: nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectionsV1AppConnection::Representation
-          command.request_object = google_cloud_beyondcorp_appconnections_v1_app_connection_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['allowMissing'] = allow_missing unless allow_missing.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Resolves AppConnections details for a given AppConnector. An internal method
         # called by a connector to find AppConnections to connect to.
         # @param [String] parent
@@ -699,61 +585,6 @@ module Google
           command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new AppConnector in a given project and location.
-        # @param [String] parent
-        #   Required. The resource project name of the AppConnector location using the
-        #   form: `projects/`project_id`/locations/`location_id``
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector] google_cloud_beyondcorp_appconnectors_v1_app_connector_object
-        # @param [String] app_connector_id
-        #   Optional. User-settable AppConnector resource ID. * Must start with a letter. *
-        #   Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
-        #   or a letter.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_app_connector(parent, google_cloud_beyondcorp_appconnectors_v1_app_connector_object = nil, app_connector_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/appConnectors', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector::Representation
-          command.request_object = google_cloud_beyondcorp_appconnectors_v1_app_connector_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['appConnectorId'] = app_connector_id unless app_connector_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -931,95 +762,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the parameters of a single AppConnector.
-        # @param [String] name
-        #   Required. Unique resource name of the AppConnector. The name is ignored when
-        #   creating a AppConnector.
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector] google_cloud_beyondcorp_appconnectors_v1_app_connector_object
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [String] update_mask
-        #   Required. Mask of fields to update. At least one path must be supplied in this
-        #   field. The elements of the repeated paths field may only include these fields
-        #   from [BeyondCorp.AppConnector]: * `labels` * `display_name`
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_app_connector(name, google_cloud_beyondcorp_appconnectors_v1_app_connector_object = nil, request_id: nil, update_mask: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1AppConnector::Representation
-          command.request_object = google_cloud_beyondcorp_appconnectors_v1_app_connector_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['name'] = name unless name.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Report status for a given connector.
-        # @param [String] app_connector
-        #   Required. BeyondCorp Connector name using the form: `projects/`project_id`/
-        #   locations/`location_id`/connectors/`connector``
-        # @param [Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest] google_cloud_beyondcorp_appconnectors_v1_report_status_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def report_project_location_app_connector_status(app_connector, google_cloud_beyondcorp_appconnectors_v1_report_status_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+appConnector}:reportStatus', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest::Representation
-          command.request_object = google_cloud_beyondcorp_appconnectors_v1_report_status_request_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['appConnector'] = app_connector unless app_connector.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets instance configuration for a given AppConnector. An internal method
         # called by a AppConnector to get its container config.
         # @param [String] app_connector
@@ -1123,61 +865,6 @@ module Google
           command.response_representation = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::BeyondcorpV1::GoogleIamV1TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new AppGateway in a given project and location.
-        # @param [String] parent
-        #   Required. The resource project name of the AppGateway location using the form:
-        #   `projects/`project_id`/locations/`location_id``
-        # @param [Google::Apis::BeyondcorpV1::AppGateway] app_gateway_object
-        # @param [String] app_gateway_id
-        #   Optional. User-settable AppGateway resource ID. * Must start with a letter. *
-        #   Must contain between 4-63 characters from `/a-z-/`. * Must end with a number
-        #   or a letter.
-        # @param [String] request_id
-        #   Optional. An optional request ID to identify requests. Specify a unique
-        #   request ID so that if you must retry your request, the server will know to
-        #   ignore the request if it has already been completed. The server will guarantee
-        #   that for at least 60 minutes since the first request. For example, consider a
-        #   situation where you make an initial request and the request times out. If you
-        #   make the request again with the same request ID, the server can check if
-        #   original operation with the same request ID was received, and if so, will
-        #   ignore the second request. This prevents clients from accidentally creating
-        #   duplicate commitments. The request ID must be a valid UUID with the exception
-        #   that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        # @param [Boolean] validate_only
-        #   Optional. If set, validates request by executing a dry-run which would not
-        #   alter the resource in any way.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BeyondcorpV1::GoogleLongrunningOperation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_app_gateway(parent, app_gateway_object = nil, app_gateway_id: nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/appGateways', options)
-          command.request_representation = Google::Apis::BeyondcorpV1::AppGateway::Representation
-          command.request_object = app_gateway_object
-          command.response_representation = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation::Representation
-          command.response_class = Google::Apis::BeyondcorpV1::GoogleLongrunningOperation
-          command.params['parent'] = parent unless parent.nil?
-          command.query['appGatewayId'] = app_gateway_id unless app_gateway_id.nil?
-          command.query['requestId'] = request_id unless request_id.nil?
-          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
