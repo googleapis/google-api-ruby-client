@@ -5455,8 +5455,6 @@ module Google
       class TargetingExpansionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :audience_expansion_level, as: 'audienceExpansionLevel'
-          property :audience_expansion_seed_list_excluded, as: 'audienceExpansionSeedListExcluded'
           property :enable_optimized_targeting, as: 'enableOptimizedTargeting'
           property :exclude_demographic_expansion, as: 'excludeDemographicExpansion'
         end
