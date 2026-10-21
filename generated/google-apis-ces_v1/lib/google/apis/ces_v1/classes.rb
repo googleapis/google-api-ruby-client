@@ -1288,8 +1288,7 @@ module Google
         end
       end
       
-      # A single personalized onboarding suggestion chip for the AI assistant's zero
-      # state.
+      # A single personalized onboarding suggestion chip for Arc's zero state.
       class AssistantSuggestion
         include Google::Apis::Core::Hashable
       
@@ -4582,6 +4581,15 @@ module Google
         # @return [String]
         attr_accessor :match_type
       
+        # Optional. Entries of the sensitive words list that this guardrail allows. Only
+        # valid when match_type is SENSITIVE_WORDS. Each value must equal a list entry (
+        # case-insensitive, surrounding whitespace ignored); other values have no effect.
+        # Applies to this guardrail only. At most 1000 entries of up to 256 characters
+        # each.
+        # Corresponds to the JSON property `sensitiveWordsExemptions`
+        # @return [Array<String>]
+        attr_accessor :sensitive_words_exemptions
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4593,6 +4601,7 @@ module Google
           @banned_contents_in_user_input = args[:banned_contents_in_user_input] if args.key?(:banned_contents_in_user_input)
           @disregard_diacritics = args[:disregard_diacritics] if args.key?(:disregard_diacritics)
           @match_type = args[:match_type] if args.key?(:match_type)
+          @sensitive_words_exemptions = args[:sensitive_words_exemptions] if args.key?(:sensitive_words_exemptions)
         end
       end
       
@@ -4635,7 +4644,9 @@ module Google
         # @return [String]
         attr_accessor :policy_scope
       
-        # Required. Policy prompt.
+        # Required. Policy prompt. Supports session variable placeholders (``var``) as
+        # well as ``agent_system_instruction`` to inject the agent's resolved system
+        # instructions.
         # Corresponds to the JSON property `prompt`
         # @return [String]
         attr_accessor :prompt
@@ -5015,7 +5026,7 @@ module Google
         # @return [String]
         attr_accessor :default_language_code
       
-        # Optional. Enables multilingual support. If true, agents in the app will use
+        # Optional. Enables multilingual support. If `true`, agents in the app will use
         # pre-built instructions to improve handling of multilingual input.
         # Corresponds to the JSON property `enableMultilingualSupport`
         # @return [Boolean]
@@ -6875,6 +6886,18 @@ module Google
         # @return [Google::Apis::CesV1::RedactionConfig]
         attr_accessor :redaction_config
       
+        # Optional. Whether the app has to say what may be recorded before anything is
+        # kept. When true, a session starts with recording off and stays off until the
+        # client sends SessionInput.recording_control, which then decides every turn
+        # from that point on. This covers audio recording as well as conversation
+        # history, BigQuery export and Cloud Logging. When `false`, the default, the
+        # settings above decide on their own and the client does not have to send
+        # anything.
+        # Corresponds to the JSON property `requiredRecordingConsent`
+        # @return [Boolean]
+        attr_accessor :required_recording_consent
+        alias_method :required_recording_consent?, :required_recording_consent
+      
         # Configuration for how the audio interactions should be recorded.
         # Corresponds to the JSON property `unredactedAudioRecordingConfig`
         # @return [Google::Apis::CesV1::AudioRecordingConfig]
@@ -6898,6 +6921,7 @@ module Google
           @evaluation_audio_recording_config = args[:evaluation_audio_recording_config] if args.key?(:evaluation_audio_recording_config)
           @metric_analysis_settings = args[:metric_analysis_settings] if args.key?(:metric_analysis_settings)
           @redaction_config = args[:redaction_config] if args.key?(:redaction_config)
+          @required_recording_consent = args[:required_recording_consent] if args.key?(:required_recording_consent)
           @unredacted_audio_recording_config = args[:unredacted_audio_recording_config] if args.key?(:unredacted_audio_recording_config)
           @unredacted_bigquery_export_settings = args[:unredacted_bigquery_export_settings] if args.key?(:unredacted_bigquery_export_settings)
         end
@@ -7804,7 +7828,7 @@ module Google
         # @return [String]
         attr_accessor :deidentify_template
       
-        # Optional. If true, redaction will be applied in various logging scenarios,
+        # Optional. If `true`, redaction will be applied in various logging scenarios,
         # including conversation history, Cloud Logging and audio recording.
         # Corresponds to the JSON property `enableRedaction`
         # @return [Boolean]
@@ -8407,9 +8431,13 @@ module Google
         # @return [String]
         attr_accessor :deployment
       
-        # Optional. Whether to enable streaming text outputs from the model. By default,
-        # text outputs from the model are collected before sending to the client. NOTE:
-        # This is only supported for text (non-voice) sessions via StreamRunSession or
+        # Optional. Whether to stream text output from the model to the client
+        # incrementally as it is generated. Defaults to `false`. * When disabled, the
+        # model's text output is buffered, and each text output sent to the client is a
+        # complete sentence. Clients can render each text output on a new line. * When
+        # enabled, each text output may contain only part of a sentence. Clients should
+        # concatenate consecutive text outputs to render the complete response. NOTE:
+        # This is only supported for text (non-voice) sessions using StreamRunSession or
         # BidiRunSession.
         # Corresponds to the JSON property `enableTextStreaming`
         # @return [Boolean]
@@ -8437,6 +8465,19 @@ module Google
         # Corresponds to the JSON property `historicalContexts`
         # @return [Array<Google::Apis::CesV1::Message>]
         attr_accessor :historical_contexts
+      
+        # Optional. Whether to include LLM thought summaries in the session outputs.
+        # Corresponds to the JSON property `includeLlmThoughtSummary`
+        # @return [Boolean]
+        attr_accessor :include_llm_thought_summary
+        alias_method :include_llm_thought_summary?, :include_llm_thought_summary
+      
+        # Optional. Whether to include intermediate processing update to the client. If
+        # enabled, the update will be sent back in SessionOutput.progress.
+        # Corresponds to the JSON property `includeProgressUpdate`
+        # @return [Boolean]
+        attr_accessor :include_progress_update
+        alias_method :include_progress_update?, :include_progress_update
       
         # InputAudioConfig configures how the CES agent should interpret the incoming
         # audio data.
@@ -8485,6 +8526,8 @@ module Google
           @entry_agent = args[:entry_agent] if args.key?(:entry_agent)
           @exclude_diagnostic_info = args[:exclude_diagnostic_info] if args.key?(:exclude_diagnostic_info)
           @historical_contexts = args[:historical_contexts] if args.key?(:historical_contexts)
+          @include_llm_thought_summary = args[:include_llm_thought_summary] if args.key?(:include_llm_thought_summary)
+          @include_progress_update = args[:include_progress_update] if args.key?(:include_progress_update)
           @input_audio_config = args[:input_audio_config] if args.key?(:input_audio_config)
           @output_audio_config = args[:output_audio_config] if args.key?(:output_audio_config)
           @remote_dialogflow_query_parameters = args[:remote_dialogflow_query_parameters] if args.key?(:remote_dialogflow_query_parameters)
@@ -8564,6 +8607,22 @@ module Google
         # @return [Google::Apis::CesV1::Image]
         attr_accessor :image
       
+        # Optional. Whether the conversation may be recorded and logged from here on.
+        # Use this when the app, rather than the agent, decides what may be kept: for
+        # example when the end user has to consent to being recorded before anything
+        # about the call can be stored. The value stays in effect until the client sends
+        # a different one, so it only needs to be sent when the answer changes. Whatever
+        # is in effect when a turn completes decides that turn, both whether its audio
+        # reaches the recording bucket and whether its transcript reaches conversation
+        # history, BigQuery and Cloud Logging. It covers the agent's side of the turn as
+        # well as the end user's. Turns that complete before the client first sends this
+        # are recorded according to the app's logging settings, as though the field did
+        # not exist. If more than one input in the same request sets it, the last one
+        # wins.
+        # Corresponds to the JSON property `recordingControl`
+        # @return [String]
+        attr_accessor :recording_control
+      
         # Optional. Text data from the end user.
         # Corresponds to the JSON property `text`
         # @return [String]
@@ -8603,6 +8662,7 @@ module Google
           @dtmf = args[:dtmf] if args.key?(:dtmf)
           @event = args[:event] if args.key?(:event)
           @image = args[:image] if args.key?(:image)
+          @recording_control = args[:recording_control] if args.key?(:recording_control)
           @text = args[:text] if args.key?(:text)
           @tool_responses = args[:tool_responses] if args.key?(:tool_responses)
           @variables = args[:variables] if args.key?(:variables)

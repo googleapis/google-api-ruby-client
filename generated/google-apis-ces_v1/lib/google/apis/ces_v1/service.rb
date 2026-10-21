@@ -278,7 +278,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Generates personalized onboarding suggestions for the AI assistant zero state:
+        # Generates personalized onboarding suggestions for the Arc zero state:
         # classifies the requesting user (new / exploring / returning) from their
         # assistant-session history in the app and returns suggestion chips (resume a
         # session, continue work, or start something new) to render before any message
@@ -759,8 +759,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Runs the Chat AI assistant agent for the specified assistant session in a
-        # streaming fashion.
+        # Runs Arc, the AI assistant, for the specified assistant session in a streaming
+        # fashion.
         # @param [String] name
         #   Required. The assistant session to be used to run the assistant. Format: `
         #   projects/`project`/locations/`location`/apps/`app`/assistantSessions/`
