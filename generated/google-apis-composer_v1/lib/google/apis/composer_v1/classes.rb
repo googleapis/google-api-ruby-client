@@ -1009,6 +1009,31 @@ module Google
         end
       end
       
+      # The image version an environment can be rolled back to.
+      class ImageVersionRollbackTarget
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The image version the environment can be rolled back to.
+        # Corresponds to the JSON property `imageVersion`
+        # @return [String]
+        attr_accessor :image_version
+      
+        # Output only. The last time when the environment was running this image version.
+        # Corresponds to the JSON property `lastActiveTime`
+        # @return [String]
+        attr_accessor :last_active_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_version = args[:image_version] if args.key?(:image_version)
+          @last_active_time = args[:last_active_time] if args.key?(:last_active_time)
+        end
+      end
+      
       # Contains information about a single line from logs.
       class Line
         include Google::Apis::Core::Hashable
@@ -2058,6 +2083,14 @@ module Google
         # @return [String]
         attr_accessor :image_version
       
+        # Output only. The list of image versions the environment can be rolled back to,
+        # sorted by last_active_time in descending order (most recent first). This field
+        # is supported for Cloud Composer environments in versions composer-3-airflow-*.*
+        # .*-build.* and newer.
+        # Corresponds to the JSON property `imageVersionRollbackTargets`
+        # @return [Array<Google::Apis::ComposerV1::ImageVersionRollbackTarget>]
+        attr_accessor :image_version_rollback_targets
+      
         # Optional. Custom Python Package Index (PyPI) packages to be installed in the
         # environment. Keys refer to the lowercase package name such as "numpy" and
         # values are the lowercase extras and version specifier such as "==1.12.0", "[
@@ -2100,6 +2133,7 @@ module Google
           @cloud_data_lineage_integration = args[:cloud_data_lineage_integration] if args.key?(:cloud_data_lineage_integration)
           @env_variables = args[:env_variables] if args.key?(:env_variables)
           @image_version = args[:image_version] if args.key?(:image_version)
+          @image_version_rollback_targets = args[:image_version_rollback_targets] if args.key?(:image_version_rollback_targets)
           @pypi_packages = args[:pypi_packages] if args.key?(:pypi_packages)
           @python_version = args[:python_version] if args.key?(:python_version)
           @scheduler_count = args[:scheduler_count] if args.key?(:scheduler_count)
