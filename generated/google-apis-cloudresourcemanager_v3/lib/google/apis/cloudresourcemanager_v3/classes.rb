@@ -472,6 +472,32 @@ module Google
         end
       end
       
+      # Metadata for the `CreateSemanticTagBinding` long-running operation.
+      class CreateSemanticTagBindingMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Runtime operation information for creating a `SemanticTagValue`.
+      class CreateSemanticTagValueMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Runtime operation information for creating a TagValue.
       class CreateTagBindingMetadata
         include Google::Apis::Core::Hashable
@@ -570,6 +596,32 @@ module Google
       # A status object which is used as the `metadata` field for the Operation
       # returned by `DeleteProject`.
       class DeleteProjectMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Metadata for the `DeleteSemanticTagBinding` long-running operation.
+      class DeleteSemanticTagBindingMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Runtime operation information for deleting a `SemanticTagValue`.
+      class DeleteSemanticTagValueMetadata
         include Google::Apis::Core::Hashable
       
         def initialize(**args)
