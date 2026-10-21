@@ -262,12 +262,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,12 +635,6 @@ module Google
       end
       
       class RemoteAgentDetails
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ReportStatusRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1117,16 +1105,6 @@ module Google
       class GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
-          property :resource_info, as: 'resourceInfo', class: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo, decorator: Google::Apis::BeyondcorpV1alpha::GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo::Representation
-      
-          property :validate_only, as: 'validateOnly'
         end
       end
       
@@ -1747,16 +1725,6 @@ module Google
       class RemoteAgentDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ReportStatusRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :request_id, as: 'requestId'
-          property :resource_info, as: 'resourceInfo', class: Google::Apis::BeyondcorpV1alpha::ResourceInfo, decorator: Google::Apis::BeyondcorpV1alpha::ResourceInfo::Representation
-      
-          property :validate_only, as: 'validateOnly'
         end
       end
       
