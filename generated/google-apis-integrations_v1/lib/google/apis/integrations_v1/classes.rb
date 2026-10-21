@@ -741,7 +741,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # LINT.IfChange Use this request to post all workflows associated with a given
-        # trigger id. Next available id: 13
+        # trigger id. Next available id: 14
         # Corresponds to the JSON property `postToQueueWithTriggerIdRequest`
         # @return [Google::Apis::IntegrationsV1::GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest]
         attr_accessor :post_to_queue_with_trigger_id_request
@@ -9052,6 +9052,13 @@ module Google
         # @return [Array<Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaErrorCatcherConfig>]
         attr_accessor :error_catcher_configs
       
+        # Output only. The EUC hardening disposition of this version. Set by the service
+        # when the integration is first created and inherited unchanged by every later
+        # version, so all versions of an integration report the same value.
+        # Corresponds to the JSON property `eucHardeningDisposition`
+        # @return [String]
+        attr_accessor :euc_hardening_disposition
+      
         # Optional. Config Parameters that are expected to be passed to the integration
         # when an integration is published. This consists of all the parameters that are
         # expected to provide configuration in the integration execution. This gives the
@@ -9189,6 +9196,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @enable_variable_masking = args[:enable_variable_masking] if args.key?(:enable_variable_masking)
           @error_catcher_configs = args[:error_catcher_configs] if args.key?(:error_catcher_configs)
+          @euc_hardening_disposition = args[:euc_hardening_disposition] if args.key?(:euc_hardening_disposition)
           @integration_config_parameters = args[:integration_config_parameters] if args.key?(:integration_config_parameters)
           @integration_parameters = args[:integration_parameters] if args.key?(:integration_parameters)
           @integration_parameters_internal = args[:integration_parameters_internal] if args.key?(:integration_parameters_internal)
@@ -11613,12 +11621,16 @@ module Google
         # Pub/Sub, Salesforce or connector fire would be. That is the only way to verify
         # the credential path an asynchronous trigger actually takes; a synchronous test
         # always carries the caller's own credential and so exercises the opposite
-        # branch. When `true`: * Only the **published** (`ACTIVE`) version runs. The
-        # asynchronous path resolves the integration from storage by `trigger_id`, so a
-        # draft cannot be tested this way. `integration_version` must therefore carry
-        # only `name`; supplying any other field is rejected, rather than silently
-        # running something other than what was passed. * The response carries `
-        # execution_id` only. `execution_failed`, `event_parameters`, `parameters` and `
+        # branch. When `true`: * The version named by `integration_version.name` runs. A
+        # name ending in `/versions/`version`` runs that exact version, published or
+        # draft; a name without one runs the published (`ACTIVE`) version on the trigger.
+        # Either way the integration is resolved from storage, so `integration_version`
+        # must carry only `name`; supplying any other field is rejected, rather than
+        # silently running something other than what was passed. * A draft is validated
+        # before it is enqueued, including the check that the caller may act as the
+        # integration's run-as service account. Testing a draft therefore fails fast on
+        # a configuration a publish would reject. * The response carries `execution_id`
+        # only. `execution_failed`, `event_parameters`, `parameters` and `
         # parameter_entries` describe a finished run and are left unset, because nothing
         # has run yet. In particular, do not read `execution_failed` as a pass signal. *
         # The run is real, with real side effects, quota and concurrency. No actual Pub/
@@ -11639,6 +11651,17 @@ module Google
         # Corresponds to the JSON property `configParameters`
         # @return [Hash<String,Object>]
         attr_accessor :config_parameters
+      
+        # Optional. The credential flow to run the test under. Applies to synchronous
+        # tests only. When unset, the default depends on when the test runs: before the
+        # EUC hardening cutover it is `CREDENTIAL_MODE_CURRENT`; from the cutover on it
+        # is `CREDENTIAL_MODE_HARDENED`, whatever the integration's stored disposition.
+        # Where the hardened flow cannot be evaluated, an unset mode runs `
+        # CREDENTIAL_MODE_CURRENT` instead of failing. The response's `credential_mode`
+        # reports the mode that ran.
+        # Corresponds to the JSON property `credentialMode`
+        # @return [String]
+        attr_accessor :credential_mode
       
         # Optional. custom deadline of the rpc
         # Corresponds to the JSON property `deadlineSecondsTime`
@@ -11688,6 +11711,7 @@ module Google
           @async_execution = args[:async_execution] if args.key?(:async_execution)
           @client_id = args[:client_id] if args.key?(:client_id)
           @config_parameters = args[:config_parameters] if args.key?(:config_parameters)
+          @credential_mode = args[:credential_mode] if args.key?(:credential_mode)
           @deadline_seconds_time = args[:deadline_seconds_time] if args.key?(:deadline_seconds_time)
           @input_parameters = args[:input_parameters] if args.key?(:input_parameters)
           @integration_version = args[:integration_version] if args.key?(:integration_version)
@@ -11700,6 +11724,17 @@ module Google
       # The response for testing an integration.
       class GoogleCloudIntegrationsV1alphaTestIntegrationsResponse
         include Google::Apis::Core::Hashable
+      
+        # The credential flow the test ran under. Unset for asynchronous tests.
+        # Corresponds to the JSON property `credentialMode`
+        # @return [String]
+        attr_accessor :credential_mode
+      
+        # The EUC hardening disposition stored for the tested integration, read before
+        # the run. Unset for asynchronous tests.
+        # Corresponds to the JSON property `eucHardeningDisposition`
+        # @return [String]
+        attr_accessor :euc_hardening_disposition
       
         # LINT.IfChange This message is used for processing and persisting (when
         # applicable) key value pair parameters for each event in the event bus. Please
@@ -11719,6 +11754,23 @@ module Google
         # @return [String]
         attr_accessor :execution_id
       
+        # The credential paths the hardened flow covers for this test: each one that a
+        # task in the tested integration reaches and that the server running the test
+        # hardens, whatever the credential mode. A `CREDENTIAL_MODE_CURRENT` test of an
+        # integration not stored as hardened usually lists none, and a `
+        # CREDENTIAL_MODE_HARDENED` response with no paths means nothing in this
+        # integration was hardened. Empty where the hardened flow is switched off. Unset
+        # for asynchronous tests. Derived from the integration's task types before the
+        # run: it reports presence in the graph, not execution, so a task on a branch
+        # that did not run is still counted, as is a Call Integration task that runs as
+        # a configured service account. A sub-integration's own tasks are not included;
+        # each runs under its own stored disposition. Integration Connectors tasks and
+        # Cloud Scheduler triggers are never reported: the services they call do not yet
+        # accept the hardened credential.
+        # Corresponds to the JSON property `hardenedPaths`
+        # @return [Array<String>]
+        attr_accessor :hardened_paths
+      
         # Parameters are a part of Event and can be used to communicate between
         # different tasks that are part of the same integration execution.
         # Corresponds to the JSON property `parameterEntries`
@@ -11737,9 +11789,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @credential_mode = args[:credential_mode] if args.key?(:credential_mode)
+          @euc_hardening_disposition = args[:euc_hardening_disposition] if args.key?(:euc_hardening_disposition)
           @event_parameters = args[:event_parameters] if args.key?(:event_parameters)
           @execution_failed = args[:execution_failed] if args.key?(:execution_failed)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @hardened_paths = args[:hardened_paths] if args.key?(:hardened_paths)
           @parameter_entries = args[:parameter_entries] if args.key?(:parameter_entries)
           @parameters = args[:parameters] if args.key?(:parameters)
         end
@@ -12296,7 +12351,7 @@ module Google
       end
       
       # LINT.IfChange Use this request to post all workflows associated with a given
-      # trigger id. Next available id: 13
+      # trigger id. Next available id: 14
       class GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
         include Google::Apis::Core::Hashable
       
@@ -12379,6 +12434,14 @@ module Google
         # @return [String]
         attr_accessor :user_generated_execution_id
       
+        # Optional. Pins the enqueue to this exact version. Requires client_id, and only
+        # an ACTIVE version is accepted: the drain re-resolves by trigger id, so nothing
+        # else could run. Unset by every caller today; draft support is b/570602030. See
+        # integrationplatform/api/executionsservice/README.md.
+        # Corresponds to the JSON property `workflowId`
+        # @return [String]
+        attr_accessor :workflow_id
+      
         # Optional. If provided, the workflow_name is used to filter all the matched
         # workflows having same trigger_id+client_id. A combination of trigger_id,
         # client_id and workflow_name identifies a unique workflow.
@@ -12403,6 +12466,7 @@ module Google
           @test_mode = args[:test_mode] if args.key?(:test_mode)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
           @user_generated_execution_id = args[:user_generated_execution_id] if args.key?(:user_generated_execution_id)
+          @workflow_id = args[:workflow_id] if args.key?(:workflow_id)
           @workflow_name = args[:workflow_name] if args.key?(:workflow_name)
         end
       end

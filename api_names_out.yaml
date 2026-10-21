@@ -331706,6 +331706,7 @@
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/enableVariableMasking": enable_variable_masking
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/errorCatcherConfigs": error_catcher_configs
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/errorCatcherConfigs/error_catcher_config": error_catcher_config
+"/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/eucHardeningDisposition": euc_hardening_disposition
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/integrationConfigParameters": integration_config_parameters
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/integrationConfigParameters/integration_config_parameter": integration_config_parameter
 "/integrations:v1/GoogleCloudIntegrationsV1alphaIntegrationVersion/integrationParameters": integration_parameters
@@ -332113,6 +332114,7 @@
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/clientId": client_id
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/configParameters": config_parameters
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/configParameters/config_parameter": config_parameter
+"/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/credentialMode": credential_mode
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/deadlineSecondsTime": deadline_seconds_time
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/inputParameters": input_parameters
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/inputParameters/input_parameter": input_parameter
@@ -332121,9 +332123,13 @@
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/testMode": test_mode
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsRequest/triggerId": trigger_id
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse": google_cloud_integrations_v1alpha_test_integrations_response
+"/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/credentialMode": credential_mode
+"/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/eucHardeningDisposition": euc_hardening_disposition
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/eventParameters": event_parameters
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/executionFailed": execution_failed
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/executionId": execution_id
+"/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/hardenedPaths": hardened_paths
+"/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/hardenedPaths/hardened_path": hardened_path
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/parameterEntries": parameter_entries
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/parameterEntries/parameter_entry": parameter_entry
 "/integrations:v1/GoogleCloudIntegrationsV1alphaTestIntegrationsResponse/parameters": parameters
@@ -332221,6 +332227,7 @@
 "/integrations:v1/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/testMode": test_mode
 "/integrations:v1/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/triggerId": trigger_id
 "/integrations:v1/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/userGeneratedExecutionId": user_generated_execution_id
+"/integrations:v1/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/workflowId": workflow_id
 "/integrations:v1/GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest/workflowName": workflow_name
 "/integrations:v1/GoogleProtobufEmpty": google_protobuf_empty
 "/integrations:v1/GoogleProtobufStruct": google_protobuf_struct
