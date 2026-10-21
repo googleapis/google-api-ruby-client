@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsCloudbuildV1BuildResourceUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsCloudbuildV1BuildStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1436,6 +1442,7 @@ module Google
           property :pool, as: 'pool', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1PoolOption::Representation
       
           property :pubsub_topic, as: 'pubsubTopic'
+          collection :ranked_machine_series, as: 'rankedMachineSeries'
           property :requested_verify_option, as: 'requestedVerifyOption'
           property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
@@ -1445,6 +1452,17 @@ module Google
       
           property :worker_pool, as: 'workerPool'
           property :worker_release, as: 'workerRelease'
+        end
+      end
+      
+      class GoogleDevtoolsCloudbuildV1BuildResourceUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_cpu_utilization, as: 'averageCpuUtilization'
+          property :average_memory_utilization, as: 'averageMemoryUtilization'
+          property :peak_cpu_utilization, as: 'peakCpuUtilization'
+          property :peak_memory_utilization, as: 'peakMemoryUtilization'
+          property :total_cpu_duration, as: 'totalCpuDuration'
         end
       end
       
@@ -1712,6 +1730,8 @@ module Google
       
           property :num_artifacts, :numeric_string => true, as: 'numArtifacts'
           collection :python_packages, as: 'pythonPackages', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedPythonPackage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1UploadedPythonPackage::Representation
+      
+          property :resource_usage, as: 'resourceUsage', class: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildResourceUsage, decorator: Google::Apis::RunV1::GoogleDevtoolsCloudbuildV1BuildResourceUsage::Representation
       
         end
       end

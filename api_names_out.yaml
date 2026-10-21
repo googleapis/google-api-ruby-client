@@ -395323,6 +395323,8 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/machineType": machine_type
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/pool": pool
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/pubsubTopic": pubsub_topic
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/rankedMachineSeries": ranked_machine_series
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/rankedMachineSeries/ranked_machine_series": ranked_machine_series
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/requestedVerifyOption": requested_verify_option
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/resolvedWorkerRelease": resolved_worker_release
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/secretEnv": secret_env
@@ -395334,6 +395336,12 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/volumes/volume": volume
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/workerPool": worker_pool
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildOptions/workerRelease": worker_release
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage": google_devtools_cloudbuild_v1_build_resource_usage
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage/averageCpuUtilization": average_cpu_utilization
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage/averageMemoryUtilization": average_memory_utilization
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage/peakCpuUtilization": peak_cpu_utilization
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage/peakMemoryUtilization": peak_memory_utilization
+"/run:v1/GoogleDevtoolsCloudbuildV1BuildResourceUsage/totalCpuDuration": total_cpu_duration
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep": google_devtools_cloudbuild_v1_build_step
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes": allow_exit_codes
 "/run:v1/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes/allow_exit_code": allow_exit_code
@@ -395486,6 +395494,7 @@
 "/run:v1/GoogleDevtoolsCloudbuildV1Results/numArtifacts": num_artifacts
 "/run:v1/GoogleDevtoolsCloudbuildV1Results/pythonPackages": python_packages
 "/run:v1/GoogleDevtoolsCloudbuildV1Results/pythonPackages/python_package": python_package
+"/run:v1/GoogleDevtoolsCloudbuildV1Results/resourceUsage": resource_usage
 "/run:v1/GoogleDevtoolsCloudbuildV1Secret": google_devtools_cloudbuild_v1_secret
 "/run:v1/GoogleDevtoolsCloudbuildV1Secret/kmsKeyName": kms_key_name
 "/run:v1/GoogleDevtoolsCloudbuildV1Secret/secretEnv": secret_env
