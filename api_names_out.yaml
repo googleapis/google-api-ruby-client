@@ -397481,6 +397481,9 @@
 "/run:v2/GoogleCloudRunOpV2VpcAccess": google_cloud_run_op_v2_vpc_access
 "/run:v2/GoogleCloudRunOpV2VpcAccess/connector": connector
 "/run:v2/GoogleCloudRunOpV2VpcAccess/egress": egress
+"/run:v2/GoogleCloudRunV2AmbientNetworking": google_cloud_run_v2_ambient_networking
+"/run:v2/GoogleCloudRunV2AmbientNetworking/ambientScope": ambient_scope
+"/run:v2/GoogleCloudRunV2AmbientNetworking/enabled": enabled
 "/run:v2/GoogleCloudRunV2BinaryAuthorization": google_cloud_run_v2_binary_authorization
 "/run:v2/GoogleCloudRunV2BinaryAuthorization/breakglassJustification": breakglass_justification
 "/run:v2/GoogleCloudRunV2BinaryAuthorization/policy": policy
@@ -397823,6 +397826,7 @@
 "/run:v2/GoogleCloudRunV2ResourceRequirements/limits/limit": limit
 "/run:v2/GoogleCloudRunV2ResourceRequirements/startupCpuBoost": startup_cpu_boost
 "/run:v2/GoogleCloudRunV2Revision": google_cloud_run_v2_revision
+"/run:v2/GoogleCloudRunV2Revision/ambientNetworking": ambient_networking
 "/run:v2/GoogleCloudRunV2Revision/annotations": annotations
 "/run:v2/GoogleCloudRunV2Revision/annotations/annotation": annotation
 "/run:v2/GoogleCloudRunV2Revision/client": client
@@ -397876,6 +397880,7 @@
 "/run:v2/GoogleCloudRunV2RevisionScalingStatus": google_cloud_run_v2_revision_scaling_status
 "/run:v2/GoogleCloudRunV2RevisionScalingStatus/desiredMinInstanceCount": desired_min_instance_count
 "/run:v2/GoogleCloudRunV2RevisionTemplate": google_cloud_run_v2_revision_template
+"/run:v2/GoogleCloudRunV2RevisionTemplate/ambientNetworking": ambient_networking
 "/run:v2/GoogleCloudRunV2RevisionTemplate/annotations": annotations
 "/run:v2/GoogleCloudRunV2RevisionTemplate/annotations/annotation": annotation
 "/run:v2/GoogleCloudRunV2RevisionTemplate/client": client
@@ -398263,6 +398268,8 @@
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/machineType": machine_type
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/pool": pool
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/pubsubTopic": pubsub_topic
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/rankedMachineSeries": ranked_machine_series
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/rankedMachineSeries/ranked_machine_series": ranked_machine_series
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/requestedVerifyOption": requested_verify_option
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/resolvedWorkerRelease": resolved_worker_release
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/secretEnv": secret_env
@@ -398274,6 +398281,12 @@
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/volumes/volume": volume
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/workerPool": worker_pool
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildOptions/workerRelease": worker_release
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage": google_devtools_cloudbuild_v1_build_resource_usage
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage/averageCpuUtilization": average_cpu_utilization
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage/averageMemoryUtilization": average_memory_utilization
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage/peakCpuUtilization": peak_cpu_utilization
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage/peakMemoryUtilization": peak_memory_utilization
+"/run:v2/GoogleDevtoolsCloudbuildV1BuildResourceUsage/totalCpuDuration": total_cpu_duration
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildStep": google_devtools_cloudbuild_v1_build_step
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes": allow_exit_codes
 "/run:v2/GoogleDevtoolsCloudbuildV1BuildStep/allowExitCodes/allow_exit_code": allow_exit_code
@@ -398426,6 +398439,7 @@
 "/run:v2/GoogleDevtoolsCloudbuildV1Results/numArtifacts": num_artifacts
 "/run:v2/GoogleDevtoolsCloudbuildV1Results/pythonPackages": python_packages
 "/run:v2/GoogleDevtoolsCloudbuildV1Results/pythonPackages/python_package": python_package
+"/run:v2/GoogleDevtoolsCloudbuildV1Results/resourceUsage": resource_usage
 "/run:v2/GoogleDevtoolsCloudbuildV1Secret": google_devtools_cloudbuild_v1_secret
 "/run:v2/GoogleDevtoolsCloudbuildV1Secret/kmsKeyName": kms_key_name
 "/run:v2/GoogleDevtoolsCloudbuildV1Secret/secretEnv": secret_env
