@@ -98,8 +98,7 @@ module Google
         end
       end
       
-      # Inserts a reply Post into a CommentThread. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Inserts a reply Post into a CommentThread.
       class AddCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -108,8 +107,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::SheetsV4::Post]
         attr_accessor :post
@@ -125,13 +123,11 @@ module Google
         end
       end
       
-      # The result of creating a reply. [Developer Preview](https://developers.google.
-      # com/workspace/preview).
+      # The result of creating a reply.
       class AddCommentReplyResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `post`
         # @return [Google::Apis::SheetsV4::Post]
         attr_accessor :post
@@ -1799,8 +1795,7 @@ module Google
         # The comments view mode to apply to the spreadsheet. This allows viewing the
         # spreadsheet with comments omitted or included. If one is not specified,
         # COMMENTS_VIEW_MODE_OMITTED is used. Meaningful only if
-        # include_spreadsheet_in_response is 'true'. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # include_spreadsheet_in_response is 'true'.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -1850,8 +1845,7 @@ module Google
       class BatchUpdateSpreadsheetResponse
         include Google::Apis::Core::Hashable
       
-        # Whether comment updates were applied in the batch request. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Whether comment updates were applied in the batch request.
         # Corresponds to the JSON property `commentUpdateState`
         # @return [String]
         attr_accessor :comment_update_state
@@ -3631,8 +3625,7 @@ module Google
       end
       
       # A location in the spreadsheet that is tied to a CommentThread with the same
-      # anchorId. Note: Multiple anchors may refer to the same location. [Developer
-      # Preview](https://developers.google.com/workspace/preview).
+      # anchorId. Note: Multiple anchors may refer to the same location.
       class CommentAnchor
         include Google::Apis::Core::Hashable
       
@@ -3669,8 +3662,7 @@ module Google
         end
       end
       
-      # Represents a single comment thread inside a spreadsheet. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # Represents a single comment thread inside a spreadsheet.
       class CommentThread
         include Google::Apis::Core::Hashable
       
@@ -3684,8 +3676,7 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Represents a single post in a comment thread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a single post in a comment thread.
         # Corresponds to the JSON property `headPost`
         # @return [Google::Apis::SheetsV4::Post]
         attr_accessor :head_post
@@ -4790,8 +4781,7 @@ module Google
       
       # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
       # - The requesting user is not the author of the post. - The reply post contains
-      # a comment action. - The reply post contains an assignee. [Developer Preview](
-      # https://developers.google.com/workspace/preview).
+      # a comment action. - The reply post contains an assignee.
       class DeleteCommentReplyRequest
         include Google::Apis::Core::Hashable
       
@@ -4817,8 +4807,7 @@ module Google
       end
       
       # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-      # user is not the author of the headPost. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # user is not the author of the headPost.
       class DeleteCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -6265,8 +6254,7 @@ module Google
       
         # The comments view mode to apply to the spreadsheet. This allows viewing the
         # spreadsheet with comments omitted or included. If one is not specified,
-        # COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # COMMENTS_VIEW_MODE_OMITTED is used.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -6710,8 +6698,7 @@ module Google
         end
       end
       
-      # Inserts a CommentThread into the spreadsheet. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Inserts a CommentThread into the spreadsheet.
       class InsertCommentRequest
         include Google::Apis::Core::Hashable
       
@@ -6746,13 +6733,11 @@ module Google
         end
       end
       
-      # The result of creating a comment. [Developer Preview](https://developers.
-      # google.com/workspace/preview).
+      # The result of creating a comment.
       class InsertCommentResponse
         include Google::Apis::Core::Hashable
       
-        # Represents a single comment thread inside a spreadsheet. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # Represents a single comment thread inside a spreadsheet.
         # Corresponds to the JSON property `commentThread`
         # @return [Google::Apis::SheetsV4::CommentThread]
         attr_accessor :comment_thread
@@ -8200,8 +8185,7 @@ module Google
         end
       end
       
-      # Represents a single post in a comment thread. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Represents a single post in a comment thread.
       class Post
         include Google::Apis::Core::Hashable
       
@@ -8214,8 +8198,7 @@ module Google
         # @return [String]
         attr_accessor :assignee_email
       
-        # Represents a user who authored a comment post. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Represents a user who authored a comment post.
         # Corresponds to the JSON property `author`
         # @return [Google::Apis::SheetsV4::PostAuthor]
         attr_accessor :author
@@ -8294,8 +8277,7 @@ module Google
         end
       end
       
-      # Represents a user who authored a comment post. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # Represents a user who authored a comment post.
       class PostAuthor
         include Google::Apis::Core::Hashable
       
@@ -8652,8 +8634,7 @@ module Google
         # @return [Google::Apis::SheetsV4::AddChartRequest]
         attr_accessor :add_chart
       
-        # Inserts a reply Post into a CommentThread. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Inserts a reply Post into a CommentThread.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::SheetsV4::AddCommentReplyRequest]
         attr_accessor :add_comment_reply
@@ -8778,16 +8759,14 @@ module Google
         attr_accessor :delete_banding
       
         # Deletes a CommentThread. Returns a 400 bad request error if the requesting
-        # user is not the author of the headPost. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # user is not the author of the headPost.
         # Corresponds to the JSON property `deleteComment`
         # @return [Google::Apis::SheetsV4::DeleteCommentRequest]
         attr_accessor :delete_comment
       
         # Deletes a reply Post from a CommentThread. Returns a 400 bad request error if:
         # - The requesting user is not the author of the post. - The reply post contains
-        # a comment action. - The reply post contains an assignee. [Developer Preview](
-        # https://developers.google.com/workspace/preview).
+        # a comment action. - The reply post contains an assignee.
         # Corresponds to the JSON property `deleteCommentReply`
         # @return [Google::Apis::SheetsV4::DeleteCommentReplyRequest]
         attr_accessor :delete_comment_reply
@@ -8884,8 +8863,7 @@ module Google
         # @return [Google::Apis::SheetsV4::FindReplaceRequest]
         attr_accessor :find_replace
       
-        # Inserts a CommentThread into the spreadsheet. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # Inserts a CommentThread into the spreadsheet.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::SheetsV4::InsertCommentRequest]
         attr_accessor :insert_comment
@@ -9006,8 +8984,7 @@ module Google
         attr_accessor :update_chart_spec
       
         # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
-        # requesting user is not the author of the post. [Developer Preview](https://
-        # developers.google.com/workspace/preview).
+        # requesting user is not the author of the post.
         # Corresponds to the JSON property `updateCommentPost`
         # @return [Google::Apis::SheetsV4::UpdateCommentPostRequest]
         attr_accessor :update_comment_post
@@ -9189,8 +9166,7 @@ module Google
         # @return [Google::Apis::SheetsV4::AddChartResponse]
         attr_accessor :add_chart
       
-        # The result of creating a reply. [Developer Preview](https://developers.google.
-        # com/workspace/preview).
+        # The result of creating a reply.
         # Corresponds to the JSON property `addCommentReply`
         # @return [Google::Apis::SheetsV4::AddCommentReplyResponse]
         attr_accessor :add_comment_reply
@@ -9280,8 +9256,7 @@ module Google
         # @return [Google::Apis::SheetsV4::FindReplaceResponse]
         attr_accessor :find_replace
       
-        # The result of creating a comment. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # The result of creating a comment.
         # Corresponds to the JSON property `insertComment`
         # @return [Google::Apis::SheetsV4::InsertCommentResponse]
         attr_accessor :insert_comment
@@ -9605,8 +9580,7 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
         attr_accessor :column_groups
       
-        # The comment anchors on this sheet. [Developer Preview](https://developers.
-        # google.com/workspace/preview).
+        # The comment anchors on this sheet.
         # Corresponds to the JSON property `commentAnchors`
         # @return [Array<Google::Apis::SheetsV4::CommentAnchor>]
         attr_accessor :comment_anchors
@@ -10208,14 +10182,12 @@ module Google
       class Spreadsheet
         include Google::Apis::Core::Hashable
       
-        # The comment threads associated with the spreadsheet. [Developer Preview](https:
-        # //developers.google.com/workspace/preview).
+        # The comment threads associated with the spreadsheet.
         # Corresponds to the JSON property `comments`
         # @return [Array<Google::Apis::SheetsV4::CommentThread>]
         attr_accessor :comments
       
-        # Output only. The comments view mode applied to the spreadsheet. [Developer
-        # Preview](https://developers.google.com/workspace/preview).
+        # Output only. The comments view mode applied to the spreadsheet.
         # Corresponds to the JSON property `commentsViewMode`
         # @return [String]
         attr_accessor :comments_view_mode
@@ -11482,8 +11454,7 @@ module Google
       end
       
       # Updates a Post in a CommentThread. Returns a 400 bad request error if: - The
-      # requesting user is not the author of the post. [Developer Preview](https://
-      # developers.google.com/workspace/preview).
+      # requesting user is not the author of the post.
       class UpdateCommentPostRequest
         include Google::Apis::Core::Hashable
       

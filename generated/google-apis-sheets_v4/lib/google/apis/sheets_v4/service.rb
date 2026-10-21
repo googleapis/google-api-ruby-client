@@ -145,8 +145,7 @@ module Google
         # @param [String] comments_view_mode
         #   The comments view mode to apply to the spreadsheet. This allows viewing the
         #   spreadsheet with comments omitted or included. If one is not specified,
-        #   COMMENTS_VIEW_MODE_OMITTED is used. [Developer Preview](https://developers.
-        #   google.com/workspace/preview).
+        #   COMMENTS_VIEW_MODE_OMITTED is used.
         # @param [Boolean] exclude_tables_in_banded_ranges
         #   True if tables should be excluded in the banded ranges. False if not set.
         # @param [Boolean] include_grid_data
