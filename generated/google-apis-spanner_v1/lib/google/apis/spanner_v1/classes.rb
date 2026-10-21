@@ -3403,6 +3403,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Optional. Tag keys/values directly bound to this resource. For example: "123/
+        # environment": "prod", "123/costCenter": "marketing"
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
         # Output only. The time at which the instance was most recently updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -3429,6 +3435,7 @@ module Google
           @processing_units = args[:processing_units] if args.key?(:processing_units)
           @replica_compute_capacity = args[:replica_compute_capacity] if args.key?(:replica_compute_capacity)
           @state = args[:state] if args.key?(:state)
+          @tags = args[:tags] if args.key?(:tags)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
