@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpGraphql
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -525,6 +531,15 @@ module Google
         end
       end
       
+      class HttpBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_type, as: 'contentType'
+          property :data, :base64 => true, as: 'data'
+          collection :extensions, as: 'extensions'
+        end
+      end
+      
       class HttpGraphql
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -708,12 +723,16 @@ module Google
           property :create_time, as: 'createTime'
           property :display_name, as: 'displayName'
           property :etag, as: 'etag'
+          property :graphql_source, as: 'graphqlSource', class: Google::Apis::FirebasedataconnectV1::Source, decorator: Google::Apis::FirebasedataconnectV1::Source::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :reconciling, as: 'reconciling'
           collection :schemas, as: 'schemas', class: Google::Apis::FirebasedataconnectV1::Schema, decorator: Google::Apis::FirebasedataconnectV1::Schema::Representation
       
           property :source, as: 'source', class: Google::Apis::FirebasedataconnectV1::Source, decorator: Google::Apis::FirebasedataconnectV1::Source::Representation
+      
+          property :sql_source, as: 'sqlSource', class: Google::Apis::FirebasedataconnectV1::Source, decorator: Google::Apis::FirebasedataconnectV1::Source::Representation
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
