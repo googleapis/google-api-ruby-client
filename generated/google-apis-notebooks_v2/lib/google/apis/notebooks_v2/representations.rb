@@ -636,6 +636,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_configs, as: 'accessConfigs', class: Google::Apis::NotebooksV2::AccessConfig, decorator: Google::Apis::NotebooksV2::AccessConfig::Representation
       
+          property :internal_ip, as: 'internalIp'
           property :network, as: 'network'
           property :nic_type, as: 'nicType'
           property :subnet, as: 'subnet'
@@ -838,6 +839,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family, as: 'family'
           property :image_description, as: 'imageDescription'
+          property :image_id, as: 'imageId'
           property :name, as: 'name'
           property :project, as: 'project'
         end

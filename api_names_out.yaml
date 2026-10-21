@@ -367395,6 +367395,7 @@
 "/notebooks:v2/NetworkInterface": network_interface
 "/notebooks:v2/NetworkInterface/accessConfigs": access_configs
 "/notebooks:v2/NetworkInterface/accessConfigs/access_config": access_config
+"/notebooks:v2/NetworkInterface/internalIp": internal_ip
 "/notebooks:v2/NetworkInterface/network": network
 "/notebooks:v2/NetworkInterface/nicType": nic_type
 "/notebooks:v2/NetworkInterface/subnet": subnet
@@ -367486,6 +367487,7 @@
 "/notebooks:v2/VmImage": vm_image
 "/notebooks:v2/VmImage/family": family
 "/notebooks:v2/VmImage/imageDescription": image_description
+"/notebooks:v2/VmImage/imageId": image_id
 "/notebooks:v2/VmImage/name": name
 "/notebooks:v2/VmImage/project": project
 "/notebooks:v2/fields": fields
