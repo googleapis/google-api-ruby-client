@@ -1719,6 +1719,7 @@ module Google
           property :test_mode, as: 'testMode'
           property :trigger_id, as: 'triggerId'
           property :user_generated_execution_id, as: 'userGeneratedExecutionId'
+          property :workflow_id, as: 'workflowId'
           property :workflow_name, as: 'workflowName'
         end
       end
