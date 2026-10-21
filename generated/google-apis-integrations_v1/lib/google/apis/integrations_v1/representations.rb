@@ -4386,6 +4386,7 @@ module Google
           property :enable_variable_masking, as: 'enableVariableMasking'
           collection :error_catcher_configs, as: 'errorCatcherConfigs', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaErrorCatcherConfig, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaErrorCatcherConfig::Representation
       
+          property :euc_hardening_disposition, as: 'eucHardeningDisposition'
           collection :integration_config_parameters, as: 'integrationConfigParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationConfigParameter, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationConfigParameter::Representation
       
           collection :integration_parameters, as: 'integrationParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationParameter, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaIntegrationParameter::Representation
@@ -5116,6 +5117,7 @@ module Google
           property :async_execution, as: 'asyncExecution'
           property :client_id, as: 'clientId'
           hash :config_parameters, as: 'configParameters'
+          property :credential_mode, as: 'credentialMode'
           property :deadline_seconds_time, as: 'deadlineSecondsTime'
           hash :input_parameters, as: 'inputParameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
       
@@ -5131,10 +5133,13 @@ module Google
       class GoogleCloudIntegrationsV1alphaTestIntegrationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential_mode, as: 'credentialMode'
+          property :euc_hardening_disposition, as: 'eucHardeningDisposition'
           property :event_parameters, as: 'eventParameters', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventParameters, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoEventParameters::Representation
       
           property :execution_failed, as: 'executionFailed'
           property :execution_id, as: 'executionId'
+          collection :hardened_paths, as: 'hardenedPaths'
           collection :parameter_entries, as: 'parameterEntries', class: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry, decorator: Google::Apis::IntegrationsV1::EnterpriseCrmFrontendsEventbusProtoParameterEntry::Representation
       
           hash :parameters, as: 'parameters', class: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType, decorator: Google::Apis::IntegrationsV1::GoogleCloudIntegrationsV1alphaValueType::Representation
@@ -5329,6 +5334,7 @@ module Google
           property :test_mode, as: 'testMode'
           property :trigger_id, as: 'triggerId'
           property :user_generated_execution_id, as: 'userGeneratedExecutionId'
+          property :workflow_id, as: 'workflowId'
           property :workflow_name, as: 'workflowName'
         end
       end
