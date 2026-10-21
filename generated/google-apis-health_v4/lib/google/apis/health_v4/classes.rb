@@ -1115,15 +1115,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The data source family name to roll up. If empty, data points from
-        # all available data sources will be rolled up. Format: `users/me/
-        # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
+        # all available data sources will be rolled up. Format: `users/`user`/
+        # dataSourceFamilies/`data_source_family`` The ``user`` can be either the alias `
+        # me` or the authenticated user's numeric Health User ID, retrieved via
+        # GetIdentity (e.g. `users/me/dataSourceFamilies/...` or `users/1234567890/
+        # dataSourceFamilies/...`). The supported values are: - `users/`user`/
         # dataSourceFamilies/all-sources` - Default value. Includes data from all
-        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # available data sources. - `users/`user`/dataSourceFamilies/google-wearables` -
         # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
-        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # and Pixel Watch). Excludes manually logged data. - `users/`user`/
         # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
-        # data from tracker devices, manually logged data, and Health Connect. - `users/
-        # me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        # data from tracker devices, manually logged data, and Health Connect. - `users/`
+        # user`/dataSourceFamilies/self-sources` - Includes only the data the calling
         # client wrote through this API, that is, data points whose data source was
         # registered through this API with the same OAuth client ID as the caller.
         # Callers that were only granted write scopes for the requested data type may
@@ -1136,13 +1139,13 @@ module Google
         attr_accessor :data_source_family
       
         # Optional. The maximum number of data points to return. If unspecified, at most
-        # 1440 data points will be returned. The maximum page size is 10000; values
-        # above that will be truncated accordingly.
+        # 90 data points will be returned. The maximum page size is 10000; values above
+        # that will be truncated accordingly.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional. The `next_page_token` from a previous request, if any. All other
+        # Optional. The next_page_token from a previous request, if any. All other
         # request fields need to be the same as in the initial request when the page
         # token is specified.
         # Corresponds to the JSON property `pageToken`
@@ -1181,6 +1184,12 @@ module Google
       class DailyRollUpDataPointsResponse
         include Google::Apis::Core::Hashable
       
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # Values for each aggregation time window.
         # Corresponds to the JSON property `rollupDataPoints`
         # @return [Array<Google::Apis::HealthV4::DailyRollupDataPoint>]
@@ -1192,6 +1201,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @rollup_data_points = args[:rollup_data_points] if args.key?(:rollup_data_points)
         end
       end
@@ -1654,14 +1664,16 @@ module Google
         # Identifier. Data point name, only supported for the subset of identifiable
         # data types. For the majority of the data types, individual data points do not
         # need to be identified and this field would be empty. Format: `users/`user`/
-        # dataTypes/`data_type`/dataPoints/`data_point`` Example: `users/abcd1234/
-        # dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The ``user``
-        # ID is a system-generated identifier, as described in Identity.health_user_id.
-        # The ``data_type`` ID corresponds to the kebab-case version of the field names
-        # in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate`
-        # field. The ``data_point`` ID can be client-provided or system-generated. If
-        # client-provided, it must be a string of 4-63 characters, containing only
-        # lowercase letters, numbers, and hyphens.
+        # dataTypes/`data_type`/dataPoints/`data_point`` ## Examples: ## `users/me/
+        # dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` `users/
+        # 1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+        # The ``user`` can be either the alias `me` or the authenticated user's numeric
+        # Health User ID, which can be retrieved by calling GetIdentity (see Identity.
+        # health_user_id). The ``data_type`` ID corresponds to the kebab-case version of
+        # the field names in the DataPoint data union field, e.g. `heart-rate` for the `
+        # heart_rate` field. The ``data_point`` ID can be client-provided or system-
+        # generated. If client-provided, it must be a string of 4-63 characters,
+        # containing only lowercase letters, numbers, and hyphens.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2618,7 +2630,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identifier. The resource name of the data type. Format: `users/`user`/
-        # dataTypes/`data_type`` See DataPoint.name for examples and possible values.
+        # dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        # dataTypes/steps` The ``user`` can be either the alias `me` or the
+        # authenticated user's numeric Health User ID (retrieved via GetIdentity). See
+        # DataPoint.name for examples and possible values.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2683,7 +2698,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Identifier. The resource name of the data type. Format: `users/`user`/
-        # dataTypes/`data_type`` See DataPoint.name for examples and possible values.
+        # dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        # dataTypes/steps` The ``user`` can be either the alias `me` or the
+        # authenticated user's numeric Health User ID (retrieved via GetIdentity). See
+        # DataPoint.name for examples and possible values.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4452,14 +4470,16 @@ module Google
         # Identifier. Data point name, only supported for the subset of identifiable
         # data types. For the majority of the data types, individual data points do not
         # need to be identified and this field would be empty. Format: `users/`user`/
-        # dataTypes/`data_type`/dataPoints/`data_point`` Example: `users/abcd1234/
-        # dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The ``user``
-        # ID is a system-generated identifier, as described in Identity.health_user_id.
-        # The ``data_type`` ID corresponds to the kebab-case version of the field names
-        # in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate`
-        # field. The ``data_point`` ID can be client-provided or system-generated. If
-        # client-provided, it must be a string of 4-63 characters, containing only
-        # lowercase letters, numbers, and hyphens.
+        # dataTypes/`data_type`/dataPoints/`data_point`` ## Examples: ## `users/me/
+        # dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` `users/
+        # 1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+        # The ``user`` can be either the alias `me` or the authenticated user's numeric
+        # Health User ID, which can be retrieved by calling GetIdentity (see Identity.
+        # health_user_id). The ``data_type`` ID corresponds to the kebab-case version of
+        # the field names in the DataPoint data union field, e.g. `heart-rate` for the `
+        # heart_rate` field. The ``data_point`` ID can be client-provided or system-
+        # generated. If client-provided, it must be a string of 4-63 characters,
+        # containing only lowercase letters, numbers, and hyphens.
         # Corresponds to the JSON property `dataPointName`
         # @return [String]
         attr_accessor :data_point_name
@@ -4717,15 +4737,18 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The data source family name to roll up. If empty, data points from
-        # all available data sources will be rolled up. Format: `users/me/
-        # dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
+        # all available data sources will be rolled up. Format: `users/`user`/
+        # dataSourceFamilies/`data_source_family`` The ``user`` can be either the alias `
+        # me` or the authenticated user's numeric Health User ID, retrieved via
+        # GetIdentity (e.g. `users/me/dataSourceFamilies/...` or `users/1234567890/
+        # dataSourceFamilies/...`). The supported values are: - `users/`user`/
         # dataSourceFamilies/all-sources` - Default value. Includes data from all
-        # available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        # available data sources. - `users/`user`/dataSourceFamilies/google-wearables` -
         # Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
-        # and Pixel Watch). Excludes manually logged data. - `users/me/
+        # and Pixel Watch). Excludes manually logged data. - `users/`user`/
         # dataSourceFamilies/google-sources` - Includes first-party Google data, such as
-        # data from tracker devices, manually logged data, and Health Connect. - `users/
-        # me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        # data from tracker devices, manually logged data, and Health Connect. - `users/`
+        # user`/dataSourceFamilies/self-sources` - Includes only the data the calling
         # client wrote through this API, that is, data points whose data source was
         # registered through this API with the same OAuth client ID as the caller.
         # Callers that were only granted write scopes for the requested data type may

@@ -321714,6 +321714,7 @@
 "/health:v4/DailyRollUpDataPointsRequest/range": range
 "/health:v4/DailyRollUpDataPointsRequest/windowSizeDays": window_size_days
 "/health:v4/DailyRollUpDataPointsResponse": daily_roll_up_data_points_response
+"/health:v4/DailyRollUpDataPointsResponse/nextPageToken": next_page_token
 "/health:v4/DailyRollUpDataPointsResponse/rollupDataPoints": rollup_data_points
 "/health:v4/DailyRollUpDataPointsResponse/rollupDataPoints/rollup_data_point": rollup_data_point
 "/health:v4/DailyRollupDataPoint": daily_rollup_data_point

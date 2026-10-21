@@ -704,12 +704,15 @@ module Google
         
         # Delete a batch of identifyable data points.
         # @param [String] parent
-        #   Optional. Parent (data type) for the Data Point collection Format: `users/me/
-        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
-        #   dataTypes/-` For a list of the supported data types see the DataPoint data
-        #   union field. Deleting data points across multiple data type collections is
-        #   supported following https://aip.dev/159. If this is set, the parent of all of
-        #   the data points specified in `names` must match this field.
+        #   Optional. Parent (data type) for the Data Point collection Format: `users/`
+        #   user`/dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/
+        #   1234567890/dataTypes/steps` - `users/me/dataTypes/-` - `users/1234567890/
+        #   dataTypes/-` The ``user`` can be either the alias `me` or the authenticated
+        #   user's numeric Health User ID (retrieved via GetIdentity). For a list of the
+        #   supported data types see the DataPoint data union field. Deleting data points
+        #   across multiple data type collections is supported following https://aip.dev/
+        #   159. If this is set, the parent of all of the data points specified in `names`
+        #   must match this field.
         # @param [Google::Apis::HealthV4::BatchDeleteDataPointsRequest] batch_delete_data_points_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -743,7 +746,10 @@ module Google
         # Creates a single identifiable data point.
         # @param [String] parent
         #   Required. The parent resource name where the data point will be created.
-        #   Format: `users/`user`/dataTypes/`data_type``
+        #   Format: `users/`user`/dataTypes/`data_type``, e.g.: - `users/me/dataTypes/
+        #   steps` - `users/1234567890/dataTypes/steps` The ``user`` can be either the
+        #   alias `me` or the authenticated user's numeric Health User ID (retrieved via
+        #   GetIdentity).
         # @param [Google::Apis::HealthV4::DataPoint] data_point_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -777,9 +783,11 @@ module Google
         # Roll up data points over civil time intervals for supported data types.
         # @param [String] parent
         #   Required. Parent data type of the Data Point collection. Format: `users/`user`/
-        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
-        #   dataTypes/distance` For a list of the supported data types see the
-        #   DailyRollupDataPoint value union field.
+        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        #   dataTypes/steps` - `users/me/dataTypes/distance` - `users/1234567890/dataTypes/
+        #   distance` The ``user`` can be either the alias `me` or the authenticated user'
+        #   s numeric Health User ID (retrieved via GetIdentity). For a list of the
+        #   supported data types see the DailyRollupDataPoint value union field.
         # @param [Google::Apis::HealthV4::DailyRollUpDataPointsRequest] daily_roll_up_data_points_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -811,21 +819,25 @@ module Google
         end
         
         # Exports exercise data in TCX format. **IMPORTANT:** HTTP clients must append `?
-        # alt=media` to the request URL to download the raw TCX file. Example: `https://
-        # health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/EXERCISE_ID:
-        # exportExerciseTcx?alt=media` Without `alt=media`, the server returns a JSON
-        # response (`ExportExerciseTcxResponse`) which is intended primarily for gRPC
-        # clients. **Note:** While the Authorization section below states that any one
-        # of the listed scopes is accepted, this specific method requires the user to
-        # provide both one of the `activity_and_fitness` scopes (`normal` or `readonly`)
-        # AND one of the `location` scopes (`normal` or `readonly`) in their access
-        # token to succeed.
+        # alt=media` to the request URL to download the raw TCX file. ## Examples: ## `
+        # https://health.googleapis.com/v4/users/me/dataTypes/exercise/dataPoints/
+        # EXERCISE_ID:exportExerciseTcx?alt=media` `https://health.googleapis.com/v4/
+        # users/1234567890/dataTypes/exercise/dataPoints/EXERCISE_ID:exportExerciseTcx?
+        # alt=media` Without `alt=media`, the server returns a JSON response (`
+        # ExportExerciseTcxResponse`) which is intended primarily for gRPC clients. **
+        # Note:** While the Authorization section below states that any one of the
+        # listed scopes is accepted, this specific method requires the user to provide
+        # both one of the `activity_and_fitness` scopes (`normal` or `readonly`) AND one
+        # of the `location` scopes (`normal` or `readonly`) in their access token to
+        # succeed.
         # @param [String] name
         #   Required. The resource name of the exercise data point to export. Format: `
-        #   users/`user`/dataTypes/exercise/dataPoints/`data_point`` Example: `users/me/
-        #   dataTypes/exercise/dataPoints/2026443605080188808` The ``user`` is the alias `"
-        #   me"` currently. Future versions may support user IDs. The ``data_point`` ID
-        #   maps to the exercise ID, which is a long integer.
+        #   users/`user`/dataTypes/exercise/dataPoints/`data_point`` Examples: - `users/me/
+        #   dataTypes/exercise/dataPoints/2026443605080188808` - `users/1234567890/
+        #   dataTypes/exercise/dataPoints/2026443605080188808` The ``user`` can be either
+        #   the alias `me` or the authenticated user's numeric Health User ID (retrieved
+        #   via GetIdentity). The ``data_point`` ID maps to the exercise ID, which is a
+        #   long integer.
         # @param [Boolean] partial_data
         #   Optional. Indicates whether to include the TCX data points when the GPS data
         #   is not available. If not specified, defaults to `false` and partial data will
@@ -868,7 +880,11 @@ module Google
         # Get a single identifyable data point.
         # @param [String] name
         #   Required. The name of the data point to retrieve. Format: `users/`user`/
-        #   dataTypes/`data_type`/dataPoints/`data_point`` See DataPoint.name for examples
+        #   dataTypes/`data_type`/dataPoints/`data_point`` ## Examples: ## `users/me/
+        #   dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` `users/
+        #   1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+        #   The ``user`` can be either the alias `me` or the authenticated user's numeric
+        #   Health User ID (retrieved via GetIdentity). See DataPoint.name for examples
         #   and possible values.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -899,21 +915,26 @@ module Google
         
         # Query user health and fitness data points.
         # @param [String] parent
-        #   Required. Parent data type of the Data Point collection. Format: `users/me/
-        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
-        #   dataTypes/weight` For a list of the supported data types see the DataPoint
-        #   data union field.
+        #   Required. Parent data type of the Data Point collection. Format: `users/`user`/
+        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        #   dataTypes/steps` - `users/me/dataTypes/weight` - `users/1234567890/dataTypes/
+        #   weight` The ``user`` can be either the alias `me` or the authenticated user's
+        #   numeric Health User ID (retrieved via GetIdentity). For a list of the
+        #   supported data types see the DataPoint data union field.
         # @param [String] data_source_family
         #   Optional. The data source family name to filter by. If empty, data points from
-        #   all available data sources will be returned. Format: `users/me/
-        #   dataSourceFamilies/`data_source_family`` The supported values are: - `users/me/
+        #   all available data sources will be returned. Format: `users/`user`/
+        #   dataSourceFamilies/`data_source_family`` The ``user`` can be either the alias `
+        #   me` or the authenticated user's numeric Health User ID, retrieved via
+        #   GetIdentity (e.g. `users/me/dataSourceFamilies/...` or `users/1234567890/
+        #   dataSourceFamilies/...`). The supported values are: - `users/`user`/
         #   dataSourceFamilies/all-sources` - Default value. Includes data from all
-        #   available data sources. - `users/me/dataSourceFamilies/google-wearables` -
+        #   available data sources. - `users/`user`/dataSourceFamilies/google-wearables` -
         #   Includes data from Google and Fitbit tracker devices (such as Fitbit trackers
-        #   and Pixel Watch). Excludes manually logged data. - `users/me/
+        #   and Pixel Watch). Excludes manually logged data. - `users/`user`/
         #   dataSourceFamilies/google-sources` - Includes first-party Google data, such as
-        #   data from tracker devices, manually logged data, and Health Connect. - `users/
-        #   me/dataSourceFamilies/self-sources` - Includes only the data the calling
+        #   data from tracker devices, manually logged data, and Health Connect. - `users/`
+        #   user`/dataSourceFamilies/self-sources` - Includes only the data the calling
         #   client wrote through this API, that is, data points whose data source was
         #   registered through this API with the same OAuth client ID as the caller.
         #   Callers that were only granted write scopes for the requested data types may
@@ -1023,14 +1044,16 @@ module Google
         #   Identifier. Data point name, only supported for the subset of identifiable
         #   data types. For the majority of the data types, individual data points do not
         #   need to be identified and this field would be empty. Format: `users/`user`/
-        #   dataTypes/`data_type`/dataPoints/`data_point`` Example: `users/abcd1234/
-        #   dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The ``user``
-        #   ID is a system-generated identifier, as described in Identity.health_user_id.
-        #   The ``data_type`` ID corresponds to the kebab-case version of the field names
-        #   in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate`
-        #   field. The ``data_point`` ID can be client-provided or system-generated. If
-        #   client-provided, it must be a string of 4-63 characters, containing only
-        #   lowercase letters, numbers, and hyphens.
+        #   dataTypes/`data_type`/dataPoints/`data_point`` ## Examples: ## `users/me/
+        #   dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` `users/
+        #   1234567890/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef`
+        #   The ``user`` can be either the alias `me` or the authenticated user's numeric
+        #   Health User ID, which can be retrieved by calling GetIdentity (see Identity.
+        #   health_user_id). The ``data_type`` ID corresponds to the kebab-case version of
+        #   the field names in the DataPoint data union field, e.g. `heart-rate` for the `
+        #   heart_rate` field. The ``data_point`` ID can be client-provided or system-
+        #   generated. If client-provided, it must be a string of 4-63 characters,
+        #   containing only lowercase letters, numbers, and hyphens.
         # @param [Google::Apis::HealthV4::DataPoint] data_point_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1063,24 +1086,29 @@ module Google
         
         # Reconcile data points from multiple data sources into a single data stream.
         # @param [String] parent
-        #   Required. Parent data type of the Data Point collection. Format: `users/me/
-        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
-        #   dataTypes/heart-rate` For a list of the supported data types see the DataPoint
-        #   data union field.
+        #   Required. Parent data type of the Data Point collection. Format: `users/`user`/
+        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        #   dataTypes/steps` - `users/me/dataTypes/heart-rate` - `users/1234567890/
+        #   dataTypes/heart-rate` The ``user`` can be either the alias `me` or the
+        #   authenticated user's numeric Health User ID (retrieved via GetIdentity). For a
+        #   list of the supported data types see the DataPoint data union field.
         # @param [String] data_source_family
         #   Optional. The data source family name to reconcile. If empty, data points from
-        #   all data sources will be reconciled. Format: `users/me/dataSourceFamilies/`
-        #   data_source_family`` - `users/me/dataSourceFamilies/all-sources` - Default
-        #   value. Includes data from all available data sources. - `users/me/
+        #   all data sources will be reconciled. Format: `users/`user`/dataSourceFamilies/`
+        #   data_source_family`` The ``user`` can be either the alias `me` or the
+        #   authenticated user's numeric Health User ID, retrieved via GetIdentity (e.g. `
+        #   users/me/dataSourceFamilies/...` or `users/1234567890/dataSourceFamilies/...`).
+        #   The supported values are: - `users/`user`/dataSourceFamilies/all-sources` -
+        #   Default value. Includes data from all available data sources. - `users/`user`/
         #   dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit
         #   tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually
-        #   logged data. - `users/me/dataSourceFamilies/google-sources` - Includes first-
-        #   party Google data, such as data from tracker devices, manually logged data,
-        #   and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes
-        #   only the data the calling client wrote through this API, that is, data points
-        #   whose data source was registered through this API with the same OAuth client
-        #   ID as the caller. Callers that were only granted write scopes for the
-        #   requested data type may only read the data they wrote themselves: their
+        #   logged data. - `users/`user`/dataSourceFamilies/google-sources` - Includes
+        #   first-party Google data, such as data from tracker devices, manually logged
+        #   data, and Health Connect. - `users/`user`/dataSourceFamilies/self-sources` -
+        #   Includes only the data the calling client wrote through this API, that is,
+        #   data points whose data source was registered through this API with the same
+        #   OAuth client ID as the caller. Callers that were only granted write scopes for
+        #   the requested data type may only read the data they wrote themselves: their
         #   requests are implicitly restricted to `self-sources`, and requesting any other
         #   data source family fails with `PERMISSION_DENIED`. If no data point matches
         #   the requested data source family, the response is an empty list rather than an
@@ -1131,9 +1159,11 @@ module Google
         # Roll up data points over physical time intervals for supported data types.
         # @param [String] parent
         #   Required. Parent data type of the Data Point collection. Format: `users/`user`/
-        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/me/
-        #   dataTypes/distance` For a list of the supported data types see the
-        #   RollupDataPoint value union field.
+        #   dataTypes/`data_type``, e.g.: - `users/me/dataTypes/steps` - `users/1234567890/
+        #   dataTypes/steps` - `users/me/dataTypes/distance` - `users/1234567890/dataTypes/
+        #   distance` The ``user`` can be either the alias `me` or the authenticated user'
+        #   s numeric Health User ID (retrieved via GetIdentity). For a list of the
+        #   supported data types see the RollupDataPoint value union field.
         # @param [Google::Apis::HealthV4::RollUpDataPointsRequest] roll_up_data_points_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
