@@ -256,12 +256,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Channel
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ComposeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -947,22 +941,6 @@ module Google
       
           property :soft_deleted_before_time, as: 'softDeletedBeforeTime', type: DateTime
       
-        end
-      end
-      
-      class Channel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address'
-          property :expiration, :numeric_string => true, as: 'expiration'
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          hash :params, as: 'params'
-          property :payload, as: 'payload'
-          property :resource_id, as: 'resourceId'
-          property :resource_uri, as: 'resourceUri'
-          property :token, as: 'token'
-          property :type, as: 'type'
         end
       end
       
