@@ -1516,6 +1516,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a volume in a volume pool from an existing data source (such as a
+        # Filestore backup).
+        # @param [String] parent
+        #   Required. The parent resource where this volume will be created. Format:
+        #   projects/`project`/locations/`location`/volumePools/`volume_pool`
+        # @param [Google::Apis::FileV1beta1::CreateFromSourceRequest] create_from_source_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_volume_from_source(parent, create_from_source_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/volumes:createFromSource', options)
+          command.request_representation = Google::Apis::FileV1beta1::CreateFromSourceRequest::Representation
+          command.request_object = create_from_source_request_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a volume.
         # @param [String] name
         #   Required. The volume resource name, in the format `projects/`project`/
@@ -1539,6 +1574,80 @@ module Google
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_volume_pool_volume(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FileV1beta1::Empty::Representation
+          command.response_class = Google::Apis::FileV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a volume directly on the CLH, bypassing CCFE. This is a temporary PoC
+        # that will be used for testing and removed.
+        # @param [String] parent
+        #   Required. The parent volume pool path, in the format `projects/`project`/
+        #   locations/`location`/volumePools/`volume_pool``.
+        # @param [Google::Apis::FileV1beta1::Volume] volume_object
+        # @param [String] volume_id
+        #   Required. The ID to use for the volume. The ID must be unique within the
+        #   specified volume pool.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Volume] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Volume]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def direct_project_location_volume_pool_volume_create(parent, volume_object = nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/volumes:directCreate', options)
+          command.request_representation = Google::Apis::FileV1beta1::Volume::Representation
+          command.request_object = volume_object
+          command.response_representation = Google::Apis::FileV1beta1::Volume::Representation
+          command.response_class = Google::Apis::FileV1beta1::Volume
+          command.params['parent'] = parent unless parent.nil?
+          command.query['volumeId'] = volume_id unless volume_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a volume directly on the CLH, bypassing CCFE. This is a temporary PoC
+        # that will be used for testing and removed.
+        # @param [String] name
+        #   Required. The volume resource name, in the format `projects/`project`/
+        #   locations/`location`/volumePools/`volume_pool`/volumes/`volume``.
+        # @param [Google::Apis::FileV1beta1::DeleteVolumeRequest] delete_volume_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def direct_project_location_volume_pool_volume_delete(name, delete_volume_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:directDelete', options)
+          command.request_representation = Google::Apis::FileV1beta1::DeleteVolumeRequest::Representation
+          command.request_object = delete_volume_request_object
           command.response_representation = Google::Apis::FileV1beta1::Empty::Representation
           command.response_class = Google::Apis::FileV1beta1::Empty
           command.params['name'] = name unless name.nil?
@@ -1618,6 +1727,78 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the settings of a specific volume.
+        # @param [String] name
+        #   Identifier. The resource name of the volume, in the format `projects/`project`/
+        #   locations/`location`/volumePools/`volume_pool`/volumes/`volume``.
+        # @param [Google::Apis::FileV1beta1::Volume] volume_object
+        # @param [String] update_mask
+        #   Required. Mask of fields to update. At least one path must be supplied in this
+        #   field.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Volume] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Volume]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_volume_pool_volume(name, volume_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::FileV1beta1::Volume::Representation
+          command.request_object = volume_object
+          command.response_representation = Google::Apis::FileV1beta1::Volume::Representation
+          command.response_class = Google::Apis::FileV1beta1::Volume
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unfreezes a volume.
+        # @param [String] name
+        #   Required. The name of the volume to unfreeze. Format: `projects/`project`/
+        #   locations/`location`/volumePools/`volume_pool`/volumes/`volume``.
+        # @param [Google::Apis::FileV1beta1::UnfreezeVolumeRequest] unfreeze_volume_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FileV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FileV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def unfreeze_volume(name, unfreeze_volume_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:unfreeze', options)
+          command.request_representation = Google::Apis::FileV1beta1::UnfreezeVolumeRequest::Representation
+          command.request_object = unfreeze_volume_request_object
+          command.response_representation = Google::Apis::FileV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FileV1beta1::Operation
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

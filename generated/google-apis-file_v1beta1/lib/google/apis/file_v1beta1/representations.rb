@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateFromSourceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DailyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,12 @@ module Google
       end
       
       class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteVolumeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -370,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UnfreezeVolumeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -439,6 +457,18 @@ module Google
         end
       end
       
+      class CreateFromSourceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          collection :ip_acls, as: 'ipAcls', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
+      
+          property :quota, :numeric_string => true, as: 'quota'
+          property :request_id, as: 'requestId'
+          property :volume_id, as: 'volumeId'
+        end
+      end
+      
       class DailyCycle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -454,6 +484,12 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DeleteVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1012,6 +1048,16 @@ module Google
         end
       end
       
+      class UnfreezeVolumeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_acls, as: 'ipAcls', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
+      
+          property :quota, :numeric_string => true, as: 'quota'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class UpdatePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1028,16 +1074,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :description, as: 'description'
+          collection :ip_acls, as: 'ipAcls', class: Google::Apis::FileV1beta1::NfsExportOptions, decorator: Google::Apis::FileV1beta1::NfsExportOptions::Representation
+      
           hash :labels, as: 'labels'
           property :mount_point, as: 'mountPoint', class: Google::Apis::FileV1beta1::MountPoint, decorator: Google::Apis::FileV1beta1::MountPoint::Representation
       
           property :name, as: 'name'
+          property :quota_mib, :numeric_string => true, as: 'quotaMib'
+          property :state, as: 'state'
         end
       end
       
       class VolumePool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :active_volume_count, as: 'activeVolumeCount'
           property :active_volume_iops, as: 'activeVolumeIops'
           property :create_time, as: 'createTime'
           property :default_volume_quota_mib, as: 'defaultVolumeQuotaMib'
@@ -1045,6 +1096,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :state, as: 'state'
           property :uid, as: 'uid'
         end
       end
