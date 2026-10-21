@@ -422776,6 +422776,7 @@
 "/servicecontrol:v2/AuditLog/authenticationInfo": authentication_info
 "/servicecontrol:v2/AuditLog/authorizationInfo": authorization_info
 "/servicecontrol:v2/AuditLog/authorizationInfo/authorization_info": authorization_info
+"/servicecontrol:v2/AuditLog/callerAgent": caller_agent
 "/servicecontrol:v2/AuditLog/metadata": metadata
 "/servicecontrol:v2/AuditLog/metadata/metadatum": metadatum
 "/servicecontrol:v2/AuditLog/methodName": method_name
@@ -422828,6 +422829,8 @@
 "/servicecontrol:v2/AuthorizationInfo/privilegedAccessManagerMetadata": privileged_access_manager_metadata
 "/servicecontrol:v2/AuthorizationInfo/resource": resource
 "/servicecontrol:v2/AuthorizationInfo/resourceAttributes": resource_attributes
+"/servicecontrol:v2/CallerAgent": caller_agent
+"/servicecontrol:v2/CallerAgent/authority": authority
 "/servicecontrol:v2/CheckRequest": check_request
 "/servicecontrol:v2/CheckRequest/attributes": attributes
 "/servicecontrol:v2/CheckRequest/flags": flags
