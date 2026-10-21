@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Blueprint
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ComponentRef
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CompositeRef
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -59,12 +77,6 @@ module Google
       end
       
       class ErrorBudget
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class FlagUpdate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Scope
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -300,12 +318,40 @@ module Google
         end
       end
       
+      class AppParams
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group'
+          property :scope, as: 'scope', class: Google::Apis::SaasservicemgmtV1::Scope, decorator: Google::Apis::SaasservicemgmtV1::Scope::Representation
+      
+        end
+      end
+      
       class Blueprint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :engine, as: 'engine'
           property :package, as: 'package'
           property :version, as: 'version'
+        end
+      end
+      
+      class ComponentRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :component, as: 'component'
+          property :composite_ref, as: 'compositeRef', class: Google::Apis::SaasservicemgmtV1::CompositeRef, decorator: Google::Apis::SaasservicemgmtV1::CompositeRef::Representation
+      
+          property :revision, as: 'revision'
+        end
+      end
+      
+      class CompositeRef
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_template, as: 'applicationTemplate'
+          property :revision, as: 'revision'
+          property :sync_operation, as: 'syncOperation'
         end
       end
       
@@ -341,13 +387,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allowed_count, as: 'allowedCount'
           property :allowed_percentage, as: 'allowedPercentage'
-        end
-      end
-      
-      class FlagUpdate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :flag_release, as: 'flagRelease'
         end
       end
       
@@ -486,6 +525,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :application_template_component, as: 'applicationTemplateComponent', class: Google::Apis::SaasservicemgmtV1::ComponentRef, decorator: Google::Apis::SaasservicemgmtV1::ComponentRef::Representation
+      
           property :blueprint, as: 'blueprint', class: Google::Apis::SaasservicemgmtV1::Blueprint, decorator: Google::Apis::SaasservicemgmtV1::Blueprint::Representation
       
           property :create_time, as: 'createTime'
@@ -524,7 +565,6 @@ module Google
           property :effective_unit_filter, as: 'effectiveUnitFilter'
           property :end_time, as: 'endTime'
           property :etag, as: 'etag'
-          property :flag_release, as: 'flagRelease'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :parent_rollout, as: 'parentRollout'
@@ -594,6 +634,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :application_template, as: 'applicationTemplate', class: Google::Apis::SaasservicemgmtV1::CompositeRef, decorator: Google::Apis::SaasservicemgmtV1::CompositeRef::Representation
+      
+          property :blueprint_repo, as: 'blueprintRepo'
           collection :conditions, as: 'conditions', class: Google::Apis::SaasservicemgmtV1::SaasCondition, decorator: Google::Apis::SaasservicemgmtV1::SaasCondition::Representation
       
           property :create_time, as: 'createTime'
@@ -625,6 +668,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class Scope
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -665,6 +715,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :application, as: 'application'
           collection :conditions, as: 'conditions', class: Google::Apis::SaasservicemgmtV1::UnitCondition, decorator: Google::Apis::SaasservicemgmtV1::UnitCondition::Representation
       
           property :create_time, as: 'createTime'
@@ -673,7 +724,6 @@ module Google
           collection :dependents, as: 'dependents', class: Google::Apis::SaasservicemgmtV1::UnitDependency, decorator: Google::Apis::SaasservicemgmtV1::UnitDependency::Representation
       
           property :etag, as: 'etag'
-          collection :flag_revisions, as: 'flagRevisions'
           collection :input_variables, as: 'inputVariables', class: Google::Apis::SaasservicemgmtV1::UnitVariable, decorator: Google::Apis::SaasservicemgmtV1::UnitVariable::Representation
       
           hash :labels, as: 'labels'
@@ -722,10 +772,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :app_params, as: 'appParams', class: Google::Apis::SaasservicemgmtV1::AppParams, decorator: Google::Apis::SaasservicemgmtV1::AppParams::Representation
+      
+          property :application_template_component, as: 'applicationTemplateComponent', class: Google::Apis::SaasservicemgmtV1::ComponentRef, decorator: Google::Apis::SaasservicemgmtV1::ComponentRef::Representation
+      
           property :boundary_type, as: 'boundaryType'
           property :create_time, as: 'createTime'
-          collection :default_flag_revisions, as: 'defaultFlagRevisions'
           property :default_release, as: 'defaultRelease'
+          property :delete_time, as: 'deleteTime'
           collection :dependencies, as: 'dependencies', class: Google::Apis::SaasservicemgmtV1::Dependency, decorator: Google::Apis::SaasservicemgmtV1::Dependency::Representation
       
           property :etag, as: 'etag'
@@ -755,8 +809,6 @@ module Google
           property :engine_state, as: 'engineState'
           property :error_category, as: 'errorCategory'
           property :etag, as: 'etag'
-          property :flag_update, as: 'flagUpdate', class: Google::Apis::SaasservicemgmtV1::FlagUpdate, decorator: Google::Apis::SaasservicemgmtV1::FlagUpdate::Representation
-      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :parent_unit_operation, as: 'parentUnitOperation'

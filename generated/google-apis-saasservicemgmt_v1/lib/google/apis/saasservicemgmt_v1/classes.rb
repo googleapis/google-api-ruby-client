@@ -49,16 +49,44 @@ module Google
         end
       end
       
+      # AppParams contains the parameters for creating an AppHub Application.
+      class AppParams
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Grouping used to construct the name of the AppHub Application.
+        # Multiple UnitKinds can specify the same group to use the same Application
+        # across their respective units. Corresponds to the app_boundary_id in the ADC
+        # composite ApplicationTemplate. Defaults to UnitKind.name
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # Scope of an application.
+        # Corresponds to the JSON property `scope`
+        # @return [Google::Apis::SaasservicemgmtV1::Scope]
+        attr_accessor :scope
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @scope = args[:scope] if args.key?(:scope)
+        end
+      end
+      
       # Blueprints are OCI Images that contain all of the artifacts needed to
       # provision a unit. Metadata such as, type of the engine used to actuate the
-      # blueprint (e.g. terraform, helm etc) and version will come from the image
+      # blueprint (Terraform, for example) and version will come from the image
       # manifest. If the hostname is omitted, it will be assumed to be the regional
       # path to Artifact Registry (eg. us-east1-docker.pkg.dev).
       class Blueprint
         include Google::Apis::Core::Hashable
       
-        # Output only. Type of the engine used to actuate the blueprint. e.g. terraform,
-        # helm etc.
+        # Output only. Type of the engine used to actuate the blueprint. (Terraform, for
+        # example)
         # Corresponds to the JSON property `engine`
         # @return [String]
         attr_accessor :engine
@@ -83,6 +111,74 @@ module Google
           @engine = args[:engine] if args.key?(:engine)
           @package = args[:package] if args.key?(:package)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # ComponentRef represents a reference to a component resource.
+      class ComponentRef
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Name of the component in composite.Components
+        # Corresponds to the JSON property `component`
+        # @return [String]
+        attr_accessor :component
+      
+        # CompositeRef represents a reference to a composite resource.
+        # Corresponds to the JSON property `compositeRef`
+        # @return [Google::Apis::SaasservicemgmtV1::CompositeRef]
+        attr_accessor :composite_ref
+      
+        # Optional. Revision of the component. If the component does not have a revision,
+        # this field will be explicitly set to the revision of the composite
+        # ApplicationTemplate.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @component = args[:component] if args.key?(:component)
+          @composite_ref = args[:composite_ref] if args.key?(:composite_ref)
+          @revision = args[:revision] if args.key?(:revision)
+        end
+      end
+      
+      # CompositeRef represents a reference to a composite resource.
+      class CompositeRef
+        include Google::Apis::Core::Hashable
+      
+        # Required. Reference to the ApplicationTemplate resource.
+        # Corresponds to the JSON property `applicationTemplate`
+        # @return [String]
+        attr_accessor :application_template
+      
+        # Optional. Revision of the ApplicationTemplate to use. Changes to revision will
+        # trigger manual resynchronization. If empty, ApplicationTemplate will be
+        # ignored.
+        # Corresponds to the JSON property `revision`
+        # @return [String]
+        attr_accessor :revision
+      
+        # Output only. Reference to on-going AppTemplate import and replication
+        # operation (i.e. the operation_id for the long-running operation). This field
+        # is opaque for external usage.
+        # Corresponds to the JSON property `syncOperation`
+        # @return [String]
+        attr_accessor :sync_operation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_template = args[:application_template] if args.key?(:application_template)
+          @revision = args[:revision] if args.key?(:revision)
+          @sync_operation = args[:sync_operation] if args.key?(:sync_operation)
         end
       end
       
@@ -222,25 +318,6 @@ module Google
         def update!(**args)
           @allowed_count = args[:allowed_count] if args.key?(:allowed_count)
           @allowed_percentage = args[:allowed_percentage] if args.key?(:allowed_percentage)
-        end
-      end
-      
-      # FlagUpdate is a UnitOperation that pushes new flag values to Units.
-      class FlagUpdate
-        include Google::Apis::Core::Hashable
-      
-        # Required. Flag release being applied by UnitOperation.
-        # Corresponds to the JSON property `flagRelease`
-        # @return [String]
-        attr_accessor :flag_release
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @flag_release = args[:flag_release] if args.key?(:flag_release)
         end
       end
       
@@ -670,8 +747,7 @@ module Google
       end
       
       # A new version to be propagated and deployed to units. This includes pointers
-      # to packaged blueprints for actuation (e.g Helm or Terraform configuration
-      # packages) via artifact registry.
+      # to packaged blueprints for actuation via Artifact Registry.
       class Release
         include Google::Apis::Core::Hashable
       
@@ -683,9 +759,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # ComponentRef represents a reference to a component resource.
+        # Corresponds to the JSON property `applicationTemplateComponent`
+        # @return [Google::Apis::SaasservicemgmtV1::ComponentRef]
+        attr_accessor :application_template_component
+      
         # Blueprints are OCI Images that contain all of the artifacts needed to
         # provision a unit. Metadata such as, type of the engine used to actuate the
-        # blueprint (e.g. terraform, helm etc) and version will come from the image
+        # blueprint (Terraform, for example) and version will come from the image
         # manifest. If the hostname is omitted, it will be assumed to be the regional
         # path to Artifact Registry (eg. us-east1-docker.pkg.dev).
         # Corresponds to the JSON property `blueprint`
@@ -768,6 +849,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @application_template_component = args[:application_template_component] if args.key?(:application_template_component)
           @blueprint = args[:blueprint] if args.key?(:blueprint)
           @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
@@ -857,14 +939,6 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
-      
-        # Optional. Immutable. Name of the FlagRelease to be rolled out to the target
-        # Units. Release and FlagRelease are mutually exclusive. Note: `release` comment
-        # needs to be adjusted to mention that "Release and FlagRelease are mutually
-        # exclusive" when visibility restriction will be lifted.
-        # Corresponds to the JSON property `flagRelease`
-        # @return [String]
-        attr_accessor :flag_release
       
         # Optional. The labels on the resource, which can be used for categorization.
         # similar to Kubernetes resource labels.
@@ -981,7 +1055,6 @@ module Google
           @effective_unit_filter = args[:effective_unit_filter] if args.key?(:effective_unit_filter)
           @end_time = args[:end_time] if args.key?(:end_time)
           @etag = args[:etag] if args.key?(:etag)
-          @flag_release = args[:flag_release] if args.key?(:flag_release)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent_rollout = args[:parent_rollout] if args.key?(:parent_rollout)
@@ -1090,7 +1163,7 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Optional. CEL(https://github.com/google/cel-spec) formatted filter string
+        # Optional. [CEL](https://github.com/google/cel-spec) formatted filter string
         # against Unit. The filter will be applied to determine the eligible unit
         # population. This filter can only reduce, but not expand the scope of the
         # rollout.
@@ -1213,6 +1286,17 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # CompositeRef represents a reference to a composite resource.
+        # Corresponds to the JSON property `applicationTemplate`
+        # @return [Google::Apis::SaasservicemgmtV1::CompositeRef]
+        attr_accessor :application_template
+      
+        # Output only. Name of repository in Artifact Registry for system-generated
+        # Blueprints, eg. Blueprints of imported ApplicationTemplates.
+        # Corresponds to the JSON property `blueprintRepo`
+        # @return [String]
+        attr_accessor :blueprint_repo
+      
         # Output only. A set of conditions which indicate the various conditions this
         # resource can have.
         # Corresponds to the JSON property `conditions`
@@ -1288,6 +1372,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @application_template = args[:application_template] if args.key?(:application_template)
+          @blueprint_repo = args[:blueprint_repo] if args.key?(:blueprint_repo)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @error = args[:error] if args.key?(:error)
@@ -1361,6 +1447,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Scope of an application.
+      class Scope
+        include Google::Apis::Core::Hashable
+      
+        # Required. Scope Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1528,9 +1633,8 @@ module Google
       end
       
       # A unit of deployment that has its lifecycle via a CRUD API using an actuation
-      # engine under the hood (e.g. based on Terraform, Helm or a custom
-      # implementation provided by a service producer). A building block of a SaaS
-      # Tenant.
+      # engine under the hood (e.g. based on Terraform, or a custom implementation
+      # provided by a service producer). A building block of a SaaS Tenant.
       class Unit
         include Google::Apis::Core::Hashable
       
@@ -1541,6 +1645,13 @@ module Google
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
+      
+        # Optional. Reference to the AppHub Application this unit belongs to. All
+        # resources deployed in this Unit will be associated with the specified
+        # Application.
+        # Corresponds to the JSON property `application`
+        # @return [String]
+        attr_accessor :application
       
         # Optional. Output only. A set of conditions which indicate the various
         # conditions this resource can have.
@@ -1570,11 +1681,6 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
-      
-        # Optional. Output only. Flag revisions used by this Unit.
-        # Corresponds to the JSON property `flagRevisions`
-        # @return [Array<String>]
-        attr_accessor :flag_revisions
       
         # Optional. Output only. Indicates the current input variables deployed by the
         # unit
@@ -1616,8 +1722,8 @@ module Google
       
         # Optional. Output only. Set of key/value pairs corresponding to output
         # variables from execution of actuation templates. The variables are declared in
-        # actuation configs (e.g in helm chart or terraform) and the values are fetched
-        # and returned by the actuation engine upon completion of execution.
+        # actuation configs (in Terraform for example) and the values are fetched and
+        # returned by the actuation engine upon completion of execution.
         # Corresponds to the JSON property `outputVariables`
         # @return [Array<Google::Apis::SaasservicemgmtV1::UnitVariable>]
         attr_accessor :output_variables
@@ -1703,12 +1809,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @application = args[:application] if args.key?(:application)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @dependencies = args[:dependencies] if args.key?(:dependencies)
           @dependents = args[:dependents] if args.key?(:dependents)
           @etag = args[:etag] if args.key?(:etag)
-          @flag_revisions = args[:flag_revisions] if args.key?(:flag_revisions)
           @input_variables = args[:input_variables] if args.key?(:input_variables)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance = args[:maintenance] if args.key?(:maintenance)
@@ -1814,6 +1920,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
+        # AppParams contains the parameters for creating an AppHub Application.
+        # Corresponds to the JSON property `appParams`
+        # @return [Google::Apis::SaasservicemgmtV1::AppParams]
+        attr_accessor :app_params
+      
+        # ComponentRef represents a reference to a component resource.
+        # Corresponds to the JSON property `applicationTemplateComponent`
+        # @return [Google::Apis::SaasservicemgmtV1::ComponentRef]
+        attr_accessor :application_template_component
+      
         # Optional. Output only. BoundaryType describes the type of boundary the Unit
         # Kind represents.
         # Corresponds to the JSON property `boundaryType`
@@ -1825,18 +1941,18 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. Default revisions of flags for this UnitKind. Newly created units
-        # will use the flag default_flag_revisions present at the time of creation.
-        # Corresponds to the JSON property `defaultFlagRevisions`
-        # @return [Array<String>]
-        attr_accessor :default_flag_revisions
-      
         # Optional. A reference to the Release object to use as default for creating new
         # units of this UnitKind (optional). If not specified, a new unit must
         # explicitly reference which release to use for its creation.
         # Corresponds to the JSON property `defaultRelease`
         # @return [String]
         attr_accessor :default_release
+      
+        # Output only. The timestamp when the resource was marked for deletion (deletion
+        # is an asynchronous operation).
+        # Corresponds to the JSON property `deleteTime`
+        # @return [String]
+        attr_accessor :delete_time
       
         # Optional. Immutable. List of other unit kinds that this release will depend on.
         # Dependencies will be automatically provisioned if not found. Maximum 10.
@@ -1907,10 +2023,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotations = args[:annotations] if args.key?(:annotations)
+          @app_params = args[:app_params] if args.key?(:app_params)
+          @application_template_component = args[:application_template_component] if args.key?(:application_template_component)
           @boundary_type = args[:boundary_type] if args.key?(:boundary_type)
           @create_time = args[:create_time] if args.key?(:create_time)
-          @default_flag_revisions = args[:default_flag_revisions] if args.key?(:default_flag_revisions)
           @default_release = args[:default_release] if args.key?(:default_release)
+          @delete_time = args[:delete_time] if args.key?(:delete_time)
           @dependencies = args[:dependencies] if args.key?(:dependencies)
           @etag = args[:etag] if args.key?(:etag)
           @input_variable_mappings = args[:input_variable_mappings] if args.key?(:input_variable_mappings)
@@ -1988,11 +2106,6 @@ module Google
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
-      
-        # FlagUpdate is a UnitOperation that pushes new flag values to Units.
-        # Corresponds to the JSON property `flagUpdate`
-        # @return [Google::Apis::SaasservicemgmtV1::FlagUpdate]
-        attr_accessor :flag_update
       
         # Optional. The labels on the resource, which can be used for categorization.
         # similar to Kubernetes resource labels.
@@ -2084,7 +2197,6 @@ module Google
           @engine_state = args[:engine_state] if args.key?(:engine_state)
           @error_category = args[:error_category] if args.key?(:error_category)
           @etag = args[:etag] if args.key?(:etag)
-          @flag_update = args[:flag_update] if args.key?(:flag_update)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @parent_unit_operation = args[:parent_unit_operation] if args.key?(:parent_unit_operation)
