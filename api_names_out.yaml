@@ -275229,6 +275229,7 @@
 "/displayvideo:v2/BiddingStrategy/fixedBid": fixed_bid
 "/displayvideo:v2/BiddingStrategy/maximizeSpendAutoBid": maximize_spend_auto_bid
 "/displayvideo:v2/BiddingStrategy/performanceGoalAutoBid": performance_goal_auto_bid
+"/displayvideo:v2/BiddingStrategy/youtubeAndPartnersBid": youtube_and_partners_bid
 "/displayvideo:v2/BrowserAssignedTargetingOptionDetails": browser_assigned_targeting_option_details
 "/displayvideo:v2/BrowserAssignedTargetingOptionDetails/displayName": display_name
 "/displayvideo:v2/BrowserAssignedTargetingOptionDetails/negative": negative

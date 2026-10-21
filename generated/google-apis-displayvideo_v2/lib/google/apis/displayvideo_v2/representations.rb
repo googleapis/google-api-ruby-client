@@ -2222,6 +2222,8 @@ module Google
       
           property :performance_goal_auto_bid, as: 'performanceGoalAutoBid', class: Google::Apis::DisplayvideoV2::PerformanceGoalBidStrategy, decorator: Google::Apis::DisplayvideoV2::PerformanceGoalBidStrategy::Representation
       
+          property :youtube_and_partners_bid, as: 'youtubeAndPartnersBid', class: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy, decorator: Google::Apis::DisplayvideoV2::YoutubeAndPartnersBiddingStrategy::Representation
+      
         end
       end
       
