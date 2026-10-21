@@ -1,5 +1,10 @@
 # Release history for google-apis-webcontentpublisher_v1
 
+### v0.9.0 (2026-10-21)
+
+* Regenerated from discovery document revision 20261012
+* Regenerated using generator version 0.19.1
+
 ### v0.8.0 (2026-09-24)
 
 * Regenerated from discovery document revision 20260924

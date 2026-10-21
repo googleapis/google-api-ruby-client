@@ -22,6 +22,12 @@ module Google
   module Apis
     module WebcontentpublisherV1
       
+      class AnswerChoiceTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckFreeAccessResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,18 @@ module Google
       end
       
       class Cta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomAnswerChoice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomQuestion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,7 +94,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PresetQuestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Publication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuestionTemplate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,10 +130,38 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SurveyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SurveyQuestion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SurveyQuestionCatalog
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TosAcceptance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnswerChoiceTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :category_label, as: 'categoryLabel'
+          property :display_text, as: 'displayText'
+          property :id, as: 'id'
+        end
       end
       
       class CheckFreeAccessResponse
@@ -129,7 +187,27 @@ module Google
           property :newsletter_config, as: 'newsletterConfig', class: Google::Apis::WebcontentpublisherV1::NewsletterConfig, decorator: Google::Apis::WebcontentpublisherV1::NewsletterConfig::Representation
       
           property :state, as: 'state'
+          property :survey_config, as: 'surveyConfig', class: Google::Apis::WebcontentpublisherV1::SurveyConfig, decorator: Google::Apis::WebcontentpublisherV1::SurveyConfig::Representation
+      
           property :type, as: 'type'
+        end
+      end
+      
+      class CustomAnswerChoice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_text, as: 'displayText'
+        end
+      end
+      
+      class CustomQuestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :answer_choices, as: 'answerChoices', class: Google::Apis::WebcontentpublisherV1::CustomAnswerChoice, decorator: Google::Apis::WebcontentpublisherV1::CustomAnswerChoice::Representation
+      
+          property :category_label, as: 'categoryLabel'
+          property :display_text, as: 'displayText'
+          property :id, as: 'id'
         end
       end
       
@@ -184,6 +262,14 @@ module Google
         end
       end
       
+      class PresetQuestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :answer_ids, as: 'answerIds'
+          property :question_id, as: 'questionId'
+        end
+      end
+      
       class Publication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -212,6 +298,19 @@ module Google
         end
       end
       
+      class QuestionTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :answer_choices, as: 'answerChoices', class: Google::Apis::WebcontentpublisherV1::AnswerChoiceTemplate, decorator: Google::Apis::WebcontentpublisherV1::AnswerChoiceTemplate::Representation
+      
+          property :category, as: 'category'
+          property :category_label, as: 'categoryLabel'
+          property :configuration_type, as: 'configurationType'
+          property :display_text, as: 'displayText'
+          property :id, as: 'id'
+        end
+      end
+      
       class RrmProduct
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -235,6 +334,34 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
           property :gcp_project_number, :numeric_string => true, as: 'gcpProjectNumber'
+        end
+      end
+      
+      class SurveyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_message, as: 'customMessage'
+          collection :questions, as: 'questions', class: Google::Apis::WebcontentpublisherV1::SurveyQuestion, decorator: Google::Apis::WebcontentpublisherV1::SurveyQuestion::Representation
+      
+        end
+      end
+      
+      class SurveyQuestion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_question, as: 'customQuestion', class: Google::Apis::WebcontentpublisherV1::CustomQuestion, decorator: Google::Apis::WebcontentpublisherV1::CustomQuestion::Representation
+      
+          property :preset_question, as: 'presetQuestion', class: Google::Apis::WebcontentpublisherV1::PresetQuestion, decorator: Google::Apis::WebcontentpublisherV1::PresetQuestion::Representation
+      
+        end
+      end
+      
+      class SurveyQuestionCatalog
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          collection :questions, as: 'questions', class: Google::Apis::WebcontentpublisherV1::QuestionTemplate, decorator: Google::Apis::WebcontentpublisherV1::QuestionTemplate::Representation
+      
         end
       end
       
