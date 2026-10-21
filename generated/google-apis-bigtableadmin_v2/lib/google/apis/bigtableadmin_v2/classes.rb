@@ -218,11 +218,27 @@ module Google
       class AutomatedBackupPolicy
         include Google::Apis::Core::Hashable
       
+        # Optional. If `true`, automated backups are explicitly disabled on this table.
+        # This allows users to opt out of default enablement.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
         # How frequently automated backups should occur. The only supported value at
         # this time is 24 hours. An undefined frequency is treated as 24 hours.
         # Corresponds to the JSON property `frequency`
         # @return [String]
         attr_accessor :frequency
+      
+        # Optional. The amount of time that the automated backups remain hot. If
+        # specified, the backups created by this policy are `HOT` backups. If not
+        # specified, the backups are `STANDARD` backups. The value must be at least 24
+        # hours and at most 10 days, and can't exceed the policy's `retention_period`.
+        # Only SSD instances support `HOT` automated backups.
+        # Corresponds to the JSON property `keepHotDuration`
+        # @return [String]
+        attr_accessor :keep_hot_duration
       
         # Optional. A list of Cloud Bigtable zones where automated backups are allowed
         # to be created. If empty, automated backups will be created in all zones of the
@@ -244,7 +260,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @frequency = args[:frequency] if args.key?(:frequency)
+          @keep_hot_duration = args[:keep_hot_duration] if args.key?(:keep_hot_duration)
           @locations = args[:locations] if args.key?(:locations)
           @retention_period = args[:retention_period] if args.key?(:retention_period)
         end
@@ -4136,12 +4154,31 @@ module Google
         # @return [String]
         attr_accessor :backup
       
+        # A collection of user data indexed by row, column, and timestamp. Each table is
+        # served using the resources of its parent cluster.
+        # Corresponds to the JSON property `table`
+        # @return [Google::Apis::BigtableadminV2::Table]
+        attr_accessor :table
+      
         # Required. The id of the table to create and restore to. This table must not
         # already exist. The `table_id` appended to `parent` forms the full table name
         # of the form `projects//instances//tables/`.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
+      
+        # Optional. The list of fields to set on the new table. A mask specifying which
+        # fields (e.g. `deletion_protection`) in the `table` field should be set. This
+        # mask is relative to the `table` field, not to the request message. The
+        # wildcard (*) path is currently not supported. Currently RestoreTable only
+        # supports the following fields for modification: * `deletion_protection`:
+        # Defaults to `false` if not set. * `automated_backup_policy`: Defaults to no
+        # automated backup policy if not set. Output-only fields in the mask will be
+        # ignored. If any other field not listed above is included in `update_mask`, it
+        # will result in an INVALID_ARGUMENT error.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
       
         def initialize(**args)
            update!(**args)
@@ -4150,7 +4187,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
+          @table = args[:table] if args.key?(:table)
           @table_id = args[:table_id] if args.key?(:table_id)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       
@@ -4439,6 +4478,11 @@ module Google
         attr_accessor :deletion_protection
         alias_method :deletion_protection?, :deletion_protection
       
+        # Defines an automated backup policy for a table
+        # Corresponds to the JSON property `effectiveAutomatedBackupPolicy`
+        # @return [Google::Apis::BigtableadminV2::AutomatedBackupPolicy]
+        attr_accessor :effective_automated_backup_policy
+      
         # Immutable. The granularity at which timestamps are stored in this table.
         # Timestamps not matching the granularity will be rejected. If unspecified at
         # creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -4493,6 +4537,7 @@ module Google
           @cluster_states = args[:cluster_states] if args.key?(:cluster_states)
           @column_families = args[:column_families] if args.key?(:column_families)
           @deletion_protection = args[:deletion_protection] if args.key?(:deletion_protection)
+          @effective_automated_backup_policy = args[:effective_automated_backup_policy] if args.key?(:effective_automated_backup_policy)
           @granularity = args[:granularity] if args.key?(:granularity)
           @name = args[:name] if args.key?(:name)
           @restore_info = args[:restore_info] if args.key?(:restore_info)

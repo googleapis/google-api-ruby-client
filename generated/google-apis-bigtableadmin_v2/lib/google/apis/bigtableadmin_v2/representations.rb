@@ -995,7 +995,9 @@ module Google
       class AutomatedBackupPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
           property :frequency, as: 'frequency'
+          property :keep_hot_duration, as: 'keepHotDuration'
           collection :locations, as: 'locations'
           property :retention_period, as: 'retentionPeriod'
         end
@@ -2080,7 +2082,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
+          property :table, as: 'table', class: Google::Apis::BigtableadminV2::Table, decorator: Google::Apis::BigtableadminV2::Table::Representation
+      
           property :table_id, as: 'tableId'
+          property :update_mask, as: 'updateMask'
         end
       end
       
@@ -2162,6 +2167,8 @@ module Google
           hash :column_families, as: 'columnFamilies', class: Google::Apis::BigtableadminV2::ColumnFamily, decorator: Google::Apis::BigtableadminV2::ColumnFamily::Representation
       
           property :deletion_protection, as: 'deletionProtection'
+          property :effective_automated_backup_policy, as: 'effectiveAutomatedBackupPolicy', class: Google::Apis::BigtableadminV2::AutomatedBackupPolicy, decorator: Google::Apis::BigtableadminV2::AutomatedBackupPolicy::Representation
+      
           property :granularity, as: 'granularity'
           property :name, as: 'name'
           property :restore_info, as: 'restoreInfo', class: Google::Apis::BigtableadminV2::RestoreInfo, decorator: Google::Apis::BigtableadminV2::RestoreInfo::Representation

@@ -69036,7 +69036,9 @@
 "/bigtableadmin:v2/AuthorizedView/name": name
 "/bigtableadmin:v2/AuthorizedView/subsetView": subset_view
 "/bigtableadmin:v2/AutomatedBackupPolicy": automated_backup_policy
+"/bigtableadmin:v2/AutomatedBackupPolicy/disabled": disabled
 "/bigtableadmin:v2/AutomatedBackupPolicy/frequency": frequency
+"/bigtableadmin:v2/AutomatedBackupPolicy/keepHotDuration": keep_hot_duration
 "/bigtableadmin:v2/AutomatedBackupPolicy/locations": locations
 "/bigtableadmin:v2/AutomatedBackupPolicy/locations/location": location
 "/bigtableadmin:v2/AutomatedBackupPolicy/retentionPeriod": retention_period
@@ -69483,7 +69485,9 @@
 "/bigtableadmin:v2/RestoreTableMetadata/sourceType": source_type
 "/bigtableadmin:v2/RestoreTableRequest": restore_table_request
 "/bigtableadmin:v2/RestoreTableRequest/backup": backup
+"/bigtableadmin:v2/RestoreTableRequest/table": table
 "/bigtableadmin:v2/RestoreTableRequest/tableId": table_id
+"/bigtableadmin:v2/RestoreTableRequest/updateMask": update_mask
 "/bigtableadmin:v2/RowAffinity": row_affinity
 "/bigtableadmin:v2/SchemaBundle": schema_bundle
 "/bigtableadmin:v2/SchemaBundle/avroSchema": avro_schema
@@ -69516,6 +69520,7 @@
 "/bigtableadmin:v2/Table/columnFamilies": column_families
 "/bigtableadmin:v2/Table/columnFamilies/column_family": column_family
 "/bigtableadmin:v2/Table/deletionProtection": deletion_protection
+"/bigtableadmin:v2/Table/effectiveAutomatedBackupPolicy": effective_automated_backup_policy
 "/bigtableadmin:v2/Table/granularity": granularity
 "/bigtableadmin:v2/Table/name": name
 "/bigtableadmin:v2/Table/restoreInfo": restore_info
