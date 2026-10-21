@@ -2459,8 +2459,8 @@ module Google
         # @return [String]
         attr_accessor :bluetooth_sharing
       
-        # Controls Wi-Fi configuring privileges. Based on the option set, user will have
-        # either full or limited or no control in configuring Wi-Fi networks.
+        # Optional. Controls Wi-Fi configuring privileges. Based on the option set, user
+        # will have either full or limited or no control in configuring Wi-Fi networks.
         # Corresponds to the JSON property `configureWifi`
         # @return [String]
         attr_accessor :configure_wifi
@@ -2475,20 +2475,20 @@ module Google
         # @return [Google::Apis::AndroidmanagementV1::PrivateDnsSettings]
         attr_accessor :private_dns_settings
       
-        # Controls tethering settings. Based on the value set, the user is partially or
-        # fully disallowed from using different forms of tethering.
+        # Optional. Controls tethering settings. Based on the value set, the user is
+        # partially or fully disallowed from using different forms of tethering.
         # Corresponds to the JSON property `tetheringSettings`
         # @return [String]
         attr_accessor :tethering_settings
       
-        # Controls what files and/or data can be transferred via USB. Supported only on
-        # company-owned devices.
+        # Optional. Controls what files and/or data can be transferred via USB.
+        # Supported only on company-owned devices.
         # Corresponds to the JSON property `usbDataAccess`
         # @return [String]
         attr_accessor :usb_data_access
       
-        # Controls configuring and using Wi-Fi direct settings. Supported on company-
-        # owned devices running Android 13 and above.
+        # Optional. Controls configuring and using Wi-Fi direct settings. Supported on
+        # company-owned devices running Android 13 and above.
         # Corresponds to the JSON property `wifiDirectSettings`
         # @return [String]
         attr_accessor :wifi_direct_settings
@@ -3983,7 +3983,7 @@ module Google
       
       # Settings controlling the behavior of a device in kiosk mode. To enable kiosk
       # mode, set kioskCustomLauncherEnabled to true or specify an app in the policy
-      # with installType KIOSK.
+      # with the KIOSK role.
       class KioskCustomization
         include Google::Apis::Core::Hashable
       
@@ -5686,7 +5686,7 @@ module Google
       
         # Settings controlling the behavior of a device in kiosk mode. To enable kiosk
         # mode, set kioskCustomLauncherEnabled to true or specify an app in the policy
-        # with installType KIOSK.
+        # with the KIOSK role.
         # Corresponds to the JSON property `kioskCustomization`
         # @return [Google::Apis::AndroidmanagementV1::KioskCustomization]
         attr_accessor :kiosk_customization
@@ -5714,7 +5714,9 @@ module Google
         # @return [String]
         attr_accessor :microphone_access
       
-        # The minimum allowed Android API level.
+        # The minimum allowed Android API level. A NonComplianceDetail with
+        # OS_NOT_PERMITTED is reported if the Android API level of the device is lower
+        # than this value.
         # Corresponds to the JSON property `minimumApiLevel`
         # @return [Fixnum]
         attr_accessor :minimum_api_level
@@ -8007,7 +8009,7 @@ module Google
       class WifiSsidPolicy
         include Google::Apis::Core::Hashable
       
-        # Type of the Wi-Fi SSID policy to be applied.
+        # Optional. Type of the Wi-Fi SSID policy to be applied.
         # Corresponds to the JSON property `wifiSsidPolicyType`
         # @return [String]
         attr_accessor :wifi_ssid_policy_type
