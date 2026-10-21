@@ -250,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAddOnAttachmentStudentSubmissionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAddOnAttachmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +977,15 @@ module Google
           property :thumbnail_url, as: 'thumbnailUrl'
           property :title, as: 'title'
           property :url, as: 'url'
+        end
+      end
+      
+      class ListAddOnAttachmentStudentSubmissionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :add_on_attachment_student_submissions, as: 'addOnAttachmentStudentSubmissions', class: Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission, decorator: Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

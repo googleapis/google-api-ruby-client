@@ -1779,6 +1779,32 @@ module Google
         end
       end
       
+      # Response when listing student submissions for an add-on attachment.
+      class ListAddOnAttachmentStudentSubmissionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Add-on attachment student submissions that match the request.
+        # Corresponds to the JSON property `addOnAttachmentStudentSubmissions`
+        # @return [Array<Google::Apis::ClassroomV1::AddOnAttachmentStudentSubmission>]
+        attr_accessor :add_on_attachment_student_submissions
+      
+        # A token, which can be sent as `pageToken` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @add_on_attachment_student_submissions = args[:add_on_attachment_student_submissions] if args.key?(:add_on_attachment_student_submissions)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response when listing add-on attachments.
       class ListAddOnAttachmentsResponse
         include Google::Apis::Core::Hashable
