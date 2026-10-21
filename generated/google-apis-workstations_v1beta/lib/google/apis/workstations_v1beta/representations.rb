@@ -381,6 +381,7 @@ module Google
           collection :accelerators, as: 'accelerators', class: Google::Apis::WorkstationsV1beta::Accelerator, decorator: Google::Apis::WorkstationsV1beta::Accelerator::Representation
       
           property :boot_disk_size_gb, as: 'bootDiskSizeGb'
+          property :enable_automatic_failover, as: 'enableAutomaticFailover'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :id, as: 'id'
           property :machine_type, as: 'machineType'
@@ -445,6 +446,7 @@ module Google
       class GatewayConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :direct_access_ports, as: 'directAccessPorts'
           property :http2_enabled, as: 'http2Enabled'
         end
       end

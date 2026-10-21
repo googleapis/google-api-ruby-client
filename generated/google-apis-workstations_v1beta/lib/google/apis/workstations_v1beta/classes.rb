@@ -241,6 +241,13 @@ module Google
         # @return [Fixnum]
         attr_accessor :boot_disk_size_gb
       
+        # Optional. Indicates if this boost config is eligible for automatic failover
+        # when the service cannot provision the default VM type. Defaults to `false`.
+        # Corresponds to the JSON property `enableAutomaticFailover`
+        # @return [Boolean]
+        attr_accessor :enable_automatic_failover
+        alias_method :enable_automatic_failover?, :enable_automatic_failover
+      
         # Optional. Whether to enable nested virtualization on boosted Cloud
         # Workstations VMs running using this boost configuration. Defaults to false.
         # Nested virtualization lets you run virtual machine (VM) instances inside your
@@ -298,6 +305,7 @@ module Google
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
           @boot_disk_size_gb = args[:boot_disk_size_gb] if args.key?(:boot_disk_size_gb)
+          @enable_automatic_failover = args[:enable_automatic_failover] if args.key?(:enable_automatic_failover)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @id = args[:id] if args.key?(:id)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
@@ -516,6 +524,17 @@ module Google
       class GatewayConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Specifies VM ports that can be accessed using the standard `$
+        # HOSTNAME:$PORT` format in addition to the service's default `$PORT-$HOSTNAME`
+        # format. See [Access HTTP Servers Running on Workstations] (https://docs.cloud.
+        # google.com/workstations/docs/access-http-servers-running-on-workstations).
+        # Note: This only controls the routing URL format. Network-level access is still
+        # controlled by `allowed_ports` on WorkstationConfig. All `allowed_ports` remain
+        # accessible via the default `$PORT-$HOSTNAME` format.
+        # Corresponds to the JSON property `directAccessPorts`
+        # @return [Array<Fixnum>]
+        attr_accessor :direct_access_ports
+      
         # Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to
         # false.
         # Corresponds to the JSON property `http2Enabled`
@@ -529,6 +548,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @direct_access_ports = args[:direct_access_ports] if args.key?(:direct_access_ports)
           @http2_enabled = args[:http2_enabled] if args.key?(:http2_enabled)
         end
       end
