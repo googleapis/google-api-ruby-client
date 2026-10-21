@@ -1106,112 +1106,6 @@ module Google
         end
       end
       
-      # A chunk of data in an assistant message.
-      class GoogleCloudContactcenterinsightsV1AssistantChunk
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Text data.
-        # Corresponds to the JSON property `text`
-        # @return [String]
-        attr_accessor :text
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @text = args[:text] if args.key?(:text)
-        end
-      end
-      
-      # A message in an assistant session.
-      class GoogleCloudContactcenterinsightsV1AssistantMessage
-        include Google::Apis::Core::Hashable
-      
-        # Required. Content of the message.
-        # Corresponds to the JSON property `chunks`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk>]
-        attr_accessor :chunks
-      
-        # Required. Timestamp when the message was sent or received.
-        # Corresponds to the JSON property `eventTime`
-        # @return [String]
-        attr_accessor :event_time
-      
-        # Required. Role within the conversation.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chunks = args[:chunks] if args.key?(:chunks)
-          @event_time = args[:event_time] if args.key?(:event_time)
-          @role = args[:role] if args.key?(:role)
-        end
-      end
-      
-      # Represents a conversation session with the Assistant Agent.
-      class GoogleCloudContactcenterinsightsV1AssistantSession
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The time the session was created.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Optional. The display name of the session.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Optional. History of messages in the session.
-        # Corresponds to the JSON property `messages`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantMessage>]
-        attr_accessor :messages
-      
-        # Identifier. Resource name of the session. Format: projects/`project`/locations/
-        # `location`/assistantSessions/`assistant_session`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Output only. The user who initiated the session.
-        # Corresponds to the JSON property `requester`
-        # @return [String]
-        attr_accessor :requester
-      
-        # Output only. The status of the session.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Output only. The time the session was last updated.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @messages = args[:messages] if args.key?(:messages)
-          @name = args[:name] if args.key?(:name)
-          @requester = args[:requester] if args.key?(:requester)
-          @state = args[:state] if args.key?(:state)
-          @update_time = args[:update_time] if args.key?(:update_time)
-        end
-      end
-      
       # An AuthorizedView represents a view of accessible Insights resources (for
       # example, Conversation and Scorecard). Who have read access to the
       # AuthorizedView resource will have access to these Insight resources as well.
@@ -6059,6 +5953,15 @@ module Google
         # @return [String]
         attr_accessor :sql_query
       
+        # Optional. The time zone name from the [IANA Time Zone Database](https://www.
+        # iana.org/time-zones) (for example, `"America/Los_Angeles"`) used to group
+        # daily time-series results. If empty, or if the name is well-formed but not
+        # known to the server, `UTC` is used. Malformed values are rejected with `
+        # INVALID_ARGUMENT`.
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # Optional. The user provided chart spec for the chart. This will be used to
         # override the visual spec generated by the LLM.
         # Corresponds to the JSON property `userProvidedChartSpec`
@@ -6079,6 +5982,7 @@ module Google
           @session_id = args[:session_id] if args.key?(:session_id)
           @sql_comparison_key = args[:sql_comparison_key] if args.key?(:sql_comparison_key)
           @sql_query = args[:sql_query] if args.key?(:sql_query)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @user_provided_chart_spec = args[:user_provided_chart_spec] if args.key?(:user_provided_chart_spec)
         end
       end
@@ -6092,6 +5996,14 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse>]
         attr_accessor :generative_responses
       
+        # The time zone name from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones) that the query actually used to group results. Equals the
+        # requested `time_zone` when the chart SQL supports time zones, otherwise `"UTC"`
+        # .
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # The conversation transcript for the chart.
         # Corresponds to the JSON property `transcript`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript]
@@ -6104,6 +6016,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @transcript = args[:transcript] if args.key?(:transcript)
         end
       end
@@ -7144,31 +7057,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @assessments = args[:assessments] if args.key?(:assessments)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response to list assistant sessions.
-      class GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The assistant sessions.
-        # Corresponds to the JSON property `assistantSessions`
-        # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantSession>]
-        attr_accessor :assistant_sessions
-      
-        # A token, which can be sent as `page_token` to retrieve the next page.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @assistant_sessions = args[:assistant_sessions] if args.key?(:assistant_sessions)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -10389,62 +10277,6 @@ module Google
         def update!(**args)
           @disable_word_time_offsets = args[:disable_word_time_offsets] if args.key?(:disable_word_time_offsets)
           @speech_recognizer = args[:speech_recognizer] if args.key?(:speech_recognizer)
-        end
-      end
-      
-      # Request to stream chat.
-      class GoogleCloudContactcenterinsightsV1StreamChatRequest
-        include Google::Apis::Core::Hashable
-      
-        # Required. The message to send to the assistant.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # Response from streaming chat.
-      class GoogleCloudContactcenterinsightsV1StreamChatResponse
-        include Google::Apis::Core::Hashable
-      
-        # A chunk of data in an assistant message.
-        # Corresponds to the JSON property `chunk`
-        # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1AssistantChunk]
-        attr_accessor :chunk
-      
-        # The unique ID of the event.
-        # Corresponds to the JSON property `eventId`
-        # @return [String]
-        attr_accessor :event_id
-      
-        # The time when the event occurred.
-        # Corresponds to the JSON property `eventTime`
-        # @return [String]
-        attr_accessor :event_time
-      
-        # A status message.
-        # Corresponds to the JSON property `statusMessage`
-        # @return [String]
-        attr_accessor :status_message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @chunk = args[:chunk] if args.key?(:chunk)
-          @event_id = args[:event_id] if args.key?(:event_id)
-          @event_time = args[:event_time] if args.key?(:event_time)
-          @status_message = args[:status_message] if args.key?(:status_message)
         end
       end
       
@@ -14882,6 +14714,14 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse>]
         attr_accessor :generative_responses
       
+        # The time zone name from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones) that the query actually used to group results. Equals the
+        # requested `time_zone` when the chart SQL supports time zones, otherwise `"UTC"`
+        # .
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # The conversation transcript for the chart.
         # Corresponds to the JSON property `transcript`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript]
@@ -14894,6 +14734,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @transcript = args[:transcript] if args.key?(:transcript)
         end
       end
@@ -21853,6 +21694,14 @@ module Google
         # @return [Array<Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse>]
         attr_accessor :generative_responses
       
+        # The time zone name from the [IANA Time Zone Database](https://www.iana.org/
+        # time-zones) that the query actually used to group results. Equals the
+        # requested `time_zone` when the chart SQL supports time zones, otherwise `"UTC"`
+        # .
+        # Corresponds to the JSON property `timeZone`
+        # @return [String]
+        attr_accessor :time_zone
+      
         # The conversation transcript for the chart.
         # Corresponds to the JSON property `transcript`
         # @return [Google::Apis::ContactcenterinsightsV1::GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript]
@@ -21865,6 +21714,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generative_responses = args[:generative_responses] if args.key?(:generative_responses)
+          @time_zone = args[:time_zone] if args.key?(:time_zone)
           @transcript = args[:transcript] if args.key?(:transcript)
         end
       end
