@@ -187947,6 +187947,10 @@
 "/curationpartners:v1/RunReportRequest": run_report_request
 "/curationpartners:v1/RunReportResponse": run_report_response
 "/curationpartners:v1/RunReportResponse/reportResult": report_result
+"/curationpartners:v1/SearchMediaPlannersResponse": search_media_planners_response
+"/curationpartners:v1/SearchMediaPlannersResponse/mediaPlanners": media_planners
+"/curationpartners:v1/SearchMediaPlannersResponse/mediaPlanners/media_planner": media_planner
+"/curationpartners:v1/SearchMediaPlannersResponse/nextPageToken": next_page_token
 "/curationpartners:v1/Sort": sort
 "/curationpartners:v1/Sort/descending": descending
 "/curationpartners:v1/Sort/field": field
@@ -188034,6 +188038,10 @@
 "/curationpartners:v1/curationpartners.mediaPlanners.list/filter": filter
 "/curationpartners:v1/curationpartners.mediaPlanners.list/pageSize": page_size
 "/curationpartners:v1/curationpartners.mediaPlanners.list/pageToken": page_token
+"/curationpartners:v1/curationpartners.mediaPlanners.search": search_media_planners
+"/curationpartners:v1/curationpartners.mediaPlanners.search/dspSeatId": dsp_seat_id
+"/curationpartners:v1/curationpartners.mediaPlanners.search/pageSize": page_size
+"/curationpartners:v1/curationpartners.mediaPlanners.search/pageToken": page_token
 "/curationpartners:v1/fields": fields
 "/curationpartners:v1/key": key
 "/curationpartners:v1/quotaUser": quota_user
