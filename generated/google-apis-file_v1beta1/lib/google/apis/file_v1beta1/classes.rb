@@ -219,6 +219,54 @@ module Google
         end
       end
       
+      # Request for creating a volume from an existing data source (such as a backup).
+      class CreateFromSourceRequest
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the backup to create from. Format: projects/`project`/
+        # locations/`location`/backups/`backup`
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Optional. IP ACLs defining permissions/ACLs to apply to the newly created
+        # volume.
+        # Corresponds to the JSON property `ipAcls`
+        # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
+        attr_accessor :ip_acls
+      
+        # Optional. The limit for how much data can be written to this volume, in MiB.
+        # Corresponds to the JSON property `quota`
+        # @return [Fixnum]
+        attr_accessor :quota
+      
+        # Optional. A unique ID used to identify the request, so retries are idempotent.
+        # Must be a valid UUID4; the zero UUID (`00000000-0000-0000-0000-000000000000`)
+        # is not supported.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        # Required. Unique identifier for the volume which also appears in the volumes
+        # resource name.
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @ip_acls = args[:ip_acls] if args.key?(:ip_acls)
+          @quota = args[:quota] if args.key?(:quota)
+          @request_id = args[:request_id] if args.key?(:request_id)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
       # Time window specified for daily operations.
       class DailyCycle
         include Google::Apis::Core::Hashable
@@ -284,6 +332,19 @@ module Google
           @day = args[:day] if args.key?(:day)
           @month = args[:month] if args.key?(:month)
           @year = args[:year] if args.key?(:year)
+        end
+      end
+      
+      # DeleteVolumeRequest deletes a volume.
+      class DeleteVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2148,9 +2209,12 @@ module Google
       class RestoreConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path
-        # pattern must be `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`,
-        # the path pattern must be `/dir1`. Currently only single path is supported,
+        # Optional. A collection of paths/patterns to restore from the backup. If empty,
+        # a full restore is performed. A valid path is relative to the file share's
+        # mount point and must not include a trailing slash. The path must start with a
+        # leading `/`. Example: If you want to restore `/mnt/share/dir1/file.txt`, the
+        # path pattern must be `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/
+        # `, the path pattern must be `/dir1`. Currently only single path is supported,
         # Glob patterns are not supported.
         # Corresponds to the JSON property `pathPatterns`
         # @return [Array<String>]
@@ -2501,6 +2565,39 @@ module Google
         end
       end
       
+      # Request for unfreezing a volume.
+      class UnfreezeVolumeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. IP ACLs defining permissions/ACLs to apply to the unfrozen volume
+        # Corresponds to the JSON property `ipAcls`
+        # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
+        attr_accessor :ip_acls
+      
+        # Optional. The limit for how much data can be written to this volume, in MiB.
+        # Corresponds to the JSON property `quota`
+        # @return [Fixnum]
+        attr_accessor :quota
+      
+        # Optional. A unique ID used to identify the request, so retries are idempotent.
+        # Must be a valid UUID4; the zero UUID (`00000000-0000-0000-0000-000000000000`)
+        # is not supported.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_acls = args[:ip_acls] if args.key?(:ip_acls)
+          @quota = args[:quota] if args.key?(:quota)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # Maintenance policy applicable to instance updates.
       class UpdatePolicy
         include Google::Apis::Core::Hashable
@@ -2549,6 +2646,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Optional. User-defined permissions protecting mount points.
+        # Corresponds to the JSON property `ipAcls`
+        # @return [Array<Google::Apis::FileV1beta1::NfsExportOptions>]
+        attr_accessor :ip_acls
+      
         # Optional. Resource labels to represent user provided metadata.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2565,6 +2667,18 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The maximum size of the volume in mebibytes (MiB).
+        # Corresponds to the JSON property `quotaMib`
+        # @return [Fixnum]
+        attr_accessor :quota_mib
+      
+        # Optional. The state of the volume. This field is caller-settable via `
+        # UpdateVolume` to transition a volume from `HOT` to `COLD` (freezing the volume)
+        # . In `CreateVolume`, this field is output-only and initialized to `HOT`.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2573,15 +2687,23 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
+          @ip_acls = args[:ip_acls] if args.key?(:ip_acls)
           @labels = args[:labels] if args.key?(:labels)
           @mount_point = args[:mount_point] if args.key?(:mount_point)
           @name = args[:name] if args.key?(:name)
+          @quota_mib = args[:quota_mib] if args.key?(:quota_mib)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
       # VolumePool representation of a Cloud Filestore volume pool.
       class VolumePool
         include Google::Apis::Core::Hashable
+      
+        # Optional. The number of active volumes. Default: 100.
+        # Corresponds to the JSON property `activeVolumeCount`
+        # @return [Fixnum]
+        attr_accessor :active_volume_count
       
         # Optional. The number of IOPs provisioned per active volume.
         # Corresponds to the JSON property `activeVolumeIops`
@@ -2593,7 +2715,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. The default quota per volume in MiB. Default: 1024 MiB.
+        # Optional. The default quota per volume in MiB. Must be between 100 MiB and
+        # 102400 MiB (100 GiB). Default: 1024 MiB.
         # Corresponds to the JSON property `defaultVolumeQuotaMib`
         # @return [Fixnum]
         attr_accessor :default_volume_quota_mib
@@ -2620,6 +2743,11 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Output only. The state of the volume pool.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Output only. System-assigned unique identifier for the volume pool.
         # Corresponds to the JSON property `uid`
         # @return [String]
@@ -2631,6 +2759,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_volume_count = args[:active_volume_count] if args.key?(:active_volume_count)
           @active_volume_iops = args[:active_volume_iops] if args.key?(:active_volume_iops)
           @create_time = args[:create_time] if args.key?(:create_time)
           @default_volume_quota_mib = args[:default_volume_quota_mib] if args.key?(:default_volume_quota_mib)
@@ -2638,6 +2767,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
         end
       end
