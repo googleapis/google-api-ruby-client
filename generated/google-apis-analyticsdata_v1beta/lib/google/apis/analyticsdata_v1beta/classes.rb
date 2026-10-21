@@ -945,7 +945,10 @@ module Google
         end
       end
       
-      # Filter for empty values.
+      # Filter for empty values. Matches dimension values that are `""` or `(not set)`
+      # values. Use this filter to match rows with missing or unpopulated dimension
+      # values, or combine it with `not_expression` to exclude them from a report
+      # without filtering for both `""` and `(not set)` separately.
       class EmptyFilter
         include Google::Apis::Core::Hashable
       
@@ -967,7 +970,10 @@ module Google
         # @return [Google::Apis::AnalyticsdataV1beta::BetweenFilter]
         attr_accessor :between_filter
       
-        # Filter for empty values.
+        # Filter for empty values. Matches dimension values that are `""` or `(not set)`
+        # values. Use this filter to match rows with missing or unpopulated dimension
+        # values, or combine it with `not_expression` to exclude them from a report
+        # without filtering for both `""` and `(not set)` separately.
         # Corresponds to the JSON property `emptyFilter`
         # @return [Google::Apis::AnalyticsdataV1beta::EmptyFilter]
         attr_accessor :empty_filter
