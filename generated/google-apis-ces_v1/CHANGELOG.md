@@ -1,5 +1,10 @@
 # Release history for google-apis-ces_v1
 
+### v0.17.0 (2026-10-21)
+
+* Regenerated from discovery document revision 20261016
+* Regenerated using generator version 0.19.1
+
 ### v0.16.0 (2026-09-27)
 
 * Regenerated from discovery document revision 20260924

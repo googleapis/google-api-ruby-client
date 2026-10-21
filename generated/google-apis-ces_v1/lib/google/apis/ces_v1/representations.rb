@@ -2783,6 +2783,7 @@ module Google
           collection :banned_contents_in_user_input, as: 'bannedContentsInUserInput'
           property :disregard_diacritics, as: 'disregardDiacritics'
           property :match_type, as: 'matchType'
+          collection :sensitive_words_exemptions, as: 'sensitiveWordsExemptions'
         end
       end
       
@@ -3431,6 +3432,7 @@ module Google
       
           property :redaction_config, as: 'redactionConfig', class: Google::Apis::CesV1::RedactionConfig, decorator: Google::Apis::CesV1::RedactionConfig::Representation
       
+          property :required_recording_consent, as: 'requiredRecordingConsent'
           property :unredacted_audio_recording_config, as: 'unredactedAudioRecordingConfig', class: Google::Apis::CesV1::AudioRecordingConfig, decorator: Google::Apis::CesV1::AudioRecordingConfig::Representation
       
           property :unredacted_bigquery_export_settings, as: 'unredactedBigqueryExportSettings', class: Google::Apis::CesV1::BigQueryExportSettings, decorator: Google::Apis::CesV1::BigQueryExportSettings::Representation
@@ -3857,6 +3859,8 @@ module Google
           property :exclude_diagnostic_info, as: 'excludeDiagnosticInfo'
           collection :historical_contexts, as: 'historicalContexts', class: Google::Apis::CesV1::Message, decorator: Google::Apis::CesV1::Message::Representation
       
+          property :include_llm_thought_summary, as: 'includeLlmThoughtSummary'
+          property :include_progress_update, as: 'includeProgressUpdate'
           property :input_audio_config, as: 'inputAudioConfig', class: Google::Apis::CesV1::InputAudioConfig, decorator: Google::Apis::CesV1::InputAudioConfig::Representation
       
           property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::CesV1::OutputAudioConfig, decorator: Google::Apis::CesV1::OutputAudioConfig::Representation
@@ -3888,6 +3892,7 @@ module Google
       
           property :image, as: 'image', class: Google::Apis::CesV1::Image, decorator: Google::Apis::CesV1::Image::Representation
       
+          property :recording_control, as: 'recordingControl'
           property :text, as: 'text'
           property :tool_responses, as: 'toolResponses', class: Google::Apis::CesV1::ToolResponses, decorator: Google::Apis::CesV1::ToolResponses::Representation
       

@@ -73777,6 +73777,8 @@
 "/ces:v1/GuardrailContentFilter/bannedContentsInUserInput/banned_contents_in_user_input": banned_contents_in_user_input
 "/ces:v1/GuardrailContentFilter/disregardDiacritics": disregard_diacritics
 "/ces:v1/GuardrailContentFilter/matchType": match_type
+"/ces:v1/GuardrailContentFilter/sensitiveWordsExemptions": sensitive_words_exemptions
+"/ces:v1/GuardrailContentFilter/sensitiveWordsExemptions/sensitive_words_exemption": sensitive_words_exemption
 "/ces:v1/GuardrailLlmPolicy": guardrail_llm_policy
 "/ces:v1/GuardrailLlmPolicy/allowShortUtterance": allow_short_utterance
 "/ces:v1/GuardrailLlmPolicy/failOpen": fail_open
@@ -74113,6 +74115,7 @@
 "/ces:v1/LoggingSettings/evaluationAudioRecordingConfig": evaluation_audio_recording_config
 "/ces:v1/LoggingSettings/metricAnalysisSettings": metric_analysis_settings
 "/ces:v1/LoggingSettings/redactionConfig": redaction_config
+"/ces:v1/LoggingSettings/requiredRecordingConsent": required_recording_consent
 "/ces:v1/LoggingSettings/unredactedAudioRecordingConfig": unredacted_audio_recording_config
 "/ces:v1/LoggingSettings/unredactedBigqueryExportSettings": unredacted_bigquery_export_settings
 "/ces:v1/McpTool": mcp_tool
@@ -74365,6 +74368,8 @@
 "/ces:v1/SessionConfig/excludeDiagnosticInfo": exclude_diagnostic_info
 "/ces:v1/SessionConfig/historicalContexts": historical_contexts
 "/ces:v1/SessionConfig/historicalContexts/historical_context": historical_context
+"/ces:v1/SessionConfig/includeLlmThoughtSummary": include_llm_thought_summary
+"/ces:v1/SessionConfig/includeProgressUpdate": include_progress_update
 "/ces:v1/SessionConfig/inputAudioConfig": input_audio_config
 "/ces:v1/SessionConfig/outputAudioConfig": output_audio_config
 "/ces:v1/SessionConfig/remoteDialogflowQueryParameters": remote_dialogflow_query_parameters
@@ -74383,6 +74388,7 @@
 "/ces:v1/SessionInput/dtmf": dtmf
 "/ces:v1/SessionInput/event": event
 "/ces:v1/SessionInput/image": image
+"/ces:v1/SessionInput/recordingControl": recording_control
 "/ces:v1/SessionInput/text": text
 "/ces:v1/SessionInput/toolResponses": tool_responses
 "/ces:v1/SessionInput/variables": variables
