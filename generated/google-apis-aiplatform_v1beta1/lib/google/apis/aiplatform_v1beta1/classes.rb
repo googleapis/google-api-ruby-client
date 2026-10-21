@@ -121,6 +121,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionHumanPose]
         attr_accessor :human_pose
       
+        # Configuration for Multi-LoRA adaptation.
+        # Corresponds to the JSON property `loraConfig`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsLoraConfig]
+        attr_accessor :lora_config
+      
         # Optional. BNS override for model backend. Enabled only for local and autopush
         # environments by the flag `lvm_allow_model_zoo_bns_override`.
         # Corresponds to the JSON property `modelEndpointOverride`
@@ -190,6 +195,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsSpatialAlignmentConfig]
         attr_accessor :spatial_alignment
       
+        # Config for the Pro Super Res upsampling task.
+        # Corresponds to the JSON property `superResConfig`
+        # @return [Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsSuperResConfig]
+        attr_accessor :super_res_config
+      
         # If true (default), truncate input videos that exceed the model's maximum frame
         # count by applying a frame_selection_config to __video_file__ inputs. Set to
         # false to preserve the existing fail-fast behavior.
@@ -230,6 +240,7 @@ module Google
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @exr_color_space_override = args[:exr_color_space_override] if args.key?(:exr_color_space_override)
           @human_pose = args[:human_pose] if args.key?(:human_pose)
+          @lora_config = args[:lora_config] if args.key?(:lora_config)
           @model_endpoint_override = args[:model_endpoint_override] if args.key?(:model_endpoint_override)
           @model_name = args[:model_name] if args.key?(:model_name)
           @num_diffusion_steps = args[:num_diffusion_steps] if args.key?(:num_diffusion_steps)
@@ -242,6 +253,7 @@ module Google
           @scheduling_config = args[:scheduling_config] if args.key?(:scheduling_config)
           @seamless = args[:seamless] if args.key?(:seamless)
           @spatial_alignment = args[:spatial_alignment] if args.key?(:spatial_alignment)
+          @super_res_config = args[:super_res_config] if args.key?(:super_res_config)
           @truncate_input_video = args[:truncate_input_video] if args.key?(:truncate_input_video)
           @video_transform = args[:video_transform] if args.key?(:video_transform)
           @video_transform_mask_gcs_uri = args[:video_transform_mask_gcs_uri] if args.key?(:video_transform_mask_gcs_uri)
@@ -319,6 +331,57 @@ module Google
         def update!(**args)
           @frame_num = args[:frame_num] if args.key?(:frame_num)
           @image = args[:image] if args.key?(:image)
+        end
+      end
+      
+      # Configuration for Multi-LoRA adaptation.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsLoraConfig
+        include Google::Apis::Core::Hashable
+      
+        # List of LoRA adapters to apply.
+        # Corresponds to the JSON property `adapters`
+        # @return [Array<Google::Apis::AiplatformV1beta1::CloudAiLargeModelsVisionGenerateVideoExperimentsLoraConfigAdapter>]
+        attr_accessor :adapters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adapters = args[:adapters] if args.key?(:adapters)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsLoraConfigAdapter
+        include Google::Apis::Core::Hashable
+      
+        # The registered ID of the LoRA adapter (e.g. "lora_xxx").
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Internal field populated after validation: resolved TFHub path.
+        # Corresponds to the JSON property `resolvedPath`
+        # @return [String]
+        attr_accessor :resolved_path
+      
+        # The blending scale/weight of the LoRA adapter. Must be in the range (0.0, 1.0].
+        # Default is 1.0.
+        # Corresponds to the JSON property `weight`
+        # @return [Float]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @resolved_path = args[:resolved_path] if args.key?(:resolved_path)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       
@@ -460,6 +523,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
+        end
+      end
+      
+      # Config for the Pro Super Res upsampling task.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsSuperResConfig
+        include Google::Apis::Core::Hashable
+      
+        # Super Res mode. Required.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        # Smooths the seams between the tiles the model upscales separately.
+        # Corresponds to the JSON property `tileSmoothing`
+        # @return [Boolean]
+        attr_accessor :tile_smoothing
+        alias_method :tile_smoothing?, :tile_smoothing
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
+          @tile_smoothing = args[:tile_smoothing] if args.key?(:tile_smoothing)
         end
       end
       
@@ -2229,6 +2318,13 @@ module Google
         # @return [String]
         attr_accessor :domain
       
+        # Network egress mode. Set via the `"allowlist": "disabled"` short form; must be
+        # the only rule in the allowlist and cannot be combined with `domain`, `
+        # transform` or `credential`.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         # Headers to inject into requests matching this rule. Key: header name (e.g., "
         # Authorization"). Value: header value (e.g., "Bearer your-token").
         # Corresponds to the JSON property `transform`
@@ -2242,6 +2338,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @domain = args[:domain] if args.key?(:domain)
+          @mode = args[:mode] if args.key?(:mode)
           @transform = args[:transform] if args.key?(:transform)
         end
       end
@@ -2250,7 +2347,8 @@ module Google
       class GenaiVertexV1beta1EnvironmentConfigEnvironmentNetworkEgressAllowlist
         include Google::Apis::Core::Hashable
       
-        # List of allowed domains and their configurations.
+        # List of allowed domains and their configurations. Set to `"disabled"` to block
+        # all network egress.
         # Corresponds to the JSON property `allowlist`
         # @return [Array<Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1EnvironmentConfigEgressRule>]
         attr_accessor :allowlist
@@ -2411,10 +2509,9 @@ module Google
       class GenaiVertexV1beta1FileCitation
         include Google::Apis::Core::Hashable
       
-        # `Struct` represents a structured data value, consisting of fields which map to
-        # dynamically typed values.
+        # User provided metadata about the retrieved context.
         # Corresponds to the JSON property `customMetadata`
-        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Struct]
+        # @return [Hash<String,Object>]
         attr_accessor :custom_metadata
       
         # The URI of the file.
@@ -3400,6 +3497,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1Content]
         attr_accessor :content
       
+        # Opaque token to resume a long decode. Output: set when status is INCOMPLETE
+        # and decoding can be resumed. Input: pass the latest token back unchanged in
+        # CreateInteraction to continue decoding.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Required. Output only. The time at which the response was created in ISO 8601
         # format (YYYY-MM-DDThh:mm:ssZ).
         # Corresponds to the JSON property `created`
@@ -3548,6 +3653,7 @@ module Google
         def update!(**args)
           @agent_interaction = args[:agent_interaction] if args.key?(:agent_interaction)
           @content = args[:content] if args.key?(:content)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @created = args[:created] if args.key?(:created)
           @env_id = args[:env_id] if args.key?(:env_id)
           @environment_id = args[:environment_id] if args.key?(:environment_id)
@@ -3619,6 +3725,13 @@ module Google
       class GenaiVertexV1beta1InteractionStatusUpdate
         include Google::Apis::Core::Hashable
       
+        # An optional opaque continuation token used to resume decoding from the latest
+        # checkpoint after a disconnected stream.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # 
         # Corresponds to the JSON property `interactionId`
         # @return [String]
@@ -3629,14 +3742,21 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Statistics on the interaction request's token usage.
+        # Corresponds to the JSON property `usage`
+        # @return [Google::Apis::AiplatformV1beta1::GenaiVertexV1beta1InteractionUsage]
+        attr_accessor :usage
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @interaction_id = args[:interaction_id] if args.key?(:interaction_id)
           @status = args[:status] if args.key?(:status)
+          @usage = args[:usage] if args.key?(:usage)
         end
       end
       
@@ -6232,8 +6352,10 @@ module Google
         attr_accessor :display_name
       
         # Output only. The timestamp at which a custom stored voice (`store = true`) or
-        # replicated voice key (`store = false`) expires. Unset for prebuilt catalog
-        # voices (`"prebuilt"`), which do not expire.
+        # replicated voice key (`store = false`) expires. For custom stored voices (`
+        # store = true`), this expiration time is extended when the voice is used for
+        # speech synthesis or as a `base_voice` in `CreateVoice`. Unset for prebuilt
+        # catalog voices (`"prebuilt"`), which do not expire.
         # Corresponds to the JSON property `expireTime`
         # @return [String]
         attr_accessor :expire_time
@@ -7743,6 +7865,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Output only. The resolved Agent Identity (SPIFFE principal) of the agent.
+        # Corresponds to the JSON property `effectiveIdentity`
+        # @return [String]
+        attr_accessor :effective_identity
+      
         # Immutable. The user-specified ID for the agent. This ID becomes the final
         # component of the agent resource name. If not provided, Vertex AI will generate
         # a value for this ID. The ID can be up to 63 characters and must match the
@@ -7755,6 +7882,12 @@ module Google
         # Corresponds to the JSON property `metadata`
         # @return [Hash<String,String>]
         attr_accessor :metadata
+      
+        # Selects the model configuration for an agent. Starts with just the model id/
+        # alias; extensible with further model parameters without a breaking change.
+        # Corresponds to the JSON property `modelConfig`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AgentModelConfig]
+        attr_accessor :model_config
       
         # Identifier. The resource name of the agent. Format: `projects/`project`/
         # locations/`location`/agents/`agent``.
@@ -7798,8 +7931,10 @@ module Google
           @base_environment = args[:base_environment] if args.key?(:base_environment)
           @created = args[:created] if args.key?(:created)
           @description = args[:description] if args.key?(:description)
+          @effective_identity = args[:effective_identity] if args.key?(:effective_identity)
           @id = args[:id] if args.key?(:id)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @model_config = args[:model_config] if args.key?(:model_config)
           @name = args[:name] if args.key?(:name)
           @object = args[:object] if args.key?(:object)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
@@ -7813,10 +7948,25 @@ module Google
       class GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope
         include Google::Apis::Core::Hashable
       
+        # Optional. When true, agents created in Agent Engine that share log and
+        # observability buckets with this scope are automatically enrolled as
+        # MonitoredAgents. When false, agents must be enrolled explicitly via
+        # MonitoredAgent operations.
+        # Corresponds to the JSON property `autoEnroll`
+        # @return [Boolean]
+        attr_accessor :auto_enroll
+        alias_method :auto_enroll?, :auto_enroll
+      
         # Optional. User-provided display name of the AgentAnomalyDetectionScope.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Represents a customer-managed encryption key specification that can be applied
+        # to a Vertex AI resource.
+        # Corresponds to the JSON property `encryptionSpec`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EncryptionSpec]
+        attr_accessor :encryption_spec
       
         # Required. Customer-owned Cloud Logging bucket resource names attached to this
         # scope. Format: `projects/`project`/locations/`location`/buckets/`bucket``.
@@ -7849,7 +7999,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_enroll = args[:auto_enroll] if args.key?(:auto_enroll)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @encryption_spec = args[:encryption_spec] if args.key?(:encryption_spec)
           @log_buckets = args[:log_buckets] if args.key?(:log_buckets)
           @name = args[:name] if args.key?(:name)
           @observability_buckets = args[:observability_buckets] if args.key?(:observability_buckets)
@@ -7988,6 +8140,36 @@ module Google
           @content = args[:content] if args.key?(:content)
           @event_time = args[:event_time] if args.key?(:event_time)
           @state_delta = args[:state_delta] if args.key?(:state_delta)
+        end
+      end
+      
+      # Selects the model configuration for an agent. Starts with just the model id/
+      # alias; extensible with further model parameters without a breaking change.
+      class GoogleCloudAiplatformV1beta1AgentModelConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Publisher model resource name (an `aiplatform.googleapis.com/
+        # PublisherModel`) of the form "publishers/`publisher`/models/`model`", e.g. "
+        # publishers/anthropic/models/claude-opus-4-8" or "publishers/google/models/
+        # gemini-3-flash". Empty means the agent's default gemini model.
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
+        # Optional. Sampling temperature for the model's generation config (valid range (
+        # 0.0, 2.0]); a value outside that range leaves the backend default standing.
+        # Corresponds to the JSON property `temperature`
+        # @return [Float]
+        attr_accessor :temperature
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model = args[:model] if args.key?(:model)
+          @temperature = args[:temperature] if args.key?(:temperature)
         end
       end
       
@@ -11966,6 +12148,14 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content]
         attr_accessor :content
       
+        # Output only. An optional opaque continuation token returned when `
+        # finish_reason` is `CONTINUATION`. Clients can pass this token in a subsequent `
+        # GenerateContentRequest` to continue generation.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Output only. Describes the reason the model stopped generating tokens in more
         # detail. This field is returned only when `finish_reason` is set.
         # Corresponds to the JSON property `finishMessage`
@@ -12023,6 +12213,7 @@ module Google
           @avg_logprobs = args[:avg_logprobs] if args.key?(:avg_logprobs)
           @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
           @content = args[:content] if args.key?(:content)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @finish_message = args[:finish_message] if args.key?(:finish_message)
           @finish_reason = args[:finish_reason] if args.key?(:finish_reason)
           @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
@@ -18379,6 +18570,17 @@ module Google
       class GoogleCloudAiplatformV1beta1EvaluateInstancesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Allows the evaluation run to use cross region models. When this flag
+        # is set, the service may route traffic to other regions if a model is
+        # unavailable in the current region (e.g., to a `global` endpoint). If a fully-
+        # qualified model endpoint resource name with a different region than the
+        # request location is provided elsewhere in the request, this flag must be set
+        # to true or the request will fail.
+        # Corresponds to the JSON property `allowCrossRegionModel`
+        # @return [Boolean]
+        attr_accessor :allow_cross_region_model
+        alias_method :allow_cross_region_model?, :allow_cross_region_model
+      
         # The configs for autorater. This is applicable to both EvaluateInstances and
         # EvaluateDataset.
         # Corresponds to the JSON property `autoraterConfig`
@@ -18578,6 +18780,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_cross_region_model = args[:allow_cross_region_model] if args.key?(:allow_cross_region_model)
           @autorater_config = args[:autorater_config] if args.key?(:autorater_config)
           @bleu_input = args[:bleu_input] if args.key?(:bleu_input)
           @coherence_input = args[:coherence_input] if args.key?(:coherence_input)
@@ -19521,7 +19724,11 @@ module Google
         # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
         # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
         # must be set, OR at least one of the `candidate_responses` must contain `
-        # agent_data`.
+        # agent_data`. Metrics receive each candidate as an `EvaluationInstance`, whose
+        # fields are the names metrics can reference: `prompt` -> `prompt`, the
+        # candidate -> `response` (or `agent_eval_data` for `agent_data`), `
+        # golden_response` -> `reference`, `rubrics` -> `rubric_groups`, and `prompt.
+        # prompt_template_data.values` and `extra_context` -> `other_data`.
         # Corresponds to the JSON property `evaluationRequest`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRequest]
         attr_accessor :evaluation_request
@@ -19798,7 +20005,11 @@ module Google
       # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
       # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
       # must be set, OR at least one of the `candidate_responses` must contain `
-      # agent_data`.
+      # agent_data`. Metrics receive each candidate as an `EvaluationInstance`, whose
+      # fields are the names metrics can reference: `prompt` -> `prompt`, the
+      # candidate -> `response` (or `agent_eval_data` for `agent_data`), `
+      # golden_response` -> `reference`, `rubrics` -> `rubric_groups`, and `prompt.
+      # prompt_template_data.values` and `extra_context` -> `other_data`.
       class GoogleCloudAiplatformV1beta1EvaluationRequest
         include Google::Apis::Core::Hashable
       
@@ -19875,7 +20086,11 @@ module Google
         # Offline Eval Mode: `prompt` is unset, and `candidate_responses` contains `
         # agent_data` (the completed execution trace). Validation Rule: Either `prompt`
         # must be set, OR at least one of the `candidate_responses` must contain `
-        # agent_data`.
+        # agent_data`. Metrics receive each candidate as an `EvaluationInstance`, whose
+        # fields are the names metrics can reference: `prompt` -> `prompt`, the
+        # candidate -> `response` (or `agent_eval_data` for `agent_data`), `
+        # golden_response` -> `reference`, `rubrics` -> `rubric_groups`, and `prompt.
+        # prompt_template_data.values` and `extra_context` -> `other_data`.
         # Corresponds to the JSON property `request`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRequest]
         attr_accessor :request
@@ -20114,6 +20329,17 @@ module Google
       class GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfig
         include Google::Apis::Core::Hashable
       
+        # Optional. Allows the evaluation run to use cross region models. When this flag
+        # is set, the service may route traffic to other regions if a model is
+        # unavailable in the current region (e.g., to a `global` endpoint). If a fully-
+        # qualified model endpoint resource name with a different region than the run
+        # location is provided elsewhere in the run config, this flag must be set to
+        # true or the request will fail.
+        # Corresponds to the JSON property `allowCrossRegionModel`
+        # @return [Boolean]
+        attr_accessor :allow_cross_region_model
+        alias_method :allow_cross_region_model?, :allow_cross_region_model
+      
         # The autorater config used for the evaluation run.
         # Corresponds to the JSON property `autoraterConfig`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig]
@@ -20168,6 +20394,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allow_cross_region_model = args[:allow_cross_region_model] if args.key?(:allow_cross_region_model)
           @autorater_config = args[:autorater_config] if args.key?(:autorater_config)
           @cloud_logging_config = args[:cloud_logging_config] if args.key?(:cloud_logging_config)
           @dataset_custom_metrics = args[:dataset_custom_metrics] if args.key?(:dataset_custom_metrics)
@@ -20637,6 +20864,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :parameters
       
+        # Optional. Per-step autorater overrides for this predefined metric. Keys are
+        # evaluation stage names: "intent_extraction", "rubric_generation", "
+        # rubric_validation".
+        # Corresponds to the JSON property `stepAutoraterConfigs`
+        # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig>]
+        attr_accessor :step_autorater_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -20645,6 +20879,7 @@ module Google
         def update!(**args)
           @metric_spec_name = args[:metric_spec_name] if args.key?(:metric_spec_name)
           @parameters = args[:parameters] if args.key?(:parameters)
+          @step_autorater_configs = args[:step_autorater_configs] if args.key?(:step_autorater_configs)
         end
       end
       
@@ -27402,6 +27637,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1Content>]
         attr_accessor :contents
       
+        # Optional. An opaque continuation token used to resume generation from a
+        # previous `GenerateContent` or `StreamGenerateContent` response that stopped
+        # with `finish_reason` set to `CONTINUATION`.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Configuration for content generation. This message contains all the parameters
         # that control how the model generates content. It allows you to influence the
         # randomness, length, and structure of the output.
@@ -27460,6 +27703,7 @@ module Google
         def update!(**args)
           @cached_content = args[:cached_content] if args.key?(:cached_content)
           @contents = args[:contents] if args.key?(:contents)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
@@ -36951,7 +37195,9 @@ module Google
         # variables in the example, then the expansion does not occur. This field
         # corresponds to the `env` field of the Kubernetes Containers [v1 core API](
         # https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-
-        # v1-core).
+        # v1-core). At most 200 environment variables can be specified. Each variable (`
+        # NAME=value`) must be smaller than 128 KiB, and the total size of all variables
+        # must not exceed 512 KiB.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1EnvVar>]
         attr_accessor :env
@@ -41824,6 +42070,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityNumericPredicate]
         attr_accessor :model_calls
       
+        # Defines a predicate for filtering based on a string value.
+        # Corresponds to the JSON property `serviceVersion`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityStringPredicate]
+        attr_accessor :service_version
+      
         # Defines a predicate for filtering based on a numeric value.
         # Corresponds to the JSON property `toolCallErrors`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityNumericPredicate]
@@ -41853,10 +42104,31 @@ module Google
           @duration = args[:duration] if args.key?(:duration)
           @model_call_errors = args[:model_call_errors] if args.key?(:model_call_errors)
           @model_calls = args[:model_calls] if args.key?(:model_calls)
+          @service_version = args[:service_version] if args.key?(:service_version)
           @tool_call_errors = args[:tool_call_errors] if args.key?(:tool_call_errors)
           @tool_calls = args[:tool_calls] if args.key?(:tool_calls)
           @total_token_usage = args[:total_token_usage] if args.key?(:total_token_usage)
           @user_turns = args[:user_turns] if args.key?(:user_turns)
+        end
+      end
+      
+      # Defines a predicate for filtering based on a string value.
+      class GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityStringPredicate
+        include Google::Apis::Core::Hashable
+      
+        # Required. The values to match exactly (case-sensitive). Requires 1 to 20
+        # values, each at most 128 characters long.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -41890,6 +42162,11 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityNumericPredicate]
         attr_accessor :duration
       
+        # Defines a predicate for filtering based on a string value.
+        # Corresponds to the JSON property `serviceVersion`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityStringPredicate]
+        attr_accessor :service_version
+      
         # Defines a predicate for filtering based on a numeric value.
         # Corresponds to the JSON property `totalTokenUsage`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1OnlineEvaluatorCloudObservabilityNumericPredicate]
@@ -41902,6 +42179,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
+          @service_version = args[:service_version] if args.key?(:service_version)
           @total_token_usage = args[:total_token_usage] if args.key?(:total_token_usage)
         end
       end
@@ -42531,10 +42809,10 @@ module Google
       end
       
       # A datatype containing media that is part of a multi-part Content message. A `
-      # Part` consists of data which has an associated datatype. A `Part` can only
-      # contain one of the accepted types in `Part.data`. For media types that are not
-      # text, `Part` must have a fixed IANA MIME type identifying the type and subtype
-      # of the media if `inline_data` or `file_data` field is filled with raw bytes.
+      # Part` consists of data which has an associated datatype. A `Part` must contain
+      # one of the accepted types in `Part.data`. For media types that are not text, `
+      # Part` must have a fixed IANA MIME type identifying the type and subtype of the
+      # media if `inline_data` or `file_data` field is filled with raw bytes.
       class GoogleCloudAiplatformV1beta1Part
         include Google::Apis::Core::Hashable
       
@@ -43975,6 +44253,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :metric_spec_parameters
       
+        # Optional. Per-step autorater overrides for this predefined metric. Keys are
+        # evaluation stage names (snake_case). Valid keys: "intent_extraction", "
+        # rubric_generation", "rubric_validation". Unknown keys return INVALID_ARGUMENT.
+        # Corresponds to the JSON property `stepAutoraterConfigs`
+        # @return [Hash<String,Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1AutoraterConfig>]
+        attr_accessor :step_autorater_configs
+      
         def initialize(**args)
            update!(**args)
         end
@@ -43983,6 +44268,7 @@ module Google
         def update!(**args)
           @metric_spec_name = args[:metric_spec_name] if args.key?(:metric_spec_name)
           @metric_spec_parameters = args[:metric_spec_parameters] if args.key?(:metric_spec_parameters)
+          @step_autorater_configs = args[:step_autorater_configs] if args.key?(:step_autorater_configs)
         end
       end
       
@@ -56640,6 +56926,33 @@ module Google
         end
       end
       
+      # Metadata the model returned alongside the content it generated.
+      class GoogleCloudAiplatformV1beta1SchemaPromptSpecContentMetadata
+        include Google::Apis::Core::Hashable
+      
+        # A collection of citations that apply to a piece of generated content.
+        # Corresponds to the JSON property `citationMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1CitationMetadata]
+        attr_accessor :citation_metadata
+      
+        # Information about the sources that support the content of a response. When
+        # grounding is enabled, the model returns citations for claims in the response.
+        # This object contains the retrieved sources.
+        # Corresponds to the JSON property `groundingMetadata`
+        # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1GroundingMetadata]
+        attr_accessor :grounding_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citation_metadata = args[:citation_metadata] if args.key?(:citation_metadata)
+          @grounding_metadata = args[:grounding_metadata] if args.key?(:grounding_metadata)
+        end
+      end
+      
       # Defines data for an interaction prompt.
       class GoogleCloudAiplatformV1beta1SchemaPromptSpecInteractionData
         include Google::Apis::Core::Hashable
@@ -56819,6 +57132,13 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecAppBuilderData]
         attr_accessor :app_builder_data
       
+        # Optional. Metadata the model returned with each of `prompt_message.contents`,
+        # such as citations and grounding sources. This maps 1:1 to PromptMessage.
+        # contents; an entry is empty when its content has no metadata.
+        # Corresponds to the JSON property `contentMetadata`
+        # @return [Array<Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1SchemaPromptSpecContentMetadata>]
+        attr_accessor :content_metadata
+      
         # The structured data content of a message. A Content message contains a `role`
         # field, which indicates the producer of the content, and a `parts` field, which
         # contains the multi-part data of the message.
@@ -56875,6 +57195,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_builder_data = args[:app_builder_data] if args.key?(:app_builder_data)
+          @content_metadata = args[:content_metadata] if args.key?(:content_metadata)
           @context = args[:context] if args.key?(:context)
           @examples = args[:examples] if args.key?(:examples)
           @infill_prefix = args[:infill_prefix] if args.key?(:infill_prefix)
@@ -61283,7 +61604,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. The name of the agent in Agent Registry that is affected by this
-        # policy.
+        # policy. Format: `projects/`project`/locations/`location`/agents/`agent``
         # Corresponds to the JSON property `agent`
         # @return [String]
         attr_accessor :agent
@@ -61457,9 +61778,8 @@ module Google
         # @return [String]
         attr_accessor :mcp_server
       
-        # Optional. The resource names of the McpTools used by the Agent that is
-        # affected by this policy. If not specified, the policy applies to all McpTools
-        # in the McpServer.
+        # Required. The resource names of the tools used by the Agent that is affected
+        # by this policy. Currently, exactly one tool must be specified.
         # Corresponds to the JSON property `tools`
         # @return [Array<String>]
         attr_accessor :tools
@@ -65943,7 +66263,7 @@ module Google
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolCodeExecution]
         attr_accessor :code_execution
       
-        # Tool to support computer use.
+        # A tool that enables the model to interact directly with a computer environment.
         # Corresponds to the JSON property `computerUse`
         # @return [Google::Apis::AiplatformV1beta1::GoogleCloudAiplatformV1beta1ToolComputerUse]
         attr_accessor :computer_use
@@ -66162,32 +66482,32 @@ module Google
         end
       end
       
-      # Tool to support computer use.
+      # A tool that enables the model to interact directly with a computer environment.
       class GoogleCloudAiplatformV1beta1ToolComputerUse
         include Google::Apis::Core::Hashable
       
-        # Optional. Disabled safety policies for computer use.
+        # Optional. A list of safety policies to disable for the computer use tool.
         # Corresponds to the JSON property `disabledSafetyPolicies`
         # @return [Array<String>]
         attr_accessor :disabled_safety_policies
       
-        # Optional. Enables the prompt injection detection check on computer-use request.
+        # Optional. Whether to enable the prompt injection detection check on the
+        # computer use request.
         # Corresponds to the JSON property `enablePromptInjectionDetection`
         # @return [Boolean]
         attr_accessor :enable_prompt_injection_detection
         alias_method :enable_prompt_injection_detection?, :enable_prompt_injection_detection
       
-        # Required. The environment being operated.
+        # Required. The target environment where the computer use tool operates.
         # Corresponds to the JSON property `environment`
         # @return [String]
         attr_accessor :environment
       
-        # Optional. By default, [predefined functions](https://cloud.google.com/vertex-
-        # ai/generative-ai/docs/computer-use#supported-actions) are included in the
-        # final model call. Some of them can be explicitly excluded from being
-        # automatically included. This can serve two purposes: 1. Using a more
-        # restricted / different action space. 2. Improving the definitions /
-        # instructions of predefined functions.
+        # Optional. A list of predefined functions to explicitly exclude from the model
+        # call. By default, [predefined functions](https://cloud.google.com/vertex-ai/
+        # generative-ai/docs/computer-use#supported-actions) are included. Excluding
+        # functions allows for a more restricted action space or custom definitions for
+        # predefined functions.
         # Corresponds to the JSON property `excludedPredefinedFunctions`
         # @return [Array<String>]
         attr_accessor :excluded_predefined_functions
@@ -70758,7 +71078,9 @@ module Google
         # Optional. Whether the created voice is persisted and managed by Google. * When
         # `true`, Google stores the voice and returns `Voice.id` (for example, `
         # voice_abc123def456`), which can be managed via `GetVoice`, `ListVoices`, and `
-        # DeleteVoice` and referenced by ID in synthesis requests. Projects are subject
+        # DeleteVoice` and referenced by ID in synthesis requests. Stored voices expire
+        # after 1 year of inactivity; using a stored voice in speech synthesis or as a `
+        # base_voice` in `CreateVoice` extends its `expire_time`. Projects are subject
         # to a maximum active stored voice quota; exceeding the quota returns `
         # RESOURCE_EXHAUSTED`. * When `false` (default), the voice is not stored by
         # Google and `Voice.key` (for example, `voicekey_...`) is returned for client-
