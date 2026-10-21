@@ -789,6 +789,54 @@ module Google
         end
       end
       
+      # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or an
+      # HTML page. This message can be used both in streaming and non-streaming API
+      # methods in the request as well as the response. It can be used as a top-level
+      # request field, which is convenient if one wants to extract parameters from
+      # either the URL or HTTP template into the request fields and also want access
+      # to the raw HTTP body. Example: message GetResourceRequest ` // A unique
+      # request id. string request_id = 1; // The raw HTTP body is bound to this field.
+      # google.api.HttpBody http_body = 2; ` service ResourceService ` rpc
+      # GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+      # UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); ` Example
+      # with streaming methods: service CaldavService ` rpc GetCalendar(stream google.
+      # api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream
+      # google.api.HttpBody) returns (stream google.api.HttpBody); ` Use of this type
+      # only changes how the request and response bodies are handled, all other
+      # features will continue to work unchanged.
+      class HttpBody
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP Content-Type header value specifying the content type of the body.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # The HTTP request/response body as raw binary.
+        # Corresponds to the JSON property `data`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :data
+      
+        # Application specific response metadata. Must be set in the first response for
+        # streaming APIs.
+        # Corresponds to the JSON property `extensions`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @data = args[:data] if args.key?(:data)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
       # Settings for HTTP GraphQL server webhook.
       class HttpGraphql
         include Google::Apis::Core::Hashable
@@ -1518,6 +1566,11 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Used to represent a set of source files.
+        # Corresponds to the JSON property `graphqlSource`
+        # @return [Google::Apis::FirebasedataconnectV1::Source]
+        attr_accessor :graphql_source
+      
         # Optional. Labels as key value pairs.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -1539,7 +1592,7 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
-        # Output only. The list of schemas in this service.
+        # Optional. The list of schemas in this service.
         # Corresponds to the JSON property `schemas`
         # @return [Array<Google::Apis::FirebasedataconnectV1::Schema>]
         attr_accessor :schemas
@@ -1548,6 +1601,11 @@ module Google
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::FirebasedataconnectV1::Source]
         attr_accessor :source
+      
+        # Used to represent a set of source files.
+        # Corresponds to the JSON property `sqlSource`
+        # @return [Google::Apis::FirebasedataconnectV1::Source]
+        attr_accessor :sql_source
       
         # Output only. System-assigned, unique identifier.
         # Corresponds to the JSON property `uid`
@@ -1570,11 +1628,13 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @display_name = args[:display_name] if args.key?(:display_name)
           @etag = args[:etag] if args.key?(:etag)
+          @graphql_source = args[:graphql_source] if args.key?(:graphql_source)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @schemas = args[:schemas] if args.key?(:schemas)
           @source = args[:source] if args.key?(:source)
+          @sql_source = args[:sql_source] if args.key?(:sql_source)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

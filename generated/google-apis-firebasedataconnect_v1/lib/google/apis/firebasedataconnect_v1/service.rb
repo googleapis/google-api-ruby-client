@@ -1136,6 +1136,259 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Executes a dynamic DELETE mutation on rows matching the URL filters.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_table
+        #   Required. The name of the table to delete from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_delete(firebasedataconnect_service, firebasedataconnect_table, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectTable'] = firebasedataconnect_table unless firebasedataconnect_table.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a dynamic INSERT (create) or UPSERT mutation on a target table.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_table
+        #   Required. The name of the table to insert into.
+        # @param [Google::Apis::FirebasedataconnectV1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_insert(firebasedataconnect_service, firebasedataconnect_table, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectTable'] = firebasedataconnect_table unless firebasedataconnect_table.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a dynamic SELECT (read) query on a target PostgreSQL table.
+        # Projections, filters, sorting, and embeddings are mapped from the HTTP URL
+        # query parameters.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_table
+        #   Required. The name of the table to select from.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_select(firebasedataconnect_service, firebasedataconnect_table, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectTable'] = firebasedataconnect_table unless firebasedataconnect_table.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a dynamic UPDATE (modify) mutation on rows matching the URL filters.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_table
+        #   Required. The name of the table to update.
+        # @param [Google::Apis::FirebasedataconnectV1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_update(firebasedataconnect_service, firebasedataconnect_table, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectTable'] = firebasedataconnect_table unless firebasedataconnect_table.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a dynamic UPSERT (replace or create) mutation on a target table
+        # identified by primary key filters.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_table
+        #   Required. The name of the table to upsert into.
+        # @param [Google::Apis::FirebasedataconnectV1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_upsert(firebasedataconnect_service, firebasedataconnect_table, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v1/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectTable'] = firebasedataconnect_table unless firebasedataconnect_table.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a PostgreSQL database function.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_function
+        #   Required. The name of the database function.
+        # @param [Google::Apis::FirebasedataconnectV1::HttpBody] http_body_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_rpc_call_function(firebasedataconnect_service, firebasedataconnect_function, http_body_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', options)
+          command.request_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.request_object = http_body_object
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectFunction'] = firebasedataconnect_function unless firebasedataconnect_function.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a read-only PostgreSQL database function.
+        # @param [String] firebasedataconnect_service
+        #   Required. The resource name of the service, in the format: `projects/`project`/
+        #   locations/`location`/services/`service``
+        # @param [String] firebasedataconnect_function
+        #   Required. The name of the database function.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebasedataconnectV1::HttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebasedataconnectV1::HttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def postgrest_project_location_service_postgrest_rpc_query_function(firebasedataconnect_service, firebasedataconnect_function, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', options)
+          command.response_representation = Google::Apis::FirebasedataconnectV1::HttpBody::Representation
+          command.response_class = Google::Apis::FirebasedataconnectV1::HttpBody
+          command.params['firebasedataconnectService'] = firebasedataconnect_service unless firebasedataconnect_service.nil?
+          command.params['firebasedataconnectFunction'] = firebasedataconnect_function unless firebasedataconnect_function.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Schema in a given project and location. Only creation of `
         # schemas/main` is supported and calling create with any other schema ID will
         # result in an error.
