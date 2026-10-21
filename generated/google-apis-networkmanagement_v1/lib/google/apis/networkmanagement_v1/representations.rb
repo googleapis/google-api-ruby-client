@@ -659,7 +659,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service_uri, as: 'serviceUri'
           property :uri, as: 'uri'
-          property :worker_pool_uri, as: 'workerPoolUri'
         end
       end
       
@@ -760,6 +759,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
+          property :connection_logging, as: 'connectionLogging'
           property :cross_project_metadata, as: 'crossProjectMetadata'
           property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
@@ -1648,6 +1648,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
+          property :connection_logging, as: 'connectionLogging'
           property :create_time, as: 'createTime'
           property :cross_project_metadata, as: 'crossProjectMetadata'
           property :description, as: 'description'
