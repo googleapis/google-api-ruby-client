@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CallerAgent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CheckRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -277,6 +283,8 @@ module Google
       
           collection :authorization_info, as: 'authorizationInfo', class: Google::Apis::ServicecontrolV2::AuthorizationInfo, decorator: Google::Apis::ServicecontrolV2::AuthorizationInfo::Representation
       
+          property :caller_agent, as: 'callerAgent', class: Google::Apis::ServicecontrolV2::CallerAgent, decorator: Google::Apis::ServicecontrolV2::CallerAgent::Representation
+      
           hash :metadata, as: 'metadata'
           property :method_name, as: 'methodName'
           property :num_response_items, :numeric_string => true, as: 'numResponseItems'
@@ -348,6 +356,13 @@ module Google
           property :resource, as: 'resource'
           property :resource_attributes, as: 'resourceAttributes', class: Google::Apis::ServicecontrolV2::Resource, decorator: Google::Apis::ServicecontrolV2::Resource::Representation
       
+        end
+      end
+      
+      class CallerAgent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authority, as: 'authority'
         end
       end
       
