@@ -12342,6 +12342,12 @@ module Google
         attr_accessor :audio_encoding
       
         # 
+        # Corresponds to the JSON property `disableInterimInputTranscripts`
+        # @return [Boolean]
+        attr_accessor :disable_interim_input_transcripts
+        alias_method :disable_interim_input_transcripts?, :disable_interim_input_transcripts
+      
+        # 
         # Corresponds to the JSON property `disableNoSpeechRecognizedEvent`
         # @return [Boolean]
         attr_accessor :disable_no_speech_recognized_event
@@ -12430,6 +12436,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @disable_interim_input_transcripts = args[:disable_interim_input_transcripts] if args.key?(:disable_interim_input_transcripts)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_voice_activity_events = args[:enable_voice_activity_events] if args.key?(:enable_voice_activity_events)
@@ -16513,6 +16520,12 @@ module Google
         attr_accessor :audio_encoding
       
         # 
+        # Corresponds to the JSON property `disableInterimInputTranscripts`
+        # @return [Boolean]
+        attr_accessor :disable_interim_input_transcripts
+        alias_method :disable_interim_input_transcripts?, :disable_interim_input_transcripts
+      
+        # 
         # Corresponds to the JSON property `enableWordInfo`
         # @return [Boolean]
         attr_accessor :enable_word_info
@@ -16567,6 +16580,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
+          @disable_interim_input_transcripts = args[:disable_interim_input_transcripts] if args.key?(:disable_interim_input_transcripts)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
           @gemini_asr_config = args[:gemini_asr_config] if args.key?(:gemini_asr_config)
           @language_code = args[:language_code] if args.key?(:language_code)
@@ -16587,11 +16601,6 @@ module Google
         # Corresponds to the JSON property `endOfSpeechSensitivity`
         # @return [String]
         attr_accessor :end_of_speech_sensitivity
-      
-        # 
-        # Corresponds to the JSON property `modelId`
-        # @return [String]
-        attr_accessor :model_id
       
         # 
         # Corresponds to the JSON property `prefixPaddingMs`
@@ -16615,7 +16624,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_of_speech_sensitivity = args[:end_of_speech_sensitivity] if args.key?(:end_of_speech_sensitivity)
-          @model_id = args[:model_id] if args.key?(:model_id)
           @prefix_padding_ms = args[:prefix_padding_ms] if args.key?(:prefix_padding_ms)
           @silence_duration_ms = args[:silence_duration_ms] if args.key?(:silence_duration_ms)
           @start_of_speech_sensitivity = args[:start_of_speech_sensitivity] if args.key?(:start_of_speech_sensitivity)

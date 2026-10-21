@@ -239345,6 +239345,7 @@
 "/dialogflow:v2/GoogleCloudDialogflowV2InitializeEncryptionSpecRequest/encryptionSpec": encryption_spec
 "/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig": google_cloud_dialogflow_v2_input_audio_config
 "/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig/audioEncoding": audio_encoding
+"/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig/disableInterimInputTranscripts": disable_interim_input_transcripts
 "/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig/disableNoSpeechRecognizedEvent": disable_no_speech_recognized_event
 "/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig/enableAutomaticPunctuation": enable_automatic_punctuation
 "/dialogflow:v2/GoogleCloudDialogflowV2InputAudioConfig/enableVoiceActivityEvents": enable_voice_activity_events
@@ -239993,6 +239994,7 @@
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/alternativeLanguageCodes": alternative_language_codes
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/alternativeLanguageCodes/alternative_language_code": alternative_language_code
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/audioEncoding": audio_encoding
+"/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/disableInterimInputTranscripts": disable_interim_input_transcripts
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/enableWordInfo": enable_word_info
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/geminiAsrConfig": gemini_asr_config
 "/dialogflow:v2/GoogleCloudDialogflowV2SpeechToTextConfig/languageCode": language_code
