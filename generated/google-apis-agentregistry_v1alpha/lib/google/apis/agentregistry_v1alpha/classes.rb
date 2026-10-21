@@ -180,7 +180,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :content
       
-        # Required. The type of the agent spec content.
+        # Required. Immutable. The type of the agent spec content.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -193,6 +193,74 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Represents an AI Application.
+      class AiApplication
+        include Google::Apis::Core::Hashable
+      
+        # Additional system properties of an Application.
+        # Corresponds to the JSON property `applicationProperties`
+        # @return [Google::Apis::AgentregistryV1alpha::ApplicationProperties]
+        attr_accessor :application_properties
+      
+        # Consumer provided attributes.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::AgentregistryV1alpha::Attributes]
+        attr_accessor :attributes
+      
+        # Output only. Creation time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User-defined description of the AI Application.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. User-defined name for the AI Application.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Identifier. Resource name of the AI Application. Format: `projects/`project`/
+        # locations/`location`/aiApplications/`ai_application``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The current state of the AI Application.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. Universally unique identifier (UUID4) for the AI Application.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Last update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_properties = args[:application_properties] if args.key?(:application_properties)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -250,6 +318,28 @@ module Google
         end
       end
       
+      # Additional system properties of an Application.
+      class ApplicationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional metadata specific to the App Hub application. The key
+        # is a string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::AgentregistryV1alpha::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
+        end
+      end
+      
       # Direct write-only raw archive payload upload.
       class ArchiveUploadSource
         include Google::Apis::Core::Hashable
@@ -268,6 +358,49 @@ module Google
         # Update properties of this object
         def update!(**args)
           @archive_content = args[:archive_content] if args.key?(:archive_content)
+        end
+      end
+      
+      # Consumer provided attributes.
+      class Attributes
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Business team that ensures user needs are met and value is delivered
+        # Corresponds to the JSON property `businessOwners`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::ContactInfo>]
+        attr_accessor :business_owners
+      
+        # Criticality of the Application, Service, or Workload
+        # Corresponds to the JSON property `criticality`
+        # @return [Google::Apis::AgentregistryV1alpha::Criticality]
+        attr_accessor :criticality
+      
+        # Optional. Developer team that owns development and coding.
+        # Corresponds to the JSON property `developerOwners`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::ContactInfo>]
+        attr_accessor :developer_owners
+      
+        # Environment of the Application, Service, or Workload
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::AgentregistryV1alpha::Environment]
+        attr_accessor :environment
+      
+        # Optional. Operator team that ensures runtime and operations.
+        # Corresponds to the JSON property `operatorOwners`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::ContactInfo>]
+        attr_accessor :operator_owners
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @business_owners = args[:business_owners] if args.key?(:business_owners)
+          @criticality = args[:criticality] if args.key?(:criticality)
+          @developer_owners = args[:developer_owners] if args.key?(:developer_owners)
+          @environment = args[:environment] if args.key?(:environment)
+          @operator_owners = args[:operator_owners] if args.key?(:operator_owners)
         end
       end
       
@@ -406,6 +539,91 @@ module Google
         end
       end
       
+      # Separate message to accommodate custom formats across IRC and Slack.
+      class Channel
+        include Google::Apis::Core::Hashable
+      
+        # Required. URI of the channel.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Contact information of stakeholders.
+      class ContactInfo
+        include Google::Apis::Core::Hashable
+      
+        # Separate message to accommodate custom formats across IRC and Slack.
+        # Corresponds to the JSON property `channel`
+        # @return [Google::Apis::AgentregistryV1alpha::Channel]
+        attr_accessor :channel
+      
+        # Optional. Contact's name. Can have a maximum length of 63 characters.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Required. Email address of the contacts.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # Criticality of the Application, Service, or Workload
+      class Criticality
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Criticality level. Can contain only lowercase letters, numeric
+        # characters, underscores, and dashes. Can have a maximum length of 63
+        # characters. Deprecated: Please refer to type instead.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # Optional. Indicates mission-critical Application, Service, or Workload.
+        # Deprecated: Please refer to type instead.
+        # Corresponds to the JSON property `missionCritical`
+        # @return [Boolean]
+        attr_accessor :mission_critical
+        alias_method :mission_critical?, :mission_critical
+      
+        # Required. Criticality Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @level = args[:level] if args.key?(:level)
+          @mission_critical = args[:mission_critical] if args.key?(:mission_critical)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -495,7 +713,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :content
       
-        # Required. The type of the endpoint spec content.
+        # Required. Immutable. The type of the endpoint spec content.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -507,6 +725,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Environment of the Application, Service, or Workload
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Environment name. Can contain only lowercase letters, numeric
+        # characters, underscores, and dashes. Can have a maximum length of 63
+        # characters. Deprecated: Please refer to type instead.
+        # Corresponds to the JSON property `environment`
+        # @return [String]
+        attr_accessor :environment
+      
+        # Required. Environment Type.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environment = args[:environment] if args.key?(:environment)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -562,6 +807,25 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Additional metadata for a Service or Workload.
+      class ExtendedMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The metadata contents.
+        # Corresponds to the JSON property `metadataStruct`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata_struct
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata_struct = args[:metadata_struct] if args.key?(:metadata_struct)
         end
       end
       
@@ -1071,6 +1335,112 @@ module Google
         end
       end
       
+      # Message for response to listing Agents under an AI Application.
+      class ListAiApplicationAgentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Agents.
+        # Corresponds to the JSON property `agents`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Agent>]
+        attr_accessor :agents
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agents = args[:agents] if args.key?(:agents)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing Endpoints under an AI Application.
+      class ListAiApplicationEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Endpoints.
+        # Corresponds to the JSON property `endpoints`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Endpoint>]
+        attr_accessor :endpoints
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoints = args[:endpoints] if args.key?(:endpoints)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing McpServers under an AI Application.
+      class ListAiApplicationMcpServersResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of McpServers.
+        # Corresponds to the JSON property `mcpServers`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::McpServer>]
+        attr_accessor :mcp_servers
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mcp_servers = args[:mcp_servers] if args.key?(:mcp_servers)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Message for response to listing AiApplications.
+      class ListAiApplicationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of AiApplications.
+        # Corresponds to the JSON property `aiApplications`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::AiApplication>]
+        attr_accessor :ai_applications
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ai_applications = args[:ai_applications] if args.key?(:ai_applications)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Message for response to listing Bindings
       class ListBindingsResponse
         include Google::Apis::Core::Hashable
@@ -1450,7 +1820,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :content
       
-        # Required. The type of the MCP Server spec content.
+        # Required. Immutable. The type of the MCP Server spec content.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1707,12 +2077,12 @@ module Google
         # Yes | No | Included | | skills.description | No | Yes | No | Included | |
         # skills.tags | No | Yes | No | Included | | skills.examples | No | Yes | No |
         # Included | Examples: * `agentId="urn:agent:projects-123:projects:123:locations:
-        # us-central1:reasoningEngines:1234"` to find the agent with the specified agent
-        # ID. * `name:important` to find agents whose name contains `important` as a
-        # word. * `displayName:works*` to find agents whose display name contains words
-        # that start with `works`. * `skills.tags:test` to find agents whose skills tags
-        # contain `test`. * `planner OR booking` to find agents whose metadata contains
-        # the words `planner` or `booking`.
+        # us-central1:aiplatform:reasoningEngines:1234"` to find the agent with the
+        # specified agent ID. * `name:important` to find agents whose name contains `
+        # important` as a word. * `displayName:works*` to find agents whose display name
+        # contains words that start with `works`. * `skills.tags:test` to find agents
+        # whose skills tags contain `test`. * `planner OR booking` to find agents whose
+        # metadata contains the words `planner` or `booking`.
         # Corresponds to the JSON property `searchString`
         # @return [String]
         attr_accessor :search_string
@@ -1835,6 +2205,80 @@ module Google
         def update!(**args)
           @mcp_servers = args[:mcp_servers] if args.key?(:mcp_servers)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Requesting a deep search of Skills.
+      class SearchSkillsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Use this field to specify additional filter criteria on search
+        # results. Filter expressions can be used to restrict results based upon
+        # filterable fields, where equality operators can be used. See [instructions](
+        # https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more
+        # details. Allowed operators: `=`, `<`, `>`, `NOT`, `AND`, `OR`, and `()`. |
+        # Field | `=` | `<`, `>` | |--------------|-----|----------| | state | Yes | No |
+        # | targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes |
+        # Yes | Examples: * `state=ACTIVE` to restrict results to skills in the `ACTIVE`
+        # state.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional. The maximum number of search results to return per page. The page
+        # size is capped at `100`, even if a larger value is specified. A negative value
+        # will result in an `INVALID_ARGUMENT` error. If unspecified or set to `0`, a
+        # default value of `20` will be used. The server may return fewer results than
+        # requested.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # Optional. If present, retrieve the next batch of results from the preceding
+        # call to this method. `page_token` must be the value of `next_page_token` from
+        # the previous response. The values of all other method parameters, must be
+        # identical to those in the previous call.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Optional. Search criteria used to select the Skills to return. If no search
+        # criteria is specified then all accessible Skills will be returned. Search
+        # expressions can be used to restrict results based upon searchable fields,
+        # where the operators can be used along with the suffix wildcard symbol `*`. See
+        # [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-
+        # tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `
+        # ()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |---------
+        # ------------------|-----|-----|-----|----------------| | skillId | Yes | Yes |
+        # Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes
+        # | Yes | Included | | description | No | Yes | No | Included | | frontmatter.
+        # name | No | Yes | No | Included | | frontmatter.description | No | Yes | No |
+        # Included | | frontmatter.compatibility | No | Yes | No | Included | |
+        # frontmatter.license | No | Yes | No | Included | Examples: * `skillId="urn:
+        # skill:projects-1234:locations:global:private-important-skill"` to find the
+        # skill with the specified skill ID. * `name:important` to find skills whose
+        # name contains `important` as a word. * `displayName:works*` to find skills
+        # whose display name contains words that start with `works`.
+        # Corresponds to the JSON property `searchString`
+        # @return [String]
+        attr_accessor :search_string
+      
+        # Optional. The type of search.
+        # Corresponds to the JSON property `searchType`
+        # @return [String]
+        attr_accessor :search_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @search_string = args[:search_string] if args.key?(:search_string)
+          @search_type = args[:search_type] if args.key?(:search_type)
         end
       end
       
