@@ -278,6 +278,92 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets information about a location.
+        # @param [String] name
+        #   Resource name for the location.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Location] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Location]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_location(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+name}', options)
+          command.response_representation = Google::Apis::DnsV1::Location::Representation
+          command.response_class = Google::Apis::DnsV1::Location
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists information about the supported locations for this service. This method
+        # lists locations based on the resource scope provided in the
+        # ListLocationsRequest.name field: * **Global locations**: If `name` is empty,
+        # the method lists the public locations available to all projects. * **Project-
+        # specific locations**: If `name` follows the format `projects/`project``, the
+        # method lists locations visible to that specific project. This includes public,
+        # private, or other project-specific locations enabled for the project. For gRPC
+        # and client library implementations, the resource name is passed as the `name`
+        # field. For direct service calls, the resource name is incorporated into the
+        # request path based on the specific service implementation and version.
+        # @param [String] name
+        #   The resource that owns the locations collection, if applicable.
+        # @param [Array<String>, String] extra_location_types
+        #   Optional. Do not use this field unless explicitly documented otherwise. This
+        #   is primarily for internal usage.
+        # @param [String] filter
+        #   A filter to narrow down results to a preferred subset. The filtering language
+        #   accepts strings like `"displayName=tokyo"`, and is documented in more detail
+        #   in [AIP-160](https://google.aip.dev/160).
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return. If not set, the service selects a
+        #   default.
+        # @param [String] page_token
+        #   A page token received from the `next_page_token` field in the response. Send
+        #   that page token to receive the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::ListLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::ListLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_locations(name, extra_location_types: nil, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+name}/locations', options)
+          command.response_representation = Google::Apis::DnsV1::ListLocationsResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ListLocationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['extraLocationTypes'] = extra_location_types unless extra_location_types.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches the representation of an existing Operation.
         # @param [String] project
         #   Identifies the project addressed by this request.
@@ -705,6 +791,357 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['managedZone'] = managed_zone unless managed_zone.nil?
           command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts asynchronous cancellation on a long-running operation. The server makes
+        # a best effort to cancel the operation, but success is not guaranteed. If the
+        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+        # Clients can use Operations.GetOperation or other methods to check whether the
+        # cancellation succeeded or whether the operation completed despite cancellation.
+        # On successful cancellation, the operation is not deleted; instead, it becomes
+        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
+        # , corresponding to `Code.CANCELLED`.
+        # @param [String] name
+        #   The name of the operation resource to be cancelled.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'dns/v1/{+name}:cancel', options)
+          command.response_representation = Google::Apis::DnsV1::Empty::Representation
+          command.response_class = Google::Apis::DnsV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a long-running operation. This method indicates that the client is no
+        # longer interested in the operation result. It does not cancel the operation.
+        # If the server doesn't support this method, it returns `google.rpc.Code.
+        # UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation resource to be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'dns/v1/{+name}', options)
+          command.response_representation = Google::Apis::DnsV1::Empty::Representation
+          command.response_class = Google::Apis::DnsV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the latest state of a long-running operation. Clients can use this method
+        # to poll the operation result at intervals as recommended by the API service.
+        # @param [String] name
+        #   The name of the operation resource.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_operation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+name}', options)
+          command.response_representation = Google::Apis::DnsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DnsV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists operations that match the specified filter in the request. If the server
+        # doesn't support this method, it returns `UNIMPLEMENTED`.
+        # @param [String] name
+        #   The name of the operation's parent resource.
+        # @param [String] filter
+        #   The standard list filter.
+        # @param [Fixnum] page_size
+        #   The standard list page size.
+        # @param [String] page_token
+        #   The standard list page token.
+        # @param [Boolean] return_partial_success
+        #   When set to `true`, operations that are reachable are returned as normal, and
+        #   those that are unreachable are returned in the ListOperationsResponse.
+        #   unreachable field. This can only be `true` when reading across collections.
+        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
+        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
+        #   if set unless explicitly documented otherwise in service or product specific
+        #   documentation.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::GoogleLongrunningListOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::GoogleLongrunningListOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+name}/operations', options)
+          command.response_representation = Google::Apis::DnsV1::GoogleLongrunningListOperationsResponse::Representation
+          command.response_class = Google::Apis::DnsV1::GoogleLongrunningListOperationsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new Outbound Endpoint.
+        # @param [String] parent
+        #   Required. The parent project and location where this OutboundEndpoint will be
+        #   created. Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::DnsV1::OutboundEndpoint] outbound_endpoint_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] outbound_endpoint_id
+        #   Required. The ID to use for the OutboundEndpoint, which will become the final
+        #   component of the OutboundEndpoint's resource name.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_outbound_endpoint(parent, outbound_endpoint_object = nil, client_operation_id: nil, outbound_endpoint_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'dns/v1/{+parent}/outboundEndpoints', options)
+          command.request_representation = Google::Apis::DnsV1::OutboundEndpoint::Representation
+          command.request_object = outbound_endpoint_object
+          command.response_representation = Google::Apis::DnsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DnsV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['outboundEndpointId'] = outbound_endpoint_id unless outbound_endpoint_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a previously created Outbound Endpoint.
+        # @param [String] name
+        #   Required. The name of the OutboundEndpoint to delete. Format: projects/`
+        #   project`/locations/`location`/outboundEndpoints/`outboundEndpoint`
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_outbound_endpoint(name, client_operation_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'dns/v1/{+name}', options)
+          command.response_representation = Google::Apis::DnsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DnsV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches the representation of an existing Outbound Endpoint.
+        # @param [String] name
+        #   Required. The name of the OutboundEndpoint to retrieve. Format: projects/`
+        #   project`/locations/`location`/outboundEndpoints/`outboundEndpoint`
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::OutboundEndpoint] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::OutboundEndpoint]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_outbound_endpoint(name, client_operation_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+name}', options)
+          command.response_representation = Google::Apis::DnsV1::OutboundEndpoint::Representation
+          command.response_class = Google::Apis::DnsV1::OutboundEndpoint
+          command.params['name'] = name unless name.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enumerates all Outbound Endpoints associated with a project.
+        # @param [String] parent
+        #   Required. The parent project and location from which to list resources. Format:
+        #   projects/`project`/locations/`location`
+        # @param [String] client_operation_id
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of results to return.
+        # @param [String] page_token
+        #   Optional. A page token received from a previous List call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::ListOutboundEndpointsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::ListOutboundEndpointsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_outbound_endpoints(parent, client_operation_id: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'dns/v1/{+parent}/outboundEndpoints', options)
+          command.response_representation = Google::Apis::DnsV1::ListOutboundEndpointsResponse::Representation
+          command.response_class = Google::Apis::DnsV1::ListOutboundEndpointsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing Outbound Endpoint.
+        # @param [String] name
+        #   Identifier. The resource name of the OutboundEndpoint. Format: `projects/`
+        #   project`/locations/`location`/outboundEndpoints/`outboundEndpoint``
+        # @param [Google::Apis::DnsV1::OutboundEndpoint] outbound_endpoint_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests.
+        # @param [String] update_mask
+        #   Required. The list of fields to be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_outbound_endpoint(name, outbound_endpoint_object = nil, client_operation_id: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'dns/v1/{+name}', options)
+          command.request_representation = Google::Apis::DnsV1::OutboundEndpoint::Representation
+          command.request_object = outbound_endpoint_object
+          command.response_representation = Google::Apis::DnsV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DnsV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

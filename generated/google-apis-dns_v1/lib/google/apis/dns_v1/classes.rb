@@ -328,6 +328,22 @@ module Google
         end
       end
       
+      # A generic empty message that you can re-use to avoid defining duplicated empty
+      # messages in your APIs. A typical example is to use it as the request or the
+      # response type of an API method. For instance: service Foo ` rpc Bar(google.
+      # protobuf.Empty) returns (google.protobuf.Empty); `
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -789,6 +805,40 @@ module Google
         end
       end
       
+      # The response message for Operations.ListOperations.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DnsV1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        # Unordered list. Unreachable resources. Populated when the request sets `
+        # ListOperationsRequest.return_partial_success` and reads across collections.
+        # For example, when attempting to list all resources across all supported
+        # locations.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class GoogleLongrunningOperation
@@ -848,6 +898,111 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::DnsV1::Location>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for OutboundEndpointsService.ListOutboundEndpoints
+      class ListOutboundEndpointsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results. Set to empty if there are no
+        # remaining results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of OutboundEndpoints.
+        # Corresponds to the JSON property `outboundEndpoints`
+        # @return [Array<Google::Apis::DnsV1::OutboundEndpoint>]
+        attr_accessor :outbound_endpoints
+      
+        # Unordered list. The resource names of the unreachable locations. Format: `
+        # projects/`project`/locations/`location``
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @outbound_endpoints = args[:outbound_endpoints] if args.key?(:outbound_endpoints)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A resource that represents a Google Cloud location.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The friendly name for this location, typically a nearby city name. For example,
+        # "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Cross-service attributes for the location. For example `"cloud.googleapis.com/
+        # region": "us-east1"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Resource name for the location, which may vary between implementations. For
+        # example: `"projects/example-project/locations/us-east1"`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1059,6 +1214,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The list of outbound endpoints to use for queries.
+        # Corresponds to the JSON property `outboundEndpoints`
+        # @return [Array<Google::Apis::DnsV1::ManagedZoneForwardingConfigOutboundEndpoint>]
+        attr_accessor :outbound_endpoints
+      
         # List of target name servers to forward to. Cloud DNS selects the best
         # available name server if more than one target is given.
         # Corresponds to the JSON property `targetNameServers`
@@ -1072,6 +1232,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @outbound_endpoints = args[:outbound_endpoints] if args.key?(:outbound_endpoints)
           @target_name_servers = args[:target_name_servers] if args.key?(:target_name_servers)
         end
       end
@@ -1121,6 +1282,33 @@ module Google
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
           @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class ManagedZoneForwardingConfigOutboundEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Specified as a resource path including project and region. This should be
+        # formatted like projects/`project`/locations/`location`/outboundEndpoints/`
+        # endpoint`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1551,6 +1739,144 @@ module Google
         end
       end
       
+      # Represents the metadata of the long-running operation.
+      class OperationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation of the
+        # operation. Operations that have successfully been cancelled have Operation.
+        # error value with a google.rpc.Status.code of 1, corresponding to `Code.
+        # CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Human-readable status of the operation, if any.
+        # Corresponds to the JSON property `statusMessage`
+        # @return [String]
+        attr_accessor :status_message
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @status_message = args[:status_message] if args.key?(:status_message)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # An OutboundEndpoint is a regional resource to enable outbound forwarding from
+      # a private IP range in VPCs to on-premise or other networks.
+      class OutboundEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Annotations as key value pairs
+        # Corresponds to the JSON property `annotations`
+        # @return [Hash<String,String>]
+        attr_accessor :annotations
+      
+        # Output only. [Output only] Create time stamp
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. User provided description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Immutable. User provided IP address to use for outbound DNS
+        # forwarding. This address must be a free address on the subnetwork. If omitted,
+        # a free IP address from the subnetwork is automatically allocated.
+        # Corresponds to the JSON property `endpointIp`
+        # @return [String]
+        attr_accessor :endpoint_ip
+      
+        # Optional. Labels as key value pairs
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Identifier. The resource name of the OutboundEndpoint. Format: `projects/`
+        # project`/locations/`location`/outboundEndpoints/`outboundEndpoint``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. The VPC network containing the outbound endpoint,
+        # specified as full path.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Required. Immutable. The subnetwork holding the endpoint_ip, specified as full
+        # path.
+        # Corresponds to the JSON property `subnetwork`
+        # @return [String]
+        attr_accessor :subnetwork
+      
+        # Optional. Tag bindings as key value pairs
+        # Corresponds to the JSON property `tags`
+        # @return [Hash<String,String>]
+        attr_accessor :tags
+      
+        # Output only. [Output only] Update time stamp
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotations = args[:annotations] if args.key?(:annotations)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @endpoint_ip = args[:endpoint_ip] if args.key?(:endpoint_ip)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
+          @tags = args[:tags] if args.key?(:tags)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # 
       class PoliciesListResponse
         include Google::Apis::Core::Hashable
@@ -1714,6 +2040,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The list of outbound endpoints to use for queries.
+        # Corresponds to the JSON property `outboundEndpoints`
+        # @return [Array<Google::Apis::DnsV1::PolicyAlternativeNameServerConfigOutboundEndpoint>]
+        attr_accessor :outbound_endpoints
+      
         # Sets an alternative name server for the associated networks. When specified,
         # all DNS queries are forwarded to a name server that you choose. Names such as .
         # internal are not available when an alternative name server is specified.
@@ -1728,7 +2059,35 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @outbound_endpoints = args[:outbound_endpoints] if args.key?(:outbound_endpoints)
           @target_name_servers = args[:target_name_servers] if args.key?(:target_name_servers)
+        end
+      end
+      
+      # 
+      class PolicyAlternativeNameServerConfigOutboundEndpoint
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Specified as a resource path including project and region. This should be
+        # formatted like projects/`project`/locations/`location`/outboundEndpoints/`
+        # endpoint`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1969,6 +2328,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :networks_per_response_policy
       
+        # Maximum allowed number of outbound endpoints per managed zone.
+        # Corresponds to the JSON property `outboundEndpointsPerManagedZone`
+        # @return [Fixnum]
+        attr_accessor :outbound_endpoints_per_managed_zone
+      
+        # Maximum allowed number of outbound endpoints per policy.
+        # Corresponds to the JSON property `outboundEndpointsPerPolicy`
+        # @return [Fixnum]
+        attr_accessor :outbound_endpoints_per_policy
+      
         # Maximum allowed number of consumer peering zones per target network owned by
         # this producer project
         # Corresponds to the JSON property `peeringZonesPerTargetNetwork`
@@ -2051,6 +2420,8 @@ module Google
           @networks_per_managed_zone = args[:networks_per_managed_zone] if args.key?(:networks_per_managed_zone)
           @networks_per_policy = args[:networks_per_policy] if args.key?(:networks_per_policy)
           @networks_per_response_policy = args[:networks_per_response_policy] if args.key?(:networks_per_response_policy)
+          @outbound_endpoints_per_managed_zone = args[:outbound_endpoints_per_managed_zone] if args.key?(:outbound_endpoints_per_managed_zone)
+          @outbound_endpoints_per_policy = args[:outbound_endpoints_per_policy] if args.key?(:outbound_endpoints_per_policy)
           @peering_zones_per_target_network = args[:peering_zones_per_target_network] if args.key?(:peering_zones_per_target_network)
           @policies = args[:policies] if args.key?(:policies)
           @resource_records_per_rrset = args[:resource_records_per_rrset] if args.key?(:resource_records_per_rrset)
