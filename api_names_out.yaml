@@ -435179,6 +435179,7 @@
 "/sqladmin:v1/DatabaseInstance/connectionName": connection_name
 "/sqladmin:v1/DatabaseInstance/createTime": create_time
 "/sqladmin:v1/DatabaseInstance/currentDiskSize": current_disk_size
+"/sqladmin:v1/DatabaseInstance/databaseCenterIntegration": database_center_integration
 "/sqladmin:v1/DatabaseInstance/databaseCenterIntegrationEnabled": database_center_integration_enabled
 "/sqladmin:v1/DatabaseInstance/databaseInstalledVersion": database_installed_version
 "/sqladmin:v1/DatabaseInstance/databaseVersion": database_version
@@ -435234,6 +435235,7 @@
 "/sqladmin:v1/DatabaseInstance/serverCaCert": server_ca_cert
 "/sqladmin:v1/DatabaseInstance/serviceAccountEmailAddress": service_account_email_address
 "/sqladmin:v1/DatabaseInstance/settings": settings
+"/sqladmin:v1/DatabaseInstance/skipPrecheck": skip_precheck
 "/sqladmin:v1/DatabaseInstance/sqlNetworkArchitecture": sql_network_architecture
 "/sqladmin:v1/DatabaseInstance/state": state
 "/sqladmin:v1/DatabaseInstance/suspensionReason": suspension_reason
@@ -435679,6 +435681,7 @@
 "/sqladmin:v1/PoolNodeConfig/state": state
 "/sqladmin:v1/PreCheckMajorVersionUpgradeContext": pre_check_major_version_upgrade_context
 "/sqladmin:v1/PreCheckMajorVersionUpgradeContext/kind": kind
+"/sqladmin:v1/PreCheckMajorVersionUpgradeContext/maxRuntime": max_runtime
 "/sqladmin:v1/PreCheckMajorVersionUpgradeContext/preCheckResponse": pre_check_response
 "/sqladmin:v1/PreCheckMajorVersionUpgradeContext/preCheckResponse/pre_check_response": pre_check_response
 "/sqladmin:v1/PreCheckMajorVersionUpgradeContext/targetDatabaseVersion": target_database_version
@@ -436013,6 +436016,7 @@
 "/sqladmin:v1/Value/nullValue": null_value
 "/sqladmin:v1/Value/value": value
 "/sqladmin:v1/WorkloadCapture": workload_capture
+"/sqladmin:v1/WorkloadCapture/backupId": backup_id
 "/sqladmin:v1/WorkloadCapture/endTime": end_time
 "/sqladmin:v1/WorkloadCapture/replayInstance": replay_instance
 "/sqladmin:v1/WorkloadCapture/retentionDays": retention_days
