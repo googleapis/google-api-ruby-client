@@ -58,18 +58,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AndroidInstrumentationTestSmartSharding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AndroidInstrumentationTestUniformSharding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AndroidLogcatDeviceAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +107,12 @@ module Google
       end
       
       class AndroidSwitchLocaleDeviceAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchGetSessionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -472,7 +466,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SmartSharding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UniformSharding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -535,31 +541,14 @@ module Google
           property :enable_code_coverage, as: 'enableCodeCoverage'
           property :instrumentation_timeout, as: 'instrumentationTimeout'
           property :orchestrator_version, as: 'orchestratorVersion'
-          property :smart_sharding, as: 'smartSharding', class: Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestSmartSharding, decorator: Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestSmartSharding::Representation
+          property :smart_sharding, as: 'smartSharding', class: Google::Apis::DevicerunV1alpha::SmartSharding, decorator: Google::Apis::DevicerunV1alpha::SmartSharding::Representation
       
           property :test_installable, as: 'testInstallable', class: Google::Apis::DevicerunV1alpha::AndroidInstallable, decorator: Google::Apis::DevicerunV1alpha::AndroidInstallable::Representation
       
           property :test_runner_class, as: 'testRunnerClass'
           collection :test_targets, as: 'testTargets'
-          property :uniform_sharding, as: 'uniformSharding', class: Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestUniformSharding, decorator: Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestUniformSharding::Representation
+          property :uniform_sharding, as: 'uniformSharding', class: Google::Apis::DevicerunV1alpha::UniformSharding, decorator: Google::Apis::DevicerunV1alpha::UniformSharding::Representation
       
-        end
-      end
-      
-      class AndroidInstrumentationTestSmartSharding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_shard_count, as: 'maxShardCount'
-          property :targeted_shard_duration, as: 'targetedShardDuration'
-          property :timing_record, as: 'timingRecord', class: Google::Apis::DevicerunV1alpha::InputFile, decorator: Google::Apis::DevicerunV1alpha::InputFile::Representation
-      
-        end
-      end
-      
-      class AndroidInstrumentationTestUniformSharding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :shard_count, as: 'shardCount'
         end
       end
       
@@ -630,6 +619,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :locale_code, as: 'localeCode'
+        end
+      end
+      
+      class BatchGetSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sessions, as: 'sessions', class: Google::Apis::DevicerunV1alpha::Session, decorator: Google::Apis::DevicerunV1alpha::Session::Representation
+      
         end
       end
       
@@ -1000,7 +997,11 @@ module Google
       class IosXcTest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :smart_sharding, as: 'smartSharding', class: Google::Apis::DevicerunV1alpha::SmartSharding, decorator: Google::Apis::DevicerunV1alpha::SmartSharding::Representation
+      
           property :tests_zip, as: 'testsZip', class: Google::Apis::DevicerunV1alpha::InputFile, decorator: Google::Apis::DevicerunV1alpha::InputFile::Representation
+      
+          property :uniform_sharding, as: 'uniformSharding', class: Google::Apis::DevicerunV1alpha::UniformSharding, decorator: Google::Apis::DevicerunV1alpha::UniformSharding::Representation
       
           property :xc_test_timeout, as: 'xcTestTimeout'
           property :xcode_version, as: 'xcodeVersion'
@@ -1013,6 +1014,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :message, as: 'message'
+          hash :metadata, as: 'metadata'
           property :reason, as: 'reason'
           property :type, as: 'type'
         end
@@ -1169,6 +1171,7 @@ module Google
       class Session
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :session_config, as: 'sessionConfig', class: Google::Apis::DevicerunV1alpha::SessionConfig, decorator: Google::Apis::DevicerunV1alpha::SessionConfig::Representation
       
@@ -1221,11 +1224,28 @@ module Google
         end
       end
       
+      class SmartSharding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_shard_count, as: 'maxShardCount'
+          property :targeted_shard_duration, as: 'targetedShardDuration'
+          property :timing_record, as: 'timingRecord', class: Google::Apis::DevicerunV1alpha::InputFile, decorator: Google::Apis::DevicerunV1alpha::InputFile::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :progress_messages, as: 'progressMessages'
           property :status_type, as: 'statusType'
+        end
+      end
+      
+      class UniformSharding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shard_count, as: 'shardCount'
         end
       end
       

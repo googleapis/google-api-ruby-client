@@ -48,9 +48,9 @@ module Google
       class AndroidBugreportDeviceAction
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to deliver the bugreport when the test passes. If false, the
-        # bugreport is skipped on pass to save time (default behavior). If true, the
-        # bugreport is always delivered.
+        # Optional. Whether to deliver the bugreport when the test passes. If `false`,
+        # the bugreport is skipped on pass to save time (default behavior). If `true`,
+        # the bugreport is always delivered.
         # Corresponds to the JSON property `collectOnPass`
         # @return [Boolean]
         attr_accessor :collect_on_pass
@@ -71,8 +71,8 @@ module Google
       class AndroidDumpsysDeviceAction
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to deliver the dumpsys when the test passes. If false, the
-        # dumpsys is skipped on pass to save time (default behavior). If true, the
+        # Optional. Whether to deliver the dumpsys when the test passes. If `false`, the
+        # dumpsys is skipped on pass to save time (default behavior). If `true`, the
         # dumpsys is always delivered.
         # Corresponds to the JSON property `collectOnPass`
         # @return [Boolean]
@@ -203,7 +203,7 @@ module Google
         # The smart sharding strategy to split the job into multiple shards based on the
         # test methods and their recorded execution time.
         # Corresponds to the JSON property `smartSharding`
-        # @return [Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestSmartSharding]
+        # @return [Google::Apis::DevicerunV1alpha::SmartSharding]
         attr_accessor :smart_sharding
       
         # An Android Installable represents the file(s) for installing an Android
@@ -234,14 +234,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :test_targets
       
-        # Uniformly shards test cases given a total number of shards. It will be
-        # translated to `-e numShard` and `-e shardIndex` AndroidJUnitRunner arguments.
-        # With uniform sharding enabled, specifying either of these sharding arguments
-        # via `environment_variables` is invalid. Based on the sharding mechanism
-        # AndroidJUnitRunner uses, there is no guarantee that test cases will be
-        # distributed uniformly across all shards.
+        # Uniformly shards test cases given a total number of shards. For Android
+        # instrumentation tests, it will be translated to `-e numShard` and `-e
+        # shardIndex` AndroidJUnitRunner arguments. With uniform sharding enabled,
+        # specifying either of these sharding arguments via `environment_variables` is
+        # invalid. There is no guarantee that test cases will be distributed uniformly
+        # across all shards.
         # Corresponds to the JSON property `uniformSharding`
-        # @return [Google::Apis::DevicerunV1alpha::AndroidInstrumentationTestUniformSharding]
+        # @return [Google::Apis::DevicerunV1alpha::UniformSharding]
         attr_accessor :uniform_sharding
       
         def initialize(**args)
@@ -259,79 +259,6 @@ module Google
           @test_runner_class = args[:test_runner_class] if args.key?(:test_runner_class)
           @test_targets = args[:test_targets] if args.key?(:test_targets)
           @uniform_sharding = args[:uniform_sharding] if args.key?(:uniform_sharding)
-        end
-      end
-      
-      # The smart sharding strategy to split the job into multiple shards based on the
-      # test methods and their recorded execution time.
-      class AndroidInstrumentationTestSmartSharding
-        include Google::Apis::Core::Hashable
-      
-        # Optional. The maximum number of shards to create. If unset or less than 1,
-        # system-defined max limits are used. This limit takes precedence if the
-        # targeted_shard_duration cannot be satisfied. Limits: - For physical devices,
-        # the number of shards must be <= 20. - For virtual devices, the number of
-        # shards must be <= 200.
-        # Corresponds to the JSON property `maxShardCount`
-        # @return [Fixnum]
-        attr_accessor :max_shard_count
-      
-        # Required. The targeted duration of each shard. Limits: - Must be at least 2
-        # minutes. - Must be at most 3 hours. Shard duration is not guaranteed because
-        # smart sharding uses test case history and default durations which may not be
-        # accurate. Durations are calculated based on the following inputs: - Timing
-        # records from previous runs of the same test case. - For new test cases, the
-        # average duration of other known test cases. - A system-chosen, default
-        # duration if there are no previous timing records available. Because the actual
-        # shard duration can exceed the targeted shard duration, we recommend that you
-        # set the targeted value at least 5 minutes less than the maximum allowed
-        # instrumentation timeout. This approach avoids cancelling the shard before all
-        # tests can finish.
-        # Corresponds to the JSON property `targetedShardDuration`
-        # @return [String]
-        attr_accessor :targeted_shard_duration
-      
-        # Input file.
-        # Corresponds to the JSON property `timingRecord`
-        # @return [Google::Apis::DevicerunV1alpha::InputFile]
-        attr_accessor :timing_record
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @max_shard_count = args[:max_shard_count] if args.key?(:max_shard_count)
-          @targeted_shard_duration = args[:targeted_shard_duration] if args.key?(:targeted_shard_duration)
-          @timing_record = args[:timing_record] if args.key?(:timing_record)
-        end
-      end
-      
-      # Uniformly shards test cases given a total number of shards. It will be
-      # translated to `-e numShard` and `-e shardIndex` AndroidJUnitRunner arguments.
-      # With uniform sharding enabled, specifying either of these sharding arguments
-      # via `environment_variables` is invalid. Based on the sharding mechanism
-      # AndroidJUnitRunner uses, there is no guarantee that test cases will be
-      # distributed uniformly across all shards.
-      class AndroidInstrumentationTestUniformSharding
-        include Google::Apis::Core::Hashable
-      
-        # Required. The total number of shards to create. This must always be a positive
-        # number that is no greater than the total number of test cases. Limits: - For
-        # physical devices, the number of shards must be <= 20. - For virtual devices,
-        # the number of shards must be <= 200.
-        # Corresponds to the JSON property `shardCount`
-        # @return [Fixnum]
-        attr_accessor :shard_count
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @shard_count = args[:shard_count] if args.key?(:shard_count)
         end
       end
       
@@ -511,7 +438,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Whether to discard and not upload the recording when the test passes.
-        # Default is false.
+        # Default is `false`.
         # Corresponds to the JSON property `discardOnPass`
         # @return [Boolean]
         attr_accessor :discard_on_pass
@@ -546,6 +473,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @locale_code = args[:locale_code] if args.key?(:locale_code)
+        end
+      end
+      
+      # Response including the requested sessions.
+      class BatchGetSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The requested sessions, in the same order as the `names` in the request.
+        # Corresponds to the JSON property `sessions`
+        # @return [Array<Google::Apis::DevicerunV1alpha::Session>]
+        attr_accessor :sessions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sessions = args[:sessions] if args.key?(:sessions)
         end
       end
       
@@ -1220,8 +1166,11 @@ module Google
         # @return [Google::Apis::DevicerunV1alpha::IosPushFilesDeviceAction]
         attr_accessor :ios_push_files
       
-        # Records a video of the iOS device screen during the run. The video will be
-        # written to a file named `video.mp4` in the execution output directory.
+        # Records videos of the iOS device screen, one per UI test case. Each video
+        # covers only the execution of its test case, and will be written to `testcases/`
+        # test_class`/`test_method`/video.mp4` in the execution output directory. No
+        # video is recorded for unit tests, or on devices running a version earlier than
+        # iOS 17.
         # Corresponds to the JSON property `iosRecordVideo`
         # @return [Google::Apis::DevicerunV1alpha::IosRecordVideoDeviceAction]
         attr_accessor :ios_record_video
@@ -1703,13 +1652,16 @@ module Google
         end
       end
       
-      # Records a video of the iOS device screen during the run. The video will be
-      # written to a file named `video.mp4` in the execution output directory.
+      # Records videos of the iOS device screen, one per UI test case. Each video
+      # covers only the execution of its test case, and will be written to `testcases/`
+      # test_class`/`test_method`/video.mp4` in the execution output directory. No
+      # video is recorded for unit tests, or on devices running a version earlier than
+      # iOS 17.
       class IosRecordVideoDeviceAction
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to discard the video if the test passes. If not specified,
-        # the default is false (always keep the video).
+        # Optional. Whether to discard the video of a test case when it passes. If not
+        # specified, the default is `false` (videos of all test cases are kept).
         # Corresponds to the JSON property `discardOnPass`
         # @return [Boolean]
         attr_accessor :discard_on_pass
@@ -1749,10 +1701,26 @@ module Google
       class IosXcTest
         include Google::Apis::Core::Hashable
       
+        # The smart sharding strategy to split the job into multiple shards based on the
+        # test methods and their recorded execution time.
+        # Corresponds to the JSON property `smartSharding`
+        # @return [Google::Apis::DevicerunV1alpha::SmartSharding]
+        attr_accessor :smart_sharding
+      
         # Input file.
         # Corresponds to the JSON property `testsZip`
         # @return [Google::Apis::DevicerunV1alpha::InputFile]
         attr_accessor :tests_zip
+      
+        # Uniformly shards test cases given a total number of shards. For Android
+        # instrumentation tests, it will be translated to `-e numShard` and `-e
+        # shardIndex` AndroidJUnitRunner arguments. With uniform sharding enabled,
+        # specifying either of these sharding arguments via `environment_variables` is
+        # invalid. There is no guarantee that test cases will be distributed uniformly
+        # across all shards.
+        # Corresponds to the JSON property `uniformSharding`
+        # @return [Google::Apis::DevicerunV1alpha::UniformSharding]
+        attr_accessor :uniform_sharding
       
         # Optional. The timeout of the test. Default value: 5 min. Range: [1 min, 3
         # hours].
@@ -1778,7 +1746,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @smart_sharding = args[:smart_sharding] if args.key?(:smart_sharding)
           @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
+          @uniform_sharding = args[:uniform_sharding] if args.key?(:uniform_sharding)
           @xc_test_timeout = args[:xc_test_timeout] if args.key?(:xc_test_timeout)
           @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
           @xctestrun = args[:xctestrun] if args.key?(:xctestrun)
@@ -1793,6 +1763,11 @@ module Google
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
+      
+        # Output only. Additional metadata about the issue.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,String>]
+        attr_accessor :metadata
       
         # Output only. The reason of the issue. This is a constant value that identifies
         # the proximate cause of the issue. This should be at most 63 characters and
@@ -1814,6 +1789,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @message = args[:message] if args.key?(:message)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @reason = args[:reason] if args.key?(:reason)
           @type = args[:type] if args.key?(:type)
         end
@@ -2317,6 +2293,11 @@ module Google
       class Session
         include Google::Apis::Core::Hashable
       
+        # Output only. The time when the session was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Identifier. The resource name of the session. Format: `projects/`project`/
         # locations/`location`/sessions/`session``.
         # Corresponds to the JSON property `name`
@@ -2339,6 +2320,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
           @session_config = args[:session_config] if args.key?(:session_config)
           @session_report = args[:session_report] if args.key?(:session_report)
@@ -2487,6 +2469,51 @@ module Google
         end
       end
       
+      # The smart sharding strategy to split the job into multiple shards based on the
+      # test methods and their recorded execution time.
+      class SmartSharding
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum number of shards to create. If unset or less than 1,
+        # system-defined max limits are used. This limit takes precedence if the
+        # targeted_shard_duration cannot be satisfied. Limits: - For physical devices,
+        # the number of shards must be <= 20. - For virtual devices, the number of
+        # shards must be <= 200.
+        # Corresponds to the JSON property `maxShardCount`
+        # @return [Fixnum]
+        attr_accessor :max_shard_count
+      
+        # Required. The targeted duration of each shard. Limits: - Must be at least 2
+        # minutes. - Must be at most 3 hours. Shard duration is not guaranteed because
+        # smart sharding uses test case history and default durations which may not be
+        # accurate. Durations are calculated based on the following inputs: - Timing
+        # records from previous runs of the same test case. - For new test cases, the
+        # average duration of other known test cases. - A system-chosen, default
+        # duration if there are no previous timing records available. Because the actual
+        # shard duration can exceed the targeted shard duration, we recommend that you
+        # set the targeted value at least 5 minutes less than the maximum allowed test
+        # timeout. This approach avoids cancelling the shard before all tests can finish.
+        # Corresponds to the JSON property `targetedShardDuration`
+        # @return [String]
+        attr_accessor :targeted_shard_duration
+      
+        # Input file.
+        # Corresponds to the JSON property `timingRecord`
+        # @return [Google::Apis::DevicerunV1alpha::InputFile]
+        attr_accessor :timing_record
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_shard_count = args[:max_shard_count] if args.key?(:max_shard_count)
+          @targeted_shard_duration = args[:targeted_shard_duration] if args.key?(:targeted_shard_duration)
+          @timing_record = args[:timing_record] if args.key?(:timing_record)
+        end
+      end
+      
       # The status of a session/job/execution.
       class Status
         include Google::Apis::Core::Hashable
@@ -2512,6 +2539,33 @@ module Google
         def update!(**args)
           @progress_messages = args[:progress_messages] if args.key?(:progress_messages)
           @status_type = args[:status_type] if args.key?(:status_type)
+        end
+      end
+      
+      # Uniformly shards test cases given a total number of shards. For Android
+      # instrumentation tests, it will be translated to `-e numShard` and `-e
+      # shardIndex` AndroidJUnitRunner arguments. With uniform sharding enabled,
+      # specifying either of these sharding arguments via `environment_variables` is
+      # invalid. There is no guarantee that test cases will be distributed uniformly
+      # across all shards.
+      class UniformSharding
+        include Google::Apis::Core::Hashable
+      
+        # Required. The total number of shards to create. This must always be a positive
+        # number that is no greater than the total number of test cases. Limits: - For
+        # physical devices, the number of shards must be <= 20. - For virtual devices,
+        # the number of shards must be <= 200.
+        # Corresponds to the JSON property `shardCount`
+        # @return [Fixnum]
+        attr_accessor :shard_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shard_count = args[:shard_count] if args.key?(:shard_count)
         end
       end
       
