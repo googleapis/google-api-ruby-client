@@ -26,7 +26,7 @@ module Google
       class AgentConnectivityTemplate
         include Google::Apis::Core::Hashable
       
-        # Required. Immutable. The path of the access. Maps roughly to ingress/egress,
+        # Optional. Immutable. The path of the access. Maps roughly to ingress/egress,
         # though we keep CLIENT_TO_AGENT and AGENT_TO_ANYWHERE as carryovers from Agent
         # Gateway's original resource model. The path is immutable once set. Exactly one
         # path can be set.
@@ -51,7 +51,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The deployment model for the gateway.
+        # Optional. The deployment model for the gateway.
         # Corresponds to the JSON property `deploymentModel`
         # @return [String]
         attr_accessor :deployment_model
@@ -1094,9 +1094,10 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Optional. A list of match conditions to match against the incoming request.
-        # The extension will be invoked if at least one condition matches the request,
-        # or if no match conditions are specified. Limited to 5 conditions.
+        # Optional. A list of match conditions to evaluate against the incoming request.
+        # The extension is invoked if the request matches at least one condition, or if
+        # no match conditions are specified. A request matches a condition only if it
+        # matches every field that is set in that condition. Limited to 5 conditions.
         # Corresponds to the JSON property `matchConditions`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchCondition>]
         attr_accessor :match_conditions
@@ -1108,22 +1109,24 @@ module Google
         attr_accessor :name
       
         # Optional. Priority of the extension binding. Lower numbers indicate higher
-        # priority. Priority of extension bindings are used to determine the order in
-        # which extension bindings are applied to a request.
+        # priority. The priority determines the order in which extension bindings are
+        # applied to a request.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
       
         # Required. The name of the extension that this binding should attach to target
         # resources. Format: For Google-provided extensions, specify the service
-        # endpoint (see [Model Armor integration](https://docs.cloud.google.com/model-
-        # armor/integrations))
+        # endpoint, for example `modelarmor.us-central1.rep.googleapis.com`.
         # Corresponds to the JSON property `producerExtension`
         # @return [String]
         attr_accessor :producer_extension
       
         # Optional. Additional metadata that should be passed to the attached extension
-        # with each request.
+        # with each request. This field is subject to the following limitations: * The
+        # total size of the metadata must be less than 1 KiB. * The total number of keys
+        # must be less than 16. * The length of each key must be less than 64 characters.
+        # * The length of each value must be less than 1024 characters.
         # Corresponds to the JSON property `producerMetadata`
         # @return [Hash<String,String>]
         attr_accessor :producer_metadata
@@ -1207,36 +1210,34 @@ module Google
       class ExtensionBindingMatchConditionStringMatch
         include Google::Apis::Core::Hashable
       
-        # Optional. The input string must have the substring specified here. Note: empty
-        # contains match is not allowed, please use regex instead. Examples: * ``abc``
-        # matches the value ``xyz.abc.def``
+        # Optional. The input string must contain the substring specified here. An empty
+        # substring is not allowed. Examples: * `abc` matches the value `xyz.abc.def`.
         # Corresponds to the JSON property `contains`
         # @return [String]
         attr_accessor :contains
       
         # Optional. The input string must match exactly the string specified here.
-        # Examples: * ``abc`` only matches the value ``abc``.
+        # Examples: * `abc` only matches the value `abc`.
         # Corresponds to the JSON property `exact`
         # @return [String]
         attr_accessor :exact
       
-        # Optional. If true, indicates the exact/prefix/suffix/contains matching should
-        # be case insensitive. For example, the matcher ``data`` will match both input
-        # string ``Data`` and ``data`` if set to true.
+        # Optional. If true, the `exact`, `prefix`, `suffix`, or `contains` match is
+        # case insensitive. For example, the matcher `data` matches both `Data` and `
+        # data` when set to true.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
         alias_method :ignore_case?, :ignore_case
       
-        # Optional. The input string must have the prefix specified here. Note: empty
-        # prefix is not allowed. Examples: * ``abc`` matches the value ``abc.xyz``
+        # Optional. The input string must have the prefix specified here. An empty
+        # prefix is not allowed. Examples: * `abc` matches the value `abc.xyz`.
         # Corresponds to the JSON property `prefix`
         # @return [String]
         attr_accessor :prefix
       
-        # Optional. The input string must have the suffix specified here. Note: empty
-        # prefix is not allowed, please use regex instead. Examples: * ``abc`` matches
-        # the value ``xyz.abc``
+        # Optional. The input string must have the suffix specified here. An empty
+        # suffix is not allowed. Examples: * `abc` matches the value `xyz.abc`.
         # Corresponds to the JSON property `suffix`
         # @return [String]
         attr_accessor :suffix
@@ -1331,9 +1332,9 @@ module Google
       class ExtensionBindingMatchConditionToDestinationHeaderSet
         include Google::Apis::Core::Hashable
       
-        # Required. A list of headers to match against in http header. If multiple
-        # header matches are provided, they will be evaluated as an AND, i.e. all header
-        # matches must match for the request to match.
+        # Required. A list of HTTP headers to match against. If multiple header matches
+        # are provided, they are evaluated as an AND, meaning that all header matches
+        # must match for the request to match. Limited to 10 headers.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::NetworkservicesV1::ExtensionBindingMatchConditionHeaderMatch>]
         attr_accessor :headers
@@ -1352,8 +1353,10 @@ module Google
       class ExtensionBindingTarget
         include Google::Apis::Core::Hashable
       
-        # Optional. The reference to the target resource, to which this binding should
-        # attach. Exactly one of `resources` or `scope` must be set.
+        # Optional. The references to the target resources to which this binding should
+        # attach. Exactly one of `resources` or `scope` must be set. For AI Application
+        # resources, specify the full resource name in the format: `projects/`project`/
+        # locations/`location`/applications/`application``. Limited to 1 resource.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1378,14 +1381,17 @@ module Google
       class ExtensionBindingTargetScope
         include Google::Apis::Core::Hashable
       
-        # Required. Parent resource name specification, in the format: `projects/`
-        # project_number``.
+        # Required. The parent resource that defines the scope, in the format `projects/`
+        # project_number``. When the scope is a project, the binding applies to the
+        # resources that meet all of the following conditions: * The resource belongs to
+        # the specified project. * The resource is in the same location as the `
+        # ExtensionBinding`. * The resource type is listed in `resource_types`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # Required. Type of the resource to which the binding should attach. Limited to
-        # 1 resource type.
+        # Required. The types of resources to which the binding should attach. Limited
+        # to 1 resource type.
         # Corresponds to the JSON property `resourceTypes`
         # @return [Array<String>]
         attr_accessor :resource_types
