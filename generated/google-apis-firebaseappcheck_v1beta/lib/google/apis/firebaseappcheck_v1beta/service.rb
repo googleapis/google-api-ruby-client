@@ -1860,6 +1860,127 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the specified Automation configuration.
+        # @param [String] name
+        #   Required. The relative resource name of the Automation to retrieve, in one of
+        #   the following supported formats: ``` projects/`project_number`/services/`
+        #   service_id`/automations/`automation_id` projects/`project_number`/services/`
+        #   service_id`/resourcePolicies/`resource_policy_id`/automations/`automation_id` `
+        #   ``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_service_automation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Automations for the specified service or resource policy.
+        # @param [String] parent
+        #   Required. The relative resource name of the parent service or resource policy
+        #   for which to list each associated Automation, in one of the following formats:
+        #   ``` projects/`project_number`/services/`service_id` projects/`project_number`/
+        #   services/`service_id`/resourcePolicies/`resource_policy_id` ```
+        # @param [Fixnum] page_size
+        #   The maximum number of Automations to return in the response. Note that a
+        #   service or resource policy can have at most 10 automations. The server may
+        #   return fewer than this at its own discretion. If no value is specified (or too
+        #   large a value is specified), the server will impose its own limit.
+        # @param [String] page_token
+        #   Token returned from a previous call to ListAutomations indicating where in the
+        #   set of Automations to resume listing. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to ListAutomations must
+        #   match the call that provided the page token; if they do not match, the result
+        #   is undefined.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_service_automations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/automations', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Automation.
+        # @param [String] name
+        #   Identifier. The relative resource name of the automation object, in one of the
+        #   following supported formats: ``` projects/`project_number`/services/`
+        #   service_id`/automations/`automation_id` projects/`project_number`/services/`
+        #   service_id`/resourcePolicies/`resource_policy_id`/automations/`automation_id` `
+        #   ``
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] google_firebase_appcheck_v1beta_automation_object
+        # @param [String] update_mask
+        #   Required. A comma-separated list of names of fields in the Automation to
+        #   update. Example: `timestamp_condition.enforce_time`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_service_automation(name, google_firebase_appcheck_v1beta_automation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.request_object = google_firebase_appcheck_v1beta_automation_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Atomically updates the specified ResourcePolicy configurations.
         # @param [String] parent
         #   Required. The parent service name, in the format ``` projects/`project_number`/
@@ -2100,6 +2221,127 @@ module Google
           command.request_object = google_firebase_appcheck_v1beta_resource_policy_object
           command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy::Representation
           command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaResourcePolicy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the specified Automation configuration.
+        # @param [String] name
+        #   Required. The relative resource name of the Automation to retrieve, in one of
+        #   the following supported formats: ``` projects/`project_number`/services/`
+        #   service_id`/automations/`automation_id` projects/`project_number`/services/`
+        #   service_id`/resourcePolicies/`resource_policy_id`/automations/`automation_id` `
+        #   ``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_service_resource_policy_automation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all Automations for the specified service or resource policy.
+        # @param [String] parent
+        #   Required. The relative resource name of the parent service or resource policy
+        #   for which to list each associated Automation, in one of the following formats:
+        #   ``` projects/`project_number`/services/`service_id` projects/`project_number`/
+        #   services/`service_id`/resourcePolicies/`resource_policy_id` ```
+        # @param [Fixnum] page_size
+        #   The maximum number of Automations to return in the response. Note that a
+        #   service or resource policy can have at most 10 automations. The server may
+        #   return fewer than this at its own discretion. If no value is specified (or too
+        #   large a value is specified), the server will impose its own limit.
+        # @param [String] page_token
+        #   Token returned from a previous call to ListAutomations indicating where in the
+        #   set of Automations to resume listing. Provide this to retrieve the subsequent
+        #   page. When paginating, all other parameters provided to ListAutomations must
+        #   match the call that provided the page token; if they do not match, the result
+        #   is undefined.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_service_resource_policy_automations(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta/{+parent}/automations', options)
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaListAutomationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified Automation.
+        # @param [String] name
+        #   Identifier. The relative resource name of the automation object, in one of the
+        #   following supported formats: ``` projects/`project_number`/services/`
+        #   service_id`/automations/`automation_id` projects/`project_number`/services/`
+        #   service_id`/resourcePolicies/`resource_policy_id`/automations/`automation_id` `
+        #   ``
+        # @param [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] google_firebase_appcheck_v1beta_automation_object
+        # @param [String] update_mask
+        #   Required. A comma-separated list of names of fields in the Automation to
+        #   update. Example: `timestamp_condition.enforce_time`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_service_resource_policy_automation(name, google_firebase_appcheck_v1beta_automation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta/{+name}', options)
+          command.request_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.request_object = google_firebase_appcheck_v1beta_automation_object
+          command.response_representation = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation::Representation
+          command.response_class = Google::Apis::FirebaseappcheckV1beta::GoogleFirebaseAppcheckV1betaAutomation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
