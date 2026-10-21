@@ -103322,6 +103322,9 @@
 "/composer:v1beta1/ImageVersion/supportedPythonVersions": supported_python_versions
 "/composer:v1beta1/ImageVersion/supportedPythonVersions/supported_python_version": supported_python_version
 "/composer:v1beta1/ImageVersion/upgradeDisabled": upgrade_disabled
+"/composer:v1beta1/ImageVersionRollbackTarget": image_version_rollback_target
+"/composer:v1beta1/ImageVersionRollbackTarget/imageVersion": image_version
+"/composer:v1beta1/ImageVersionRollbackTarget/lastActiveTime": last_active_time
 "/composer:v1beta1/Line": line
 "/composer:v1beta1/Line/content": content
 "/composer:v1beta1/Line/lineNumber": line_number
@@ -103454,6 +103457,8 @@
 "/composer:v1beta1/SoftwareConfig/envVariables": env_variables
 "/composer:v1beta1/SoftwareConfig/envVariables/env_variable": env_variable
 "/composer:v1beta1/SoftwareConfig/imageVersion": image_version
+"/composer:v1beta1/SoftwareConfig/imageVersionRollbackTargets": image_version_rollback_targets
+"/composer:v1beta1/SoftwareConfig/imageVersionRollbackTargets/image_version_rollback_target": image_version_rollback_target
 "/composer:v1beta1/SoftwareConfig/pypiPackages": pypi_packages
 "/composer:v1beta1/SoftwareConfig/pypiPackages/pypi_package": pypi_package
 "/composer:v1beta1/SoftwareConfig/pythonVersion": python_version

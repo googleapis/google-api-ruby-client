@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImageVersionRollbackTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Line
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -687,6 +693,14 @@ module Google
         end
       end
       
+      class ImageVersionRollbackTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_version, as: 'imageVersion'
+          property :last_active_time, as: 'lastActiveTime'
+        end
+      end
+      
       class Line
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -951,6 +965,8 @@ module Google
       
           hash :env_variables, as: 'envVariables'
           property :image_version, as: 'imageVersion'
+          collection :image_version_rollback_targets, as: 'imageVersionRollbackTargets', class: Google::Apis::ComposerV1beta1::ImageVersionRollbackTarget, decorator: Google::Apis::ComposerV1beta1::ImageVersionRollbackTarget::Representation
+      
           hash :pypi_packages, as: 'pypiPackages'
           property :python_version, as: 'pythonVersion'
           property :scheduler_count, as: 'schedulerCount'
