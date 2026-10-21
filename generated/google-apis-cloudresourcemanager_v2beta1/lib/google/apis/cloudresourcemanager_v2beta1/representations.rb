@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateSemanticTagBindingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateSemanticTagValueMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateTagBindingMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +131,18 @@ module Google
       end
       
       class DeleteProjectMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteSemanticTagBindingMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteSemanticTagValueMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -398,6 +422,18 @@ module Google
         end
       end
       
+      class CreateSemanticTagBindingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CreateSemanticTagValueMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class CreateTagBindingMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -441,6 +477,18 @@ module Google
       end
       
       class DeleteProjectMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteSemanticTagBindingMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DeleteSemanticTagValueMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
         end
