@@ -1611,6 +1611,25 @@ module Google
         end
       end
       
+      # Settings for grounding extractions.
+      class GoogleCloudDocumentaiUiv1beta3GroundingSettings
+        include Google::Apis::Core::Hashable
+      
+        # The type of grounding to apply.
+        # Corresponds to the JSON property `groundingType`
+        # @return [String]
+        attr_accessor :grounding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_type = args[:grounding_type] if args.key?(:grounding_type)
+        end
+      end
+      
       # Metadata for human review labeling config.
       class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata
         include Google::Apis::Core::Hashable
@@ -1959,6 +1978,11 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
+        # Settings for grounding extractions.
+        # Corresponds to the JSON property `groundingSettings`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiUiv1beta3GroundingSettings]
+        attr_accessor :grounding_settings
+      
         # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -2021,6 +2045,7 @@ module Google
           @document_schema = args[:document_schema] if args.key?(:document_schema)
           @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @grounding_settings = args[:grounding_settings] if args.key?(:grounding_settings)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
@@ -9468,6 +9493,25 @@ module Google
         end
       end
       
+      # Settings for grounding extractions.
+      class GoogleCloudDocumentaiV1beta3GroundingSettings
+        include Google::Apis::Core::Hashable
+      
+        # The type of grounding to apply.
+        # Corresponds to the JSON property `groundingType`
+        # @return [String]
+        attr_accessor :grounding_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @grounding_type = args[:grounding_type] if args.key?(:grounding_type)
+        end
+      end
+      
       # The status of human review on a processed document.
       class GoogleCloudDocumentaiV1beta3HumanReviewStatus
         include Google::Apis::Core::Hashable
@@ -9790,6 +9834,11 @@ module Google
         attr_accessor :google_managed
         alias_method :google_managed?, :google_managed
       
+        # Settings for grounding extractions.
+        # Corresponds to the JSON property `groundingSettings`
+        # @return [Google::Apis::DocumentaiV1::GoogleCloudDocumentaiV1beta3GroundingSettings]
+        attr_accessor :grounding_settings
+      
         # Output only. The KMS key name used for encryption.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
@@ -9846,6 +9895,7 @@ module Google
           @document_schema = args[:document_schema] if args.key?(:document_schema)
           @gen_ai_model_info = args[:gen_ai_model_info] if args.key?(:gen_ai_model_info)
           @google_managed = args[:google_managed] if args.key?(:google_managed)
+          @grounding_settings = args[:grounding_settings] if args.key?(:grounding_settings)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @kms_key_version_name = args[:kms_key_version_name] if args.key?(:kms_key_version_name)
           @latest_evaluation = args[:latest_evaluation] if args.key?(:latest_evaluation)
