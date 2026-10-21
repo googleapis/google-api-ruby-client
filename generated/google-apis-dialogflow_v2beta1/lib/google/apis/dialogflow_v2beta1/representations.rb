@@ -9509,6 +9509,7 @@ module Google
           property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig::Representation
       
           property :default_no_speech_timeout, as: 'defaultNoSpeechTimeout'
+          property :disable_interim_input_transcripts, as: 'disableInterimInputTranscripts'
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_voice_activity_events, as: 'enableVoiceActivityEvents'
@@ -10996,6 +10997,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :disable_interim_input_transcripts, as: 'disableInterimInputTranscripts'
           property :enable_word_info, as: 'enableWordInfo'
           property :gemini_asr_config, as: 'geminiAsrConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig::Representation
       
@@ -11013,7 +11015,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_of_speech_sensitivity, as: 'endOfSpeechSensitivity'
-          property :model_id, as: 'modelId'
           property :prefix_padding_ms, as: 'prefixPaddingMs'
           property :silence_duration_ms, as: 'silenceDurationMs'
           property :start_of_speech_sensitivity, as: 'startOfSpeechSensitivity'
