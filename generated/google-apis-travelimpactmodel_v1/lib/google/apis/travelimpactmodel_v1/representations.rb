@@ -392,6 +392,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :flight, as: 'flight', class: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment, decorator: Google::Apis::TravelimpactmodelV1::Scope3FlightSegment::Representation
       
+          property :model_version, as: 'modelVersion', class: Google::Apis::TravelimpactmodelV1::ModelVersion, decorator: Google::Apis::TravelimpactmodelV1::ModelVersion::Representation
+      
           property :source, as: 'source'
           property :ttw_emissions_grams_per_pax, :numeric_string => true, as: 'ttwEmissionsGramsPerPax'
           property :wtt_emissions_grams_per_pax, :numeric_string => true, as: 'wttEmissionsGramsPerPax'
