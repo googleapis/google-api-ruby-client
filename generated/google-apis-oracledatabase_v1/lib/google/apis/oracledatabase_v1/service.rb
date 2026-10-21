@@ -1004,6 +1004,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the parameters of a single Exadata Infrastructure.
+        # @param [String] name
+        #   Identifier. The name of the Exadata Infrastructure resource with the format:
+        #   projects/`project`/locations/`region`/cloudExadataInfrastructures/`
+        #   cloud_exadata_infrastructure`
+        # @param [Google::Apis::OracledatabaseV1::CloudExadataInfrastructure] cloud_exadata_infrastructure_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   Exadata resource by the update. The fields specified in the `update_mask` are
+        #   relative to the resource, not the full request. A field will be overwritten if
+        #   it is in the mask. If the user does not provide a mask then the service treats
+        #   this as an implied field mask equivalent to all fields that are populated (
+        #   have a non-empty value). To clear or unset a field, the field must be
+        #   explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cloud_exadata_infrastructure(name, cloud_exadata_infrastructure_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::CloudExadataInfrastructure::Representation
+          command.request_object = cloud_exadata_infrastructure_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the database servers of an Exadata Infrastructure instance.
         # @param [String] parent
         #   Required. The parent value for database server in the following format:
@@ -1207,6 +1259,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the parameters of a single Vm Cluster.
+        # @param [String] name
+        #   Identifier. The name of the VM Cluster resource with the format: projects/`
+        #   project`/locations/`region`/cloudVmClusters/`cloud_vm_cluster`
+        # @param [Google::Apis::OracledatabaseV1::CloudVmCluster] cloud_vm_cluster_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the VM Cluster should be updated.
+        #   A field specified in the mask is overwritten. If a mask isn't provided, the
+        #   service treats this as an implied field mask equivalent to all fields that are
+        #   populated (have a non-empty value). To clear or unset a field, the field must
+        #   be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_cloud_vm_cluster(name, cloud_vm_cluster_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::CloudVmCluster::Representation
+          command.request_object = cloud_vm_cluster_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the database nodes of a VM Cluster.
         # @param [String] parent
         #   Required. The parent value for database node in the following format: projects/
@@ -1290,6 +1391,284 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new DatabaseConnection in a given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the DatabaseConnection in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [Google::Apis::OracledatabaseV1::DatabaseConnection] database_connection_object
+        # @param [String] database_connection_id
+        #   Required. The ID of the DatabaseConnection to create. This value is restricted
+        #   to (^[a-z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters
+        #   in length. The value must start with a letter and end with a letter or a
+        #   number.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_database_connection(parent, database_connection_object = nil, database_connection_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/databaseConnections', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::DatabaseConnection::Representation
+          command.request_object = database_connection_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['databaseConnectionId'] = database_connection_id unless database_connection_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single DatabaseConnection.
+        # @param [String] name
+        #   Required. The name of the resource in the following format: projects/`project`/
+        #   locations/`location`/databaseConnections/`database_connection`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_database_connection(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Executes a SQL statement on a DatabaseConnection.
+        # @param [String] name
+        #   Required. The name of the DatabaseConnection in the following format: projects/
+        #   `project`/locations/`location`/databaseConnections/`database_connection`.
+        # @param [Google::Apis::OracledatabaseV1::ExecuteSqlRequest] execute_sql_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ExecuteSqlResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ExecuteSqlResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def execute_database_connection_sql(name, execute_sql_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:executeSql', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::ExecuteSqlRequest::Representation
+          command.request_object = execute_sql_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::ExecuteSqlResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ExecuteSqlResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single DatabaseConnection.
+        # @param [String] name
+        #   Required. The name of the DatabaseConnection in the following format: projects/
+        #   `project`/locations/`location`/databaseConnections/`database_connection`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::DatabaseConnection] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::DatabaseConnection]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_database_connection(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::DatabaseConnection::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::DatabaseConnection
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists DatabaseConnections in a given project and location.
+        # @param [String] parent
+        #   Required. The parent value for the DatabaseConnection in the following format:
+        #   projects/`project`/locations/`location`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   DatabaseConnections will be returned. The maximum value is 1000; values above
+        #   1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListDatabaseConnectionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListDatabaseConnectionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_database_connections(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databaseConnections', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListDatabaseConnectionsResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListDatabaseConnectionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single DatabaseConnection.
+        # @param [String] name
+        #   Identifier. The resource name of the DatabaseConnection. Format: projects/`
+        #   project`/locations/`location`/databaseConnections/`database_connection`
+        # @param [Google::Apis::OracledatabaseV1::DatabaseConnection] database_connection_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the DatabaseConnection should be
+        #   updated. A field specified in the mask is overwritten. If a mask isn't
+        #   provided then all the fields in the DatabaseConnection are overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_database_connection(name, database_connection_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::DatabaseConnection::Representation
+          command.request_object = database_connection_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Tests connectivity of a DatabaseConnection.
+        # @param [String] name
+        #   Required. The name of the DatabaseConnection to test. Format: projects/`
+        #   project`/locations/`location`/databaseConnections/`database_connection`
+        # @param [Google::Apis::OracledatabaseV1::TestDatabaseConnectionRequest] test_database_connection_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::TestDatabaseConnectionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::TestDatabaseConnectionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_database_connection(name, test_database_connection_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:test', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::TestDatabaseConnectionRequest::Representation
+          command.request_object = test_database_connection_request_object
+          command.response_representation = Google::Apis::OracledatabaseV1::TestDatabaseConnectionResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::TestDatabaseConnectionResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1620,6 +1999,54 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `labels` of a single DbSystem.
+        # @param [String] name
+        #   Identifier. The name of the DbSystem resource in the following format:
+        #   projects/`project`/locations/`region`/dbSystems/`db_system`
+        # @param [Google::Apis::OracledatabaseV1::DbSystem] db_system_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the DbSystem should be updated. A
+        #   field specified in the mask is updated. If a mask isn't provided, the service
+        #   treats this as an implied field mask equivalent to all fields that are
+        #   populated (have a non-empty value).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_db_system(name, db_system_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::DbSystem::Representation
+          command.request_object = db_system_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2170,6 +2597,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the `labels` of a single ExascaleDbStorageVault.
+        # @param [String] name
+        #   Identifier. The resource name of the ExascaleDbStorageVault. Format: projects/`
+        #   project`/locations/`location`/exascaleDbStorageVaults/`
+        #   exascale_db_storage_vault`
+        # @param [Google::Apis::OracledatabaseV1::ExascaleDbStorageVault] exascale_db_storage_vault_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the ExascaleDbStorageVault should
+        #   be updated. A field specified in the mask is updated. If a mask isn't provided,
+        #   the service treats this as an implied field mask equivalent to all fields
+        #   that are populated (have a non-empty value). To clear or unset a field, the
+        #   field must be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_exascale_db_storage_vault(name, exascale_db_storage_vault_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::ExascaleDbStorageVault::Representation
+          command.request_object = exascale_db_storage_vault_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all the valid Oracle Grid Infrastructure (GI) versions for the given
         # project and location.
         # @param [String] parent
@@ -2440,6 +2917,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the `labels` of a single GoldengateConnectionAssignment.
+        # @param [String] name
+        #   Identifier. The name of the GoldengateConnectionAssignment resource in the
+        #   following format: projects/`project`/locations/`region`/
+        #   goldengateConnectionAssignments/`goldengate_connection_assignment`
+        # @param [Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment] goldengate_connection_assignment_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the GoldengateConnectionAssignment
+        #   should be updated. A field specified in the mask is updated. If a mask isn't
+        #   provided, the service treats this as an implied field mask equivalent to all
+        #   fields that are populated (have a non-empty value). To clear or unset a field,
+        #   the field must be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_goldengate_connection_assignment(name, goldengate_connection_assignment_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateConnectionAssignment::Representation
+          command.request_object = goldengate_connection_assignment_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Tests a single GoldengateConnectionAssignment.
         # @param [String] name
         #   Required. Name of the connection assignment for which to test connection.
@@ -2683,6 +3210,56 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `labels` of a single GoldengateConnection.
+        # @param [String] name
+        #   Identifier. The name of the GoldengateConnection resource in the following
+        #   format: projects/`project`/locations/`region`/goldengateConnections/`
+        #   goldengate_connection`
+        # @param [Google::Apis::OracledatabaseV1::GoldengateConnection] goldengate_connection_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the GoldengateConnection should be
+        #   updated. A field specified in the mask is updated. If a mask isn't provided,
+        #   the service treats this as an implied field mask equivalent to all fields that
+        #   are populated (have a non-empty value). To clear or unset a field, the field
+        #   must be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_goldengate_connection(name, goldengate_connection_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateConnection::Representation
+          command.request_object = goldengate_connection_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2990,6 +3567,56 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the `labels` of a single GoldengateDeployment.
+        # @param [String] name
+        #   Identifier. The name of the GoldengateDeployment resource in the following
+        #   format: projects/`project`/locations/`region`/goldengateDeployments/`
+        #   goldengate_deployment`
+        # @param [Google::Apis::OracledatabaseV1::GoldengateDeployment] goldengate_deployment_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the GoldengateDeployment should be
+        #   updated. A field specified in the mask is updated. If a mask isn't provided,
+        #   the service treats this as an implied field mask equivalent to all fields that
+        #   are populated (have a non-empty value). To clear or unset a field, the field
+        #   must be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_goldengate_deployment(name, goldengate_deployment_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::GoldengateDeployment::Representation
+          command.request_object = goldengate_deployment_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Starts a single GoldengateDeployment.
         # @param [String] name
         #   Required. The name of the Goldengate Deployment in the following format:
@@ -3222,6 +3849,218 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the `labels` and `service_connectivity_config` of a single OdbNetwork.
+        # @param [String] name
+        #   Identifier. The name of the OdbNetwork resource in the following format:
+        #   projects/`project`/locations/`region`/odbNetworks/`odb_network`
+        # @param [Google::Apis::OracledatabaseV1::OdbNetwork] odb_network_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the OdbNetwork should be updated.
+        #   A field specified in the mask is updated. If a mask isn't provided, the
+        #   service treats this as an implied field mask equivalent to all fields that are
+        #   populated (have a non-empty value). To clear or unset a field, the field must
+        #   be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_odb_network(name, odb_network_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::OdbNetwork::Representation
+          command.request_object = odb_network_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new ODB DNS Zone in a given ODB Network.
+        # @param [String] parent
+        #   Required. The parent value for the OdbDnsZone in the following format:
+        #   projects/`project`/locations/`location`/odbNetworks/`odb_network`.
+        # @param [Google::Apis::OracledatabaseV1::OdbDnsZone] odb_dns_zone_object
+        # @param [String] odb_dns_zone_id
+        #   Required. The ID of the OdbDnsZone to create. This value is restricted to (^[a-
+        #   z]([a-z0-9-]`0,61`[a-z0-9])?$) and must be a maximum of 63 characters in
+        #   length. The value must start with a letter and end with a letter or a number.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_odb_network_odb_dns_zone(parent, odb_dns_zone_object = nil, odb_dns_zone_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/odbDnsZones', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::OdbDnsZone::Representation
+          command.request_object = odb_dns_zone_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['odbDnsZoneId'] = odb_dns_zone_id unless odb_dns_zone_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single ODB DNS Zone.
+        # @param [String] name
+        #   Required. The name of the resource in the following format: projects/`project`/
+        #   locations/`location`/odbNetworks/`odb_network`/odbDnsZones/`odb_dns_zone`.
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_odb_network_odb_dns_zone(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single ODB DNS Zone.
+        # @param [String] name
+        #   Required. The name of the OdbDnsZone in the following format: projects/`
+        #   project`/locations/`location`/odbNetworks/`odb_network`/odbDnsZones/`
+        #   odb_dns_zone`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::OdbDnsZone] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::OdbDnsZone]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_odb_network_odb_dns_zone(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::OdbDnsZone::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::OdbDnsZone
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the ODB DNS Zones in a given ODB Network.
+        # @param [String] parent
+        #   Required. The parent value for the OdbDnsZone in the following format:
+        #   projects/`project`/locations/`location`/odbNetworks/`odb_network`.
+        # @param [String] filter
+        #   Optional. An expression for filtering the results of the request.
+        # @param [String] order_by
+        #   Optional. An expression for ordering the results of the request.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return. If unspecified, at most 50
+        #   OdbDnsZones will be returned. The maximum value is 1000; values above 1000
+        #   will be coerced to 1000.
+        # @param [String] page_token
+        #   Optional. A token identifying a page of results the server should return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::ListOdbDnsZonesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::ListOdbDnsZonesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_odb_network_odb_dns_zones(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/odbDnsZones', options)
+          command.response_representation = Google::Apis::OracledatabaseV1::ListOdbDnsZonesResponse::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::ListOdbDnsZonesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new ODB Subnet in a given ODB Network.
         # @param [String] parent
         #   Required. The parent value for the OdbSubnet in the following format: projects/
@@ -3379,6 +4218,56 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `labels` of a single ODB Subnet.
+        # @param [String] name
+        #   Identifier. The name of the OdbSubnet resource in the following format:
+        #   projects/`project`/locations/`location`/odbNetworks/`odb_network`/odbSubnets/`
+        #   odb_subnet`
+        # @param [Google::Apis::OracledatabaseV1::OdbSubnet] odb_subnet_object
+        # @param [String] request_id
+        #   Optional. An optional ID to identify the request. This value is used to
+        #   identify duplicate requests. If you make a request with the same request ID
+        #   and the original request is still in progress or completed, the server ignores
+        #   the second request. This prevents clients from accidentally creating duplicate
+        #   commitments. The request ID must be a valid UUID with the exception that zero
+        #   UUID is not supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] update_mask
+        #   Optional. A mask specifying which fields in the OdbSubnet should be updated. A
+        #   field specified in the mask is updated. If a mask isn't provided, the service
+        #   treats this as an implied field mask equivalent to all fields that are
+        #   populated (have a non-empty value). To clear or unset a field, the field must
+        #   be explicitly specified in the `update_mask`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::OracledatabaseV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::OracledatabaseV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_odb_network_odb_subnet(name, odb_subnet_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::OracledatabaseV1::OdbSubnet::Representation
+          command.request_object = odb_subnet_object
+          command.response_representation = Google::Apis::OracledatabaseV1::Operation::Representation
+          command.response_class = Google::Apis::OracledatabaseV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
