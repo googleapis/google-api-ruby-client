@@ -371,6 +371,53 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves multiple automation sessions in a single batch request. Sessions are
+        # returned in the same order as the `names` in the request. If any of the
+        # requested sessions does not exist, the whole request fails with `NOT_FOUND`
+        # and no sessions are returned. When calling this method over HTTP/REST with a
+        # large number of `names`, the request URL may exceed the maximum URL length (
+        # about 16 KB) and be rejected. In that case, send a `POST` request to the same
+        # URL with the `X-HTTP-Method-Override: GET` header and pass the request
+        # parameters in a JSON (`application/json`) or form-encoded (`application/x-www-
+        # form-urlencoded`) body. See https://cloud.google.com/apis/docs/http#
+        # long_request_urls.
+        # @param [String] parent
+        #   Required. The parent resource shared by all sessions being retrieved. Format: `
+        #   projects/`project`/locations/`location``. The `parent` field in the `
+        #   BatchGetSessionsRequest` message must match the `parent` of all `Session`
+        #   resource names in `names`.
+        # @param [Array<String>, String] names
+        #   Required. The names of the sessions to retrieve. A maximum of 500 sessions can
+        #   be retrieved in a batch. Format: `projects/`project`/locations/`location`/
+        #   sessions/`session``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DevicerunV1alpha::BatchGetSessionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DevicerunV1alpha::BatchGetSessionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_project_location_session_get(parent, names: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha/{+parent}/sessions:batchGet', options)
+          command.response_representation = Google::Apis::DevicerunV1alpha::BatchGetSessionsResponse::Representation
+          command.response_class = Google::Apis::DevicerunV1alpha::BatchGetSessionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['names'] = names unless names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Cancels an in-progress automation session. This RPC returns immediately and
         # cancellation proceeds asynchronously. If the session is already finished, this
         # RPC will have no effect.
@@ -502,8 +549,8 @@ module Google
         #   Required. The name of the session. Format: `projects/`project`/locations/`
         #   location`/sessions/`session``.
         # @param [String] view
-        #   Optional. The view of the session to return. If not set, the default BASIC
-        #   view will be returned.
+        #   Optional. The view of the session to return. If not set, the `FULL` view will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -554,8 +601,8 @@ module Google
         #   this to receive the subsequent page. When paginating, all other parameters
         #   provided to `ListSessions` must match the call that provided the page token.
         # @param [String] view
-        #   Optional. The view of the sessions to return. If not set, the `BASIC` view
-        #   will be returned.
+        #   Optional. The view of the sessions to return. If not set, the `FULL` view will
+        #   be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
