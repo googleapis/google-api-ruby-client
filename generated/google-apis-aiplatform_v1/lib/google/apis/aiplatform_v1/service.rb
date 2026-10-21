@@ -4358,6 +4358,115 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Cancels an interaction.
+        # @param [String] name
+        #   Required. The name of the interaction to cancel. Format: `interactions/`
+        #   interaction``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1Interaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1Interaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_interaction(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1Interaction::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1Interaction
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fully typed proto, unary version of GetInteraction that returns Interaction
+        # proto.
+        # @param [String] name
+        #   Required. The name of the interaction to retrieve. Format: interactions/`
+        #   interaction`
+        # @param [String] last_event_id
+        #   If set, resumes the interaction stream from the chunk after the event marked
+        #   by the event id. Can only be used if `stream` is true.
+        # @param [Boolean] stream
+        #   If true, streams the interaction events as Server-Sent Events.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1Interaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1Interaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interaction_poll(name, last_event_id: nil, stream: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:poll', options)
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1Interaction::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1Interaction
+          command.params['name'] = name unless name.nil?
+          command.query['lastEventId'] = last_event_id unless last_event_id.nil?
+          command.query['stream'] = stream unless stream.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fully typed proto, streaming version of GetInteraction that returns
+        # Interaction proto.
+        # @param [String] name
+        #   Required. The name of the interaction to retrieve. Format: interactions/`
+        #   interaction`
+        # @param [String] last_event_id
+        #   If set, resumes the interaction stream from the chunk after the event marked
+        #   by the event id. Can only be used if `stream` is true.
+        # @param [Boolean] stream
+        #   If true, streams the interaction events as Server-Sent Events.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_interaction_stream(name, last_event_id: nil, stream: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:stream', options)
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent
+          command.params['name'] = name unless name.nil?
+          command.query['lastEventId'] = last_event_id unless last_event_id.nil?
+          command.query['stream'] = stream unless stream.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Upload a file into a RagCorpus.
         # @param [String] parent
         #   Required. The name of the RagCorpus resource into which to upload the file.
@@ -19551,6 +19660,210 @@ module Google
           command.response_class = Google::Apis::AiplatformV1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
           command.query['timeout'] = timeout unless timeout.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an interaction.
+        # @param [String] projects_id
+        # @param [String] locations_id
+        # @param [Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionRequest] genai_vertex_v1_create_interaction_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1Interaction] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1Interaction]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_interaction(projects_id, locations_id, genai_vertex_v1_create_interaction_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/interactions:create', options)
+          command.request_representation = Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionRequest::Representation
+          command.request_object = genai_vertex_v1_create_interaction_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1Interaction::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1Interaction
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an interaction and streams the response.
+        # @param [String] projects_id
+        # @param [String] locations_id
+        # @param [Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionRequest] genai_vertex_v1_create_interaction_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_interaction_stream(projects_id, locations_id, genai_vertex_v1_create_interaction_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectsId}/locations/{locationsId}/interactions:createStream', options)
+          command.request_representation = Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionRequest::Representation
+          command.request_object = genai_vertex_v1_create_interaction_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1InteractionStreamingEvent
+          command.params['projectsId'] = projects_id unless projects_id.nil?
+          command.params['locationsId'] = locations_id unless locations_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an interaction.
+        # @param [String] name
+        #   Required. The name of the interaction to delete. Format: interactions/`
+        #   interaction`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GenaiVertexV1DeleteInteractionResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GenaiVertexV1DeleteInteractionResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_interaction(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GenaiVertexV1DeleteInteractionResponse::Representation
+          command.response_class = Google::Apis::AiplatformV1::GenaiVertexV1DeleteInteractionResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Cancels an interaction by id. This only applies to background interactions
+        # that are still running.
+        # @param [String] name
+        #   Required. The name of the interaction to cancel. Format: `interactions/`
+        #   interaction``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def cancel_project_location_interactions_http(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/cancel', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new interaction.
+        # @param [String] parent
+        #   Required. The parent resource where this interaction will be created. Format: `
+        #   projects/`project`/locations/`location`` Supported only by the Vertex API only.
+        # @param [Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionHttpRequest] genai_vertex_v1_create_interaction_http_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_interactions_http(parent, genai_vertex_v1_create_interaction_http_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/interactionsHttp', options)
+          command.request_representation = Google::Apis::AiplatformV1::GenaiVertexV1CreateInteractionHttpRequest::Representation
+          command.request_object = genai_vertex_v1_create_interaction_http_request_object
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the full details of a single interaction based on its `Interaction.
+        # id`.
+        # @param [String] name
+        #   Required. The name of the interaction to retrieve. Format: interactions/`
+        #   interaction`
+        # @param [String] last_event_id
+        #   If set, resumes the interaction stream from the chunk after the event marked
+        #   by the event id. Can only be used if `stream` is true.
+        # @param [Boolean] stream
+        #   If true, streams the interaction events as Server-Sent Events.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AiplatformV1::GoogleApiHttpBody] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AiplatformV1::GoogleApiHttpBody]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_interactions_http(name, last_event_id: nil, stream: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::AiplatformV1::GoogleApiHttpBody::Representation
+          command.response_class = Google::Apis::AiplatformV1::GoogleApiHttpBody
+          command.params['name'] = name unless name.nil?
+          command.query['lastEventId'] = last_event_id unless last_event_id.nil?
+          command.query['stream'] = stream unless stream.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
