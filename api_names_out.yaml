@@ -417757,6 +417757,7 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport": google_cloud_securitycenter_v1_big_query_export
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/createTime": create_time
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/dataset": dataset
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/deletionNotificationsEnabled": deletion_notifications_enabled
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/description": description
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/filter": filter
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1BigQueryExport/mostRecentEditor": most_recent_editor
@@ -417831,6 +417832,7 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1MuteConfig/type": type
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1MuteConfig/updateTime": update_time
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1NotificationMessage": google_cloud_securitycenter_v1_notification_message
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV1NotificationMessage/deletedFinding": deleted_finding
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1NotificationMessage/finding": finding
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1NotificationMessage/notificationConfigName": notification_config_name
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV1NotificationMessage/resource": resource
@@ -418108,6 +418110,7 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/createTime": create_time
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/cryptoKeyName": crypto_key_name
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/dataset": dataset
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/deletionNotificationsEnabled": deletion_notifications_enabled
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/description": description
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/filter": filter
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2BigQueryExport/mostRecentEditor": most_recent_editor
@@ -418652,6 +418655,7 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Notebook/notebookUpdateTime": notebook_update_time
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Notebook/service": service
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2NotificationMessage": google_cloud_securitycenter_v2_notification_message
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2NotificationMessage/deletedFinding": deleted_finding
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2NotificationMessage/finding": finding
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2NotificationMessage/notificationConfigName": notification_config_name
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2NotificationMessage/resource": resource
