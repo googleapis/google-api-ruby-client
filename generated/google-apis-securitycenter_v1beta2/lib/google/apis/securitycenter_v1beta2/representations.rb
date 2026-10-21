@@ -2852,6 +2852,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
           property :dataset, as: 'dataset'
+          property :deletion_notifications_enabled, as: 'deletionNotificationsEnabled'
           property :description, as: 'description'
           property :filter, as: 'filter'
           property :most_recent_editor, as: 'mostRecentEditor'
@@ -2966,6 +2967,7 @@ module Google
       class GoogleCloudSecuritycenterV1NotificationMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_finding, as: 'deletedFinding'
           property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1beta2::Finding, decorator: Google::Apis::SecuritycenterV1beta2::Finding::Representation
       
           property :notification_config_name, as: 'notificationConfigName'
@@ -3475,6 +3477,7 @@ module Google
           property :create_time, as: 'createTime'
           property :crypto_key_name, as: 'cryptoKeyName'
           property :dataset, as: 'dataset'
+          property :deletion_notifications_enabled, as: 'deletionNotificationsEnabled'
           property :description, as: 'description'
           property :filter, as: 'filter'
           property :most_recent_editor, as: 'mostRecentEditor'
@@ -4513,6 +4516,7 @@ module Google
       class GoogleCloudSecuritycenterV2NotificationMessage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :deleted_finding, as: 'deletedFinding'
           property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Finding, decorator: Google::Apis::SecuritycenterV1beta2::GoogleCloudSecuritycenterV2Finding::Representation
       
           property :notification_config_name, as: 'notificationConfigName'
