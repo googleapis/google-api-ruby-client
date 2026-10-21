@@ -556,6 +556,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListTelemetryPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTlsRoutesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -605,6 +611,12 @@ module Google
       end
       
       class MetadataLabels
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricsConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -706,6 +718,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TelemetryPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TelemetryTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TlsRoute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -731,6 +755,24 @@ module Google
       end
       
       class TlsRouteRouteRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TracingConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TracingConfigurationCustomSpanAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TracingConfigurationParentBasedSampling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1768,6 +1810,16 @@ module Google
         end
       end
       
+      class ListTelemetryPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :telemetry_policies, as: 'telemetryPolicies', class: Google::Apis::NetworkservicesV1beta1::TelemetryPolicy, decorator: Google::Apis::NetworkservicesV1beta1::TelemetryPolicy::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListTlsRoutesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1855,6 +1907,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :label_name, as: 'labelName'
           property :label_value, as: 'labelValue'
+        end
+      end
+      
+      class MetricsConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -2029,6 +2088,35 @@ module Google
         end
       end
       
+      class TelemetryPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :create_time, as: 'createTime'
+          property :delete_time, as: 'deleteTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          hash :labels, as: 'labels'
+          property :metrics_configuration, as: 'metricsConfiguration', class: Google::Apis::NetworkservicesV1beta1::MetricsConfiguration, decorator: Google::Apis::NetworkservicesV1beta1::MetricsConfiguration::Representation
+      
+          property :name, as: 'name'
+          property :reconciling, as: 'reconciling'
+          property :telemetry_target, as: 'telemetryTarget', class: Google::Apis::NetworkservicesV1beta1::TelemetryTarget, decorator: Google::Apis::NetworkservicesV1beta1::TelemetryTarget::Representation
+      
+          property :tracing_configuration, as: 'tracingConfiguration', class: Google::Apis::NetworkservicesV1beta1::TracingConfiguration, decorator: Google::Apis::NetworkservicesV1beta1::TracingConfiguration::Representation
+      
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class TelemetryTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
+        end
+      end
+      
       class TlsRoute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2078,6 +2166,34 @@ module Google
       
           collection :matches, as: 'matches', class: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch, decorator: Google::Apis::NetworkservicesV1beta1::TlsRouteRouteMatch::Representation
       
+        end
+      end
+      
+      class TracingConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_span_attributes, as: 'customSpanAttributes', class: Google::Apis::NetworkservicesV1beta1::TracingConfigurationCustomSpanAttribute, decorator: Google::Apis::NetworkservicesV1beta1::TracingConfigurationCustomSpanAttribute::Representation
+      
+          property :parent_based_sampling, as: 'parentBasedSampling', class: Google::Apis::NetworkservicesV1beta1::TracingConfigurationParentBasedSampling, decorator: Google::Apis::NetworkservicesV1beta1::TracingConfigurationParentBasedSampling::Representation
+      
+          property :sampling_rate, as: 'samplingRate'
+        end
+      end
+      
+      class TracingConfigurationCustomSpanAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attribute_name, as: 'attributeName'
+          property :from_header_value, as: 'fromHeaderValue'
+          property :literal_value, as: 'literalValue'
+        end
+      end
+      
+      class TracingConfigurationParentBasedSampling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :sampling_rate, as: 'samplingRate'
         end
       end
       
