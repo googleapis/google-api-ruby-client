@@ -52,7 +52,29 @@ module Google
       # @!attribute [rw] application_version
       #   @return [String] Version of the application, for identification in the User-Agent header
       # @!attribute [rw] adapter
-      #   @return [Symbol, Class] Faraday adapter to use (https://lostisland.github.io/faraday/#/adapters/index?id=adapters)
+      #   @return [Symbol, Class, nil] The Faraday adapter for HTTP connections, either a registered
+      #     adapter name ([Faraday adapters](https://lostisland.github.io/faraday/#/adapters/index?id=adapters),
+      #     for example `:net_http_persistent`) or an adapter class. If `nil` (the
+      #     default), Faraday uses `Faraday.default_adapter`, which is `:net_http` unless changed.
+      #
+      #     Only the default `:net_http` adapter is tested with google-apis-core. Any other adapter
+      #     is used at your own risk. It must:
+      #
+      #     * support response streaming with `on_data`, which media downloads require;
+      #     * honor the `open_timeout_sec`, `read_timeout_sec`, `send_timeout_sec` and `proxy_url`
+      #       settings;
+      #     * raise `Faraday::Error` subclasses for network failures, so that requests are retried;
+      #     * be safe to use from several threads at once, because each service shares a single
+      #       connection.
+      #
+      #     If the adapter keeps connections open, don't reuse them across `fork`. Create services
+      #     in each process after forking.
+      #
+      #     Load the adapter (for example `require "faraday/net_http_persistent"`) before the
+      #     connection is created. An unregistered name raises `Faraday::Error` at that point.
+      #     A service creates its connection once, on first use, so set this option before then.
+      #     Each service copies `ClientOptions.default` when it's created, so changing the default
+      #     only affects services created afterwards.
       # @!attribute [rw] proxy_url
       #   @return [String] URL of a proxy server
       # @!attribute [rw] log_http_requests
