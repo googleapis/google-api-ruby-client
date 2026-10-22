@@ -114,6 +114,18 @@ RSpec.describe Google::Apis::Core::BaseService do
     end
   end
 
+  context 'with adapter' do
+    after(:example) do
+      Google::Apis::ClientOptions.default.adapter = nil
+    end
+
+    it 'should allow switching the adapter' do
+      Google::Apis::ClientOptions.default.adapter = Faraday::Adapter::Test
+      expect(service.client).to be_a(Faraday::Connection)
+      expect(service.client.builder.adapter).to eq(Faraday::Adapter::Test)
+    end
+  end
+
   context 'when making simple commands' do
     let(:command) { service.send(:make_simple_command, :get, 'zoo/animals', authorization: 'foo') }
 

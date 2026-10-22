@@ -22,6 +22,14 @@ should pin `google-apis-core` to a 0.x version in your Gemfile. For example:
 
     gem "google-apis-core", "~> 0.18"
 
+The `faraday` integration ships with, and only tests against the default adapter, which wraps [net-http](https://github.com/ruby/net-http). You can change the adapter by setting the `:adapter` client option:
+
+```ruby
+Google::Apis::ClientOptions.default.adapter = :net_http_persistent # or :httpx, or...
+```
+
+There a **caveat** though: downloading media requires a `faraday` adapter which [implements the `on_data` streaming API](https://lostisland.github.io/faraday/#/advanced/streaming-responses?id=streaming-responses).
+
 ## Documentation
 
 More detailed descriptions of the Google legacy REST clients are available in two documents.

@@ -23,7 +23,8 @@ module Google
       :read_timeout_sec,
       :send_timeout_sec,
       :log_http_requests,
-      :transparent_gzip_decompression)
+      :transparent_gzip_decompression,
+      :adapter)
 
     RequestOptions = Struct.new(
       :authorization,
@@ -50,6 +51,8 @@ module Google
       #   @return [String] Name of the application, for identification in the User-Agent header
       # @!attribute [rw] application_version
       #   @return [String] Version of the application, for identification in the User-Agent header
+      # @!attribute [rw] adapter
+      #   @return [Symbol, Class] Faraday adapter to use (https://lostisland.github.io/faraday/#/adapters/index?id=adapters)
       # @!attribute [rw] proxy_url
       #   @return [String] URL of a proxy server
       # @!attribute [rw] log_http_requests
@@ -82,7 +85,7 @@ module Google
       # @!attribute [rw] max_interval
       #   @return [Integer] The maximum interval in seconds that any individual retry can reach.
       # @!attribute [rw] multiplier
-      #   @return [Numeric] Each successive interval grows by this factor. A multipler of 1.5 means the next interval 
+      #   @return [Numeric] Each successive interval grows by this factor. A multipler of 1.5 means the next interval
       #              will be 1.5x the current interval.
       # @!attribute [rw] header
       #   @return [Hash<String,String>] Additional HTTP headers to include in requests.
