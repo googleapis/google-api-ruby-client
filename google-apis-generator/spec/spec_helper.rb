@@ -65,8 +65,6 @@ end
 # Enable retries for tests
 Google::Apis::RequestOptions.default.retries = 5
 
-# Allow testing different adapters
-Google::Apis::ClientOptions.default.use_net_http = true if ENV['USE_NET_HTTP']
 # Temporarily patch WebMock to allow chunked responses for Net::HTTP
 module Net
   module WebMockHTTPResponse
