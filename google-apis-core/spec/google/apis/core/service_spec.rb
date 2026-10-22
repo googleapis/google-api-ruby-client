@@ -119,6 +119,10 @@ RSpec.describe Google::Apis::Core::BaseService do
       Google::Apis::ClientOptions.default.adapter = nil
     end
 
+    it 'should use the Faraday default adapter when unset' do
+      expect(service.client.builder.adapter).to eq(Faraday::Adapter::NetHttp)
+    end
+
     it 'should allow switching the adapter' do
       Google::Apis::ClientOptions.default.adapter = Faraday::Adapter::Test
       expect(service.client).to be_a(Faraday::Connection)
