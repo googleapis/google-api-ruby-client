@@ -1,5 +1,11 @@
 # Release History
 
+### 0.19.2 (2026-10-23)
+
+#### Documentation
+
+* document ClientOptions#adapter requirements and caveats ([#28298](https://github.com/googleapis/google-api-ruby-client/issues/28298)) ([96bd38f](https://github.com/googleapis/google-api-ruby-client/commit/96bd38fcceccfe20f0713545611911604d673f94)), refs [#27337](https://github.com/googleapis/google-api-ruby-client/issues/27337)
+
 ### 0.19.1 (2026-10-20)
 
 #### Documentation
