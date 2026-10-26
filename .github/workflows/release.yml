@@ -1,0 +1,63 @@
+name: Release RubyGems via OSS Exit Gate
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - '*/v*'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@d6abfc2fb9c02d7cabae5fde2a3db9d8f4ef3fd2
+        with:
+          ruby-version: '3.2'
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed
+        with:
+          workload_identity_provider: 'projects/305452601764/locations/global/workloadIdentityPools/builders/providers/github'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@e427ad8a34f8676edf47cf7d7925499adf3eb74f
+
+      - name: Build and stage google-api-client gem to OSS Exit Gate
+        run: |
+          cd google-api-client
+          gem build google-api-client.gemspec
+          GEM_FILE="$(ls google-api-client-*.gem | head -n 1)"
+          VERSION="${GEM_FILE#google-api-client-}"
+          VERSION="${VERSION%.gem}"
+          export GEM_HOST_API_KEY="Bearer $(gcloud auth print-access-token)"
+          gem push "${GEM_FILE}" \
+            --host "https://us-ruby.pkg.dev/oss-exit-gate-prod/google-api-ruby-client--rubygems"
+          cat <<EOF > manifest.json
+          {
+            "publish_all": false,
+            "publishing_groups": [
+              {
+                "packages": [
+                  {
+                    "name": "google-api-client",
+                    "version": "${VERSION}"
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
+          gcloud storage cp manifest.json \
+            "gs://oss-exit-gate-prod-projects-bucket/google-api-ruby-client/rubygems/manifests/manifest-${{ github.run_id }}-${{ github.run_attempt }}.json"
