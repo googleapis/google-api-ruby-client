@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Frontmatter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -256,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListFindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,6 +353,18 @@ module Google
       end
       
       class Publisher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScanResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScanningConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -647,6 +677,31 @@ module Google
         end
       end
       
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_number, :numeric_string => true, as: 'lineNumber'
+          property :path, as: 'path'
+        end
+      end
+      
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :detail, as: 'detail'
+          collection :files, as: 'files', class: Google::Apis::AgentregistryV1alpha::File, decorator: Google::Apis::AgentregistryV1alpha::File::Representation
+      
+          property :finding_class, as: 'findingClass'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :severity, as: 'severity'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class Frontmatter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -800,6 +855,15 @@ module Google
         end
       end
       
+      class ListFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :findings, as: 'findings', class: Google::Apis::AgentregistryV1alpha::Finding, decorator: Google::Apis::AgentregistryV1alpha::Finding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -948,6 +1012,23 @@ module Google
         end
       end
       
+      class ScanResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          collection :findings, as: 'findings'
+          property :scan_state, as: 'scanState'
+          property :scan_time, as: 'scanTime'
+        end
+      end
+      
+      class ScanningConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class SearchAgentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1037,6 +1118,8 @@ module Google
       
           property :name, as: 'name'
           property :publisher, as: 'publisher'
+          property :scanning_config, as: 'scanningConfig', class: Google::Apis::AgentregistryV1alpha::ScanningConfig, decorator: Google::Apis::AgentregistryV1alpha::ScanningConfig::Representation
+      
           property :skill_id, as: 'skillId'
           property :state, as: 'state'
           property :target_state, as: 'targetState'
@@ -1057,6 +1140,8 @@ module Google
           property :gcs_source, as: 'gcsSource', class: Google::Apis::AgentregistryV1alpha::GcsSource, decorator: Google::Apis::AgentregistryV1alpha::GcsSource::Representation
       
           property :name, as: 'name'
+          property :scan_result, as: 'scanResult', class: Google::Apis::AgentregistryV1alpha::ScanResult, decorator: Google::Apis::AgentregistryV1alpha::ScanResult::Representation
+      
           property :sha256_hash, as: 'sha256Hash'
           property :size_bytes, :numeric_string => true, as: 'sizeBytes'
           property :state, as: 'state'
