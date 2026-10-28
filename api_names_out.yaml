@@ -193271,6 +193271,8 @@
 "/dataflow:v1b3/dataflow.projects.deleteSnapshots/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.deleteSnapshots/snapshotId": snapshot_id
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated": aggregated_project_job
+"/dataflow:v1b3/dataflow.projects.jobs.aggregated/createTimeRange.endTime": create_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.jobs.aggregated/createTimeRange.startTime": create_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/filter": filter
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/location": location
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/name": name
@@ -193278,6 +193280,8 @@
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/pageToken": page_token
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/regionalFanoutRequested": regional_fanout_requested
+"/dataflow:v1b3/dataflow.projects.jobs.aggregated/terminationTimeRange.endTime": termination_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.jobs.aggregated/terminationTimeRange.startTime": termination_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.jobs.aggregated/view": view
 "/dataflow:v1b3/dataflow.projects.jobs.create": create_project_job
 "/dataflow:v1b3/dataflow.projects.jobs.create/location": location
@@ -193304,6 +193308,8 @@
 "/dataflow:v1b3/dataflow.projects.jobs.getMetrics/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.jobs.getMetrics/startTime": start_time
 "/dataflow:v1b3/dataflow.projects.jobs.list": list_project_jobs
+"/dataflow:v1b3/dataflow.projects.jobs.list/createTimeRange.endTime": create_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.jobs.list/createTimeRange.startTime": create_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.jobs.list/filter": filter
 "/dataflow:v1b3/dataflow.projects.jobs.list/location": location
 "/dataflow:v1b3/dataflow.projects.jobs.list/name": name
@@ -193311,6 +193317,8 @@
 "/dataflow:v1b3/dataflow.projects.jobs.list/pageToken": page_token
 "/dataflow:v1b3/dataflow.projects.jobs.list/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.jobs.list/regionalFanoutRequested": regional_fanout_requested
+"/dataflow:v1b3/dataflow.projects.jobs.list/terminationTimeRange.endTime": termination_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.jobs.list/terminationTimeRange.startTime": termination_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.jobs.list/view": view
 "/dataflow:v1b3/dataflow.projects.jobs.messages.list": list_project_job_messages
 "/dataflow:v1b3/dataflow.projects.jobs.messages.list/endTime": end_time
@@ -193385,6 +193393,8 @@
 "/dataflow:v1b3/dataflow.projects.locations.jobs.getMetrics/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.locations.jobs.getMetrics/startTime": start_time
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list": list_project_location_jobs
+"/dataflow:v1b3/dataflow.projects.locations.jobs.list/createTimeRange.endTime": create_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.locations.jobs.list/createTimeRange.startTime": create_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/filter": filter
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/location": location
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/name": name
@@ -193392,6 +193402,8 @@
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/pageToken": page_token
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/projectId": project_id
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/regionalFanoutRequested": regional_fanout_requested
+"/dataflow:v1b3/dataflow.projects.locations.jobs.list/terminationTimeRange.endTime": termination_time_range_end_time
+"/dataflow:v1b3/dataflow.projects.locations.jobs.list/terminationTimeRange.startTime": termination_time_range_start_time
 "/dataflow:v1b3/dataflow.projects.locations.jobs.list/view": view
 "/dataflow:v1b3/dataflow.projects.locations.jobs.messages.list": list_project_location_job_messages
 "/dataflow:v1b3/dataflow.projects.locations.jobs.messages.list/endTime": end_time
