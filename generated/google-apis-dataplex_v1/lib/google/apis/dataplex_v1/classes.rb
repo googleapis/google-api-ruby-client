@@ -2346,6 +2346,11 @@ module Google
       class GoogleCloudDataplexV1DataDocumentationResult
         include Google::Apis::Core::Hashable
       
+        # Generated metadata about a data product.
+        # Corresponds to the JSON property `dataProductResult`
+        # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResult]
+        attr_accessor :data_product_result
+      
         # Insights for a dataset resource.
         # Corresponds to the JSON property `datasetResult`
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDatasetResult]
@@ -2362,8 +2367,69 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_product_result = args[:data_product_result] if args.key?(:data_product_result)
           @dataset_result = args[:dataset_result] if args.key?(:dataset_result)
           @table_result = args[:table_result] if args.key?(:table_result)
+        end
+      end
+      
+      # Generated metadata about a data product.
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Unordered list. Generated descriptions for assets in the data
+        # product. Note that some assets may not have a generated description. Such
+        # assets will not be included in this list.
+        # Corresponds to the JSON property `assetDescriptions`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription>]
+        attr_accessor :asset_descriptions
+      
+        # Output only. A detailed description for the data product.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        # Output only. Unordered list. Sample SQL queries for the data product.
+        # Corresponds to the JSON property `queries`
+        # @return [Array<Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery>]
+        attr_accessor :queries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_descriptions = args[:asset_descriptions] if args.key?(:asset_descriptions)
+          @overview = args[:overview] if args.key?(:overview)
+          @queries = args[:queries] if args.key?(:queries)
+        end
+      end
+      
+      # Description for an asset in the data product.
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription
+        include Google::Apis::Core::Hashable
+      
+        # Output only. A generated description for the asset.
+        # Corresponds to the JSON property `overview`
+        # @return [String]
+        attr_accessor :overview
+      
+        # Output only. The service-qualified full resource name of the asset. Example: //
+        # bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/
+        # TABLE_ID
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @overview = args[:overview] if args.key?(:overview)
+          @resource = args[:resource] if args.key?(:resource)
         end
       end
       
@@ -2596,6 +2662,12 @@ module Google
         attr_accessor :catalog_publishing_enabled
         alias_method :catalog_publishing_enabled?, :catalog_publishing_enabled
       
+        # Optional. Custom instructions for generating data documentation. The maximum
+        # length is 2,048 characters.
+        # Corresponds to the JSON property `customInstructions`
+        # @return [String]
+        attr_accessor :custom_instructions
+      
         # Optional. Specifies which components of the data documentation to generate.
         # Any component that is required to generate the specified components will also
         # be generated. If no generation scope is specified, all available documentation
@@ -2617,6 +2689,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @catalog_publishing_enabled = args[:catalog_publishing_enabled] if args.key?(:catalog_publishing_enabled)
+          @custom_instructions = args[:custom_instructions] if args.key?(:custom_instructions)
           @generation_scopes = args[:generation_scopes] if args.key?(:generation_scopes)
           @sql_dialect = args[:sql_dialect] if args.key?(:sql_dialect)
         end
@@ -6394,6 +6467,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. The type of the EntryGroup that this entry belongs to. The
+        # default value is an empty string. Recognised values include: * context-set:
+        # EntryGroup containing context set data assets.
+        # Corresponds to the JSON property `entryGroupType`
+        # @return [String]
+        attr_accessor :entry_group_type
+      
         # Information related to the source system of the data resource that is
         # represented by the entry.
         # Corresponds to the JSON property `entrySource`
@@ -6443,6 +6523,7 @@ module Google
         def update!(**args)
           @aspects = args[:aspects] if args.key?(:aspects)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @entry_group_type = args[:entry_group_type] if args.key?(:entry_group_type)
           @entry_source = args[:entry_source] if args.key?(:entry_source)
           @entry_type = args[:entry_type] if args.key?(:entry_type)
           @fully_qualified_name = args[:fully_qualified_name] if args.key?(:fully_qualified_name)
@@ -6501,6 +6582,13 @@ module Google
         # @return [String]
         attr_accessor :transfer_status
       
+        # Optional. Immutable. The type of this EntryGroup. The default value is an
+        # empty string. Recognised values include: * context-set: EntryGroup containing
+        # context set data assets.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         # Output only. System generated globally unique ID for the EntryGroup. If you
         # delete and recreate the EntryGroup with the same name, this ID will be
         # different.
@@ -6527,6 +6615,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @transfer_status = args[:transfer_status] if args.key?(:transfer_status)
+          @type = args[:type] if args.key?(:type)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
         end

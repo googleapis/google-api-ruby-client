@@ -370,6 +370,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDataplexV1DataDocumentationResultDatasetResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2411,10 +2423,31 @@ module Google
       class GoogleCloudDataplexV1DataDocumentationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_product_result, as: 'dataProductResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResult::Representation
+      
           property :dataset_result, as: 'datasetResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDatasetResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDatasetResult::Representation
       
           property :table_result, as: 'tableResult', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultTableResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_descriptions, as: 'assetDescriptions', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription::Representation
+      
+          property :overview, as: 'overview'
+          collection :queries, as: 'queries', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1DataDocumentationResultQuery::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :overview, as: 'overview'
+          property :resource, as: 'resource'
         end
       end
       
@@ -2492,6 +2525,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :catalog_publishing_enabled, as: 'catalogPublishingEnabled'
+          property :custom_instructions, as: 'customInstructions'
           collection :generation_scopes, as: 'generationScopes'
           property :sql_dialect, as: 'sqlDialect'
         end
@@ -3517,6 +3551,7 @@ module Google
           hash :aspects, as: 'aspects', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1Aspect::Representation
       
           property :create_time, as: 'createTime'
+          property :entry_group_type, as: 'entryGroupType'
           property :entry_source, as: 'entrySource', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntrySource, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1EntrySource::Representation
       
           property :entry_type, as: 'entryType'
@@ -3539,6 +3574,7 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :transfer_status, as: 'transferStatus'
+          property :type, as: 'type'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
         end

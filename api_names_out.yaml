@@ -199569,10 +199569,20 @@
 "/dataplex:v1/GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions/globalEndpointEnabled": global_endpoint_enabled
 "/dataplex:v1/GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions/semanticInferenceEnabled": semantic_inference_enabled
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult": google_cloud_dataplex_v1_data_documentation_result
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult/dataProductResult": data_product_result
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult/datasetResult": dataset_result
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult/queries": queries
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult/queries/query": query
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResult/tableResult": table_result
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult": google_cloud_dataplex_v1_data_documentation_result_data_product_result
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult/assetDescriptions": asset_descriptions
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult/assetDescriptions/asset_description": asset_description
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult/overview": overview
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult/queries": queries
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResult/queries/query": query
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription": google_cloud_dataplex_v1_data_documentation_result_data_product_result_asset_description
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription/overview": overview
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription/resource": resource
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDatasetResult": google_cloud_dataplex_v1_data_documentation_result_dataset_result
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDatasetResult/overview": overview
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultDatasetResult/queries": queries
@@ -199609,6 +199619,7 @@
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationResultTableResult/schema": schema
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec": google_cloud_dataplex_v1_data_documentation_spec
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec/catalogPublishingEnabled": catalog_publishing_enabled
+"/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec/customInstructions": custom_instructions
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec/generationScopes": generation_scopes
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec/generationScopes/generation_scope": generation_scope
 "/dataplex:v1/GoogleCloudDataplexV1DataDocumentationSpec/sqlDialect": sql_dialect
@@ -200115,6 +200126,7 @@
 "/dataplex:v1/GoogleCloudDataplexV1Entry/aspects": aspects
 "/dataplex:v1/GoogleCloudDataplexV1Entry/aspects/aspect": aspect
 "/dataplex:v1/GoogleCloudDataplexV1Entry/createTime": create_time
+"/dataplex:v1/GoogleCloudDataplexV1Entry/entryGroupType": entry_group_type
 "/dataplex:v1/GoogleCloudDataplexV1Entry/entrySource": entry_source
 "/dataplex:v1/GoogleCloudDataplexV1Entry/entryType": entry_type
 "/dataplex:v1/GoogleCloudDataplexV1Entry/fullyQualifiedName": fully_qualified_name
@@ -200131,6 +200143,7 @@
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroup/labels/label": label
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroup/name": name
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroup/transferStatus": transfer_status
+"/dataplex:v1/GoogleCloudDataplexV1EntryGroup/type": type
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroup/uid": uid
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroup/updateTime": update_time
 "/dataplex:v1/GoogleCloudDataplexV1EntryGroupChangeRequestConfig": google_cloud_dataplex_v1_entry_group_change_request_config
