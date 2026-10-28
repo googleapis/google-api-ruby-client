@@ -5835,6 +5835,9 @@ module Google
         # Advertisement(RA) packet (IPv6).  Google Cloud immediately but
         # temporarily associates the forwarding rule IP address with that VM, and
         # both new and in-flight packets are quickly delivered to that VM.
+        # - HA_CONTROLLER: The Backend Service is managed by a High Availability
+        # Controller. Failover and leader election are exclusively managed by the
+        # HA Controller service.
         # Note the important properties of the Fast IP Move functionality:
         # 
         # - The GARP/RA-initiated re-routing stays active for approximately 20
@@ -7659,7 +7662,9 @@ module Google
         attr_accessor :content_type
       
         # If set, this invalidation rule will only apply to requests with a Host
-        # header matching host.
+        # header matching host. This field also accepts wildcards (*) to replace the
+        # leftmost (or first) label of a hostname. For example, *.example.com will
+        # match www.example.com, but not sub1.dev.example.com.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -24754,15 +24759,8 @@ module Google
       class InstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
-        # Specification of alternative, flexible instance subsets.
-        # One of them will be selected to create the instances
-        # based on various criteria, like:
-        # - ranks,
-        # - location policy,
-        # - current capacity,
-        # - available reservations (you can specify affinity in
-        # InstanceProperties),
-        # - SWAN/GOOSE limitations.
+        # Specifies named instance selections that define properties for instances
+        # created in bulk.
         # Key is an arbitrary, unique RFC1035 string that identifies the instance
         # selection.
         # Corresponds to the JSON property `instanceSelections`
@@ -59537,6 +59535,15 @@ module Google
         # @return [String]
         attr_accessor :ipv6_nexthop_address
       
+        # The linked custom hardware resource.
+        # The URI of the custom hardware link attachment
+        # is where you will establish the BGP session from the Cloud Router.
+        # This link attachment must reside in the same subnetwork as the associated
+        # router interface.
+        # Corresponds to the JSON property `linkedCustomHardware`
+        # @return [String]
+        attr_accessor :linked_custom_hardware
+      
         # Output only. [Output Only] The resource that configures and manages this BGP
         # peer.
         # 
@@ -59621,6 +59628,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
+          @linked_custom_hardware = args[:linked_custom_hardware] if args.key?(:linked_custom_hardware)
           @management_type = args[:management_type] if args.key?(:management_type)
           @md5_authentication_key_name = args[:md5_authentication_key_name] if args.key?(:md5_authentication_key_name)
           @name = args[:name] if args.key?(:name)
@@ -60546,6 +60554,13 @@ module Google
         # @return [String]
         attr_accessor :ipv6_nexthop_address
       
+        # Output only. The URI of the linked custom hardware resource,
+        # CustomHardwareLinkAttachment. This CustomHardwareLinkAttachment resource
+        # is the one that will establish the BGP session from the Cloud Router.
+        # Corresponds to the JSON property `linkedCustomHardware`
+        # @return [String]
+        attr_accessor :linked_custom_hardware
+      
         # Output only. URL of the VPN tunnel that this BGP peer controls.
         # Corresponds to the JSON property `linkedVpnTunnel`
         # @return [String]
@@ -60636,6 +60651,7 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ipv4_nexthop_address = args[:ipv4_nexthop_address] if args.key?(:ipv4_nexthop_address)
           @ipv6_nexthop_address = args[:ipv6_nexthop_address] if args.key?(:ipv6_nexthop_address)
+          @linked_custom_hardware = args[:linked_custom_hardware] if args.key?(:linked_custom_hardware)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @md5_auth_enabled = args[:md5_auth_enabled] if args.key?(:md5_auth_enabled)
           @name = args[:name] if args.key?(:name)
@@ -61810,7 +61826,9 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
-        # Default is false and there will be 120 seconds between GCE ACPI G2 Soft
+        # Defines whether GCE ACPI G2 Soft
+        # Off signal should be skipped during shutdown operation of VM.
+        # Default is false, meaning there will be 120 seconds between GCE ACPI G2 Soft
         # Off and ACPI G3 Mechanical
         # Off for Standard VMs and 30 seconds for Spot VMs.
         # Corresponds to the JSON property `skipGuestOsShutdown`
@@ -77889,12 +77907,12 @@ module Google
       class VpnTunnelCipherSuite
         include Google::Apis::Core::Hashable
       
-        # 
+        # Cipher algorithms for IKE phase 1.
         # Corresponds to the JSON property `phase1`
         # @return [Google::Apis::ComputeBeta::VpnTunnelPhase1Algorithms]
         attr_accessor :phase1
       
-        # 
+        # Cipher algorithms for IKE phase 2.
         # Corresponds to the JSON property `phase2`
         # @return [Google::Apis::ComputeBeta::VpnTunnelPhase2Algorithms]
         attr_accessor :phase2
@@ -78071,22 +78089,22 @@ module Google
       class VpnTunnelPhase1Algorithms
         include Google::Apis::Core::Hashable
       
-        # 
+        # Diffie-Hellman groups for IKE phase 1.
         # Corresponds to the JSON property `dh`
         # @return [Array<String>]
         attr_accessor :dh
       
-        # 
+        # Encryption algorithms for IKE phase 1.
         # Corresponds to the JSON property `encryption`
         # @return [Array<String>]
         attr_accessor :encryption
       
-        # 
+        # Integrity algorithms for IKE phase 1.
         # Corresponds to the JSON property `integrity`
         # @return [Array<String>]
         attr_accessor :integrity
       
-        # 
+        # Pseudo-random functions (PRF) for IKE phase 1.
         # Corresponds to the JSON property `prf`
         # @return [Array<String>]
         attr_accessor :prf
@@ -78108,17 +78126,17 @@ module Google
       class VpnTunnelPhase2Algorithms
         include Google::Apis::Core::Hashable
       
-        # 
+        # Encryption algorithms for IKE phase 2.
         # Corresponds to the JSON property `encryption`
         # @return [Array<String>]
         attr_accessor :encryption
       
-        # 
+        # Integrity algorithms for IKE phase 2.
         # Corresponds to the JSON property `integrity`
         # @return [Array<String>]
         attr_accessor :integrity
       
-        # 
+        # Perfect Forward Secrecy (PFS) groups for IKE phase 2.
         # Corresponds to the JSON property `pfs`
         # @return [Array<String>]
         attr_accessor :pfs
@@ -78898,6 +78916,11 @@ module Google
         attr_accessor :identity_certificate_enabled
         alias_method :identity_certificate_enabled?, :identity_certificate_enabled
       
+        # 
+        # Corresponds to the JSON property `identityType`
+        # @return [String]
+        attr_accessor :identity_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -78906,6 +78929,7 @@ module Google
         def update!(**args)
           @identity = args[:identity] if args.key?(:identity)
           @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
+          @identity_type = args[:identity_type] if args.key?(:identity_type)
         end
       end
       

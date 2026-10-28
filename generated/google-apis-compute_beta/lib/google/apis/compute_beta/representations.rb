@@ -23681,6 +23681,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
+          property :linked_custom_hardware, as: 'linkedCustomHardware'
           property :management_type, as: 'managementType'
           property :md5_authentication_key_name, as: 'md5AuthenticationKeyName'
           property :name, as: 'name'
@@ -23879,6 +23880,7 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :ipv4_nexthop_address, as: 'ipv4NexthopAddress'
           property :ipv6_nexthop_address, as: 'ipv6NexthopAddress'
+          property :linked_custom_hardware, as: 'linkedCustomHardware'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :md5_auth_enabled, as: 'md5AuthEnabled'
           property :name, as: 'name'
@@ -28203,6 +28205,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :identity, as: 'identity'
           property :identity_certificate_enabled, as: 'identityCertificateEnabled'
+          property :identity_type, as: 'identityType'
         end
       end
       
