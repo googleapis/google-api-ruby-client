@@ -362320,6 +362320,8 @@
 "/networkmanagement:v1/networkmanagement.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript": download_project_location_network_monitoring_provider_monitoring_point_install_script
 ? "/networkmanagement:v1/networkmanagement.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript/_password"
 : _password
+? "/networkmanagement:v1/networkmanagement.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript/cloudDeploymentType"
+: cloud_deployment_type
 ? "/networkmanagement:v1/networkmanagement.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript/hostname"
 : hostname
 ? "/networkmanagement:v1/networkmanagement.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript/monitoringPointType"
