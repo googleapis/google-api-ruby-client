@@ -3581,7 +3581,6 @@ module Google
       class SqlResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :affected_row_count, :numeric_string => true, as: 'affectedRowCount'
           collection :columns, as: 'columns', class: Google::Apis::OracledatabaseV1::Column, decorator: Google::Apis::OracledatabaseV1::Column::Representation
       
           collection :rows, as: 'rows', class: Google::Apis::OracledatabaseV1::Row, decorator: Google::Apis::OracledatabaseV1::Row::Representation
