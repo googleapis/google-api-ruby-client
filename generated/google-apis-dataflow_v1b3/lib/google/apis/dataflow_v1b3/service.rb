@@ -457,6 +457,12 @@ module Google
         # dataflow.jobs.list` permission on the project.
         # @param [String] project_id
         #   The project which owns the jobs.
+        # @param [String] create_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] create_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] location
@@ -473,6 +479,12 @@ module Google
         #   additional results in a long list.
         # @param [Boolean] regional_fanout_requested
         #   Optional.
+        # @param [String] termination_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] termination_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -493,17 +505,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_project_job(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def aggregated_project_job(project_id, create_time_range_end_time: nil, create_time_range_start_time: nil, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, termination_time_range_end_time: nil, termination_time_range_start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs:aggregated', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['createTimeRange.endTime'] = create_time_range_end_time unless create_time_range_end_time.nil?
+          command.query['createTimeRange.startTime'] = create_time_range_start_time unless create_time_range_start_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['location'] = location unless location.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
+          command.query['terminationTimeRange.endTime'] = termination_time_range_end_time unless termination_time_range_end_time.nil?
+          command.query['terminationTimeRange.startTime'] = termination_time_range_start_time unless termination_time_range_start_time.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -662,6 +678,12 @@ module Google
         # the `dataflow.jobs.list` permission on the project.
         # @param [String] project_id
         #   The project which owns the jobs.
+        # @param [String] create_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] create_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] location
@@ -678,6 +700,12 @@ module Google
         #   additional results in a long list.
         # @param [Boolean] regional_fanout_requested
         #   Optional.
+        # @param [String] termination_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] termination_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -698,17 +726,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_jobs(project_id, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_jobs(project_id, create_time_range_end_time: nil, create_time_range_start_time: nil, filter: nil, location: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, termination_time_range_end_time: nil, termination_time_range_start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['createTimeRange.endTime'] = create_time_range_end_time unless create_time_range_end_time.nil?
+          command.query['createTimeRange.startTime'] = create_time_range_start_time unless create_time_range_start_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['location'] = location unless location.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
+          command.query['terminationTimeRange.endTime'] = termination_time_range_end_time unless termination_time_range_end_time.nil?
+          command.query['terminationTimeRange.startTime'] = termination_time_range_start_time unless termination_time_range_start_time.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -1459,6 +1491,12 @@ module Google
         # @param [String] location
         #   The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/
         #   regional-endpoints) that contains this job.
+        # @param [String] create_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] create_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] filter
         #   The kind of filter to use.
         # @param [String] name
@@ -1472,6 +1510,12 @@ module Google
         #   additional results in a long list.
         # @param [Boolean] regional_fanout_requested
         #   Optional.
+        # @param [String] termination_time_range_end_time
+        #   Optional. Exclusive end of the interval. If specified, a Timestamp matching
+        #   this interval will have to be before the end.
+        # @param [String] termination_time_range_start_time
+        #   Optional. Inclusive start of the interval. If specified, a Timestamp matching
+        #   this interval will have to be the same or after the start.
         # @param [String] view
         #   Deprecated. ListJobs always returns summaries now. Use GetJob for other
         #   JobViews.
@@ -1492,17 +1536,21 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_jobs(project_id, location, filter: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_location_jobs(project_id, location, create_time_range_end_time: nil, create_time_range_start_time: nil, filter: nil, name: nil, page_size: nil, page_token: nil, regional_fanout_requested: nil, termination_time_range_end_time: nil, termination_time_range_start_time: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs', options)
           command.response_representation = Google::Apis::DataflowV1b3::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataflowV1b3::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
+          command.query['createTimeRange.endTime'] = create_time_range_end_time unless create_time_range_end_time.nil?
+          command.query['createTimeRange.startTime'] = create_time_range_start_time unless create_time_range_start_time.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['name'] = name unless name.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['regionalFanoutRequested'] = regional_fanout_requested unless regional_fanout_requested.nil?
+          command.query['terminationTimeRange.endTime'] = termination_time_range_end_time unless termination_time_range_end_time.nil?
+          command.query['terminationTimeRange.startTime'] = termination_time_range_start_time unless termination_time_range_start_time.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
