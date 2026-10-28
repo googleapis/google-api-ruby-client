@@ -21,7 +21,16 @@ on:
       - "google-apis-generator/lib/google/apis/generator/version.rb"
       - "google-apis-generator/google-apis-generator.gemspec"
       - "google-apis-generator/Gemfile"
+      # Re-check after a sync PR merges, in case another change landed while it
+      # was open (the tool skips while a sync PR is open). A no-op if in sync.
+      - "google-apis-generator/Gemfile.lock"
   workflow_dispatch:
+
+# Queue runs instead of overlapping, so two quick pushes can't both pass the
+# "sync PR already open" check and open duplicate pull requests.
+concurrency:
+  group: sync-generator-lockfile
+  cancel-in-progress: false
 
 jobs:
   sync-generator-lockfile:
