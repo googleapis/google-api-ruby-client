@@ -409,7 +409,7 @@ module Google
         # @return [Google::Apis::VaultV1::HeldDriveQuery]
         attr_accessor :drive_query
       
-        # Options for Gemini holds.
+        # Options for Gemini app holds.
         # Corresponds to the JSON property `geminiQuery`
         # @return [Google::Apis::VaultV1::HeldGeminiQuery]
         attr_accessor :gemini_query
@@ -767,7 +767,12 @@ module Google
         # @return [Google::Apis::VaultV1::DriveExportOptions]
         attr_accessor :drive_options
       
-        # The options for Gemini exports.
+        # The options for Gemini in Workspace exports.
+        # Corresponds to the JSON property `geminiInWorkspaceOptions`
+        # @return [Google::Apis::VaultV1::GeminiInWorkspaceExportOptions]
+        attr_accessor :gemini_in_workspace_options
+      
+        # The options for Gemini app exports.
         # Corresponds to the JSON property `geminiOptions`
         # @return [Google::Apis::VaultV1::GeminiExportOptions]
         attr_accessor :gemini_options
@@ -805,6 +810,7 @@ module Google
         def update!(**args)
           @calendar_options = args[:calendar_options] if args.key?(:calendar_options)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
+          @gemini_in_workspace_options = args[:gemini_in_workspace_options] if args.key?(:gemini_in_workspace_options)
           @gemini_options = args[:gemini_options] if args.key?(:gemini_options)
           @groups_options = args[:groups_options] if args.key?(:groups_options)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
@@ -845,7 +851,7 @@ module Google
         end
       end
       
-      # The options for Gemini exports.
+      # The options for Gemini app exports.
       class GeminiExportOptions
         include Google::Apis::Core::Hashable
       
@@ -864,7 +870,39 @@ module Google
         end
       end
       
-      # Additional options for Gemini search
+      # The options for Gemini in Workspace exports.
+      class GeminiInWorkspaceExportOptions
+        include Google::Apis::Core::Hashable
+      
+        # The file format for exported messages.
+        # Corresponds to the JSON property `exportFormat`
+        # @return [String]
+        attr_accessor :export_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_format = args[:export_format] if args.key?(:export_format)
+        end
+      end
+      
+      # Additional options for Gemini in Workspace search
+      class GeminiInWorkspaceOptions
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Additional options for Gemini app search
       class GeminiOptions
         include Google::Apis::Core::Hashable
       
@@ -1092,7 +1130,7 @@ module Google
         end
       end
       
-      # Options for Gemini holds.
+      # Options for Gemini app holds.
       class HeldGeminiQuery
         include Google::Apis::Core::Hashable
       
@@ -1773,7 +1811,12 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Additional options for Gemini search
+        # Additional options for Gemini in Workspace search
+        # Corresponds to the JSON property `geminiInWorkspaceOptions`
+        # @return [Google::Apis::VaultV1::GeminiInWorkspaceOptions]
+        attr_accessor :gemini_in_workspace_options
+      
+        # Additional options for Gemini app search
         # Corresponds to the JSON property `geminiOptions`
         # @return [Google::Apis::VaultV1::GeminiOptions]
         attr_accessor :gemini_options
@@ -1864,6 +1907,7 @@ module Google
           @drive_document_info = args[:drive_document_info] if args.key?(:drive_document_info)
           @drive_options = args[:drive_options] if args.key?(:drive_options)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @gemini_in_workspace_options = args[:gemini_in_workspace_options] if args.key?(:gemini_in_workspace_options)
           @gemini_options = args[:gemini_options] if args.key?(:gemini_options)
           @hangouts_chat_info = args[:hangouts_chat_info] if args.key?(:hangouts_chat_info)
           @hangouts_chat_options = args[:hangouts_chat_options] if args.key?(:hangouts_chat_options)
