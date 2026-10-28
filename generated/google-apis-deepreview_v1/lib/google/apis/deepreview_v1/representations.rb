@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CitationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EstimateReviewCostRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EstimateReviewCostResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FieldComparison
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,13 +118,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListOperationsResponse
+      class ListReviewsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListReviewsResponse
+      class Money
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -178,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UserQuota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnchoredReviewComment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -198,12 +210,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :family_name, as: 'familyName'
           property :given_name, as: 'givenName'
-        end
-      end
-      
-      class CancelOperationRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -314,6 +320,27 @@ module Google
         end
       end
       
+      class EstimateReviewCostRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :review, as: 'review', class: Google::Apis::DeepreviewV1::Review, decorator: Google::Apis::DeepreviewV1::Review::Representation
+      
+        end
+      end
+      
+      class EstimateReviewCostResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :high_cost, as: 'highCost', class: Google::Apis::DeepreviewV1::Money, decorator: Google::Apis::DeepreviewV1::Money::Representation
+      
+          property :low_cost, as: 'lowCost', class: Google::Apis::DeepreviewV1::Money, decorator: Google::Apis::DeepreviewV1::Money::Representation
+      
+          property :median_cost, as: 'medianCost', class: Google::Apis::DeepreviewV1::Money, decorator: Google::Apis::DeepreviewV1::Money::Representation
+      
+          property :past_review_count, as: 'pastReviewCount'
+        end
+      end
+      
       class FieldComparison
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -340,22 +367,21 @@ module Google
         end
       end
       
-      class ListOperationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :operations, as: 'operations', class: Google::Apis::DeepreviewV1::Operation, decorator: Google::Apis::DeepreviewV1::Operation::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListReviewsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :reviews, as: 'reviews', class: Google::Apis::DeepreviewV1::Review, decorator: Google::Apis::DeepreviewV1::Review::Representation
       
+        end
+      end
+      
+      class Money
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :currency_code, as: 'currencyCode'
+          property :nanos, as: 'nanos'
+          property :units, :numeric_string => true, as: 'units'
         end
       end
       
@@ -454,6 +480,18 @@ module Google
           property :exact, as: 'exact'
           property :prefix, as: 'prefix'
           property :suffix, as: 'suffix'
+        end
+      end
+      
+      class UserQuota
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :custom_limit_enabled, as: 'customLimitEnabled'
+          property :max_review_count_per_week, as: 'maxReviewCountPerWeek'
+          property :name, as: 'name'
+          property :next_available_time, as: 'nextAvailableTime'
+          property :remaining_review_count, as: 'remainingReviewCount'
+          property :used_review_count, as: 'usedReviewCount'
         end
       end
     end

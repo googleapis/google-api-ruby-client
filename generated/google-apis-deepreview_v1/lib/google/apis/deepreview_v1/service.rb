@@ -51,15 +51,17 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Deletes a document and all associated reviews and stored blobs.
+        # Deletes a document and its stored content. If `force` is set to `true`, any
+        # associated reviews are also deleted.
         # @param [String] name
-        #   Required. The resource name of the document to delete. Format: `documents/`
-        #   document``
+        #   Required. The resource name of the document to delete.
         # @param [Boolean] allow_missing
-        #   Optional. If set to true, and the document is not found, the request succeeds.
+        #   Optional. If set to `true`, and the document is not found, the request
+        #   succeeds.
         # @param [Boolean] force
-        #   Optional. If set to true, any child resources (e.g. review resources) are also
-        #   deleted.
+        #   Optional. If set to `true`, any child resources (e.g. review resources) are
+        #   also deleted. If `false` and the document has existing reviews, the request
+        #   fails with `FAILED_PRECONDITION`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -89,10 +91,47 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves document metadata and review history.
+        # Estimates what a review of a document would cost on the caller's Gemini API
+        # key. The estimate comes from what past reviews with the same model and depth
+        # cost, adjusted to this document's size and repriced at the Gemini API's
+        # current list prices. It covers one review attempt that runs to completion, and
+        # doesn't include retries after errors.
+        # @param [String] document
+        #   Required. The document to review.
+        # @param [Google::Apis::DeepreviewV1::EstimateReviewCostRequest] estimate_review_cost_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeepreviewV1::EstimateReviewCostResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeepreviewV1::EstimateReviewCostResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def estimate_document_review_cost(document, estimate_review_cost_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+document}:estimateReviewCost', options)
+          command.request_representation = Google::Apis::DeepreviewV1::EstimateReviewCostRequest::Representation
+          command.request_object = estimate_review_cost_request_object
+          command.response_representation = Google::Apis::DeepreviewV1::EstimateReviewCostResponse::Representation
+          command.response_class = Google::Apis::DeepreviewV1::EstimateReviewCostResponse
+          command.params['document'] = document unless document.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves document metadata. The returned document includes its `
+        # latest_review_summary` when a review exists.
         # @param [String] name
-        #   Required. The resource name of the document to retrieve. Format: `documents/`
-        #   document``
+        #   Required. The resource name of the document to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,16 +159,19 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists documents for the authenticated caller with cursor pagination.
+        # Lists documents for the authenticated caller with cursor pagination. Each
+        # returned document includes its `latest_review_summary` when a review exists.
         # @param [String] filter
-        #   Optional. Supported AIP-160 filter expressions (e.g., `display_name = "..."`).
+        #   Optional. Custom filter expressions are not currently supported; non-empty
+        #   values return INVALID_ARGUMENT.
         # @param [String] order_by
-        #   Optional. Supported AIP-132 order_by field.
+        #   Optional. Custom order_by expressions are not currently supported; non-empty
+        #   values return INVALID_ARGUMENT.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of documents to return in a single page. The
         #   server may return fewer than this value. If unspecified, at most 50 documents
-        #   will be returned. The maximum value is 1000; values above 1000 will be coerced
-        #   to 1000.
+        #   will be returned. The maximum value is 100; values above 100 will be coerced
+        #   to 100.
         # @param [String] page_token
         #   Optional. A page token received from a previous `ListDocuments` call.
         # @param [String] fields
@@ -163,9 +205,11 @@ module Google
         end
         
         # Creates and initiates an asynchronous multi-agent review for a document.
+        # Returns a google.longrunning.Operation. When the operation completes, the `
+        # response` field contains a `Review` and the `metadata` field contains `
+        # CreateReviewMetadata`.
         # @param [String] parent
         #   Required. The parent Document resource name where this review will be created.
-        #   Format: `documents/`document``
         # @param [Google::Apis::DeepreviewV1::Review] review_object
         # @param [String] request_id
         #   Optional. Idempotency identifier for network retry safety (AIP-155). Must be a
@@ -207,8 +251,7 @@ module Google
         
         # Retrieves a specific review execution result.
         # @param [String] name
-        #   Required. The resource name of the review to retrieve. Format: `documents/`
-        #   document`/reviews/`review``
+        #   Required. The resource name of the review to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -238,15 +281,17 @@ module Google
         
         # Lists all review execution runs for a document.
         # @param [String] parent
-        #   Required. The parent Document resource name. Format: `documents/`document``
+        #   Required. The parent Document resource name.
         # @param [String] filter
-        #   Optional. Supported AIP-160 filter expressions.
+        #   Optional. Custom filter expressions are not currently supported; non-empty
+        #   values return INVALID_ARGUMENT.
         # @param [String] order_by
-        #   Optional. Supported AIP-132 order_by field.
+        #   Optional. Custom order_by expressions are not currently supported; non-empty
+        #   values return INVALID_ARGUMENT.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of reviews to return in a single page. The server
         #   may return fewer than this value. If unspecified, at most 50 reviews will be
-        #   returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+        #   returned. The maximum value is 100; values above 100 will be coerced to 100.
         # @param [String] page_token
         #   Optional. A page token received from a previous `ListReviews` call.
         # @param [String] fields
@@ -280,11 +325,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Downloads the original document content (PDF binary) via Scotty media
-        # streaming (AIP-136 custom method).
+        # Downloads the original document content (PDF binary) using media streaming.
+        # Pass `alt=media` as a query parameter to stream the binary PDF bytes. Without `
+        # alt=media`, a JSON response is returned.
         # @param [String] name
-        #   Required. The resource name of the document to download. Format: `documents/`
-        #   document``
+        #   Required. The resource name of the document to download.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -319,8 +364,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Document resource and ingests the manuscript via Scotty or
-        # Google Drive.
+        # Creates a new Document resource and ingests the manuscript using media upload
+        # or Google Drive.
         # @param [Google::Apis::DeepreviewV1::Document] document_object
         # @param [String] document_id
         #   Optional. The ID to use for the document, which will become the final
@@ -369,128 +414,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Starts asynchronous cancellation on a long-running operation. The server makes
-        # a best effort to cancel the operation, but success is not guaranteed. If the
-        # server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-        # Clients can use Operations.GetOperation or other methods to check whether the
-        # cancellation succeeded or whether the operation completed despite cancellation.
-        # On successful cancellation, the operation is not deleted; instead, it becomes
-        # an operation with an Operation.error value with a google.rpc.Status.code of `1`
-        # , corresponding to `Code.CANCELLED`.
-        # @param [String] name
-        #   The name of the operation resource to be cancelled.
-        # @param [Google::Apis::DeepreviewV1::CancelOperationRequest] cancel_operation_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeepreviewV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DeepreviewV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_operation(name, cancel_operation_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+name}:cancel', options)
-          command.request_representation = Google::Apis::DeepreviewV1::CancelOperationRequest::Representation
-          command.request_object = cancel_operation_request_object
-          command.response_representation = Google::Apis::DeepreviewV1::Empty::Representation
-          command.response_class = Google::Apis::DeepreviewV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a long-running operation. This method indicates that the client is no
-        # longer interested in the operation result. It does not cancel the operation.
-        # If the server doesn't support this method, it returns `google.rpc.Code.
-        # UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation resource to be deleted.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeepreviewV1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DeepreviewV1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_operation(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::DeepreviewV1::Empty::Representation
-          command.response_class = Google::Apis::DeepreviewV1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Lists operations that match the specified filter in the request. If the server
-        # doesn't support this method, it returns `UNIMPLEMENTED`.
-        # @param [String] name
-        #   The name of the operation's parent resource.
-        # @param [String] filter
-        #   The standard list filter.
-        # @param [Fixnum] page_size
-        #   The standard list page size.
-        # @param [String] page_token
-        #   The standard list page token.
-        # @param [Boolean] return_partial_success
-        #   When set to `true`, operations that are reachable are returned as normal, and
-        #   those that are unreachable are returned in the ListOperationsResponse.
-        #   unreachable field. This can only be `true` when reading across collections.
-        #   For example, when `parent` is set to `"projects/example/locations/-"`. This
-        #   field is not supported by default and will result in an `UNIMPLEMENTED` error
-        #   if set unless explicitly documented otherwise in service or product specific
-        #   documentation.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DeepreviewV1::ListOperationsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DeepreviewV1::ListOperationsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_operations(name, filter: nil, page_size: nil, page_token: nil, return_partial_success: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::DeepreviewV1::ListOperationsResponse::Representation
-          command.response_class = Google::Apis::DeepreviewV1::ListOperationsResponse
-          command.params['name'] = name unless name.nil?
-          command.query['filter'] = filter unless filter.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['returnPartialSuccess'] = return_partial_success unless return_partial_success.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the latest state of a long-running operation. Clients can use this method
         # to poll the operation result at intervals as recommended by the API service.
         # @param [String] name
@@ -516,6 +439,37 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::DeepreviewV1::Operation::Representation
           command.response_class = Google::Apis::DeepreviewV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the review quota limits and sliding-window usage for the
+        # authenticated caller.
+        # @param [String] name
+        #   Required. The resource name of the singleton user quota to retrieve.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeepreviewV1::UserQuota] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeepreviewV1::UserQuota]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_user_quota(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::DeepreviewV1::UserQuota::Representation
+          command.response_class = Google::Apis::DeepreviewV1::UserQuota
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
