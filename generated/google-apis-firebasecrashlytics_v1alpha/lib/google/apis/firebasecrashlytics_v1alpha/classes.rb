@@ -744,6 +744,51 @@ module Google
         end
       end
       
+      # Request message for the GenerateAlertPolicy method.
+      class GenerateAlertPolicyRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of alert to create.
+        # Corresponds to the JSON property `alertType`
+        # @return [String]
+        attr_accessor :alert_type
+      
+        # Optional. Language to use for the alert policy. Defaults to USER_PREFERENCE.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_type = args[:alert_type] if args.key?(:alert_type)
+          @language = args[:language] if args.key?(:language)
+        end
+      end
+      
+      # Response message for the GenerateAlertPolicy method.
+      class GenerateAlertPolicyResponse
+        include Google::Apis::Core::Hashable
+      
+        # The created Cloud Monitoring AlertPolicy resource name. Format: "projects/`
+        # project`/alertPolicies/`alert_policy_id`".
+        # Corresponds to the JSON property `alertPolicy`
+        # @return [String]
+        attr_accessor :alert_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_policy = args[:alert_policy] if args.key?(:alert_policy)
+        end
+      end
+      
       # A set of computed metric values for a time interval
       class IntervalMetrics
         include Google::Apis::Core::Hashable

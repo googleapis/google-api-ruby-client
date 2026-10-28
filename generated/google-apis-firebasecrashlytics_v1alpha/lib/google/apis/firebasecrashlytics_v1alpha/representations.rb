@@ -106,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GenerateAlertPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GenerateAlertPolicyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IntervalMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -413,6 +425,21 @@ module Google
           property :offset, :numeric_string => true, as: 'offset'
           property :owner, as: 'owner'
           property :symbol, as: 'symbol'
+        end
+      end
+      
+      class GenerateAlertPolicyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_type, as: 'alertType'
+          property :language, as: 'language'
+        end
+      end
+      
+      class GenerateAlertPolicyResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_policy, as: 'alertPolicy'
         end
       end
       
