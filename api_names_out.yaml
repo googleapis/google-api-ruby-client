@@ -280315,6 +280315,7 @@
 "/displayvideo:v3/VideoPerformanceAd": video_performance_ad
 "/displayvideo:v3/VideoPerformanceAd/actionButtonLabels": action_button_labels
 "/displayvideo:v3/VideoPerformanceAd/actionButtonLabels/action_button_label": action_button_label
+"/displayvideo:v3/VideoPerformanceAd/businessName": business_name
 "/displayvideo:v3/VideoPerformanceAd/companionBanners": companion_banners
 "/displayvideo:v3/VideoPerformanceAd/companionBanners/companion_banner": companion_banner
 "/displayvideo:v3/VideoPerformanceAd/customParameters": custom_parameters
@@ -280327,6 +280328,7 @@
 "/displayvideo:v3/VideoPerformanceAd/finalUrl": final_url
 "/displayvideo:v3/VideoPerformanceAd/headlines": headlines
 "/displayvideo:v3/VideoPerformanceAd/headlines/headline": headline
+"/displayvideo:v3/VideoPerformanceAd/logo": logo
 "/displayvideo:v3/VideoPerformanceAd/longHeadlines": long_headlines
 "/displayvideo:v3/VideoPerformanceAd/longHeadlines/long_headline": long_headline
 "/displayvideo:v3/VideoPerformanceAd/trackingUrl": tracking_url
