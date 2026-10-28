@@ -5611,6 +5611,9 @@ module Google
         # Advertisement(RA) packet (IPv6).  Google Cloud immediately but
         # temporarily associates the forwarding rule IP address with that VM, and
         # both new and in-flight packets are quickly delivered to that VM.
+        # - HA_CONTROLLER: The Backend Service is managed by a High Availability
+        # Controller. Failover and leader election are exclusively managed by the
+        # HA Controller service.
         # Note the important properties of the Fast IP Move functionality:
         # 
         # - The GARP/RA-initiated re-routing stays active for approximately 20
@@ -7399,7 +7402,9 @@ module Google
         attr_accessor :cache_tags
       
         # If set, this invalidation rule will only apply to requests with a Host
-        # header matching host.
+        # header matching host. This field also accepts wildcards (*) to replace the
+        # leftmost (or first) label of a hostname. For example, *.example.com will
+        # match www.example.com, but not sub1.dev.example.com.
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
@@ -23501,15 +23506,8 @@ module Google
       class InstanceFlexibilityPolicy
         include Google::Apis::Core::Hashable
       
-        # Specification of alternative, flexible instance subsets.
-        # One of them will be selected to create the instances
-        # based on various criteria, like:
-        # - ranks,
-        # - location policy,
-        # - current capacity,
-        # - available reservations (you can specify affinity in
-        # InstanceProperties),
-        # - SWAN/GOOSE limitations.
+        # Specifies named instance selections that define properties for instances
+        # created in bulk.
         # Key is an arbitrary, unique RFC1035 string that identifies the instance
         # selection.
         # Corresponds to the JSON property `instanceSelections`
@@ -57036,7 +57034,9 @@ module Google
         # @return [String]
         attr_accessor :provisioning_model
       
-        # Default is false and there will be 120 seconds between GCE ACPI G2 Soft
+        # Defines whether GCE ACPI G2 Soft
+        # Off signal should be skipped during shutdown operation of VM.
+        # Default is false, meaning there will be 120 seconds between GCE ACPI G2 Soft
         # Off and ACPI G3 Mechanical
         # Off for Standard VMs and 30 seconds for Spot VMs.
         # Corresponds to the JSON property `skipGuestOsShutdown`
@@ -71973,12 +71973,12 @@ module Google
       class VpnTunnelCipherSuite
         include Google::Apis::Core::Hashable
       
-        # 
+        # Cipher algorithms for IKE phase 1.
         # Corresponds to the JSON property `phase1`
         # @return [Google::Apis::ComputeV1::VpnTunnelPhase1Algorithms]
         attr_accessor :phase1
       
-        # 
+        # Cipher algorithms for IKE phase 2.
         # Corresponds to the JSON property `phase2`
         # @return [Google::Apis::ComputeV1::VpnTunnelPhase2Algorithms]
         attr_accessor :phase2
@@ -72155,22 +72155,22 @@ module Google
       class VpnTunnelPhase1Algorithms
         include Google::Apis::Core::Hashable
       
-        # 
+        # Diffie-Hellman groups for IKE phase 1.
         # Corresponds to the JSON property `dh`
         # @return [Array<String>]
         attr_accessor :dh
       
-        # 
+        # Encryption algorithms for IKE phase 1.
         # Corresponds to the JSON property `encryption`
         # @return [Array<String>]
         attr_accessor :encryption
       
-        # 
+        # Integrity algorithms for IKE phase 1.
         # Corresponds to the JSON property `integrity`
         # @return [Array<String>]
         attr_accessor :integrity
       
-        # 
+        # Pseudo-random functions (PRF) for IKE phase 1.
         # Corresponds to the JSON property `prf`
         # @return [Array<String>]
         attr_accessor :prf
@@ -72192,17 +72192,17 @@ module Google
       class VpnTunnelPhase2Algorithms
         include Google::Apis::Core::Hashable
       
-        # 
+        # Encryption algorithms for IKE phase 2.
         # Corresponds to the JSON property `encryption`
         # @return [Array<String>]
         attr_accessor :encryption
       
-        # 
+        # Integrity algorithms for IKE phase 2.
         # Corresponds to the JSON property `integrity`
         # @return [Array<String>]
         attr_accessor :integrity
       
-        # 
+        # Perfect Forward Secrecy (PFS) groups for IKE phase 2.
         # Corresponds to the JSON property `pfs`
         # @return [Array<String>]
         attr_accessor :pfs
