@@ -3038,8 +3038,7 @@ module Google
         # Deletes one or more one-time products.
         # @param [String] package_name
         #   Required. The parent app (package name) for which the one-time products should
-        #   be deleted. Must be equal to the package_name field on all the OneTimeProduct
-        #   resources.
+        #   be deleted. Must be equal to the package_name field on all the requests.
         # @param [Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductsRequest] batch_delete_one_time_products_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3071,7 +3070,7 @@ module Google
         # Reads one or more one-time products.
         # @param [String] package_name
         #   Required. The parent app (package name) for which the products should be
-        #   retrieved. Must be equal to the package_name field on all requests.
+        #   retrieved.
         # @param [Array<String>, String] product_ids
         #   Required. A list of up to 100 product IDs to retrieve. All IDs must be
         #   different.
@@ -3432,14 +3431,14 @@ module Google
         # Deletes one or more one-time product offers.
         # @param [String] package_name
         #   Required. The parent app (package name) of the offers to delete. Must be equal
-        #   to the package_name field on all the OneTimeProductOffer resources.
+        #   to the package_name field on all the requests.
         # @param [String] product_id
         #   Required. The product ID of the parent one-time product, if all offers to
         #   delete belong to the same product. If this request spans multiple one-time
         #   products, set this field to "-".
         # @param [String] purchase_option_id
         #   Required. The parent purchase option (ID) for which the offers should be
-        #   deleted. May be specified as '-' to update offers from multiple purchase
+        #   deleted. May be specified as '-' to delete offers from multiple purchase
         #   options.
         # @param [Google::Apis::AndroidpublisherV3::BatchDeleteOneTimeProductOffersRequest] batch_delete_one_time_product_offers_request_object
         # @param [String] fields
@@ -3473,15 +3472,15 @@ module Google
         
         # Reads one or more one-time product offers.
         # @param [String] package_name
-        #   Required. The parent app (package name) of the updated offers. Must be equal
-        #   to the package_name field on all the updated OneTimeProductOffer resources.
+        #   Required. The parent app (package name) of the offers to retrieve. Must be
+        #   equal to the package_name field on all the requests.
         # @param [String] product_id
-        #   Required. The product ID of the parent one-time product, if all updated offers
-        #   belong to the same product. If this request spans multiple one-time products,
-        #   set this field to "-".
+        #   Required. The product ID of the parent one-time product, if all offers belong
+        #   to the same product. If this request spans multiple one-time products, set
+        #   this field to "-".
         # @param [String] purchase_option_id
         #   Required. The parent purchase option (ID) for which the offers should be
-        #   updated. May be specified as '-' to update offers from multiple purchase
+        #   retrieved. May be specified as '-' to retrieve offers from multiple purchase
         #   options.
         # @param [Google::Apis::AndroidpublisherV3::BatchGetOneTimeProductOffersRequest] batch_get_one_time_product_offers_request_object
         # @param [String] fields
@@ -3701,10 +3700,10 @@ module Google
         #   than this value. If unspecified, at most 50 offers will be returned. The
         #   maximum value is 1000; values above 1000 will be coerced to 1000.
         # @param [String] page_token
-        #   Optional. A page token, received from a previous `ListOneTimeProductsOffers`
+        #   Optional. A page token, received from a previous `ListOneTimeProductOffers`
         #   call. Provide this to retrieve the subsequent page. When paginating,
         #   product_id, package_name and purchase_option_id provided to `
-        #   ListOneTimeProductsOffersRequest` must match the call that provided the page
+        #   ListOneTimeProductOffersRequest` must match the call that provided the page
         #   token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
