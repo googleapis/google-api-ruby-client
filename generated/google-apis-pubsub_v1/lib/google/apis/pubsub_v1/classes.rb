@@ -591,7 +591,7 @@ module Google
         attr_accessor :avro_format
       
         # Optional. Cloud Storage bucket. The bucket name must be without any prefix
-        # like "gs://". See the [bucket naming requirements] (https://cloud.google.com/
+        # like "gs://". See the [bucket naming requirements]( https://cloud.google.com/
         # storage/docs/buckets#naming).
         # Corresponds to the JSON property `bucket`
         # @return [String]
@@ -1817,7 +1817,7 @@ module Google
       # Note that client libraries represent this object differently depending on the
       # language. See the corresponding [client library documentation](https://cloud.
       # google.com/pubsub/docs/reference/libraries) for more information. See [quotas
-      # and limits] (https://cloud.google.com/pubsub/quotas) for more information
+      # and limits]( https://cloud.google.com/pubsub/quotas) for more information
       # about message limits.
       class Message
         include Google::Apis::Core::Hashable
@@ -1877,7 +1877,7 @@ module Google
       end
       
       # The payload to the push endpoint is in the form of the JSON representation of
-      # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+      # a [PubsubMessage](https://cloud.google.com/pubsub/docs/reference/rpc/google.
       # pubsub.v1#pubsubmessage).
       class PubsubWrapper
         include Google::Apis::Core::Hashable
@@ -1981,7 +1981,7 @@ module Google
         attr_accessor :oidc_token
       
         # The payload to the push endpoint is in the form of the JSON representation of
-        # a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.
+        # a [PubsubMessage](https://cloud.google.com/pubsub/docs/reference/rpc/google.
         # pubsub.v1#pubsubmessage).
         # Corresponds to the JSON property `pubsubWrapper`
         # @return [Google::Apis::PubsubV1::PubsubWrapper]
@@ -2035,7 +2035,7 @@ module Google
         # Note that client libraries represent this object differently depending on the
         # language. See the corresponding [client library documentation](https://cloud.
         # google.com/pubsub/docs/reference/libraries) for more information. See [quotas
-        # and limits] (https://cloud.google.com/pubsub/quotas) for more information
+        # and limits]( https://cloud.google.com/pubsub/quotas) for more information
         # about message limits.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::PubsubV1::Message]
@@ -2332,7 +2332,7 @@ module Google
         # @return [String]
         attr_accessor :expire_time
       
-        # Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/
+        # Optional. See [Creating and managing labels]( https://cloud.google.com/pubsub/
         # docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -2503,7 +2503,7 @@ module Google
         # Optional. Indicates whether to retain acknowledged messages. If true, then
         # messages are not expunged from the subscription's backlog, even if they are
         # acknowledged, until they fall out of the `message_retention_duration` window.
-        # This must be true if you would like to [`Seek` to a timestamp] (https://cloud.
+        # This must be true if you would like to [`Seek` to a timestamp]( https://cloud.
         # google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay
         # previously-acknowledged messages.
         # Corresponds to the JSON property `retainAckedMessages`
@@ -2675,7 +2675,7 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Optional. See [Creating and managing labels] (https://cloud.google.com/pubsub/
+        # Optional. See [Creating and managing labels]( https://cloud.google.com/pubsub/
         # docs/labels).
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
