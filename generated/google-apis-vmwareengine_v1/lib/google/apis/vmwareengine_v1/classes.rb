@@ -419,6 +419,51 @@ module Google
         end
       end
       
+      # Represents a capacity allocation. Capacity allocation is zonal.
+      class CapacityAllocation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The allocated capacity for the capacity allocation.
+        # Corresponds to the JSON property `allocatedCapacityCount`
+        # @return [Fixnum]
+        attr_accessor :allocated_capacity_count
+      
+        # Output only. The consumed capacity for the capacity allocation.
+        # Corresponds to the JSON property `consumedCapacityCount`
+        # @return [Fixnum]
+        attr_accessor :consumed_capacity_count
+      
+        # Output only. The machine family of the capacity allocation.
+        # Corresponds to the JSON property `machineFamily`
+        # @return [String]
+        attr_accessor :machine_family
+      
+        # Output only. Identifier. The resource name of the capacity allocation. The
+        # last segment of the name is the placement group name. For example: `projects/
+        # my-project/locations/us-central1-a/capacityAllocations/pg-123`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The private cloud names using the capacity allocation.
+        # Corresponds to the JSON property `privateClouds`
+        # @return [Array<String>]
+        attr_accessor :private_clouds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allocated_capacity_count = args[:allocated_capacity_count] if args.key?(:allocated_capacity_count)
+          @consumed_capacity_count = args[:consumed_capacity_count] if args.key?(:consumed_capacity_count)
+          @machine_family = args[:machine_family] if args.key?(:machine_family)
+          @name = args[:name] if args.key?(:name)
+          @private_clouds = args[:private_clouds] if args.key?(:private_clouds)
+        end
+      end
+      
       # A cluster in a private cloud.
       class Cluster
         include Google::Apis::Core::Hashable
@@ -461,6 +506,15 @@ module Google
         # @return [Hash<String,Google::Apis::VmwareengineV1::NodeTypeConfig>]
         attr_accessor :node_type_configs
       
+        # Optional. The identifier of the placement group for cluster nodes. A placement
+        # group is an internal Google identifier for a group of resources that are
+        # physically located within the same fault domain. If provided, nodes for this
+        # cluster are placed within the specified placement group. If this field is
+        # omitted, the system selects an appropriate placement group.
+        # Corresponds to the JSON property `placementGroup`
+        # @return [String]
+        attr_accessor :placement_group
+      
         # Output only. State of the resource.
         # Corresponds to the JSON property `state`
         # @return [String]
@@ -493,6 +547,7 @@ module Google
           @management = args[:management] if args.key?(:management)
           @name = args[:name] if args.key?(:name)
           @node_type_configs = args[:node_type_configs] if args.key?(:node_type_configs)
+          @placement_group = args[:placement_group] if args.key?(:placement_group)
           @state = args[:state] if args.key?(:state)
           @stretched_cluster_config = args[:stretched_cluster_config] if args.key?(:stretched_cluster_config)
           @uid = args[:uid] if args.key?(:uid)
@@ -1429,6 +1484,39 @@ module Google
         end
       end
       
+      # Response message for VmwareEngine.ListCapacityAllocations
+      class ListCapacityAllocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of capacity allocations.
+        # Corresponds to the JSON property `capacityAllocations`
+        # @return [Array<Google::Apis::VmwareengineV1::CapacityAllocation>]
+        attr_accessor :capacity_allocations
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached when making an aggregated
+        # query using wildcards.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_allocations = args[:capacity_allocations] if args.key?(:capacity_allocations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # Response message for VmwareEngine.ListClusters
       class ListClustersResponse
         include Google::Apis::Core::Hashable
@@ -2209,6 +2297,15 @@ module Google
         # @return [Hash<String,Google::Apis::VmwareengineV1::NodeTypeConfig>]
         attr_accessor :node_type_configs
       
+        # Optional. The identifier of the placement group for management cluster nodes.
+        # A placement group is an internal Google identifier for a group of resources
+        # that are physically located within the same fault domain. If provided, nodes
+        # for this cluster are placed within the specified placement group. If this
+        # field is omitted, the system selects an appropriate placement group.
+        # Corresponds to the JSON property `placementGroup`
+        # @return [String]
+        attr_accessor :placement_group
+      
         # Configuration of a stretched cluster.
         # Corresponds to the JSON property `stretchedClusterConfig`
         # @return [Google::Apis::VmwareengineV1::StretchedClusterConfig]
@@ -2222,6 +2319,7 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @node_type_configs = args[:node_type_configs] if args.key?(:node_type_configs)
+          @placement_group = args[:placement_group] if args.key?(:placement_group)
           @stretched_cluster_config = args[:stretched_cluster_config] if args.key?(:stretched_cluster_config)
         end
       end
@@ -3780,6 +3878,16 @@ module Google
         # @return [String]
         attr_accessor :preferred_location
       
+        # Optional. The identifier of the placement group for preferred location cluster
+        # nodes. A placement group is an internal Google identifier for a group of
+        # resources that are physically located within the same fault domain. If
+        # provided, nodes for this cluster are placed within the specified placement
+        # group. If this field is omitted, the system selects an appropriate placement
+        # group.
+        # Corresponds to the JSON property `preferredLocationPlacementGroup`
+        # @return [String]
+        attr_accessor :preferred_location_placement_group
+      
         # Required. Additional zone for a higher level of availability and load
         # balancing. Specify the resource name or ID of a zone that belongs to the
         # region of the private cloud. For example: `projects/`project`/locations/europe-
@@ -3789,6 +3897,16 @@ module Google
         # @return [String]
         attr_accessor :secondary_location
       
+        # Optional. The identifier of the placement group for secondary location cluster
+        # nodes. A placement group is an internal Google identifier for a group of
+        # resources that are physically located within the same fault domain. If
+        # provided, nodes for this cluster are placed within the specified placement
+        # group. If this field is omitted, the system selects an appropriate placement
+        # group.
+        # Corresponds to the JSON property `secondaryLocationPlacementGroup`
+        # @return [String]
+        attr_accessor :secondary_location_placement_group
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3796,7 +3914,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @preferred_location = args[:preferred_location] if args.key?(:preferred_location)
+          @preferred_location_placement_group = args[:preferred_location_placement_group] if args.key?(:preferred_location_placement_group)
           @secondary_location = args[:secondary_location] if args.key?(:secondary_location)
+          @secondary_location_placement_group = args[:secondary_location_placement_group] if args.key?(:secondary_location_placement_group)
         end
       end
       

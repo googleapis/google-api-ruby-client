@@ -272,6 +272,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists `CapacityAllocation` resources in a given project and location.
+        # @param [String] parent
+        #   Required. The resource name of the location to query for capacity allocations.
+        #   Resource names are schemeless URIs that follow the conventions in https://
+        #   cloud.google.com/apis/design/resource_names. For example: `projects/my-project/
+        #   locations/us-central1-a`
+        # @param [String] filter
+        #   Optional. A filter expression that matches resources returned in the response.
+        #   The expression must specify the field name, a comparison operator, and the
+        #   value that you want to use for filtering. The value must be a string or a
+        #   number. The comparison operator must be `=`, `!=`, `>`, `>=`, `<`, or `<=`.
+        #   The has operator `:` is also supported. Supported fields include `name`, `
+        #   display_name` (or `placement_group`), `machine_family`, `
+        #   allocated_capacity_count`, `consumed_capacity_count`, and `
+        #   connected_placement_group` (using `=`). For example, if you are filtering a
+        #   list of capacity allocations, you can exclude the ones named `example-capacity-
+        #   allocation` by specifying `name != "example-capacity-allocation"`. You can
+        #   also filter on other fields, such as machine family (`"ve1"`, `"ve2"`, or `"
+        #   ve3"`) or connected placement group: ``` machine_family = "ve1"
+        #   connected_placement_group = "example-placement-group" ``` To filter on
+        #   multiple expressions, provide each separate expression within parentheses. For
+        #   example: ``` (machine_family = "ve1") (allocated_capacity_count > 10) ``` By
+        #   default, each expression is an `AND` expression. However, you can include `AND`
+        #   , `OR`, and `NOT` expressions explicitly. For example: ``` ((machine_family = "
+        #   ve1") AND (allocated_capacity_count > 10)) OR (consumed_capacity_count > 0) ```
+        # @param [String] order_by
+        #   Optional. Sorts list results by a certain order. By default, returned results
+        #   are ordered by `name` in ascending order. You can also sort results in
+        #   descending order based on the `name` value using `orderBy="name desc"`.
+        #   Currently, only ordering by `name` is supported.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of capacity allocations to return in one page.
+        #   The service may return fewer than this value. The maximum value is coerced to
+        #   1000. The default value of this field is 500.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListCapacityAllocations`
+        #   call. Provide this to retrieve the subsequent page. When paginating, all other
+        #   parameters provided to `ListCapacityAllocations` must match the call that
+        #   provided the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VmwareengineV1::ListCapacityAllocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VmwareengineV1::ListCapacityAllocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_capacity_allocations(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/capacityAllocations', options)
+          command.response_representation = Google::Apis::VmwareengineV1::ListCapacityAllocationsResponse::Representation
+          command.response_class = Google::Apis::VmwareengineV1::ListCapacityAllocationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new `Datastore` resource in a given project and location.
         # @param [String] parent
         #   Required. The resource name of the location to create the new datastore in.
