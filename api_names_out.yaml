@@ -173876,6 +173876,7 @@
 "/container:v1/AddonsConfig/sliceControllerConfig": slice_controller_config
 "/container:v1/AddonsConfig/slurmOperatorConfig": slurm_operator_config
 "/container:v1/AddonsConfig/statefulHaConfig": stateful_ha_config
+"/container:v1/AddonsConfig/wizSensorConfig": wiz_sensor_config
 "/container:v1/AdvancedDatapathObservabilityConfig": advanced_datapath_observability_config
 "/container:v1/AdvancedDatapathObservabilityConfig/enableMetrics": enable_metrics
 "/container:v1/AdvancedDatapathObservabilityConfig/enableRelay": enable_relay
@@ -173886,6 +173887,8 @@
 "/container:v1/AdvancedMachineFeatures/threadsPerCore": threads_per_core
 "/container:v1/AgentSandboxConfig": agent_sandbox_config
 "/container:v1/AgentSandboxConfig/enabled": enabled
+"/container:v1/AmbientNetworkingConfig": ambient_networking_config
+"/container:v1/AmbientNetworkingConfig/enabled": enabled
 "/container:v1/AnonymousAuthenticationConfig": anonymous_authentication_config
 "/container:v1/AnonymousAuthenticationConfig/mode": mode
 "/container:v1/AuthenticatorGroupsConfig": authenticator_groups_config
@@ -173926,6 +173929,10 @@
 "/container:v1/AutoprovisioningNodePoolDefaults/serviceAccount": service_account
 "/container:v1/AutoprovisioningNodePoolDefaults/shieldedInstanceConfig": shielded_instance_config
 "/container:v1/AutoprovisioningNodePoolDefaults/upgradeSettings": upgrade_settings
+"/container:v1/AutoprovisioningRestrictionConfig": autoprovisioning_restriction_config
+"/container:v1/AutoprovisioningRestrictionConfig/authorizedServiceAccounts": authorized_service_accounts
+"/container:v1/AutoprovisioningRestrictionConfig/authorizedServiceAccounts/authorized_service_account": authorized_service_account
+"/container:v1/AutoprovisioningRestrictionConfig/serviceAccountPermissionCheck": service_account_permission_check
 "/container:v1/AutoscaledRolloutPolicy": autoscaled_rollout_policy
 "/container:v1/AutoscaledRolloutPolicy/waitForDrainDuration": wait_for_drain_duration
 "/container:v1/BestEffortProvisioning": best_effort_provisioning
@@ -174081,6 +174088,7 @@
 "/container:v1/ClusterAutoscaling/autoprovisioningLocations": autoprovisioning_locations
 "/container:v1/ClusterAutoscaling/autoprovisioningLocations/autoprovisioning_location": autoprovisioning_location
 "/container:v1/ClusterAutoscaling/autoprovisioningNodePoolDefaults": autoprovisioning_node_pool_defaults
+"/container:v1/ClusterAutoscaling/autoprovisioningRestrictionConfig": autoprovisioning_restriction_config
 "/container:v1/ClusterAutoscaling/autoscalingProfile": autoscaling_profile
 "/container:v1/ClusterAutoscaling/defaultComputeClassConfig": default_compute_class_config
 "/container:v1/ClusterAutoscaling/enableNodeAutoprovisioning": enable_node_autoprovisioning
@@ -174097,6 +174105,7 @@
 "/container:v1/ClusterUpdate/additionalPodRangesConfig": additional_pod_ranges_config
 "/container:v1/ClusterUpdate/desiredAdditionalIpRangesConfig": desired_additional_ip_ranges_config
 "/container:v1/ClusterUpdate/desiredAddonsConfig": desired_addons_config
+"/container:v1/ClusterUpdate/desiredAmbientNetworkingConfig": desired_ambient_networking_config
 "/container:v1/ClusterUpdate/desiredAnonymousAuthenticationConfig": desired_anonymous_authentication_config
 "/container:v1/ClusterUpdate/desiredAuthenticatorGroupsConfig": desired_authenticator_groups_config
 "/container:v1/ClusterUpdate/desiredAutoIpamConfig": desired_auto_ipam_config
@@ -174311,6 +174320,7 @@
 "/container:v1/EphemeralLocalSsdProfile/swapSizePercent": swap_size_percent
 "/container:v1/EphemeralStorageLocalSsdConfig": ephemeral_storage_local_ssd_config
 "/container:v1/EphemeralStorageLocalSsdConfig/dataCacheCount": data_cache_count
+"/container:v1/EphemeralStorageLocalSsdConfig/ephemeralCapacityGb": ephemeral_capacity_gb
 "/container:v1/EphemeralStorageLocalSsdConfig/localSsdCount": local_ssd_count
 "/container:v1/EvictionGracePeriod": eviction_grace_period
 "/container:v1/EvictionGracePeriod/imagefsAvailable": imagefs_available
@@ -174353,6 +174363,7 @@
 "/container:v1/GPUDirectConfig/gpuDirectStrategy": gpu_direct_strategy
 "/container:v1/GPUDriverInstallationConfig": gpu_driver_installation_config
 "/container:v1/GPUDriverInstallationConfig/gpuDriverVersion": gpu_driver_version
+"/container:v1/GPUDriverInstallationConfig/specificVersion": specific_version
 "/container:v1/GPUSharingConfig": gpu_sharing_config
 "/container:v1/GPUSharingConfig/gpuSharingStrategy": gpu_sharing_strategy
 "/container:v1/GPUSharingConfig/maxSharedClientsPerGpu": max_shared_clients_per_gpu
@@ -174573,6 +174584,7 @@
 "/container:v1/MonitoringConfig/componentConfig": component_config
 "/container:v1/MonitoringConfig/managedPrometheusConfig": managed_prometheus_config
 "/container:v1/NetworkConfig": network_config
+"/container:v1/NetworkConfig/ambientNetworkingConfig": ambient_networking_config
 "/container:v1/NetworkConfig/datapathProvider": datapath_provider
 "/container:v1/NetworkConfig/dataplaneV2Config": dataplane_v2_config
 "/container:v1/NetworkConfig/defaultEnablePrivateNodes": default_enable_private_nodes
@@ -174685,6 +174697,8 @@
 "/container:v1/NodeKubeletConfig/allowedUnsafeSysctls/allowed_unsafe_sysctl": allowed_unsafe_sysctl
 "/container:v1/NodeKubeletConfig/containerLogMaxFiles": container_log_max_files
 "/container:v1/NodeKubeletConfig/containerLogMaxSize": container_log_max_size
+"/container:v1/NodeKubeletConfig/containerLogMaxWorkers": container_log_max_workers
+"/container:v1/NodeKubeletConfig/containerLogMonitorInterval": container_log_monitor_interval
 "/container:v1/NodeKubeletConfig/cpuCfsQuota": cpu_cfs_quota
 "/container:v1/NodeKubeletConfig/cpuCfsQuotaPeriod": cpu_cfs_quota_period
 "/container:v1/NodeKubeletConfig/cpuManagerPolicy": cpu_manager_policy
@@ -174702,6 +174716,7 @@
 "/container:v1/NodeKubeletConfig/memoryManager": memory_manager
 "/container:v1/NodeKubeletConfig/podPidsLimit": pod_pids_limit
 "/container:v1/NodeKubeletConfig/reservedResourcesConfig": reserved_resources_config
+"/container:v1/NodeKubeletConfig/reservedSystemCpus": reserved_system_cpus
 "/container:v1/NodeKubeletConfig/shutdownGracePeriodCriticalPodsSeconds": shutdown_grace_period_critical_pods_seconds
 "/container:v1/NodeKubeletConfig/shutdownGracePeriodSeconds": shutdown_grace_period_seconds
 "/container:v1/NodeKubeletConfig/singleProcessOomKill": single_process_oom_kill
@@ -174720,6 +174735,7 @@
 "/container:v1/NodeNetworkConfig/additionalPodNetworkConfigs": additional_pod_network_configs
 "/container:v1/NodeNetworkConfig/additionalPodNetworkConfigs/additional_pod_network_config": additional_pod_network_config
 "/container:v1/NodeNetworkConfig/createPodRange": create_pod_range
+"/container:v1/NodeNetworkConfig/datapathProvider": datapath_provider
 "/container:v1/NodeNetworkConfig/enablePrivateNodes": enable_private_nodes
 "/container:v1/NodeNetworkConfig/network": network
 "/container:v1/NodeNetworkConfig/networkPerformanceConfig": network_performance_config
@@ -175181,6 +175197,7 @@
 "/container:v1/UpdateNodePoolRequest/maintenancePolicy": maintenance_policy
 "/container:v1/UpdateNodePoolRequest/maxRunDuration": max_run_duration
 "/container:v1/UpdateNodePoolRequest/name": name
+"/container:v1/UpdateNodePoolRequest/nodeConfigUpdateMode": node_config_update_mode
 "/container:v1/UpdateNodePoolRequest/nodeDrainConfig": node_drain_config
 "/container:v1/UpdateNodePoolRequest/nodeNetworkConfig": node_network_config
 "/container:v1/UpdateNodePoolRequest/nodePoolId": node_pool_id
@@ -175272,6 +175289,11 @@
 "/container:v1/VirtualNIC/enabled": enabled
 "/container:v1/WindowsNodeConfig": windows_node_config
 "/container:v1/WindowsNodeConfig/osVersion": os_version
+"/container:v1/WizSensorConfig": wiz_sensor_config
+"/container:v1/WizSensorConfig/apiKeySecretUri": api_key_secret_uri
+"/container:v1/WizSensorConfig/enabled": enabled
+"/container:v1/WizSensorConfig/proxySecretUri": proxy_secret_uri
+"/container:v1/WizSensorConfig/registrySecretUri": registry_secret_uri
 "/container:v1/WorkloadIdentityConfig": workload_identity_config
 "/container:v1/WorkloadIdentityConfig/workloadPool": workload_pool
 "/container:v1/WorkloadMetadataConfig": workload_metadata_config
