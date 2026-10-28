@@ -1,5 +1,10 @@
 # Release history for google-apis-ftp_v1
 
+### v0.4.0 (2026-10-28)
+
+* Regenerated from discovery document revision 20261021
+* Regenerated using generator version 0.19.1
+
 ### v0.3.0 (2026-09-20)
 
 * Regenerated from discovery document revision 20260909
