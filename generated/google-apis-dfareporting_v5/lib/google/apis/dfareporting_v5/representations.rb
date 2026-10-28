@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdditionalAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1880,6 +1886,20 @@ module Google
         end
       end
       
+      class AdditionalAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :call_to_actions, as: 'callToActions'
+          collection :cover_images, as: 'coverImages', class: Google::Apis::DfareportingV5::CreativeAsset, decorator: Google::Apis::DfareportingV5::CreativeAsset::Representation
+      
+          collection :descriptions, as: 'descriptions'
+          property :display_url, as: 'displayUrl'
+          collection :headlines, as: 'headlines'
+          collection :long_descriptions, as: 'longDescriptions'
+          collection :long_headlines, as: 'longHeadlines'
+        end
+      end
+      
       class AdsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2527,6 +2547,8 @@ module Google
           property :active, as: 'active'
           property :ad_parameters, as: 'adParameters'
           collection :ad_tag_keys, as: 'adTagKeys'
+          property :additional_asset, as: 'additionalAsset', class: Google::Apis::DfareportingV5::AdditionalAsset, decorator: Google::Apis::DfareportingV5::AdditionalAsset::Representation
+      
           collection :additional_sizes, as: 'additionalSizes', class: Google::Apis::DfareportingV5::Size, decorator: Google::Apis::DfareportingV5::Size::Representation
       
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
