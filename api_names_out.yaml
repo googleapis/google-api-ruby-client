@@ -388908,6 +388908,8 @@
 "/redis:v1/ZoneConfiguration": zone_configuration
 "/redis:v1/ZoneConfiguration/zone": zone
 "/redis:v1/ZoneDistributionConfig": zone_distribution_config
+"/redis:v1/ZoneDistributionConfig/activeZones": active_zones
+"/redis:v1/ZoneDistributionConfig/activeZones/active_zone": active_zone
 "/redis:v1/ZoneDistributionConfig/mode": mode
 "/redis:v1/ZoneDistributionConfig/zone": zone
 "/redis:v1/ZoneDistributionConfig/zones": zones

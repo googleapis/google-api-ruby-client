@@ -1313,7 +1313,8 @@ module Google
       class ClusterWeeklyMaintenanceWindow
         include Google::Apis::Core::Hashable
       
-        # Optional. Allows to define schedule that runs specified day of the week.
+        # Optional. The day of the week for the maintenance window. This field is
+        # required. You can't use `DAY_OF_WEEK_UNSPECIFIED`.
         # Corresponds to the JSON property `day`
         # @return [String]
         attr_accessor :day
@@ -4925,6 +4926,12 @@ module Google
       class ZoneDistributionConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The exact list of zones where the cluster currently has active
+        # VMs.
+        # Corresponds to the JSON property `activeZones`
+        # @return [Array<String>]
+        attr_accessor :active_zones
+      
         # Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not
         # specified.
         # Corresponds to the JSON property `mode`
@@ -4950,6 +4957,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @active_zones = args[:active_zones] if args.key?(:active_zones)
           @mode = args[:mode] if args.key?(:mode)
           @zone = args[:zone] if args.key?(:zone)
           @zones = args[:zones] if args.key?(:zones)
