@@ -328407,6 +328407,7 @@
 "/homegraph:v1/EventData/event/event": event
 "/homegraph:v1/EventData/eventId": event_id
 "/homegraph:v1/EventData/eventTime": event_time
+"/homegraph:v1/EventData/jsonTraitEvent": json_trait_event
 "/homegraph:v1/Events": events
 "/homegraph:v1/Events/componentId": component_id
 "/homegraph:v1/Events/events": events
@@ -328421,6 +328422,14 @@
 "/homegraph:v1/HomeTraitUpdates/components": components
 "/homegraph:v1/HomeTraitUpdates/components/component": component
 "/homegraph:v1/HomeTraitUpdates/deviceId": device_id
+"/homegraph:v1/JsonTrait": json_trait
+"/homegraph:v1/JsonTrait/data": data
+"/homegraph:v1/JsonTrait/data/datum": datum
+"/homegraph:v1/JsonTrait/id": id
+"/homegraph:v1/JsonTraitEvent": json_trait_event
+"/homegraph:v1/JsonTraitEvent/data": data
+"/homegraph:v1/JsonTraitEvent/data/datum": datum
+"/homegraph:v1/JsonTraitEvent/id": id
 "/homegraph:v1/MediaUrlsStruct": media_urls_struct
 "/homegraph:v1/MediaUrlsStruct/dashManifestUrl": dash_manifest_url
 "/homegraph:v1/MediaUrlsStruct/hlsMasterPlaylistUrl": hls_master_playlist_url
@@ -328518,6 +328527,7 @@
 "/homegraph:v1/ThermostatFanControlTrait/timerSpeed": timer_speed
 "/homegraph:v1/TraitData": trait_data
 "/homegraph:v1/TraitData/commitTime": commit_time
+"/homegraph:v1/TraitData/jsonTrait": json_trait
 "/homegraph:v1/TraitData/providerUpdateTime": provider_update_time
 "/homegraph:v1/TraitData/providerVersionTime": provider_version_time
 "/homegraph:v1/TraitData/trait": trait

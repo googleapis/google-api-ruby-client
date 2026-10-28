@@ -569,7 +569,7 @@ module Google
       class EventData
         include Google::Apis::Core::Hashable
       
-        # Required. The actual event payload.
+        # Optional. The actual event payload.
         # Corresponds to the JSON property `event`
         # @return [Hash<String,Object>]
         attr_accessor :event
@@ -584,6 +584,11 @@ module Google
         # @return [String]
         attr_accessor :event_time
       
+        # Dynamic JSON event payload conforming to `json_trait_schema.md`.
+        # Corresponds to the JSON property `jsonTraitEvent`
+        # @return [Google::Apis::HomegraphV1::JsonTraitEvent]
+        attr_accessor :json_trait_event
+      
         def initialize(**args)
            update!(**args)
         end
@@ -593,6 +598,7 @@ module Google
           @event = args[:event] if args.key?(:event)
           @event_id = args[:event_id] if args.key?(:event_id)
           @event_time = args[:event_time] if args.key?(:event_time)
+          @json_trait_event = args[:json_trait_event] if args.key?(:json_trait_event)
         end
       end
       
@@ -601,7 +607,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The ID of the provider component if the events are associated with a
-        # specific component. Optional for WHDM events, required for UDDM events.
+        # specific component. Optional for WHDM events, required for UDDM and JSON
+        # events.
         # Corresponds to the JSON property `componentId`
         # @return [String]
         attr_accessor :component_id
@@ -647,7 +654,7 @@ module Google
         end
       end
       
-      # Container for UDDM trait data associated with a device.
+      # Container for UDDM or JSON trait data associated with a device.
       class HomeTraitPayload
         include Google::Apis::Core::Hashable
       
@@ -688,6 +695,65 @@ module Google
         def update!(**args)
           @components = args[:components] if args.key?(:components)
           @device_id = args[:device_id] if args.key?(:device_id)
+        end
+      end
+      
+      # Dynamic JSON trait state payload conforming to `json_trait_schema.md`. Used
+      # for Category 2 (vendor Matter clusters) and Category 3 (non-Matter
+      # capabilities) traits across all wire and internal paths, and for Category 1
+      # traits on external JSON-only wire paths (e.g., `Query` with `JSON_TRAIT_ONLY`).
+      class JsonTrait
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Trait attribute map conforming to the trait's registered JSON Schema.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # Required. Canonical symbolic trait ID per `json_trait_schema.md`: - Standard
+        # Matter (Cat 1): `matter.` (e.g., `matter.thermostat`) - Google / vendor Matter
+        # (Cat 1/2): `matter..` (e.g., `matter.google.`, `matter.eve.utility`) - Non-
+        # Matter (Cat 3, any provider incl. Google): `ghp..` (e.g., `ghp.acme.warranty`,
+        # `ghp.google.`)
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # Dynamic JSON event payload conforming to `json_trait_schema.md`.
+      class JsonTraitEvent
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Event payload fields conforming to the event's registered JSON
+        # Schema.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # Required. Fully qualified event ID: `.` (e.g., `matter.doorLock.lockOperation`,
+        # `ghp.acme.warranty.claimUpdated`).
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -818,8 +884,8 @@ module Google
       
         # Optional. Specifies the type of device data to be returned in the response.
         # This allows callers to request traditional Smart Home traits, Unified Device
-        # Data Model (UDDM) traits, or both. If unspecified, defaults to
-        # SMART_HOME_TRAIT_ONLY.
+        # Data Model (UDDM) traits, or both. If unspecified, defaults to `
+        # SMART_HOME_TRAIT_ONLY`.
         # Corresponds to the JSON property `deviceView`
         # @return [String]
         attr_accessor :device_view
@@ -941,9 +1007,9 @@ module Google
         # @return [Hash<String,Hash<String,Object>>]
         attr_accessor :devices
       
-        # Map of device IDs to their Unified Device Data Model (UDDM) trait payloads.
-        # This field is populated when `device_view` is set to HOME_TRAIT_ONLY or
-        # HOME_TRAIT_AND_SMART_HOME_TRAIT.
+        # Map of device IDs to their Unified Device Data Model (UDDM) or JSON trait
+        # payloads. This field is populated when `device_view` is set to `
+        # HOME_TRAIT_ONLY`, `HOME_TRAIT_AND_SMART_HOME_TRAIT`, or `JSON_TRAIT_ONLY`.
         # Corresponds to the JSON property `homeTraitPayload`
         # @return [Hash<String,Google::Apis::HomegraphV1::HomeTraitPayload>]
         attr_accessor :home_trait_payload
@@ -1347,6 +1413,14 @@ module Google
         # @return [String]
         attr_accessor :commit_time
       
+        # Dynamic JSON trait state payload conforming to `json_trait_schema.md`. Used
+        # for Category 2 (vendor Matter clusters) and Category 3 (non-Matter
+        # capabilities) traits across all wire and internal paths, and for Category 1
+        # traits on external JSON-only wire paths (e.g., `Query` with `JSON_TRAIT_ONLY`).
+        # Corresponds to the JSON property `jsonTrait`
+        # @return [Google::Apis::HomegraphV1::JsonTrait]
+        attr_accessor :json_trait
+      
         # The custom timestamp supplied by the provider during a
         # ReportStateAndNotification update (if provided). This field is returned as
         # part of the `QueryResponse`.
@@ -1366,6 +1440,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commit_time = args[:commit_time] if args.key?(:commit_time)
+          @json_trait = args[:json_trait] if args.key?(:json_trait)
           @provider_update_time = args[:provider_update_time] if args.key?(:provider_update_time)
           @trait = args[:trait] if args.key?(:trait)
         end

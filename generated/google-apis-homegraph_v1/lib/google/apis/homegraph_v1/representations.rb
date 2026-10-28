@@ -130,6 +130,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JsonTrait
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JsonTraitEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MediaUrlsStruct
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -427,6 +439,8 @@ module Google
           hash :event, as: 'event'
           property :event_id, as: 'eventId'
           property :event_time, as: 'eventTime'
+          property :json_trait_event, as: 'jsonTraitEvent', class: Google::Apis::HomegraphV1::JsonTraitEvent, decorator: Google::Apis::HomegraphV1::JsonTraitEvent::Representation
+      
         end
       end
       
@@ -462,6 +476,22 @@ module Google
           collection :components, as: 'components', class: Google::Apis::HomegraphV1::ComponentTraitUpdates, decorator: Google::Apis::HomegraphV1::ComponentTraitUpdates::Representation
       
           property :device_id, as: 'deviceId'
+        end
+      end
+      
+      class JsonTrait
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :id, as: 'id'
+        end
+      end
+      
+      class JsonTraitEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :id, as: 'id'
         end
       end
       
@@ -671,6 +701,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :commit_time, as: 'commitTime'
+          property :json_trait, as: 'jsonTrait', class: Google::Apis::HomegraphV1::JsonTrait, decorator: Google::Apis::HomegraphV1::JsonTrait::Representation
+      
           property :provider_update_time, as: 'providerUpdateTime'
           hash :trait, as: 'trait'
         end
