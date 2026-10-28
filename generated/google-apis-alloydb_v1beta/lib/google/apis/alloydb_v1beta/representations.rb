@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CertificateAuthorityInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClientConnectionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +293,12 @@ module Google
       end
       
       class InstanceNetworkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceNetworkInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -952,6 +964,13 @@ module Google
         end
       end
       
+      class CertificateAuthorityInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :root_ca_cert, as: 'rootCaCert'
+        end
+      end
+      
       class ClientConnectionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -989,6 +1008,8 @@ module Google
           property :backupdr_backup_source, as: 'backupdrBackupSource', class: Google::Apis::AlloydbV1beta::BackupDrBackupSource, decorator: Google::Apis::AlloydbV1beta::BackupDrBackupSource::Representation
       
           property :backupdr_info, as: 'backupdrInfo', class: Google::Apis::AlloydbV1beta::BackupDrInfo, decorator: Google::Apis::AlloydbV1beta::BackupDrInfo::Representation
+      
+          property :certificate_authority_info, as: 'certificateAuthorityInfo', class: Google::Apis::AlloydbV1beta::CertificateAuthorityInfo, decorator: Google::Apis::AlloydbV1beta::CertificateAuthorityInfo::Representation
       
           property :cloudsql_backup_run_source, as: 'cloudsqlBackupRunSource', class: Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource, decorator: Google::Apis::AlloydbV1beta::CloudSqlBackupRunSource::Representation
       
@@ -1368,6 +1389,8 @@ module Google
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::AlloydbV1beta::InstanceNetworkConfig, decorator: Google::Apis::AlloydbV1beta::InstanceNetworkConfig::Representation
       
+          property :network_info, as: 'networkInfo', class: Google::Apis::AlloydbV1beta::InstanceNetworkInfo, decorator: Google::Apis::AlloydbV1beta::InstanceNetworkInfo::Representation
+      
           collection :nodes, as: 'nodes', class: Google::Apis::AlloydbV1beta::Node, decorator: Google::Apis::AlloydbV1beta::Node::Representation
       
           property :observability_config, as: 'observabilityConfig', class: Google::Apis::AlloydbV1beta::ObservabilityInstanceConfig, decorator: Google::Apis::AlloydbV1beta::ObservabilityInstanceConfig::Representation
@@ -1407,6 +1430,14 @@ module Google
           property :enable_outbound_public_ip, as: 'enableOutboundPublicIp'
           property :enable_public_ip, as: 'enablePublicIp'
           property :network, as: 'network'
+          property :public_dns_enabled, as: 'publicDnsEnabled'
+        end
+      end
+      
+      class InstanceNetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_dns_name, as: 'publicDnsName'
         end
       end
       

@@ -532,6 +532,27 @@ module Google
         end
       end
       
+      # Certificate Authority (CA) information for the cluster.
+      class CertificateAuthorityInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The PEM-encoded root CA certificate of the cluster. Save this to
+        # a file (conventionally `root.crt`) and point the PostgreSQL client at it to
+        # authenticate by connecting with `sslmode=verify-full` or `sslmode=verify-ca`.
+        # Corresponds to the JSON property `rootCaCert`
+        # @return [String]
+        attr_accessor :root_ca_cert
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @root_ca_cert = args[:root_ca_cert] if args.key?(:root_ca_cert)
+        end
+      end
+      
       # Client connection configuration
       class ClientConnectionConfig
         include Google::Apis::Core::Hashable
@@ -650,6 +671,11 @@ module Google
         # Corresponds to the JSON property `backupdrInfo`
         # @return [Google::Apis::AlloydbV1beta::BackupDrInfo]
         attr_accessor :backupdr_info
+      
+        # Certificate Authority (CA) information for the cluster.
+        # Corresponds to the JSON property `certificateAuthorityInfo`
+        # @return [Google::Apis::AlloydbV1beta::CertificateAuthorityInfo]
+        attr_accessor :certificate_authority_info
       
         # The source CloudSQL backup resource.
         # Corresponds to the JSON property `cloudsqlBackupRunSource`
@@ -885,6 +911,7 @@ module Google
           @backup_source = args[:backup_source] if args.key?(:backup_source)
           @backupdr_backup_source = args[:backupdr_backup_source] if args.key?(:backupdr_backup_source)
           @backupdr_info = args[:backupdr_info] if args.key?(:backupdr_info)
+          @certificate_authority_info = args[:certificate_authority_info] if args.key?(:certificate_authority_info)
           @cloudsql_backup_run_source = args[:cloudsql_backup_run_source] if args.key?(:cloudsql_backup_run_source)
           @cluster_type = args[:cluster_type] if args.key?(:cluster_type)
           @continuous_backup_config = args[:continuous_backup_config] if args.key?(:continuous_backup_config)
@@ -2205,6 +2232,11 @@ module Google
         # @return [Google::Apis::AlloydbV1beta::InstanceNetworkConfig]
         attr_accessor :network_config
       
+        # Output-only metadata related to instance-level network information.
+        # Corresponds to the JSON property `networkInfo`
+        # @return [Google::Apis::AlloydbV1beta::InstanceNetworkInfo]
+        attr_accessor :network_info
+      
         # Output only. List of available read-only VMs in this instance, including the
         # standby for a PRIMARY instance.
         # Corresponds to the JSON property `nodes`
@@ -2333,6 +2365,7 @@ module Google
           @maintenance_version_name = args[:maintenance_version_name] if args.key?(:maintenance_version_name)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
+          @network_info = args[:network_info] if args.key?(:network_info)
           @nodes = args[:nodes] if args.key?(:nodes)
           @observability_config = args[:observability_config] if args.key?(:observability_config)
           @observability_instance_info = args[:observability_instance_info] if args.key?(:observability_instance_info)
@@ -2393,6 +2426,12 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. Whether Public DNS is enabled for the instance.
+        # Corresponds to the JSON property `publicDnsEnabled`
+        # @return [Boolean]
+        attr_accessor :public_dns_enabled
+        alias_method :public_dns_enabled?, :public_dns_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2404,6 +2443,26 @@ module Google
           @enable_outbound_public_ip = args[:enable_outbound_public_ip] if args.key?(:enable_outbound_public_ip)
           @enable_public_ip = args[:enable_public_ip] if args.key?(:enable_public_ip)
           @network = args[:network] if args.key?(:network)
+          @public_dns_enabled = args[:public_dns_enabled] if args.key?(:public_dns_enabled)
+        end
+      end
+      
+      # Output-only metadata related to instance-level network information.
+      class InstanceNetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The DNS name of the instance for public connectivity.
+        # Corresponds to the JSON property `publicDnsName`
+        # @return [String]
+        attr_accessor :public_dns_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_dns_name = args[:public_dns_name] if args.key?(:public_dns_name)
         end
       end
       
