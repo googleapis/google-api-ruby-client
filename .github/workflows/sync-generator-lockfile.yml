@@ -1,0 +1,43 @@
+name: Sync-Generator-Lockfile
+
+# google-apis-generator/Gemfile.lock records the local google-apis-core and
+# google-apis-generator versions and their dependencies. A release or a gemspec
+# change makes it stale, and then the weekly regeneration (generate-updates)
+# stops on a dirty checkout. This workflow refreshes the lockfile right after
+# such a change lands and opens a pull request.
+
+permissions:
+  contents: read
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "google-apis-core/lib/google/apis/core/version.rb"
+      - "google-apis-core/google-apis-core.gemspec"
+      - "google-apis-generator/lib/google/apis/generator/version.rb"
+      - "google-apis-generator/google-apis-generator.gemspec"
+      - "google-apis-generator/Gemfile"
+  workflow_dispatch:
+
+jobs:
+  sync-generator-lockfile:
+    if: ${{ github.repository == 'googleapis/google-api-ruby-client' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.YOSHI_CODE_BOT_TOKEN }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Install Ruby 4.0
+        uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74 # v1.314.0
+        with:
+          ruby-version: "4.0"
+      - name: Install tools
+        run: |
+          gem install --no-document toys -v '~> 0.22.0'
+      - name: execute
+        run: |
+          toys sync-generator-lockfile -v --fork
