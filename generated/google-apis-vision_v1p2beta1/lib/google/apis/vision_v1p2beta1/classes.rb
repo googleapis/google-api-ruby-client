@@ -727,7 +727,7 @@ module Google
       class FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Anger likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `angerLikelihood`
         # @return [String]
         attr_accessor :anger_likelihood
@@ -757,7 +757,7 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Joy likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `joyLikelihood`
         # @return [String]
         attr_accessor :joy_likelihood
@@ -786,12 +786,12 @@ module Google
         # @return [Float]
         attr_accessor :roll_angle
       
-        # Sorrow likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `sorrowLikelihood`
         # @return [String]
         attr_accessor :sorrow_likelihood
       
-        # Surprise likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `surpriseLikelihood`
         # @return [String]
         attr_accessor :surprise_likelihood
@@ -1375,7 +1375,7 @@ module Google
       class GoogleCloudVisionV1p1beta1FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Anger likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `angerLikelihood`
         # @return [String]
         attr_accessor :anger_likelihood
@@ -1405,7 +1405,7 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Joy likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `joyLikelihood`
         # @return [String]
         attr_accessor :joy_likelihood
@@ -1434,12 +1434,12 @@ module Google
         # @return [Float]
         attr_accessor :roll_angle
       
-        # Sorrow likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `sorrowLikelihood`
         # @return [String]
         attr_accessor :sorrow_likelihood
       
-        # Surprise likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `surpriseLikelihood`
         # @return [String]
         attr_accessor :surprise_likelihood
@@ -3436,7 +3436,7 @@ module Google
       class GoogleCloudVisionV1p2beta1FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Anger likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `angerLikelihood`
         # @return [String]
         attr_accessor :anger_likelihood
@@ -3466,7 +3466,7 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Joy likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `joyLikelihood`
         # @return [String]
         attr_accessor :joy_likelihood
@@ -3495,12 +3495,12 @@ module Google
         # @return [Float]
         attr_accessor :roll_angle
       
-        # Sorrow likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `sorrowLikelihood`
         # @return [String]
         attr_accessor :sorrow_likelihood
       
-        # Surprise likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `surpriseLikelihood`
         # @return [String]
         attr_accessor :surprise_likelihood
@@ -5488,7 +5488,7 @@ module Google
       class GoogleCloudVisionV1p3beta1FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Anger likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `angerLikelihood`
         # @return [String]
         attr_accessor :anger_likelihood
@@ -5518,7 +5518,7 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Joy likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `joyLikelihood`
         # @return [String]
         attr_accessor :joy_likelihood
@@ -5547,12 +5547,12 @@ module Google
         # @return [Float]
         attr_accessor :roll_angle
       
-        # Sorrow likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `sorrowLikelihood`
         # @return [String]
         attr_accessor :sorrow_likelihood
       
-        # Surprise likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `surpriseLikelihood`
         # @return [String]
         attr_accessor :surprise_likelihood
@@ -7386,7 +7386,7 @@ module Google
       class GoogleCloudVisionV1p4beta1FaceAnnotation
         include Google::Apis::Core::Hashable
       
-        # Anger likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `angerLikelihood`
         # @return [String]
         attr_accessor :anger_likelihood
@@ -7416,7 +7416,7 @@ module Google
         # @return [String]
         attr_accessor :headwear_likelihood
       
-        # Joy likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `joyLikelihood`
         # @return [String]
         attr_accessor :joy_likelihood
@@ -7453,12 +7453,12 @@ module Google
         # @return [Float]
         attr_accessor :roll_angle
       
-        # Sorrow likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `sorrowLikelihood`
         # @return [String]
         attr_accessor :sorrow_likelihood
       
-        # Surprise likelihood.
+        # Deprecated: No longer populated.
         # Corresponds to the JSON property `surpriseLikelihood`
         # @return [String]
         attr_accessor :surprise_likelihood
