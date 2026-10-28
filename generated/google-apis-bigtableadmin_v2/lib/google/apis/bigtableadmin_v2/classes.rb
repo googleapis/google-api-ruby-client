@@ -4154,31 +4154,12 @@ module Google
         # @return [String]
         attr_accessor :backup
       
-        # A collection of user data indexed by row, column, and timestamp. Each table is
-        # served using the resources of its parent cluster.
-        # Corresponds to the JSON property `table`
-        # @return [Google::Apis::BigtableadminV2::Table]
-        attr_accessor :table
-      
         # Required. The id of the table to create and restore to. This table must not
         # already exist. The `table_id` appended to `parent` forms the full table name
         # of the form `projects//instances//tables/`.
         # Corresponds to the JSON property `tableId`
         # @return [String]
         attr_accessor :table_id
-      
-        # Optional. The list of fields to set on the new table. A mask specifying which
-        # fields (e.g. `deletion_protection`) in the `table` field should be set. This
-        # mask is relative to the `table` field, not to the request message. The
-        # wildcard (*) path is currently not supported. Currently RestoreTable only
-        # supports the following fields for modification: * `deletion_protection`:
-        # Defaults to `false` if not set. * `automated_backup_policy`: Defaults to no
-        # automated backup policy if not set. Output-only fields in the mask will be
-        # ignored. If any other field not listed above is included in `update_mask`, it
-        # will result in an INVALID_ARGUMENT error.
-        # Corresponds to the JSON property `updateMask`
-        # @return [String]
-        attr_accessor :update_mask
       
         def initialize(**args)
            update!(**args)
@@ -4187,9 +4168,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @backup = args[:backup] if args.key?(:backup)
-          @table = args[:table] if args.key?(:table)
           @table_id = args[:table_id] if args.key?(:table_id)
-          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
       

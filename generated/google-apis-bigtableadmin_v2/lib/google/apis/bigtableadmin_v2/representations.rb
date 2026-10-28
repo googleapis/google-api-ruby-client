@@ -2082,10 +2082,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :backup, as: 'backup'
-          property :table, as: 'table', class: Google::Apis::BigtableadminV2::Table, decorator: Google::Apis::BigtableadminV2::Table::Representation
-      
           property :table_id, as: 'tableId'
-          property :update_mask, as: 'updateMask'
         end
       end
       
