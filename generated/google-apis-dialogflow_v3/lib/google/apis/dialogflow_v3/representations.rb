@@ -3100,6 +3100,48 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2ResponseMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageEndInteraction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SearchEntryPoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -9391,6 +9433,8 @@ module Google
           property :name, as: 'name'
           property :participant, as: 'participant'
           property :participant_role, as: 'participantRole'
+          collection :response_messages, as: 'responseMessages', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessage, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessage::Representation
+      
           property :send_time, as: 'sendTime'
           property :sentiment_analysis, as: 'sentimentAnalysis', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SentimentAnalysisResult, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2SentimentAnalysisResult::Representation
       
@@ -9441,6 +9485,68 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2ResponseMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_interaction, as: 'endInteraction', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageEndInteraction, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageEndInteraction::Representation
+      
+          property :live_agent_handoff, as: 'liveAgentHandoff', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff::Representation
+      
+          property :mixed_audio, as: 'mixedAudio', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudio, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudio::Representation
+      
+          hash :payload, as: 'payload'
+          property :telephony_transfer_call, as: 'telephonyTransferCall', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall::Representation
+      
+          property :text, as: 'text', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageText, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageText::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageEndInteraction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :segments, as: 'segments', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_playback_interruption, as: 'allowPlaybackInterruption'
+          property :audio, :base64 => true, as: 'audio'
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phone_number, as: 'phoneNumber'
+          property :sip_uri, as: 'sipUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ResponseMessageText
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :text, as: 'text'
+        end
+      end
+      
       class GoogleCloudDialogflowV2SearchEntryPoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9469,6 +9575,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2Sentiment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2Sentiment::Representation
+      
+          property :status, as: 'status', class: Google::Apis::DialogflowV3::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3::GoogleRpcStatus::Representation
       
         end
       end
@@ -11013,6 +11121,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1Sentiment, decorator: Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1Sentiment::Representation
+      
+          property :status, as: 'status', class: Google::Apis::DialogflowV3::GoogleRpcStatus, decorator: Google::Apis::DialogflowV3::GoogleRpcStatus::Representation
       
         end
       end

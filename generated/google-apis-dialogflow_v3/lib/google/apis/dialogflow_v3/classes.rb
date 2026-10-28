@@ -16570,6 +16570,11 @@ module Google
         attr_accessor :participant_role
       
         # 
+        # Corresponds to the JSON property `responseMessages`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessage>]
+        attr_accessor :response_messages
+      
+        # 
         # Corresponds to the JSON property `sendTime`
         # @return [String]
         attr_accessor :send_time
@@ -16592,6 +16597,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @participant = args[:participant] if args.key?(:participant)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
+          @response_messages = args[:response_messages] if args.key?(:response_messages)
           @send_time = args[:send_time] if args.key?(:send_time)
           @sentiment_analysis = args[:sentiment_analysis] if args.key?(:sentiment_analysis)
         end
@@ -16766,6 +16772,183 @@ module Google
       end
       
       # 
+      class GoogleCloudDialogflowV2ResponseMessage
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageEndInteraction]
+        attr_accessor :end_interaction
+      
+        # 
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff]
+        attr_accessor :live_agent_handoff
+      
+        # 
+        # Corresponds to the JSON property `mixedAudio`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudio]
+        attr_accessor :mixed_audio
+      
+        # 
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # 
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageText]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
+          @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
+          @payload = args[:payload] if args.key?(:payload)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageEndInteraction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudio
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::DialogflowV3::GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowPlaybackInterruption`
+        # @return [Boolean]
+        attr_accessor :allow_playback_interruption
+        alias_method :allow_playback_interruption?, :allow_playback_interruption
+      
+        # 
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
+          @audio = args[:audio] if args.key?(:audio)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # 
+        # Corresponds to the JSON property `sipUri`
+        # @return [String]
+        attr_accessor :sip_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @sip_uri = args[:sip_uri] if args.key?(:sip_uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageText
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
       class GoogleCloudDialogflowV2SearchEntryPoint
         include Google::Apis::Core::Hashable
       
@@ -16849,6 +17032,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2Sentiment]
         attr_accessor :query_text_sentiment
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV3::GoogleRpcStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16856,6 +17044,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -21805,6 +21994,11 @@ module Google
         # @return [Google::Apis::DialogflowV3::GoogleCloudDialogflowV2beta1Sentiment]
         attr_accessor :query_text_sentiment
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV3::GoogleRpcStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -21812,6 +22006,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
