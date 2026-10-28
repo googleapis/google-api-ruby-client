@@ -1398,6 +1398,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new CompilationResult in a given project and location asynchronously.
+        # @param [String] parent
+        #   Required. The repository in which to create the compilation result. Must be in
+        #   the format `projects/*/locations/*/repositories/*`.
+        # @param [Google::Apis::DataformV1::CompilationResult] compilation_result_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataformV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataformV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_repository_compilation_result_long_running(parent, compilation_result_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/compilationResults:createLongRunning', options)
+          command.request_representation = Google::Apis::DataformV1::CompilationResult::Representation
+          command.request_object = compilation_result_object
+          command.response_representation = Google::Apis::DataformV1::Operation::Representation
+          command.response_class = Google::Apis::DataformV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetches a single CompilationResult.
         # @param [String] name
         #   Required. The compilation result's name.
