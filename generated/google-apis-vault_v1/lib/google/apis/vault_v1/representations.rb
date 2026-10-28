@@ -184,6 +184,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GeminiInWorkspaceExportOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeminiInWorkspaceOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GeminiOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -684,6 +696,8 @@ module Google
       
           property :drive_options, as: 'driveOptions', class: Google::Apis::VaultV1::DriveExportOptions, decorator: Google::Apis::VaultV1::DriveExportOptions::Representation
       
+          property :gemini_in_workspace_options, as: 'geminiInWorkspaceOptions', class: Google::Apis::VaultV1::GeminiInWorkspaceExportOptions, decorator: Google::Apis::VaultV1::GeminiInWorkspaceExportOptions::Representation
+      
           property :gemini_options, as: 'geminiOptions', class: Google::Apis::VaultV1::GeminiExportOptions, decorator: Google::Apis::VaultV1::GeminiExportOptions::Representation
       
           property :groups_options, as: 'groupsOptions', class: Google::Apis::VaultV1::GroupsExportOptions, decorator: Google::Apis::VaultV1::GroupsExportOptions::Representation
@@ -711,6 +725,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :export_format, as: 'exportFormat'
+        end
+      end
+      
+      class GeminiInWorkspaceExportOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :export_format, as: 'exportFormat'
+        end
+      end
+      
+      class GeminiInWorkspaceOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -987,6 +1014,8 @@ module Google
           property :drive_options, as: 'driveOptions', class: Google::Apis::VaultV1::DriveOptions, decorator: Google::Apis::VaultV1::DriveOptions::Representation
       
           property :end_time, as: 'endTime'
+          property :gemini_in_workspace_options, as: 'geminiInWorkspaceOptions', class: Google::Apis::VaultV1::GeminiInWorkspaceOptions, decorator: Google::Apis::VaultV1::GeminiInWorkspaceOptions::Representation
+      
           property :gemini_options, as: 'geminiOptions', class: Google::Apis::VaultV1::GeminiOptions, decorator: Google::Apis::VaultV1::GeminiOptions::Representation
       
           property :hangouts_chat_info, as: 'hangoutsChatInfo', class: Google::Apis::VaultV1::HangoutsChatInfo, decorator: Google::Apis::VaultV1::HangoutsChatInfo::Representation

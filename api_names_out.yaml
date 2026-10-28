@@ -447864,6 +447864,7 @@
 "/vault:v1/ExportOptions": export_options
 "/vault:v1/ExportOptions/calendarOptions": calendar_options
 "/vault:v1/ExportOptions/driveOptions": drive_options
+"/vault:v1/ExportOptions/geminiInWorkspaceOptions": gemini_in_workspace_options
 "/vault:v1/ExportOptions/geminiOptions": gemini_options
 "/vault:v1/ExportOptions/groupsOptions": groups_options
 "/vault:v1/ExportOptions/hangoutsChatOptions": hangouts_chat_options
@@ -447876,6 +447877,9 @@
 "/vault:v1/ExportStats/totalArtifactCount": total_artifact_count
 "/vault:v1/GeminiExportOptions": gemini_export_options
 "/vault:v1/GeminiExportOptions/exportFormat": export_format
+"/vault:v1/GeminiInWorkspaceExportOptions": gemini_in_workspace_export_options
+"/vault:v1/GeminiInWorkspaceExportOptions/exportFormat": export_format
+"/vault:v1/GeminiInWorkspaceOptions": gemini_in_workspace_options
 "/vault:v1/GeminiOptions": gemini_options
 "/vault:v1/GroupsCountResult": groups_count_result
 "/vault:v1/GroupsCountResult/accountCountErrors": account_count_errors
@@ -448002,6 +448006,7 @@
 "/vault:v1/Query/driveDocumentInfo": drive_document_info
 "/vault:v1/Query/driveOptions": drive_options
 "/vault:v1/Query/endTime": end_time
+"/vault:v1/Query/geminiInWorkspaceOptions": gemini_in_workspace_options
 "/vault:v1/Query/geminiOptions": gemini_options
 "/vault:v1/Query/hangoutsChatInfo": hangouts_chat_info
 "/vault:v1/Query/hangoutsChatOptions": hangouts_chat_options
