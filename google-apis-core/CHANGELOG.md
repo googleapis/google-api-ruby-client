@@ -1,5 +1,11 @@
 # Release History
 
+### 1.4.1 (2026-10-28)
+
+#### Bug Fixes
+
+* bump dependencies representable to ~&gt; 3.3, &gt;= 3.3.1 and multi_json to ~&gt; 1.21, &gt;= 1.21.2 ([#28003](https://github.com/googleapis/google-api-ruby-client/issues/28003)) ([6e0759d](https://github.com/googleapis/google-api-ruby-client/commit/6e0759d7ccbc753ea04793cb991486d7b99faccd)), refs [#26611](https://github.com/googleapis/google-api-ruby-client/issues/26611)
+
 ### 1.4.0 (2026-10-22)
 
 #### Features
