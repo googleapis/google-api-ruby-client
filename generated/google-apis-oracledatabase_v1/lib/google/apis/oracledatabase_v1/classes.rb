@@ -8983,7 +8983,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The DNS suffix for the zone. Ex: abc.example.com.
+        # Required. Immutable. The DNS suffix for the zone. Ex: abc.example.com.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
@@ -9862,12 +9862,6 @@ module Google
       class SqlResult
         include Google::Apis::Core::Hashable
       
-        # Optional. The number of rows affected by DML statements (e.g., INSERT, UPDATE,
-        # DELETE, MERGE). Unset or 0 for SELECT / DDL statements.
-        # Corresponds to the JSON property `affectedRowCount`
-        # @return [Fixnum]
-        attr_accessor :affected_row_count
-      
         # List of columns included in the result, including data type.
         # Corresponds to the JSON property `columns`
         # @return [Array<Google::Apis::OracledatabaseV1::Column>]
@@ -9884,7 +9878,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @affected_row_count = args[:affected_row_count] if args.key?(:affected_row_count)
           @columns = args[:columns] if args.key?(:columns)
           @rows = args[:rows] if args.key?(:rows)
         end
