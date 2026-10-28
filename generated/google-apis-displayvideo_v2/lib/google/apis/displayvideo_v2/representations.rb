@@ -4776,6 +4776,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :action_button_labels, as: 'actionButtonLabels'
+          property :business_name, as: 'businessName'
           collection :companion_banners, as: 'companionBanners', class: Google::Apis::DisplayvideoV2::ImageAsset, decorator: Google::Apis::DisplayvideoV2::ImageAsset::Representation
       
           hash :custom_parameters, as: 'customParameters'
@@ -4785,6 +4786,8 @@ module Google
           property :domain, as: 'domain'
           property :final_url, as: 'finalUrl'
           collection :headlines, as: 'headlines'
+          property :logo, as: 'logo', class: Google::Apis::DisplayvideoV2::ImageAsset, decorator: Google::Apis::DisplayvideoV2::ImageAsset::Representation
+      
           collection :long_headlines, as: 'longHeadlines'
           property :tracking_url, as: 'trackingUrl'
           collection :videos, as: 'videos', class: Google::Apis::DisplayvideoV2::YoutubeVideoDetails, decorator: Google::Apis::DisplayvideoV2::YoutubeVideoDetails::Representation
