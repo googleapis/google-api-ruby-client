@@ -7767,6 +7767,12 @@ module Google
         attr_accessor :automated_agent_reply_type
       
         # 
+        # Corresponds to the JSON property `callCompanionAuthCode`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :call_companion_auth_code
+      
+        # 
         # Corresponds to the JSON property `cxCurrentPage`
         # @return [String]
         attr_accessor :cx_current_page
@@ -7776,6 +7782,31 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2DetectIntentResponse]
         attr_accessor :detect_intent_response
       
+        # 
+        # Corresponds to the JSON property `event`
+        # @return [String]
+        attr_accessor :event
+      
+        # 
+        # Corresponds to the JSON property `intent`
+        # @return [String]
+        attr_accessor :intent
+      
+        # 
+        # Corresponds to the JSON property `matchConfidence`
+        # @return [Float]
+        attr_accessor :match_confidence
+      
+        # 
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,Object>]
+        attr_accessor :parameters
+      
+        # 
+        # Corresponds to the JSON property `responseMessages`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessage>]
+        attr_accessor :response_messages
+      
         def initialize(**args)
            update!(**args)
         end
@@ -7784,8 +7815,14 @@ module Google
         def update!(**args)
           @allow_cancellation = args[:allow_cancellation] if args.key?(:allow_cancellation)
           @automated_agent_reply_type = args[:automated_agent_reply_type] if args.key?(:automated_agent_reply_type)
+          @call_companion_auth_code = args[:call_companion_auth_code] if args.key?(:call_companion_auth_code)
           @cx_current_page = args[:cx_current_page] if args.key?(:cx_current_page)
           @detect_intent_response = args[:detect_intent_response] if args.key?(:detect_intent_response)
+          @event = args[:event] if args.key?(:event)
+          @intent = args[:intent] if args.key?(:intent)
+          @match_confidence = args[:match_confidence] if args.key?(:match_confidence)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @response_messages = args[:response_messages] if args.key?(:response_messages)
         end
       end
       
@@ -8079,6 +8116,23 @@ module Google
         # @return [String]
         attr_accessor :confirmation_requirement
       
+        # 
+        # Corresponds to the JSON property `parameterOverrides`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ParameterOverride>]
+        attr_accessor :parameter_overrides
+      
+        # 
+        # Corresponds to the JSON property `proactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :proactive_enabled
+        alias_method :proactive_enabled?, :proactive_enabled
+      
+        # 
+        # Corresponds to the JSON property `reactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :reactive_enabled
+        alias_method :reactive_enabled?, :reactive_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8087,6 +8141,9 @@ module Google
         def update!(**args)
           @ces_tool = args[:ces_tool] if args.key?(:ces_tool)
           @confirmation_requirement = args[:confirmation_requirement] if args.key?(:confirmation_requirement)
+          @parameter_overrides = args[:parameter_overrides] if args.key?(:parameter_overrides)
+          @proactive_enabled = args[:proactive_enabled] if args.key?(:proactive_enabled)
+          @reactive_enabled = args[:reactive_enabled] if args.key?(:reactive_enabled)
         end
       end
       
@@ -14862,6 +14919,11 @@ module Google
         attr_accessor :participant_role
       
         # 
+        # Corresponds to the JSON property `responseMessages`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessage>]
+        attr_accessor :response_messages
+      
+        # 
         # Corresponds to the JSON property `sendTime`
         # @return [String]
         attr_accessor :send_time
@@ -14884,6 +14946,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @participant = args[:participant] if args.key?(:participant)
           @participant_role = args[:participant_role] if args.key?(:participant_role)
+          @response_messages = args[:response_messages] if args.key?(:response_messages)
           @send_time = args[:send_time] if args.key?(:send_time)
           @sentiment_analysis = args[:sentiment_analysis] if args.key?(:sentiment_analysis)
         end
@@ -15062,6 +15125,37 @@ module Google
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @synthesize_speech_config = args[:synthesize_speech_config] if args.key?(:synthesize_speech_config)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ParameterOverride
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `contextReferenceKey`
+        # @return [String]
+        attr_accessor :context_reference_key
+      
+        # 
+        # Corresponds to the JSON property `fieldPath`
+        # @return [String]
+        attr_accessor :field_path
+      
+        # 
+        # Corresponds to the JSON property `parameterName`
+        # @return [String]
+        attr_accessor :parameter_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @context_reference_key = args[:context_reference_key] if args.key?(:context_reference_key)
+          @field_path = args[:field_path] if args.key?(:field_path)
+          @parameter_name = args[:parameter_name] if args.key?(:parameter_name)
         end
       end
       
@@ -15429,6 +15523,183 @@ module Google
           @content_uri = args[:content_uri] if args.key?(:content_uri)
           @import_gcs_custom_metadata = args[:import_gcs_custom_metadata] if args.key?(:import_gcs_custom_metadata)
           @smart_messaging_partial_update = args[:smart_messaging_partial_update] if args.key?(:smart_messaging_partial_update)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessage
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `endInteraction`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageEndInteraction]
+        attr_accessor :end_interaction
+      
+        # 
+        # Corresponds to the JSON property `liveAgentHandoff`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff]
+        attr_accessor :live_agent_handoff
+      
+        # 
+        # Corresponds to the JSON property `mixedAudio`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageMixedAudio]
+        attr_accessor :mixed_audio
+      
+        # 
+        # Corresponds to the JSON property `payload`
+        # @return [Hash<String,Object>]
+        attr_accessor :payload
+      
+        # 
+        # Corresponds to the JSON property `telephonyTransferCall`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall]
+        attr_accessor :telephony_transfer_call
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageText]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_interaction = args[:end_interaction] if args.key?(:end_interaction)
+          @live_agent_handoff = args[:live_agent_handoff] if args.key?(:live_agent_handoff)
+          @mixed_audio = args[:mixed_audio] if args.key?(:mixed_audio)
+          @payload = args[:payload] if args.key?(:payload)
+          @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageEndInteraction
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudio
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `segments`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment>]
+        attr_accessor :segments
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @segments = args[:segments] if args.key?(:segments)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `allowPlaybackInterruption`
+        # @return [Boolean]
+        attr_accessor :allow_playback_interruption
+        alias_method :allow_playback_interruption?, :allow_playback_interruption
+      
+        # 
+        # Corresponds to the JSON property `audio`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :audio
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_playback_interruption = args[:allow_playback_interruption] if args.key?(:allow_playback_interruption)
+          @audio = args[:audio] if args.key?(:audio)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        # 
+        # Corresponds to the JSON property `sipUri`
+        # @return [String]
+        attr_accessor :sip_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
+          @sip_uri = args[:sip_uri] if args.key?(:sip_uri)
+        end
+      end
+      
+      # 
+      class GoogleCloudDialogflowV2ResponseMessageText
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `text`
+        # @return [Array<String>]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -16030,6 +16301,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Sentiment]
         attr_accessor :query_text_sentiment
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -16037,6 +16313,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -18660,6 +18937,23 @@ module Google
         attr_accessor :operation_id
       
         # 
+        # Corresponds to the JSON property `parameterOverrides`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ParameterOverride>]
+        attr_accessor :parameter_overrides
+      
+        # 
+        # Corresponds to the JSON property `proactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :proactive_enabled
+        alias_method :proactive_enabled?, :proactive_enabled
+      
+        # 
+        # Corresponds to the JSON property `reactiveEnabled`
+        # @return [Boolean]
+        attr_accessor :reactive_enabled
+        alias_method :reactive_enabled?, :reactive_enabled
+      
+        # 
         # Corresponds to the JSON property `toolset`
         # @return [String]
         attr_accessor :toolset
@@ -18672,6 +18966,9 @@ module Google
         def update!(**args)
           @confirmation_requirement = args[:confirmation_requirement] if args.key?(:confirmation_requirement)
           @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @parameter_overrides = args[:parameter_overrides] if args.key?(:parameter_overrides)
+          @proactive_enabled = args[:proactive_enabled] if args.key?(:proactive_enabled)
+          @reactive_enabled = args[:reactive_enabled] if args.key?(:reactive_enabled)
           @toolset = args[:toolset] if args.key?(:toolset)
         end
       end
@@ -23066,6 +23363,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment]
         attr_accessor :query_text_sentiment
       
+        # 
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV2::GoogleRpcStatus]
+        attr_accessor :status
+      
         def initialize(**args)
            update!(**args)
         end
@@ -23073,6 +23375,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
