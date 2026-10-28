@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ApplicationProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -325,6 +337,10 @@ module Google
       class Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_properties, as: 'applicationProperties', class: Google::Apis::ApphubV1::ApplicationProperties, decorator: Google::Apis::ApphubV1::ApplicationProperties::Representation
+      
+          property :application_type, as: 'applicationType', class: Google::Apis::ApphubV1::ApplicationType, decorator: Google::Apis::ApphubV1::ApplicationType::Representation
+      
           property :attributes, as: 'attributes', class: Google::Apis::ApphubV1::Attributes, decorator: Google::Apis::ApphubV1::Attributes::Representation
       
           property :create_time, as: 'createTime'
@@ -336,6 +352,21 @@ module Google
           property :state, as: 'state'
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ApplicationProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::ApphubV1::ExtendedMetadata, decorator: Google::Apis::ApphubV1::ExtendedMetadata::Representation
+      
+        end
+      end
+      
+      class ApplicationType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
