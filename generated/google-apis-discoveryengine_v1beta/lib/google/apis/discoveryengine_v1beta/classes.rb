@@ -22,6 +22,67 @@ module Google
   module Apis
     module DiscoveryengineV1beta
       
+      # Profile describing the visibility restriction of an MCP tool. Key: "google.com/
+      # tool.profiles/visibility.restriction"
+      class ApiservingMcpMcpToolVisibility
+        include Google::Apis::Core::Hashable
+      
+        # A list of field-level visibility restrictions.
+        # Corresponds to the JSON property `fieldVisibility`
+        # @return [Array<Google::Apis::DiscoveryengineV1beta::ApiservingMcpMcpToolVisibilityFieldVisibility>]
+        attr_accessor :field_visibility
+      
+        # The strategy used to enforce visibility restrictions. DO NOT USE. This field
+        # is not yet implemented.
+        # Corresponds to the JSON property `visibilityEnforcementStrategy`
+        # @return [String]
+        attr_accessor :visibility_enforcement_strategy
+      
+        # The visibility restriction labels for the tool itself (e.g., "
+        # PRODUCER_DEFINED_PREVIEW"). Multiple labels can be provided as a comma-
+        # separated string.
+        # Corresponds to the JSON property `visibilityRestriction`
+        # @return [String]
+        attr_accessor :visibility_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_visibility = args[:field_visibility] if args.key?(:field_visibility)
+          @visibility_enforcement_strategy = args[:visibility_enforcement_strategy] if args.key?(:visibility_enforcement_strategy)
+          @visibility_restriction = args[:visibility_restriction] if args.key?(:visibility_restriction)
+        end
+      end
+      
+      # Visibility rules for individual tool parameters (fields). This allows
+      # producers to hide specific fields in tools/list and tools/call.
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        include Google::Apis::Core::Hashable
+      
+        # The visibility restriction labels for this field (comma-separated).
+        # Corresponds to the JSON property `restriction`
+        # @return [String]
+        attr_accessor :restriction
+      
+        # The name of the parameter in the input_schema or output_schema.
+        # Corresponds to the JSON property `selector`
+        # @return [String]
+        attr_accessor :selector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @restriction = args[:restriction] if args.key?(:restriction)
+          @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
       # `Distribution` contains summary statistics for a population of values. It
       # optionally contains a histogram representing the distribution of those values
       # across a set of buckets. The summary statistics are the count, mean, sum of
@@ -1107,14 +1168,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Note: not implemented yet. Use enabled_actions instead. The enabled
-        # tools on this assistant. The keys are connector name, for example "projects/`
-        # projectId`/locations/`locationId`/collections/`collectionId`/dataconnector The
-        # values consist of admin enabled tools towards the connector instance. Admin
-        # can selectively enable multiple tools on any of the connector instances that
-        # they created in the project. For example `"jira1ConnectorName": [(toolId1, "
-        # createTicket"), (toolId2, "transferTicket")], "gmail1ConnectorName": [(toolId3,
-        # "sendEmail"),..] `
+        # Optional. The enabled tools on this assistant. The keys are data connector
+        # resource names, in the format `projects/`project`/locations/`location`/
+        # collections/`collection`/dataConnector`. The values are the tools that the
+        # admin enabled on that connector. Admins can selectively enable tools on any of
+        # the connectors that they created in the project. For example: ``` ` "projects/
+        # my-project/locations/global/collections/jira1/dataConnector": ` "toolInfo": [ `
+        # "toolName": "create_jira_issue", "toolDisplayName": "Create Jira issue" `, ` "
+        # toolName": "update_jira_issue", "toolDisplayName": "Update Jira issue" ` ] ` `
+        # ```
         # Corresponds to the JSON property `enabledTools`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1AssistantToolList>]
         attr_accessor :enabled_tools
@@ -4097,7 +4159,8 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications` * `code-extraction`
+        # `in-app-notifications` * `code-extraction` * `remote-vm` * `license-tier-
+        # badge`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -8941,8 +9004,9 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>]
         attr_accessor :policy_results
       
-        # Final verdict of the customer policy enforcement. If only one policy blocked
-        # the processing, the verdict is BLOCK.
+        # Final verdict of the customer policy enforcement. If at least one policy
+        # blocked the processing, the verdict is BLOCK. If no policy blocked the
+        # processing but at least one flagged it, the verdict is FLAG.
         # Corresponds to the JSON property `verdict`
         # @return [String]
         attr_accessor :verdict
@@ -12720,7 +12784,8 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications` * `code-extraction`
+        # `in-app-notifications` * `code-extraction` * `remote-vm` * `license-tier-
+        # badge`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -21382,8 +21447,9 @@ module Google
         # @return [Array<Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>]
         attr_accessor :policy_results
       
-        # Final verdict of the customer policy enforcement. If only one policy blocked
-        # the processing, the verdict is BLOCK.
+        # Final verdict of the customer policy enforcement. If at least one policy
+        # blocked the processing, the verdict is BLOCK. If no policy blocked the
+        # processing but at least one flagged it, the verdict is FLAG.
         # Corresponds to the JSON property `verdict`
         # @return [String]
         attr_accessor :verdict
@@ -21572,14 +21638,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Optional. Note: not implemented yet. Use enabled_actions instead. The enabled
-        # tools on this assistant. The keys are connector name, for example "projects/`
-        # projectId`/locations/`locationId`/collections/`collectionId`/dataconnector The
-        # values consist of admin enabled tools towards the connector instance. Admin
-        # can selectively enable multiple tools on any of the connector instances that
-        # they created in the project. For example `"jira1ConnectorName": [(toolId1, "
-        # createTicket"), (toolId2, "transferTicket")], "gmail1ConnectorName": [(toolId3,
-        # "sendEmail"),..] `
+        # Optional. The enabled tools on this assistant. The keys are data connector
+        # resource names, in the format `projects/`project`/locations/`location`/
+        # collections/`collection`/dataConnector`. The values are the tools that the
+        # admin enabled on that connector. Admins can selectively enable tools on any of
+        # the connectors that they created in the project. For example: ``` ` "projects/
+        # my-project/locations/global/collections/jira1/dataConnector": ` "toolInfo": [ `
+        # "toolName": "create_jira_issue", "toolDisplayName": "Create Jira issue" `, ` "
+        # toolName": "update_jira_issue", "toolDisplayName": "Update Jira issue" ` ] ` `
+        # ```
         # Corresponds to the JSON property `enabledTools`
         # @return [Hash<String,Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaAssistantToolList>]
         attr_accessor :enabled_tools
@@ -25993,7 +26060,8 @@ module Google
         # sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi`
         # * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `
         # multi-agent-orchestration` * `cross-product-intelligence` * `workflow-agents` *
-        # `in-app-notifications` * `code-extraction`
+        # `in-app-notifications` * `code-extraction` * `remote-vm` * `license-tier-
+        # badge`
         # Corresponds to the JSON property `features`
         # @return [Hash<String,String>]
         attr_accessor :features
@@ -26696,8 +26764,7 @@ module Google
       class GoogleCloudDiscoveryengineV1betaFeedback
         include Google::Apis::Core::Hashable
       
-        # Optional. The additional user comment of the feedback if user gives a thumb
-        # down.
+        # Optional. The additional user comment of the feedback.
         # Corresponds to the JSON property `comment`
         # @return [String]
         attr_accessor :comment
@@ -26724,8 +26791,7 @@ module Google
         # @return [String]
         attr_accessor :feedback_source
       
-        # Required. Indicate whether the user gives a positive or negative feedback. If
-        # the user gives a negative feedback, there might be more feedback details.
+        # Required. Indicates whether the user gives a positive or negative feedback.
         # Corresponds to the JSON property `feedbackType`
         # @return [String]
         attr_accessor :feedback_type
@@ -26735,7 +26801,13 @@ module Google
         # @return [String]
         attr_accessor :llm_model_version
       
-        # Optional. The reason if user gives a thumb down.
+        # Information submitted when a user disputes a Model Armor `BLOCK` or `FLAG`
+        # verdict.
+        # Corresponds to the JSON property `modelArmorDisputeInfo`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo]
+        attr_accessor :model_armor_dispute_info
+      
+        # Optional. The reasons why the user gives feedback.
         # Corresponds to the JSON property `reasons`
         # @return [Array<String>]
         attr_accessor :reasons
@@ -26753,6 +26825,7 @@ module Google
           @feedback_source = args[:feedback_source] if args.key?(:feedback_source)
           @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
           @llm_model_version = args[:llm_model_version] if args.key?(:llm_model_version)
+          @model_armor_dispute_info = args[:model_armor_dispute_info] if args.key?(:model_armor_dispute_info)
           @reasons = args[:reasons] if args.key?(:reasons)
         end
       end
@@ -26820,6 +26893,41 @@ module Google
           @step_seq_num = args[:step_seq_num] if args.key?(:step_seq_num)
           @task_name = args[:task_name] if args.key?(:task_name)
           @trajectory_id = args[:trajectory_id] if args.key?(:trajectory_id)
+        end
+      end
+      
+      # Information submitted when a user disputes a Model Armor `BLOCK` or `FLAG`
+      # verdict.
+      class GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The expected-label reason chip selected by the user (for example, "
+        # Everyday question" or "Legitimate work-related query").
+        # Corresponds to the JSON property `expectedLabel`
+        # @return [String]
+        attr_accessor :expected_label
+      
+        # Optional. The raw Model Armor `SanitizationResult`, serialized as JSON.
+        # Corresponds to the JSON property `sanitizationResultJson`
+        # @return [String]
+        attr_accessor :sanitization_result_json
+      
+        # Optional. Resource name of the Model Armor template that produced the
+        # sanitization result, in the format `projects/`project`/locations/`location`/
+        # templates/`id``.
+        # Corresponds to the JSON property `templateName`
+        # @return [String]
+        attr_accessor :template_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expected_label = args[:expected_label] if args.key?(:expected_label)
+          @sanitization_result_json = args[:sanitization_result_json] if args.key?(:sanitization_result_json)
+          @template_name = args[:template_name] if args.key?(:template_name)
         end
       end
       
@@ -29620,6 +29728,11 @@ module Google
         # @return [String]
         attr_accessor :data_use_terms_version
       
+        # Identity Provider Config.
+        # Corresponds to the JSON property `idpConfig`
+        # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdpConfig]
+        attr_accessor :idp_config
+      
         # Parameters for Agentspace.
         # Corresponds to the JSON property `saasParams`
         # @return [Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams]
@@ -29633,6 +29746,7 @@ module Google
         def update!(**args)
           @accept_data_use_terms = args[:accept_data_use_terms] if args.key?(:accept_data_use_terms)
           @data_use_terms_version = args[:data_use_terms_version] if args.key?(:data_use_terms_version)
+          @idp_config = args[:idp_config] if args.key?(:idp_config)
           @saas_params = args[:saas_params] if args.key?(:saas_params)
         end
       end

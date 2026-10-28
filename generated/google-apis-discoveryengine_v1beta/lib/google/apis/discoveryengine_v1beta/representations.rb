@@ -22,6 +22,18 @@ module Google
   module Apis
     module DiscoveryengineV1beta
       
+      class ApiservingMcpMcpToolVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiDistribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4168,6 +4180,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5702,6 +5720,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApiservingMcpMcpToolVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :field_visibility, as: 'fieldVisibility', class: Google::Apis::DiscoveryengineV1beta::ApiservingMcpMcpToolVisibilityFieldVisibility, decorator: Google::Apis::DiscoveryengineV1beta::ApiservingMcpMcpToolVisibilityFieldVisibility::Representation
+      
+          property :visibility_enforcement_strategy, as: 'visibilityEnforcementStrategy'
+          property :visibility_restriction, as: 'visibilityRestriction'
+        end
+      end
+      
+      class ApiservingMcpMcpToolVisibilityFieldVisibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :restriction, as: 'restriction'
+          property :selector, as: 'selector'
+        end
       end
       
       class GoogleApiDistribution
@@ -12824,6 +12860,8 @@ module Google
           property :feedback_source, as: 'feedbackSource'
           property :feedback_type, as: 'feedbackType'
           property :llm_model_version, as: 'llmModelVersion'
+          property :model_armor_dispute_info, as: 'modelArmorDisputeInfo', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo::Representation
+      
           collection :reasons, as: 'reasons'
         end
       end
@@ -12840,6 +12878,15 @@ module Google
           property :step_seq_num, :numeric_string => true, as: 'stepSeqNum'
           property :task_name, as: 'taskName'
           property :trajectory_id, as: 'trajectoryId'
+        end
+      end
+      
+      class GoogleCloudDiscoveryengineV1betaFeedbackModelArmorDisputeInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expected_label, as: 'expectedLabel'
+          property :sanitization_result_json, as: 'sanitizationResultJson'
+          property :template_name, as: 'templateName'
         end
       end
       
@@ -13669,6 +13716,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accept_data_use_terms, as: 'acceptDataUseTerms'
           property :data_use_terms_version, as: 'dataUseTermsVersion'
+          property :idp_config, as: 'idpConfig', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdpConfig, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaIdpConfig::Representation
+      
           property :saas_params, as: 'saasParams', class: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams, decorator: Google::Apis::DiscoveryengineV1beta::GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams::Representation
       
         end
