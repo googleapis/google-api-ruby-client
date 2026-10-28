@@ -28,6 +28,16 @@ module Google
       class Application
         include Google::Apis::Core::Hashable
       
+        # Additional system properties of an Application.
+        # Corresponds to the JSON property `applicationProperties`
+        # @return [Google::Apis::ApphubV1::ApplicationProperties]
+        attr_accessor :application_properties
+      
+        # Application type.
+        # Corresponds to the JSON property `applicationType`
+        # @return [Google::Apis::ApphubV1::ApplicationType]
+        attr_accessor :application_type
+      
         # Consumer provided attributes.
         # Corresponds to the JSON property `attributes`
         # @return [Google::Apis::ApphubV1::Attributes]
@@ -83,6 +93,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @application_properties = args[:application_properties] if args.key?(:application_properties)
+          @application_type = args[:application_type] if args.key?(:application_type)
           @attributes = args[:attributes] if args.key?(:attributes)
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
@@ -92,6 +104,47 @@ module Google
           @state = args[:state] if args.key?(:state)
           @uid = args[:uid] if args.key?(:uid)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Additional system properties of an Application.
+      class ApplicationProperties
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Additional metadata specific to the App Hub application. The key
+        # is a string that identifies the type of metadata and the value is the metadata
+        # contents specific to that type. Key format: `apphub.googleapis.com/`
+        # metadataType``
+        # Corresponds to the JSON property `extendedMetadata`
+        # @return [Hash<String,Google::Apis::ApphubV1::ExtendedMetadata>]
+        attr_accessor :extended_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extended_metadata = args[:extended_metadata] if args.key?(:extended_metadata)
+        end
+      end
+      
+      # Application type.
+      class ApplicationType
+        include Google::Apis::Core::Hashable
+      
+        # The type of the application.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

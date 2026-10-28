@@ -56426,6 +56426,8 @@
 "/appengine:v1beta5/key": key
 "/appengine:v1beta5/quotaUser": quota_user
 "/apphub:v1/Application": application
+"/apphub:v1/Application/applicationProperties": application_properties
+"/apphub:v1/Application/applicationType": application_type
 "/apphub:v1/Application/attributes": attributes
 "/apphub:v1/Application/createTime": create_time
 "/apphub:v1/Application/description": description
@@ -56435,6 +56437,11 @@
 "/apphub:v1/Application/state": state
 "/apphub:v1/Application/uid": uid
 "/apphub:v1/Application/updateTime": update_time
+"/apphub:v1/ApplicationProperties": application_properties
+"/apphub:v1/ApplicationProperties/extendedMetadata": extended_metadata
+"/apphub:v1/ApplicationProperties/extendedMetadata/extended_metadatum": extended_metadatum
+"/apphub:v1/ApplicationType": application_type
+"/apphub:v1/ApplicationType/type": type
 "/apphub:v1/AssetLocation": asset_location
 "/apphub:v1/AssetLocation/ccfeRmsPath": ccfe_rms_path
 "/apphub:v1/AssetLocation/expected": expected
