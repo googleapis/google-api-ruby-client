@@ -659,6 +659,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_disabled, as: 'creationDisabled'
+          property :dev_mode_supported, as: 'devModeSupported'
           property :image_version_id, as: 'imageVersionId'
           property :is_default, as: 'isDefault'
           property :release_date, as: 'releaseDate', class: Google::Apis::ComposerV1::Date, decorator: Google::Apis::ComposerV1::Date::Representation
