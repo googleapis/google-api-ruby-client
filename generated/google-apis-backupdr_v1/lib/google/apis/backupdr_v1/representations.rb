@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppliedAutoProtectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AttachedDisk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,24 @@ module Google
       end
       
       class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoProtectionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoProtectionPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoProtectionPolicyBinding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -190,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackupPlanDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackupPlanRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +245,24 @@ module Google
       end
       
       class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindingEvaluationSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindingMatchingResource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BindingSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +335,12 @@ module Google
       end
       
       class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Criteria
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,13 +598,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitiateDeleteAutoProtectionPolicyBindingRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyValuePair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelKeyValPair
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAppliedAutoProtectionPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAutoProtectionPoliciesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAutoProtectionPolicyBindingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -581,6 +665,12 @@ module Google
       end
       
       class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBindingMatchingResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -641,6 +731,12 @@ module Google
       end
       
       class ManagementUri
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MatchingCondition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -713,6 +809,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyEvaluationSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -973,6 +1075,23 @@ module Google
         end
       end
       
+      class AppliedAutoProtectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_details, as: 'backupPlanDetails', class: Google::Apis::BackupdrV1::BackupPlanDetail, decorator: Google::Apis::BackupdrV1::BackupPlanDetail::Representation
+      
+          property :binding_evaluation_summary, as: 'bindingEvaluationSummary', class: Google::Apis::BackupdrV1::BindingEvaluationSummary, decorator: Google::Apis::BackupdrV1::BindingEvaluationSummary::Representation
+      
+          property :create_time, as: 'createTime'
+          property :criteria, as: 'criteria', class: Google::Apis::BackupdrV1::Criteria, decorator: Google::Apis::BackupdrV1::Criteria::Representation
+      
+          property :name, as: 'name'
+          property :source_binding, as: 'sourceBinding'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class AttachedDisk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1013,6 +1132,52 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
           property :log_type, as: 'logType'
+        end
+      end
+      
+      class AutoProtectionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan_association, as: 'backupPlanAssociation'
+          property :data_source, as: 'dataSource'
+          property :error, as: 'error', class: Google::Apis::BackupdrV1::Status, decorator: Google::Apis::BackupdrV1::Status::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class AutoProtectionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backup_plan_details, as: 'backupPlanDetails', class: Google::Apis::BackupdrV1::BackupPlanDetail, decorator: Google::Apis::BackupdrV1::BackupPlanDetail::Representation
+      
+          property :binding_summary, as: 'bindingSummary', class: Google::Apis::BackupdrV1::BindingSummary, decorator: Google::Apis::BackupdrV1::BindingSummary::Representation
+      
+          property :create_time, as: 'createTime'
+          property :criteria, as: 'criteria', class: Google::Apis::BackupdrV1::Criteria, decorator: Google::Apis::BackupdrV1::Criteria::Representation
+      
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :policy_evaluation_summary, as: 'policyEvaluationSummary', class: Google::Apis::BackupdrV1::PolicyEvaluationSummary, decorator: Google::Apis::BackupdrV1::PolicyEvaluationSummary::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AutoProtectionPolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :binding_evaluation_summary, as: 'bindingEvaluationSummary', class: Google::Apis::BackupdrV1::BindingEvaluationSummary, decorator: Google::Apis::BackupdrV1::BindingEvaluationSummary::Representation
+      
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :scope, as: 'scope'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -1214,6 +1379,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alloydb_cluster_backup_plan_association_properties, as: 'alloydbClusterBackupPlanAssociationProperties', class: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties, decorator: Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties::Representation
       
+          property :auto_protection_policy_binding, as: 'autoProtectionPolicyBinding'
           property :backup_plan, as: 'backupPlan'
           property :backup_plan_revision_id, as: 'backupPlanRevisionId'
           property :backup_plan_revision_name, as: 'backupPlanRevisionName'
@@ -1232,6 +1398,14 @@ module Google
       
           property :state, as: 'state'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BackupPlanDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_plan, as: 'backupPlan'
+          property :resource_type, as: 'resourceType'
         end
       end
       
@@ -1297,6 +1471,33 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class BindingEvaluationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_resource_count, :numeric_string => true, as: 'failedResourceCount'
+          property :matching_resource_count, :numeric_string => true, as: 'matchingResourceCount'
+          property :protected_resource_count, :numeric_string => true, as: 'protectedResourceCount'
+        end
+      end
+      
+      class BindingMatchingResource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_protection_details, as: 'autoProtectionDetails', class: Google::Apis::BackupdrV1::AutoProtectionDetails, decorator: Google::Apis::BackupdrV1::AutoProtectionDetails::Representation
+      
+          property :last_evaluation_time, as: 'lastEvaluationTime'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+        end
+      end
+      
+      class BindingSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_count, :numeric_string => true, as: 'projectCount'
         end
       end
       
@@ -1461,6 +1662,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class Criteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matching_conditions, as: 'matchingConditions', class: Google::Apis::BackupdrV1::MatchingCondition, decorator: Google::Apis::BackupdrV1::MatchingCondition::Representation
+      
         end
       end
       
@@ -1835,6 +2044,7 @@ module Google
       class GcpBackupConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_protection_policy_binding, as: 'autoProtectionPolicyBinding'
           property :backup_plan, as: 'backupPlan'
           property :backup_plan_association, as: 'backupPlanAssociation'
           property :backup_plan_description, as: 'backupPlanDescription'
@@ -1911,10 +2121,24 @@ module Google
         end
       end
       
+      class InitiateDeleteAutoProtectionPolicyBindingRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class InstanceParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :resource_manager_tags, as: 'resourceManagerTags'
+        end
+      end
+      
+      class KeyValuePair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
@@ -1923,6 +2147,36 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
+        end
+      end
+      
+      class ListAppliedAutoProtectionPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :applied_auto_protection_policies, as: 'appliedAutoProtectionPolicies', class: Google::Apis::BackupdrV1::AppliedAutoProtectionPolicy, decorator: Google::Apis::BackupdrV1::AppliedAutoProtectionPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListAutoProtectionPoliciesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_protection_policies, as: 'autoProtectionPolicies', class: Google::Apis::BackupdrV1::AutoProtectionPolicy, decorator: Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListAutoProtectionPolicyBindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_protection_policy_bindings, as: 'autoProtectionPolicyBindings', class: Google::Apis::BackupdrV1::AutoProtectionPolicyBinding, decorator: Google::Apis::BackupdrV1::AutoProtectionPolicyBinding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1973,6 +2227,15 @@ module Google
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListBindingMatchingResourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :matching_resources, as: 'matchingResources', class: Google::Apis::BackupdrV1::BindingMatchingResource, decorator: Google::Apis::BackupdrV1::BindingMatchingResource::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -2083,6 +2346,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api, as: 'api'
           property :web_ui, as: 'webUi'
+        end
+      end
+      
+      class MatchingCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :label_condition, as: 'labelCondition', class: Google::Apis::BackupdrV1::KeyValuePair, decorator: Google::Apis::BackupdrV1::KeyValuePair::Representation
+      
         end
       end
       
@@ -2199,6 +2470,15 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PolicyEvaluationSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failed_resource_count, :numeric_string => true, as: 'failedResourceCount'
+          property :matching_resource_count, :numeric_string => true, as: 'matchingResourceCount'
+          property :protected_resource_count, :numeric_string => true, as: 'protectedResourceCount'
         end
       end
       

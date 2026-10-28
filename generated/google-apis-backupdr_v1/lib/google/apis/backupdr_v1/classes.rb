@@ -392,6 +392,75 @@ module Google
         end
       end
       
+      # AppliedAutoProtectionPolicy is a read-only view of AutoProtectionPolicy and
+      # AutoProtectionPolicyBinding resources that apply to a given workload project.
+      class AppliedAutoProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The set of backup plan configurations, mirroring the
+        # backup_plan_details from the source AutoProtectionPolicy. Each element
+        # specifies a backup plan for a given resource type.
+        # Corresponds to the JSON property `backupPlanDetails`
+        # @return [Array<Google::Apis::BackupdrV1::BackupPlanDetail>]
+        attr_accessor :backup_plan_details
+      
+        # BindingEvaluationSummary contains the summary of the last run of job that
+        # applies policy to matching resources for a given binding.
+        # Corresponds to the JSON property `bindingEvaluationSummary`
+        # @return [Google::Apis::BackupdrV1::BindingEvaluationSummary]
+        attr_accessor :binding_evaluation_summary
+      
+        # Output only. Timestamp indicating when the binding was last created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Criteria specifies a set of criteria for matching resources.
+        # Corresponds to the JSON property `criteria`
+        # @return [Google::Apis::BackupdrV1::Criteria]
+        attr_accessor :criteria
+      
+        # Identifier. Canonical resource name. Format: projects/`workload-project-number`
+        # /locations/`location`/appliedAutoProtectionPolicies/`id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The full resource name of the AutoProtectionPolicyBinding that
+        # applies the source policy to a scope including this workload project. e.g.,
+        # projects/`admin-project`/locations/`location`/autoProtectionPolicies/`
+        # policy_id`/autoProtectionPolicyBindings/`binding_id`.
+        # Corresponds to the JSON property `sourceBinding`
+        # @return [String]
+        attr_accessor :source_binding
+      
+        # Output only. The status of the applied auto protection policy.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. Timestamp indicating when the binding was last modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_details = args[:backup_plan_details] if args.key?(:backup_plan_details)
+          @binding_evaluation_summary = args[:binding_evaluation_summary] if args.key?(:binding_evaluation_summary)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @criteria = args[:criteria] if args.key?(:criteria)
+          @name = args[:name] if args.key?(:name)
+          @source_binding = args[:source_binding] if args.key?(:source_binding)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # An instance-attached disk resource.
       class AttachedDisk
         include Google::Apis::Core::Hashable
@@ -585,6 +654,202 @@ module Google
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @log_type = args[:log_type] if args.key?(:log_type)
+        end
+      end
+      
+      # AutoProtectionDetails contains the protection details of a resource from the
+      # current binding's perspective.
+      class AutoProtectionDetails
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource name of backup plan association linked to the resource,
+        # if any. Format: projects/`project`/locations/`location`/backupPlanAssociations/
+        # `backupPlanAssociationId`
+        # Corresponds to the JSON property `backupPlanAssociation`
+        # @return [String]
+        attr_accessor :backup_plan_association
+      
+        # Output only. Resource name of the datasource linked to the resource, if any.
+        # Format: projects/`project`/locations/`location`/backupVaults/`backupVaultId`/
+        # dataSources/`dataSourceId`
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # The `Status` type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by [
+        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
+        # data: error code, error message, and error details. You can find out more
+        # about this error model and how to work with it in the [API Design Guide](https:
+        # //cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::BackupdrV1::Status]
+        attr_accessor :error
+      
+        # Output only. Protection state of the resource from the current binding's
+        # perspective. Output only.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_association = args[:backup_plan_association] if args.key?(:backup_plan_association)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @error = args[:error] if args.key?(:error)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # An AutoprotectionPolicy is a policy resource designed to automate backup
+      # management, moving from manual per-resource protection to a bulk approach. The
+      # policy dynamically discovers and applies a specified backup plan to all
+      # eligible resources that match its defined scope and criteria.
+      class AutoProtectionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Required. The backup plan details for matching resources.
+        # Corresponds to the JSON property `backupPlanDetails`
+        # @return [Array<Google::Apis::BackupdrV1::BackupPlanDetail>]
+        attr_accessor :backup_plan_details
+      
+        # BindingSummary contains count of different containers covered through this
+        # policy.
+        # Corresponds to the JSON property `bindingSummary`
+        # @return [Google::Apis::BackupdrV1::BindingSummary]
+        attr_accessor :binding_summary
+      
+        # Output only. The timestamp when the policy was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Criteria specifies a set of criteria for matching resources.
+        # Corresponds to the JSON property `criteria`
+        # @return [Google::Apis::BackupdrV1::Criteria]
+        attr_accessor :criteria
+      
+        # Optional. A description of the policy.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The etag for the policy. If this is provided on update, it must
+        # match the server's etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The resource name of the AutoProtectionPolicy. Format: `projects/`
+        # project`/locations/`location`/autoProtectionPolicies/`auto_protection_policy``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # PolicyEvaluationSummary contains the summary of the last run of job that
+        # applies policy to matching resources.
+        # Corresponds to the JSON property `policyEvaluationSummary`
+        # @return [Google::Apis::BackupdrV1::PolicyEvaluationSummary]
+        attr_accessor :policy_evaluation_summary
+      
+        # Output only. The current state of the AutoProtectionPolicy.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp when the policy was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan_details = args[:backup_plan_details] if args.key?(:backup_plan_details)
+          @binding_summary = args[:binding_summary] if args.key?(:binding_summary)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @criteria = args[:criteria] if args.key?(:criteria)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @policy_evaluation_summary = args[:policy_evaluation_summary] if args.key?(:policy_evaluation_summary)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # An AutoProtectionPolicyBinding (APPA) acts as the bridge between an
+      # AutoProtectionPolicy and the scope (Project) where the policy should be
+      # applied.
+      class AutoProtectionPolicyBinding
+        include Google::Apis::Core::Hashable
+      
+        # BindingEvaluationSummary contains the summary of the last run of job that
+        # applies policy to matching resources for a given binding.
+        # Corresponds to the JSON property `bindingEvaluationSummary`
+        # @return [Google::Apis::BackupdrV1::BindingEvaluationSummary]
+        attr_accessor :binding_evaluation_summary
+      
+        # Output only. The timestamp when the binding was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. A description of the binding.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Output only. The etag for the binding. If this is provided on update,
+        # it must match the server's etag.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The resource name of the AutoProtectionPolicyBinding. Format: `
+        # projects/`project`/locations/`location`/autoProtectionPolicies/`
+        # auto_protection_policy`/bindings/`binding``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Resource Id of target container on which policy will be
+        # applied. Format: projects/`project_id`
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # Output only. The current state of the AutoProtectionPolicyBinding.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The timestamp when the binding was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @binding_evaluation_summary = args[:binding_evaluation_summary] if args.key?(:binding_evaluation_summary)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @scope = args[:scope] if args.key?(:scope)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1390,6 +1655,13 @@ module Google
         # @return [Google::Apis::BackupdrV1::AlloyDbClusterBackupPlanAssociationProperties]
         attr_accessor :alloydb_cluster_backup_plan_association_properties
       
+        # Output only. The resource name of the `AutoProtectionPolicyBinding` that
+        # manages this association, if any. Format: `projects/`project`/locations/`
+        # location`/autoProtectionPolicies/`policy`/bindings/`binding``.
+        # Corresponds to the JSON property `autoProtectionPolicyBinding`
+        # @return [String]
+        attr_accessor :auto_protection_policy_binding
+      
         # Required. Resource name of backup plan which needs to be applied on workload.
         # Format: projects/`project`/locations/`location`/backupPlans/`backupPlanId`
         # Corresponds to the JSON property `backupPlan`
@@ -1480,6 +1752,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @alloydb_cluster_backup_plan_association_properties = args[:alloydb_cluster_backup_plan_association_properties] if args.key?(:alloydb_cluster_backup_plan_association_properties)
+          @auto_protection_policy_binding = args[:auto_protection_policy_binding] if args.key?(:auto_protection_policy_binding)
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
           @backup_plan_revision_id = args[:backup_plan_revision_id] if args.key?(:backup_plan_revision_id)
           @backup_plan_revision_name = args[:backup_plan_revision_name] if args.key?(:backup_plan_revision_name)
@@ -1494,6 +1767,36 @@ module Google
           @rules_config_info = args[:rules_config_info] if args.key?(:rules_config_info)
           @state = args[:state] if args.key?(:state)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # BackupPlanDetail defines configuration of protection.
+      class BackupPlanDetail
+        include Google::Apis::Core::Hashable
+      
+        # Required. The resource name of the BackupPlan to apply to resources that match
+        # the policy's criteria. This backup plan must be in the same location as
+        # AutoProtectionPolicy. Format: projects/`project`/locations/`location`/
+        # backupPlans/`backupPlanId`
+        # Corresponds to the JSON property `backupPlan`
+        # @return [String]
+        attr_accessor :backup_plan
+      
+        # Required. The type of resource that this policy will automatically protect.
+        # Allowed values are, `compute.googleapis.com/Instance` and `compute.googleapis.
+        # com/Disk` are supported.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
@@ -1854,6 +2157,106 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # BindingEvaluationSummary contains the summary of the last run of job that
+      # applies policy to matching resources for a given binding.
+      class BindingEvaluationSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of matching resources whose protection failed during
+        # job run.
+        # Corresponds to the JSON property `failedResourceCount`
+        # @return [Fixnum]
+        attr_accessor :failed_resource_count
+      
+        # Output only. The number of resources that currently match the policy's
+        # criteria.
+        # Corresponds to the JSON property `matchingResourceCount`
+        # @return [Fixnum]
+        attr_accessor :matching_resource_count
+      
+        # Output only. The number of matching resources that are successfully protected.
+        # Corresponds to the JSON property `protectedResourceCount`
+        # @return [Fixnum]
+        attr_accessor :protected_resource_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_resource_count = args[:failed_resource_count] if args.key?(:failed_resource_count)
+          @matching_resource_count = args[:matching_resource_count] if args.key?(:matching_resource_count)
+          @protected_resource_count = args[:protected_resource_count] if args.key?(:protected_resource_count)
+        end
+      end
+      
+      # BindingMatchingResource contains the details of a resource that matches the
+      # criteria of a binding.
+      class BindingMatchingResource
+        include Google::Apis::Core::Hashable
+      
+        # AutoProtectionDetails contains the protection details of a resource from the
+        # current binding's perspective.
+        # Corresponds to the JSON property `autoProtectionDetails`
+        # @return [Google::Apis::BackupdrV1::AutoProtectionDetails]
+        attr_accessor :auto_protection_details
+      
+        # Output only. The timestamp when the resource was last evaluated for protection.
+        # Corresponds to the JSON property `lastEvaluationTime`
+        # @return [String]
+        attr_accessor :last_evaluation_time
+      
+        # Identifier. The resource name of the `BindingMatchingResource`. Format: `
+        # projects/`project`/locations/`location`/autoProtectionPolicies/`
+        # auto_protection_policy`/bindings/`binding`/matchingResources/`
+        # matching_resource``
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. Immutable. Resource name of the workload that matches the criteria
+        # of the binding. The format can be either a relative resource name (e.g., `
+        # projects/my-project/zones/us-central1-a/instances/my-instance`) or a
+        # schemeless full resource name (e.g., `//compute.googleapis.com/projects/my-
+        # project/zones/us-central1-a/instances/my-instance`).
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_protection_details = args[:auto_protection_details] if args.key?(:auto_protection_details)
+          @last_evaluation_time = args[:last_evaluation_time] if args.key?(:last_evaluation_time)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # BindingSummary contains count of different containers covered through this
+      # policy.
+      class BindingSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Total count of Projects protected with this policy.
+        # Corresponds to the JSON property `projectCount`
+        # @return [Fixnum]
+        attr_accessor :project_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_count = args[:project_count] if args.key?(:project_count)
         end
       end
       
@@ -2494,6 +2897,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
+      # Criteria specifies a set of criteria for matching resources.
+      class Criteria
+        include Google::Apis::Core::Hashable
+      
+        # Required. A list of matching conditions that a resource must meet to be
+        # protected by the policy.
+        # Corresponds to the JSON property `matchingConditions`
+        # @return [Array<Google::Apis::BackupdrV1::MatchingCondition>]
+        attr_accessor :matching_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matching_conditions = args[:matching_conditions] if args.key?(:matching_conditions)
         end
       end
       
@@ -3901,6 +4324,13 @@ module Google
       class GcpBackupConfig
         include Google::Apis::Core::Hashable
       
+        # Output only. The resource name of the `AutoProtectionPolicyBinding` that
+        # manages this datasource, if any. Format: `projects/`project`/locations/`
+        # location`/autoProtectionPolicies/`policy`/bindings/`binding``.
+        # Corresponds to the JSON property `autoProtectionPolicyBinding`
+        # @return [String]
+        attr_accessor :auto_protection_policy_binding
+      
         # The name of the backup plan.
         # Corresponds to the JSON property `backupPlan`
         # @return [String]
@@ -3937,6 +4367,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_protection_policy_binding = args[:auto_protection_policy_binding] if args.key?(:auto_protection_policy_binding)
           @backup_plan = args[:backup_plan] if args.key?(:backup_plan)
           @backup_plan_association = args[:backup_plan_association] if args.key?(:backup_plan_association)
           @backup_plan_description = args[:backup_plan_description] if args.key?(:backup_plan_description)
@@ -4217,6 +4648,19 @@ module Google
         end
       end
       
+      # Request message for initiating delete of an AutoProtectionPolicyBinding.
+      class InitiateDeleteAutoProtectionPolicyBindingRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Additional instance params.
       class InstanceParams
         include Google::Apis::Core::Hashable
@@ -4233,6 +4677,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
+        end
+      end
+      
+      # KeyValuePair defines a key-value pair for matching resource labels.
+      class KeyValuePair
+        include Google::Apis::Core::Hashable
+      
+        # Required. The key of the label to match. This must be in the format ``
+        # label_key``. The key must match the regex Format:`\p`Ll`\p`Lo``0,62``.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Required. The values of the label to match. There will be explicit “OR”
+        # between values of array. Each value must be in the format ``label_value``. The
+        # value must match the regex Format: `[\\p`Ll`\\p`Lo`\\p`N`_-]`1,63``.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -4265,6 +4737,102 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # Response message for ListAppliedAutoProtectionPolicies.
+      class ListAppliedAutoProtectionPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of the AppliedAutoProtectionPolicy resources found.
+        # Corresponds to the JSON property `appliedAutoProtectionPolicies`
+        # @return [Array<Google::Apis::BackupdrV1::AppliedAutoProtectionPolicy>]
+        attr_accessor :applied_auto_protection_policies
+      
+        # A token that can be sent as `page_token` to retrieve the next page.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached. For example, "projects/my-
+        # project/locations/us-east1"].
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @applied_auto_protection_policies = args[:applied_auto_protection_policies] if args.key?(:applied_auto_protection_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListAutoProtectionPolicies.
+      class ListAutoProtectionPoliciesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of the AutoProtectionPolicy resources found.
+        # Corresponds to the JSON property `autoProtectionPolicies`
+        # @return [Array<Google::Apis::BackupdrV1::AutoProtectionPolicy>]
+        attr_accessor :auto_protection_policies
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_protection_policies = args[:auto_protection_policies] if args.key?(:auto_protection_policies)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Response message for ListAutoProtectionPolicyBindings.
+      class ListAutoProtectionPolicyBindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of the AutoProtectionPolicyBindings resources found.
+        # Corresponds to the JSON property `autoProtectionPolicyBindings`
+        # @return [Array<Google::Apis::BackupdrV1::AutoProtectionPolicyBinding>]
+        attr_accessor :auto_protection_policy_bindings
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Unordered list. Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_protection_policy_bindings = args[:auto_protection_policy_bindings] if args.key?(:auto_protection_policy_bindings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -4445,6 +5013,34 @@ module Google
           @backups = args[:backups] if args.key?(:backups)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for getting a list of `BindingMatchingResources`.
+      class ListBindingMatchingResourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of `BindingMatchingResources` in the project,location for the
+        # specified binding.
+        # Corresponds to the JSON property `matchingResources`
+        # @return [Array<Google::Apis::BackupdrV1::BindingMatchingResource>]
+        attr_accessor :matching_resources
+      
+        # A token which may be sent as page_token in a subsequent `
+        # ListBindingMatchingResources` call to retrieve the next page of results. If
+        # this field is omitted or empty, then there are no more results to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @matching_resources = args[:matching_resources] if args.key?(:matching_resources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -4844,6 +5440,25 @@ module Google
         def update!(**args)
           @api = args[:api] if args.key?(:api)
           @web_ui = args[:web_ui] if args.key?(:web_ui)
+        end
+      end
+      
+      # MatchingCondition specifies a set of conditions for matching resources.
+      class MatchingCondition
+        include Google::Apis::Core::Hashable
+      
+        # KeyValuePair defines a key-value pair for matching resource labels.
+        # Corresponds to the JSON property `labelCondition`
+        # @return [Google::Apis::BackupdrV1::KeyValuePair]
+        attr_accessor :label_condition
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_condition = args[:label_condition] if args.key?(:label_condition)
         end
       end
       
@@ -5326,6 +5941,40 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # PolicyEvaluationSummary contains the summary of the last run of job that
+      # applies policy to matching resources.
+      class PolicyEvaluationSummary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of matching resources whose protection failed during
+        # job run.
+        # Corresponds to the JSON property `failedResourceCount`
+        # @return [Fixnum]
+        attr_accessor :failed_resource_count
+      
+        # Output only. The number of resources that currently match the policy's
+        # criteria.
+        # Corresponds to the JSON property `matchingResourceCount`
+        # @return [Fixnum]
+        attr_accessor :matching_resource_count
+      
+        # Output only. The number of matching resources that are successfully protected.
+        # Corresponds to the JSON property `protectedResourceCount`
+        # @return [Fixnum]
+        attr_accessor :protected_resource_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_resource_count = args[:failed_resource_count] if args.key?(:failed_resource_count)
+          @matching_resource_count = args[:matching_resource_count] if args.key?(:matching_resource_count)
+          @protected_resource_count = args[:protected_resource_count] if args.key?(:protected_resource_count)
         end
       end
       
