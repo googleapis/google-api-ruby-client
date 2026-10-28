@@ -1,5 +1,10 @@
 # Release history for google-apis-mybusinessnotifications_v1
 
+### v0.16.0 (2026-10-28)
+
+* Regenerated from discovery document revision 20261026
+* Regenerated using generator version 0.19.1
+
 ### v0.15.0 (2026-06-14)
 
 * Regenerated using generator version 0.19.0
