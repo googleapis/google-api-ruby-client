@@ -356,6 +356,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::StatefulHaConfig]
         attr_accessor :stateful_ha_config
       
+        # Configuration for the Wiz Sensor add-on.
+        # Corresponds to the JSON property `wizSensorConfig`
+        # @return [Google::Apis::ContainerV1beta1::WizSensorConfig]
+        attr_accessor :wiz_sensor_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -385,6 +390,7 @@ module Google
           @slice_controller_config = args[:slice_controller_config] if args.key?(:slice_controller_config)
           @slurm_operator_config = args[:slurm_operator_config] if args.key?(:slurm_operator_config)
           @stateful_ha_config = args[:stateful_ha_config] if args.key?(:stateful_ha_config)
+          @wiz_sensor_config = args[:wiz_sensor_config] if args.key?(:wiz_sensor_config)
         end
       end
       
@@ -462,6 +468,27 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. Whether AgentSandbox is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # AmbientNetworkingConfig contains the desired config of Ambient Networking on
+      # this cluster.
+      class AmbientNetworkingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If true, enable ambient networking for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -864,6 +891,34 @@ module Google
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
+        end
+      end
+      
+      # AutoprovisioningRestrictionConfig configures restrictions related to
+      # autoprovisioning settings.
+      class AutoprovisioningRestrictionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Contains the list of service accounts allowed for autoprovisioned
+        # node pools / Custom ComputeClasses.
+        # Corresponds to the JSON property `authorizedServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :authorized_service_accounts
+      
+        # Optional. Controls whether service account validation checks are enforced for
+        # autoprovisioning.
+        # Corresponds to the JSON property `serviceAccountPermissionCheck`
+        # @return [String]
+        attr_accessor :service_account_permission_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorized_service_accounts = args[:authorized_service_accounts] if args.key?(:authorized_service_accounts)
+          @service_account_permission_check = args[:service_account_permission_check] if args.key?(:service_account_permission_check)
         end
       end
       
@@ -2106,6 +2161,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults]
         attr_accessor :autoprovisioning_node_pool_defaults
       
+        # AutoprovisioningRestrictionConfig configures restrictions related to
+        # autoprovisioning settings.
+        # Corresponds to the JSON property `autoprovisioningRestrictionConfig`
+        # @return [Google::Apis::ContainerV1beta1::AutoprovisioningRestrictionConfig]
+        attr_accessor :autoprovisioning_restriction_config
+      
         # Defines autoscaling behaviour.
         # Corresponds to the JSON property `autoscalingProfile`
         # @return [String]
@@ -2137,6 +2198,7 @@ module Google
           @autopilot_general_profile = args[:autopilot_general_profile] if args.key?(:autopilot_general_profile)
           @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
+          @autoprovisioning_restriction_config = args[:autoprovisioning_restriction_config] if args.key?(:autoprovisioning_restriction_config)
           @autoscaling_profile = args[:autoscaling_profile] if args.key?(:autoscaling_profile)
           @default_compute_class_config = args[:default_compute_class_config] if args.key?(:default_compute_class_config)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
@@ -2246,6 +2308,12 @@ module Google
         # Corresponds to the JSON property `desiredAddonsConfig`
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :desired_addons_config
+      
+        # AmbientNetworkingConfig contains the desired config of Ambient Networking on
+        # this cluster.
+        # Corresponds to the JSON property `desiredAmbientNetworkingConfig`
+        # @return [Google::Apis::ContainerV1beta1::AmbientNetworkingConfig]
+        attr_accessor :desired_ambient_networking_config
       
         # AnonymousAuthenticationConfig defines the settings needed to limit endpoints
         # that allow anonymous authentication.
@@ -2811,6 +2879,7 @@ module Google
           @additional_pod_ranges_config = args[:additional_pod_ranges_config] if args.key?(:additional_pod_ranges_config)
           @desired_additional_ip_ranges_config = args[:desired_additional_ip_ranges_config] if args.key?(:desired_additional_ip_ranges_config)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
+          @desired_ambient_networking_config = args[:desired_ambient_networking_config] if args.key?(:desired_ambient_networking_config)
           @desired_anonymous_authentication_config = args[:desired_anonymous_authentication_config] if args.key?(:desired_anonymous_authentication_config)
           @desired_authenticator_groups_config = args[:desired_authenticator_groups_config] if args.key?(:desired_authenticator_groups_config)
           @desired_auto_ipam_config = args[:desired_auto_ipam_config] if args.key?(:desired_auto_ipam_config)
@@ -4048,6 +4117,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :data_cache_count
       
+        # Capacity set aside for Ephemeral Storage if using mixed Local SSD modes. The
+        # remaining capacity is Raw Block.
+        # Corresponds to the JSON property `ephemeralCapacityGb`
+        # @return [Fixnum]
+        attr_accessor :ephemeral_capacity_gb
+      
         # Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A
         # zero (or unset) value has different meanings depending on machine type being
         # used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds,
@@ -4071,6 +4146,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @data_cache_count = args[:data_cache_count] if args.key?(:data_cache_count)
+          @ephemeral_capacity_gb = args[:ephemeral_capacity_gb] if args.key?(:ephemeral_capacity_gb)
           @local_ssd_count = args[:local_ssd_count] if args.key?(:local_ssd_count)
         end
       end
@@ -4452,6 +4528,13 @@ module Google
         # @return [String]
         attr_accessor :gpu_driver_version
       
+        # Optional. The specific version of the GPU driver to install. Use this field
+        # only with gpu_driver_version set to SPECIFIC. Otherwise, an error will be
+        # returned.
+        # Corresponds to the JSON property `specificVersion`
+        # @return [String]
+        attr_accessor :specific_version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4459,6 +4542,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @gpu_driver_version = args[:gpu_driver_version] if args.key?(:gpu_driver_version)
+          @specific_version = args[:specific_version] if args.key?(:specific_version)
         end
       end
       
@@ -6386,6 +6470,12 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # AmbientNetworkingConfig contains the desired config of Ambient Networking on
+        # this cluster.
+        # Corresponds to the JSON property `ambientNetworkingConfig`
+        # @return [Google::Apis::ContainerV1beta1::AmbientNetworkingConfig]
+        attr_accessor :ambient_networking_config
+      
         # The desired datapath provider for this cluster. By default, uses the IPTables-
         # based kube-proxy implementation.
         # Corresponds to the JSON property `datapathProvider`
@@ -6500,6 +6590,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ambient_networking_config = args[:ambient_networking_config] if args.key?(:ambient_networking_config)
           @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @dataplane_v2_config = args[:dataplane_v2_config] if args.key?(:dataplane_v2_config)
           @default_enable_private_nodes = args[:default_enable_private_nodes] if args.key?(:default_enable_private_nodes)
@@ -7232,6 +7323,21 @@ module Google
         # @return [String]
         attr_accessor :container_log_max_size
       
+        # Optional. Defines the maximum number of concurrent workers to rotate container
+        # log files. See https://kubernetes.io/docs/concepts/cluster-administration/
+        # logging/#log-rotation The value must be an integer between 1 and 10, inclusive.
+        # The default value is 1 if unspecified.
+        # Corresponds to the JSON property `containerLogMaxWorkers`
+        # @return [Fixnum]
+        attr_accessor :container_log_max_workers
+      
+        # Optional. Specifies the interval at which the container logs are monitored for
+        # performing the log rotate operation. The value must be a positive interval
+        # between 3s and 300s, inclusive. The default value is "10s" if unspecified.
+        # Corresponds to the JSON property `containerLogMonitorInterval`
+        # @return [String]
+        attr_accessor :container_log_monitor_interval
+      
         # Enable CPU CFS quota enforcement for containers that specify CPU limits. This
         # option is enabled by default which makes kubelet use CFS quota (https://www.
         # kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU
@@ -7368,6 +7474,13 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ReservedResourcesConfig]
         attr_accessor :reserved_resources_config
       
+        # Optional. The reserved_system_cpus option specifies the CPU list reserved for
+        # the host system services. Format: a list of CPU IDs (e.g. "0-3", "0,1") that
+        # can be parsed as a cpuset.
+        # Corresponds to the JSON property `reservedSystemCpus`
+        # @return [String]
+        attr_accessor :reserved_system_cpus
+      
         # Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed
         # grace period (in seconds) used to terminate critical pods during a node
         # shutdown. This value should be <= shutdown_grace_period_seconds, and is only
@@ -7416,6 +7529,8 @@ module Google
           @allowed_unsafe_sysctls = args[:allowed_unsafe_sysctls] if args.key?(:allowed_unsafe_sysctls)
           @container_log_max_files = args[:container_log_max_files] if args.key?(:container_log_max_files)
           @container_log_max_size = args[:container_log_max_size] if args.key?(:container_log_max_size)
+          @container_log_max_workers = args[:container_log_max_workers] if args.key?(:container_log_max_workers)
+          @container_log_monitor_interval = args[:container_log_monitor_interval] if args.key?(:container_log_monitor_interval)
           @cpu_cfs_quota = args[:cpu_cfs_quota] if args.key?(:cpu_cfs_quota)
           @cpu_cfs_quota_period = args[:cpu_cfs_quota_period] if args.key?(:cpu_cfs_quota_period)
           @cpu_manager_policy = args[:cpu_manager_policy] if args.key?(:cpu_manager_policy)
@@ -7433,6 +7548,7 @@ module Google
           @memory_manager = args[:memory_manager] if args.key?(:memory_manager)
           @pod_pids_limit = args[:pod_pids_limit] if args.key?(:pod_pids_limit)
           @reserved_resources_config = args[:reserved_resources_config] if args.key?(:reserved_resources_config)
+          @reserved_system_cpus = args[:reserved_system_cpus] if args.key?(:reserved_system_cpus)
           @shutdown_grace_period_critical_pods_seconds = args[:shutdown_grace_period_critical_pods_seconds] if args.key?(:shutdown_grace_period_critical_pods_seconds)
           @shutdown_grace_period_seconds = args[:shutdown_grace_period_seconds] if args.key?(:shutdown_grace_period_seconds)
           @single_process_oom_kill = args[:single_process_oom_kill] if args.key?(:single_process_oom_kill)
@@ -7530,6 +7646,11 @@ module Google
         attr_accessor :create_pod_range
         alias_method :create_pod_range?, :create_pod_range
       
+        # The datapath provider for this node pool.
+        # Corresponds to the JSON property `datapathProvider`
+        # @return [String]
+        attr_accessor :datapath_provider
+      
         # Whether nodes have internal IP addresses only. If enable_private_nodes is not
         # specified, then the value is derived from Cluster.NetworkConfig.
         # default_enable_private_nodes
@@ -7608,6 +7729,7 @@ module Google
           @additional_node_network_configs = args[:additional_node_network_configs] if args.key?(:additional_node_network_configs)
           @additional_pod_network_configs = args[:additional_pod_network_configs] if args.key?(:additional_pod_network_configs)
           @create_pod_range = args[:create_pod_range] if args.key?(:create_pod_range)
+          @datapath_provider = args[:datapath_provider] if args.key?(:datapath_provider)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @network = args[:network] if args.key?(:network)
           @network_performance_config = args[:network_performance_config] if args.key?(:network_performance_config)
@@ -8816,7 +8938,10 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadConfig]
         attr_accessor :workload_config
       
-        # Sets which mode to use for Protect workload vulnerability scanning feature.
+        # Deprecated: Vulnerability scanning is no longer supported. For more details,
+        # see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. Sets which mode to use for Protect workload
+        # vulnerability scanning feature.
         # Corresponds to the JSON property `workloadVulnerabilityMode`
         # @return [String]
         attr_accessor :workload_vulnerability_mode
@@ -9808,7 +9933,9 @@ module Google
         # @return [String]
         attr_accessor :mode
       
-        # Sets which mode to use for vulnerability scanning.
+        # Deprecated: Vulnerability scanning is no longer supported. For more details,
+        # see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-
+        # management-deprecation. Sets which mode to use for vulnerability scanning.
         # Corresponds to the JSON property `vulnerabilityMode`
         # @return [String]
         attr_accessor :vulnerability_mode
@@ -11379,6 +11506,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. Option to specify the rollout strategy to apply node pool
+        # configuration updates. If unspecified, standard rolling update strategy with
+        # VM recreation is used as the default behavior.
+        # Corresponds to the JSON property `nodeConfigUpdateMode`
+        # @return [String]
+        attr_accessor :node_config_update_mode
+      
         # NodeDrainConfig contains the node drain related configurations for this node
         # pool.
         # Corresponds to the JSON property `nodeDrainConfig`
@@ -11406,6 +11540,12 @@ module Google
         # Corresponds to the JSON property `nodeVersion`
         # @return [String]
         attr_accessor :node_version
+      
+        # Optional. The nodes to upgrade. The field can only be used together with the
+        # node_version field.
+        # Corresponds to the JSON property `nodes`
+        # @return [Array<String>]
+        attr_accessor :nodes
       
         # Deprecated. The Google Developers Console [project ID or project number](https:
         # //cloud.google.com/resource-manager/docs/creating-managing-projects). This
@@ -11544,10 +11684,12 @@ module Google
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @max_run_duration = args[:max_run_duration] if args.key?(:max_run_duration)
           @name = args[:name] if args.key?(:name)
+          @node_config_update_mode = args[:node_config_update_mode] if args.key?(:node_config_update_mode)
           @node_drain_config = args[:node_drain_config] if args.key?(:node_drain_config)
           @node_network_config = args[:node_network_config] if args.key?(:node_network_config)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
+          @nodes = args[:nodes] if args.key?(:nodes)
           @project_id = args[:project_id] if args.key?(:project_id)
           @queued_provisioning = args[:queued_provisioning] if args.key?(:queued_provisioning)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
@@ -12187,6 +12329,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @windows_versions = args[:windows_versions] if args.key?(:windows_versions)
+        end
+      end
+      
+      # Configuration for the Wiz Sensor add-on.
+      class WizSensorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The GCP Secret Manager URI for the Wiz API key secret. Format: "
+        # projects/`project_id`/secrets/`secret_name`/versions/`version`" or Format: "
+        # projects/`project_id`/locations/`location_id`/secrets/`secret_name`/versions/`
+        # version`"
+        # Corresponds to the JSON property `apiKeySecretUri`
+        # @return [String]
+        attr_accessor :api_key_secret_uri
+      
+        # Optional. Whether the Wiz Sensor add-on is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Optional. The GCP Secret Manager URI for the Wiz proxy configuration. Format: "
+        # projects/`project_id`/secrets/`secret_name`/versions/`version`" or Format: "
+        # projects/`project_id`/locations/`location_id`/secrets/`secret_name`/versions/`
+        # version`"
+        # Corresponds to the JSON property `proxySecretUri`
+        # @return [String]
+        attr_accessor :proxy_secret_uri
+      
+        # Optional. The GCP Secret Manager URI for the Wiz registry secret. Format: "
+        # projects/`project_id`/secrets/`secret_name`/versions/`version`" or Format: "
+        # projects/`project_id`/locations/`location_id`/secrets/`secret_name`/versions/`
+        # version`"
+        # Corresponds to the JSON property `registrySecretUri`
+        # @return [String]
+        attr_accessor :registry_secret_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_key_secret_uri = args[:api_key_secret_uri] if args.key?(:api_key_secret_uri)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @proxy_secret_uri = args[:proxy_secret_uri] if args.key?(:proxy_secret_uri)
+          @registry_secret_uri = args[:registry_secret_uri] if args.key?(:registry_secret_uri)
         end
       end
       
