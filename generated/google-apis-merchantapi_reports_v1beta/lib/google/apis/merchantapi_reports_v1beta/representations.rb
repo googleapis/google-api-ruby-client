@@ -400,6 +400,7 @@ module Google
       
           property :impressions, :numeric_string => true, as: 'impressions'
           property :marketing_method, as: 'marketingMethod'
+          property :network, as: 'network'
           property :offer_id, as: 'offerId'
           property :product_type_l1, as: 'productTypeL1'
           property :product_type_l2, as: 'productTypeL2'
