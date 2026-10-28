@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AgentIdentityPool
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ApiKeyParams
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -70,6 +76,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ClientAssertionJwtAuth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClientSecretAuth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConnectorReferenceAuthProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CrossAppAccessAuthProvider
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomIssuer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DirectIdJagInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DisableAuthProviderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +137,18 @@ module Google
       end
       
       class GeminiEnterpriseAuthProviderParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleAccount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IdTokenProcessingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +202,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResolveAuthorizationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResolveAuthorizationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RevokeAuthorizationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkforceIdentityFederation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -210,6 +282,12 @@ module Google
           property :token_url, as: 'tokenUrl'
           property :user_id, as: 'userId'
           property :workload_id, as: 'workloadId'
+        end
+      end
+      
+      class AgentIdentityPool
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -261,11 +339,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_key, as: 'apiKey', class: Google::Apis::AgentidentityV1::ApiKeyParams, decorator: Google::Apis::AgentidentityV1::ApiKeyParams::Representation
       
+          property :connector_reference_auth_provider, as: 'connectorReferenceAuthProvider', class: Google::Apis::AgentidentityV1::ConnectorReferenceAuthProvider, decorator: Google::Apis::AgentidentityV1::ConnectorReferenceAuthProvider::Representation
+      
           property :ge_auth_provider, as: 'geAuthProvider', class: Google::Apis::AgentidentityV1::GeminiEnterpriseAuthProviderParams, decorator: Google::Apis::AgentidentityV1::GeminiEnterpriseAuthProviderParams::Representation
       
           property :three_legged_oauth, as: 'threeLeggedOauth', class: Google::Apis::AgentidentityV1::ThreeLeggedOAuth, decorator: Google::Apis::AgentidentityV1::ThreeLeggedOAuth::Representation
       
           property :two_legged_oauth, as: 'twoLeggedOauth', class: Google::Apis::AgentidentityV1::TwoLeggedOAuth, decorator: Google::Apis::AgentidentityV1::TwoLeggedOAuth::Representation
+      
+          property :xaa_auth_provider, as: 'xaaAuthProvider', class: Google::Apis::AgentidentityV1::CrossAppAccessAuthProvider, decorator: Google::Apis::AgentidentityV1::CrossAppAccessAuthProvider::Representation
       
         end
       end
@@ -289,6 +371,64 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class ClientAssertionJwtAuth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+        end
+      end
+      
+      class ClientSecretAuth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :client_secret, as: 'clientSecret'
+        end
+      end
+      
+      class ConnectorReferenceAuthProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorization_details, as: 'authorizationDetails'
+          property :connector, as: 'connector'
+        end
+      end
+      
+      class CrossAppAccessAuthProvider
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :additional_parameters, as: 'additionalParameters'
+          property :client_assertion_jwt_auth, as: 'clientAssertionJwtAuth', class: Google::Apis::AgentidentityV1::ClientAssertionJwtAuth, decorator: Google::Apis::AgentidentityV1::ClientAssertionJwtAuth::Representation
+      
+          property :client_secret_auth, as: 'clientSecretAuth', class: Google::Apis::AgentidentityV1::ClientSecretAuth, decorator: Google::Apis::AgentidentityV1::ClientSecretAuth::Representation
+      
+          property :custom_issuer, as: 'customIssuer', class: Google::Apis::AgentidentityV1::CustomIssuer, decorator: Google::Apis::AgentidentityV1::CustomIssuer::Representation
+      
+          property :google_account, as: 'googleAccount', class: Google::Apis::AgentidentityV1::GoogleAccount, decorator: Google::Apis::AgentidentityV1::GoogleAccount::Representation
+      
+          property :id_jag_input, as: 'idJagInput', class: Google::Apis::AgentidentityV1::DirectIdJagInput, decorator: Google::Apis::AgentidentityV1::DirectIdJagInput::Representation
+      
+          property :id_token_input, as: 'idTokenInput', class: Google::Apis::AgentidentityV1::IdTokenProcessingConfig, decorator: Google::Apis::AgentidentityV1::IdTokenProcessingConfig::Representation
+      
+          property :workforce_identity_federation, as: 'workforceIdentityFederation', class: Google::Apis::AgentidentityV1::WorkforceIdentityFederation, decorator: Google::Apis::AgentidentityV1::WorkforceIdentityFederation::Representation
+      
+        end
+      end
+      
+      class CustomIssuer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :issuer, as: 'issuer'
+          property :token_url, as: 'tokenUrl'
+        end
+      end
+      
+      class DirectIdJagInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -325,6 +465,22 @@ module Google
       class GeminiEnterpriseAuthProviderParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IdTokenProcessingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_identity_pool, as: 'agentIdentityPool', class: Google::Apis::AgentidentityV1::AgentIdentityPool, decorator: Google::Apis::AgentidentityV1::AgentIdentityPool::Representation
+      
+          hash :id_jag_additional_claims, as: 'idJagAdditionalClaims'
+          property :id_jag_auth_provider, as: 'idJagAuthProvider'
         end
       end
       
@@ -406,6 +562,20 @@ module Google
         end
       end
       
+      class ResolveAuthorizationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_user_id, as: 'clientUserId'
+        end
+      end
+      
+      class ResolveAuthorizationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authorization, as: 'authorization'
+        end
+      end
+      
       class RevokeAuthorizationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -468,6 +638,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :request_id, as: 'requestId'
+        end
+      end
+      
+      class WorkforceIdentityFederation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
     end

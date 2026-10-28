@@ -106,6 +106,19 @@ module Google
         end
       end
       
+      # Marker message to indicate the managed Agent Identity Pool is used.
+      class AgentIdentityPool
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration for API key authentication.
       class ApiKeyParams
         include Google::Apis::Core::Hashable
@@ -302,6 +315,11 @@ module Google
         # @return [Google::Apis::AgentidentityV1::ApiKeyParams]
         attr_accessor :api_key
       
+        # Configuration parameters for the Connector Reference auth provider.
+        # Corresponds to the JSON property `connectorReferenceAuthProvider`
+        # @return [Google::Apis::AgentidentityV1::ConnectorReferenceAuthProvider]
+        attr_accessor :connector_reference_auth_provider
+      
         # Configuration for Gemini Enterprise authentication.
         # Corresponds to the JSON property `geAuthProvider`
         # @return [Google::Apis::AgentidentityV1::GeminiEnterpriseAuthProviderParams]
@@ -317,6 +335,11 @@ module Google
         # @return [Google::Apis::AgentidentityV1::TwoLeggedOAuth]
         attr_accessor :two_legged_oauth
       
+        # Configuration parameters for the Cross-App Access auth provider.
+        # Corresponds to the JSON property `xaaAuthProvider`
+        # @return [Google::Apis::AgentidentityV1::CrossAppAccessAuthProvider]
+        attr_accessor :xaa_auth_provider
+      
         def initialize(**args)
            update!(**args)
         end
@@ -324,9 +347,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_key = args[:api_key] if args.key?(:api_key)
+          @connector_reference_auth_provider = args[:connector_reference_auth_provider] if args.key?(:connector_reference_auth_provider)
           @ge_auth_provider = args[:ge_auth_provider] if args.key?(:ge_auth_provider)
           @three_legged_oauth = args[:three_legged_oauth] if args.key?(:three_legged_oauth)
           @two_legged_oauth = args[:two_legged_oauth] if args.key?(:two_legged_oauth)
+          @xaa_auth_provider = args[:xaa_auth_provider] if args.key?(:xaa_auth_provider)
         end
       end
       
@@ -482,6 +507,178 @@ module Google
         end
       end
       
+      # Configuration for client ID and client assertion JWT authentication.
+      class ClientAssertionJwtAuth
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client identifier.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+        end
+      end
+      
+      # Configuration for client ID and client secret authentication.
+      class ClientSecretAuth
+        include Google::Apis::Core::Hashable
+      
+        # Required. The client identifier.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. Input only. The client secret.
+        # Corresponds to the JSON property `clientSecret`
+        # @return [String]
+        attr_accessor :client_secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @client_secret = args[:client_secret] if args.key?(:client_secret)
+        end
+      end
+      
+      # Configuration parameters for the Connector Reference auth provider.
+      class ConnectorReferenceAuthProvider
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth
+        # resources/scopes, formatted as a JSON array of JSON objects.
+        # Corresponds to the JSON property `authorizationDetails`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :authorization_details
+      
+        # Required. The name of the referenced connector.
+        # Corresponds to the JSON property `connector`
+        # @return [String]
+        attr_accessor :connector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization_details = args[:authorization_details] if args.key?(:authorization_details)
+          @connector = args[:connector] if args.key?(:connector)
+        end
+      end
+      
+      # Configuration parameters for the Cross-App Access auth provider.
+      class CrossAppAccessAuthProvider
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Additional parameters to be passed to the token endpoint.
+        # Corresponds to the JSON property `additionalParameters`
+        # @return [Hash<String,String>]
+        attr_accessor :additional_parameters
+      
+        # Configuration for client ID and client assertion JWT authentication.
+        # Corresponds to the JSON property `clientAssertionJwtAuth`
+        # @return [Google::Apis::AgentidentityV1::ClientAssertionJwtAuth]
+        attr_accessor :client_assertion_jwt_auth
+      
+        # Configuration for client ID and client secret authentication.
+        # Corresponds to the JSON property `clientSecretAuth`
+        # @return [Google::Apis::AgentidentityV1::ClientSecretAuth]
+        attr_accessor :client_secret_auth
+      
+        # Configuration for a custom or third-party authorization server issuer.
+        # Corresponds to the JSON property `customIssuer`
+        # @return [Google::Apis::AgentidentityV1::CustomIssuer]
+        attr_accessor :custom_issuer
+      
+        # Configuration for Google Account usage as the issuer.
+        # Corresponds to the JSON property `googleAccount`
+        # @return [Google::Apis::AgentidentityV1::GoogleAccount]
+        attr_accessor :google_account
+      
+        # Marker message indicating the input is already an ID-JAG, so no fetching is
+        # required.
+        # Corresponds to the JSON property `idJagInput`
+        # @return [Google::Apis::AgentidentityV1::DirectIdJagInput]
+        attr_accessor :id_jag_input
+      
+        # Defines how to process an input ID token to obtain an ID-JAG.
+        # Corresponds to the JSON property `idTokenInput`
+        # @return [Google::Apis::AgentidentityV1::IdTokenProcessingConfig]
+        attr_accessor :id_token_input
+      
+        # Configuration for Workforce Identity Federation usage as the issuer.
+        # Corresponds to the JSON property `workforceIdentityFederation`
+        # @return [Google::Apis::AgentidentityV1::WorkforceIdentityFederation]
+        attr_accessor :workforce_identity_federation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @additional_parameters = args[:additional_parameters] if args.key?(:additional_parameters)
+          @client_assertion_jwt_auth = args[:client_assertion_jwt_auth] if args.key?(:client_assertion_jwt_auth)
+          @client_secret_auth = args[:client_secret_auth] if args.key?(:client_secret_auth)
+          @custom_issuer = args[:custom_issuer] if args.key?(:custom_issuer)
+          @google_account = args[:google_account] if args.key?(:google_account)
+          @id_jag_input = args[:id_jag_input] if args.key?(:id_jag_input)
+          @id_token_input = args[:id_token_input] if args.key?(:id_token_input)
+          @workforce_identity_federation = args[:workforce_identity_federation] if args.key?(:workforce_identity_federation)
+        end
+      end
+      
+      # Configuration for a custom or third-party authorization server issuer.
+      class CustomIssuer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The issuer identifier of the target Authorization Server.
+        # Corresponds to the JSON property `issuer`
+        # @return [String]
+        attr_accessor :issuer
+      
+        # Required. The token endpoint of the target OAuth authorization server to
+        # retrieve resource tokens.
+        # Corresponds to the JSON property `tokenUrl`
+        # @return [String]
+        attr_accessor :token_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @issuer = args[:issuer] if args.key?(:issuer)
+          @token_url = args[:token_url] if args.key?(:token_url)
+        end
+      end
+      
+      # Marker message indicating the input is already an ID-JAG, so no fetching is
+      # required.
+      class DirectIdJagInput
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `DisableAuthProvider`.
       class DisableAuthProviderRequest
         include Google::Apis::Core::Hashable
@@ -610,6 +807,51 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Configuration for Google Account usage as the issuer.
+      class GoogleAccount
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Defines how to process an input ID token to obtain an ID-JAG.
+      class IdTokenProcessingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Marker message to indicate the managed Agent Identity Pool is used.
+        # Corresponds to the JSON property `agentIdentityPool`
+        # @return [Google::Apis::AgentidentityV1::AgentIdentityPool]
+        attr_accessor :agent_identity_pool
+      
+        # Optional. Optional additional claims to include when fetching an ID-JAG.
+        # Corresponds to the JSON property `idJagAdditionalClaims`
+        # @return [Hash<String,Object>]
+        attr_accessor :id_jag_additional_claims
+      
+        # The resource name of the ID-JAG auth provider. Format: "projects/`project`/
+        # locations/`location`/authProviders/`auth_provider`"
+        # Corresponds to the JSON property `idJagAuthProvider`
+        # @return [String]
+        attr_accessor :id_jag_auth_provider
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_identity_pool = args[:agent_identity_pool] if args.key?(:agent_identity_pool)
+          @id_jag_additional_claims = args[:id_jag_additional_claims] if args.key?(:id_jag_additional_claims)
+          @id_jag_auth_provider = args[:id_jag_auth_provider] if args.key?(:id_jag_auth_provider)
         end
       end
       
@@ -925,6 +1167,46 @@ module Google
         end
       end
       
+      # Request message for `ResolveAuthorization`.
+      class ResolveAuthorizationRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The user ID of the client for whom the authorization is resolved.
+        # Corresponds to the JSON property `clientUserId`
+        # @return [String]
+        attr_accessor :client_user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_user_id = args[:client_user_id] if args.key?(:client_user_id)
+        end
+      end
+      
+      # Response message for `ResolveAuthorization`.
+      class ResolveAuthorizationResponse
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the resolved authorization. Format: projects/`project`/
+        # locations/`location`/authProviders/`auth_provider`/authorizations/`
+        # authorization`
+        # Corresponds to the JSON property `authorization`
+        # @return [String]
+        attr_accessor :authorization
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authorization = args[:authorization] if args.key?(:authorization)
+        end
+      end
+      
       # Request message for `RevokeAuthorization`.
       class RevokeAuthorizationRequest
         include Google::Apis::Core::Hashable
@@ -1163,6 +1445,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
+      # Configuration for Workforce Identity Federation usage as the issuer.
+      class WorkforceIdentityFederation
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
     end
