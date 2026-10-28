@@ -344261,6 +344261,7 @@
 "/looker:v1/ExportMetadata/esaSourceDatasetId": esa_source_dataset_id
 "/looker:v1/ExportMetadata/exportEncryptionKey": export_encryption_key
 "/looker:v1/ExportMetadata/exportMetrics": export_metrics
+"/looker:v1/ExportMetadata/exportTime": export_time
 "/looker:v1/ExportMetadata/filePaths": file_paths
 "/looker:v1/ExportMetadata/filePaths/file_path": file_path
 "/looker:v1/ExportMetadata/lookerEncryptionKey": looker_encryption_key

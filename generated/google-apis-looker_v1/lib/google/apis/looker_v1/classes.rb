@@ -26,7 +26,7 @@ module Google
       class AdminSettings
         include Google::Apis::Core::Hashable
       
-        # Email domain allowlist for the instance.
+        # Optional. Email domain allowlist for the instance.
         # Corresponds to the JSON property `allowedEmailDomains`
         # @return [Array<String>]
         attr_accessor :allowed_email_domains
@@ -169,12 +169,12 @@ module Google
       class CustomDomain
         include Google::Apis::Core::Hashable
       
-        # Domain name.
+        # Optional. Domain name.
         # Corresponds to the JSON property `domain`
         # @return [String]
         attr_accessor :domain
       
-        # Domain state.
+        # Output only. Domain state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -298,7 +298,7 @@ module Google
       class EncryptionConfig
         include Google::Apis::Core::Hashable
       
-        # Name of the CMEK key in KMS (input parameter).
+        # Optional. Immutable. Name of the CMEK key in KMS (input parameter).
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -395,6 +395,13 @@ module Google
         # @return [Google::Apis::LookerV1::ExportMetrics]
         attr_accessor :export_metrics
       
+        # A string of digits representing the number of microseconds since the Unix
+        # epoch when the export was created. Used to identify the cloned source Elite
+        # System Activity (ESA) BigQuery dataset for O2C direct dataset migration.
+        # Corresponds to the JSON property `exportTime`
+        # @return [String]
+        attr_accessor :export_time
+      
         # List of files created as part of export artifact (excluding the metadata). The
         # paths are relative to the folder containing the metadata.
         # Corresponds to the JSON property `filePaths`
@@ -438,6 +445,7 @@ module Google
           @esa_source_dataset_id = args[:esa_source_dataset_id] if args.key?(:esa_source_dataset_id)
           @export_encryption_key = args[:export_encryption_key] if args.key?(:export_encryption_key)
           @export_metrics = args[:export_metrics] if args.key?(:export_metrics)
+          @export_time = args[:export_time] if args.key?(:export_time)
           @file_paths = args[:file_paths] if args.key?(:file_paths)
           @looker_encryption_key = args[:looker_encryption_key] if args.key?(:looker_encryption_key)
           @looker_instance = args[:looker_instance] if args.key?(:looker_instance)
@@ -609,9 +617,10 @@ module Google
         # @return [String]
         attr_accessor :class_type
       
-        # Network name in the consumer project. Format: `projects/`project`/global/
-        # networks/`network``. Note that the consumer network may be in a different GCP
-        # project than the consumer project that is hosting the Looker Instance.
+        # Optional. Network name in the consumer project. Format: `projects/`project`/
+        # global/networks/`network``. Note that the consumer network may be in a
+        # different GCP project than the consumer project that is hosting the Looker
+        # Instance.
         # Corresponds to the JSON property `consumerNetwork`
         # @return [String]
         attr_accessor :consumer_network
@@ -727,12 +736,13 @@ module Google
         # @return [Google::Apis::LookerV1::PeriodicExportConfig]
         attr_accessor :periodic_export_config
       
-        # Platform edition.
+        # Optional. Platform edition. Marked as OPTIONAL for backward compatibility,
+        # though it is required during instance creation.
         # Corresponds to the JSON property `platformEdition`
         # @return [String]
         attr_accessor :platform_edition
       
-        # Whether private IP is enabled on the Looker instance.
+        # Optional. Whether private IP is enabled on the Looker instance.
         # Corresponds to the JSON property `privateIpEnabled`
         # @return [Boolean]
         attr_accessor :private_ip_enabled
@@ -751,7 +761,7 @@ module Google
         attr_accessor :psc_enabled
         alias_method :psc_enabled?, :psc_enabled
       
-        # Whether public IP is enabled on the Looker instance.
+        # Optional. Whether public IP is enabled on the Looker instance.
         # Corresponds to the JSON property `publicIpEnabled`
         # @return [Boolean]
         attr_accessor :public_ip_enabled
@@ -762,9 +772,9 @@ module Google
         # @return [String]
         attr_accessor :release_channel
       
-        # Name of a reserved IP address range within the Instance.consumer_network, to
-        # be used for private services access connection. May or may not be specified in
-        # a create request.
+        # Optional. Name of a reserved IP address range within the Instance.
+        # consumer_network, to be used for private services access connection. May or
+        # may not be specified in a create request.
         # Corresponds to the JSON property `reservedRange`
         # @return [String]
         attr_accessor :reserved_range

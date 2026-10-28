@@ -366,6 +366,7 @@ module Google
       
           property :export_metrics, as: 'exportMetrics', class: Google::Apis::LookerV1::ExportMetrics, decorator: Google::Apis::LookerV1::ExportMetrics::Representation
       
+          property :export_time, as: 'exportTime'
           collection :file_paths, as: 'filePaths'
           property :looker_encryption_key, as: 'lookerEncryptionKey'
           property :looker_instance, as: 'lookerInstance'
