@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArchiveUploadSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,30 @@ module Google
       end
       
       class FetchAvailableBindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class File
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Frontmatter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -232,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListFindingsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,7 +286,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPublishersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSkillRevisionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSkillsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -292,6 +346,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Publisher
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScanResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScanningConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchAgentsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,7 +388,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SearchSkillsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchSkillsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Skill
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SkillRevision
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -420,6 +516,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :extended_metadata, as: 'extendedMetadata', class: Google::Apis::AgentregistryV1::ExtendedMetadata, decorator: Google::Apis::AgentregistryV1::ExtendedMetadata::Representation
       
+        end
+      end
+      
+      class ArchiveUploadSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_content, :base64 => true, as: 'archiveContent'
         end
       end
       
@@ -553,6 +656,50 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::AgentregistryV1::Binding, decorator: Google::Apis::AgentregistryV1::Binding::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class File
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :line_number, :numeric_string => true, as: 'lineNumber'
+          property :path, as: 'path'
+        end
+      end
+      
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :detail, as: 'detail'
+          collection :files, as: 'files', class: Google::Apis::AgentregistryV1::File, decorator: Google::Apis::AgentregistryV1::File::Representation
+      
+          property :finding_class, as: 'findingClass'
+          property :name, as: 'name'
+          property :resource, as: 'resource'
+          property :severity, as: 'severity'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Frontmatter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility, as: 'compatibility'
+          property :description, as: 'description'
+          property :license, as: 'license'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :generation, :numeric_string => true, as: 'generation'
+          property :uri, as: 'uri'
         end
       end
       
@@ -690,6 +837,15 @@ module Google
         end
       end
       
+      class ListFindingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :findings, as: 'findings', class: Google::Apis::AgentregistryV1::Finding, decorator: Google::Apis::AgentregistryV1::Finding::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -718,12 +874,40 @@ module Google
         end
       end
       
+      class ListPublishersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :publishers, as: 'publishers', class: Google::Apis::AgentregistryV1::Publisher, decorator: Google::Apis::AgentregistryV1::Publisher::Representation
+      
+        end
+      end
+      
       class ListServicesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :services, as: 'services', class: Google::Apis::AgentregistryV1::Service, decorator: Google::Apis::AgentregistryV1::Service::Representation
       
+        end
+      end
+      
+      class ListSkillRevisionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skill_revisions, as: 'skillRevisions', class: Google::Apis::AgentregistryV1::SkillRevision, decorator: Google::Apis::AgentregistryV1::SkillRevision::Representation
+      
+        end
+      end
+      
+      class ListSkillsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1::Skill, decorator: Google::Apis::AgentregistryV1::Skill::Representation
+      
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -798,6 +982,35 @@ module Google
         end
       end
       
+      class Publisher
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :documentation_uri, as: 'documentationUri'
+          property :name, as: 'name'
+          property :publisher_tier, as: 'publisherTier'
+          property :support_uri, as: 'supportUri'
+          property :verified_prefix, as: 'verifiedPrefix'
+        end
+      end
+      
+      class ScanResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_message, as: 'errorMessage'
+          collection :findings, as: 'findings'
+          property :scan_state, as: 'scanState'
+          property :scan_time, as: 'scanTime'
+        end
+      end
+      
+      class ScanningConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy, as: 'policy'
+        end
+      end
+      
       class SearchAgentsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -834,6 +1047,26 @@ module Google
         end
       end
       
+      class SearchSkillsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :search_string, as: 'searchString'
+          property :search_type, as: 'searchType'
+        end
+      end
+      
+      class SearchSkillsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :skills, as: 'skills', class: Google::Apis::AgentregistryV1::Skill, decorator: Google::Apis::AgentregistryV1::Skill::Representation
+      
+        end
+      end
+      
       class Service
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -851,6 +1084,50 @@ module Google
           property :name, as: 'name'
           property :registry_resource, as: 'registryResource'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class Skill
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :default_revision, as: 'defaultRevision'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :frontmatter, as: 'frontmatter', class: Google::Apis::AgentregistryV1::Frontmatter, decorator: Google::Apis::AgentregistryV1::Frontmatter::Representation
+      
+          property :initial_revision, as: 'initialRevision', class: Google::Apis::AgentregistryV1::SkillRevision, decorator: Google::Apis::AgentregistryV1::SkillRevision::Representation
+      
+          property :name, as: 'name'
+          property :publisher, as: 'publisher'
+          property :scanning_config, as: 'scanningConfig', class: Google::Apis::AgentregistryV1::ScanningConfig, decorator: Google::Apis::AgentregistryV1::ScanningConfig::Representation
+      
+          property :skill_id, as: 'skillId'
+          property :state, as: 'state'
+          property :target_state, as: 'targetState'
+          property :type, as: 'type'
+          property :uid, as: 'uid'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class SkillRevision
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :archive_upload_source, as: 'archiveUploadSource', class: Google::Apis::AgentregistryV1::ArchiveUploadSource, decorator: Google::Apis::AgentregistryV1::ArchiveUploadSource::Representation
+      
+          property :create_time, as: 'createTime'
+          property :frontmatter, as: 'frontmatter', class: Google::Apis::AgentregistryV1::Frontmatter, decorator: Google::Apis::AgentregistryV1::Frontmatter::Representation
+      
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::AgentregistryV1::GcsSource, decorator: Google::Apis::AgentregistryV1::GcsSource::Representation
+      
+          property :name, as: 'name'
+          property :scan_result, as: 'scanResult', class: Google::Apis::AgentregistryV1::ScanResult, decorator: Google::Apis::AgentregistryV1::ScanResult::Representation
+      
+          property :sha256_hash, as: 'sha256Hash'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :state, as: 'state'
+          property :uid, as: 'uid'
         end
       end
       
