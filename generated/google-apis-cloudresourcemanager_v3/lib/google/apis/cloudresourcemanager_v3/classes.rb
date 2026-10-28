@@ -194,6 +194,123 @@ module Google
         end
       end
       
+      # A Boundary is a collection of projects defined by a filtering criteria on an
+      # organization or a folder.
+      class Boundary
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation time of the Boundary.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Human-readable display name of the Boundary. When present it must be
+        # between 4 to 30 characters. Allowed characters are: lowercase and uppercase
+        # letters, numbers, hyphen, single-quote, double-quote, space, and exclamation
+        # point. Example: `My Production Boundary`
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update and delete requests to ensure the client has an up-
+        # to-date value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Output only. The Management Project of the CapabilityConfig this Boundary is
+        # associated with. Will be empty if the Boundary is not associated with any
+        # CapabilityConfig. Format: `projects/`project_number`` Example: `projects/
+        # 123456789012`
+        # Corresponds to the JSON property `managementProject`
+        # @return [String]
+        attr_accessor :management_project
+      
+        # Identifier. The unique resource name of the Boundary. Format: - `organizations/
+        # `organization_id`/boundaries/`boundary_id`` - `folders/`folder_id`/boundaries/`
+        # boundary_id`` Example: `folders/123456789/boundaries/my-boundary`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Filter to define the criteria for including projects in the Boundary.
+        # Corresponds to the JSON property `resourceFilter`
+        # @return [Google::Apis::CloudresourcemanagerV3::ResourceFilter]
+        attr_accessor :resource_filter
+      
+        # Output only. The lifecycle state of the Boundary.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The most recent time this Boundary was modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @etag = args[:etag] if args.key?(:etag)
+          @management_project = args[:management_project] if args.key?(:management_project)
+          @name = args[:name] if args.key?(:name)
+          @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # A BoundaryConfig defines the common configurations regarding Boundaries
+      # defined under a parent CRM node (Folder or Organization), such as the
+      # partitioning tag key.
+      class BoundaryConfig
+        include Google::Apis::Core::Hashable
+      
+        # This checksum is computed by the server based on the value of other fields,
+        # and may be sent on update requests to ensure the client has an up-to-date
+        # value before proceeding.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Identifier. The unique resource name of the BoundaryConfig. Format: - `
+        # organizations/`organization`/boundaryConfig` - `folders/`folder`/
+        # boundaryConfig` Example: `folders/123456789/boundaryConfig`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The namespaced name of the tag key. Format: ``parent_id`/`
+        # tag_key_short_name`` Example: `123456789012/env` (where 123456789012 is the
+        # organization ID).
+        # Corresponds to the JSON property `tagKey`
+        # @return [String]
+        attr_accessor :tag_key
+      
+        # Output only. The most recent time this BoundaryConfig was modified.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @name = args[:name] if args.key?(:name)
+          @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Representation of a Capability.
       class Capability
         include Google::Apis::Core::Hashable
@@ -1128,6 +1245,39 @@ module Google
         end
       end
       
+      # A page of the response received from the ListBoundaries method. A paginated
+      # response where more pages are available has `next_page_token` set. This token
+      # can be used in a subsequent request to retrieve the next page. NOTE: A
+      # response may contain fewer elements than the request `page_size` and still
+      # have a `next_page_token`.
+      class ListBoundariesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Boundaries under the parent. This list can be paginated.
+        # Corresponds to the JSON property `boundaries`
+        # @return [Array<Google::Apis::CloudresourcemanagerV3::Boundary>]
+        attr_accessor :boundaries
+      
+        # Pagination token. If the result set is too large to fit in a single response,
+        # this token is returned. It encodes the position of the current result cursor.
+        # Feeding this value into a new list request with the `page_token` parameter
+        # gives the next page of the results. When `next_page_token` is not filled in,
+        # there is no next page and the list returned is the last page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boundaries = args[:boundaries] if args.key?(:boundaries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A page of the response received from the ListCapabilityConfigs method. A
       # paginated response where more pages are available has `next_page_token` set.
       # This token can be used in a subsequent request to retrieve the next page. NOTE:
@@ -1855,6 +2005,25 @@ module Google
         end
       end
       
+      # Filter to define the criteria for including projects in the Boundary.
+      class ResourceFilter
+        include Google::Apis::Core::Hashable
+      
+        # Matches projects based on a specific tag key and a specific tag value.
+        # Corresponds to the JSON property `tagFilter`
+        # @return [Google::Apis::CloudresourcemanagerV3::TagFilter]
+        attr_accessor :tag_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag_filter = args[:tag_filter] if args.key?(:tag_filter)
+        end
+      end
+      
       # The response message for searching folders.
       class SearchFoldersResponse
         include Google::Apis::Core::Hashable
@@ -2123,6 +2292,35 @@ module Google
           @full_resource_name = args[:full_resource_name] if args.key?(:full_resource_name)
           @name = args[:name] if args.key?(:name)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Matches projects based on a specific tag key and a specific tag value.
+      class TagFilter
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The namespaced name of the tag key. Format: ``parent_id`/`
+        # tag_key_short_name`` Example: `123456789012/env` (where 123456789012 is the
+        # organization ID).
+        # Corresponds to the JSON property `tagKey`
+        # @return [String]
+        attr_accessor :tag_key
+      
+        # Required. The allowed value for the tag key. A project matches this tag filter
+        # if its effective tag value for the given `tag_key` matches this value. Format:
+        # short name of the tag value. Example: `production` or `staging`.
+        # Corresponds to the JSON property `tagValue`
+        # @return [String]
+        attr_accessor :tag_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tag_key = args[:tag_key] if args.key?(:tag_key)
+          @tag_value = args[:tag_value] if args.key?(:tag_value)
         end
       end
       
