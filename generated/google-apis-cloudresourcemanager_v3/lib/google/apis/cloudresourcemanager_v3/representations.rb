@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Boundary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BoundaryConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Capability
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,6 +256,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBoundariesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCapabilityConfigsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchFoldersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +413,12 @@ module Google
       end
       
       class TagBindingCollection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TagFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -520,6 +550,31 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class Boundary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :display_name, as: 'displayName'
+          property :etag, as: 'etag'
+          property :management_project, as: 'managementProject'
+          property :name, as: 'name'
+          property :resource_filter, as: 'resourceFilter', class: Google::Apis::CloudresourcemanagerV3::ResourceFilter, decorator: Google::Apis::CloudresourcemanagerV3::ResourceFilter::Representation
+      
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class BoundaryConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :name, as: 'name'
+          property :tag_key, as: 'tagKey'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -791,6 +846,15 @@ module Google
         end
       end
       
+      class ListBoundariesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :boundaries, as: 'boundaries', class: Google::Apis::CloudresourcemanagerV3::Boundary, decorator: Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCapabilityConfigsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -967,6 +1031,14 @@ module Google
         end
       end
       
+      class ResourceFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag_filter, as: 'tagFilter', class: Google::Apis::CloudresourcemanagerV3::TagFilter, decorator: Google::Apis::CloudresourcemanagerV3::TagFilter::Representation
+      
+        end
+      end
+      
       class SearchFoldersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1029,6 +1101,14 @@ module Google
           property :full_resource_name, as: 'fullResourceName'
           property :name, as: 'name'
           hash :tags, as: 'tags'
+        end
+      end
+      
+      class TagFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :tag_key, as: 'tagKey'
+          property :tag_value, as: 'tagValue'
         end
       end
       

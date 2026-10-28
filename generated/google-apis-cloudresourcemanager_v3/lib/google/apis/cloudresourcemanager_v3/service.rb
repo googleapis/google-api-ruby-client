@@ -210,6 +210,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the BoundaryConfig identified by the specified `name` (for example, `
+        # folders/123456789/boundaryConfig`).
+        # @param [String] name
+        #   Required. The name of the BoundaryConfig to retrieve. Format: `organizations/`
+        #   organization`/boundaryConfig` or `folders/`folder`/boundaryConfig` Example: `
+        #   folders/123456789/boundaryConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::BoundaryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::BoundaryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_boundary_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::BoundaryConfig::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::BoundaryConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for a folder. The returned policy may be empty
         # if no such policy or resource exists. The `resource` field should be the
         # folder's resource name, for example: "folders/1234". The caller must have `
@@ -560,6 +593,236 @@ module Google
           command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the BoundaryConfig identified by the specified `name` (for example, `
+        # folders/123456789/boundaryConfig`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the BoundaryConfig. Format: - `
+        #   organizations/`organization`/boundaryConfig` - `folders/`folder`/
+        #   boundaryConfig` Example: `folders/123456789/boundaryConfig`
+        # @param [Google::Apis::CloudresourcemanagerV3::BoundaryConfig] boundary_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_folder_boundary_config(name, boundary_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::BoundaryConfig::Representation
+          command.request_object = boundary_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Boundary under a parent Folder or Organization. Creating a Boundary
+        # triggers the creation of a Management Project if one is not supplied.
+        # @param [String] parent
+        #   Required. The parent resource under which the Boundary will be created. Format:
+        #   `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Google::Apis::CloudresourcemanagerV3::Boundary] boundary_object
+        # @param [String] boundary_id
+        #   Required. The user-assigned ID for the Boundary, which will become the final
+        #   component of the Boundary's resource name. Must be unique within the parent
+        #   resource. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It
+        #   must start with a letter. Trailing hyphens are prohibited. Example: `my-
+        #   boundary-123`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_folder_boundary(parent, boundary_object = nil, boundary_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/boundaries', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.request_object = boundary_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['boundaryId'] = boundary_id unless boundary_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the Boundary identified by the specified `name` (for example, `folders/
+        # 123456789/boundaries/my-boundary`).
+        # @param [String] name
+        #   Required. The name of the Boundary to delete. Format: `organizations/`
+        #   organization_id`/boundaries/`boundary_id`` or `folders/`folder_id`/boundaries/`
+        #   boundary_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_boundary(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Boundary identified by the specified `name` (for example, `
+        # folders/123456789/boundaries/my-boundary`).
+        # @param [String] name
+        #   Required. The name of the Boundary to retrieve. Format: `organizations/`
+        #   organization_id`/boundaries/`boundary_id`` or `folders/`folder_id`/boundaries/`
+        #   boundary_id`` Example: `folders/123456789/boundaries/my-boundary`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Boundary] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Boundary]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_folder_boundary(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Boundary
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Boundaries that are direct children of the specified organization or
+        # folder resource.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose Boundaries are being listed.
+        #   Format: `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Boundaries to return in the response. The
+        #   service may return fewer Boundaries than requested. If unspecified, at most
+        #   100 Boundaries will be returned. The maximum value is 100; values above 100
+        #   will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A pagination token received from a previous call to `ListBoundaries`
+        #   that indicates from where listing should continue. Provide this to retrieve
+        #   the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_folder_boundaries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/boundaries', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the
+        # Boundary identified by the specified `name` (for example, `folders/123456789/
+        # boundaries/my-boundary`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the Boundary. Format: - `organizations/
+        #   `organization_id`/boundaries/`boundary_id`` - `folders/`folder_id`/boundaries/`
+        #   boundary_id`` Example: `folders/123456789/boundaries/my-boundary`
+        # @param [Google::Apis::CloudresourcemanagerV3::Boundary] boundary_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_folder_boundary(name, boundary_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.request_object = boundary_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1146,6 +1409,39 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the BoundaryConfig identified by the specified `name` (for example, `
+        # folders/123456789/boundaryConfig`).
+        # @param [String] name
+        #   Required. The name of the BoundaryConfig to retrieve. Format: `organizations/`
+        #   organization`/boundaryConfig` or `folders/`folder`/boundaryConfig` Example: `
+        #   folders/123456789/boundaryConfig`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::BoundaryConfig] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::BoundaryConfig]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_boundary_config(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::BoundaryConfig::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::BoundaryConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for an organization resource. The policy may be
         # empty if no such policy or resource exists. The `resource` field should be the
         # organization's resource name, for example: "organizations/123". Authorization
@@ -1309,6 +1605,236 @@ module Google
           command.response_representation = Google::Apis::CloudresourcemanagerV3::TestIamPermissionsResponse::Representation
           command.response_class = Google::Apis::CloudresourcemanagerV3::TestIamPermissionsResponse
           command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the BoundaryConfig identified by the specified `name` (for example, `
+        # folders/123456789/boundaryConfig`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the BoundaryConfig. Format: - `
+        #   organizations/`organization`/boundaryConfig` - `folders/`folder`/
+        #   boundaryConfig` Example: `folders/123456789/boundaryConfig`
+        # @param [Google::Apis::CloudresourcemanagerV3::BoundaryConfig] boundary_config_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_boundary_config(name, boundary_config_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::BoundaryConfig::Representation
+          command.request_object = boundary_config_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a Boundary under a parent Folder or Organization. Creating a Boundary
+        # triggers the creation of a Management Project if one is not supplied.
+        # @param [String] parent
+        #   Required. The parent resource under which the Boundary will be created. Format:
+        #   `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Google::Apis::CloudresourcemanagerV3::Boundary] boundary_object
+        # @param [String] boundary_id
+        #   Required. The user-assigned ID for the Boundary, which will become the final
+        #   component of the Boundary's resource name. Must be unique within the parent
+        #   resource. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It
+        #   must start with a letter. Trailing hyphens are prohibited. Example: `my-
+        #   boundary-123`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_organization_boundary(parent, boundary_object = nil, boundary_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/boundaries', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.request_object = boundary_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['boundaryId'] = boundary_id unless boundary_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the Boundary identified by the specified `name` (for example, `folders/
+        # 123456789/boundaries/my-boundary`).
+        # @param [String] name
+        #   Required. The name of the Boundary to delete. Format: `organizations/`
+        #   organization_id`/boundaries/`boundary_id`` or `folders/`folder_id`/boundaries/`
+        #   boundary_id``
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_boundary(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the Boundary identified by the specified `name` (for example, `
+        # folders/123456789/boundaries/my-boundary`).
+        # @param [String] name
+        #   Required. The name of the Boundary to retrieve. Format: `organizations/`
+        #   organization_id`/boundaries/`boundary_id`` or `folders/`folder_id`/boundaries/`
+        #   boundary_id`` Example: `folders/123456789/boundaries/my-boundary`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Boundary] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Boundary]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_boundary(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Boundary
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Boundaries that are direct children of the specified organization or
+        # folder resource.
+        # @param [String] parent
+        #   Required. The name of the parent resource whose Boundaries are being listed.
+        #   Format: `organizations/`organization_id`` or `folders/`folder_id``
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of Boundaries to return in the response. The
+        #   service may return fewer Boundaries than requested. If unspecified, at most
+        #   100 Boundaries will be returned. The maximum value is 100; values above 100
+        #   will be coerced to 100.
+        # @param [String] page_token
+        #   Optional. A pagination token received from a previous call to `ListBoundaries`
+        #   that indicates from where listing should continue. Provide this to retrieve
+        #   the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_organization_boundaries(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/boundaries', options)
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::ListBoundariesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the
+        # Boundary identified by the specified `name` (for example, `folders/123456789/
+        # boundaries/my-boundary`).
+        # @param [String] name
+        #   Identifier. The unique resource name of the Boundary. Format: - `organizations/
+        #   `organization_id`/boundaries/`boundary_id`` - `folders/`folder_id`/boundaries/`
+        #   boundary_id`` Example: `folders/123456789/boundaries/my-boundary`
+        # @param [Google::Apis::CloudresourcemanagerV3::Boundary] boundary_object
+        # @param [String] update_mask
+        #   Optional. The list of fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudresourcemanagerV3::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudresourcemanagerV3::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_organization_boundary(name, boundary_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::CloudresourcemanagerV3::Boundary::Representation
+          command.request_object = boundary_object
+          command.response_representation = Google::Apis::CloudresourcemanagerV3::Operation::Representation
+          command.response_class = Google::Apis::CloudresourcemanagerV3::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
