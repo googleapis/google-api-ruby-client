@@ -219,8 +219,9 @@ module Google
       class EntitleSubscriptionRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The line items to be entitled. If unspecified, all line items will
-        # be entitled.
+        # Optional. Deprecated: This field is no longer supported. All line items are
+        # entitled automatically. Optional. The line items to be entitled. If
+        # unspecified, all line items will be entitled.
         # Corresponds to the JSON property `lineItemEntitlementDetails`
         # @return [Array<Google::Apis::PaymentsresellersubscriptionV1::EntitleSubscriptionRequestLineItemEntitlementDetails>]
         attr_accessor :line_item_entitlement_details
