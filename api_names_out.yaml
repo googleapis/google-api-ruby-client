@@ -441124,6 +441124,8 @@
 "/sts:v1/GoogleIdentityStsV1ExchangeOauthTokenResponse/scope": scope
 "/sts:v1/GoogleIdentityStsV1ExchangeOauthTokenResponse/token_type": token_type
 "/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest": google_identity_sts_v1_exchange_token_request
+"/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest/actorToken": actor_token
+"/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest/actorTokenType": actor_token_type
 "/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest/audience": audience
 "/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest/grantType": grant_type
 "/sts:v1/GoogleIdentityStsV1ExchangeTokenRequest/options": options

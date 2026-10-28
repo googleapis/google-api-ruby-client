@@ -203,6 +203,21 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. A security token that represents the identity of the acting party.
+        # Typically, this is the party that is authorized to use the requested security
+        # token and act on behalf of the subject.
+        # Corresponds to the JSON property `actorToken`
+        # @return [String]
+        attr_accessor :actor_token
+      
+        # Optional. An identifier that indicates the type of the security token in the `
+        # actor_token` parameter. Required when the `actor_token` parameter is set.
+        # Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:
+        # oauth:token-type:id_token`.
+        # Corresponds to the JSON property `actorTokenType`
+        # @return [String]
+        attr_accessor :actor_token_type
+      
         # The full resource name of the identity provider; for example: `//iam.
         # googleapis.com/projects//locations/global/workloadIdentityPools//providers/`
         # for workload identity pool providers, or `//iam.googleapis.com/locations/
@@ -346,6 +361,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @actor_token = args[:actor_token] if args.key?(:actor_token)
+          @actor_token_type = args[:actor_token_type] if args.key?(:actor_token_type)
           @audience = args[:audience] if args.key?(:audience)
           @grant_type = args[:grant_type] if args.key?(:grant_type)
           @options = args[:options] if args.key?(:options)
