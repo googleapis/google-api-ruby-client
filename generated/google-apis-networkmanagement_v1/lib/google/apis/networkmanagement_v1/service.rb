@@ -1340,6 +1340,8 @@ module Google
         #   network_monitoring_provider`
         # @param [String] _password
         #   Optional. Password for logging into the MonitoringPoint.
+        # @param [String] cloud_deployment_type
+        #   Optional. The deployment type for Cloud Monitoring Points.
         # @param [String] hostname
         #   Required. The hostname of the MonitoringPoint, e.g. "test-vm"
         # @param [String] monitoring_point_type
@@ -1392,12 +1394,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def download_project_location_network_monitoring_provider_monitoring_point_install_script(parent, _password: nil, hostname: nil, monitoring_point_type: nil, ntp_server_address: nil, ntp_server_secondary_address: nil, private_connectivity_enabled: nil, static_ip_address_dns_server_address: nil, static_ip_address_dns_server_secondary_address: nil, static_ip_address_domain: nil, static_ip_address_gateway_address: nil, static_ip_address_ip_address: nil, static_ip_address_netmask: nil, time_zone_id: nil, time_zone_version: nil, use_dhcp: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def download_project_location_network_monitoring_provider_monitoring_point_install_script(parent, _password: nil, cloud_deployment_type: nil, hostname: nil, monitoring_point_type: nil, ntp_server_address: nil, ntp_server_secondary_address: nil, private_connectivity_enabled: nil, static_ip_address_dns_server_address: nil, static_ip_address_dns_server_secondary_address: nil, static_ip_address_domain: nil, static_ip_address_gateway_address: nil, static_ip_address_ip_address: nil, static_ip_address_netmask: nil, time_zone_id: nil, time_zone_version: nil, use_dhcp: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/monitoringPoints:downloadInstallScript', options)
           command.response_representation = Google::Apis::NetworkmanagementV1::HttpBody::Representation
           command.response_class = Google::Apis::NetworkmanagementV1::HttpBody
           command.params['parent'] = parent unless parent.nil?
           command.query['_password'] = _password unless _password.nil?
+          command.query['cloudDeploymentType'] = cloud_deployment_type unless cloud_deployment_type.nil?
           command.query['hostname'] = hostname unless hostname.nil?
           command.query['monitoringPointType'] = monitoring_point_type unless monitoring_point_type.nil?
           command.query['ntpServerAddress'] = ntp_server_address unless ntp_server_address.nil?
