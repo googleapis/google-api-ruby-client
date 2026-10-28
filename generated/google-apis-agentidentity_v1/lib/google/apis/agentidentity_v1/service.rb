@@ -649,6 +649,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Resolves an authorization for a user on an auth provider, creating one if it
+        # does not exist or returning an existing one.
+        # @param [String] name
+        #   Required. The name of the auth provider to resolve authorization for. Format:
+        #   projects/`project`/locations/`location`/authProviders/`auth_provider`
+        # @param [Google::Apis::AgentidentityV1::ResolveAuthorizationRequest] resolve_authorization_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AgentidentityV1::ResolveAuthorizationResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AgentidentityV1::ResolveAuthorizationResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def resolve_auth_provider_authorization(name, resolve_authorization_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:resolveAuthorization', options)
+          command.request_representation = Google::Apis::AgentidentityV1::ResolveAuthorizationRequest::Representation
+          command.request_object = resolve_authorization_request_object
+          command.response_representation = Google::Apis::AgentidentityV1::ResolveAuthorizationResponse::Representation
+          command.response_class = Google::Apis::AgentidentityV1::ResolveAuthorizationResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Revokes all authorizations for a specific user on an auth provider. This
         # deletes all authorization records associated with the user and auth provider,
         # effectively revoking access across all agents.
