@@ -263,6 +263,483 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists AppliedAutoProtectionPolicies in a given project and location.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve the list of applied
+        #   policies. Format: projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters resources listed in the response.
+        # @param [String] order_by
+        #   Optional. An expression that sorts the results in the response.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of applied policies to return in a single page.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000. If
+        #   unspecified or set to 0, a default page size of 500 will be used.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   ListAppliedAutoProtectionPolicies` call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListAppliedAutoProtectionPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListAppliedAutoProtectionPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_applied_auto_protection_policies(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/appliedAutoProtectionPolicies', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListAppliedAutoProtectionPoliciesResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListAppliedAutoProtectionPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new AutoProtectionPolicy in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource where this policy will be created. Format:
+        #   projects/`project`/locations/`location`
+        # @param [Google::Apis::BackupdrV1::AutoProtectionPolicy] auto_protection_policy_object
+        # @param [String] auto_protection_policy_id
+        #   Required. The ID to use for the policy. This will become the final component
+        #   of the policy's resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_auto_protection_policy(parent, auto_protection_policy_object = nil, auto_protection_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/autoProtectionPolicies', options)
+          command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
+          command.request_object = auto_protection_policy_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['autoProtectionPolicyId'] = auto_protection_policy_id unless auto_protection_policy_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a single AutoProtectionPolicy.
+        # @param [String] name
+        #   Required. The name of the policy to delete. Format: projects/`project`/
+        #   locations/`location`/autoProtectionPolicies/`auto_protection_policy`
+        # @param [String] etag
+        #   The current etag of the autoprotectionpolicy. If an etag is provided and does
+        #   not match the current etag of the connection, deletion will be blocked.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_auto_protection_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['etag'] = etag unless etag.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single AutoProtectionPolicy.
+        # @param [String] name
+        #   Required. The name of the policy to retrieve. Format: projects/`project`/
+        #   locations/`location`/autoProtectionPolicies/`auto_protection_policy`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::AutoProtectionPolicy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::AutoProtectionPolicy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_auto_protection_policy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
+          command.response_class = Google::Apis::BackupdrV1::AutoProtectionPolicy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists AutoProtectionPolicies for a given project and location.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve the list of policies.
+        #   Format: projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters resources listed in the response.
+        #   The following fields are filterable:
+        # @param [String] order_by
+        #   Optional. An expression that sorts the results in the response. The following
+        #   fields are sortable:
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of policies to return in a single page. If
+        #   unspecified, a server-default value will be used.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAutoProtectionPolicies`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListAutoProtectionPoliciesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListAutoProtectionPoliciesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_auto_protection_policies(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/autoProtectionPolicies', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListAutoProtectionPoliciesResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListAutoProtectionPoliciesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the parameters of a single AutoProtectionPolicy.
+        # @param [String] name
+        #   Identifier. The resource name of the AutoProtectionPolicy. Format: `projects/`
+        #   project`/locations/`location`/autoProtectionPolicies/`auto_protection_policy``
+        # @param [Google::Apis::BackupdrV1::AutoProtectionPolicy] auto_protection_policy_object
+        # @param [String] update_mask
+        #   Optional. Field mask is used to specify the fields to be overwritten in the
+        #   AutoProtectionPolicy resource by the update. The fields specified in the
+        #   update_mask are relative to the resource, not the full request. A field will
+        #   be overwritten if it is in the mask. If the user does not provide a mask then
+        #   all fields will be overwritten.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_auto_protection_policy(name, auto_protection_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
+          command.request_object = auto_protection_policy_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new AutoProtectionPolicyBinding in a given project and location.
+        # @param [String] parent
+        #   Required. The parent resource where this binding will be created. Format:
+        #   projects/`project`/locations/`location`/autoProtectionPolicies/`
+        #   auto_protection_policy`
+        # @param [Google::Apis::BackupdrV1::AutoProtectionPolicyBinding] auto_protection_policy_binding_object
+        # @param [String] auto_protection_policy_binding_id
+        #   Required. The ID to use for the binding. This will become the final component
+        #   of the binding's resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_auto_protection_policy_binding(parent, auto_protection_policy_binding_object = nil, auto_protection_policy_binding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/bindings', options)
+          command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicyBinding::Representation
+          command.request_object = auto_protection_policy_binding_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['autoProtectionPolicyBindingId'] = auto_protection_policy_binding_id unless auto_protection_policy_binding_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the auto protection policy binding read from the CCFE tables.
+        # @param [String] name
+        #   Required. The name of the binding to retrieve. Format: projects/`project`/
+        #   locations/`location`/autoProtectionPolicies/`auto_protection_policy`/bindings/`
+        #   binding`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::AutoProtectionPolicyBinding] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::AutoProtectionPolicyBinding]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_auto_protection_policy_binding(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::AutoProtectionPolicyBinding::Representation
+          command.response_class = Google::Apis::BackupdrV1::AutoProtectionPolicyBinding
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Initiates delete for AutoProtectionPolicy Binding
+        # @param [String] name
+        #   Required. The name of the binding to delete. Format: projects/`project`/
+        #   locations/`location`/autoProtectionPolicies/`auto_protection_policy`/bindings/`
+        #   binding`
+        # @param [Google::Apis::BackupdrV1::InitiateDeleteAutoProtectionPolicyBindingRequest] initiate_delete_auto_protection_policy_binding_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def initiate_delete_auto_protection_policy_binding(name, initiate_delete_auto_protection_policy_binding_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:initiateDelete', options)
+          command.request_representation = Google::Apis::BackupdrV1::InitiateDeleteAutoProtectionPolicyBindingRequest::Representation
+          command.request_object = initiate_delete_auto_protection_policy_binding_request_object
+          command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
+          command.response_class = Google::Apis::BackupdrV1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the auto protection policy bindings read from the CCFE tables.
+        # @param [String] parent
+        #   Required. The project and location for which to retrieve the list of policies.
+        #   Format: projects/`project`/locations/`location`
+        # @param [String] filter
+        #   Optional. A filter expression that filters resources listed in the response.
+        #   The following fields are filterable:
+        # @param [String] order_by
+        #   Optional. An expression that sorts the results in the response. The following
+        #   fields are sortable:
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of policies to return in a single page is 500. If
+        #   unspecified, a server-default value will be used.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `ListAutoProtectionPolicies`
+        #   call. Provide this to retrieve the subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListAutoProtectionPolicyBindingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListAutoProtectionPolicyBindingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_auto_protection_policy_bindings(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/bindings', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListAutoProtectionPolicyBindingsResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListAutoProtectionPolicyBindingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details of a single Binding Matching Resource.
+        # @param [String] name
+        #   Required. The name of the matching resource to retrieve. Format: projects/`
+        #   project`/locations/`location`/autoProtectionPolicies/`auto_protection_policy`/
+        #   bindings/`binding`/matchingResources/`matching_resource`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::BindingMatchingResource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::BindingMatchingResource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_auto_protection_policy_binding_matching_resource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::BackupdrV1::BindingMatchingResource::Representation
+          command.response_class = Google::Apis::BackupdrV1::BindingMatchingResource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists Binding Matching Resources for a given AutoProtectionPolicyBinding.
+        # @param [String] parent
+        #   Required. The project, location, auto protection policy and binding for which
+        #   to retrieve `BindingMatchingResources` information. Format: `projects/`project`
+        #   /locations/`location`/autoProtectionPolicies/`auto_protection_policy`/bindings/
+        #   `binding``. In Google Cloud Backup and DR, locations map to Google Cloud
+        #   regions, for example **us-central1**.
+        # @param [String] filter
+        #   Optional. Field match expression used to filter the results.
+        # @param [String] order_by
+        #   Optional. Field by which to sort the results.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of `BindingMatchingResources` to return in a
+        #   single response. The default page size is 100 and maximum page size is 200.
+        #   Note that the response may include a partial list and a caller should only
+        #   rely on the response's next_page_token to determine if there are more
+        #   instances left to be queried.
+        # @param [String] page_token
+        #   Optional. The value of next_page_token received from a previous `
+        #   ListBindingMatchingResources` call. Provide this to retrieve the subsequent
+        #   page in a multi-page list of results. When paginating, all other parameters
+        #   provided to `ListBindingMatchingResources` must match the call that provided
+        #   the page token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BackupdrV1::ListBindingMatchingResourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BackupdrV1::ListBindingMatchingResourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_auto_protection_policy_binding_matching_resources(parent, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/matchingResources', options)
+          command.response_representation = Google::Apis::BackupdrV1::ListBindingMatchingResourcesResponse::Representation
+          command.response_class = Google::Apis::BackupdrV1::ListBindingMatchingResourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create a BackupPlanAssociation
         # @param [String] parent
         #   Required. The backup plan association project and location in the format `
@@ -319,6 +796,11 @@ module Google
         #   Required. Name of the backup plan association resource, in the format `
         #   projects/`project`/locations/`location`/backupPlanAssociations/`
         #   backupPlanAssociationId``
+        # @param [String] auto_protection_policy_binding
+        #   Optional. This field is exclusively used by Backup and DR's auto-protection
+        #   feature. The resource name of the `AutoProtectionPolicyBinding` that triggered
+        #   the deletion of this association. Format: `projects/`project`/locations/`
+        #   location`/autoProtectionPolicies/`policy`/bindings/`binding``.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -347,11 +829,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_backup_plan_association(name, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_backup_plan_association(name, auto_protection_policy_binding: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['autoProtectionPolicyBinding'] = auto_protection_policy_binding unless auto_protection_policy_binding.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
