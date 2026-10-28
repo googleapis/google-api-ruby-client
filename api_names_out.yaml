@@ -462002,6 +462002,13 @@
 "/vmwareengine:v1/Binding/members": members
 "/vmwareengine:v1/Binding/members/member": member
 "/vmwareengine:v1/Binding/role": role
+"/vmwareengine:v1/CapacityAllocation": capacity_allocation
+"/vmwareengine:v1/CapacityAllocation/allocatedCapacityCount": allocated_capacity_count
+"/vmwareengine:v1/CapacityAllocation/consumedCapacityCount": consumed_capacity_count
+"/vmwareengine:v1/CapacityAllocation/machineFamily": machine_family
+"/vmwareengine:v1/CapacityAllocation/name": name
+"/vmwareengine:v1/CapacityAllocation/privateClouds": private_clouds
+"/vmwareengine:v1/CapacityAllocation/privateClouds/private_cloud": private_cloud
 "/vmwareengine:v1/Cluster": cluster
 "/vmwareengine:v1/Cluster/autoscalingSettings": autoscaling_settings
 "/vmwareengine:v1/Cluster/createTime": create_time
@@ -462011,6 +462018,7 @@
 "/vmwareengine:v1/Cluster/name": name
 "/vmwareengine:v1/Cluster/nodeTypeConfigs": node_type_configs
 "/vmwareengine:v1/Cluster/nodeTypeConfigs/node_type_config": node_type_config
+"/vmwareengine:v1/Cluster/placementGroup": placement_group
 "/vmwareengine:v1/Cluster/state": state
 "/vmwareengine:v1/Cluster/stretchedClusterConfig": stretched_cluster_config
 "/vmwareengine:v1/Cluster/uid": uid
@@ -462134,6 +462142,12 @@
 "/vmwareengine:v1/ListAnnouncementsResponse/nextPageToken": next_page_token
 "/vmwareengine:v1/ListAnnouncementsResponse/unreachable": unreachable
 "/vmwareengine:v1/ListAnnouncementsResponse/unreachable/unreachable": unreachable
+"/vmwareengine:v1/ListCapacityAllocationsResponse": list_capacity_allocations_response
+"/vmwareengine:v1/ListCapacityAllocationsResponse/capacityAllocations": capacity_allocations
+"/vmwareengine:v1/ListCapacityAllocationsResponse/capacityAllocations/capacity_allocation": capacity_allocation
+"/vmwareengine:v1/ListCapacityAllocationsResponse/nextPageToken": next_page_token
+"/vmwareengine:v1/ListCapacityAllocationsResponse/unreachable": unreachable
+"/vmwareengine:v1/ListCapacityAllocationsResponse/unreachable/unreachable": unreachable
 "/vmwareengine:v1/ListClustersResponse": list_clusters_response
 "/vmwareengine:v1/ListClustersResponse/clusters": clusters
 "/vmwareengine:v1/ListClustersResponse/clusters/cluster": cluster
@@ -462270,6 +462284,7 @@
 "/vmwareengine:v1/ManagementCluster/clusterId": cluster_id
 "/vmwareengine:v1/ManagementCluster/nodeTypeConfigs": node_type_configs
 "/vmwareengine:v1/ManagementCluster/nodeTypeConfigs/node_type_config": node_type_config
+"/vmwareengine:v1/ManagementCluster/placementGroup": placement_group
 "/vmwareengine:v1/ManagementCluster/stretchedClusterConfig": stretched_cluster_config
 "/vmwareengine:v1/ManagementDnsZoneBinding": management_dns_zone_binding
 "/vmwareengine:v1/ManagementDnsZoneBinding/createTime": create_time
@@ -462452,7 +462467,9 @@
 "/vmwareengine:v1/Status/message": message
 "/vmwareengine:v1/StretchedClusterConfig": stretched_cluster_config
 "/vmwareengine:v1/StretchedClusterConfig/preferredLocation": preferred_location
+"/vmwareengine:v1/StretchedClusterConfig/preferredLocationPlacementGroup": preferred_location_placement_group
 "/vmwareengine:v1/StretchedClusterConfig/secondaryLocation": secondary_location
+"/vmwareengine:v1/StretchedClusterConfig/secondaryLocationPlacementGroup": secondary_location_placement_group
 "/vmwareengine:v1/Subnet": subnet
 "/vmwareengine:v1/Subnet/gatewayIp": gateway_ip
 "/vmwareengine:v1/Subnet/ipCidrRange": ip_cidr_range
@@ -462544,6 +462561,12 @@
 "/vmwareengine:v1/vmwareengine.projects.locations.announcements.list/pageSize": page_size
 "/vmwareengine:v1/vmwareengine.projects.locations.announcements.list/pageToken": page_token
 "/vmwareengine:v1/vmwareengine.projects.locations.announcements.list/parent": parent
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list": list_project_location_capacity_allocations
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list/filter": filter
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list/orderBy": order_by
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list/pageSize": page_size
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list/pageToken": page_token
+"/vmwareengine:v1/vmwareengine.projects.locations.capacityAllocations.list/parent": parent
 "/vmwareengine:v1/vmwareengine.projects.locations.datastores.create": create_project_location_datastore
 "/vmwareengine:v1/vmwareengine.projects.locations.datastores.create/datastoreId": datastore_id
 "/vmwareengine:v1/vmwareengine.projects.locations.datastores.create/parent": parent

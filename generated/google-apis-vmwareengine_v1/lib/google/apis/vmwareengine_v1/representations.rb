@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CapacityAllocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class ListAnnouncementsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCapacityAllocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -677,6 +689,17 @@ module Google
         end
       end
       
+      class CapacityAllocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allocated_capacity_count, as: 'allocatedCapacityCount'
+          property :consumed_capacity_count, as: 'consumedCapacityCount'
+          property :machine_family, as: 'machineFamily'
+          property :name, as: 'name'
+          collection :private_clouds, as: 'privateClouds'
+        end
+      end
+      
       class Cluster
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -689,6 +712,7 @@ module Google
           property :name, as: 'name'
           hash :node_type_configs, as: 'nodeTypeConfigs', class: Google::Apis::VmwareengineV1::NodeTypeConfig, decorator: Google::Apis::VmwareengineV1::NodeTypeConfig::Representation
       
+          property :placement_group, as: 'placementGroup'
           property :state, as: 'state'
           property :stretched_cluster_config, as: 'stretchedClusterConfig', class: Google::Apis::VmwareengineV1::StretchedClusterConfig, decorator: Google::Apis::VmwareengineV1::StretchedClusterConfig::Representation
       
@@ -917,6 +941,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :announcements, as: 'announcements', class: Google::Apis::VmwareengineV1::Announcement, decorator: Google::Apis::VmwareengineV1::Announcement::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCapacityAllocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capacity_allocations, as: 'capacityAllocations', class: Google::Apis::VmwareengineV1::CapacityAllocation, decorator: Google::Apis::VmwareengineV1::CapacityAllocation::Representation
       
           property :next_page_token, as: 'nextPageToken'
           collection :unreachable, as: 'unreachable'
@@ -1157,6 +1191,7 @@ module Google
           property :cluster_id, as: 'clusterId'
           hash :node_type_configs, as: 'nodeTypeConfigs', class: Google::Apis::VmwareengineV1::NodeTypeConfig, decorator: Google::Apis::VmwareengineV1::NodeTypeConfig::Representation
       
+          property :placement_group, as: 'placementGroup'
           property :stretched_cluster_config, as: 'stretchedClusterConfig', class: Google::Apis::VmwareengineV1::StretchedClusterConfig, decorator: Google::Apis::VmwareengineV1::StretchedClusterConfig::Representation
       
         end
@@ -1485,7 +1520,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :preferred_location, as: 'preferredLocation'
+          property :preferred_location_placement_group, as: 'preferredLocationPlacementGroup'
           property :secondary_location, as: 'secondaryLocation'
+          property :secondary_location_placement_group, as: 'secondaryLocationPlacementGroup'
         end
       end
       
