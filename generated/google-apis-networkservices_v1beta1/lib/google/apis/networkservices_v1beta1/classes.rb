@@ -916,9 +916,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Priority of the extension binding. Lower numbers indicate higher
-        # priority. The priority determines the order in which extension bindings are
-        # applied to a request.
+        # Optional. This field is not supported.
         # Corresponds to the JSON property `priority`
         # @return [Fixnum]
         attr_accessor :priority
@@ -4735,7 +4733,7 @@ module Google
         # @return [String]
         attr_accessor :authority
       
-        # Optional. Whether the extension should function in observability mode.
+        # Optional. This field is not supported.
         # Corresponds to the JSON property `observabilityMode`
         # @return [Boolean]
         attr_accessor :observability_mode
@@ -5821,9 +5819,9 @@ module Google
       
         # Optional. Non-empty default. Specifies the lowest level of the plugin logs
         # that are exported to Cloud Logging. This setting relates to the logs generated
-        # by using logging statements in your Wasm code. This field is can be set only
-        # if logging is enabled for the plugin. If the field is not provided when
-        # logging is enabled, it is set to `INFO` by default.
+        # by using logging statements in your Wasm code. This field can be set only if
+        # logging is enabled for the plugin. If the field is not provided when logging
+        # is enabled, it is set to `INFO` by default.
         # Corresponds to the JSON property `minLogLevel`
         # @return [String]
         attr_accessor :min_log_level
