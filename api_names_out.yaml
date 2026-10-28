@@ -420855,6 +420855,9 @@
 "/securitycenter:v1beta2/CloudLoggingEntry/logId": log_id
 "/securitycenter:v1beta2/CloudLoggingEntry/resourceContainer": resource_container
 "/securitycenter:v1beta2/CloudLoggingEntry/timestamp": timestamp
+"/securitycenter:v1beta2/CloudRun": cloud_run
+"/securitycenter:v1beta2/CloudRun/revisions": revisions
+"/securitycenter:v1beta2/CloudRun/revisions/revision": revision
 "/securitycenter:v1beta2/Compliance": compliance
 "/securitycenter:v1beta2/Compliance/ids": ids
 "/securitycenter:v1beta2/Compliance/ids/id": id
@@ -421080,6 +421083,7 @@
 "/securitycenter:v1beta2/Finding/cloudArmor": cloud_armor
 "/securitycenter:v1beta2/Finding/cloudDlpDataProfile": cloud_dlp_data_profile
 "/securitycenter:v1beta2/Finding/cloudDlpInspection": cloud_dlp_inspection
+"/securitycenter:v1beta2/Finding/cloudRun": cloud_run
 "/securitycenter:v1beta2/Finding/complianceDetails": compliance_details
 "/securitycenter:v1beta2/Finding/compliances": compliances
 "/securitycenter:v1beta2/Finding/compliances/compliance": compliance
@@ -421575,6 +421579,9 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudLoggingEntry/logId": log_id
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudLoggingEntry/resourceContainer": resource_container
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudLoggingEntry/timestamp": timestamp
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudRun": google_cloud_securitycenter_v2_cloud_run
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudRun/revisions": revisions
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2CloudRun/revisions/revision": revision
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Compliance": google_cloud_securitycenter_v2_compliance
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Compliance/ids": ids
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Compliance/ids/id": id
@@ -421770,6 +421777,7 @@
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/cloudArmor": cloud_armor
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/cloudDlpDataProfile": cloud_dlp_data_profile
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/cloudDlpInspection": cloud_dlp_inspection
+"/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/cloudRun": cloud_run
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/complianceDetails": compliance_details
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/compliances": compliances
 "/securitycenter:v1beta2/GoogleCloudSecuritycenterV2Finding/compliances/compliance": compliance
