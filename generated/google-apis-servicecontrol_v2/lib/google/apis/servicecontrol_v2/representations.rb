@@ -363,6 +363,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority, as: 'authority'
+          property :id, as: 'id'
         end
       end
       

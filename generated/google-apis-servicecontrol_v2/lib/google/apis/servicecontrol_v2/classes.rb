@@ -572,6 +572,14 @@ module Google
         # @return [String]
         attr_accessor :authority
       
+        # The agent identifier of the caller agent. This is a globally unique, immutable
+        # name in Uniform Resource Name (URN) format. Example: 'urn:agent:projects-
+        # 123456789:projects:123456789:locations:us-central1:aiplatform:reasoningEngines:
+        # 987654321'
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -579,6 +587,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @authority = args[:authority] if args.key?(:authority)
+          @id = args[:id] if args.key?(:id)
         end
       end
       

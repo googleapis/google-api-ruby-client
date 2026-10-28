@@ -425849,6 +425849,7 @@
 "/servicecontrol:v2/AuthorizationInfo/resourceAttributes": resource_attributes
 "/servicecontrol:v2/CallerAgent": caller_agent
 "/servicecontrol:v2/CallerAgent/authority": authority
+"/servicecontrol:v2/CallerAgent/id": id
 "/servicecontrol:v2/CheckRequest": check_request
 "/servicecontrol:v2/CheckRequest/attributes": attributes
 "/servicecontrol:v2/CheckRequest/flags": flags
