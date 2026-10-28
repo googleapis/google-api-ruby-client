@@ -371221,6 +371221,18 @@
 "/ondemandscanning:v1/ExploitPredictionScoringSystem": exploit_prediction_scoring_system
 "/ondemandscanning:v1/ExploitPredictionScoringSystem/percentile": percentile
 "/ondemandscanning:v1/ExploitPredictionScoringSystem/score": score
+"/ondemandscanning:v1/Exploitability": exploitability
+"/ondemandscanning:v1/Exploitability/signals": signals
+"/ondemandscanning:v1/Exploitability/signals/signal": signal
+"/ondemandscanning:v1/Exploitability/summary": summary
+"/ondemandscanning:v1/ExploitabilitySignal": exploitability_signal
+"/ondemandscanning:v1/ExploitabilitySignal/rationale": rationale
+"/ondemandscanning:v1/ExploitabilitySignal/source": source
+"/ondemandscanning:v1/ExploitabilitySignal/vexJustification": vex_justification
+"/ondemandscanning:v1/ExploitabilitySignal/vexStatus": vex_status
+"/ondemandscanning:v1/ExploitabilitySummary": exploitability_summary
+"/ondemandscanning:v1/ExploitabilitySummary/rationale": rationale
+"/ondemandscanning:v1/ExploitabilitySummary/vexStatus": vex_status
 "/ondemandscanning:v1/File": file
 "/ondemandscanning:v1/File/digest": digest
 "/ondemandscanning:v1/File/digest/digest": digest
@@ -371503,6 +371515,7 @@
 "/ondemandscanning:v1/PackageIssue/affectedPackage": affected_package
 "/ondemandscanning:v1/PackageIssue/affectedVersion": affected_version
 "/ondemandscanning:v1/PackageIssue/effectiveSeverity": effective_severity
+"/ondemandscanning:v1/PackageIssue/exploitability": exploitability
 "/ondemandscanning:v1/PackageIssue/fileLocation": file_location
 "/ondemandscanning:v1/PackageIssue/fileLocation/file_location": file_location
 "/ondemandscanning:v1/PackageIssue/fixAvailable": fix_available
@@ -371728,6 +371741,7 @@
 "/ondemandscanning:v1/VulnerabilityOccurrence/cvssVersion": cvss_version
 "/ondemandscanning:v1/VulnerabilityOccurrence/cvssv3": cvssv3
 "/ondemandscanning:v1/VulnerabilityOccurrence/effectiveSeverity": effective_severity
+"/ondemandscanning:v1/VulnerabilityOccurrence/exploitability": exploitability
 "/ondemandscanning:v1/VulnerabilityOccurrence/extraDetails": extra_details
 "/ondemandscanning:v1/VulnerabilityOccurrence/fixAvailable": fix_available
 "/ondemandscanning:v1/VulnerabilityOccurrence/longDescription": long_description
