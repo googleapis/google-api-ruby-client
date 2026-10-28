@@ -44460,6 +44460,8 @@
 "/androidmanagement:v1/ExternalData": external_data
 "/androidmanagement:v1/ExternalData/sha256Hash": sha256_hash
 "/androidmanagement:v1/ExternalData/url": url
+"/androidmanagement:v1/ExtraCapabilities": extra_capabilities
+"/androidmanagement:v1/ExtraCapabilities/localDeviceWipeCommand": local_device_wipe_command
 "/androidmanagement:v1/FilePulledEvent": file_pulled_event
 "/androidmanagement:v1/FilePulledEvent/filePath": file_path
 "/androidmanagement:v1/FilePushedEvent": file_pushed_event
@@ -44914,6 +44916,7 @@
 "/androidmanagement:v1/RequestDeviceInfoStatus/eidInfo": eid_info
 "/androidmanagement:v1/RequestDeviceInfoStatus/status": status
 "/androidmanagement:v1/Role": role
+"/androidmanagement:v1/Role/extraCapabilities": extra_capabilities
 "/androidmanagement:v1/Role/roleType": role_type
 "/androidmanagement:v1/ScreenBrightnessSettings": screen_brightness_settings
 "/androidmanagement:v1/ScreenBrightnessSettings/screenBrightness": screen_brightness

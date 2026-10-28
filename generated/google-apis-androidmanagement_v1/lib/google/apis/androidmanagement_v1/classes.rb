@@ -3260,6 +3260,27 @@ module Google
         end
       end
       
+      # Extra capabilities for a role.
+      class ExtraCapabilities
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether the companion app can perform local device wipe (
+        # https://developers.google.com/android/management/sdk-local-commands) using
+        # AMAPI SDK (https://developers.google.com/android/management/sdk-integration).
+        # Corresponds to the JSON property `localDeviceWipeCommand`
+        # @return [String]
+        attr_accessor :local_device_wipe_command
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @local_device_wipe_command = args[:local_device_wipe_command] if args.key?(:local_device_wipe_command)
+        end
+      end
+      
       # A file was downloaded from the device.
       class FilePulledEvent
         include Google::Apis::Core::Hashable
@@ -6653,6 +6674,11 @@ module Google
       class Role
         include Google::Apis::Core::Hashable
       
+        # Extra capabilities for a role.
+        # Corresponds to the JSON property `extraCapabilities`
+        # @return [Google::Apis::AndroidmanagementV1::ExtraCapabilities]
+        attr_accessor :extra_capabilities
+      
         # Required. The type of the role an app can have.
         # Corresponds to the JSON property `roleType`
         # @return [String]
@@ -6664,6 +6690,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @extra_capabilities = args[:extra_capabilities] if args.key?(:extra_capabilities)
           @role_type = args[:role_type] if args.key?(:role_type)
         end
       end
