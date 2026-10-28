@@ -53,9 +53,10 @@ module Google
         
         # Deletes the authenticated user's specified task list. If the list contains
         # assigned tasks, both the assigned tasks and the original tasks in the
-        # assignment surface (Docs, Chat Spaces) are deleted.
+        # assignment surface (Docs, Chat Spaces) are deleted. The user's default task
+        # list cannot be deleted.
         # @param [String] tasklist
-        #   Task list identifier.
+        #   Task list identifier. The default task list cannot be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -83,7 +84,8 @@ module Google
         
         # Returns the authenticated user's specified task list.
         # @param [String] tasklist
-        #   Task list identifier.
+        #   Task list identifier. Use "@default" to get the authenticated user's default
+        #   task list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -145,10 +147,10 @@ module Google
         # Returns all the authenticated user's task lists. A user can have up to 2000
         # lists at a time.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is
+        #   Optional. Maximum number of task lists returned on one page. The default is
         #   1000 (max allowed: 1000).
         # @param [String] page_token
-        #   Token specifying the result page to return. Optional.
+        #   Optional. Token specifying the result page to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -348,14 +350,20 @@ module Google
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
+        # @param [Boolean] hidden
+        #   Optional. Flag indicating whether the task is created as 'hidden', as if it
+        #   had been completed and then cleared from the task list (see the "clear" method)
+        #   . Hidden tasks are not returned by default when retrieving all tasks for a
+        #   task list (see showHidden). Only completed tasks can be created as hidden, and
+        #   they can not be nested or positioned, so parent and previous must be empty.
         # @param [String] parent
-        #   Parent task identifier. If the task is created at the top level, this
-        #   parameter is omitted. An assigned task cannot be a parent task, nor can it
-        #   have a parent. Setting the parent to an assigned task results in failure of
-        #   the request. Optional.
+        #   Optional. Parent task identifier. If the task is created at the top level,
+        #   this parameter is omitted. An assigned task cannot be a parent task, nor can
+        #   it have a parent. Setting the parent to an assigned task results in failure of
+        #   the request.
         # @param [String] previous
-        #   Previous sibling task identifier. If the task is created at the first position
-        #   among its siblings, this parameter is omitted. Optional.
+        #   Optional. Previous sibling task identifier. If the task is created at the
+        #   first position among its siblings, this parameter is omitted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -373,13 +381,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(tasklist, task_object = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def insert_task(tasklist, task_object = nil, hidden: nil, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'tasks/v1/lists/{tasklist}/tasks', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
+          command.query['hidden'] = hidden unless hidden.nil?
           command.query['parent'] = parent unless parent.nil?
           command.query['previous'] = previous unless previous.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -393,38 +402,39 @@ module Google
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
-        #   Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter
-        #   by. Optional. The default is not to filter by completion date.
+        #   Optional. Upper bound for a task's completion date (as a RFC 3339 timestamp)
+        #   to filter by. The default is not to filter by completion date.
         # @param [String] completed_min
-        #   Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter
-        #   by. Optional. The default is not to filter by completion date.
+        #   Optional. Lower bound for a task's completion date (as a RFC 3339 timestamp)
+        #   to filter by. The default is not to filter by completion date.
         # @param [String] due_max
-        #   Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by.
-        #   Optional. The default is not to filter by due date.
+        #   Optional. Upper bound for a task's due date (as a RFC 3339 timestamp) to
+        #   filter by. The default is not to filter by due date.
         # @param [String] due_min
-        #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
-        #   Optional. The default is not to filter by due date.
+        #   Optional. Lower bound for a task's due date (as a RFC 3339 timestamp) to
+        #   filter by. The default is not to filter by due date.
         # @param [Fixnum] max_results
-        #   Maximum number of tasks returned on one page. Optional. The default is 20 (max
+        #   Optional. Maximum number of tasks returned on one page. The default is 20 (max
         #   allowed: 100).
         # @param [String] page_token
-        #   Token specifying the result page to return. Optional.
+        #   Optional. Token specifying the result page to return.
         # @param [Boolean] show_assigned
         #   Optional. Flag indicating whether tasks assigned to the current user are
-        #   returned in the result. Optional. The default is False.
+        #   returned in the result. The default is False.
         # @param [Boolean] show_completed
-        #   Flag indicating whether completed tasks are returned in the result. Note that
-        #   showHidden must also be True to show tasks completed in first party clients,
-        #   such as the web UI and Google's mobile apps. Optional. The default is True.
+        #   Optional. Flag indicating whether completed tasks are returned in the result.
+        #   Note that showHidden must also be True to show tasks completed in first party
+        #   clients, such as the web UI and Google's mobile apps. The default is True.
         # @param [Boolean] show_deleted
-        #   Flag indicating whether deleted tasks are returned in the result. Optional.
+        #   Optional. Flag indicating whether deleted tasks are returned in the result.
         #   The default is False.
         # @param [Boolean] show_hidden
-        #   Flag indicating whether hidden tasks are returned in the result. Optional. The
+        #   Optional. Flag indicating whether hidden tasks are returned in the result. The
         #   default is False.
         # @param [String] updated_min
-        #   Lower bound for a task's last modification time (as a RFC 3339 timestamp) to
-        #   filter by. Optional. The default is not to filter by last modification time.
+        #   Optional. Lower bound for a task's last modification time (as a RFC 3339
+        #   timestamp) to filter by. The default is not to filter by last modification
+        #   time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

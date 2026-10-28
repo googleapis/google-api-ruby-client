@@ -289,7 +289,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Task list identifier.
+        # Task list identifier. In requests, the authenticated user's default task list
+        # can also be referred to as "@default".
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
