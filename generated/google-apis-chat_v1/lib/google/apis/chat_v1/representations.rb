@@ -160,6 +160,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Citation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CitedSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Color
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -262,6 +274,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Elements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ElementsImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Emoji
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +305,12 @@ module Google
       end
       
       class FindGroupChatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Footer
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1012,6 +1042,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Snippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Space
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1379,6 +1415,27 @@ module Google
         end
       end
       
+      class Citation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cited_sources, as: 'citedSources', class: Google::Apis::ChatV1::CitedSource, decorator: Google::Apis::ChatV1::CitedSource::Representation
+      
+          property :id, as: 'id'
+        end
+      end
+      
+      class CitedSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footer, as: 'footer', class: Google::Apis::ChatV1::Footer, decorator: Google::Apis::ChatV1::Footer::Representation
+      
+          property :snippet, as: 'snippet', class: Google::Apis::ChatV1::Snippet, decorator: Google::Apis::ChatV1::Snippet::Representation
+      
+          property :title, as: 'title'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Color
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1548,6 +1605,23 @@ module Google
         end
       end
       
+      class Elements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :citations, as: 'citations', class: Google::Apis::ChatV1::Citation, decorator: Google::Apis::ChatV1::Citation::Representation
+      
+          collection :cited_sources, as: 'citedSources', class: Google::Apis::ChatV1::CitedSource, decorator: Google::Apis::ChatV1::CitedSource::Representation
+      
+        end
+      end
+      
+      class ElementsImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_uri, as: 'imageUri'
+        end
+      end
+      
       class Emoji
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1578,6 +1652,13 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :spaces, as: 'spaces', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
       
+        end
+      end
+      
+      class Footer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
         end
       end
       
@@ -2511,6 +2592,8 @@ module Google
           property :delete_time, as: 'deleteTime'
           property :deletion_metadata, as: 'deletionMetadata', class: Google::Apis::ChatV1::DeletionMetadata, decorator: Google::Apis::ChatV1::DeletionMetadata::Representation
       
+          property :elements, as: 'elements', class: Google::Apis::ChatV1::Elements, decorator: Google::Apis::ChatV1::Elements::Representation
+      
           collection :emoji_reaction_summaries, as: 'emojiReactionSummaries', class: Google::Apis::ChatV1::EmojiReactionSummary, decorator: Google::Apis::ChatV1::EmojiReactionSummary::Representation
       
           property :fallback_text, as: 'fallbackText'
@@ -2885,6 +2968,15 @@ module Google
           property :command_name, as: 'commandName'
           property :triggers_dialog, as: 'triggersDialog'
           property :type, as: 'type'
+        end
+      end
+      
+      class Snippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_preview, as: 'imagePreview', class: Google::Apis::ChatV1::ElementsImage, decorator: Google::Apis::ChatV1::ElementsImage::Representation
+      
+          property :text, as: 'text'
         end
       end
       

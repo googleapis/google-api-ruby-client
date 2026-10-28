@@ -845,6 +845,78 @@ module Google
         end
       end
       
+      # Citations are inline references that can provide users more detailed
+      # information about the inline reference. Corresponding inline citations should
+      # be present in the message text in a markup format of ``text``. Citations are
+      # only supported when the message's `markup_syntax` is set to `MARKDOWN`.
+      # Unreferenced citations in `Elements.citations` (those without a matching ``
+      # tag in the message text) are ignored and do not cause the message to be
+      # rejected.
+      class Citation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of sources that are relevant to the citation. Sources are
+        # displayed in the citation hover card.
+        # Corresponds to the JSON property `citedSources`
+        # @return [Array<Google::Apis::ChatV1::CitedSource>]
+        attr_accessor :cited_sources
+      
+        # Required. The ID of the citation. This ID is defined by the app creating the
+        # citation and must match the `data-id` attribute of the `` tag in the message
+        # text. Must contain only ASCII letters and numbers, and less than 63 characters.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cited_sources = args[:cited_sources] if args.key?(:cited_sources)
+          @id = args[:id] if args.key?(:id)
+        end
+      end
+      
+      # A reference to a source of information.
+      class CitedSource
+        include Google::Apis::Core::Hashable
+      
+        # A footer for a source, used for attribution.
+        # Corresponds to the JSON property `footer`
+        # @return [Google::Apis::ChatV1::Footer]
+        attr_accessor :footer
+      
+        # A snippet object representing an excerpt from a larger corpus.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::ChatV1::Snippet]
+        attr_accessor :snippet
+      
+        # Required. The plaintext title of the `CitedSource`. Does not support markdown
+        # format.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Required. The URI pointing to the resource referenced by this `CitedSource`.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footer = args[:footer] if args.key?(:footer)
+          @snippet = args[:snippet] if args.key?(:snippet)
+          @title = args[:title] if args.key?(:title)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # Represents a color in the RGBA color space. This representation is designed
       # for simplicity of conversion to and from color representations in various
       # languages over compactness. For example, the fields of this representation can
@@ -1592,6 +1664,60 @@ module Google
         end
       end
       
+      # Elements are additional message components, including inline `citations` (
+      # where each citation is associated with a specific portion of the message text)
+      # and `cited_sources` (which are general references used to generate the
+      # response and are not directly linked to specific segments of the text). Both `
+      # citations` and `cited_sources` can be provided as input when creating or
+      # updating a message and are populated on output when reading a message.
+      class Elements
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of inline citations referenced within the message text (via ``
+        # tags) that render as interactive hover cards.
+        # Corresponds to the JSON property `citations`
+        # @return [Array<Google::Apis::ChatV1::Citation>]
+        attr_accessor :citations
+      
+        # Optional. A list of sources to be displayed under the message as footer links.
+        # These are not referenced inline. For inline references, use `citations`.
+        # Corresponds to the JSON property `citedSources`
+        # @return [Array<Google::Apis::ChatV1::CitedSource>]
+        attr_accessor :cited_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @citations = args[:citations] if args.key?(:citations)
+          @cited_sources = args[:cited_sources] if args.key?(:cited_sources)
+        end
+      end
+      
+      # An object encapsulating different ways of representing an image. Currently
+      # supported representations: * An image fetched from a URI. Additional
+      # representations might be supported in the future.
+      class ElementsImage
+        include Google::Apis::Core::Hashable
+      
+        # Required. The URI of the image. Must be a publicly accessible URI so that Chat
+        # can fetch and display it.
+        # Corresponds to the JSON property `imageUri`
+        # @return [String]
+        attr_accessor :image_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_uri = args[:image_uri] if args.key?(:image_uri)
+        end
+      end
+      
       # An emoji that is used as a reaction to a message.
       class Emoji
         include Google::Apis::Core::Hashable
@@ -1682,6 +1808,26 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @spaces = args[:spaces] if args.key?(:spaces)
+        end
+      end
+      
+      # A footer for a source, used for attribution.
+      class Footer
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The plaintext to display in the footer. Does not support markdown
+        # format.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
@@ -2329,15 +2475,14 @@ module Google
         end
       end
       
-      # A carousel, also known as a slider, rotates and displays a list of widgets in
-      # a slideshow format, with buttons navigating to the previous or next widget.
-      # For example, this is a JSON representation of a carousel that contains three
-      # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
-      # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
-      # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
-      # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
-      # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
-      # workspace/chat):
+      # Rotates and displays a list of carousel cards in a slideshow format, with
+      # buttons navigating to the previous or next card. For example, this is a JSON
+      # representation of a carousel that contains three text paragraph widgets. ``` `
+      # "carouselCards": [ ` "widgets": [ ` "textParagraph": ` "text": "First text
+      # paragraph in carousel" ` ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "
+      # Second text paragraph in carousel" ` ` ] `, ` "widgets": [ ` "textParagraph": `
+      # "text": "Third text paragraph in carousel" ` ` ] ` ] ` ``` [Google Chat apps](
+      # https://developers.google.com/workspace/chat):
       class GoogleAppsCardV1Carousel
         include Google::Apis::Core::Hashable
       
@@ -2404,8 +2549,8 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Whether the chip is in an active state and responds to user actions. Defaults
-        # to `true`. Deprecated. Use `disabled` instead.
+        # Deprecated: Use `disabled` instead. Whether the chip is in an active state and
+        # responds to user actions.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -2730,7 +2875,9 @@ module Google
       
         # The number representing the time zone offset from UTC, in minutes. If set, the
         # `value_ms_epoch` is displayed in the specified time zone. If unset, the value
-        # defaults to the user's time zone setting.
+        # defaults to the user's time zone setting. Note: This field is in minutes,
+        # whereas user interaction event payloads typically provide time zone offsets in
+        # milliseconds (divide by `60000` to convert).
         # Corresponds to the JSON property `timezoneOffsetDate`
         # @return [Fixnum]
         attr_accessor :timezone_offset_date
@@ -4254,15 +4401,14 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1ButtonList]
         attr_accessor :button_list
       
-        # A carousel, also known as a slider, rotates and displays a list of widgets in
-        # a slideshow format, with buttons navigating to the previous or next widget.
-        # For example, this is a JSON representation of a carousel that contains three
-        # text paragraph widgets. ``` ` "carouselCards": [ ` "widgets": [ ` "
-        # textParagraph": ` "text": "First text paragraph in carousel", ` ` ] `, ` "
-        # widgets": [ ` "textParagraph": ` "text": "Second text paragraph in carousel", `
-        # ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "Third text paragraph in
-        # carousel", ` ` ] ` ] ` ``` [Google Chat apps](https://developers.google.com/
-        # workspace/chat):
+        # Rotates and displays a list of carousel cards in a slideshow format, with
+        # buttons navigating to the previous or next card. For example, this is a JSON
+        # representation of a carousel that contains three text paragraph widgets. ``` `
+        # "carouselCards": [ ` "widgets": [ ` "textParagraph": ` "text": "First text
+        # paragraph in carousel" ` ` ] `, ` "widgets": [ ` "textParagraph": ` "text": "
+        # Second text paragraph in carousel" ` ` ] `, ` "widgets": [ ` "textParagraph": `
+        # "text": "Third text paragraph in carousel" ` ` ] ` ] ` ``` [Google Chat apps](
+        # https://developers.google.com/workspace/chat):
         # Corresponds to the JSON property `carousel`
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Carousel]
         attr_accessor :carousel
@@ -5564,6 +5710,16 @@ module Google
         # @return [Google::Apis::ChatV1::DeletionMetadata]
         attr_accessor :deletion_metadata
       
+        # Elements are additional message components, including inline `citations` (
+        # where each citation is associated with a specific portion of the message text)
+        # and `cited_sources` (which are general references used to generate the
+        # response and are not directly linked to specific segments of the text). Both `
+        # citations` and `cited_sources` can be provided as input when creating or
+        # updating a message and are populated on output when reading a message.
+        # Corresponds to the JSON property `elements`
+        # @return [Google::Apis::ChatV1::Elements]
+        attr_accessor :elements
+      
         # Output only. The list of emoji reaction summaries on the message.
         # Corresponds to the JSON property `emojiReactionSummaries`
         # @return [Array<Google::Apis::ChatV1::EmojiReactionSummary>]
@@ -5716,6 +5872,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @deletion_metadata = args[:deletion_metadata] if args.key?(:deletion_metadata)
+          @elements = args[:elements] if args.key?(:elements)
           @emoji_reaction_summaries = args[:emoji_reaction_summaries] if args.key?(:emoji_reaction_summaries)
           @fallback_text = args[:fallback_text] if args.key?(:fallback_text)
           @formatted_text = args[:formatted_text] if args.key?(:formatted_text)
@@ -6940,6 +7097,38 @@ module Google
           @command_name = args[:command_name] if args.key?(:command_name)
           @triggers_dialog = args[:triggers_dialog] if args.key?(:triggers_dialog)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A snippet object representing an excerpt from a larger corpus.
+      class Snippet
+        include Google::Apis::Core::Hashable
+      
+        # An object encapsulating different ways of representing an image. Currently
+        # supported representations: * An image fetched from a URI. Additional
+        # representations might be supported in the future.
+        # Corresponds to the JSON property `imagePreview`
+        # @return [Google::Apis::ChatV1::ElementsImage]
+        attr_accessor :image_preview
+      
+        # Optional. A short plaintext excerpt directly from the corpus that is rendered
+        # in the citation hover card or source preview. When footer sources are
+        # automatically populated from inline `citations` (because `Elements.
+        # cited_sources` is not set), snippets are omitted from the deduplicated footer
+        # sources. Does not support markdown format, and must not exceed 1,000
+        # characters.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_preview = args[:image_preview] if args.key?(:image_preview)
+          @text = args[:text] if args.key?(:text)
         end
       end
       
