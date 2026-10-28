@@ -23,8 +23,9 @@ module Google
       # My Business Lodging API
       #
       # The My Business Lodging API enables managing lodging business information on
-      #  Google. Note - If you have a quota of 0 after enabling the API, please request
-      #  for GBP API access.
+      #  Google. Note: If you have a quota of 0 after enabling the API, please request
+      #  GBP API access at https://developers.google.com/my-business/content/prereqs#
+      #  request-access.
       #
       # @example
       #    require 'google/apis/mybusinesslodging_v1'
