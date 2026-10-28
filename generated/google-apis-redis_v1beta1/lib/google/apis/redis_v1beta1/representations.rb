@@ -2024,6 +2024,7 @@ module Google
       class ZoneDistributionConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :active_zones, as: 'activeZones'
           property :mode, as: 'mode'
           property :zone, as: 'zone'
           collection :zones, as: 'zones'

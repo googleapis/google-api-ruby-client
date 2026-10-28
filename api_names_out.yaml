@@ -390831,6 +390831,8 @@
 "/redis:v1beta1/WeeklyMaintenanceWindow/duration": duration
 "/redis:v1beta1/WeeklyMaintenanceWindow/startTime": start_time
 "/redis:v1beta1/ZoneDistributionConfig": zone_distribution_config
+"/redis:v1beta1/ZoneDistributionConfig/activeZones": active_zones
+"/redis:v1beta1/ZoneDistributionConfig/activeZones/active_zone": active_zone
 "/redis:v1beta1/ZoneDistributionConfig/mode": mode
 "/redis:v1beta1/ZoneDistributionConfig/zone": zone
 "/redis:v1beta1/ZoneDistributionConfig/zones": zones
