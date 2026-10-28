@@ -412,6 +412,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExtraCapabilities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FilePulledEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1864,6 +1870,13 @@ module Google
         end
       end
       
+      class ExtraCapabilities
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_device_wipe_command, as: 'localDeviceWipeCommand'
+        end
+      end
+      
       class FilePulledEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2704,6 +2717,8 @@ module Google
       class Role
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :extra_capabilities, as: 'extraCapabilities', class: Google::Apis::AndroidmanagementV1::ExtraCapabilities, decorator: Google::Apis::AndroidmanagementV1::ExtraCapabilities::Representation
+      
           property :role_type, as: 'roleType'
         end
       end
