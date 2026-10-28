@@ -854,6 +854,105 @@ module Google
         end
       end
       
+      # File location of the finding.
+      class File
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Line number (1-based), or 0 if whole File / unknown.
+        # Corresponds to the JSON property `lineNumber`
+        # @return [Fixnum]
+        attr_accessor :line_number
+      
+        # Optional. Relative path of the file containing the finding.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @line_number = args[:line_number] if args.key?(:line_number)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Represents a security Finding.
+      class Finding
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Category of the finding.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Output only. Create time.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. Detailed description of the finding.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # Optional. File associated with the finding.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::File>]
+        attr_accessor :files
+      
+        # Optional. Class of the finding.
+        # Corresponds to the JSON property `findingClass`
+        # @return [String]
+        attr_accessor :finding_class
+      
+        # Identifier. Resource name of the Finding. Format: `projects/`project`/
+        # locations/`location`/findings/`finding``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. The resource that the finding is associated with.
+        # Corresponds to the JSON property `resource`
+        # @return [String]
+        attr_accessor :resource
+      
+        # Optional. Severity of the finding.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Output only. Universally unique identifier (UUID4) for the Finding.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        # Output only. Update time.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @detail = args[:detail] if args.key?(:detail)
+          @files = args[:files] if args.key?(:files)
+          @finding_class = args[:finding_class] if args.key?(:finding_class)
+          @name = args[:name] if args.key?(:name)
+          @resource = args[:resource] if args.key?(:resource)
+          @severity = args[:severity] if args.key?(:severity)
+          @uid = args[:uid] if args.key?(:uid)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Structured metadata attributes extracted from the package's local SKILL.md
       # frontmatter.
       class Frontmatter
@@ -1497,6 +1596,31 @@ module Google
         end
       end
       
+      # Message for response to listing Findings.
+      class ListFindingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of Findings.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<Google::Apis::AgentregistryV1alpha::Finding>]
+        attr_accessor :findings
+      
+        # A token identifying a page of results the server should return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @findings = args[:findings] if args.key?(:findings)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -2042,6 +2166,62 @@ module Google
         end
       end
       
+      # Scan result of the skill revision.
+      class ScanResult
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The error message if the scan failed.
+        # Corresponds to the JSON property `errorMessage`
+        # @return [String]
+        attr_accessor :error_message
+      
+        # Output only. The finding resource names for the skill revision.
+        # Corresponds to the JSON property `findings`
+        # @return [Array<String>]
+        attr_accessor :findings
+      
+        # Output only. The state of the vulnerability check.
+        # Corresponds to the JSON property `scanState`
+        # @return [String]
+        attr_accessor :scan_state
+      
+        # Output only. The time when the scan was completed.
+        # Corresponds to the JSON property `scanTime`
+        # @return [String]
+        attr_accessor :scan_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_message = args[:error_message] if args.key?(:error_message)
+          @findings = args[:findings] if args.key?(:findings)
+          @scan_state = args[:scan_state] if args.key?(:scan_state)
+          @scan_time = args[:scan_time] if args.key?(:scan_time)
+        end
+      end
+      
+      # Configuration for scanning of the skill.
+      class ScanningConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The security scanning policy.
+        # Corresponds to the JSON property `policy`
+        # @return [String]
+        attr_accessor :policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
       # Message for searching Agents
       class SearchAgentsRequest
         include Google::Apis::Core::Hashable
@@ -2443,6 +2623,11 @@ module Google
         # @return [String]
         attr_accessor :publisher
       
+        # Configuration for scanning of the skill.
+        # Corresponds to the JSON property `scanningConfig`
+        # @return [Google::Apis::AgentregistryV1alpha::ScanningConfig]
+        attr_accessor :scanning_config
+      
         # Output only. A stable, globally unique logical identifier for the skill. It is
         # securely constructed by the backend by combining the associated `publisher`'s
         # verified namespace and the skill's resource ID to enforce strict ownership.
@@ -2492,6 +2677,7 @@ module Google
           @initial_revision = args[:initial_revision] if args.key?(:initial_revision)
           @name = args[:name] if args.key?(:name)
           @publisher = args[:publisher] if args.key?(:publisher)
+          @scanning_config = args[:scanning_config] if args.key?(:scanning_config)
           @skill_id = args[:skill_id] if args.key?(:skill_id)
           @state = args[:state] if args.key?(:state)
           @target_state = args[:target_state] if args.key?(:target_state)
@@ -2532,6 +2718,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Scan result of the skill revision.
+        # Corresponds to the JSON property `scanResult`
+        # @return [Google::Apis::AgentregistryV1alpha::ScanResult]
+        attr_accessor :scan_result
+      
         # Output only. Cryptographic SHA-256 integrity and deduplication digest of the
         # payload zip.
         # Corresponds to the JSON property `sha256Hash`
@@ -2565,6 +2756,7 @@ module Google
           @frontmatter = args[:frontmatter] if args.key?(:frontmatter)
           @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
           @name = args[:name] if args.key?(:name)
+          @scan_result = args[:scan_result] if args.key?(:scan_result)
           @sha256_hash = args[:sha256_hash] if args.key?(:sha256_hash)
           @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
           @state = args[:state] if args.key?(:state)
