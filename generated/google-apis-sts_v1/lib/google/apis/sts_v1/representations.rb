@@ -131,6 +131,8 @@ module Google
       class GoogleIdentityStsV1ExchangeTokenRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :actor_token, as: 'actorToken'
+          property :actor_token_type, as: 'actorTokenType'
           property :audience, as: 'audience'
           property :grant_type, as: 'grantType'
           property :options, as: 'options'
