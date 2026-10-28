@@ -23,8 +23,9 @@ module Google
       # My Business Account Management API
       #
       # The My Business Account Management API provides an interface for managing
-      #  access to a location on Google. Note - If you have a quota of 0 after enabling
-      #  the API, please request for GBP API access.
+      #  access to a location on Google. Note: If you have a quota of 0 after enabling
+      #  the API, please request GBP API access at https://developers.google.com/my-
+      #  business/content/prereqs#request-access.
       #
       # @example
       #    require 'google/apis/mybusinessaccountmanagement_v1'
