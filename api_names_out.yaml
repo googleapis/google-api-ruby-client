@@ -104922,6 +104922,7 @@
 "/composer:v1beta1/IPAllocationPolicy/useIpAliases": use_ip_aliases
 "/composer:v1beta1/ImageVersion": image_version
 "/composer:v1beta1/ImageVersion/creationDisabled": creation_disabled
+"/composer:v1beta1/ImageVersion/devModeSupported": dev_mode_supported
 "/composer:v1beta1/ImageVersion/imageVersionId": image_version_id
 "/composer:v1beta1/ImageVersion/isDefault": is_default
 "/composer:v1beta1/ImageVersion/releaseDate": release_date
