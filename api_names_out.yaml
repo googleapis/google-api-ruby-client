@@ -194404,6 +194404,8 @@
 "/dataform:v1/dataform.projects.locations.repositories.commit/name": name
 "/dataform:v1/dataform.projects.locations.repositories.compilationResults.create": create_project_location_repository_compilation_result
 "/dataform:v1/dataform.projects.locations.repositories.compilationResults.create/parent": parent
+"/dataform:v1/dataform.projects.locations.repositories.compilationResults.createLongRunning": create_project_location_repository_compilation_result_long_running
+"/dataform:v1/dataform.projects.locations.repositories.compilationResults.createLongRunning/parent": parent
 "/dataform:v1/dataform.projects.locations.repositories.compilationResults.get": get_project_location_repository_compilation_result
 "/dataform:v1/dataform.projects.locations.repositories.compilationResults.get/name": name
 "/dataform:v1/dataform.projects.locations.repositories.compilationResults.list": list_project_location_repository_compilation_results
