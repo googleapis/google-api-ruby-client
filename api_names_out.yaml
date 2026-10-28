@@ -306310,6 +306310,11 @@
 "/firebasecrashlytics:v1alpha/Frame/offset": offset
 "/firebasecrashlytics:v1alpha/Frame/owner": owner
 "/firebasecrashlytics:v1alpha/Frame/symbol": symbol
+"/firebasecrashlytics:v1alpha/GenerateAlertPolicyRequest": generate_alert_policy_request
+"/firebasecrashlytics:v1alpha/GenerateAlertPolicyRequest/alertType": alert_type
+"/firebasecrashlytics:v1alpha/GenerateAlertPolicyRequest/language": language
+"/firebasecrashlytics:v1alpha/GenerateAlertPolicyResponse": generate_alert_policy_response
+"/firebasecrashlytics:v1alpha/GenerateAlertPolicyResponse/alertPolicy": alert_policy
 "/firebasecrashlytics:v1alpha/IntervalMetrics": interval_metrics
 "/firebasecrashlytics:v1alpha/IntervalMetrics/crashFreeSessionsPercentage": crash_free_sessions_percentage
 "/firebasecrashlytics:v1alpha/IntervalMetrics/crashFreeUsersPercentage": crash_free_users_percentage
@@ -306456,6 +306461,8 @@
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.events.list/pageToken": page_token
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.events.list/parent": parent
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.events.list/readMask": read_mask
+"/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.generateAlertPolicy": generate_app_alert_policy
+"/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.generateAlertPolicy/name": name
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.issues.batchUpdate": batch_update_issues
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.issues.batchUpdate/parent": parent
 "/firebasecrashlytics:v1alpha/firebasecrashlytics.projects.apps.issues.get": get_project_app_issue
