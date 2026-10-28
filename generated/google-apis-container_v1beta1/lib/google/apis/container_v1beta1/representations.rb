@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AmbientNetworkingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AnonymousAuthenticationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +143,12 @@ module Google
       end
       
       class AutoprovisioningNodePoolDefaults
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoprovisioningRestrictionConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1684,6 +1696,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WizSensorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WorkloadAltsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1834,6 +1852,8 @@ module Google
       
           property :stateful_ha_config, as: 'statefulHaConfig', class: Google::Apis::ContainerV1beta1::StatefulHaConfig, decorator: Google::Apis::ContainerV1beta1::StatefulHaConfig::Representation
       
+          property :wiz_sensor_config, as: 'wizSensorConfig', class: Google::Apis::ContainerV1beta1::WizSensorConfig, decorator: Google::Apis::ContainerV1beta1::WizSensorConfig::Representation
+      
         end
       end
       
@@ -1856,6 +1876,13 @@ module Google
       end
       
       class AgentSandboxConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
+      class AmbientNetworkingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
@@ -1957,6 +1984,14 @@ module Google
       
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
       
+        end
+      end
+      
+      class AutoprovisioningRestrictionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :authorized_service_accounts, as: 'authorizedServiceAccounts'
+          property :service_account_permission_check, as: 'serviceAccountPermissionCheck'
         end
       end
       
@@ -2278,6 +2313,8 @@ module Google
           collection :autoprovisioning_locations, as: 'autoprovisioningLocations'
           property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults::Representation
       
+          property :autoprovisioning_restriction_config, as: 'autoprovisioningRestrictionConfig', class: Google::Apis::ContainerV1beta1::AutoprovisioningRestrictionConfig, decorator: Google::Apis::ContainerV1beta1::AutoprovisioningRestrictionConfig::Representation
+      
           property :autoscaling_profile, as: 'autoscalingProfile'
           property :default_compute_class_config, as: 'defaultComputeClassConfig', class: Google::Apis::ContainerV1beta1::DefaultComputeClassConfig, decorator: Google::Apis::ContainerV1beta1::DefaultComputeClassConfig::Representation
       
@@ -2319,6 +2356,8 @@ module Google
           property :desired_additional_ip_ranges_config, as: 'desiredAdditionalIpRangesConfig', class: Google::Apis::ContainerV1beta1::DesiredAdditionalIpRangesConfig, decorator: Google::Apis::ContainerV1beta1::DesiredAdditionalIpRangesConfig::Representation
       
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1beta1::AddonsConfig, decorator: Google::Apis::ContainerV1beta1::AddonsConfig::Representation
+      
+          property :desired_ambient_networking_config, as: 'desiredAmbientNetworkingConfig', class: Google::Apis::ContainerV1beta1::AmbientNetworkingConfig, decorator: Google::Apis::ContainerV1beta1::AmbientNetworkingConfig::Representation
       
           property :desired_anonymous_authentication_config, as: 'desiredAnonymousAuthenticationConfig', class: Google::Apis::ContainerV1beta1::AnonymousAuthenticationConfig, decorator: Google::Apis::ContainerV1beta1::AnonymousAuthenticationConfig::Representation
       
@@ -2828,6 +2867,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_cache_count, as: 'dataCacheCount'
+          property :ephemeral_capacity_gb, :numeric_string => true, as: 'ephemeralCapacityGb'
           property :local_ssd_count, as: 'localSsdCount'
         end
       end
@@ -2919,6 +2959,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gpu_driver_version, as: 'gpuDriverVersion'
+          property :specific_version, as: 'specificVersion'
         end
       end
       
@@ -3462,6 +3503,8 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ambient_networking_config, as: 'ambientNetworkingConfig', class: Google::Apis::ContainerV1beta1::AmbientNetworkingConfig, decorator: Google::Apis::ContainerV1beta1::AmbientNetworkingConfig::Representation
+      
           property :datapath_provider, as: 'datapathProvider'
           property :dataplane_v2_config, as: 'dataplaneV2Config', class: Google::Apis::ContainerV1beta1::DataplaneV2Config, decorator: Google::Apis::ContainerV1beta1::DataplaneV2Config::Representation
       
@@ -3665,6 +3708,8 @@ module Google
           collection :allowed_unsafe_sysctls, as: 'allowedUnsafeSysctls'
           property :container_log_max_files, as: 'containerLogMaxFiles'
           property :container_log_max_size, as: 'containerLogMaxSize'
+          property :container_log_max_workers, as: 'containerLogMaxWorkers'
+          property :container_log_monitor_interval, as: 'containerLogMonitorInterval'
           property :cpu_cfs_quota, as: 'cpuCfsQuota'
           property :cpu_cfs_quota_period, as: 'cpuCfsQuotaPeriod'
           property :cpu_manager_policy, as: 'cpuManagerPolicy'
@@ -3688,6 +3733,7 @@ module Google
           property :pod_pids_limit, :numeric_string => true, as: 'podPidsLimit'
           property :reserved_resources_config, as: 'reservedResourcesConfig', class: Google::Apis::ContainerV1beta1::ReservedResourcesConfig, decorator: Google::Apis::ContainerV1beta1::ReservedResourcesConfig::Representation
       
+          property :reserved_system_cpus, as: 'reservedSystemCpus'
           property :shutdown_grace_period_critical_pods_seconds, as: 'shutdownGracePeriodCriticalPodsSeconds'
           property :shutdown_grace_period_seconds, as: 'shutdownGracePeriodSeconds'
           property :single_process_oom_kill, as: 'singleProcessOomKill'
@@ -3722,6 +3768,7 @@ module Google
           collection :additional_pod_network_configs, as: 'additionalPodNetworkConfigs', class: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig, decorator: Google::Apis::ContainerV1beta1::AdditionalPodNetworkConfig::Representation
       
           property :create_pod_range, as: 'createPodRange'
+          property :datapath_provider, as: 'datapathProvider'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :network, as: 'network'
           property :network_performance_config, as: 'networkPerformanceConfig', class: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig, decorator: Google::Apis::ContainerV1beta1::NetworkPerformanceConfig::Representation
@@ -4729,12 +4776,14 @@ module Google
       
           property :max_run_duration, as: 'maxRunDuration'
           property :name, as: 'name'
+          property :node_config_update_mode, as: 'nodeConfigUpdateMode'
           property :node_drain_config, as: 'nodeDrainConfig', class: Google::Apis::ContainerV1beta1::NodeDrainConfig, decorator: Google::Apis::ContainerV1beta1::NodeDrainConfig::Representation
       
           property :node_network_config, as: 'nodeNetworkConfig', class: Google::Apis::ContainerV1beta1::NodeNetworkConfig, decorator: Google::Apis::ContainerV1beta1::NodeNetworkConfig::Representation
       
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
+          collection :nodes, as: 'nodes'
           property :project_id, as: 'projectId'
           property :queued_provisioning, as: 'queuedProvisioning', class: Google::Apis::ContainerV1beta1::QueuedProvisioning, decorator: Google::Apis::ContainerV1beta1::QueuedProvisioning::Representation
       
@@ -4905,6 +4954,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :windows_versions, as: 'windowsVersions', class: Google::Apis::ContainerV1beta1::WindowsVersion, decorator: Google::Apis::ContainerV1beta1::WindowsVersion::Representation
       
+        end
+      end
+      
+      class WizSensorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_key_secret_uri, as: 'apiKeySecretUri'
+          property :enabled, as: 'enabled'
+          property :proxy_secret_uri, as: 'proxySecretUri'
+          property :registry_secret_uri, as: 'registrySecretUri'
         end
       end
       
