@@ -4,7 +4,10 @@ name: Sync-Generator-Lockfile
 # google-apis-generator versions and their dependencies. A release or a gemspec
 # change makes it stale, and then the weekly regeneration (generate-updates)
 # stops on a dirty checkout. This workflow refreshes the lockfile right after
-# such a change lands and opens a pull request.
+# such a change lands and opens a pull request. It runs `bundle lock` (without
+# `--update`), which re-resolves only what the change requires (the local gem
+# versions and any dependency their gemspecs now need) and keeps every other
+# gem at its locked version.
 
 permissions:
   contents: read
