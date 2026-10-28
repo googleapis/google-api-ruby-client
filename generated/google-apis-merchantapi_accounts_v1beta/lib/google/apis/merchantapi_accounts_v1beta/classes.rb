@@ -1822,8 +1822,11 @@ module Google
       class Homepage
         include Google::Apis::Core::Hashable
       
-        # Output only. Whether the homepage is claimed. See https://support.google.com/
-        # merchants/answer/176793.
+        # Output only. Whether the homepage is claimed. See [About online store URL
+        # verification](https://support.google.com/merchants/answer/176793). This field
+        # is also `true` if the account inherits the claim from its advanced account, or
+        # if the account is exempted from claiming, even when the homepage isn't claimed
+        # directly on the account.
         # Corresponds to the JSON property `claimed`
         # @return [Boolean]
         attr_accessor :claimed

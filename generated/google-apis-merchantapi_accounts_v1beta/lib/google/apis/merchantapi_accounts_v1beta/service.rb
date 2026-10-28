@@ -985,7 +985,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Unclaims a store's homepage. Executing this method requires admin access.
+        # Unclaims a store's homepage. Executing this method requires admin access. This
+        # method only removes a claim made directly on the account. If the account
+        # inherits the claim from its advanced account (for example, from an advanced
+        # account that is exempted from claiming), the homepage stays claimed: the
+        # method returns a successful response and `claimed` remains `true`. If the
+        # account itself is exempted from claiming, the method returns a `
+        # FAILED_PRECONDITION` error.
         # @param [String] name
         #   Required. The name of the homepage to unclaim. Format: `accounts/`account`/
         #   homepage`
