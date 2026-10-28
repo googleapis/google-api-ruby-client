@@ -309,7 +309,9 @@ module Google
         # @param [String] server_id
         #   Required. A unique ID for the server. Must start with a lowercase letter, and
         #   end with a lowercase letter or number. Can contain lowercase letters, numbers,
-        #   and hyphens. Maximum length is 30 characters.
+        #   and hyphens. Can't begin with the prefix `goog` or contain the string `google`,
+        #   including close misspellings such as `g00gle`. Maximum length is 30
+        #   characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
