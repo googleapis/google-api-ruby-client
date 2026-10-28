@@ -75675,6 +75675,15 @@
 "/chat:v1/ChatSpaceLinkData/message": message
 "/chat:v1/ChatSpaceLinkData/space": space
 "/chat:v1/ChatSpaceLinkData/thread": thread
+"/chat:v1/Citation": citation
+"/chat:v1/Citation/citedSources": cited_sources
+"/chat:v1/Citation/citedSources/cited_source": cited_source
+"/chat:v1/Citation/id": id
+"/chat:v1/CitedSource": cited_source
+"/chat:v1/CitedSource/footer": footer
+"/chat:v1/CitedSource/snippet": snippet
+"/chat:v1/CitedSource/title": title
+"/chat:v1/CitedSource/uri": uri
 "/chat:v1/Color": color
 "/chat:v1/Color/alpha": alpha
 "/chat:v1/Color/blue": blue
@@ -75748,6 +75757,13 @@
 "/chat:v1/DynamiteIntegrationLogEntry/deployment": deployment
 "/chat:v1/DynamiteIntegrationLogEntry/deploymentFunction": deployment_function
 "/chat:v1/DynamiteIntegrationLogEntry/error": error
+"/chat:v1/Elements": elements
+"/chat:v1/Elements/citations": citations
+"/chat:v1/Elements/citations/citation": citation
+"/chat:v1/Elements/citedSources": cited_sources
+"/chat:v1/Elements/citedSources/cited_source": cited_source
+"/chat:v1/ElementsImage": elements_image
+"/chat:v1/ElementsImage/imageUri": image_uri
 "/chat:v1/Emoji": emoji
 "/chat:v1/Emoji/customEmoji": custom_emoji
 "/chat:v1/Emoji/unicode": unicode
@@ -75759,6 +75775,8 @@
 "/chat:v1/FindGroupChatsResponse/nextPageToken": next_page_token
 "/chat:v1/FindGroupChatsResponse/spaces": spaces
 "/chat:v1/FindGroupChatsResponse/spaces/space": space
+"/chat:v1/Footer": footer
+"/chat:v1/Footer/text": text
 "/chat:v1/FormAction": form_action
 "/chat:v1/FormAction/actionMethodName": action_method_name
 "/chat:v1/FormAction/parameters": parameters
@@ -76200,6 +76218,7 @@
 "/chat:v1/Message/createTime": create_time
 "/chat:v1/Message/deleteTime": delete_time
 "/chat:v1/Message/deletionMetadata": deletion_metadata
+"/chat:v1/Message/elements": elements
 "/chat:v1/Message/emojiReactionSummaries": emoji_reaction_summaries
 "/chat:v1/Message/emojiReactionSummaries/emoji_reaction_summary": emoji_reaction_summary
 "/chat:v1/Message/fallbackText": fallback_text
@@ -76352,6 +76371,9 @@
 "/chat:v1/SlashCommandMetadata/commandName": command_name
 "/chat:v1/SlashCommandMetadata/triggersDialog": triggers_dialog
 "/chat:v1/SlashCommandMetadata/type": type
+"/chat:v1/Snippet": snippet
+"/chat:v1/Snippet/imagePreview": image_preview
+"/chat:v1/Snippet/text": text
 "/chat:v1/Space": space
 "/chat:v1/Space/accessSettings": access_settings
 "/chat:v1/Space/adminInstalled": admin_installed
