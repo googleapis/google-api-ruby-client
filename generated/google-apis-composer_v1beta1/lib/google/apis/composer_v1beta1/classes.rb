@@ -982,6 +982,13 @@ module Google
         attr_accessor :creation_disabled
         alias_method :creation_disabled?, :creation_disabled
       
+        # Whether it is possible to create an environment in the `DEVELOPMENT` mode with
+        # the image version.
+        # Corresponds to the JSON property `devModeSupported`
+        # @return [Boolean]
+        attr_accessor :dev_mode_supported
+        alias_method :dev_mode_supported?, :dev_mode_supported
+      
         # The string identifier of the ImageVersion, in the form: "composer-x.y.z-
         # airflow-a.b.c"
         # Corresponds to the JSON property `imageVersionId`
@@ -1026,6 +1033,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_disabled = args[:creation_disabled] if args.key?(:creation_disabled)
+          @dev_mode_supported = args[:dev_mode_supported] if args.key?(:dev_mode_supported)
           @image_version_id = args[:image_version_id] if args.key?(:image_version_id)
           @is_default = args[:is_default] if args.key?(:is_default)
           @release_date = args[:release_date] if args.key?(:release_date)
