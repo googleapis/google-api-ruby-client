@@ -442159,6 +442159,7 @@
 "/tasks:v1/tasks.tasks.get/task": task
 "/tasks:v1/tasks.tasks.get/tasklist": tasklist
 "/tasks:v1/tasks.tasks.insert": insert_task
+"/tasks:v1/tasks.tasks.insert/hidden": hidden
 "/tasks:v1/tasks.tasks.insert/parent": parent
 "/tasks:v1/tasks.tasks.insert/previous": previous
 "/tasks:v1/tasks.tasks.insert/tasklist": tasklist
