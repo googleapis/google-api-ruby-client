@@ -876,7 +876,7 @@ module Google
         # @return [String]
         attr_accessor :destination
       
-        # Optional. Distance in kilometers, e.g. `2423`, from [1, 2.5e16) km. This is
+        # Optional. Distance in kilometers, e.g. `2423`, from [`1`, `1e12`) km. This is
         # used to match a flight to distance-based emissions when origin and destination
         # are not provided or there are no matching typical flights.
         # Corresponds to the JSON property `distanceKm`
