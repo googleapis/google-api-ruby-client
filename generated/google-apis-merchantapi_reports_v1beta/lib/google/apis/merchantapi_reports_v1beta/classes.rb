@@ -1279,6 +1279,11 @@ module Google
         # @return [String]
         attr_accessor :marketing_method
       
+        # Network to which metrics apply. Segment.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Merchant-provided id of the product. Segment.
         # Corresponds to the JSON property `offerId`
         # @return [String]
@@ -1369,6 +1374,7 @@ module Google
           @date = args[:date] if args.key?(:date)
           @impressions = args[:impressions] if args.key?(:impressions)
           @marketing_method = args[:marketing_method] if args.key?(:marketing_method)
+          @network = args[:network] if args.key?(:network)
           @offer_id = args[:offer_id] if args.key?(:offer_id)
           @product_type_l1 = args[:product_type_l1] if args.key?(:product_type_l1)
           @product_type_l2 = args[:product_type_l2] if args.key?(:product_type_l2)

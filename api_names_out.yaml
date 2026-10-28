@@ -349854,6 +349854,7 @@
 "/merchantapi:reports_v1beta/ProductPerformanceView/date": date
 "/merchantapi:reports_v1beta/ProductPerformanceView/impressions": impressions
 "/merchantapi:reports_v1beta/ProductPerformanceView/marketingMethod": marketing_method
+"/merchantapi:reports_v1beta/ProductPerformanceView/network": network
 "/merchantapi:reports_v1beta/ProductPerformanceView/offerId": offer_id
 "/merchantapi:reports_v1beta/ProductPerformanceView/productTypeL1": product_type_l1
 "/merchantapi:reports_v1beta/ProductPerformanceView/productTypeL2": product_type_l2
