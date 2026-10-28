@@ -15298,6 +15298,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :action_button_labels
       
+        # Optional. The business name shown on the ad. This setting is required unless a
+        # default value is set at the advertiser level. If left unset, the default value
+        # will be applied.
+        # Corresponds to the JSON property `businessName`
+        # @return [String]
+        attr_accessor :business_name
+      
         # Optional. The list of companion banners used by this ad.
         # Corresponds to the JSON property `companionBanners`
         # @return [Array<Google::Apis::DisplayvideoV4::ImageAsset>]
@@ -15344,6 +15351,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :headlines
       
+        # Meta data of an image asset.
+        # Corresponds to the JSON property `logo`
+        # @return [Google::Apis::DisplayvideoV4::ImageAsset]
+        attr_accessor :logo
+      
         # Optional. The list of long headlines shown on the call-to-action banner. Must
         # be set unless the parent line item's lineItemType is `
         # LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field
@@ -15371,6 +15383,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action_button_labels = args[:action_button_labels] if args.key?(:action_button_labels)
+          @business_name = args[:business_name] if args.key?(:business_name)
           @companion_banners = args[:companion_banners] if args.key?(:companion_banners)
           @custom_parameters = args[:custom_parameters] if args.key?(:custom_parameters)
           @descriptions = args[:descriptions] if args.key?(:descriptions)
@@ -15379,6 +15392,7 @@ module Google
           @domain = args[:domain] if args.key?(:domain)
           @final_url = args[:final_url] if args.key?(:final_url)
           @headlines = args[:headlines] if args.key?(:headlines)
+          @logo = args[:logo] if args.key?(:logo)
           @long_headlines = args[:long_headlines] if args.key?(:long_headlines)
           @tracking_url = args[:tracking_url] if args.key?(:tracking_url)
           @videos = args[:videos] if args.key?(:videos)
