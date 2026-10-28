@@ -41,7 +41,8 @@ module Google
         # @return [String]
         attr_accessor :comment_id
       
-        # Polymorphic location targeting either a PDF page region/quote or text lines.
+        # A location targeting either a PDF page region/quote or text lines in the
+        # document.
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::DeepreviewV1::DocumentLocation]
         attr_accessor :location
@@ -99,19 +100,6 @@ module Google
         def update!(**args)
           @family_name = args[:family_name] if args.key?(:family_name)
           @given_name = args[:given_name] if args.key?(:given_name)
-        end
-      end
-      
-      # The request message for Operations.CancelOperation.
-      class CancelOperationRequest
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       
@@ -362,8 +350,8 @@ module Google
         attr_accessor :gemini_api_key_set
         alias_method :gemini_api_key_set?, :gemini_api_key_set
       
-        # Optional. The Gemini model name/version to use (e.g., "gemini-1.5-pro", "
-        # gemini-2.0-flash").
+        # Optional. The Gemini model identifier to use for the review. If omitted, the
+        # server uses its default model. Unsupported values return INVALID_ARGUMENT.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
@@ -393,9 +381,8 @@ module Google
         end
       end
       
-      # Document Resource Model representing an uploaded document for review.
-      # Documents are immutable post-creation; to review a new version, create a new
-      # Document.
+      # A document uploaded for automated review. Documents are immutable post-
+      # creation; to review a new version, create a new Document.
       class Document
         include Google::Apis::Core::Hashable
       
@@ -438,7 +425,8 @@ module Google
         end
       end
       
-      # Polymorphic location targeting either a PDF page region/quote or text lines.
+      # A location targeting either a PDF page region/quote or text lines in the
+      # document.
       class DocumentLocation
         include Google::Apis::Core::Hashable
       
@@ -463,7 +451,7 @@ module Google
         end
       end
       
-      # Response message for downloading a Document's raw content via Scotty media.
+      # Response message for downloading a Document's raw content using media download.
       class DownloadDocumentResponse
         include Google::Apis::Core::Hashable
       
@@ -503,8 +491,8 @@ module Google
         attr_accessor :resource_key_set
         alias_method :resource_key_set?, :resource_key_set
       
-        # Optional. Input only. Immutable. Specific revision ID to import (defaults to
-        # latest head revision).
+        # Optional. Input only. Immutable. Importing a specific revision is not
+        # currently supported; non-empty values return INVALID_ARGUMENT.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -535,6 +523,64 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Request message for estimating what a review would cost.
+      class EstimateReviewCostRequest
+        include Google::Apis::Core::Hashable
+      
+        # An evaluation run of a document.
+        # Corresponds to the JSON property `review`
+        # @return [Google::Apis::DeepreviewV1::Review]
+        attr_accessor :review
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @review = args[:review] if args.key?(:review)
+        end
+      end
+      
+      # Response message for estimating what a review would cost. When the cost can't
+      # be estimated, for example because too few past reviews used the same model and
+      # depth, the costs are unset and `past_review_count` is 0.
+      class EstimateReviewCostResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `highCost`
+        # @return [Google::Apis::DeepreviewV1::Money]
+        attr_accessor :high_cost
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `lowCost`
+        # @return [Google::Apis::DeepreviewV1::Money]
+        attr_accessor :low_cost
+      
+        # Represents an amount of money with its currency type.
+        # Corresponds to the JSON property `medianCost`
+        # @return [Google::Apis::DeepreviewV1::Money]
+        attr_accessor :median_cost
+      
+        # Number of past reviews the estimate is based on.
+        # Corresponds to the JSON property `pastReviewCount`
+        # @return [Fixnum]
+        attr_accessor :past_review_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @high_cost = args[:high_cost] if args.key?(:high_cost)
+          @low_cost = args[:low_cost] if args.key?(:low_cost)
+          @median_cost = args[:median_cost] if args.key?(:median_cost)
+          @past_review_count = args[:past_review_count] if args.key?(:past_review_count)
         end
       end
       
@@ -623,40 +669,6 @@ module Google
         end
       end
       
-      # The response message for Operations.ListOperations.
-      class ListOperationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        # A list of operations that matches the specified filter in the request.
-        # Corresponds to the JSON property `operations`
-        # @return [Array<Google::Apis::DeepreviewV1::Operation>]
-        attr_accessor :operations
-      
-        # Unordered list. Unreachable resources. Populated when the request sets `
-        # ListOperationsRequest.return_partial_success` and reads across collections.
-        # For example, when attempting to list all resources across all supported
-        # locations.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-          @operations = args[:operations] if args.key?(:operations)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # Response message for listing Review resources.
       class ListReviewsResponse
         include Google::Apis::Core::Hashable
@@ -680,6 +692,42 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @reviews = args[:reviews] if args.key?(:reviews)
+        end
+      end
+      
+      # Represents an amount of money with its currency type.
+      class Money
+        include Google::Apis::Core::Hashable
+      
+        # The three-letter currency code defined in ISO 4217.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # Number of nano (10^-9) units of the amount. The value must be between -999,999,
+        # 999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be
+        # positive or zero. If `units` is zero, `nanos` can be positive, zero, or
+        # negative. If `units` is negative, `nanos` must be negative or zero. For
+        # example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # The whole units of the amount. For example if `currencyCode` is `"USD"`, then
+        # 1 unit is one US dollar.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @units = args[:units] if args.key?(:units)
         end
       end
       
@@ -797,8 +845,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :page_number
       
-        # W3C Web Annotation TextQuoteSelector for resilient text anchoring (https://www.
-        # w3.org/TR/annotation-model/#text-quote-selector).
+        # W3C Web Annotation TextQuoteSelector for resilient text anchoring (see https://
+        # www.w3.org/TR/annotation-model/#text-quote-selector for details).
         # Corresponds to the JSON property `quoteSelector`
         # @return [Google::Apis::DeepreviewV1::TextQuoteSelector]
         attr_accessor :quote_selector
@@ -853,7 +901,7 @@ module Google
         end
       end
       
-      # Review Sub-Resource Model representing an evaluation run of a document.
+      # An evaluation run of a document.
       class Review
         include Google::Apis::Core::Hashable
       
@@ -925,8 +973,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. Resource name of the Review. Format: `documents/`document`/
-        # reviews/`review``
+        # Output only. Resource name of the Review.
         # Corresponds to the JSON property `review`
         # @return [String]
         attr_accessor :review
@@ -1032,8 +1079,8 @@ module Google
         end
       end
       
-      # W3C Web Annotation TextQuoteSelector for resilient text anchoring (https://www.
-      # w3.org/TR/annotation-model/#text-quote-selector).
+      # W3C Web Annotation TextQuoteSelector for resilient text anchoring (see https://
+      # www.w3.org/TR/annotation-model/#text-quote-selector for details).
       class TextQuoteSelector
         include Google::Apis::Core::Hashable
       
@@ -1061,6 +1108,59 @@ module Google
           @exact = args[:exact] if args.key?(:exact)
           @prefix = args[:prefix] if args.key?(:prefix)
           @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
+      # Singleton resource representing the authenticated caller's review quota limits
+      # and sliding-window usage.
+      class UserQuota
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Whether a custom per-user quota override is active for this user.
+        # Corresponds to the JSON property `customLimitEnabled`
+        # @return [Boolean]
+        attr_accessor :custom_limit_enabled
+        alias_method :custom_limit_enabled?, :custom_limit_enabled
+      
+        # Output only. Maximum free-tier reviews allowed per rolling 7-day window.
+        # Corresponds to the JSON property `maxReviewCountPerWeek`
+        # @return [Fixnum]
+        attr_accessor :max_review_count_per_week
+      
+        # Identifier. Resource name of the singleton user quota (`userQuota`).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Timestamp when the next review quota slot becomes available if `
+        # remaining_review_count` is 0; unset when quota is currently available.
+        # Corresponds to the JSON property `nextAvailableTime`
+        # @return [String]
+        attr_accessor :next_available_time
+      
+        # Output only. Remaining free-tier reviews available in the current rolling 7-
+        # day window (`max(0, max_review_count_per_week - used_review_count)`).
+        # Corresponds to the JSON property `remainingReviewCount`
+        # @return [Fixnum]
+        attr_accessor :remaining_review_count
+      
+        # Output only. Number of free-tier reviews used in the past 7 days.
+        # Corresponds to the JSON property `usedReviewCount`
+        # @return [Fixnum]
+        attr_accessor :used_review_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_limit_enabled = args[:custom_limit_enabled] if args.key?(:custom_limit_enabled)
+          @max_review_count_per_week = args[:max_review_count_per_week] if args.key?(:max_review_count_per_week)
+          @name = args[:name] if args.key?(:name)
+          @next_available_time = args[:next_available_time] if args.key?(:next_available_time)
+          @remaining_review_count = args[:remaining_review_count] if args.key?(:remaining_review_count)
+          @used_review_count = args[:used_review_count] if args.key?(:used_review_count)
         end
       end
     end

@@ -29,6 +29,9 @@ module Google
       # This is NOT the gem version.
       VERSION = 'V1'
 
+      # See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account.
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
       # See, edit, create, and delete only the specific Google Drive files you use with this app
       AUTH_DRIVE_FILE = 'https://www.googleapis.com/auth/drive.file'
     end
