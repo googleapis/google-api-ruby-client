@@ -1264,6 +1264,97 @@ module Google
         end
       end
       
+      # Exploitability information for a vulnerability. This data can be used across
+      # multiple sources, including, but not limited to a top-level vulnerability, a
+      # package occurrence, or a package file location.
+      class Exploitability
+        include Google::Apis::Core::Hashable
+      
+        # Individual exploitability signals from various sources.
+        # Corresponds to the JSON property `signals`
+        # @return [Array<Google::Apis::OndemandscanningV1::ExploitabilitySignal>]
+        attr_accessor :signals
+      
+        # Rollup summary of exploitability across signals.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::OndemandscanningV1::ExploitabilitySummary]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signals = args[:signals] if args.key?(:signals)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # A single exploitability signal from a specific source (e.g., an upstream
+      # advisory, a customer VEX document, or an internal build analysis).
+      class ExploitabilitySignal
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable explanation of this signal.
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        # Identifier of the signal source.
+        # Corresponds to the JSON property `source`
+        # @return [String]
+        attr_accessor :source
+      
+        # Justification for why the vulnerability is not exploitable.
+        # Corresponds to the JSON property `vexJustification`
+        # @return [String]
+        attr_accessor :vex_justification
+      
+        # The VEX status asserted by this signal.
+        # Corresponds to the JSON property `vexStatus`
+        # @return [String]
+        attr_accessor :vex_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rationale = args[:rationale] if args.key?(:rationale)
+          @source = args[:source] if args.key?(:source)
+          @vex_justification = args[:vex_justification] if args.key?(:vex_justification)
+          @vex_status = args[:vex_status] if args.key?(:vex_status)
+        end
+      end
+      
+      # Rollup summary of exploitability across signals.
+      class ExploitabilitySummary
+        include Google::Apis::Core::Hashable
+      
+        # Human-readable explanation of the summary.
+        # Corresponds to the JSON property `rationale`
+        # @return [String]
+        attr_accessor :rationale
+      
+        # The rolled-up VEX status. Usually, this should result in an AFFECTED or
+        # NOT_AFFECTED vex status.
+        # Corresponds to the JSON property `vexStatus`
+        # @return [String]
+        attr_accessor :vex_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rationale = args[:rationale] if args.key?(:rationale)
+          @vex_status = args[:vex_status] if args.key?(:vex_status)
+        end
+      end
+      
       # 
       class File
         include Google::Apis::Core::Hashable
@@ -2989,6 +3080,13 @@ module Google
         # @return [String]
         attr_accessor :effective_severity
       
+        # Exploitability information for a vulnerability. This data can be used across
+        # multiple sources, including, but not limited to a top-level vulnerability, a
+        # package occurrence, or a package file location.
+        # Corresponds to the JSON property `exploitability`
+        # @return [Google::Apis::OndemandscanningV1::Exploitability]
+        attr_accessor :exploitability
+      
         # The location at which this package was found.
         # Corresponds to the JSON property `fileLocation`
         # @return [Array<Google::Apis::OndemandscanningV1::GrafeasV1FileLocation>]
@@ -3032,6 +3130,7 @@ module Google
           @affected_package = args[:affected_package] if args.key?(:affected_package)
           @affected_version = args[:affected_version] if args.key?(:affected_version)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @exploitability = args[:exploitability] if args.key?(:exploitability)
           @file_location = args[:file_location] if args.key?(:file_location)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @fixed_cpe_uri = args[:fixed_cpe_uri] if args.key?(:fixed_cpe_uri)
@@ -4500,6 +4599,13 @@ module Google
         # @return [String]
         attr_accessor :effective_severity
       
+        # Exploitability information for a vulnerability. This data can be used across
+        # multiple sources, including, but not limited to a top-level vulnerability, a
+        # package occurrence, or a package file location.
+        # Corresponds to the JSON property `exploitability`
+        # @return [Google::Apis::OndemandscanningV1::Exploitability]
+        attr_accessor :exploitability
+      
         # Occurrence-specific extra details about the vulnerability.
         # Corresponds to the JSON property `extraDetails`
         # @return [String]
@@ -4566,6 +4672,7 @@ module Google
           @cvss_version = args[:cvss_version] if args.key?(:cvss_version)
           @cvssv3 = args[:cvssv3] if args.key?(:cvssv3)
           @effective_severity = args[:effective_severity] if args.key?(:effective_severity)
+          @exploitability = args[:exploitability] if args.key?(:exploitability)
           @extra_details = args[:extra_details] if args.key?(:extra_details)
           @fix_available = args[:fix_available] if args.key?(:fix_available)
           @long_description = args[:long_description] if args.key?(:long_description)

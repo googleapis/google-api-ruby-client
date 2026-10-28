@@ -214,6 +214,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Exploitability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExploitabilitySignal
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExploitabilitySummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class File
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1059,6 +1077,34 @@ module Google
         end
       end
       
+      class Exploitability
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :signals, as: 'signals', class: Google::Apis::OndemandscanningV1::ExploitabilitySignal, decorator: Google::Apis::OndemandscanningV1::ExploitabilitySignal::Representation
+      
+          property :summary, as: 'summary', class: Google::Apis::OndemandscanningV1::ExploitabilitySummary, decorator: Google::Apis::OndemandscanningV1::ExploitabilitySummary::Representation
+      
+        end
+      end
+      
+      class ExploitabilitySignal
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rationale, as: 'rationale'
+          property :source, as: 'source'
+          property :vex_justification, as: 'vexJustification'
+          property :vex_status, as: 'vexStatus'
+        end
+      end
+      
+      class ExploitabilitySummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rationale, as: 'rationale'
+          property :vex_status, as: 'vexStatus'
+        end
+      end
+      
       class File
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1549,6 +1595,8 @@ module Google
           property :affected_version, as: 'affectedVersion', class: Google::Apis::OndemandscanningV1::Version, decorator: Google::Apis::OndemandscanningV1::Version::Representation
       
           property :effective_severity, as: 'effectiveSeverity'
+          property :exploitability, as: 'exploitability', class: Google::Apis::OndemandscanningV1::Exploitability, decorator: Google::Apis::OndemandscanningV1::Exploitability::Representation
+      
           collection :file_location, as: 'fileLocation', class: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation, decorator: Google::Apis::OndemandscanningV1::GrafeasV1FileLocation::Representation
       
           property :fix_available, as: 'fixAvailable'
@@ -1964,6 +2012,8 @@ module Google
           property :cvssv3, as: 'cvssv3', class: Google::Apis::OndemandscanningV1::Cvss, decorator: Google::Apis::OndemandscanningV1::Cvss::Representation
       
           property :effective_severity, as: 'effectiveSeverity'
+          property :exploitability, as: 'exploitability', class: Google::Apis::OndemandscanningV1::Exploitability, decorator: Google::Apis::OndemandscanningV1::Exploitability::Representation
+      
           property :extra_details, as: 'extraDetails'
           property :fix_available, as: 'fixAvailable'
           property :long_description, as: 'longDescription'
