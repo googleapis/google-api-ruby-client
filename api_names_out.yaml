@@ -37078,6 +37078,8 @@
 "/alloydb:v1beta/BackupSource": backup_source
 "/alloydb:v1beta/BackupSource/backupName": backup_name
 "/alloydb:v1beta/BackupSource/backupUid": backup_uid
+"/alloydb:v1beta/CertificateAuthorityInfo": certificate_authority_info
+"/alloydb:v1beta/CertificateAuthorityInfo/rootCaCert": root_ca_cert
 "/alloydb:v1beta/ClientConnectionConfig": client_connection_config
 "/alloydb:v1beta/ClientConnectionConfig/requireConnectors": require_connectors
 "/alloydb:v1beta/ClientConnectionConfig/sslConfig": ssl_config
@@ -37095,6 +37097,7 @@
 "/alloydb:v1beta/Cluster/backupSource": backup_source
 "/alloydb:v1beta/Cluster/backupdrBackupSource": backupdr_backup_source
 "/alloydb:v1beta/Cluster/backupdrInfo": backupdr_info
+"/alloydb:v1beta/Cluster/certificateAuthorityInfo": certificate_authority_info
 "/alloydb:v1beta/Cluster/cloudsqlBackupRunSource": cloudsql_backup_run_source
 "/alloydb:v1beta/Cluster/clusterType": cluster_type
 "/alloydb:v1beta/Cluster/continuousBackupConfig": continuous_backup_config
@@ -37321,6 +37324,7 @@
 "/alloydb:v1beta/Instance/maintenanceVersionName": maintenance_version_name
 "/alloydb:v1beta/Instance/name": name
 "/alloydb:v1beta/Instance/networkConfig": network_config
+"/alloydb:v1beta/Instance/networkInfo": network_info
 "/alloydb:v1beta/Instance/nodes": nodes
 "/alloydb:v1beta/Instance/nodes/node": node
 "/alloydb:v1beta/Instance/observabilityConfig": observability_config
@@ -37347,6 +37351,9 @@
 "/alloydb:v1beta/InstanceNetworkConfig/enableOutboundPublicIp": enable_outbound_public_ip
 "/alloydb:v1beta/InstanceNetworkConfig/enablePublicIp": enable_public_ip
 "/alloydb:v1beta/InstanceNetworkConfig/network": network
+"/alloydb:v1beta/InstanceNetworkConfig/publicDnsEnabled": public_dns_enabled
+"/alloydb:v1beta/InstanceNetworkInfo": instance_network_info
+"/alloydb:v1beta/InstanceNetworkInfo/publicDnsName": public_dns_name
 "/alloydb:v1beta/InstanceUpgradeDetails": instance_upgrade_details
 "/alloydb:v1beta/InstanceUpgradeDetails/instanceType": instance_type
 "/alloydb:v1beta/InstanceUpgradeDetails/name": name
