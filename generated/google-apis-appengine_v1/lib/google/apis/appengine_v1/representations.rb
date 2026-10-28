@@ -502,7 +502,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcAccess
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcAccessConnector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcNetworkInterface
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1388,6 +1400,8 @@ module Google
           property :threadsafe, as: 'threadsafe'
           property :version_url, as: 'versionUrl'
           property :vm, as: 'vm'
+          property :vpc_access, as: 'vpcAccess', class: Google::Apis::AppengineV1::VpcAccess, decorator: Google::Apis::AppengineV1::VpcAccess::Representation
+      
           property :vpc_access_connector, as: 'vpcAccessConnector', class: Google::Apis::AppengineV1::VpcAccessConnector, decorator: Google::Apis::AppengineV1::VpcAccessConnector::Representation
       
           collection :zones, as: 'zones'
@@ -1403,11 +1417,29 @@ module Google
         end
       end
       
+      class VpcAccess
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::AppengineV1::VpcNetworkInterface, decorator: Google::Apis::AppengineV1::VpcNetworkInterface::Representation
+      
+          property :vpc_egress, as: 'vpcEgress'
+        end
+      end
+      
       class VpcAccessConnector
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :egress_setting, as: 'egressSetting'
           property :name, as: 'name'
+        end
+      end
+      
+      class VpcNetworkInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network, as: 'network'
+          property :subnet, as: 'subnet'
+          collection :tags, as: 'tags'
         end
       end
       

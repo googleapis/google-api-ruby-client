@@ -3490,6 +3490,11 @@ module Google
         attr_accessor :vm
         alias_method :vm?, :vm
       
+        # VPC Access settings
+        # Corresponds to the JSON property `vpcAccess`
+        # @return [Google::Apis::AppengineV1::VpcAccess]
+        attr_accessor :vpc_access
+      
         # VPC access connector specification.
         # Corresponds to the JSON property `vpcAccessConnector`
         # @return [Google::Apis::AppengineV1::VpcAccessConnector]
@@ -3548,6 +3553,7 @@ module Google
           @threadsafe = args[:threadsafe] if args.key?(:threadsafe)
           @version_url = args[:version_url] if args.key?(:version_url)
           @vm = args[:vm] if args.key?(:vm)
+          @vpc_access = args[:vpc_access] if args.key?(:vpc_access)
           @vpc_access_connector = args[:vpc_access_connector] if args.key?(:vpc_access_connector)
           @zones = args[:zones] if args.key?(:zones)
         end
@@ -3585,6 +3591,33 @@ module Google
         end
       end
       
+      # VPC Access settings
+      class VpcAccess
+        include Google::Apis::Core::Hashable
+      
+        # The Direct VPC configuration. Currently only single network interface is
+        # supported.
+        # Corresponds to the JSON property `networkInterfaces`
+        # @return [Array<Google::Apis::AppengineV1::VpcNetworkInterface>]
+        attr_accessor :network_interfaces
+      
+        # The traffic egress setting for the VPC network interface, controlling what
+        # traffic is diverted through it.
+        # Corresponds to the JSON property `vpcEgress`
+        # @return [String]
+        attr_accessor :vpc_egress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @vpc_egress = args[:vpc_egress] if args.key?(:vpc_egress)
+        end
+      end
+      
       # VPC access connector specification.
       class VpcAccessConnector
         include Google::Apis::Core::Hashable
@@ -3609,6 +3642,48 @@ module Google
         def update!(**args)
           @egress_setting = args[:egress_setting] if args.key?(:egress_setting)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Network interface key message.
+      class VpcNetworkInterface
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The VPC network that the App Engine resource will be able to send
+        # traffic to. At least one of network or subnetwork must be specified. If both
+        # network and subnetwork are specified, the given VPC subnetwork must belong to
+        # the given VPC network. If network is not specified, it will be looked up from
+        # the subnetwork. Could be either a short name or a full path. e.g. `VPC_NETWORK`
+        # or projects/`HOST_PROJECT_ID`/global/networks/`VPC_NETWORK`
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
+        # Optional. The VPC subnetwork that the App Engine resource will get IPs from.
+        # At least one of network or subnetwork must be specified. If both network and
+        # subnetwork are specified, the given VPC subnetwork must belong to the given
+        # VPC network. If subnetwork is not specified, the subnetwork with the same name
+        # with the network will be used. Could be either a short name or a full path. e.
+        # g. `SUBNET_NAME` or projects/`HOST_PROJECT_ID`/regions/`REGION`/subnetworks/`
+        # SUBNET_NAME`
+        # Corresponds to the JSON property `subnet`
+        # @return [String]
+        attr_accessor :subnet
+      
+        # Optional. The network tags that will be applied to this App Engine resource.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @network = args[:network] if args.key?(:network)
+          @subnet = args[:subnet] if args.key?(:subnet)
+          @tags = args[:tags] if args.key?(:tags)
         end
       end
       

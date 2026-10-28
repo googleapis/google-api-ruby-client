@@ -54209,6 +54209,7 @@
 "/appengine:v1/Version/threadsafe": threadsafe
 "/appengine:v1/Version/versionUrl": version_url
 "/appengine:v1/Version/vm": vm
+"/appengine:v1/Version/vpcAccess": vpc_access
 "/appengine:v1/Version/vpcAccessConnector": vpc_access_connector
 "/appengine:v1/Version/zones": zones
 "/appengine:v1/Version/zones/zone": zone
@@ -54216,9 +54217,18 @@
 "/appengine:v1/Volume/name": name
 "/appengine:v1/Volume/sizeGb": size_gb
 "/appengine:v1/Volume/volumeType": volume_type
+"/appengine:v1/VpcAccess": vpc_access
+"/appengine:v1/VpcAccess/networkInterfaces": network_interfaces
+"/appengine:v1/VpcAccess/networkInterfaces/network_interface": network_interface
+"/appengine:v1/VpcAccess/vpcEgress": vpc_egress
 "/appengine:v1/VpcAccessConnector": vpc_access_connector
 "/appengine:v1/VpcAccessConnector/egressSetting": egress_setting
 "/appengine:v1/VpcAccessConnector/name": name
+"/appengine:v1/VpcNetworkInterface": vpc_network_interface
+"/appengine:v1/VpcNetworkInterface/network": network
+"/appengine:v1/VpcNetworkInterface/subnet": subnet
+"/appengine:v1/VpcNetworkInterface/tags": tags
+"/appengine:v1/VpcNetworkInterface/tags/tag": tag
 "/appengine:v1/ZipInfo": zip_info
 "/appengine:v1/ZipInfo/filesCount": files_count
 "/appengine:v1/ZipInfo/sourceUrl": source_url
