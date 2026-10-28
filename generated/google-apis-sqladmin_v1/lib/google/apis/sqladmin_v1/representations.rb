@@ -2889,8 +2889,6 @@ module Google
       class StopWorkloadReplayContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :replay_instance, as: 'replayInstance'
-          property :workload_id, as: 'workloadId'
         end
       end
       
