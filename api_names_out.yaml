@@ -56860,6 +56860,8 @@
 "/apphub:v1/key": key
 "/apphub:v1/quotaUser": quota_user
 "/apphub:v1alpha/Application": application
+"/apphub:v1alpha/Application/applicationProperties": application_properties
+"/apphub:v1alpha/Application/applicationType": application_type
 "/apphub:v1alpha/Application/attributes": attributes
 "/apphub:v1alpha/Application/createTime": create_time
 "/apphub:v1alpha/Application/description": description
@@ -56869,6 +56871,11 @@
 "/apphub:v1alpha/Application/state": state
 "/apphub:v1alpha/Application/uid": uid
 "/apphub:v1alpha/Application/updateTime": update_time
+"/apphub:v1alpha/ApplicationProperties": application_properties
+"/apphub:v1alpha/ApplicationProperties/extendedMetadata": extended_metadata
+"/apphub:v1alpha/ApplicationProperties/extendedMetadata/extended_metadatum": extended_metadatum
+"/apphub:v1alpha/ApplicationType": application_type
+"/apphub:v1alpha/ApplicationType/type": type
 "/apphub:v1alpha/AssetLocation": asset_location
 "/apphub:v1alpha/AssetLocation/ccfeRmsPath": ccfe_rms_path
 "/apphub:v1alpha/AssetLocation/expected": expected
