@@ -879,6 +879,61 @@ module Google
         end
       end
       
+      # Additional assets for a creative.
+      class AdditionalAsset
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Call to actions for the creative.
+        # Corresponds to the JSON property `callToActions`
+        # @return [Array<String>]
+        attr_accessor :call_to_actions
+      
+        # Optional. Cover images for the creative.
+        # Corresponds to the JSON property `coverImages`
+        # @return [Array<Google::Apis::DfareportingV5::CreativeAsset>]
+        attr_accessor :cover_images
+      
+        # Optional. Descriptions for the creative.
+        # Corresponds to the JSON property `descriptions`
+        # @return [Array<String>]
+        attr_accessor :descriptions
+      
+        # Optional. Display URL for the creative.
+        # Corresponds to the JSON property `displayUrl`
+        # @return [String]
+        attr_accessor :display_url
+      
+        # Optional. Headlines for the creative.
+        # Corresponds to the JSON property `headlines`
+        # @return [Array<String>]
+        attr_accessor :headlines
+      
+        # Optional. Long descriptions for the creative.
+        # Corresponds to the JSON property `longDescriptions`
+        # @return [Array<String>]
+        attr_accessor :long_descriptions
+      
+        # Optional. Long headlines for the creative.
+        # Corresponds to the JSON property `longHeadlines`
+        # @return [Array<String>]
+        attr_accessor :long_headlines
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @call_to_actions = args[:call_to_actions] if args.key?(:call_to_actions)
+          @cover_images = args[:cover_images] if args.key?(:cover_images)
+          @descriptions = args[:descriptions] if args.key?(:descriptions)
+          @display_url = args[:display_url] if args.key?(:display_url)
+          @headlines = args[:headlines] if args.key?(:headlines)
+          @long_descriptions = args[:long_descriptions] if args.key?(:long_descriptions)
+          @long_headlines = args[:long_headlines] if args.key?(:long_headlines)
+        end
+      end
+      
       # Ad List Response
       class AdsListResponse
         include Google::Apis::Core::Hashable
@@ -3367,6 +3422,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :ad_tag_keys
       
+        # Additional assets for a creative.
+        # Corresponds to the JSON property `additionalAsset`
+        # @return [Google::Apis::DfareportingV5::AdditionalAsset]
+        attr_accessor :additional_asset
+      
         # Additional sizes associated with a responsive creative. When inserting or
         # updating a creative either the size ID field or size width and height fields
         # can be used. Applicable to DISPLAY creatives when the primary asset type is
@@ -3804,6 +3864,7 @@ module Google
           @active = args[:active] if args.key?(:active)
           @ad_parameters = args[:ad_parameters] if args.key?(:ad_parameters)
           @ad_tag_keys = args[:ad_tag_keys] if args.key?(:ad_tag_keys)
+          @additional_asset = args[:additional_asset] if args.key?(:additional_asset)
           @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @allow_script_access = args[:allow_script_access] if args.key?(:allow_script_access)
