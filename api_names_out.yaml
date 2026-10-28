@@ -129861,6 +129861,7 @@
 "/compute:beta/RouterBgpPeer/ipAddress": ip_address
 "/compute:beta/RouterBgpPeer/ipv4NexthopAddress": ipv4_nexthop_address
 "/compute:beta/RouterBgpPeer/ipv6NexthopAddress": ipv6_nexthop_address
+"/compute:beta/RouterBgpPeer/linkedCustomHardware": linked_custom_hardware
 "/compute:beta/RouterBgpPeer/managementType": management_type
 "/compute:beta/RouterBgpPeer/md5AuthenticationKeyName": md5_authentication_key_name
 "/compute:beta/RouterBgpPeer/name": name
@@ -129984,6 +129985,7 @@
 "/compute:beta/RouterStatusBgpPeerStatus/ipAddress": ip_address
 "/compute:beta/RouterStatusBgpPeerStatus/ipv4NexthopAddress": ipv4_nexthop_address
 "/compute:beta/RouterStatusBgpPeerStatus/ipv6NexthopAddress": ipv6_nexthop_address
+"/compute:beta/RouterStatusBgpPeerStatus/linkedCustomHardware": linked_custom_hardware
 "/compute:beta/RouterStatusBgpPeerStatus/linkedVpnTunnel": linked_vpn_tunnel
 "/compute:beta/RouterStatusBgpPeerStatus/md5AuthEnabled": md5_auth_enabled
 "/compute:beta/RouterStatusBgpPeerStatus/name": name
@@ -132212,6 +132214,7 @@
 "/compute:beta/WorkloadIdentityConfig": workload_identity_config
 "/compute:beta/WorkloadIdentityConfig/identity": identity
 "/compute:beta/WorkloadIdentityConfig/identityCertificateEnabled": identity_certificate_enabled
+"/compute:beta/WorkloadIdentityConfig/identityType": identity_type
 "/compute:beta/XpnHostList": xpn_host_list
 "/compute:beta/XpnHostList/id": id
 "/compute:beta/XpnHostList/items": items
