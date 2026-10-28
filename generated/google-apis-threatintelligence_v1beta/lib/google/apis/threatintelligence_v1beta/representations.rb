@@ -603,6 +603,8 @@ module Google
           property :ai_summary, as: 'aiSummary'
           property :author, as: 'author'
           property :collection_time, as: 'collectionTime'
+          property :communication_context, as: 'communicationContext', class: Google::Apis::ThreatintelligenceV1beta::CommunicationContext, decorator: Google::Apis::ThreatintelligenceV1beta::CommunicationContext::Representation
+      
           property :content, as: 'content'
           property :create_time, as: 'createTime'
           property :ingest_time, as: 'ingestTime'
@@ -658,6 +660,7 @@ module Google
           property :channel_name, as: 'channelName'
           property :channel_path, as: 'channelPath'
           property :channel_url, as: 'channelUrl'
+          property :message_id, as: 'messageId'
           property :service_name, as: 'serviceName'
           property :thread_id, as: 'threadId'
         end

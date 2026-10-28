@@ -443774,6 +443774,7 @@
 "/threatintelligence:v1beta/AlertDocument/aiSummary": ai_summary
 "/threatintelligence:v1beta/AlertDocument/author": author
 "/threatintelligence:v1beta/AlertDocument/collectionTime": collection_time
+"/threatintelligence:v1beta/AlertDocument/communicationContext": communication_context
 "/threatintelligence:v1beta/AlertDocument/content": content
 "/threatintelligence:v1beta/AlertDocument/createTime": create_time
 "/threatintelligence:v1beta/AlertDocument/ingestTime": ingest_time
@@ -443816,6 +443817,7 @@
 "/threatintelligence:v1beta/CommunicationContext/channelName": channel_name
 "/threatintelligence:v1beta/CommunicationContext/channelPath": channel_path
 "/threatintelligence:v1beta/CommunicationContext/channelUrl": channel_url
+"/threatintelligence:v1beta/CommunicationContext/messageId": message_id
 "/threatintelligence:v1beta/CommunicationContext/serviceName": service_name
 "/threatintelligence:v1beta/CommunicationContext/threadId": thread_id
 "/threatintelligence:v1beta/CompromisedCredentialsFindingDetail": compromised_credentials_finding_detail

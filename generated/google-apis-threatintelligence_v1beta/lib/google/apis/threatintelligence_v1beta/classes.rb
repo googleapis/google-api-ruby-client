@@ -240,6 +240,12 @@ module Google
         # @return [String]
         attr_accessor :collection_time
       
+        # Detailed communication context metadata for documents originating from deep
+        # and dark web communication channels.
+        # Corresponds to the JSON property `communicationContext`
+        # @return [Google::Apis::ThreatintelligenceV1beta::CommunicationContext]
+        attr_accessor :communication_context
+      
         # Output only. The content of the document.
         # Corresponds to the JSON property `content`
         # @return [String]
@@ -301,6 +307,7 @@ module Google
           @ai_summary = args[:ai_summary] if args.key?(:ai_summary)
           @author = args[:author] if args.key?(:author)
           @collection_time = args[:collection_time] if args.key?(:collection_time)
+          @communication_context = args[:communication_context] if args.key?(:communication_context)
           @content = args[:content] if args.key?(:content)
           @create_time = args[:create_time] if args.key?(:create_time)
           @ingest_time = args[:ingest_time] if args.key?(:ingest_time)
@@ -452,6 +459,11 @@ module Google
         # @return [String]
         attr_accessor :channel_url
       
+        # Optional. Message or post identifier on the originating platform.
+        # Corresponds to the JSON property `messageId`
+        # @return [String]
+        attr_accessor :message_id
+      
         # Optional. Service from the collection event origin (e.g. forum or chat service
         # name).
         # Corresponds to the JSON property `serviceName`
@@ -473,6 +485,7 @@ module Google
           @channel_name = args[:channel_name] if args.key?(:channel_name)
           @channel_path = args[:channel_path] if args.key?(:channel_path)
           @channel_url = args[:channel_url] if args.key?(:channel_url)
+          @message_id = args[:message_id] if args.key?(:message_id)
           @service_name = args[:service_name] if args.key?(:service_name)
           @thread_id = args[:thread_id] if args.key?(:thread_id)
         end
@@ -3133,8 +3146,12 @@ module Google
         # @return [Google::Apis::ThreatintelligenceV1beta::TechnologyWatchListAlertThreshold]
         attr_accessor :alert_threshold
       
-        # Optional. List of vendor, technology or cpe fingerprint. example: Microsoft
-        # office 360 Apache Server 3.5 cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*
+        # Optional. List of technologies to watch, one per entry, in the form ` [version]
+        # `, using the vendor and product names from the Google Threat Intelligence
+        # products and fixes section. example: `microsoft outlook` `apache http_server 2.
+        # 4.54` CPE strings such as `cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*` are
+        # only parsed through the Google Threat Intelligence interface and are not
+        # available through the API. Send the vendor and product pair instead.
         # Corresponds to the JSON property `technologies`
         # @return [Array<String>]
         attr_accessor :technologies
@@ -3260,8 +3277,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :exploitation_vectors
       
-        # Optional. The specific technologies from the configured watchlist that
-        # triggered the match. Ex: "Apache Struts".
+        # Optional. The entries from the configured watchlist that triggered the match,
+        # exactly as written in `TechnologyWatchListConfig.technologies`. Ex: `apache
+        # http_server 2.4.54`.
         # Corresponds to the JSON property `matchedTechnologies`
         # @return [Array<String>]
         attr_accessor :matched_technologies
@@ -3292,7 +3310,9 @@ module Google
         # @return [String]
         attr_accessor :risk_rating
       
-        # Required. All technologies affected by the vulnerability. Ex: "Apache Struts".
+        # Required. All technologies affected by the vulnerability, using the vendor and
+        # product names of its affected products, optionally followed by a version. Ex: `
+        # Apache Struts 2.2.3`.
         # Corresponds to the JSON property `technologies`
         # @return [Array<String>]
         attr_accessor :technologies
