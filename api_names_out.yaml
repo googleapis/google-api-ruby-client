@@ -36076,6 +36076,8 @@
 "/alloydb:v1alpha/BackupSource/backupName": backup_name
 "/alloydb:v1alpha/BackupSource/backupUid": backup_uid
 "/alloydb:v1alpha/CancelOperationRequest": cancel_operation_request
+"/alloydb:v1alpha/CertificateAuthorityInfo": certificate_authority_info
+"/alloydb:v1alpha/CertificateAuthorityInfo/rootCaCert": root_ca_cert
 "/alloydb:v1alpha/ClientConnectionConfig": client_connection_config
 "/alloydb:v1alpha/ClientConnectionConfig/requireConnectors": require_connectors
 "/alloydb:v1alpha/ClientConnectionConfig/sslConfig": ssl_config
@@ -36093,6 +36095,7 @@
 "/alloydb:v1alpha/Cluster/backupSource": backup_source
 "/alloydb:v1alpha/Cluster/backupdrBackupSource": backupdr_backup_source
 "/alloydb:v1alpha/Cluster/backupdrInfo": backupdr_info
+"/alloydb:v1alpha/Cluster/certificateAuthorityInfo": certificate_authority_info
 "/alloydb:v1alpha/Cluster/cloudsqlBackupRunSource": cloudsql_backup_run_source
 "/alloydb:v1alpha/Cluster/clusterType": cluster_type
 "/alloydb:v1alpha/Cluster/continuousBackupConfig": continuous_backup_config
@@ -36320,6 +36323,7 @@
 "/alloydb:v1alpha/Instance/maintenanceVersionName": maintenance_version_name
 "/alloydb:v1alpha/Instance/name": name
 "/alloydb:v1alpha/Instance/networkConfig": network_config
+"/alloydb:v1alpha/Instance/networkInfo": network_info
 "/alloydb:v1alpha/Instance/nodes": nodes
 "/alloydb:v1alpha/Instance/nodes/node": node
 "/alloydb:v1alpha/Instance/observabilityConfig": observability_config
@@ -36347,6 +36351,9 @@
 "/alloydb:v1alpha/InstanceNetworkConfig/enableOutboundPublicIp": enable_outbound_public_ip
 "/alloydb:v1alpha/InstanceNetworkConfig/enablePublicIp": enable_public_ip
 "/alloydb:v1alpha/InstanceNetworkConfig/network": network
+"/alloydb:v1alpha/InstanceNetworkConfig/publicDnsEnabled": public_dns_enabled
+"/alloydb:v1alpha/InstanceNetworkInfo": instance_network_info
+"/alloydb:v1alpha/InstanceNetworkInfo/publicDnsName": public_dns_name
 "/alloydb:v1alpha/InstanceUpgradeDetails": instance_upgrade_details
 "/alloydb:v1alpha/InstanceUpgradeDetails/instanceType": instance_type
 "/alloydb:v1alpha/InstanceUpgradeDetails/name": name
