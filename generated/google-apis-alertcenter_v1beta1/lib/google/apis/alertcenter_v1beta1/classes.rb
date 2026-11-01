@@ -421,6 +421,31 @@ module Google
         end
       end
       
+      # The alert data relevant for this alert
+      class AlertDetail
+        include Google::Apis::Core::Hashable
+      
+        # Audit data key
+        # Corresponds to the JSON property `fieldName`
+        # @return [String]
+        attr_accessor :field_name
+      
+        # Audit data values
+        # Corresponds to the JSON property `fieldValues`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::SystemDefinedAlertDataAlertDetailFieldValue>]
+        attr_accessor :field_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field_name = args[:field_name] if args.key?(:field_name)
+          @field_values = args[:field_values] if args.key?(:field_values)
+        end
+      end
+      
       # A customer feedback about an alert.
       class AlertFeedback
         include Google::Apis::Core::Hashable
@@ -2382,6 +2407,63 @@ module Google
           @old_value = args[:old_value] if args.key?(:old_value)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
+        end
+      end
+      
+      # System defined alerts which trigger when an relevant audit event occures.
+      class SystemDefinedAlertData
+        include Google::Apis::Core::Hashable
+      
+        # Details of the conditions which led to alert being created
+        # Corresponds to the JSON property `alertDetails`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::AlertDetail>]
+        attr_accessor :alert_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_details = args[:alert_details] if args.key?(:alert_details)
+        end
+      end
+      
+      # Audit data value
+      class SystemDefinedAlertDataAlertDetailFieldValue
+        include Google::Apis::Core::Hashable
+      
+        # Value if the type is boolean
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Value if the type is integer
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Value if the type is string
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        # Value is the type is a timestamp
+        # Corresponds to the JSON property `timestampValue`
+        # @return [String]
+        attr_accessor :timestamp_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+          @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
         end
       end
       
