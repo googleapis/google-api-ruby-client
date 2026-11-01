@@ -92,10 +92,10 @@ module Google
         end
         
         # Estimates what a review of a document would cost on the caller's Gemini API
-        # key. The estimate comes from what past reviews with the same model and depth
-        # cost, adjusted to this document's size and repriced at the Gemini API's
-        # current list prices. It covers one review attempt that runs to completion, and
-        # doesn't include retries after errors.
+        # key. The estimate comes from what past reviews with the same model, depth, and
+        # thinking level cost, adjusted to this document's size and repriced at the
+        # Gemini API's current list prices. It covers one review attempt that runs to
+        # completion, and doesn't include retries after errors.
         # @param [String] document
         #   Required. The document to review.
         # @param [Google::Apis::DeepreviewV1::EstimateReviewCostRequest] estimate_review_cost_request_object

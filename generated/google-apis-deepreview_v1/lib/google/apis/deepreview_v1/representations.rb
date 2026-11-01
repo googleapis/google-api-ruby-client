@@ -270,6 +270,7 @@ module Google
           property :gemini_api_key, as: 'geminiApiKey'
           property :gemini_api_key_set, as: 'geminiApiKeySet'
           property :model, as: 'model'
+          property :thinking_level, as: 'thinkingLevel'
           property :topology, as: 'topology'
           property :user_prompt, as: 'userPrompt'
         end

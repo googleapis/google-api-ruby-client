@@ -208456,6 +208456,7 @@
 "/deepreview:v1/DeepReviewRunConfig/geminiApiKey": gemini_api_key
 "/deepreview:v1/DeepReviewRunConfig/geminiApiKeySet": gemini_api_key_set
 "/deepreview:v1/DeepReviewRunConfig/model": model
+"/deepreview:v1/DeepReviewRunConfig/thinkingLevel": thinking_level
 "/deepreview:v1/DeepReviewRunConfig/topology": topology
 "/deepreview:v1/DeepReviewRunConfig/userPrompt": user_prompt
 "/deepreview:v1/Document": document
