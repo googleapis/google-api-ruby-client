@@ -4220,6 +4220,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :bounding_boxes, as: 'boundingBoxes', class: Google::Apis::DlpV2::GooglePrivacyDlpV2BoundingBox, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2BoundingBox::Representation
       
+          property :page_number, as: 'pageNumber'
         end
       end
       
