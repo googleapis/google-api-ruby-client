@@ -6012,7 +6012,7 @@ module Google
         end
       end
       
-      # RolloutSequence defines the desired order of upgrades. Next ID: 20
+      # RolloutSequence defines the desired order of upgrades. Next ID: 22
       class RolloutSequence
         include Google::Apis::Core::Hashable
       
