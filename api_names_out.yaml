@@ -201569,6 +201569,7 @@
 "/dataplex:v1/GoogleCloudDataplexV1RejectChangeRequestRequest/etag": etag
 "/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest": google_cloud_dataplex_v1_request_batch_metadata_change_request
 "/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest/changePayload": change_payload
+"/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest/deferredValidation": deferred_validation
 "/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest/justification": justification
 "/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest/labels": labels
 "/dataplex:v1/GoogleCloudDataplexV1RequestBatchMetadataChangeRequest/labels/label": label
