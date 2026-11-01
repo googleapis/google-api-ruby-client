@@ -200,6 +200,7 @@ module Google
           property :data_policy_type, as: 'dataPolicyType'
           property :etag, as: 'etag'
           collection :grantees, as: 'grantees'
+          property :matching_condition, as: 'matchingCondition'
           property :name, as: 'name'
           property :policy_tag, as: 'policyTag'
           property :version, as: 'version'
