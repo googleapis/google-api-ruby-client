@@ -67564,6 +67564,7 @@
 "/bigquery:v2/JobConfigurationExtract/modelExtractOptions": model_extract_options
 "/bigquery:v2/JobConfigurationExtract/nativeGeographyExportEnabled": native_geography_export_enabled
 "/bigquery:v2/JobConfigurationExtract/printHeader": print_header
+"/bigquery:v2/JobConfigurationExtract/secureContext": secure_context
 "/bigquery:v2/JobConfigurationExtract/sourceModel": source_model
 "/bigquery:v2/JobConfigurationExtract/sourceTable": source_table
 "/bigquery:v2/JobConfigurationExtract/useAvroLogicalTypes": use_avro_logical_types
