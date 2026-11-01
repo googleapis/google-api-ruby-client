@@ -261,11 +261,11 @@ module Google
         alias_method :include_query_predictions?, :include_query_predictions
       
         # Optional. Included primary Place type (for example, "restaurant" or "
-        # gas_station") in Place Types (https://developers.google.com/maps/documentation/
-        # places/web-service/place-types), or only `(regions)`, or only `(cities)`. A
-        # Place is only returned if its primary type is included in this list. Up to 5
-        # values can be specified. If no types are specified, all Place types are
-        # returned.
+        # gas_station") in [Place Types](https://developers.google.com/maps/
+        # documentation/places/web-service/place-types), or only `(regions)`, or only `(
+        # cities)`. A Place is only returned if its primary type is included in this
+        # list. Up to 5 values can be specified. If no types are specified, all Place
+        # types are returned.
         # Corresponds to the JSON property `includedPrimaryTypes`
         # @return [Array<String>]
         attr_accessor :included_primary_types
@@ -1021,7 +1021,8 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # The time the fuel price was last updated.
+        # The time the fuel price was last updated. This represents the time when the
+        # specific fuel price offer was last observed or updated by the data provider.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
