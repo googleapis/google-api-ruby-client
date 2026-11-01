@@ -5251,6 +5251,11 @@ module Google
         attr_accessor :print_header
         alias_method :print_header?, :print_header
       
+        # A set of key-value pairs representing the secure context.
+        # Corresponds to the JSON property `secureContext`
+        # @return [Google::Apis::BigqueryV2::SecureContext]
+        attr_accessor :secure_context
+      
         # Id path of a model.
         # Corresponds to the JSON property `sourceModel`
         # @return [Google::Apis::BigqueryV2::ModelReference]
@@ -5282,6 +5287,7 @@ module Google
           @model_extract_options = args[:model_extract_options] if args.key?(:model_extract_options)
           @native_geography_export_enabled = args[:native_geography_export_enabled] if args.key?(:native_geography_export_enabled)
           @print_header = args[:print_header] if args.key?(:print_header)
+          @secure_context = args[:secure_context] if args.key?(:secure_context)
           @source_model = args[:source_model] if args.key?(:source_model)
           @source_table = args[:source_table] if args.key?(:source_table)
           @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)

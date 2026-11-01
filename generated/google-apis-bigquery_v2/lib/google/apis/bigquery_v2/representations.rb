@@ -2799,6 +2799,8 @@ module Google
       
           property :native_geography_export_enabled, as: 'nativeGeographyExportEnabled'
           property :print_header, as: 'printHeader'
+          property :secure_context, as: 'secureContext', class: Google::Apis::BigqueryV2::SecureContext, decorator: Google::Apis::BigqueryV2::SecureContext::Representation
+      
           property :source_model, as: 'sourceModel', class: Google::Apis::BigqueryV2::ModelReference, decorator: Google::Apis::BigqueryV2::ModelReference::Representation
       
           property :source_table, as: 'sourceTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
