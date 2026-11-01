@@ -169475,6 +169475,7 @@
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/displayName": display_name
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/id": id
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/parentToolCallId": parent_tool_call_id
+"/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/targetApp": target_app
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/tool": tool
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolCall/toolsetTool": toolset_tool
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse": google_cloud_ces_v1main_tool_response
@@ -169484,6 +169485,7 @@
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/parentToolCallId": parent_tool_call_id
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/response": response
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/response/response": response
+"/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/targetApp": target_app
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/tool": tool
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolResponse/toolsetTool": toolset_tool
 "/contactcenterinsights:v1/GoogleCloudCesV1mainToolsetTool": google_cloud_ces_v1main_toolset_tool
@@ -169917,6 +169919,8 @@
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/entrySubagentDisplayName": entry_subagent_display_name
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/entrySubagentId": entry_subagent_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/location": location
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/studyArmId": study_arm_id
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/studyId": study_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/team": team
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/teams": teams
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo/teams/team": team
@@ -171580,6 +171584,8 @@
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/entrySubagentDisplayName": entry_subagent_display_name
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/entrySubagentId": entry_subagent_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/location": location
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/studyArmId": study_arm_id
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/studyId": study_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/team": team
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/teams": teams
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo/teams/team": team
@@ -172901,6 +172907,8 @@
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/entrySubagentDisplayName": entry_subagent_display_name
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/entrySubagentId": entry_subagent_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/location": location
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/studyArmId": study_arm_id
+"/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/studyId": study_id
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/team": team
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/teams": teams
 "/contactcenterinsights:v1/GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo/teams/team": team

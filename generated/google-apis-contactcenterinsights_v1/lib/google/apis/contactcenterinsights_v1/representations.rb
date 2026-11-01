@@ -4156,6 +4156,7 @@ module Google
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :parent_tool_call_id, as: 'parentToolCallId'
+          property :target_app, as: 'targetApp'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool::Representation
       
@@ -4170,6 +4171,7 @@ module Google
           property :id, as: 'id'
           property :parent_tool_call_id, as: 'parentToolCallId'
           hash :response, as: 'response'
+          property :target_app, as: 'targetApp'
           property :tool, as: 'tool'
           property :toolset_tool, as: 'toolsetTool', class: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool, decorator: Google::Apis::ContactcenterinsightsV1::GoogleCloudCesV1mainToolsetTool::Representation
       
@@ -4912,6 +4914,8 @@ module Google
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
           property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
+          property :study_arm_id, as: 'studyArmId'
+          property :study_id, as: 'studyId'
           property :team, as: 'team'
           collection :teams, as: 'teams'
           property :version_display_name, as: 'versionDisplayName'
@@ -7609,6 +7613,8 @@ module Google
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
           property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
+          property :study_arm_id, as: 'studyArmId'
+          property :study_id, as: 'studyId'
           property :team, as: 'team'
           collection :teams, as: 'teams'
           property :version_display_name, as: 'versionDisplayName'
@@ -9605,6 +9611,8 @@ module Google
           property :entry_subagent_display_name, as: 'entrySubagentDisplayName'
           property :entry_subagent_id, as: 'entrySubagentId'
           property :location, as: 'location'
+          property :study_arm_id, as: 'studyArmId'
+          property :study_id, as: 'studyId'
           property :team, as: 'team'
           collection :teams, as: 'teams'
           property :version_display_name, as: 'versionDisplayName'
