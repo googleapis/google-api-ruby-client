@@ -160,6 +160,11 @@ module Google
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsOutpaintConfig]
         attr_accessor :outpaint_config
       
+        # Configuration for Omni Perf 3D estimation.
+        # Corresponds to the JSON property `perfEstimationConfig`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsPerfEstimationConfig]
+        attr_accessor :perf_estimation_config
+      
         # Configuration for Pro Edit.
         # Corresponds to the JSON property `proEdit`
         # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig]
@@ -247,6 +252,7 @@ module Google
           @omni_rewriter = args[:omni_rewriter] if args.key?(:omni_rewriter)
           @original_request_json = args[:original_request_json] if args.key?(:original_request_json)
           @outpaint_config = args[:outpaint_config] if args.key?(:outpaint_config)
+          @perf_estimation_config = args[:perf_estimation_config] if args.key?(:perf_estimation_config)
           @pro_edit = args[:pro_edit] if args.key?(:pro_edit)
           @prompt_inputs = args[:prompt_inputs] if args.key?(:prompt_inputs)
           @request_origin_tag = args[:request_origin_tag] if args.key?(:request_origin_tag)
@@ -286,6 +292,49 @@ module Google
         def update!(**args)
           @target_audio = args[:target_audio] if args.key?(:target_audio)
           @use_target_audio_from_video = args[:use_target_audio_from_video] if args.key?(:use_target_audio_from_video)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsBoundingBox
+        include Google::Apis::Core::Hashable
+      
+        # The bottom coordinate (exclusive) of the bounding box.
+        # Corresponds to the JSON property `bottom`
+        # @return [Fixnum]
+        attr_accessor :bottom
+      
+        # The frame index of the bounding box.
+        # Corresponds to the JSON property `frameIndex`
+        # @return [Fixnum]
+        attr_accessor :frame_index
+      
+        # The left coordinate of the bounding box.
+        # Corresponds to the JSON property `left`
+        # @return [Fixnum]
+        attr_accessor :left
+      
+        # The right coordinate (exclusive) of the bounding box.
+        # Corresponds to the JSON property `right`
+        # @return [Fixnum]
+        attr_accessor :right
+      
+        # The top coordinate of the bounding box.
+        # Corresponds to the JSON property `top`
+        # @return [Fixnum]
+        attr_accessor :top
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bottom = args[:bottom] if args.key?(:bottom)
+          @frame_index = args[:frame_index] if args.key?(:frame_index)
+          @left = args[:left] if args.key?(:left)
+          @right = args[:right] if args.key?(:right)
+          @top = args[:top] if args.key?(:top)
         end
       end
       
@@ -367,7 +416,7 @@ module Google
         # @return [String]
         attr_accessor :resolved_path
       
-        # The blending scale/weight of the LoRA adapter. Must be in the range (0.0, 1.0].
+        # The blending scale/weight of the LoRA adapter. Must be in the range (0.0, 2.0].
         # Default is 1.0.
         # Corresponds to the JSON property `weight`
         # @return [Float]
@@ -472,6 +521,81 @@ module Google
         end
       end
       
+      # Configuration for Omni Perf 3D estimation.
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsPerfEstimationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to export the USD file.
+        # Corresponds to the JSON property `exportUsd`
+        # @return [Boolean]
+        attr_accessor :export_usd
+        alias_method :export_usd?, :export_usd
+      
+        # Required. The bounding box of the object in the source video.
+        # Corresponds to the JSON property `sourceBoundingBox`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsBoundingBox]
+        attr_accessor :source_bounding_box
+      
+        # Required. The source video for the 3D estimation.
+        # Corresponds to the JSON property `sourceVideo`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo]
+        attr_accessor :source_video
+      
+        # Optional. The character reference images/videos.
+        # Corresponds to the JSON property `targetCharacterReferences`
+        # @return [Array<Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsPerfEstimationConfigCharacterReference>]
+        attr_accessor :target_character_references
+      
+        # Optional.
+        # Corresponds to the JSON property `temporalSmoothness`
+        # @return [Float]
+        attr_accessor :temporal_smoothness
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @export_usd = args[:export_usd] if args.key?(:export_usd)
+          @source_bounding_box = args[:source_bounding_box] if args.key?(:source_bounding_box)
+          @source_video = args[:source_video] if args.key?(:source_video)
+          @target_character_references = args[:target_character_references] if args.key?(:target_character_references)
+          @temporal_smoothness = args[:temporal_smoothness] if args.key?(:temporal_smoothness)
+        end
+      end
+      
+      # 
+      class CloudAiLargeModelsVisionGenerateVideoExperimentsPerfEstimationConfigCharacterReference
+        include Google::Apis::Core::Hashable
+      
+        # Required. The bounding box of the character in the reference image/video.
+        # Corresponds to the JSON property `boundingBox`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoExperimentsBoundingBox]
+        attr_accessor :bounding_box
+      
+        # The image bytes or Cloud Storage URI to make the prediction on.
+        # Corresponds to the JSON property `referenceImage`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestImage]
+        attr_accessor :reference_image
+      
+        # 
+        # Corresponds to the JSON property `referenceVideo`
+        # @return [Google::Apis::AiplatformV1::CloudAiLargeModelsVisionGenerateVideoRequestVideo]
+        attr_accessor :reference_video
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bounding_box = args[:bounding_box] if args.key?(:bounding_box)
+          @reference_image = args[:reference_image] if args.key?(:reference_image)
+          @reference_video = args[:reference_video] if args.key?(:reference_video)
+        end
+      end
+      
       # Configuration for Pro Edit.
       class CloudAiLargeModelsVisionGenerateVideoExperimentsProEditConfig
         include Google::Apis::Core::Hashable
@@ -535,6 +659,11 @@ module Google
         # @return [String]
         attr_accessor :mode
       
+        # Number of diffusion denoising steps (1 or 2).
+        # Corresponds to the JSON property `steps`
+        # @return [Fixnum]
+        attr_accessor :steps
+      
         # Smooths the seams between the tiles the model upscales separately.
         # Corresponds to the JSON property `tileSmoothing`
         # @return [Boolean]
@@ -548,6 +677,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mode = args[:mode] if args.key?(:mode)
+          @steps = args[:steps] if args.key?(:steps)
           @tile_smoothing = args[:tile_smoothing] if args.key?(:tile_smoothing)
         end
       end
@@ -6172,6 +6302,13 @@ module Google
       class GoogleCloudAiplatformV1Agent
         include Google::Apis::Core::Hashable
       
+        # Output only. The resource name of the AI Application provisioned for this
+        # agent. Format: `projects/`project`/locations/`location`/aiApplications/`
+        # ai_application``.
+        # Corresponds to the JSON property `aiApplication`
+        # @return [String]
+        attr_accessor :ai_application
+      
         # Required. Immutable. The base agent for the agent. Supported values: * `
         # antigravity-preview-05-2026` Immutable: `UpdateAgent` rejects a change,
         # including clearing it. The kind of agent this is gets derived from this field
@@ -6261,6 +6398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ai_application = args[:ai_application] if args.key?(:ai_application)
           @base_agent = args[:base_agent] if args.key?(:base_agent)
           @base_environment = args[:base_environment] if args.key?(:base_environment)
           @created = args[:created] if args.key?(:created)
@@ -8027,6 +8165,74 @@ module Google
         # Update properties of this object
         def update!(**args)
           @names = args[:names] if args.key?(:names)
+        end
+      end
+      
+      # Request message for PredictionService.BatchEmbedContents.
+      class GoogleCloudAiplatformV1BatchEmbedContentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Embed requests for the batch. The model in each of these requests
+        # must either be empty or match the model specified in `
+        # BatchEmbedContentsRequest.model`. All the requests in a batch must have the
+        # same output dimensionality and auto truncation parameters.
+        # Corresponds to the JSON property `requests`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EmbedContentRequest>]
+        attr_accessor :requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requests = args[:requests] if args.key?(:requests)
+        end
+      end
+      
+      # Response message for PredictionService.BatchEmbedContents.
+      class GoogleCloudAiplatformV1BatchEmbedContentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The embeddings for each request, in the same order as provided in the batch
+        # request.
+        # Corresponds to the JSON property `embeddings`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding>]
+        attr_accessor :embeddings
+      
+        # Usage metadata about the content generation request and response. This message
+        # provides a detailed breakdown of token usage and other relevant metrics.
+        # Corresponds to the JSON property `usageMetadata`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1UsageMetadata]
+        attr_accessor :usage_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @embeddings = args[:embeddings] if args.key?(:embeddings)
+          @usage_metadata = args[:usage_metadata] if args.key?(:usage_metadata)
+        end
+      end
+      
+      # A list of floats representing an embedding.
+      class GoogleCloudAiplatformV1BatchEmbedContentsResponseEmbedding
+        include Google::Apis::Core::Hashable
+      
+        # Embedding vector values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
         end
       end
       
@@ -9930,6 +10136,78 @@ module Google
         end
       end
       
+      # A file that can be referenced by ID from subsequent Claude model requests. The
+      # JSON representation of this message matches the Claude Files API File object
+      # field-for-field, so that code written against that API parses these responses
+      # unchanged.
+      class GoogleCloudAiplatformV1ClaudeFile
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The time at which the file was created.
+        # Corresponds to the JSON property `created_at`
+        # @return [String]
+        attr_accessor :created_at
+      
+        # Output only. Whether the contents of this file can be retrieved with `
+        # DownloadFile`. False for user-uploaded files, true for tool-generated ones.
+        # Corresponds to the JSON property `downloadable`
+        # @return [Boolean]
+        attr_accessor :downloadable
+        alias_method :downloadable?, :downloadable
+      
+        # Output only. The time at which the file expires and is deleted, set from the `
+        # expires_in_seconds` upload form field. Unset for files that do not expire,
+        # which is serialised as `null`.
+        # Corresponds to the JSON property `expires_at`
+        # @return [String]
+        attr_accessor :expires_at
+      
+        # Output only. The original name of the uploaded file, taken from the `Content-
+        # Disposition` header on upload. Between 1 and 255 characters. Control
+        # characters and the characters `<>:"|?*\/` are not accepted.
+        # Corresponds to the JSON property `filename`
+        # @return [String]
+        attr_accessor :filename
+      
+        # Output only. The server-assigned identifier of the file, for example `
+        # file_abc123`. This is the ID to pass in subsequent model requests.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. The media type of the file, taken from the `Content-Type` header
+        # of the file part on upload.
+        # Corresponds to the JSON property `mime_type`
+        # @return [String]
+        attr_accessor :mime_type
+      
+        # Output only. The size of the file in bytes.
+        # Corresponds to the JSON property `size_bytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. The object type. Always `file`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_at = args[:created_at] if args.key?(:created_at)
+          @downloadable = args[:downloadable] if args.key?(:downloadable)
+          @expires_at = args[:expires_at] if args.key?(:expires_at)
+          @filename = args[:filename] if args.key?(:filename)
+          @id = args[:id] if args.key?(:id)
+          @mime_type = args[:mime_type] if args.key?(:mime_type)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Configurations (e.g. inference timeout) that are applied on your endpoints.
       class GoogleCloudAiplatformV1ClientConnectionConfig
         include Google::Apis::Core::Hashable
@@ -11366,6 +11644,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @generic_metadata = args[:generic_metadata] if args.key?(:generic_metadata)
+        end
+      end
+      
+      # Request message for ClaudeFileService.CreateFile.
+      class GoogleCloudAiplatformV1CreateFileRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -13028,6 +13319,32 @@ module Google
         end
       end
       
+      # Response message for ClaudeFileService.DeleteFile. Returns ``id, type: "
+      # file_deleted"`` rather than an empty body, matching the Claude Files API.
+      class GoogleCloudAiplatformV1DeleteFileResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the deleted file.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The object type. Always `file_deleted`.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Details of operations that perform MetadataService.DeleteMetadataStore.
       class GoogleCloudAiplatformV1DeleteMetadataStoreOperationMetadata
         include Google::Apis::Core::Hashable
@@ -14308,6 +14625,19 @@ module Google
         end
       end
       
+      # Response message for ClaudeFileService.DownloadFile.
+      class GoogleCloudAiplatformV1DownloadFileResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Describes the options to customize dynamic retrieval.
       class GoogleCloudAiplatformV1DynamicRetrievalConfig
         include Google::Apis::Core::Hashable
@@ -14358,6 +14688,12 @@ module Google
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfig]
         attr_accessor :embed_content_config
       
+        # Required. The name of the publisher model requested to serve the prediction.
+        # Format: `projects/`project`/locations/`location`/publishers/*/models/*`
+        # Corresponds to the JSON property `model`
+        # @return [String]
+        attr_accessor :model
+      
         # Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality
         # instead. Reduced dimension for the output embedding. If set, excessive values
         # in the output embedding are truncated from the end.
@@ -14386,6 +14722,7 @@ module Google
           @auto_truncate = args[:auto_truncate] if args.key?(:auto_truncate)
           @content = args[:content] if args.key?(:content)
           @embed_content_config = args[:embed_content_config] if args.key?(:embed_content_config)
+          @model = args[:model] if args.key?(:model)
           @output_dimensionality = args[:output_dimensionality] if args.key?(:output_dimensionality)
           @task_type = args[:task_type] if args.key?(:task_type)
           @title = args[:title] if args.key?(:title)
@@ -22509,6 +22846,14 @@ module Google
         # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1Content>]
         attr_accessor :contents
       
+        # Optional. An opaque continuation token used to resume generation from a
+        # previous `GenerateContent` or `StreamGenerateContent` response that stopped
+        # with `finish_reason` set to `CONTINUATION`.
+        # Corresponds to the JSON property `continuationToken`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :continuation_token
+      
         # Configuration for content generation. This message contains all the parameters
         # that control how the model generates content. It allows you to influence the
         # randomness, length, and structure of the output.
@@ -22532,6 +22877,11 @@ module Google
         # Corresponds to the JSON property `modelArmorConfig`
         # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ModelArmorConfig]
         attr_accessor :model_armor_config
+      
+        # Configuration for persisting output assets to external storage.
+        # Corresponds to the JSON property `outputConfig`
+        # @return [Google::Apis::AiplatformV1::GoogleCloudAiplatformV1GenerateContentRequestOutputConfig]
+        attr_accessor :output_config
       
         # Optional. Per request settings for blocking unsafe content. Enforced on
         # GenerateContentResponse.candidates.
@@ -22567,13 +22917,37 @@ module Google
         def update!(**args)
           @cached_content = args[:cached_content] if args.key?(:cached_content)
           @contents = args[:contents] if args.key?(:contents)
+          @continuation_token = args[:continuation_token] if args.key?(:continuation_token)
           @generation_config = args[:generation_config] if args.key?(:generation_config)
           @labels = args[:labels] if args.key?(:labels)
           @model_armor_config = args[:model_armor_config] if args.key?(:model_armor_config)
+          @output_config = args[:output_config] if args.key?(:output_config)
           @safety_settings = args[:safety_settings] if args.key?(:safety_settings)
           @system_instruction = args[:system_instruction] if args.key?(:system_instruction)
           @tool_config = args[:tool_config] if args.key?(:tool_config)
           @tools = args[:tools] if args.key?(:tools)
+        end
+      end
+      
+      # Configuration for persisting output assets to external storage.
+      class GoogleCloudAiplatformV1GenerateContentRequestOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The Cloud Storage URI prefix or directory where generated media
+        # assets should be written (e.g. `gs://my-bucket/prefix/`). Supported URI
+        # schemes: `gs://`. When set, media bytes are written directly to this location
+        # and returned as `FileData` with a `file_uri` instead of raw inline bytes.
+        # Corresponds to the JSON property `outputUriPrefix`
+        # @return [String]
+        attr_accessor :output_uri_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @output_uri_prefix = args[:output_uri_prefix] if args.key?(:output_uri_prefix)
         end
       end
       
@@ -27310,6 +27684,32 @@ module Google
         def update!(**args)
           @featurestores = args[:featurestores] if args.key?(:featurestores)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for ClaudeFileService.ListFiles.
+      class GoogleCloudAiplatformV1ListFilesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The files.
+        # Corresponds to the JSON property `data`
+        # @return [Array<Google::Apis::AiplatformV1::GoogleCloudAiplatformV1ClaudeFile>]
+        attr_accessor :data
+      
+        # Opaque cursor for the next page. Unset on the last page, and always unset when
+        # `ids` was supplied, since batch fetch is single-page.
+        # Corresponds to the JSON property `next_page`
+        # @return [String]
+        attr_accessor :next_page
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @next_page = args[:next_page] if args.key?(:next_page)
         end
       end
       
