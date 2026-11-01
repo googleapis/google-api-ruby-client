@@ -326273,6 +326273,10 @@
 "/healthcare:v1/CryptoHashConfig": crypto_hash_config
 "/healthcare:v1/CryptoHashConfig/cryptoKey": crypto_key
 "/healthcare:v1/CryptoHashConfig/kmsWrapped": kms_wrapped
+"/healthcare:v1/CustomRegex": custom_regex
+"/healthcare:v1/CustomRegex/groupIndexes": group_indexes
+"/healthcare:v1/CustomRegex/groupIndexes/group_index": group_index
+"/healthcare:v1/CustomRegex/pattern": pattern
 "/healthcare:v1/Dataset": dataset
 "/healthcare:v1/Dataset/encryptionSpec": encryption_spec
 "/healthcare:v1/Dataset/name": name
@@ -326542,6 +326546,8 @@
 "/healthcare:v1/Image/gcsUri": gcs_uri
 "/healthcare:v1/Image/rawBytes": raw_bytes
 "/healthcare:v1/ImageConfig": image_config
+"/healthcare:v1/ImageConfig/customRegexes": custom_regexes
+"/healthcare:v1/ImageConfig/customRegexes/custom_regex": custom_regex
 "/healthcare:v1/ImageConfig/textRedactionMode": text_redaction_mode
 "/healthcare:v1/ImportDicomDataRequest": import_dicom_data_request
 "/healthcare:v1/ImportDicomDataRequest/blobStorageSettings": blob_storage_settings
