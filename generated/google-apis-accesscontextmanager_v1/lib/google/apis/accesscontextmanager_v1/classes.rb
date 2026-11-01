@@ -67,7 +67,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Human readable title. Must be unique within the Policy.
+        # Human-readable title. Must be unique within the policy.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -95,8 +95,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Output only. An opaque identifier for the current version of the `AccessPolicy`
-        # . This will always be a strongly validated etag, meaning that two Access
-        # Policies will be identical if and only if their etags are identical. Clients
+        # . This will always be a strongly validated etag, meaning that two access
+        # policies will be identical if and only if their etags are identical. Clients
         # should not expect this to be in any specific format.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -119,7 +119,7 @@ module Google
         # `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can
         # only restrict projects within `folders/123`. - ServicePerimeter within policy
         # A can only reference access levels defined within policy A. - Only one policy
-        # can include a given scope; thus, attempting to create a second policy which
+        # can include a given scope; thus, attempting to create a second policy that
         # includes `folders/123` will result in an error. If no scopes are provided,
         # then any resource within the organization can be restricted. Scopes cannot be
         # modified after a policy is created. Policies can only have a single scope.
@@ -128,7 +128,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :scopes
       
-        # Required. Human readable title. Does not affect behavior.
+        # Required. Human-readable title. Does not affect behavior.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -147,13 +147,12 @@ module Google
         end
       end
       
-      # Access scope represents the client scope, etc. to which the settings will be
-      # applied to.
+      # Access scope represents the client scope to which the settings are applied.
       class AccessScope
         include Google::Apis::Core::Hashable
       
-        # Client scope represents the application, etc. subject to this binding's
-        # restrictions.
+        # Client scope represents the application, project, or other resource subject to
+        # this binding's restrictions.
         # Corresponds to the JSON property `clientScope`
         # @return [Google::Apis::AccesscontextmanagerV1::ClientScope]
         attr_accessor :client_scope
@@ -175,13 +174,13 @@ module Google
       
         # Optional. Access level that a user must have to be granted access. Only one
         # access level is supported, not multiple. This repeated field must have exactly
-        # one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # one element. Example: `"accessPolicies/9522/accessLevels/device_trusted"`
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # Stores settings related to Google Cloud Session Length including session
-        # duration, the type of challenge (i.e. method) they should face when their
+        # Stores settings related to Google Cloud Session Length, including session
+        # duration, the type of challenge (that is, method) a user faces when their
         # session expires, and other related settings.
         # Corresponds to the JSON property `sessionSettings`
         # @return [Google::Apis::AccesscontextmanagerV1::SessionSettings]
@@ -354,7 +353,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The asset type of this authorized orgs desc. Valid values are `
-        # ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        # ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -367,7 +366,7 @@ module Google
         # orgs` field to evaluate the traffic in this organization. For the
         # authorization relationship to take effect, all of the organizations must
         # authorize and specify the appropriate relationship direction. For example, if
-        # organization A authorized organization B and C to evaluate its traffic, by
+        # organization A authorizes organizations B and C to evaluate its traffic by
         # specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction,
         # organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
         # authorization direction in their `AuthorizedOrgsDesc` resource.
@@ -390,8 +389,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The list of organization ids in this AuthorizedOrgsDesc. Format: `
-        # organizations/` Example: `organizations/123456`
+        # The list of organization IDs in this `AuthorizedOrgsDesc`. Format: `
+        # organizations/`org_number`` Example: `organizations/123456`
         # Corresponds to the JSON property `orgs`
         # @return [Array<String>]
         attr_accessor :orgs
@@ -415,10 +414,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # How the `conditions` list should be combined to determine if a request is
-        # granted this `AccessLevel`. If AND is used, each `Condition` in `conditions`
-        # must be satisfied for the `AccessLevel` to be applied. If OR is used, at least
-        # one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be
-        # applied. Default behavior is AND.
+        # granted this `AccessLevel`. If `AND` is used, each `Condition` in `conditions`
+        # must be satisfied for the `AccessLevel` to be applied. If `OR` is used, at
+        # least one `Condition` in `conditions` must be satisfied for the `AccessLevel`
+        # to be applied. Default behavior is `AND`.
         # Corresponds to the JSON property `combiningFunction`
         # @return [String]
         attr_accessor :combining_function
@@ -553,8 +552,8 @@ module Google
         end
       end
       
-      # Client scope represents the application, etc. subject to this binding's
-      # restrictions.
+      # Client scope represents the application, project, or other resource subject to
+      # this binding's restrictions.
       class ClientScope
         include Google::Apis::Core::Hashable
       
@@ -563,8 +562,8 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::Application]
         attr_accessor :restricted_client_application
       
-        # A Google Cloud project which contains applications and resources that users
-        # can access.
+        # A Google Cloud project that contains applications and resources that users can
+        # access.
         # Corresponds to the JSON property `restrictedProject`
         # @return [Google::Apis::AccesscontextmanagerV1::Project]
         attr_accessor :restricted_project
@@ -625,33 +624,35 @@ module Google
         end
       end
       
-      # A condition necessary for an `AccessLevel` to be granted. The Condition is an
-      # AND over its fields. So a Condition is true if: 1) the request IP is from one
-      # of the listed subnetworks AND 2) the originating device complies with the
-      # listed device policy AND 3) all listed access levels are granted AND 4) the
-      # request was sent at a time allowed by the DateTimeRestriction.
+      # A condition necessary for an `AccessLevel` to be granted. The `Condition` is
+      # an AND over its fields. A `Condition` is true if: 1) the request IP is from
+      # one of the listed subnetworks, AND 2) the originating device complies with the
+      # listed device policy, AND 3) all listed access levels are granted, AND 4) the
+      # request was sent at a time allowed by the `DateTimeRestriction`.
       class Condition
         include Google::Apis::Core::Hashable
       
-        # `DevicePolicy` specifies device specific restrictions necessary to acquire a
+        # `DevicePolicy` specifies device-specific restrictions necessary to acquire a
         # given access level. A `DevicePolicy` specifies requirements for requests from
-        # devices to be granted access levels, it does not do any enforcement on the
+        # devices to be granted access levels; it does not do any enforcement on the
         # device. `DevicePolicy` acts as an AND over all specified fields, and each
         # repeated field is an OR over its elements. Any unset fields are ignored. For
-        # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
-        # encryption_status: ENCRYPTED`, then the DevicePolicy will be true for requests
-        # originating from encrypted Linux desktops and encrypted Windows desktops.
+        # example, if the proto is `` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+        # encryption_status: ENCRYPTED``, then the `DevicePolicy` will be true for
+        # requests originating from encrypted Linux desktops and encrypted Windows
+        # desktops.
         # Corresponds to the JSON property `devicePolicy`
         # @return [Google::Apis::AccesscontextmanagerV1::DevicePolicy]
         attr_accessor :device_policy
       
         # CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a
         # CIDR IP address block, the specified IP address portion must be properly
-        # truncated (i.e. all the host bits must be zero) or the input is considered
-        # malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not.
-        # Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is
-        # not. The originating IP of a request must be in one of the listed subnets in
-        # order for this Condition to be true. If empty, all IP addresses are allowed.
+        # truncated (that is, all the host bits must be zero) or the input is considered
+        # malformed. For example, `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is
+        # not. Similarly, for IPv6, `"2001:db8::/32"` is accepted, whereas `"2001:db8::1/
+        # 32"` is not. The originating IP of a request must be in one of the listed
+        # subnets in order for this `Condition` to be true. If empty, all IP addresses
+        # are allowed.
         # Corresponds to the JSON property `ipSubnetworks`
         # @return [Array<String>]
         attr_accessor :ip_subnetworks
@@ -663,9 +664,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :members
       
-        # Whether to negate the Condition. If true, the Condition becomes a NAND over
-        # its non-empty fields. Any non-empty field criteria evaluating to false will
-        # result in the Condition to be satisfied. Defaults to false.
+        # Whether to negate the `Condition`. If `true`, the `Condition` becomes a NAND
+        # over its non-empty fields. Any non-empty field criteria evaluating to `false`
+        # will result in the `Condition` being satisfied. Defaults to `false`.
         # Corresponds to the JSON property `negate`
         # @return [Boolean]
         attr_accessor :negate
@@ -678,9 +679,9 @@ module Google
         attr_accessor :regions
       
         # A list of other access levels defined in the same `Policy`, referenced by
-        # resource name. Referencing an `AccessLevel` which does not exist is an error.
-        # All access levels listed must be granted for the Condition to be true. Example:
-        # "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+        # resource name. Referencing an `AccessLevel` that does not exist is an error.
+        # All access levels listed must be granted for the `Condition` to be true.
+        # Example: `"accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
         # Corresponds to the JSON property `requiredAccessLevels`
         # @return [Array<String>]
         attr_accessor :required_access_levels
@@ -742,28 +743,29 @@ module Google
         end
       end
       
-      # `DevicePolicy` specifies device specific restrictions necessary to acquire a
+      # `DevicePolicy` specifies device-specific restrictions necessary to acquire a
       # given access level. A `DevicePolicy` specifies requirements for requests from
-      # devices to be granted access levels, it does not do any enforcement on the
+      # devices to be granted access levels; it does not do any enforcement on the
       # device. `DevicePolicy` acts as an AND over all specified fields, and each
       # repeated field is an OR over its elements. Any unset fields are ignored. For
-      # example, if the proto is ` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
-      # encryption_status: ENCRYPTED`, then the DevicePolicy will be true for requests
-      # originating from encrypted Linux desktops and encrypted Windows desktops.
+      # example, if the proto is `` os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX,
+      # encryption_status: ENCRYPTED``, then the `DevicePolicy` will be true for
+      # requests originating from encrypted Linux desktops and encrypted Windows
+      # desktops.
       class DevicePolicy
         include Google::Apis::Core::Hashable
       
-        # Allowed device management levels, an empty list allows all management levels.
+        # Allowed device management levels. An empty list allows all management levels.
         # Corresponds to the JSON property `allowedDeviceManagementLevels`
         # @return [Array<String>]
         attr_accessor :allowed_device_management_levels
       
-        # Allowed encryptions statuses, an empty list allows all statuses.
+        # Allowed encryption statuses. An empty list allows all statuses.
         # Corresponds to the JSON property `allowedEncryptionStatuses`
         # @return [Array<String>]
         attr_accessor :allowed_encryption_statuses
       
-        # Allowed OS versions, an empty list allows all types and all versions.
+        # Allowed OS versions. An empty list allows all types and all versions.
         # Corresponds to the JSON property `osConstraints`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::OsConstraint>]
         attr_accessor :os_constraints
@@ -774,13 +776,13 @@ module Google
         attr_accessor :require_admin_approval
         alias_method :require_admin_approval?, :require_admin_approval
       
-        # Whether the device needs to be corp owned.
+        # Whether the device needs to be corp-owned.
         # Corresponds to the JSON property `requireCorpOwned`
         # @return [Boolean]
         attr_accessor :require_corp_owned
         alias_method :require_corp_owned?, :require_corp_owned
       
-        # Whether or not screenlock is required for the DevicePolicy to be true.
+        # Whether or not screenlock is required for the `DevicePolicy` to be true.
         # Defaults to `false`.
         # Corresponds to the JSON property `requireScreenlock`
         # @return [Boolean]
@@ -803,10 +805,10 @@ module Google
       end
       
       # Defines the conditions under which an EgressPolicy matches a request.
-      # Conditions based on information about the source of the request. Note that if
-      # the destination of the request is also protected by a ServicePerimeter, then
-      # that ServicePerimeter must have an IngressPolicy which allows access in order
-      # for this request to succeed.
+      # Conditions are based on information about the source of the request. Note that
+      # if the destination of the request is also protected by a ServicePerimeter,
+      # then that ServicePerimeter must have an IngressPolicy which allows access in
+      # order for this request to succeed.
       class EgressFrom
         include Google::Apis::Core::Hashable
       
@@ -827,7 +829,7 @@ module Google
         attr_accessor :identity_type
       
         # Whether to enforce traffic restrictions based on `sources` field. If the `
-        # sources` fields is non-empty, then this field must be set to `
+        # sources` field is not empty, then this field must be set to `
         # SOURCE_RESTRICTION_ENABLED`.
         # Corresponds to the JSON property `sourceRestriction`
         # @return [String]
@@ -860,18 +862,18 @@ module Google
       # within the ServicePerimeter to access a defined set of projects outside the
       # perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket
       # or query against a BigQuery dataset). EgressPolicies are concerned with the *
-      # resources* that a request relates as well as the API services and API actions
-      # being used. They do not related to the direction of data movement. More
+      # resources* that a request relates to, as well as the API services and API
+      # actions being used. They do not relate to the direction of data movement. More
       # detailed documentation for this concept can be found in the descriptions of
       # EgressFrom and EgressTo.
       class EgressPolicy
         include Google::Apis::Core::Hashable
       
         # Defines the conditions under which an EgressPolicy matches a request.
-        # Conditions based on information about the source of the request. Note that if
-        # the destination of the request is also protected by a ServicePerimeter, then
-        # that ServicePerimeter must have an IngressPolicy which allows access in order
-        # for this request to succeed.
+        # Conditions are based on information about the source of the request. Note that
+        # if the destination of the request is also protected by a ServicePerimeter,
+        # then that ServicePerimeter must have an IngressPolicy which allows access in
+        # order for this request to succeed.
         # Corresponds to the JSON property `egressFrom`
         # @return [Google::Apis::AccesscontextmanagerV1::EgressFrom]
         attr_accessor :egress_from
@@ -888,7 +890,7 @@ module Google
         attr_accessor :egress_to
       
         # Optional. Human-readable title for the egress rule. The title must be unique
-        # within the perimeter and can not exceed 100 characters. Within the access
+        # within the perimeter and cannot exceed 100 characters. Within the access
         # policy, the combined length of all rule titles must not exceed 240,000
         # characters.
         # Corresponds to the JSON property `title`
@@ -931,8 +933,9 @@ module Google
       
         # A Google Cloud resource from the service perimeter that you want to allow to
         # access data outside the perimeter. This field supports projects, folders, and
-        # organizations in the form `projects/`, `folders/`, and `organizations/`. You
-        # can't use `*` in this field to allow all Google Cloud resources.
+        # organizations in the form `projects/`project_number``, `folders/`folder_id``,
+        # and `organizations/`organization_id``. You can't use `*` in this field to
+        # allow all Google Cloud resources.
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
@@ -960,11 +963,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A list of external resources that are allowed to be accessed. Only AWS and
-        # Azure resources are supported. For Amazon S3, the supported formats are s3://
-        # BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the
-        # supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A
-        # request matches if it contains an external resource in this list (Example: s3:/
-        # /bucket/path). Currently '*' is not allowed.
+        # Azure resources are supported. For Amazon S3, the supported formats are `s3://
+        # BUCKET_NAME`, `s3a://BUCKET_NAME`, and `s3n://BUCKET_NAME`. For Azure Storage,
+        # the supported format is `azure://myaccount.blob.core.windows.net/
+        # CONTAINER_NAME`. A request matches if it contains an external resource in this
+        # list (Example: `s3://bucket/path`). Currently `'*'` is not allowed.
         # Corresponds to the JSON property `externalResources`
         # @return [Array<String>]
         attr_accessor :external_resources
@@ -977,17 +980,17 @@ module Google
         attr_accessor :operations
       
         # A list of resources, currently projects, folders, and organizations in the
-        # form `projects/`, `folders/`, and `organizations/`, that are allowed to be
-        # accessed by sources defined in the corresponding EgressFrom. A request matches
-        # if it contains a resource in this list. If `*` is specified for `resources`,
-        # then this EgressTo rule will authorize access to all resources outside the
-        # perimeter.
+        # form `projects/`project_number``, `folders/`folder_id``, and `organizations/`
+        # organization_id``, that are allowed to be accessed by sources defined in the
+        # corresponding EgressFrom. A request matches if it contains a resource in this
+        # list. If `*` is specified for `resources`, then this EgressTo rule will
+        # authorize access to all resources outside the perimeter.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
       
         # IAM roles that represent the set of operations that the sources specified in
-        # the corresponding EgressFrom. are allowed to perform in this ServicePerimeter.
+        # the corresponding EgressFrom are allowed to perform in this ServicePerimeter.
         # Corresponds to the JSON property `roles`
         # @return [Array<String>]
         attr_accessor :roles
@@ -1082,25 +1085,25 @@ module Google
       
         # Optional. Access level that a user must have to be granted access. Only one
         # access level is supported, not multiple. This repeated field must have exactly
-        # one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # one element. Example: `"accessPolicies/9522/accessLevels/device_trusted"`
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # Optional. Dry run access level that will be evaluated but will not be enforced.
-        # The access denial based on dry run policy will be logged. Only one access
-        # level is supported, not multiple. This list must have exactly one element.
-        # Example: "accessPolicies/9522/accessLevels/device_trusted"
+        # Optional. Dry-run access level that is evaluated, but not enforced. Any access
+        # denial based on the dry-run policy is logged. Only one access level is
+        # supported, not multiple. This list must have exactly one element. Example: `"
+        # accessPolicies/9522/accessLevels/device_trusted"`
         # Corresponds to the JSON property `dryRunAccessLevels`
         # @return [Array<String>]
         attr_accessor :dry_run_access_levels
       
-        # Optional. Immutable. Google Group id whose users are subject to this binding's
+        # Optional. Immutable. Google Group ID whose users are subject to this binding's
         # restrictions. See "id" in the [Google Workspace Directory API's Group Resource]
         # (https://developers.google.com/admin-sdk/directory/v1/reference/groups#
-        # resource). If a group's email address/alias is changed, this resource will
+        # resource). If a group's email address or alias is changed, this resource will
         # continue to point at the changed group. This field does not accept group email
-        # addresses or aliases. Example: "01d520gv4vjcrht"
+        # addresses or aliases. Example: `"01d520gv4vjcrht"`
         # Corresponds to the JSON property `groupKey`
         # @return [String]
         attr_accessor :group_key
@@ -1108,8 +1111,8 @@ module Google
         # Immutable. Assigned by the server during creation. The last segment has an
         # arbitrary length and has only URI unreserved characters (as defined by [RFC
         # 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
-        # not be specified by the client during creation. Example: "organizations/256/
-        # gcpUserAccessBindings/b3-BhcX_Ud5N"
+        # not be specified by the client during creation. Example: `"organizations/256/
+        # gcpUserAccessBindings/b3-BhcX_Ud5N"`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1127,8 +1130,8 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::ScopedAccessSettings>]
         attr_accessor :scoped_access_settings
       
-        # Stores settings related to Google Cloud Session Length including session
-        # duration, the type of challenge (i.e. method) they should face when their
+        # Stores settings related to Google Cloud Session Length, including session
+        # duration, the type of challenge (that is, method) a user faces when their
         # session expires, and other related settings.
         # Corresponds to the JSON property `sessionSettings`
         # @return [Google::Apis::AccesscontextmanagerV1::SessionSettings]
@@ -1280,7 +1283,7 @@ module Google
         attr_accessor :ingress_to
       
         # Optional. Human-readable title for the ingress rule. The title must be unique
-        # within the perimeter and can not exceed 100 characters. Within the access
+        # within the perimeter and cannot exceed 100 characters. Within the access
         # policy, the combined length of all rule titles must not exceed 240,000
         # characters.
         # Corresponds to the JSON property `title`
@@ -1303,14 +1306,14 @@ module Google
       class IngressSource
         include Google::Apis::Core::Hashable
       
-        # An AccessLevel resource name that allow resources within the ServicePerimeters
-        # to be accessed from the internet. AccessLevels listed must be in the same
-        # policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will
-        # cause an error. If no AccessLevel names are listed, resources within the
-        # perimeter can only be accessed via Google Cloud calls with request origins
-        # within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`
-        # . If a single `*` is specified for `access_level`, then all IngressSources
-        # will be allowed.
+        # An AccessLevel resource name that allows resources within the
+        # ServicePerimeters to be accessed from the internet. AccessLevels listed must
+        # be in the same policy as this ServicePerimeter. Referencing a nonexistent
+        # AccessLevel will cause an error. If no AccessLevel names are listed, resources
+        # within the perimeter can only be accessed via Google Cloud calls with request
+        # origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/
+        # MY_LEVEL`. If a single `*` is specified for `access_level`, then all
+        # IngressSources will be allowed.
         # Corresponds to the JSON property `accessLevel`
         # @return [String]
         attr_accessor :access_level
@@ -1362,7 +1365,7 @@ module Google
         # form `projects/`project_number``, `folders/`folder_id``, and `organizations/`
         # organization_id``, protected by this ServicePerimeter that are allowed to be
         # accessed by sources defined in the corresponding IngressFrom. If a single `*`
-        # is specified, then access to all resources inside the perimeter are allowed.
+        # is specified, then access to all resources inside the perimeter is allowed.
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
@@ -1604,14 +1607,14 @@ module Google
       class LookupConfiguredServicePerimeterResponse
         include Google::Apis::Core::Hashable
       
-        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
-        # restricted by the enforced perimeter.
+        # The resource (for example, `projects/123` or `folders/456`) that directly owns
+        # or is restricted by the enforced perimeter.
         # Corresponds to the JSON property `restrictedResource`
         # @return [String]
         attr_accessor :restricted_resource
       
-        # The resource (e.g. "projects/123", "folders/456") that directly owns/is
-        # restricted by the dry-run perimeter.
+        # The resource (for example, `projects/123` or `folders/456`) that directly owns
+        # or is restricted by the dry-run perimeter.
         # Corresponds to the JSON property `restrictedResourceDryRun`
         # @return [String]
         attr_accessor :restricted_resource_dry_run
@@ -1768,8 +1771,8 @@ module Google
         # @return [String]
         attr_accessor :os_type
       
-        # Only allows requests from devices with a verified Chrome OS. Verifications
-        # includes requirements that the device is enterprise-managed, conformant to
+        # Only allows requests from devices with a verified Chrome OS. Verification
+        # includes requirements that the device is enterprise-managed, conforms to
         # domain policies, and the caller has permission to call the API targeted by the
         # request.
         # Corresponds to the JSON property `requireVerifiedChromeOs`
@@ -1907,11 +1910,11 @@ module Google
         attr_accessor :federated_principal
       
         # Immutable. Service account email used to assign policies to a specific service
-        # account. If a service account is subject to multiple policies (e.g., if there
-        # is a policy for all service accounts in a project and a policy for the service
-        # account), the closest (i.e. the most specific) dry-run policy will be used for
-        # the dry-run functionality and the closest enforcement policy will be used for
-        # the enforcement.
+        # account. If a service account is subject to multiple policies (for example, if
+        # there is a policy for all service accounts in a project and a policy for the
+        # service account), the closest (that is, the most specific) dry-run policy is
+        # used for the dry-run functionality and the closest enforcement policy is used
+        # for enforcement.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -1955,8 +1958,8 @@ module Google
         end
       end
       
-      # A Google Cloud project which contains applications and resources that users
-      # can access.
+      # A Google Cloud project that contains applications and resources that users can
+      # access.
       class Project
         include Google::Apis::Core::Hashable
       
@@ -2080,7 +2083,7 @@ module Google
         end
       end
       
-      # A relationship between access settings and its scope.
+      # A relationship between access settings and their scope.
       class ScopedAccessSettings
         include Google::Apis::Core::Hashable
       
@@ -2096,8 +2099,7 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::AccessSettings]
         attr_accessor :dry_run_settings
       
-        # Access scope represents the client scope, etc. to which the settings will be
-        # applied to.
+        # Access scope represents the client scope to which the settings are applied.
         # Corresponds to the JSON property `scope`
         # @return [Google::Apis::AccesscontextmanagerV1::AccessScope]
         attr_accessor :scope
@@ -2123,8 +2125,8 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::Modifier>]
         attr_accessor :modifiers
       
-        # URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.
-        # com//*" and "*.appspot.com/* forms are supported, where should be an
+        # URL pattern to allow. Only patterns of `".googleapis.com/*"`, `"www.googleapis.
+        # com//*"`, and `"*.appspot.com/*"` forms are supported, where `` should be an
         # alphanumeric name.
         # Corresponds to the JSON property `pattern`
         # @return [String]
@@ -2182,8 +2184,8 @@ module Google
         attr_accessor :name
       
         # Perimeter type indicator. A single project or VPC network is allowed to be a
-        # member of single regular perimeter, but multiple service perimeter bridges. A
-        # project cannot be a included in a perimeter bridge without being included in
+        # member of a single regular perimeter, but multiple service perimeter bridges.
+        # A project cannot be included in a perimeter bridge without being included in a
         # regular perimeter. For perimeter bridges, the restricted service list as well
         # as access level lists must be empty.
         # Corresponds to the JSON property `perimeterType`
@@ -2214,8 +2216,9 @@ module Google
         # ("spec") to use in a dry-run version of the Service Perimeter. This allows the
         # user to test changes to the enforced config ("status") without actually
         # enforcing them. This testing is done through analyzing the differences between
-        # currently enforced and suggested restrictions. use_explicit_dry_run_spec must
-        # bet set to True if any of the fields in the spec are set to non-default values.
+        # currently enforced and suggested restrictions. `use_explicit_dry_run_spec`
+        # must be set to `true` if any of the fields in the spec are set to non-default
+        # values.
         # Corresponds to the JSON property `useExplicitDryRunSpec`
         # @return [Boolean]
         attr_accessor :use_explicit_dry_run_spec
@@ -2303,8 +2306,8 @@ module Google
         end
       end
       
-      # Stores settings related to Google Cloud Session Length including session
-      # duration, the type of challenge (i.e. method) they should face when their
+      # Stores settings related to Google Cloud Session Length, including session
+      # duration, the type of challenge (that is, method) a user faces when their
       # session expires, and other related settings.
       class SessionSettings
         include Google::Apis::Core::Hashable
@@ -2319,30 +2322,30 @@ module Google
         # that are active indefinitely. Also, setting `session_length_enabled` to `false`
         # disregards session limits, which means that sessions never expire. If `
         # use_oidc_max_age` is `true`, for OIDC apps, the session length will be the
-        # minimum of this field and the OIDC `max_age` param. If this field is set to
-        # zero, `session_length_enabled` must be set to `false` or left unset.
+        # minimum of this field and the OIDC `max_age` parameter. If this field is set
+        # to zero, `session_length_enabled` must be set to `false` or left unset.
         # Corresponds to the JSON property `sessionLength`
         # @return [String]
         attr_accessor :session_length
       
-        # Optional. This field enables or disables Google Cloud session length. When
-        # false, all fields set above will be disregarded and the session length is
-        # basically infinite. If `session_length` is set to zero, this field must be set
-        # to false.
+        # Optional. This field enables or disables Google Cloud session length. When `
+        # false`, all fields set above are disregarded and the session length is
+        # effectively infinite. If `session_length` is set to zero, this field must be
+        # set to `false`.
         # Corresponds to the JSON property `sessionLengthEnabled`
         # @return [Boolean]
         attr_accessor :session_length_enabled
         alias_method :session_length_enabled?, :session_length_enabled
       
-        # Optional. Session method when user's Google Cloud session is up.
+        # Optional. Session challenge method when a user's Google Cloud session expires.
         # Corresponds to the JSON property `sessionReauthMethod`
         # @return [String]
         attr_accessor :session_reauth_method
       
-        # Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if
-        # passed in the authentication request will be ignored. When true, the re-auth
-        # period will be the minimum of the session_length field and the max_age OIDC
-        # param.
+        # Optional. Only useful for OIDC apps. When `false`, the OIDC `max_age`
+        # parameter, if passed in the authentication request, is ignored. When `true`,
+        # the re-authentication period is the minimum of the `session_length` field and
+        # the `max_age` OIDC parameter.
         # Corresponds to the JSON property `useOidcMaxAge`
         # @return [Boolean]
         attr_accessor :use_oidc_max_age
@@ -2454,7 +2457,8 @@ module Google
         end
       end
       
-      # `SupportedService` specifies the VPC Service Controls and its properties.
+      # `SupportedService` specifies a service supported by VPC Service Controls and
+      # its properties.
       class SupportedService
         include Google::Apis::Core::Hashable
       
@@ -2490,13 +2494,13 @@ module Google
         # @return [String]
         attr_accessor :support_stage
       
-        # The list of the supported methods. This field exists only in response to
-        # GetSupportedService
+        # The list of supported methods. This field exists only in response to
+        # GetSupportedService.
         # Corresponds to the JSON property `supportedMethods`
         # @return [Array<Google::Apis::AccesscontextmanagerV1::MethodSelector>]
         attr_accessor :supported_methods
       
-        # The name of the supported product, such as 'Cloud Product API'.
+        # The name of the supported product, such as `'Cloud Product API'`.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -2567,16 +2571,16 @@ module Google
         # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePattern>]
         attr_accessor :allowed_service_patterns
       
-        # The list of APIs usable within the Service Perimeter. Must be empty unless '
-        # enable_restriction' is True. You can specify a list of individual services, as
-        # well as include the 'RESTRICTED-SERVICES' value, which automatically includes
-        # all of the services protected by the perimeter.
+        # The list of APIs usable within the Service Perimeter. Must be empty unless `
+        # enable_restriction` is `true`. You can specify a list of individual services,
+        # as well as include the `'RESTRICTED-SERVICES'` value, which automatically
+        # includes all of the services protected by the perimeter.
         # Corresponds to the JSON property `allowedServices`
         # @return [Array<String>]
         attr_accessor :allowed_services
       
         # Whether to restrict API calls within the Service Perimeter to the list of APIs
-        # specified in 'allowed_services'.
+        # specified in `allowed_services`.
         # Corresponds to the JSON property `enableRestriction`
         # @return [Boolean]
         attr_accessor :enable_restriction
@@ -2604,7 +2608,7 @@ module Google
       class VpcNetworkSource
         include Google::Apis::Core::Hashable
       
-        # Sub-segment ranges inside of a VPC Network.
+        # Sub-segment ranges inside of a VPC network.
         # Corresponds to the JSON property `vpcSubnetwork`
         # @return [Google::Apis::AccesscontextmanagerV1::VpcSubNetwork]
         attr_accessor :vpc_subnetwork
@@ -2619,7 +2623,7 @@ module Google
         end
       end
       
-      # Sub-segment ranges inside of a VPC Network.
+      # Sub-segment ranges inside of a VPC network.
       class VpcSubNetwork
         include Google::Apis::Core::Hashable
       
@@ -2634,10 +2638,10 @@ module Google
       
         # CIDR block IP subnetwork specification. The IP address must be an IPv4 address
         # and can be a public or private IP address. Note that for a CIDR IP address
-        # block, the specified IP address portion must be properly truncated (i.e. all
-        # the host bits must be zero) or the input is considered malformed. For example,
-        # "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP
-        # addresses are allowed.
+        # block, the specified IP address portion must be properly truncated (that is,
+        # all the host bits must be zero) or the input is considered malformed. For
+        # example, `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not. If empty,
+        # all IP addresses are allowed.
         # Corresponds to the JSON property `vpcIpSubnetworks`
         # @return [Array<String>]
         attr_accessor :vpc_ip_subnetworks
