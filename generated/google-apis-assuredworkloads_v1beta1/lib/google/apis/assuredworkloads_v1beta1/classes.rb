@@ -22,32 +22,36 @@ module Google
   module Apis
     module AssuredworkloadsV1beta1
       
-      # Request for acknowledging the violation
+      # Request message for acknowledging a violation.
       class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. Acknowledge type of specified violation.
+        # Optional. The scope of the acknowledgement for the specified violation. If not
+        # specified, `SINGLE_VIOLATION` is used.
         # Corresponds to the JSON property `acknowledgeType`
         # @return [String]
         attr_accessor :acknowledge_type
       
-        # Required. Business justification explaining the need for violation
-        # acknowledgement
+        # Required. The business justification for acknowledging the violation. The
+        # comment can't be empty or contain only whitespace characters.
         # Corresponds to the JSON property `comment`
         # @return [String]
         attr_accessor :comment
       
-        # Optional. This field is deprecated and will be removed in future version of
-        # the API. Name of the OrgPolicy which was modified with non-compliant change
-        # and resulted in this violation. Format: projects/`project_number`/policies/`
-        # constraint_name` folders/`folder_id`/policies/`constraint_name` organizations/`
-        # organization_id`/policies/`constraint_name`
+        # Optional. Deprecated: This field is deprecated and will be removed in a future
+        # version of the API. The service identifies the violation to acknowledge by `
+        # name`, and ignores this field. Don't set this field. The name of the
+        # organization policy that was modified with a non-compliant change and resulted
+        # in this violation. Formats: * `projects/`project_number`/policies/`
+        # constraint_name`` * `folders/`folder_id`/policies/`constraint_name`` * `
+        # organizations/`organization_id`/policies/`constraint_name``
         # Corresponds to the JSON property `nonCompliantOrgPolicy`
         # @return [String]
         attr_accessor :non_compliant_org_policy
       
-        # Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`)
-        # for acknowledging violations.
+        # Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or `
+        # VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to. If not specified,
+        # `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
         # Corresponds to the JSON property `view`
         # @return [String]
         attr_accessor :view
@@ -65,7 +69,7 @@ module Google
         end
       end
       
-      # Response for violation acknowledgement
+      # Response message for acknowledging a violation. This message is empty.
       class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationResponse
         include Google::Apis::Core::Hashable
       
@@ -82,7 +86,7 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse
         include Google::Apis::Core::Hashable
       
-        # The list of aggregated compliance reports.
+        # The daily compliance reports for the requested time range.
         # Corresponds to the JSON property `aggregatedComplianceReports`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport>]
         attr_accessor :aggregated_compliance_reports
@@ -97,7 +101,7 @@ module Google
         end
       end
       
-      # The aggregated compliance report.
+      # A point-in-time compliance report for a framework.
       class GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport
         include Google::Apis::Core::Hashable
       
@@ -106,7 +110,7 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails]
         attr_accessor :control_assessment_details
       
-        # The report time of the aggregated compliance report.
+        # The time that the compliance report represents.
         # Corresponds to the JSON property `reportTime`
         # @return [String]
         attr_accessor :report_time
@@ -530,7 +534,8 @@ module Google
         end
       end
       
-      # The details for control compliance.
+      # A summary of the compliance status of a control in a framework compliance
+      # report.
       class GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary
         include Google::Apis::Core::Hashable
       
@@ -571,7 +576,10 @@ module Google
         attr_accessor :is_fake_control
         alias_method :is_fake_control?, :is_fake_control
       
-        # Identifier. The name of the control compliance summary.
+        # Identifier. The resource name of the control compliance summary. Format: `
+        # organizations/`organization`/locations/`location`/dbFrameworkComplianceReports/
+        # `db_framework_compliance_report`/dbControlComplianceSummaries/`
+        # db_control_compliance_summary``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -623,51 +631,53 @@ module Google
         end
       end
       
-      # The details for a finding.
+      # A summary of the active findings for a finding category in a Data Boundary
+      # scope.
       class GoogleCloudAssuredworkloadsV1beta1DbFindingSummary
         include Google::Apis::Core::Hashable
       
-        # Output only. The category of the finding.
+        # Output only. The category of the findings that are summarized.
         # Corresponds to the JSON property `findingCategory`
         # @return [String]
         attr_accessor :finding_category
       
-        # Output only. The class of the finding.
+        # Output only. The class of the findings.
         # Corresponds to the JSON property `findingClass`
         # @return [String]
         attr_accessor :finding_class
       
-        # Output only. The count of the finding.
+        # Output only. The total number of active findings in the category.
         # Corresponds to the JSON property `findingCount`
         # @return [Fixnum]
         attr_accessor :finding_count
       
-        # Identifier. The name of the finding summary.
+        # Identifier. The resource name of the finding summary.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Number of active organization policy findings for this category.
+        # Output only. The number of active organization policy findings in the category.
         # Corresponds to the JSON property `organizationPolicyFindingCount`
         # @return [Fixnum]
         attr_accessor :organization_policy_finding_count
       
-        # Optional. The list of compliance frameworks that the finding belongs to.
+        # Optional. The display names of the compliance frameworks that the findings are
+        # related to.
         # Corresponds to the JSON property `relatedFrameworks`
         # @return [Array<String>]
         attr_accessor :related_frameworks
       
-        # Output only. Number of active resource findings for this category.
+        # Output only. The number of active resource findings in the category.
         # Corresponds to the JSON property `resourceFindingCount`
         # @return [Fixnum]
         attr_accessor :resource_finding_count
       
-        # Output only. The severity of the finding.
+        # Output only. The severity of the findings.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
       
-        # Output only. The last updated time of the finding.
+        # Output only. The time when the findings in the category were last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -690,7 +700,8 @@ module Google
         end
       end
       
-      # The details for a framework compliance summary.
+      # A summary of the compliance status of a framework that's deployed in a Data
+      # Boundary scope.
       class GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary
         include Google::Apis::Core::Hashable
       
@@ -704,27 +715,29 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Trend]
         attr_accessor :controls_passing_trend
       
-        # Output only. The count of the findings generated against the framework.
+        # Output only. The number of findings that were generated against the framework.
+        # This field is only populated when using `
+        # FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL`.
         # Corresponds to the JSON property `findingCount`
         # @return [Fixnum]
         attr_accessor :finding_count
       
-        # The name of the framework.
+        # The resource name of the compliance framework.
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
       
-        # The list of framework categories supported by the framework.
+        # The categories of the framework.
         # Corresponds to the JSON property `frameworkCategories`
         # @return [Array<String>]
         attr_accessor :framework_categories
       
-        # Optional. The display name for the framework.
+        # Optional. The display name of the framework.
         # Corresponds to the JSON property `frameworkDisplayName`
         # @return [String]
         attr_accessor :framework_display_name
       
-        # The type of framework.
+        # The type of the framework.
         # Corresponds to the JSON property `frameworkType`
         # @return [String]
         attr_accessor :framework_type
@@ -739,17 +752,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :minor_revision_id
       
-        # Identifier. The name of the framework compliance summary.
+        # Identifier. The resource name of the framework compliance summary.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The list of cloud providers supported by the framework.
+        # The cloud providers that are supported by the framework.
         # Corresponds to the JSON property `supportedCloudProviders`
         # @return [Array<String>]
         attr_accessor :supported_cloud_providers
       
-        # The target resource details for the framework.
+        # The details of the target resources (organizations, folders, or projects) that
+        # the framework is deployed on.
         # Corresponds to the JSON property `targetResourceDetails`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>]
         attr_accessor :target_resource_details
@@ -810,12 +824,13 @@ module Google
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails]
         attr_accessor :control_assessment_details
       
-        # The name of the framework.
+        # The resource name of the compliance framework. For example, `organizations/`
+        # organization`/locations/`location`/frameworks/`framework_id``.
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
       
-        # The list of framework categories supported.
+        # The categories of the framework.
         # Corresponds to the JSON property `frameworkCategories`
         # @return [Array<String>]
         attr_accessor :framework_categories
@@ -825,7 +840,7 @@ module Google
         # @return [String]
         attr_accessor :framework_description
       
-        # Optional. The display name for the framework.
+        # Optional. The display name of the framework.
         # Corresponds to the JSON property `frameworkDisplayName`
         # @return [String]
         attr_accessor :framework_display_name
@@ -845,22 +860,23 @@ module Google
         # @return [Fixnum]
         attr_accessor :minor_revision_id
       
-        # The name of the framework compliance report.
+        # The resource name of the framework compliance report.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The list of cloud providers that are supported by the framework.
+        # The cloud providers that are supported by the framework.
         # Corresponds to the JSON property `supportedCloudProviders`
         # @return [Array<String>]
         attr_accessor :supported_cloud_providers
       
-        # The target resource details of the framework.
+        # The details of the target resources (organizations, folders, or projects) that
+        # the framework is deployed on.
         # Corresponds to the JSON property `targetResourceDetails`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails>]
         attr_accessor :target_resource_details
       
-        # Output only. The last updated time of the report.
+        # Output only. The time when the report was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -886,16 +902,17 @@ module Google
         end
       end
       
-      # The response message for ListDBControlComplianceSummaries.
+      # The response message for ListDbControlComplianceSummaries.
       class GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse
         include Google::Apis::Core::Hashable
       
-        # The list of control compliance details.
+        # The list of control compliance summaries.
         # Corresponds to the JSON property `dbControlComplianceSummaries`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary>]
         attr_accessor :db_control_compliance_summaries
       
-        # Output only. The token to retrieve the next page of results.
+        # Output only. A token that can be sent as `page_token` to retrieve the next
+        # page. If this field is empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -915,12 +932,13 @@ module Google
       class GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse
         include Google::Apis::Core::Hashable
       
-        # List of finding summary by category.
+        # The list of finding summaries, one for each finding category.
         # Corresponds to the JSON property `dbFindingSummaries`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbFindingSummary>]
         attr_accessor :db_finding_summaries
       
-        # Output only. The token to retrieve the next page of results.
+        # Output only. A token that can be sent as `page_token` to retrieve the next
+        # page. If this field is empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -936,7 +954,7 @@ module Google
         end
       end
       
-      # The response message for ListDbFrameworkComplianceSummariesResponse.
+      # The response message for ListDbFrameworkComplianceSummaries.
       class GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse
         include Google::Apis::Core::Hashable
       
@@ -945,7 +963,8 @@ module Google
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary>]
         attr_accessor :db_framework_compliance_summaries
       
-        # Output only. The token to retrieve the next page of results.
+        # Output only. A token that can be sent as `page_token` to retrieve the next
+        # page. If this field is empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -961,21 +980,24 @@ module Google
         end
       end
       
-      # Response of ListViolations endpoint.
+      # Response message for the `ListViolations` method.
       class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse
         include Google::Apis::Core::Hashable
       
-        # The next page token. Returns empty if reached the last page.
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is empty, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of violations.
+        # The total number of violations that match the request, across all pages. This
+        # field might not be populated for all requests; when it's not populated, its
+        # value is `0`.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
       
-        # List of Violations under a Workload.
+        # The list of violations.
         # Corresponds to the JSON property `violations`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1Violation>]
         attr_accessor :violations
@@ -1506,148 +1528,162 @@ module Google
         end
       end
       
-      # Workload monitoring Violation.
+      # A compliance violation that's detected by Assured Workloads monitoring. A
+      # violation is created when an organization policy or a resource in a workload (
+      # or a Data Boundary scope) changes in a way that doesn't comply with the
+      # controls of the applicable compliance regime or framework.
       class GoogleCloudAssuredworkloadsV1beta1Violation
         include Google::Apis::Core::Hashable
       
-        # A boolean that indicates if the violation is acknowledged
+        # Whether the violation has been acknowledged.
         # Corresponds to the JSON property `acknowledged`
         # @return [Boolean]
         attr_accessor :acknowledged
         alias_method :acknowledged?, :acknowledged
       
-        # Optional. Timestamp when this violation was acknowledged first. Check
-        # exception_contexts to find the last time the violation was acknowledged when
-        # there are more than one violations. This field will be absent when
-        # acknowledged field is marked as false.
+        # Optional. The time when the violation was first acknowledged. To find the most
+        # recent time that the violation was acknowledged, check `exception_contexts`.
+        # This field is absent when `acknowledged` is `false`.
         # Corresponds to the JSON property `acknowledgementTime`
         # @return [String]
         attr_accessor :acknowledgement_time
       
-        # Output only. List of compliance frameworks that are affected by this violation.
-        # This field is only populated when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. "
-        # FedRAMP High", "NIST 800-53".
+        # Output only. The IDs of the compliance frameworks that are affected by this
+        # violation. For example, `builtin-fedramp-high`. This field is only populated
+        # when using `VIOLATION_VIEW_DATA_BOUNDARY`.
         # Corresponds to the JSON property `affectedFrameworks`
         # @return [Array<String>]
         attr_accessor :affected_frameworks
       
-        # Optional. Output only. Violation Id of the org-policy violation due to which
-        # the resource violation is caused. Empty for org-policy violations.
+        # Optional. Output only. For resource violations, the ID of the organization
+        # policy violation that caused this resource violation. This field is empty for
+        # organization policy violations.
         # Corresponds to the JSON property `associatedOrgPolicyViolationId`
         # @return [String]
         attr_accessor :associated_org_policy_violation_id
       
-        # Output only. Immutable. Audit Log Link for violated resource Format: https://
-        # console.cloud.google.com/logs/query;query=`logName``protoPayload.resourceName``
-        # timeRange``folder`
+        # Output only. Immutable. A link to the Cloud Audit Logs entries for the
+        # violated resource. Format: `https://console.cloud.google.com/logs/query;query=`
+        # logName``protoPayload.resourceName``timeRange``folder``
         # Corresponds to the JSON property `auditLogLink`
         # @return [String]
         attr_accessor :audit_log_link
       
-        # Output only. Time of the event which triggered the Violation.
+        # Output only. The time of the event that triggered the violation.
         # Corresponds to the JSON property `beginTime`
         # @return [String]
         attr_accessor :begin_time
       
-        # Output only. Category under which this violation is mapped. e.g. Location,
-        # Service Usage, Access, Encryption, etc.
+        # Output only. The category that the violation is mapped to. For example, `
+        # Location`, `Service Usage`, `Access`, or `Encryption`.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
       
-        # Optional. Output only. The number of resource violations for particular org
-        # policy violation. This will be 0 in case of resource violation.
+        # Optional. Output only. For organization policy violations, the number of
+        # resource violations that are associated with this violation. This field is `0`
+        # for resource violations.
         # Corresponds to the JSON property `childResourceViolationCount`
         # @return [Fixnum]
         attr_accessor :child_resource_violation_count
       
-        # Output only. Description for the Violation. e.g. OrgPolicy gcp.
-        # resourceLocations has non compliant value.
+        # Output only. A description of the violation. For example, `OrgPolicy gcp.
+        # resourceLocations has non compliant value.`
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Output only. Immutable. Audit Log link to find business justification provided
-        # for violation exception. Format: https://console.cloud.google.com/logs/query;
-        # query=`logName``protoPayload.resourceName``protoPayload.methodName``timeRange``
-        # organization`
+        # Output only. Immutable. A link to the Cloud Audit Logs entries that contain
+        # the business justification that was provided when the violation was
+        # acknowledged. Format: `https://console.cloud.google.com/logs/query;query=`
+        # logName``protoPayload.resourceName``protoPayload.methodName``timeRange``
+        # organization``
         # Corresponds to the JSON property `exceptionAuditLogLink`
         # @return [String]
         attr_accessor :exception_audit_log_link
       
-        # Output only. List of all the exception detail added for the violation.
+        # Output only. The details of all of the acknowledgements (exceptions) for the
+        # violation.
         # Corresponds to the JSON property `exceptionContexts`
         # @return [Array<Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext>]
         attr_accessor :exception_contexts
       
-        # Output only. Immutable. Name of the Violation. Format: organizations/`
-        # organization`/locations/`location`/workloads/`workload_id`/violations/`
-        # violations_id`
+        # Output only. Immutable. The resource name of the violation. Format: `
+        # organizations/`organization`/locations/`location`/workloads/`workload_id`/
+        # violations/`violations_id``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output only. Immutable. Name of the OrgPolicy which was modified with non-
-        # compliant change and resulted this violation. Format: projects/`project_number`
-        # /policies/`constraint_name` folders/`folder_id`/policies/`constraint_name`
-        # organizations/`organization_id`/policies/`constraint_name`
+        # Output only. Immutable. The name of the organization policy that was modified
+        # with a non-compliant change and resulted in this violation. Formats: * `
+        # projects/`project_number`/policies/`constraint_name`` * `folders/`folder_id`/
+        # policies/`constraint_name`` * `organizations/`organization_id`/policies/`
+        # constraint_name``
         # Corresponds to the JSON property `nonCompliantOrgPolicy`
         # @return [String]
         attr_accessor :non_compliant_org_policy
       
-        # Output only. Immutable. The org-policy-constraint that was incorrectly changed,
-        # which resulted in this violation.
+        # Output only. Immutable. Deprecated: This field is deprecated and might be
+        # removed in a future version of the API. Use `non_compliant_org_policy` instead,
+        # which contains the full resource name of the organization policy, including
+        # the constraint name. The organization policy constraint that was changed in a
+        # non-compliant way, which resulted in this violation.
         # Corresponds to the JSON property `orgPolicyConstraint`
         # @return [String]
         attr_accessor :org_policy_constraint
       
-        # Optional. Output only. Parent project number where resource is present. Empty
-        # for org-policy violations.
+        # Optional. Output only. For resource violations, the number of the project that
+        # contains the non-compliant resource. This field is empty for organization
+        # policy violations.
         # Corresponds to the JSON property `parentProjectNumber`
         # @return [String]
         attr_accessor :parent_project_number
       
-        # Represents remediation guidance to resolve compliance violation for
-        # AssuredWorkload
+        # Remediation guidance to resolve a compliance violation.
         # Corresponds to the JSON property `remediation`
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediation]
         attr_accessor :remediation
       
-        # Output only. Contains the remediation instructions for the violation in
-        # markdown format.
+        # Output only. The remediation instructions for the violation, in Markdown
+        # format. This field is only populated by `GetViolation` when using `
+        # VIOLATION_VIEW_DATA_BOUNDARY`. When this field isn't populated, see `
+        # remediation` instead.
         # Corresponds to the JSON property `remediationMarkdown`
         # @return [String]
         attr_accessor :remediation_markdown
       
-        # Output only. Time of the event which fixed the Violation. If the violation is
-        # ACTIVE this will be empty.
+        # Output only. The time of the event that resolved the violation. This field is
+        # empty if the violation is unresolved.
         # Corresponds to the JSON property `resolveTime`
         # @return [String]
         attr_accessor :resolve_time
       
-        # Optional. Output only. Name of the resource like //storage.googleapis.com/
-        # myprojectxyz-testbucket. Empty for org-policy violations.
+        # Optional. Output only. For resource violations, the full resource name of the
+        # non-compliant resource. For example, `//storage.googleapis.com/myprojectxyz-
+        # testbucket`. This field is empty for organization policy violations.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # Optional. Output only. Type of the resource like compute.googleapis.com/Disk,
-        # etc. Empty for org-policy violations.
+        # Optional. Output only. For resource violations, the type of the non-compliant
+        # resource. For example, `compute.googleapis.com/Disk`. This field is empty for
+        # organization policy violations.
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
       
-        # Output only. State of the violation
+        # Output only. The state of the violation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Output only. The last time when the Violation record was updated.
+        # Output only. The time when the violation record was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. Type of the violation
+        # Output only. The type of the violation.
         # Corresponds to the JSON property `violationType`
         # @return [String]
         attr_accessor :violation_type
@@ -1684,21 +1720,22 @@ module Google
         end
       end
       
-      # Violation exception detail.
+      # Details about an acknowledgement (exception) of a violation.
       class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext
         include Google::Apis::Core::Hashable
       
-        # Timestamp when the violation was acknowledged.
+        # The time when the violation was acknowledged.
         # Corresponds to the JSON property `acknowledgementTime`
         # @return [String]
         attr_accessor :acknowledgement_time
       
-        # Business justification provided towards the acknowledgement of the violation.
+        # The business justification that was provided when the violation was
+        # acknowledged.
         # Corresponds to the JSON property `comment`
         # @return [String]
         attr_accessor :comment
       
-        # Name of the user (or service account) who acknowledged the violation.
+        # The name of the user (or service account) who acknowledged the violation.
         # Corresponds to the JSON property `userName`
         # @return [String]
         attr_accessor :user_name
@@ -1715,23 +1752,23 @@ module Google
         end
       end
       
-      # Represents remediation guidance to resolve compliance violation for
-      # AssuredWorkload
+      # Remediation guidance to resolve a compliance violation.
       class GoogleCloudAssuredworkloadsV1beta1ViolationRemediation
         include Google::Apis::Core::Hashable
       
-        # Values that can resolve the violation For example: for list org policy
-        # violations, this will either be the list of allowed or denied values
+        # The values that can resolve the violation. For example, for list organization
+        # policy violations, this field contains the list of allowed or denied values.
         # Corresponds to the JSON property `compliantValues`
         # @return [Array<String>]
         attr_accessor :compliant_values
       
-        # Instructions to remediate violation
+        # Instructions to remediate a violation.
         # Corresponds to the JSON property `instructions`
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructions]
         attr_accessor :instructions
       
-        # Output only. Reemediation type based on the type of org policy values violated
+        # Output only. The remediation type, which is based on the type of organization
+        # policy values that were violated.
         # Corresponds to the JSON property `remediationType`
         # @return [String]
         attr_accessor :remediation_type
@@ -1748,16 +1785,16 @@ module Google
         end
       end
       
-      # Instructions to remediate violation
+      # Instructions to remediate a violation.
       class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructions
         include Google::Apis::Core::Hashable
       
-        # Remediation instructions to resolve violation via cloud console
+        # Instructions to remediate a violation by using the Google Cloud console.
         # Corresponds to the JSON property `consoleInstructions`
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsConsole]
         attr_accessor :console_instructions
       
-        # Remediation instructions to resolve violation via gcloud cli
+        # Instructions to remediate a violation by using the Google Cloud CLI.
         # Corresponds to the JSON property `gcloudInstructions`
         # @return [Google::Apis::AssuredworkloadsV1beta1::GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsGcloud]
         attr_accessor :gcloud_instructions
@@ -1773,21 +1810,21 @@ module Google
         end
       end
       
-      # Remediation instructions to resolve violation via cloud console
+      # Instructions to remediate a violation by using the Google Cloud console.
       class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsConsole
         include Google::Apis::Core::Hashable
       
-        # Additional urls for more information about steps
+        # Additional URLs with more information about the steps.
         # Corresponds to the JSON property `additionalLinks`
         # @return [Array<String>]
         attr_accessor :additional_links
       
-        # Link to console page where violations can be resolved
+        # Links to the Google Cloud console pages where the violation can be resolved.
         # Corresponds to the JSON property `consoleUris`
         # @return [Array<String>]
         attr_accessor :console_uris
       
-        # Steps to resolve violation via cloud console
+        # The steps to resolve the violation by using the Google Cloud console.
         # Corresponds to the JSON property `steps`
         # @return [Array<String>]
         attr_accessor :steps
@@ -1804,21 +1841,21 @@ module Google
         end
       end
       
-      # Remediation instructions to resolve violation via gcloud cli
+      # Instructions to remediate a violation by using the Google Cloud CLI.
       class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsGcloud
         include Google::Apis::Core::Hashable
       
-        # Additional urls for more information about steps
+        # Additional URLs with more information about the steps.
         # Corresponds to the JSON property `additionalLinks`
         # @return [Array<String>]
         attr_accessor :additional_links
       
-        # Gcloud command to resolve violation
+        # The gcloud CLI commands that resolve the violation.
         # Corresponds to the JSON property `gcloudCommands`
         # @return [Array<String>]
         attr_accessor :gcloud_commands
       
-        # Steps to resolve violation via gcloud cli
+        # The steps to resolve the violation by using the gcloud CLI.
         # Corresponds to the JSON property `steps`
         # @return [Array<String>]
         attr_accessor :steps
