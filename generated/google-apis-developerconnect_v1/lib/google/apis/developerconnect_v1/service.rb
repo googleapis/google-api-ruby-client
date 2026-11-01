@@ -323,9 +323,9 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListAccountConnectorsRequest
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -616,9 +616,9 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListUsersRequest
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -691,8 +691,8 @@ module Google
         #   Required. Value for parent.
         # @param [Google::Apis::DeveloperconnectV1::Connection] connection_object
         # @param [String] connection_id
-        #   Required. Id of the requesting object If auto-generating Id server-side,
-        #   remove this field and connection_id from the method_signature of Create RPC
+        #   Required. The ID to use for the connection, which becomes the final component
+        #   of the connection's resource name.
         # @param [String] request_id
         #   Optional. An optional request ID to identify requests. Specify a unique
         #   request ID so that if you must retry your request, the server will know to
@@ -894,9 +894,9 @@ module Google
         # @param [String] parent
         #   Required. Parent value for ListConnectionsRequest
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -1030,6 +1030,74 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Add a comment to a Pull Request.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::AddGitRepositoryLinkPullRequestCommentRequest] add_git_repository_link_pull_request_comment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::PullRequestComment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::PullRequestComment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_connection_git_repository_link_pull_request_comment(name, add_git_repository_link_pull_request_comment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:addPullRequestComment', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::AddGitRepositoryLinkPullRequestCommentRequest::Representation
+          command.request_object = add_git_repository_link_pull_request_comment_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::PullRequestComment::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::PullRequestComment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Add a review comment (inline on diff) to a Pull Request.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::AddGitRepositoryLinkPullRequestReviewCommentRequest] add_git_repository_link_pull_request_review_comment_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::PullRequestReviewComment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::PullRequestReviewComment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_connection_git_repository_link_pull_request_review_comment(name, add_git_repository_link_pull_request_review_comment_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:addPullRequestReviewComment', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::AddGitRepositoryLinkPullRequestReviewCommentRequest::Representation
+          command.request_object = add_git_repository_link_pull_request_review_comment_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::PullRequestReviewComment::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::PullRequestReviewComment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect
         # will configure the Git Repository to send webhook events to Developer Connect.
         # Connections that use Firebase GitHub Application will have events forwarded to
@@ -1138,6 +1206,194 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Diff commits for a GitRepositoryLink.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink.
+        # @param [String] base_sha
+        #   Required. The base commit SHA or ref.
+        # @param [String] head_sha
+        #   Required. The head commit SHA or ref.
+        # @param [Array<String>, String] path_filters
+        #   Optional. Path patterns or exact paths to filter returned files. When `
+        #   path_filters` is specified, `FileDiff.patch` is populated for all matching
+        #   files (use `["**"]` to include patches for all changed files). When `
+        #   path_filters` is omitted or empty, the full list of `FileDiff` is returned
+        #   without patch diffs (`FileDiff.patch` is empty).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::DiffGitRepositoryLinkCommitResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::DiffGitRepositoryLinkCommitResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def diff_project_location_connection_git_repository_link_commit(name, base_sha: nil, head_sha: nil, path_filters: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:diffCommit', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::DiffGitRepositoryLinkCommitResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::DiffGitRepositoryLinkCommitResponse
+          command.params['name'] = name unless name.nil?
+          command.query['baseSha'] = base_sha unless base_sha.nil?
+          command.query['headSha'] = head_sha unless head_sha.nil?
+          command.query['pathFilters'] = path_filters unless path_filters.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch Commit details from a Git repository link.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [String] commit_sha
+        #   Required. The commit SHA, or symbolic revision (for example, branch name, tag,
+        #   or Git reference).
+        # @param [Array<String>, String] path_filters
+        #   Optional. Path patterns or exact paths to filter returned files (only
+        #   applicable in `FULL` view). When `path_filters` is specified, `FileDiff.patch`
+        #   is populated for all matching files (use `["**"]` to include patches for all
+        #   changed files). When `path_filters` is omitted or empty, the full list of `
+        #   FileDiff` is returned without patch diffs (`FileDiff.patch` is empty).
+        # @param [String] view
+        #   Optional. The level of commit details to return in the response. Defaults to `
+        #   FULL` if unspecified. In `FULL` view, `files` metadata (paths and statuses)
+        #   are returned; `path_filters` must also be specified to populate line patch
+        #   hunks.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_git_repository_link_commit(name, commit_sha: nil, path_filters: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchCommit', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitResponse
+          command.params['name'] = name unless name.nil?
+          command.query['commitSha'] = commit_sha unless commit_sha.nil?
+          command.query['pathFilters'] = path_filters unless path_filters.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch a list of Commits from a Git repository link.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Fixnum] page_size
+        #   Optional. Number of results to return in the list. Default is 50. Max is 100.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   FetchGitRepositoryLinkCommitList` call. Provide this to retrieve the
+        #   subsequent page. When paginating, all other parameters provided to `
+        #   FetchGitRepositoryLinkCommitList` must match the call that provided the page
+        #   token.
+        # @param [String] ref
+        #   Optional. The commit SHA, or symbolic revision (for example, branch name, tag,
+        #   or Git reference) from which to start listing commits.
+        # @param [String] view
+        #   Optional. The level of commit details to return in the response. Only `BASIC`
+        #   is supported; `FULL` returns `INVALID_ARGUMENT`. Defaults to `BASIC` if
+        #   unspecified. Use `FetchGitRepositoryLinkCommit` to get file diffs for a single
+        #   commit.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_git_repository_link_commit_list(name, page_size: nil, page_token: nil, ref: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchCommitList', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitListResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkCommitListResponse
+          command.params['name'] = name unless name.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['ref'] = ref unless ref.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches blame information for a file or line range in a file.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Fixnum] first_line
+        #   Optional. The 1-indexed starting line number of the range to blame (inclusive).
+        #   If not specified, blame begins at line 1.
+        # @param [Fixnum] last_line
+        #   Optional. The 1-indexed ending line number of the range to blame (inclusive).
+        #   If not specified, blame extends to the end of the file.
+        # @param [String] path
+        #   Required. The file path within the repository.
+        # @param [String] ref
+        #   Required. The SCM commit SHA, or symbolic revision (for example, branch name,
+        #   tag) from which to fetch the blame.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkFileBlameResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkFileBlameResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_git_repository_link_file_blame(name, first_line: nil, last_line: nil, path: nil, ref: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchFileBlame', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkFileBlameResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkFileBlameResponse
+          command.params['name'] = name unless name.nil?
+          command.query['firstLine'] = first_line unless first_line.nil?
+          command.query['lastLine'] = last_line unless last_line.nil?
+          command.query['path'] = path unless path.nil?
+          command.query['ref'] = ref unless ref.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetch the list of branches or tags for a given repository.
         # @param [String] git_repository_link
         #   Required. The resource name of GitRepositoryLink in the format `projects/*/
@@ -1173,6 +1429,90 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['refType'] = ref_type unless ref_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch Pull Request details from a Git repository link.
+        # @param [String] name
+        #   Required. The resource name of the GitRepositoryLink in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [String] pull_request_id
+        #   Required. The ID of the Pull Request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::PullRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::PullRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_git_repository_link_pull_request(name, pull_request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchPullRequest', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::PullRequest::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::PullRequest
+          command.params['name'] = name unless name.nil?
+          command.query['pullRequestId'] = pull_request_id unless pull_request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches a list of Pull Requests from the remote repository.
+        # @param [String] name
+        #   Required. The GitRepositoryLink resource name in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [String] filter
+        #   Optional. A filter expression that filters the pull requests returned in the
+        #   response. Only a single equality comparison on `state` is supported, for
+        #   example `state = "OPEN"`. Supported values are `OPEN`, `CLOSED`, and `MERGED`.
+        #   `DECLINED` is only supported for SCM providers that support declining pull
+        #   requests, and returns `INVALID_ARGUMENT` for GitHub, GitHub Enterprise, GitLab,
+        #   and GitLab Enterprise. Other values or expressions return `INVALID_ARGUMENT`.
+        #   Defaults to `state = "OPEN"` if unspecified.
+        # @param [Fixnum] page_size
+        #   Optional. Number of results to return in the list. Default is 20. Max is 100.
+        #   A page may contain fewer than `page_size` results even when more results are
+        #   available; use `next_page_token` to check for more pages.
+        # @param [String] page_token
+        #   Optional. A page token, received from a previous `
+        #   FetchGitRepositoryLinkPullRequestList` call. Provide this to retrieve the
+        #   subsequent page.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkPullRequestListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkPullRequestListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def fetch_project_location_connection_git_repository_link_pull_request_list(name, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}:fetchPullRequestList', options)
+          command.response_representation = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkPullRequestListResponse::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::FetchGitRepositoryLinkPullRequestListResponse
+          command.params['name'] = name unless name.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1278,11 +1618,11 @@ module Google
         
         # Lists GitRepositoryLinks in a given project, location, and connection.
         # @param [String] parent
-        #   Required. Parent value for ListGitRepositoryLinksRequest
+        #   Required. Parent value for ListGitRepositoryLinksRequest.
         # @param [String] filter
-        #   Optional. Filtering results
+        #   Optional. Filtering results.
         # @param [String] order_by
-        #   Optional. Hint for how to order the results
+        #   Optional. Hint for how to order the results.
         # @param [Fixnum] page_size
         #   Optional. Requested page size. Server may return fewer items than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -1314,6 +1654,76 @@ module Google
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies a Pull Request in the remote SCM repository associated with a
+        # GitRepositoryLink.
+        # @param [String] name
+        #   Required. The GitRepositoryLink resource name in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::ModifyGitRepositoryLinkPullRequestRequest] modify_git_repository_link_pull_request_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::PullRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::PullRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_project_location_connection_git_repository_link_pull_request(name, modify_git_repository_link_pull_request_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:modifyPullRequest', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::ModifyGitRepositoryLinkPullRequestRequest::Representation
+          command.request_object = modify_git_repository_link_pull_request_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::PullRequest::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::PullRequest
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Opens a Pull Request in the remote SCM repository associated with a
+        # GitRepositoryLink.
+        # @param [String] name
+        #   Required. The GitRepositoryLink resource name in the format `projects/*/
+        #   locations/*/connections/*/gitRepositoryLinks/*`.
+        # @param [Google::Apis::DeveloperconnectV1::OpenGitRepositoryLinkPullRequestRequest] open_git_repository_link_pull_request_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DeveloperconnectV1::PullRequest] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DeveloperconnectV1::PullRequest]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def open_project_location_connection_git_repository_link_pull_request(name, open_git_repository_link_pull_request_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:openPullRequest', options)
+          command.request_representation = Google::Apis::DeveloperconnectV1::OpenGitRepositoryLinkPullRequestRequest::Representation
+          command.request_object = open_git_repository_link_pull_request_request_object
+          command.response_representation = Google::Apis::DeveloperconnectV1::PullRequest::Representation
+          command.response_class = Google::Apis::DeveloperconnectV1::PullRequest
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
