@@ -1169,7 +1169,8 @@ module Google
         end
       end
       
-      # Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+      # Represents a volume backed by a Cloud Storage bucket (mounted via Cloud
+      # Storage FUSE or as a block device disk).
       class GoogleCloudRunV2GcsVolumeSource
         include Google::Apis::Core::Hashable
       
@@ -1551,6 +1552,11 @@ module Google
         # @return [String]
         attr_accessor :restart_policy
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -1637,6 +1643,7 @@ module Google
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @service_account = args[:service_account] if args.key?(:service_account)
           @ssh_enabled = args[:ssh_enabled] if args.key?(:ssh_enabled)
@@ -2572,6 +2579,11 @@ module Google
         attr_accessor :reconciling
         alias_method :reconciling?, :reconciling
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -2676,6 +2688,7 @@ module Google
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scaling = args[:scaling] if args.key?(:scaling)
           @scaling_status = args[:scaling_status] if args.key?(:scaling_status)
@@ -2859,6 +2872,11 @@ module Google
         # @return [String]
         attr_accessor :revision
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Settings for revision-level scaling settings.
         # Corresponds to the JSON property `scaling`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling]
@@ -2926,6 +2944,7 @@ module Google
           @max_instance_request_concurrency = args[:max_instance_request_concurrency] if args.key?(:max_instance_request_concurrency)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @scaling = args[:scaling] if args.key?(:scaling)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
@@ -2968,6 +2987,85 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @overrides = args[:overrides] if args.key?(:overrides)
           @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Configuration for sandboxes.
+      class GoogleCloudRunV2SandboxConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Required. Sandbox templates that can be launched through the `sandbox` CLI.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2SandboxTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @templates = args[:templates] if args.key?(:templates)
+        end
+      end
+      
+      # Template for a single sandbox.
+      class GoogleCloudRunV2SandboxTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arguments to the entrypoint. The docker image's CMD is used if this
+        # is not provided.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. Entrypoint array. Not executed within a shell. The docker image's
+        # ENTRYPOINT is used if this is not provided.
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        # Optional. List of environment variables to set in the sandbox.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2EnvVar>]
+        attr_accessor :env
+      
+        # Required. Name of the container image in Dockerhub or Artifact Registry. If
+        # the host is not provided, Dockerhub is assumed.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Volume to mount into the container's filesystem.
+        # Corresponds to the JSON property `volumeMounts`
+        # @return [Array<Google::Apis::RunV2::GoogleCloudRunV2VolumeMount>]
+        attr_accessor :volume_mounts
+      
+        # Optional. Container's working directory. If not specified, the container
+        # runtime's default will be used, which might be configured in the container
+        # image.
+        # Corresponds to the JSON property `workingDir`
+        # @return [String]
+        attr_accessor :working_dir
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @command = args[:command] if args.key?(:command)
+          @env = args[:env] if args.key?(:env)
+          @image = args[:image] if args.key?(:image)
+          @name = args[:name] if args.key?(:name)
+          @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
+          @working_dir = args[:working_dir] if args.key?(:working_dir)
         end
       end
       
@@ -3879,6 +3977,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :retried
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Output only. Reserved for future use.
         # Corresponds to the JSON property `satisfiesPzs`
         # @return [Boolean]
@@ -3970,6 +4073,7 @@ module Google
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @reconciling = args[:reconciling] if args.key?(:reconciling)
           @retried = args[:retried] if args.key?(:retried)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @satisfies_pzs = args[:satisfies_pzs] if args.key?(:satisfies_pzs)
           @scheduled_time = args[:scheduled_time] if args.key?(:scheduled_time)
           @service_account = args[:service_account] if args.key?(:service_account)
@@ -4063,6 +4167,11 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2NodeSelector]
         attr_accessor :node_selector
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Optional. Email address of the IAM service account associated with the Task of
         # a Job. The service account represents the identity of the running task, and
         # determines what permissions the task has. If not provided, the task will use
@@ -4107,6 +4216,7 @@ module Google
           @gpu_zonal_redundancy_disabled = args[:gpu_zonal_redundancy_disabled] if args.key?(:gpu_zonal_redundancy_disabled)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account = args[:service_account] if args.key?(:service_account)
           @timeout = args[:timeout] if args.key?(:timeout)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -4295,7 +4405,8 @@ module Google
         # @return [Google::Apis::RunV2::GoogleCloudRunV2EmptyDirVolumeSource]
         attr_accessor :empty_dir
       
-        # Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.
+        # Represents a volume backed by a Cloud Storage bucket (mounted via Cloud
+        # Storage FUSE or as a block device disk).
         # Corresponds to the JSON property `gcs`
         # @return [Google::Apis::RunV2::GoogleCloudRunV2GcsVolumeSource]
         attr_accessor :gcs
@@ -4753,6 +4864,11 @@ module Google
         # @return [String]
         attr_accessor :revision
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Optional. Email address of the IAM service account associated with the
         # revision of the service. The service account represents the identity of the
         # running revision, and determines what permissions the revision has. If not
@@ -4795,6 +4911,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @revision = args[:revision] if args.key?(:revision)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_mesh = args[:service_mesh] if args.key?(:service_mesh)
           @volumes = args[:volumes] if args.key?(:volumes)
