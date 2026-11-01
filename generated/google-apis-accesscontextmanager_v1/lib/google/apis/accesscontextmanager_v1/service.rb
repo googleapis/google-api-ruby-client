@@ -97,7 +97,7 @@ module Google
         # operation has a successful status after the access policy is removed from long-
         # lasting storage.
         # @param [String] name
-        #   Required. Resource name for the access policy to delete. Format `
+        #   Required. Resource name for the access policy to delete. Format: `
         #   accessPolicies/`policy_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -128,7 +128,7 @@ module Google
         
         # Returns an access policy based on the name.
         # @param [String] name
-        #   Required. Resource name for the access policy to get. Format `accessPolicies/`
+        #   Required. Resource name for the access policy to get. Format: `accessPolicies/`
         #   policy_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -422,10 +422,10 @@ module Google
         #   policy_id`/accessLevels/`access_level_id``
         # @param [String] access_level_format
         #   Whether to return `BasicLevels` in the Cloud Common Expression Language rather
-        #   than as `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are
+        #   than as `BasicLevels`. Defaults to `AS_DEFINED`, where Access Levels are
         #   returned as `BasicLevels` or `CustomLevels` based on how they were created. If
-        #   set to CEL, all Access Levels are returned as `CustomLevels`. In the CEL case,
-        #   `BasicLevels` are translated to equivalent `CustomLevels`.
+        #   set to `CEL`, all Access Levels are returned as `CustomLevels`. In the `CEL`
+        #   case, `BasicLevels` are translated to equivalent `CustomLevels`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -459,7 +459,7 @@ module Google
         #   Required. Resource name for the access policy to list Access Levels from.
         #   Format: `accessPolicies/`policy_id``
         # @param [String] access_level_format
-        #   Whether to return `BasicLevels` in the Cloud Common Expression language, as `
+        #   Whether to return `BasicLevels` in the Cloud Common Expression Language, as `
         #   CustomLevels`, rather than as `BasicLevels`. Defaults to returning `
         #   AccessLevels` in the format they were defined.
         # @param [Fixnum] page_size
@@ -545,9 +545,9 @@ module Google
         # has a successful status after all replacements propagate to long-lasting
         # storage. If the replacement contains errors, an error response is returned for
         # the first error encountered. Upon error, the replacement is cancelled, and
-        # existing access levels are not affected. The Operation.response field contains
-        # ReplaceAccessLevelsResponse. Removing access levels contained in existing
-        # service perimeters result in an error.
+        # existing access levels are not affected. The `Operation.response` field
+        # contains `ReplaceAccessLevelsResponse`. Removing access levels contained in
+        # existing service perimeters results in an error.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns these Access Levels.
         #   Format: `accessPolicies/`policy_id``
@@ -622,7 +622,7 @@ module Google
         
         # Creates an authorized orgs desc. The long-running operation from this RPC has
         # a successful status after the authorized orgs desc propagates to long-lasting
-        # storage. If a authorized orgs desc contains errors, an error response is
+        # storage. If an authorized orgs desc contains errors, an error response is
         # returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
         # will be assigned during creation.
         # @param [String] parent
@@ -663,7 +663,7 @@ module Google
         # is removed from long-lasting storage.
         # @param [String] name
         #   Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/`
-        #   policy_id`/authorizedOrgsDesc/`authorized_orgs_desc_id``
+        #   policy_id`/authorizedOrgsDescs/`authorized_orgs_desc_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -694,7 +694,7 @@ module Google
         # Gets an authorized orgs desc based on the resource name.
         # @param [String] name
         #   Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/`
-        #   policy_id`/authorizedOrgsDescs/`authorized_orgs_descs_id``
+        #   policy_id`/authorizedOrgsDescs/`authorized_orgs_desc_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -762,10 +762,10 @@ module Google
         
         # Updates an authorized orgs desc. The long-running operation from this RPC has
         # a successful status after the authorized orgs desc propagates to long-lasting
-        # storage. If a authorized orgs desc contains errors, an error response is
+        # storage. If an authorized orgs desc contains errors, an error response is
         # returned for the first error encountered. Only the organization list in `
-        # AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type
-        # and authorization_direction cannot be updated.
+        # AuthorizedOrgsDesc` can be updated. The `name`, `authorization_type`, `
+        # asset_type`, and `authorization_direction` cannot be updated.
         # @param [String] name
         #   Identifier. Resource name for the `AuthorizedOrgsDesc`. Format: `
         #   accessPolicies/`access_policy`/authorizedOrgsDescs/`authorized_orgs_desc``.
@@ -813,8 +813,8 @@ module Google
         # after the dry-run specifications for all the service perimeters have been
         # committed. If a commit fails, it causes the long-running operation to return
         # an error response and the entire commit operation is cancelled. When
-        # successful, the Operation.response field contains
-        # CommitServicePerimetersResponse. The `dry_run` and the `spec` fields are
+        # successful, the `Operation.response` field contains `
+        # CommitServicePerimetersResponse`. The `dry_run` and the `spec` fields are
         # cleared after a successful commit operation.
         # @param [String] parent
         #   Required. Resource name for the parent Access Policy which owns all Service
@@ -923,7 +923,7 @@ module Google
         # Gets a service perimeter based on the resource name.
         # @param [String] name
         #   Required. Resource name for the Service Perimeter. Format: `accessPolicies/`
-        #   policy_id`/servicePerimeters/`service_perimeters_id``
+        #   policy_id`/servicePerimeters/`service_perimeter_id``
         # @param [String] deleted_principal_syntax
         #   Optional. If true, the response will contain the deleted principal syntax for
         #   identities that support it.
@@ -1044,13 +1044,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replace all existing service perimeters in an access policy with the service
+        # Replaces all existing service perimeters in an access policy with the service
         # perimeters provided. This is done atomically. The long-running operation from
         # this RPC has a successful status after all replacements propagate to long-
         # lasting storage. Replacements containing errors result in an error response
         # for the first error encountered. Upon an error, replacements are cancelled and
-        # existing service perimeters are not affected. The Operation.response field
-        # contains ReplaceServicePerimetersResponse.
+        # existing service perimeters are not affected. The `Operation.response` field
+        # contains `ReplaceServicePerimetersResponse`.
         # @param [String] parent
         #   Required. Resource name for the access policy which owns these Service
         #   Perimeters. Format: `accessPolicies/`policy_id``
@@ -1123,10 +1123,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up the configured service perimeter for a given resource Format: ['
-        # projects/`projectNumber`', 'folders/`folderNumber`'].
+        # Looks up the configured service perimeter for a given resource. Format: `['
+        # projects/`projectNumber`', 'folders/`folderNumber`']`.
         # @param [String] resource
-        #   Required. The Resource to resolve (e.g. "projects/123", "folders/456").
+        #   Required. The resource to resolve (for example, `projects/123` or `folders/456`
+        #   ).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1409,11 +1410,14 @@ module Google
         # @param [String] parent
         #   Required. Example: "organizations/256"
         # @param [String] filter
-        #   Optional. The literal filter to apply to the results returned. See https://
-        #   google.aip.dev/160 for more details. Accepts values: * `principal:group_key` *
-        #   `principal:service_account` OR `principal:service_account_project_number`. If
-        #   this field is empty or not one of the above, the default value is `"principal:
-        #   group_key"`.
+        #   Optional. Filters the results by principal type. Uses the [AIP-160](https://
+        #   google.aip.dev/160) filter syntax. Only the following filters are supported: *
+        #   `principal:group_key`: bindings for groups. This is the default when the
+        #   filter is empty. * `principal:service_account OR principal:
+        #   service_account_project_number`: bindings for service accounts. * `principal:
+        #   federated_principal`: bindings for federated principals. Values can be in
+        #   snake_case or camelCase. Whitespace and the order of `OR` terms don't matter.
+        #   Any other filter returns an `INVALID_ARGUMENT` error.
         # @param [Fixnum] page_size
         #   Optional. Maximum number of items to return. The server may return fewer items.
         #   If left blank, the server may return any number of items.
@@ -1457,24 +1461,25 @@ module Google
         #   Immutable. Assigned by the server during creation. The last segment has an
         #   arbitrary length and has only URI unreserved characters (as defined by [RFC
         #   3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should
-        #   not be specified by the client during creation. Example: "organizations/256/
-        #   gcpUserAccessBindings/b3-BhcX_Ud5N"
+        #   not be specified by the client during creation. Example: `"organizations/256/
+        #   gcpUserAccessBindings/b3-BhcX_Ud5N"`
         # @param [Google::Apis::AccesscontextmanagerV1::GcpUserAccessBinding] gcp_user_access_binding_object
         # @param [Boolean] append
         #   Optional. This field controls whether or not certain repeated settings in the
         #   update request overwrite or append to existing settings on the binding. If
-        #   true, then append. Otherwise overwrite. So far, only scoped_access_settings
-        #   with session_settings supports appending. Global access_levels, access_levels
-        #   in scoped_access_settings, dry_run_access_levels, and session_settings are not
-        #   compatible with append functionality, and the request will return an error if
-        #   append=true when these settings are in the update_mask. The request will also
-        #   return an error if append=true when "scoped_access_settings" is not set in the
-        #   update_mask.
+        #   true, then append. Otherwise overwrite. So far, only `scoped_access_settings`
+        #   with `session_settings` supports appending. Global `access_levels`, `
+        #   access_levels` in `scoped_access_settings`, `dry_run_access_levels`, and `
+        #   session_settings` are not compatible with append functionality, and the
+        #   request will return an error if `append=true` when these settings are in the `
+        #   update_mask`. The request will also return an error if `append=true` when `"
+        #   scoped_access_settings"` is not set in the `update_mask`.
         # @param [String] update_mask
-        #   Required. Only the fields specified in this mask are updated. Because name and
-        #   group_key cannot be changed, update_mask is required and may only contain the
-        #   following fields: `access_levels`, `dry_run_access_levels`, `session_settings`,
-        #   `scoped_access_settings`. update_mask ` paths: "access_levels" `
+        #   Required. Only the fields specified in this mask are updated. Because `name`
+        #   and `group_key` cannot be changed, `update_mask` is required and may only
+        #   contain the following fields: `access_levels`, `dry_run_access_levels`, `
+        #   session_settings`, `scoped_access_settings`. update_mask ` paths: "
+        #   access_levels" `
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1509,7 +1514,7 @@ module Google
         # Lists all supported permissions in VPC Service Controls ingress and egress
         # rules for Granular Controls.
         # @param [Fixnum] page_size
-        #   Optional. This flag specifies the maximum number of services to return per
+        #   Optional. This flag specifies the maximum number of permissions to return per
         #   page. Default value is 100.
         # @param [String] page_token
         #   Optional. Use this token to retrieve a specific page of results. Default is
@@ -1542,10 +1547,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Looks up the configured service perimeter for a given resource Format: ['
-        # projects/`projectNumber`', 'folders/`folderNumber`'].
+        # Looks up the configured service perimeter for a given resource. Format: `['
+        # projects/`projectNumber`', 'folders/`folderNumber`']`.
         # @param [String] resource
-        #   Required. The Resource to resolve (e.g. "projects/123", "folders/456").
+        #   Required. The resource to resolve (for example, `projects/123` or `folders/456`
+        #   ).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
