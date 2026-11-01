@@ -790,6 +790,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SandboxConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SandboxTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecretEnvSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1991,6 +2003,8 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :restart_policy, as: 'restartPolicy'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::SandboxConfiguration, decorator: Google::Apis::RunV1::SandboxConfiguration::Representation
+      
           property :service_account_name, as: 'serviceAccountName'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
       
@@ -2364,6 +2378,8 @@ module Google
       
           hash :node_selector, as: 'nodeSelector'
           property :runtime_class_name, as: 'runtimeClassName'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::SandboxConfiguration, decorator: Google::Apis::RunV1::SandboxConfiguration::Representation
+      
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation
@@ -2435,6 +2451,29 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :overrides, as: 'overrides', class: Google::Apis::RunV1::Overrides, decorator: Google::Apis::RunV1::Overrides::Representation
       
+        end
+      end
+      
+      class SandboxConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :templates, as: 'templates', class: Google::Apis::RunV1::SandboxTemplate, decorator: Google::Apis::RunV1::SandboxTemplate::Representation
+      
+        end
+      end
+      
+      class SandboxTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :command, as: 'command'
+          collection :env, as: 'env', class: Google::Apis::RunV1::EnvVar, decorator: Google::Apis::RunV1::EnvVar::Representation
+      
+          property :image, as: 'image'
+          property :name, as: 'name'
+          collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV1::VolumeMount, decorator: Google::Apis::RunV1::VolumeMount::Representation
+      
+          property :working_dir, as: 'workingDir'
         end
       end
       
@@ -2615,6 +2654,8 @@ module Google
       
           property :max_retries, as: 'maxRetries'
           hash :node_selector, as: 'nodeSelector'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV1::SandboxConfiguration, decorator: Google::Apis::RunV1::SandboxConfiguration::Representation
+      
           property :service_account_name, as: 'serviceAccountName'
           property :timeout_seconds, :numeric_string => true, as: 'timeoutSeconds'
           collection :volumes, as: 'volumes', class: Google::Apis::RunV1::Volume, decorator: Google::Apis::RunV1::Volume::Representation

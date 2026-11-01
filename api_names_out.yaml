@@ -399267,6 +399267,7 @@
 "/run:v1/InstanceSpec/nodeSelector": node_selector
 "/run:v1/InstanceSpec/nodeSelector/node_selector": node_selector
 "/run:v1/InstanceSpec/restartPolicy": restart_policy
+"/run:v1/InstanceSpec/sandboxes": sandboxes
 "/run:v1/InstanceSpec/serviceAccountName": service_account_name
 "/run:v1/InstanceSpec/timeout": timeout
 "/run:v1/InstanceSpec/volumes": volumes
@@ -399530,6 +399531,21 @@
 "/run:v1/RouteStatus/url": url
 "/run:v1/RunJobRequest": run_job_request
 "/run:v1/RunJobRequest/overrides": overrides
+"/run:v1/SandboxConfiguration": sandbox_configuration
+"/run:v1/SandboxConfiguration/templates": templates
+"/run:v1/SandboxConfiguration/templates/template": template
+"/run:v1/SandboxTemplate": sandbox_template
+"/run:v1/SandboxTemplate/args": args
+"/run:v1/SandboxTemplate/args/arg": arg
+"/run:v1/SandboxTemplate/command": command
+"/run:v1/SandboxTemplate/command/command": command
+"/run:v1/SandboxTemplate/env": env
+"/run:v1/SandboxTemplate/env/env": env
+"/run:v1/SandboxTemplate/image": image
+"/run:v1/SandboxTemplate/name": name
+"/run:v1/SandboxTemplate/volumeMounts": volume_mounts
+"/run:v1/SandboxTemplate/volumeMounts/volume_mount": volume_mount
+"/run:v1/SandboxTemplate/workingDir": working_dir
 "/run:v1/Secret": secret
 "/run:v1/Secret/data": data
 "/run:v1/Secret/data/datum": datum
@@ -399619,6 +399635,7 @@
 "/run:v1/TaskSpec/maxRetries": max_retries
 "/run:v1/TaskSpec/nodeSelector": node_selector
 "/run:v1/TaskSpec/nodeSelector/node_selector": node_selector
+"/run:v1/TaskSpec/sandboxes": sandboxes
 "/run:v1/TaskSpec/serviceAccountName": service_account_name
 "/run:v1/TaskSpec/timeoutSeconds": timeout_seconds
 "/run:v1/TaskSpec/volumes": volumes
