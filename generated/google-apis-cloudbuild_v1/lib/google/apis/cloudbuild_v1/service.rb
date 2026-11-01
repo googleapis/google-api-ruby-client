@@ -197,7 +197,11 @@ module Google
         
         # Approves or rejects a pending build. If approved, the returned long-running
         # operation (LRO) will be analogous to the LRO returned from a CreateBuild call.
-        # If rejected, the returned LRO will be immediately done.
+        # If rejected, the returned LRO will be immediately done. Note: This method only
+        # approves or rejects builds in the "global" region when using the legacy
+        # resource path projects/`project_id`/builds/`id`:approve. For all regions, use
+        # the regional resource path: `projects/`project_id`/locations/`location`/builds/
+        # `id`:approve`.
         # @param [String] name
         #   Required. Name of the target build. For example: "projects/`$project_id`/
         #   builds/`$build_id`"
@@ -979,7 +983,11 @@ module Google
         
         # Approves or rejects a pending build. If approved, the returned long-running
         # operation (LRO) will be analogous to the LRO returned from a CreateBuild call.
-        # If rejected, the returned LRO will be immediately done.
+        # If rejected, the returned LRO will be immediately done. Note: This method only
+        # approves or rejects builds in the "global" region when using the legacy
+        # resource path projects/`project_id`/builds/`id`:approve. For all regions, use
+        # the regional resource path: `projects/`project_id`/locations/`location`/builds/
+        # `id`:approve`.
         # @param [String] name
         #   Required. Name of the target build. For example: "projects/`$project_id`/
         #   builds/`$build_id`"
@@ -1502,7 +1510,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new `BuildTrigger`.
+        # Creates a new `BuildTrigger`. Note: This method only creates triggers in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # triggers. For all regions, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/triggers`.
         # @param [String] parent
         #   The parent resource where this trigger will be created. Format: `projects/`
         #   project`/locations/`location``
@@ -1539,7 +1550,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a `BuildTrigger` by its project ID and trigger ID.
+        # Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method
+        # only deletes triggers in the "global" region when using the legacy resource
+        # path projects/`project_id`/triggers/`trigger_id`. For all regions, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/triggers/`
+        # trigger_id``.
         # @param [String] name
         #   The name of the `Trigger` to delete. Format: `projects/`project`/locations/`
         #   location`/triggers/`trigger``
@@ -1576,7 +1591,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about a `BuildTrigger`.
+        # Returns information about a `BuildTrigger`. Note: This method only gets
+        # triggers in the "global" region when using the legacy resource path projects/`
+        # project_id`/triggers/`trigger_id`. For all regions, use the regional resource
+        # path: `projects/`project_id`/locations/`location`/triggers/`trigger_id``.
         # @param [String] name
         #   The name of the `Trigger` to retrieve. Format: `projects/`project`/locations/`
         #   location`/triggers/`trigger``
@@ -1613,7 +1631,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists existing `BuildTrigger`s.
+        # Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # triggers. For all regions, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/triggers`.
         # @param [String] parent
         #   The parent of the collection of `Triggers`. Format: `projects/`project`/
         #   locations/`location``
@@ -1653,7 +1674,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a `BuildTrigger` by its project ID and trigger ID.
+        # Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method
+        # only updates triggers in the "global" region when using the legacy resource
+        # path projects/`project_id`/triggers/`trigger_id`. For all regions, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/triggers/`
+        # trigger_id``.
         # @param [String] resource_name
         #   The `Trigger` name with format: `projects/`project`/locations/`location`/
         #   triggers/`trigger``, where `trigger` is a unique identifier generated by the
@@ -1980,7 +2005,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new `BuildTrigger`.
+        # Creates a new `BuildTrigger`. Note: This method only creates triggers in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # triggers. For all regions, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/triggers`.
         # @param [String] project_id
         #   Required. ID of the project for which to configure automatic builds.
         # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
@@ -2017,7 +2045,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a `BuildTrigger` by its project ID and trigger ID.
+        # Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method
+        # only deletes triggers in the "global" region when using the legacy resource
+        # path projects/`project_id`/triggers/`trigger_id`. For all regions, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/triggers/`
+        # trigger_id``.
         # @param [String] project_id
         #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
@@ -2054,7 +2086,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about a `BuildTrigger`.
+        # Returns information about a `BuildTrigger`. Note: This method only gets
+        # triggers in the "global" region when using the legacy resource path projects/`
+        # project_id`/triggers/`trigger_id`. For all regions, use the regional resource
+        # path: `projects/`project_id`/locations/`location`/triggers/`trigger_id``.
         # @param [String] project_id
         #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
@@ -2091,7 +2126,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists existing `BuildTrigger`s.
+        # Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "
+        # global" region when using the legacy resource path projects/`project_id`/
+        # triggers. For all regions, use the regional resource path: `projects/`
+        # project_id`/locations/`location`/triggers`.
         # @param [String] project_id
         #   Required. ID of the project for which to list BuildTriggers.
         # @param [Fixnum] page_size
@@ -2131,7 +2169,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a `BuildTrigger` by its project ID and trigger ID.
+        # Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method
+        # only updates triggers in the "global" region when using the legacy resource
+        # path projects/`project_id`/triggers/`trigger_id`. For all regions, use the
+        # regional resource path: `projects/`project_id`/locations/`location`/triggers/`
+        # trigger_id``.
         # @param [String] project_id
         #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id

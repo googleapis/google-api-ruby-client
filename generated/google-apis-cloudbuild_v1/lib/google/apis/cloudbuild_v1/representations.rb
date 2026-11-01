@@ -915,6 +915,7 @@ module Google
           property :pool, as: 'pool', class: Google::Apis::CloudbuildV1::PoolOption, decorator: Google::Apis::CloudbuildV1::PoolOption::Representation
       
           property :pubsub_topic, as: 'pubsubTopic'
+          collection :ranked_machine_series, as: 'rankedMachineSeries'
           property :requested_verify_option, as: 'requestedVerifyOption'
           property :resolved_worker_release, as: 'resolvedWorkerRelease'
           collection :secret_env, as: 'secretEnv'
@@ -1850,6 +1851,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :enable_nested_virtualization, as: 'enableNestedVirtualization'
           property :machine_type, as: 'machineType'
+          collection :ranked_machine_series, as: 'rankedMachineSeries'
           property :worker_release, as: 'workerRelease'
         end
       end

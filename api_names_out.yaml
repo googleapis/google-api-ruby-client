@@ -84884,6 +84884,8 @@
 "/cloudbuild:v1/BuildOptions/machineType": machine_type
 "/cloudbuild:v1/BuildOptions/pool": pool
 "/cloudbuild:v1/BuildOptions/pubsubTopic": pubsub_topic
+"/cloudbuild:v1/BuildOptions/rankedMachineSeries": ranked_machine_series
+"/cloudbuild:v1/BuildOptions/rankedMachineSeries/ranked_machine_series": ranked_machine_series
 "/cloudbuild:v1/BuildOptions/requestedVerifyOption": requested_verify_option
 "/cloudbuild:v1/BuildOptions/resolvedWorkerRelease": resolved_worker_release
 "/cloudbuild:v1/BuildOptions/secretEnv": secret_env
@@ -85497,6 +85499,8 @@
 "/cloudbuild:v1/WorkerConfig/diskSizeGb": disk_size_gb
 "/cloudbuild:v1/WorkerConfig/enableNestedVirtualization": enable_nested_virtualization
 "/cloudbuild:v1/WorkerConfig/machineType": machine_type
+"/cloudbuild:v1/WorkerConfig/rankedMachineSeries": ranked_machine_series
+"/cloudbuild:v1/WorkerConfig/rankedMachineSeries/ranked_machine_series": ranked_machine_series
 "/cloudbuild:v1/WorkerConfig/workerRelease": worker_release
 "/cloudbuild:v1/WorkerPool": worker_pool
 "/cloudbuild:v1/WorkerPool/annotations": annotations
