@@ -2124,6 +2124,8 @@ module Google
       class InitiateDeleteAutoProtectionPolicyBindingRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :request_id, as: 'requestId'
         end
       end
       
