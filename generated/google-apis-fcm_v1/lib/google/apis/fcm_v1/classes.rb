@@ -377,8 +377,8 @@ module Google
         alias_method :local_only?, :local_only
       
         # Sets the number of items this notification represents. May be displayed as a
-        # badge count for launchers that support badging.See [Notification Badge](https:/
-        # /developer.android.com/training/notify-user/badges). For example, this might
+        # badge count for launchers that support badging. See [Notification Badge](https:
+        # //developer.android.com/training/notify-user/badges). For example, this might
         # be useful if you're using just one notification to represent multiple new
         # messages but you want the count here to represent the number of total new
         # messages. If zero or unspecified, systems that support badging use the default,
@@ -514,7 +514,7 @@ module Google
         end
       end
       
-      # Notification v2 to send to android devices. This is a v2 version of the
+      # Notification v2 to send to Android devices. This is a v2 version of the
       # AndroidNotification message and will replace it in the v2 API.
       class AndroidNotificationV2
         include Google::Apis::Core::Hashable
@@ -608,7 +608,7 @@ module Google
       
         # Optional. Identifier used to replace existing notifications in the
         # notification drawer. It is used in conjunction with `tag` to form a unique
-        # identifier `(tag, id`)` within the app. If not specified, each request creates
+        # identifier `(tag, id)` within the app. If not specified, each request creates
         # a new notification. If specified and a notification with the same `(tag, id)`
         # is already being shown, the new notification replaces the existing one in the
         # notification drawer.
@@ -638,8 +638,8 @@ module Google
         alias_method :local_only?, :local_only
       
         # Sets the number of items this notification represents. May be displayed as a
-        # badge count for launchers that support badging.See [Notification Badge](https:/
-        # /developer.android.com/training/notify-user/badges). For example, this might
+        # badge count for launchers that support badging. See [Notification Badge](https:
+        # //developer.android.com/training/notify-user/badges). For example, this might
         # be useful if you're using just one notification to represent multiple new
         # messages but you want the count here to represent the number of total new
         # messages. If non-positive or unspecified, systems that support badging use the
@@ -681,7 +681,7 @@ module Google
         alias_method :sticky?, :sticky
       
         # Identifier used to replace existing notifications in the notification drawer.
-        # It is used in conjunction with `id` to form a unique identifier `(tag, id`)`
+        # It is used in conjunction with `id` to form a unique identifier `(tag, id)`
         # within the app. If not specified, each request creates a new notification. If
         # specified and a notification with the same `(tag, id)` is already being shown,
         # the new notification replaces the existing one in the notification drawer.
@@ -781,18 +781,18 @@ module Google
         attr_accessor :mutable_content
         alias_method :mutable_content?, :mutable_content
       
-        # Notification v2 to send to android devices. This is a v2 version of the
+        # Notification v2 to send to Android devices. This is a v2 version of the
         # AndroidNotification message and will replace it in the v2 API.
         # Corresponds to the JSON property `notification`
         # @return [Google::Apis::FcmV1::AndroidNotificationV2]
         attr_accessor :notification
       
-        # Optional. If set to true, this RemoteNotification message will be delivered to
-        # legacy V1 clients as data messages by omitting the google.firebase.fcm.v1.
-        # Message.android_v2.remote_notification.notification. This should only be
-        # enabled when migration from legacy V1 data messages. Note that by default (
-        # when set to false), RemoteNotification messages are automatically translated
-        # to V1 notification message for legacy clients;
+        # Optional. If set to `true`, this RemoteNotification message will be delivered
+        # to legacy V1 clients as a data message by omitting the google.firebase.fcm.v1.
+        # AndroidRemoteNotification.notification. This should only be enabled when
+        # migrating from legacy V1 data messages. Note that by default (when set to
+        # false), RemoteNotification messages are automatically translated to V1
+        # notification messages for legacy clients.
         # Corresponds to the JSON property `useAsV1DataMessage`
         # @return [Boolean]
         attr_accessor :use_as_v1_data_message
