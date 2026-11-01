@@ -1337,6 +1337,25 @@ module Google
       end
       
       # 
+      class CloudRun
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<String>]
+        attr_accessor :revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revisions = args[:revisions] if args.key?(:revisions)
+        end
+      end
+      
+      # 
       class Compliance
         include Google::Apis::Core::Hashable
       
@@ -2605,6 +2624,11 @@ module Google
         attr_accessor :cloud_dlp_inspection
       
         # 
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::SecuritycenterV1beta1::CloudRun]
+        attr_accessor :cloud_run
+      
+        # 
         # Corresponds to the JSON property `complianceDetails`
         # @return [Google::Apis::SecuritycenterV1beta1::ComplianceDetails]
         attr_accessor :compliance_details
@@ -2902,6 +2926,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
@@ -5704,6 +5729,25 @@ module Google
       end
       
       # 
+      class GoogleCloudSecuritycenterV2CloudRun
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `revisions`
+        # @return [Array<String>]
+        attr_accessor :revisions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @revisions = args[:revisions] if args.key?(:revisions)
+        end
+      end
+      
+      # 
       class GoogleCloudSecuritycenterV2Compliance
         include Google::Apis::Core::Hashable
       
@@ -6963,6 +7007,11 @@ module Google
         attr_accessor :cloud_dlp_inspection
       
         # 
+        # Corresponds to the JSON property `cloudRun`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudRun]
+        attr_accessor :cloud_run
+      
+        # 
         # Corresponds to the JSON property `complianceDetails`
         # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails]
         attr_accessor :compliance_details
@@ -7265,6 +7314,7 @@ module Google
           @cloud_armor = args[:cloud_armor] if args.key?(:cloud_armor)
           @cloud_dlp_data_profile = args[:cloud_dlp_data_profile] if args.key?(:cloud_dlp_data_profile)
           @cloud_dlp_inspection = args[:cloud_dlp_inspection] if args.key?(:cloud_dlp_inspection)
+          @cloud_run = args[:cloud_run] if args.key?(:cloud_run)
           @compliance_details = args[:compliance_details] if args.key?(:compliance_details)
           @compliances = args[:compliances] if args.key?(:compliances)
           @connections = args[:connections] if args.key?(:connections)
