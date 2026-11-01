@@ -12394,6 +12394,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `alternativeLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :alternative_language_codes
+      
+        # 
         # Corresponds to the JSON property `audioEncoding`
         # @return [String]
         attr_accessor :audio_encoding
@@ -12492,6 +12497,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @disable_interim_input_transcripts = args[:disable_interim_input_transcripts] if args.key?(:disable_interim_input_transcripts)
           @disable_no_speech_recognized_event = args[:disable_no_speech_recognized_event] if args.key?(:disable_no_speech_recognized_event)
@@ -16792,6 +16798,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `alternativeLanguageCodes`
+        # @return [Array<String>]
+        attr_accessor :alternative_language_codes
+      
+        # 
         # Corresponds to the JSON property `audioEncoding`
         # @return [String]
         attr_accessor :audio_encoding
@@ -16856,6 +16867,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @alternative_language_codes = args[:alternative_language_codes] if args.key?(:alternative_language_codes)
           @audio_encoding = args[:audio_encoding] if args.key?(:audio_encoding)
           @disable_interim_input_transcripts = args[:disable_interim_input_transcripts] if args.key?(:disable_interim_input_transcripts)
           @enable_word_info = args[:enable_word_info] if args.key?(:enable_word_info)
