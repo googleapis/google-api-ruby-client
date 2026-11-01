@@ -5021,6 +5021,25 @@ module Google
         end
       end
       
+      # Determines how to proceed with the update.
+      class Outcome
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Determines how to proceed with the update.
+        # Corresponds to the JSON property `outcomeType`
+        # @return [String]
+        attr_accessor :outcome_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outcome_type = args[:outcome_type] if args.key?(:outcome_type)
+        end
+      end
+      
       # A list of package names.
       class PackageNameList
         include Google::Apis::Core::Hashable
@@ -6001,6 +6020,12 @@ module Google
         attr_accessor :tethering_config_disabled
         alias_method :tethering_config_disabled?, :tethering_config_disabled
       
+        # The Unified Update Control policy, for controlling updates of software
+        # components on the device (see Target). Supported only on company-owned devices.
+        # Corresponds to the JSON property `unifiedUpdatePolicy`
+        # @return [Google::Apis::AndroidmanagementV1::UnifiedUpdatePolicy]
+        attr_accessor :unified_update_policy
+      
         # Whether user uninstallation of applications is disabled. This prevents apps
         # from being uninstalled, even those removed using applications
         # Corresponds to the JSON property `uninstallAppsDisabled`
@@ -6182,6 +6207,7 @@ module Google
           @stay_on_plugged_modes = args[:stay_on_plugged_modes] if args.key?(:stay_on_plugged_modes)
           @system_update = args[:system_update] if args.key?(:system_update)
           @tethering_config_disabled = args[:tethering_config_disabled] if args.key?(:tethering_config_disabled)
+          @unified_update_policy = args[:unified_update_policy] if args.key?(:unified_update_policy)
           @uninstall_apps_disabled = args[:uninstall_apps_disabled] if args.key?(:uninstall_apps_disabled)
           @unmute_microphone_disabled = args[:unmute_microphone_disabled] if args.key?(:unmute_microphone_disabled)
           @usage_log = args[:usage_log] if args.key?(:usage_log)
@@ -6292,6 +6318,87 @@ module Google
           @battery_level = args[:battery_level] if args.key?(:battery_level)
           @create_time = args[:create_time] if args.key?(:create_time)
           @event_type = args[:event_type] if args.key?(:event_type)
+        end
+      end
+      
+      # A predicate is something that can be evaluated on a device at any point of
+      # time, to return true or false. This is the conjunction (logical AND) of all
+      # the individual conditions defined here. An empty Predicate always evaluates to
+      # true.
+      class Predicate
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `dateLowerBound`
+        # @return [Google::Apis::AndroidmanagementV1::Date]
+        attr_accessor :date_lower_bound
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: A full date, with non-zero year, month, and day values. A month and
+        # day, with a zero year (for example, an anniversary). A year on its own, with a
+        # zero month and a zero day. A year and month, with a zero day (for example, a
+        # credit card expiration date).Related types: google.type.TimeOfDay google.type.
+        # DateTime google.protobuf.Timestamp
+        # Corresponds to the JSON property `dateUpperBound`
+        # @return [Google::Apis::AndroidmanagementV1::Date]
+        attr_accessor :date_upper_bound
+      
+        # Optional. Evaluates to true if this list is empty or if the current day of the
+        # week in the device's local time is in this list.
+        # Corresponds to the JSON property `daysOfWeek`
+        # @return [Array<String>]
+        attr_accessor :days_of_week
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and google.protobuf.Timestamp.
+        # Corresponds to the JSON property `timeOfDayLowerBound`
+        # @return [Google::Apis::AndroidmanagementV1::TimeOfDay]
+        attr_accessor :time_of_day_lower_bound
+      
+        # Represents a time of day. The date and time zone are either not significant or
+        # are specified elsewhere. An API may choose to allow leap seconds. Related
+        # types are google.type.Date and google.protobuf.Timestamp.
+        # Corresponds to the JSON property `timeOfDayUpperBound`
+        # @return [Google::Apis::AndroidmanagementV1::TimeOfDay]
+        attr_accessor :time_of_day_upper_bound
+      
+        # Optional. A lower bound on the amount of time for which the update (that is,
+        # the specific build or version) has been available to the device. This must be
+        # a multiple of 24 hours.
+        # Corresponds to the JSON property `updateAgeLowerBound`
+        # @return [String]
+        attr_accessor :update_age_lower_bound
+      
+        # Optional. An upper bound on the amount of time for which the update has been
+        # available. If not set or set to zero, always evaluates to true. This must be a
+        # multiple of 24 hours.
+        # Corresponds to the JSON property `updateAgeUpperBound`
+        # @return [String]
+        attr_accessor :update_age_upper_bound
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date_lower_bound = args[:date_lower_bound] if args.key?(:date_lower_bound)
+          @date_upper_bound = args[:date_upper_bound] if args.key?(:date_upper_bound)
+          @days_of_week = args[:days_of_week] if args.key?(:days_of_week)
+          @time_of_day_lower_bound = args[:time_of_day_lower_bound] if args.key?(:time_of_day_lower_bound)
+          @time_of_day_upper_bound = args[:time_of_day_upper_bound] if args.key?(:time_of_day_upper_bound)
+          @update_age_lower_bound = args[:update_age_lower_bound] if args.key?(:update_age_lower_bound)
+          @update_age_upper_bound = args[:update_age_upper_bound] if args.key?(:update_age_upper_bound)
         end
       end
       
@@ -6695,6 +6802,62 @@ module Google
         end
       end
       
+      # A rule as a part of the Unified Update Control policy. See rules for how this
+      # is used.
+      class Rule
+        include Google::Apis::Core::Hashable
+      
+        # Required. An EMM-defined identifier for this rule, of length at most 64
+        # characters. This must not be empty. Within a UnifiedUpdatePolicy, different
+        # rules must have different ids.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Determines how to proceed with the update.
+        # Corresponds to the JSON property `outcome`
+        # @return [Google::Apis::AndroidmanagementV1::Outcome]
+        attr_accessor :outcome
+      
+        # A predicate is something that can be evaluated on a device at any point of
+        # time, to return true or false. This is the conjunction (logical AND) of all
+        # the individual conditions defined here. An empty Predicate always evaluates to
+        # true.
+        # Corresponds to the JSON property `predicate`
+        # @return [Google::Apis::AndroidmanagementV1::Predicate]
+        attr_accessor :predicate
+      
+        # Optional. The stages at which the rule is evaluated. If this list is empty,
+        # the rule is evaluated at all stages. Specifying stages is supported only for
+        # OS_UPDATE_WITHOUT_API_LEVEL_CHANGE and OS_UPDATE_WITH_API_LEVEL_CHANGE. For
+        # SINGLE_APP, GOOGLE_SYSTEM_SERVICES, and GOOGLE_PLAY_SYSTEM_UPDATE, this field
+        # is ignored and the rule is evaluated at all stages.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<String>]
+        attr_accessor :stages
+      
+        # Required. Targets that this rule applies to. This can have multiple targets
+        # here for convenience, and that is equivalent to having multiple rules in
+        # sequence each having one target, in the same order in which targets are listed
+        # here. This list must not be empty and must not have duplicates.
+        # Corresponds to the JSON property `targets`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Target>]
+        attr_accessor :targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @outcome = args[:outcome] if args.key?(:outcome)
+          @predicate = args[:predicate] if args.key?(:predicate)
+          @stages = args[:stages] if args.key?(:stages)
+          @targets = args[:targets] if args.key?(:targets)
+        end
+      end
+      
       # Controls for the screen brightness settings.
       class ScreenBrightnessSettings
         include Google::Apis::Core::Hashable
@@ -6967,6 +7130,26 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Details of an app on Google System services.
+      class SingleApp
+        include Google::Apis::Core::Hashable
+      
+        # Required. The package name of the app. This can only be an app which is a part
+        # of GOOGLE_SYSTEM_SERVICES.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
         end
       end
       
@@ -7421,6 +7604,31 @@ module Google
         end
       end
       
+      # A software component that can be updated.
+      class Target
+        include Google::Apis::Core::Hashable
+      
+        # Details of an app on Google System services.
+        # Corresponds to the JSON property `singleApp`
+        # @return [Google::Apis::AndroidmanagementV1::SingleApp]
+        attr_accessor :single_app
+      
+        # Required. The type of software component that can be updated.
+        # Corresponds to the JSON property `targetType`
+        # @return [String]
+        attr_accessor :target_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @single_app = args[:single_app] if args.key?(:single_app)
+          @target_type = args[:target_type] if args.key?(:target_type)
+        end
+      end
+      
       # Telephony information associated with a given SIM card on the device. This is
       # supported for all SIM cards on fully managed devices on Android 6 and above.
       # In addition, this is supported for admin-added eSIMs on all devices for
@@ -7497,6 +7705,77 @@ module Google
         def update!(**args)
           @content = args[:content] if args.key?(:content)
           @header = args[:header] if args.key?(:header)
+        end
+      end
+      
+      # Represents a time of day. The date and time zone are either not significant or
+      # are specified elsewhere. An API may choose to allow leap seconds. Related
+      # types are google.type.Date and google.protobuf.Timestamp.
+      class TimeOfDay
+        include Google::Apis::Core::Hashable
+      
+        # Hours of a day in 24 hour format. Must be greater than or equal to 0 and
+        # typically must be less than or equal to 23. An API may choose to allow the
+        # value "24:00:00" for scenarios like business closing time.
+        # Corresponds to the JSON property `hours`
+        # @return [Fixnum]
+        attr_accessor :hours
+      
+        # Minutes of an hour. Must be greater than or equal to 0 and less than or equal
+        # to 59.
+        # Corresponds to the JSON property `minutes`
+        # @return [Fixnum]
+        attr_accessor :minutes
+      
+        # Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and
+        # less than or equal to 999,999,999.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Seconds of a minute. Must be greater than or equal to 0 and typically must be
+        # less than or equal to 59. An API may allow the value 60 if it allows leap-
+        # seconds.
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hours = args[:hours] if args.key?(:hours)
+          @minutes = args[:minutes] if args.key?(:minutes)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
+      # The Unified Update Control policy, for controlling updates of software
+      # components on the device (see Target). Supported only on company-owned devices.
+      class UnifiedUpdatePolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. When the policy is evaluated for a given target, all rules which
+        # refer to that target are evaluated in sequence. The first rule for which the
+        # predicate evaluates to true is considered, and its outcome is used. If no rule
+        # matches, the default update behavior applies. In other words, this behaves
+        # like a chained if-else statement.However, if an update has been available for
+        # more than a certain amount of time, any outcome of BLOCK is automatically
+        # changed to the default update behavior. At most 100 rules are allowed.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::AndroidmanagementV1::Rule>]
+        attr_accessor :rules
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rules = args[:rules] if args.key?(:rules)
         end
       end
       
