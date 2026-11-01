@@ -733,7 +733,8 @@ module Google
         # @return [Google::Apis::BackupdrV1::Criteria]
         attr_accessor :criteria
       
-        # Optional. A description of the policy.
+        # Optional. A description of the policy. The description must be at most 2048
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -744,8 +745,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the AutoProtectionPolicy. Format: `projects/`
-        # project`/locations/`location`/autoProtectionPolicies/`auto_protection_policy``
+        # Output only. Identifier. The resource name of the AutoProtectionPolicy. Format:
+        # `projects/`project`/locations/`location`/autoProtectionPolicies/`
+        # auto_protection_policy``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -802,7 +804,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. A description of the binding.
+        # Optional. A description of the binding. The description must be at most 2048
+        # characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -813,8 +816,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Identifier. The resource name of the AutoProtectionPolicyBinding. Format: `
-        # projects/`project`/locations/`location`/autoProtectionPolicies/`
+        # Output only. Identifier. The resource name of the AutoProtectionPolicyBinding.
+        # Format: `projects/`project`/locations/`location`/autoProtectionPolicies/`
         # auto_protection_policy`/bindings/`binding``
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4652,12 +4655,31 @@ module Google
       class InitiateDeleteAutoProtectionPolicyBindingRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. The current etag of the AutoProtectionPolicyBinding. If an etag is
+        # provided and does not match the current etag of the binding, deletion will be
+        # blocked and an ABORTED error will be returned.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. An optional request ID to identify requests. Specify a unique
+        # request ID so that if you must retry your request, the server will know to
+        # ignore the request if it has already been completed. The server will guarantee
+        # that for at least 60 minutes since the first request. The request ID must be a
+        # valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        # 0000-0000-000000000000).
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       

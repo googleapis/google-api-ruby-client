@@ -62575,6 +62575,8 @@
 "/backupdr:v1/InitiateBackupResponse/baseBackupGenerationId": base_backup_generation_id
 "/backupdr:v1/InitiateBackupResponse/newBackupGenerationId": new_backup_generation_id
 "/backupdr:v1/InitiateDeleteAutoProtectionPolicyBindingRequest": initiate_delete_auto_protection_policy_binding_request
+"/backupdr:v1/InitiateDeleteAutoProtectionPolicyBindingRequest/etag": etag
+"/backupdr:v1/InitiateDeleteAutoProtectionPolicyBindingRequest/requestId": request_id
 "/backupdr:v1/InstanceParams": instance_params
 "/backupdr:v1/InstanceParams/resourceManagerTags": resource_manager_tags
 "/backupdr:v1/InstanceParams/resourceManagerTags/resource_manager_tag": resource_manager_tag
@@ -62953,6 +62955,7 @@
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.create": create_project_location_auto_protection_policy_binding
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.create/autoProtectionPolicyBindingId": auto_protection_policy_binding_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.create/parent": parent
+"/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.create/requestId": request_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.get": get_project_location_auto_protection_policy_binding
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.get/name": name
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.bindings.initiateDelete": initiate_delete_auto_protection_policy_binding
@@ -62974,9 +62977,11 @@
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.create": create_project_location_auto_protection_policy
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.create/autoProtectionPolicyId": auto_protection_policy_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.create/parent": parent
+"/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.create/requestId": request_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.delete": delete_project_location_auto_protection_policy
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.delete/etag": etag
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.delete/name": name
+"/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.delete/requestId": request_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.get": get_project_location_auto_protection_policy
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.get/name": name
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.list": list_project_location_auto_protection_policies
@@ -62987,6 +62992,7 @@
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.list/parent": parent
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.patch": patch_project_location_auto_protection_policy
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.patch/name": name
+"/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.patch/requestId": request_id
 "/backupdr:v1/backupdr.projects.locations.autoProtectionPolicies.patch/updateMask": update_mask
 "/backupdr:v1/backupdr.projects.locations.backupPlanAssociations.create": create_project_location_backup_plan_association
 "/backupdr:v1/backupdr.projects.locations.backupPlanAssociations.create/backupPlanAssociationId": backup_plan_association_id

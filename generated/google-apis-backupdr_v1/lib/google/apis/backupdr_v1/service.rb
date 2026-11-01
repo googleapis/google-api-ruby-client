@@ -316,7 +316,16 @@ module Google
         # @param [Google::Apis::BackupdrV1::AutoProtectionPolicy] auto_protection_policy_object
         # @param [String] auto_protection_policy_id
         #   Required. The ID to use for the policy. This will become the final component
-        #   of the policy's resource name.
+        #   of the policy's resource name. This value must start with a lowercase letter
+        #   followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end
+        #   with a hyphen.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. The request ID must be a
+        #   valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        #   0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -334,7 +343,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_auto_protection_policy(parent, auto_protection_policy_object = nil, auto_protection_policy_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_auto_protection_policy(parent, auto_protection_policy_object = nil, auto_protection_policy_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/autoProtectionPolicies', options)
           command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
           command.request_object = auto_protection_policy_object
@@ -342,6 +351,7 @@ module Google
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['autoProtectionPolicyId'] = auto_protection_policy_id unless auto_protection_policy_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -354,6 +364,13 @@ module Google
         # @param [String] etag
         #   The current etag of the autoprotectionpolicy. If an etag is provided and does
         #   not match the current etag of the connection, deletion will be blocked.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. The request ID must be a
+        #   valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        #   0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -371,12 +388,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_auto_protection_policy(name, etag: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_auto_protection_policy(name, etag: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['etag'] = etag unless etag.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -462,9 +480,17 @@ module Google
         
         # Updates the parameters of a single AutoProtectionPolicy.
         # @param [String] name
-        #   Identifier. The resource name of the AutoProtectionPolicy. Format: `projects/`
-        #   project`/locations/`location`/autoProtectionPolicies/`auto_protection_policy``
+        #   Output only. Identifier. The resource name of the AutoProtectionPolicy. Format:
+        #   `projects/`project`/locations/`location`/autoProtectionPolicies/`
+        #   auto_protection_policy``
         # @param [Google::Apis::BackupdrV1::AutoProtectionPolicy] auto_protection_policy_object
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. The request ID must be a
+        #   valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        #   0000-0000-000000000000).
         # @param [String] update_mask
         #   Optional. Field mask is used to specify the fields to be overwritten in the
         #   AutoProtectionPolicy resource by the update. The fields specified in the
@@ -488,13 +514,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_location_auto_protection_policy(name, auto_protection_policy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_project_location_auto_protection_policy(name, auto_protection_policy_object = nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1/{+name}', options)
           command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicy::Representation
           command.request_object = auto_protection_policy_object
           command.response_representation = Google::Apis::BackupdrV1::Operation::Representation
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['name'] = name unless name.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -509,7 +536,16 @@ module Google
         # @param [Google::Apis::BackupdrV1::AutoProtectionPolicyBinding] auto_protection_policy_binding_object
         # @param [String] auto_protection_policy_binding_id
         #   Required. The ID to use for the binding. This will become the final component
-        #   of the binding's resource name.
+        #   of the binding's resource name. This value must start with a lowercase letter
+        #   followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end
+        #   with a hyphen.
+        # @param [String] request_id
+        #   Optional. An optional request ID to identify requests. Specify a unique
+        #   request ID so that if you must retry your request, the server will know to
+        #   ignore the request if it has already been completed. The server will guarantee
+        #   that for at least 60 minutes since the first request. The request ID must be a
+        #   valid UUID with the exception that zero UUID is not supported (00000000-0000-
+        #   0000-0000-000000000000).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -527,7 +563,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_auto_protection_policy_binding(parent, auto_protection_policy_binding_object = nil, auto_protection_policy_binding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_auto_protection_policy_binding(parent, auto_protection_policy_binding_object = nil, auto_protection_policy_binding_id: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/{+parent}/bindings', options)
           command.request_representation = Google::Apis::BackupdrV1::AutoProtectionPolicyBinding::Representation
           command.request_object = auto_protection_policy_binding_object
@@ -535,6 +571,7 @@ module Google
           command.response_class = Google::Apis::BackupdrV1::Operation
           command.params['parent'] = parent unless parent.nil?
           command.query['autoProtectionPolicyBindingId'] = auto_protection_policy_binding_id unless auto_protection_policy_binding_id.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
