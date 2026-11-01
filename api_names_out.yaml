@@ -403632,7 +403632,12 @@
 "/saasservicemgmt:v1beta1/Dependency/alias": alias
 "/saasservicemgmt:v1beta1/Dependency/unitKind": unit_kind
 "/saasservicemgmt:v1beta1/Deprovision": deprovision
+"/saasservicemgmt:v1beta1/DurationLimits": duration_limits
+"/saasservicemgmt:v1beta1/DurationLimits/unitOperationTimeout": unit_operation_timeout
 "/saasservicemgmt:v1beta1/Empty": empty
+"/saasservicemgmt:v1beta1/Engine": engine
+"/saasservicemgmt:v1beta1/Engine/engineId": engine_id
+"/saasservicemgmt:v1beta1/Engine/location": location
 "/saasservicemgmt:v1beta1/ErrorBudget": error_budget
 "/saasservicemgmt:v1beta1/ErrorBudget/allowedCount": allowed_count
 "/saasservicemgmt:v1beta1/ErrorBudget/allowedPercentage": allowed_percentage
@@ -404037,6 +404042,7 @@
 "/saasservicemgmt:v1beta1/Unit/dependencies/dependency": dependency
 "/saasservicemgmt:v1beta1/Unit/dependents": dependents
 "/saasservicemgmt:v1beta1/Unit/dependents/dependent": dependent
+"/saasservicemgmt:v1beta1/Unit/engine": engine
 "/saasservicemgmt:v1beta1/Unit/etag": etag
 "/saasservicemgmt:v1beta1/Unit/flagConfigName": flag_config_name
 "/saasservicemgmt:v1beta1/Unit/flagRevisions": flag_revisions
@@ -404110,6 +404116,7 @@
 "/saasservicemgmt:v1beta1/UnitKind/deleteTime": delete_time
 "/saasservicemgmt:v1beta1/UnitKind/dependencies": dependencies
 "/saasservicemgmt:v1beta1/UnitKind/dependencies/dependency": dependency
+"/saasservicemgmt:v1beta1/UnitKind/durationLimits": duration_limits
 "/saasservicemgmt:v1beta1/UnitKind/etag": etag
 "/saasservicemgmt:v1beta1/UnitKind/inputVariableMappings": input_variable_mappings
 "/saasservicemgmt:v1beta1/UnitKind/inputVariableMappings/input_variable_mapping": input_variable_mapping
@@ -404130,6 +404137,7 @@
 "/saasservicemgmt:v1beta1/UnitOperation/createTime": create_time
 "/saasservicemgmt:v1beta1/UnitOperation/deleteTime": delete_time
 "/saasservicemgmt:v1beta1/UnitOperation/deprovision": deprovision
+"/saasservicemgmt:v1beta1/UnitOperation/durationLimits": duration_limits
 "/saasservicemgmt:v1beta1/UnitOperation/engineState": engine_state
 "/saasservicemgmt:v1beta1/UnitOperation/errorCategory": error_category
 "/saasservicemgmt:v1beta1/UnitOperation/etag": etag

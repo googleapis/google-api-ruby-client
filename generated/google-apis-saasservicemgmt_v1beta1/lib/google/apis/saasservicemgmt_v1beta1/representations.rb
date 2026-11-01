@@ -82,7 +82,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DurationLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Engine
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,12 +232,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSaasReleasesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListSaasResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -335,12 +341,6 @@ module Google
       end
       
       class SaasCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SaasRelease
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -539,9 +539,24 @@ module Google
         end
       end
       
+      class DurationLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit_operation_timeout, as: 'unitOperationTimeout'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Engine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :engine_id, as: 'engineId'
+          property :location, as: 'location'
         end
       end
       
@@ -803,16 +818,6 @@ module Google
         end
       end
       
-      class ListSaasReleasesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :saas_releases, as: 'saasReleases', class: Google::Apis::SaasservicemgmtV1beta1::SaasRelease, decorator: Google::Apis::SaasservicemgmtV1beta1::SaasRelease::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListSaasResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1050,19 +1055,6 @@ module Google
         end
       end
       
-      class SaasRelease
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :create_time, as: 'createTime'
-          property :etag, as: 'etag'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :uid, as: 'uid'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
       class Schedule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1121,6 +1113,8 @@ module Google
           collection :dependencies, as: 'dependencies', class: Google::Apis::SaasservicemgmtV1beta1::UnitDependency, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitDependency::Representation
       
           collection :dependents, as: 'dependents', class: Google::Apis::SaasservicemgmtV1beta1::UnitDependency, decorator: Google::Apis::SaasservicemgmtV1beta1::UnitDependency::Representation
+      
+          property :engine, as: 'engine', class: Google::Apis::SaasservicemgmtV1beta1::Engine, decorator: Google::Apis::SaasservicemgmtV1beta1::Engine::Representation
       
           property :etag, as: 'etag'
           property :flag_config_name, as: 'flagConfigName'
@@ -1212,6 +1206,8 @@ module Google
           property :delete_time, as: 'deleteTime'
           collection :dependencies, as: 'dependencies', class: Google::Apis::SaasservicemgmtV1beta1::Dependency, decorator: Google::Apis::SaasservicemgmtV1beta1::Dependency::Representation
       
+          property :duration_limits, as: 'durationLimits', class: Google::Apis::SaasservicemgmtV1beta1::DurationLimits, decorator: Google::Apis::SaasservicemgmtV1beta1::DurationLimits::Representation
+      
           property :etag, as: 'etag'
           collection :input_variable_mappings, as: 'inputVariableMappings', class: Google::Apis::SaasservicemgmtV1beta1::VariableMapping, decorator: Google::Apis::SaasservicemgmtV1beta1::VariableMapping::Representation
       
@@ -1235,6 +1231,8 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :deprovision, as: 'deprovision', class: Google::Apis::SaasservicemgmtV1beta1::Deprovision, decorator: Google::Apis::SaasservicemgmtV1beta1::Deprovision::Representation
+      
+          property :duration_limits, as: 'durationLimits', class: Google::Apis::SaasservicemgmtV1beta1::DurationLimits, decorator: Google::Apis::SaasservicemgmtV1beta1::DurationLimits::Representation
       
           property :engine_state, as: 'engineState'
           property :error_category, as: 'errorCategory'

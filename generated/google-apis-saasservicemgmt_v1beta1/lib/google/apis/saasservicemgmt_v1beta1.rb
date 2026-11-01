@@ -23,7 +23,7 @@ module Google
     #
     # Model, deploy, and operate your SaaS at scale.
     #
-    # @see https://cloud.google.com/saas-runtime/docs
+    # @see https://docs.cloud.google.com/app-lifecycle-manager
     module SaasservicemgmtV1beta1
       # Version of the App Lifecycle Manager API this client connects to.
       # This is NOT the gem version.
