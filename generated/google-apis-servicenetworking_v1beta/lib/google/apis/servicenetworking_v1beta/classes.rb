@@ -992,7 +992,10 @@ module Google
       class CommonLanguageSettings
         include Google::Apis::Core::Hashable
       
-        # The destination where API teams want this client library to be published.
+        # Deprecated: Client libraries are published for all supported languages by
+        # default when a `library_settings` entry is present with a `version` and `
+        # launch_stage`. The destination where API teams want this client library to be
+        # published.
         # Corresponds to the JSON property `destinations`
         # @return [Array<String>]
         attr_accessor :destinations
