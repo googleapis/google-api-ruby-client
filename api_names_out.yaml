@@ -345221,6 +345221,7 @@
 "/looker:v1/ExportInstanceRequest/encryptionConfig": encryption_config
 "/looker:v1/ExportInstanceRequest/gcsUri": gcs_uri
 "/looker:v1/ExportMetadata": export_metadata
+"/looker:v1/ExportMetadata/esaMigrationToken": esa_migration_token
 "/looker:v1/ExportMetadata/esaSourceDatasetId": esa_source_dataset_id
 "/looker:v1/ExportMetadata/exportEncryptionKey": export_encryption_key
 "/looker:v1/ExportMetadata/exportMetrics": export_metrics

@@ -378,6 +378,14 @@ module Google
       class ExportMetadata
         include Google::Apis::Core::Hashable
       
+        # Opaque capability token for O2C Elite System Activity (ESA) direct dataset
+        # migration. It is minted by the exporter together with the cloned source
+        # dataset and presented back to Looker Original when the import requests access
+        # to that dataset.
+        # Corresponds to the JSON property `esaMigrationToken`
+        # @return [String]
+        attr_accessor :esa_migration_token
+      
         # Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite
         # System Activity (ESA) direct dataset migration.
         # Corresponds to the JSON property `esaSourceDatasetId`
@@ -442,6 +450,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @esa_migration_token = args[:esa_migration_token] if args.key?(:esa_migration_token)
           @esa_source_dataset_id = args[:esa_source_dataset_id] if args.key?(:esa_source_dataset_id)
           @export_encryption_key = args[:export_encryption_key] if args.key?(:export_encryption_key)
           @export_metrics = args[:export_metrics] if args.key?(:export_metrics)
