@@ -463,16 +463,21 @@ module Google
         # @param [Google::Apis::DevicerunV1alpha::Session] session_object
         # @param [String] request_id
         #   Optional. A unique identifier for this request. This request is only
-        #   idempotent if a `request_id` is provided, i.e. if a request with the same `
-        #   request_id` is received, then the previous result will be returned. The server
-        #   will guarantee that for at least 60 minutes after the first request. The value
-        #   must be a UUID (e.g., 123e4567-e89b-12d3-a456-426655440000). See github.com/
-        #   google/uuid for more details.
+        #   idempotent if both `request_id` and `session_id` are provided. If a retry with
+        #   the same `request_id` and `session_id` is received, then the previous result
+        #   will be returned. The server will guarantee that for at least 60 minutes after
+        #   the first request. If `request_id` is provided without `session_id`, the
+        #   server generates a new `session_id` on each attempt, and retries with the same
+        #   `request_id` will fail with `INVALID_ARGUMENT`. The value must be a UUID (e.g.,
+        #   123e4567-e89b-12d3-a456-426655440000). See github.com/google/uuid for more
+        #   details.
         # @param [String] session_id
         #   Optional. The ID to use for the session, which will become the final component
         #   of the resource name. If not provided, the server will generate a value for
-        #   this field. When provided, this value must be between 4 and 63 characters, and
-        #   match the following regex: ^a-z`2,61`[a-z0-9]$.
+        #   this field. To make the request idempotent when `request_id` is specified,
+        #   callers must also provide `session_id` so that retries target the same
+        #   resource name. When provided, this value must be between 4 and 63 characters,
+        #   and match the following regex: ^a-z`2,61`[a-z0-9]$.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

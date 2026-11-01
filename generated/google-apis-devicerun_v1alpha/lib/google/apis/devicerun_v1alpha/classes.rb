@@ -1630,7 +1630,12 @@ module Google
         attr_accessor :bundle_id
       
         # Required. The destination path relative to the app sandbox, e.g. "/Documents/
-        # file.txt".
+        # file.txt". It must be in the app's "/Documents" directory or under "/private/
+        # var/mobile/Media/". This is the path of the pushed file, and missing parent
+        # directories are created. If the path is an existing directory, such as "/
+        # Documents", the file is placed in it under the file name of `source_file`. A
+        # trailing "/" does not create a directory: "/Documents/foo/" pushes the file to
+        # "/Documents/foo" unless that directory already exists.
         # Corresponds to the JSON property `destinationPath`
         # @return [String]
         attr_accessor :destination_path
