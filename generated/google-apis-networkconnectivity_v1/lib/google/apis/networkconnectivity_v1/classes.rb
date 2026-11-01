@@ -1046,6 +1046,38 @@ module Google
         end
       end
       
+      # Configuration for more granular control of Private Service Connect connection
+      # propagation. This allows enabling or disabling connection propagation for
+      # specific types of Private Service Connect endpoints.
+      class ExportPscConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Controls whether Private Service Connect endpoints for global Google
+        # APIs should be propagated. The default value is false.
+        # Corresponds to the JSON property `globalGoogleApis`
+        # @return [Boolean]
+        attr_accessor :global_google_apis
+        alias_method :global_google_apis?, :global_google_apis
+      
+        # Optional. Controls whether Private Service Connect endpoints for regional ILBs
+        # and regional Google APIs should be propagated. Default value is true if
+        # export_psc is true. Otherwise, the default value is false.
+        # Corresponds to the JSON property `publishedServicesAndRegionalGoogleApis`
+        # @return [Boolean]
+        attr_accessor :published_services_and_regional_google_apis
+        alias_method :published_services_and_regional_google_apis?, :published_services_and_regional_google_apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @global_google_apis = args[:global_google_apis] if args.key?(:global_google_apis)
+          @published_services_and_regional_google_apis = args[:published_services_and_regional_google_apis] if args.key?(:published_services_and_regional_google_apis)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL) syntax.
       # CEL is a C-like expression language. The syntax and semantics of CEL are
       # documented at https://github.com/google/cel-spec. Example (Comparison): title:
@@ -1578,6 +1610,13 @@ module Google
         attr_accessor :export_psc
         alias_method :export_psc?, :export_psc
       
+        # Configuration for more granular control of Private Service Connect connection
+        # propagation. This allows enabling or disabling connection propagation for
+        # specific types of Private Service Connect endpoints.
+        # Corresponds to the JSON property `exportPscConfig`
+        # @return [Google::Apis::NetworkconnectivityV1::ExportPscConfig]
+        attr_accessor :export_psc_config
+      
         # Optional labels in key-value pair format. For more information about labels,
         # see [Requirements for labels](https://cloud.google.com/resource-manager/docs/
         # creating-managing-labels#requirements).
@@ -1655,6 +1694,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @export_psc = args[:export_psc] if args.key?(:export_psc)
+          @export_psc_config = args[:export_psc_config] if args.key?(:export_psc_config)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @policy_mode = args[:policy_mode] if args.key?(:policy_mode)
