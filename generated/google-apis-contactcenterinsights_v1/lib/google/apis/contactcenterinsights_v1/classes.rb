@@ -323,6 +323,14 @@ module Google
         # @return [String]
         attr_accessor :parent_tool_call_id
       
+        # Output only. The app this call targets, derived by the assistant from the call'
+        # s resource arguments: an app resource name, `PROJECT` for location-scoped
+        # tools, or empty for session-local tools. Set only in project-scoped assistant
+        # sessions.
+        # Corresponds to the JSON property `targetApp`
+        # @return [String]
+        attr_accessor :target_app
+      
         # Optional. The name of the tool to execute. Format: `projects/`project`/
         # locations/`location`/apps/`app`/tools/`tool``
         # Corresponds to the JSON property `tool`
@@ -345,6 +353,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @id = args[:id] if args.key?(:id)
           @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
+          @target_app = args[:target_app] if args.key?(:target_app)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
         end
@@ -386,6 +395,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :response
       
+        # Output only. The app the executed tool targeted; mirrors ToolCall.target_app.
+        # Corresponds to the JSON property `targetApp`
+        # @return [String]
+        attr_accessor :target_app
+      
         # Optional. The name of the tool to execute. Format: `projects/`project`/
         # locations/`location`/apps/`app`/tools/`tool``
         # Corresponds to the JSON property `tool`
@@ -408,6 +422,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @parent_tool_call_id = args[:parent_tool_call_id] if args.key?(:parent_tool_call_id)
           @response = args[:response] if args.key?(:response)
+          @target_app = args[:target_app] if args.key?(:target_app)
           @tool = args[:tool] if args.key?(:tool)
           @toolset_tool = args[:toolset_tool] if args.key?(:toolset_tool)
         end
@@ -3081,6 +3096,18 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The study arm ID associated with the conversation. Only applicable to
+        # automated agents.
+        # Corresponds to the JSON property `studyArmId`
+        # @return [String]
+        attr_accessor :study_arm_id
+      
+        # The study ID associated with the conversation. Only applicable to automated
+        # agents.
+        # Corresponds to the JSON property `studyId`
+        # @return [String]
+        attr_accessor :study_id
+      
         # A user-specified string representing the agent's team. Deprecated in favor of
         # the `teams` field.
         # Corresponds to the JSON property `team`
@@ -3117,6 +3144,8 @@ module Google
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
+          @study_arm_id = args[:study_arm_id] if args.key?(:study_arm_id)
+          @study_id = args[:study_id] if args.key?(:study_id)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
           @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
@@ -12412,6 +12441,18 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The study arm ID associated with the conversation. Only applicable to
+        # automated agents.
+        # Corresponds to the JSON property `studyArmId`
+        # @return [String]
+        attr_accessor :study_arm_id
+      
+        # The study ID associated with the conversation. Only applicable to automated
+        # agents.
+        # Corresponds to the JSON property `studyId`
+        # @return [String]
+        attr_accessor :study_id
+      
         # A user-specified string representing the agent's team. Deprecated in favor of
         # the `teams` field.
         # Corresponds to the JSON property `team`
@@ -12448,6 +12489,8 @@ module Google
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
+          @study_arm_id = args[:study_arm_id] if args.key?(:study_arm_id)
+          @study_id = args[:study_id] if args.key?(:study_id)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
           @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
@@ -19392,6 +19435,18 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The study arm ID associated with the conversation. Only applicable to
+        # automated agents.
+        # Corresponds to the JSON property `studyArmId`
+        # @return [String]
+        attr_accessor :study_arm_id
+      
+        # The study ID associated with the conversation. Only applicable to automated
+        # agents.
+        # Corresponds to the JSON property `studyId`
+        # @return [String]
+        attr_accessor :study_id
+      
         # A user-specified string representing the agent's team. Deprecated in favor of
         # the `teams` field.
         # Corresponds to the JSON property `team`
@@ -19428,6 +19483,8 @@ module Google
           @entry_subagent_display_name = args[:entry_subagent_display_name] if args.key?(:entry_subagent_display_name)
           @entry_subagent_id = args[:entry_subagent_id] if args.key?(:entry_subagent_id)
           @location = args[:location] if args.key?(:location)
+          @study_arm_id = args[:study_arm_id] if args.key?(:study_arm_id)
+          @study_id = args[:study_id] if args.key?(:study_id)
           @team = args[:team] if args.key?(:team)
           @teams = args[:teams] if args.key?(:teams)
           @version_display_name = args[:version_display_name] if args.key?(:version_display_name)
