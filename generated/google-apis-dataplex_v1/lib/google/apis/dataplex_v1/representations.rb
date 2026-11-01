@@ -4324,6 +4324,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :change_payload, as: 'changePayload', class: Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequest, decorator: Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequest::Representation
       
+          property :deferred_validation, as: 'deferredValidation'
           property :justification, as: 'justification'
           hash :labels, as: 'labels'
         end

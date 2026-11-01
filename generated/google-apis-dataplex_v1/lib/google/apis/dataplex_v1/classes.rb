@@ -9451,6 +9451,14 @@ module Google
         # @return [Google::Apis::DataplexV1::GoogleCloudDataplexV1BatchChangeMetadataRequest]
         attr_accessor :change_payload
       
+        # Optional. If set to true, defers reference validation between entries to when
+        # the change request is approved and applied. Structural validation of entries
+        # and aspects is still performed at the time of submission. The default is false.
+        # Corresponds to the JSON property `deferredValidation`
+        # @return [Boolean]
+        attr_accessor :deferred_validation
+        alias_method :deferred_validation?, :deferred_validation
+      
         # Optional. Justification for the metadata change request.
         # Corresponds to the JSON property `justification`
         # @return [String]
@@ -9468,6 +9476,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @change_payload = args[:change_payload] if args.key?(:change_payload)
+          @deferred_validation = args[:deferred_validation] if args.key?(:deferred_validation)
           @justification = args[:justification] if args.key?(:justification)
           @labels = args[:labels] if args.key?(:labels)
         end
