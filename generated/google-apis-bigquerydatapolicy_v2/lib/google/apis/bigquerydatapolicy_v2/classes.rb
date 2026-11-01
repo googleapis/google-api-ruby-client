@@ -344,6 +344,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :grantees
       
+        # Optional. Matching condition specified as a SQL expression string. Data
+        # Governance Tag matcher functions are: `COLUMN_HAS_TAG_KEY(keyName STRING) ->
+        # BOOL` `COLUMN_MATCH_TAG(keyName STRING, valueShortName STRING) -> BOOL` For
+        # example: `COLUMN_HAS_TAG_KEY('project-id/pii') AND COLUMN_MATCH_TAG('project-
+        # id/pii', 'ssn')`
+        # Corresponds to the JSON property `matchingCondition`
+        # @return [String]
+        attr_accessor :matching_condition
+      
         # Identifier. Resource name of this data policy, in the format of `projects/`
         # project_number`/locations/`location_id`/dataPolicies/`data_policy_id``.
         # Corresponds to the JSON property `name`
@@ -374,6 +383,7 @@ module Google
           @data_policy_type = args[:data_policy_type] if args.key?(:data_policy_type)
           @etag = args[:etag] if args.key?(:etag)
           @grantees = args[:grantees] if args.key?(:grantees)
+          @matching_condition = args[:matching_condition] if args.key?(:matching_condition)
           @name = args[:name] if args.key?(:name)
           @policy_tag = args[:policy_tag] if args.key?(:policy_tag)
           @version = args[:version] if args.key?(:version)

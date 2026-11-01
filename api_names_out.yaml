@@ -69267,6 +69267,7 @@
 "/bigquerydatapolicy:v2/DataPolicy/etag": etag
 "/bigquerydatapolicy:v2/DataPolicy/grantees": grantees
 "/bigquerydatapolicy:v2/DataPolicy/grantees/grantee": grantee
+"/bigquerydatapolicy:v2/DataPolicy/matchingCondition": matching_condition
 "/bigquerydatapolicy:v2/DataPolicy/name": name
 "/bigquerydatapolicy:v2/DataPolicy/policyTag": policy_tag
 "/bigquerydatapolicy:v2/DataPolicy/version": version
