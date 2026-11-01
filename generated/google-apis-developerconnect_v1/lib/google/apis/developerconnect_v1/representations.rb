@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddGitRepositoryLinkPullRequestCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddGitRepositoryLinkPullRequestReviewCommentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppHubService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -76,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlameRange
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +119,12 @@ module Google
       end
       
       class DeploymentEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DiffGitRepositoryLinkCommitResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -137,6 +161,30 @@ module Google
       end
       
       class FetchGitRefsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchGitRepositoryLinkCommitListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchGitRepositoryLinkCommitResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchGitRepositoryLinkFileBlameResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FetchGitRepositoryLinkPullRequestListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -179,6 +227,12 @@ module Google
       end
       
       class FieldVisibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FileDiff
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -346,7 +400,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ModifyGitRepositoryLinkPullRequestRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuthCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OpenGitRepositoryLinkPullRequestRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -412,7 +478,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PullRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullRequestComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PullRequestReviewComment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RuntimeConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScmCommit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -477,6 +567,25 @@ module Google
       
           property :uid, as: 'uid'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AddGitRepositoryLinkPullRequestCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment', class: Google::Apis::DeveloperconnectV1::PullRequestComment, decorator: Google::Apis::DeveloperconnectV1::PullRequestComment::Representation
+      
+          property :pull_request_id, as: 'pullRequestId'
+        end
+      end
+      
+      class AddGitRepositoryLinkPullRequestReviewCommentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comment, as: 'comment', class: Google::Apis::DeveloperconnectV1::PullRequestReviewComment, decorator: Google::Apis::DeveloperconnectV1::PullRequestReviewComment::Representation
+      
+          property :commit_id, as: 'commitId'
+          property :pull_request_id, as: 'pullRequestId'
         end
       end
       
@@ -566,6 +675,16 @@ module Google
         end
       end
       
+      class BlameRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit, as: 'commit', class: Google::Apis::DeveloperconnectV1::ScmCommit, decorator: Google::Apis::DeveloperconnectV1::ScmCommit::Representation
+      
+          property :first_line, as: 'firstLine'
+          property :last_line, as: 'lastLine'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -652,6 +771,14 @@ module Google
         end
       end
       
+      class DiffGitRepositoryLinkCommitResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :files, as: 'files', class: Google::Apis::DeveloperconnectV1::FileDiff, decorator: Google::Apis::DeveloperconnectV1::FileDiff::Representation
+      
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -696,6 +823,42 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :ref_names, as: 'refNames'
+        end
+      end
+      
+      class FetchGitRepositoryLinkCommitListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :commits, as: 'commits', class: Google::Apis::DeveloperconnectV1::ScmCommit, decorator: Google::Apis::DeveloperconnectV1::ScmCommit::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class FetchGitRepositoryLinkCommitResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit, as: 'commit', class: Google::Apis::DeveloperconnectV1::ScmCommit, decorator: Google::Apis::DeveloperconnectV1::ScmCommit::Representation
+      
+          collection :files, as: 'files', class: Google::Apis::DeveloperconnectV1::FileDiff, decorator: Google::Apis::DeveloperconnectV1::FileDiff::Representation
+      
+        end
+      end
+      
+      class FetchGitRepositoryLinkFileBlameResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ranges, as: 'ranges', class: Google::Apis::DeveloperconnectV1::BlameRange, decorator: Google::Apis::DeveloperconnectV1::BlameRange::Representation
+      
+        end
+      end
+      
+      class FetchGitRepositoryLinkPullRequestListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :pull_requests, as: 'pullRequests', class: Google::Apis::DeveloperconnectV1::PullRequest, decorator: Google::Apis::DeveloperconnectV1::PullRequest::Representation
+      
         end
       end
       
@@ -752,6 +915,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restriction, as: 'restriction'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class FileDiff
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :patch, as: 'patch'
+          property :path, as: 'path'
+          property :status, as: 'status'
         end
       end
       
@@ -1044,11 +1216,30 @@ module Google
         end
       end
       
+      class ModifyGitRepositoryLinkPullRequestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :base_ref, as: 'baseRef'
+          property :body, as: 'body'
+          property :pull_request_id, as: 'pullRequestId'
+          property :state, as: 'state'
+          property :title, as: 'title'
+        end
+      end
+      
       class OAuthCredential
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :oauth_token_secret_version, as: 'oauthTokenSecretVersion'
           property :username, as: 'username'
+        end
+      end
+      
+      class OpenGitRepositoryLinkPullRequestRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pull_request, as: 'pullRequest', class: Google::Apis::DeveloperconnectV1::PullRequest, decorator: Google::Apis::DeveloperconnectV1::PullRequest::Representation
+      
         end
       end
       
@@ -1140,6 +1331,53 @@ module Google
         end
       end
       
+      class PullRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author'
+          property :base_ref, as: 'baseRef'
+          property :body, as: 'body'
+          property :close_time, as: 'closeTime'
+          property :create_time, as: 'createTime'
+          property :decline_time, as: 'declineTime'
+          property :head_ref, as: 'headRef'
+          property :html_url, as: 'htmlUrl'
+          property :id, as: 'id'
+          property :merge_time, as: 'mergeTime'
+          property :mergeability, as: 'mergeability'
+          property :state, as: 'state'
+          property :title, as: 'title'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PullRequestComment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author'
+          property :body, as: 'body'
+          property :create_time, as: 'createTime'
+          property :id, as: 'id'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class PullRequestReviewComment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author'
+          property :body, as: 'body'
+          property :commit_id, as: 'commitId'
+          property :create_time, as: 'createTime'
+          property :first_line, as: 'firstLine'
+          property :id, as: 'id'
+          property :last_line, as: 'lastLine'
+          property :path, as: 'path'
+          property :side, as: 'side'
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
       class RuntimeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1153,6 +1391,18 @@ module Google
       
           property :state, as: 'state'
           property :uri, as: 'uri'
+        end
+      end
+      
+      class ScmCommit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author, as: 'author'
+          property :author_email, as: 'authorEmail'
+          property :commit_time, as: 'commitTime'
+          property :message, as: 'message'
+          property :sha, as: 'sha'
+          property :url, as: 'url'
         end
       end
       

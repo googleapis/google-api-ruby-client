@@ -107,6 +107,63 @@ module Google
         end
       end
       
+      # Request message for AddGitRepositoryLinkPullRequestComment.
+      class AddGitRepositoryLinkPullRequestCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message representing a SCM Pull Request Comment.
+        # Corresponds to the JSON property `comment`
+        # @return [Google::Apis::DeveloperconnectV1::PullRequestComment]
+        attr_accessor :comment
+      
+        # Required. The ID of the Pull Request.
+        # Corresponds to the JSON property `pullRequestId`
+        # @return [String]
+        attr_accessor :pull_request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @pull_request_id = args[:pull_request_id] if args.key?(:pull_request_id)
+        end
+      end
+      
+      # Request message for AddGitRepositoryLinkPullRequestReviewComment.
+      class AddGitRepositoryLinkPullRequestReviewCommentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message representing a SCM Pull Request Review Comment (inline on diff).
+        # Corresponds to the JSON property `comment`
+        # @return [Google::Apis::DeveloperconnectV1::PullRequestReviewComment]
+        attr_accessor :comment
+      
+        # Optional. The commit SHA to comment on. If not specified, defaults to the HEAD
+        # commit of the Pull Request.
+        # Corresponds to the JSON property `commitId`
+        # @return [String]
+        attr_accessor :commit_id
+      
+        # Required. The ID of the Pull Request.
+        # Corresponds to the JSON property `pullRequestId`
+        # @return [String]
+        attr_accessor :pull_request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comment = args[:comment] if args.key?(:comment)
+          @commit_id = args[:commit_id] if args.key?(:commit_id)
+          @pull_request_id = args[:pull_request_id] if args.key?(:pull_request_id)
+        end
+      end
+      
       # AppHubService represents the App Hub Service.
       class AppHubService
         include Google::Apis::Core::Hashable
@@ -425,6 +482,37 @@ module Google
         end
       end
       
+      # BlameRange represents blame information for a range of lines.
+      class BlameRange
+        include Google::Apis::Core::Hashable
+      
+        # SCMCommit represents commit metadata.
+        # Corresponds to the JSON property `commit`
+        # @return [Google::Apis::DeveloperconnectV1::ScmCommit]
+        attr_accessor :commit
+      
+        # The 1-indexed starting line number of the range (inclusive).
+        # Corresponds to the JSON property `firstLine`
+        # @return [Fixnum]
+        attr_accessor :first_line
+      
+        # The 1-indexed ending line number of the range (inclusive).
+        # Corresponds to the JSON property `lastLine`
+        # @return [Fixnum]
+        attr_accessor :last_line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit = args[:commit] if args.key?(:commit)
+          @first_line = args[:first_line] if args.key?(:first_line)
+          @last_line = args[:last_line] if args.key?(:last_line)
+        end
+      end
+      
       # The request message for Operations.CancelOperation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -457,7 +545,7 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::BitbucketDataCenterConfig]
         attr_accessor :bitbucket_data_center_config
       
-        # Output only. [Output only] Create timestamp
+        # Output only. Create timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -468,7 +556,7 @@ module Google
         # @return [Google::Apis::DeveloperconnectV1::CryptoKeyConfig]
         attr_accessor :crypto_key_config
       
-        # Output only. [Output only] Delete timestamp
+        # Output only. Delete timestamp.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
@@ -553,7 +641,7 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output only] Update timestamp
+        # Output only. Update timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -772,6 +860,25 @@ module Google
         end
       end
       
+      # Response message for DiffGitRepositoryLinkCommit.
+      class DiffGitRepositoryLinkCommitResponse
+        include Google::Apis::Core::Hashable
+      
+        # The file diff extracted from the unified diff.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::DeveloperconnectV1::FileDiff>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -905,6 +1012,104 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @ref_names = args[:ref_names] if args.key?(:ref_names)
+        end
+      end
+      
+      # Response message for FetchGitRepositoryLinkCommitList.
+      class FetchGitRepositoryLinkCommitListResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of commit metadata.
+        # Corresponds to the JSON property `commits`
+        # @return [Array<Google::Apis::DeveloperconnectV1::ScmCommit>]
+        attr_accessor :commits
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commits = args[:commits] if args.key?(:commits)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for FetchGitRepositoryLinkCommit.
+      class FetchGitRepositoryLinkCommitResponse
+        include Google::Apis::Core::Hashable
+      
+        # SCMCommit represents commit metadata.
+        # Corresponds to the JSON property `commit`
+        # @return [Google::Apis::DeveloperconnectV1::ScmCommit]
+        attr_accessor :commit
+      
+        # List of file changes and patch diffs. Omitted when view is `BASIC`. Patch
+        # diffs (`FileDiff.patch`) are only populated when `path_filters` is specified
+        # in the request.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::DeveloperconnectV1::FileDiff>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commit = args[:commit] if args.key?(:commit)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
+      # Response message for FetchGitRepositoryLinkFileBlame.
+      class FetchGitRepositoryLinkFileBlameResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of blame ranges for the file.
+        # Corresponds to the JSON property `ranges`
+        # @return [Array<Google::Apis::DeveloperconnectV1::BlameRange>]
+        attr_accessor :ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ranges = args[:ranges] if args.key?(:ranges)
+        end
+      end
+      
+      # Response message for FetchGitRepositoryLinkPullRequestList.
+      class FetchGitRepositoryLinkPullRequestListResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of pull requests.
+        # Corresponds to the JSON property `pullRequests`
+        # @return [Array<Google::Apis::DeveloperconnectV1::PullRequest>]
+        attr_accessor :pull_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @pull_requests = args[:pull_requests] if args.key?(:pull_requests)
         end
       end
       
@@ -1071,6 +1276,38 @@ module Google
         def update!(**args)
           @restriction = args[:restriction] if args.key?(:restriction)
           @selector = args[:selector] if args.key?(:selector)
+        end
+      end
+      
+      # Message for a file diff.
+      class FileDiff
+        include Google::Apis::Core::Hashable
+      
+        # Standard unified diff patch hunk for the file. Only populated when `
+        # path_filters` is specified in the request; otherwise empty.
+        # Corresponds to the JSON property `patch`
+        # @return [String]
+        attr_accessor :patch
+      
+        # Relative path to the file in the repository.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Status of change: "ADDED", "MODIFIED", "REMOVED", "RENAMED".
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @patch = args[:patch] if args.key?(:patch)
+          @path = args[:path] if args.key?(:path)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1394,8 +1631,8 @@ module Google
       class GitProxyConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Setting this to true allows the git proxy to be used for performing
-        # git operations on the repositories linked in the connection.
+        # Optional. Setting this to true allows the Git proxy to be used for performing
+        # Git operations on the repositories linked in the connection.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1434,12 +1671,12 @@ module Google
         # @return [String]
         attr_accessor :clone_uri
       
-        # Output only. [Output only] Create timestamp
+        # Output only. Create timestamp.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only. [Output only] Delete timestamp
+        # Output only. Delete timestamp.
         # Corresponds to the JSON property `deleteTime`
         # @return [String]
         attr_accessor :delete_time
@@ -1451,8 +1688,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Output only. URI to access the linked repository through the Git Proxy. This
-        # field is only populated if the git proxy is enabled for the connection.
+        # Output only. URI to access the linked repository through the Git proxy. This
+        # field is only populated if the Git proxy is enabled for the connection.
         # Corresponds to the JSON property `gitProxyUri`
         # @return [String]
         attr_accessor :git_proxy_uri
@@ -1480,7 +1717,7 @@ module Google
         # @return [String]
         attr_accessor :uid
       
-        # Output only. [Output only] Update timestamp
+        # Output only. Update timestamp.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1842,7 +2079,7 @@ module Google
       class ListConnectionsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Connection
+        # The list of Connections.
         # Corresponds to the JSON property `connections`
         # @return [Array<Google::Apis::DeveloperconnectV1::Connection>]
         attr_accessor :connections
@@ -1899,7 +2136,7 @@ module Google
       class ListGitRepositoryLinksResponse
         include Google::Apis::Core::Hashable
       
-        # The list of GitRepositoryLinks
+        # The list of GitRepositoryLinks.
         # Corresponds to the JSON property `gitRepositoryLinks`
         # @return [Array<Google::Apis::DeveloperconnectV1::GitRepositoryLink>]
         attr_accessor :git_repository_links
@@ -2129,6 +2366,49 @@ module Google
         end
       end
       
+      # Message for modifying SCM Pull Request.
+      class ModifyGitRepositoryLinkPullRequestRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The target branch to merge into.
+        # Corresponds to the JSON property `baseRef`
+        # @return [String]
+        attr_accessor :base_ref
+      
+        # Optional. The body description of the Pull Request.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Required. The SCM-specific pull request identifier (for example, "45").
+        # Corresponds to the JSON property `pullRequestId`
+        # @return [String]
+        attr_accessor :pull_request_id
+      
+        # Optional. The state of the Pull Request.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Optional. The title of the Pull Request.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_ref = args[:base_ref] if args.key?(:base_ref)
+          @body = args[:body] if args.key?(:body)
+          @pull_request_id = args[:pull_request_id] if args.key?(:pull_request_id)
+          @state = args[:state] if args.key?(:state)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Represents an OAuth token of the account that authorized the Connection, and
       # associated metadata.
       class OAuthCredential
@@ -2155,6 +2435,25 @@ module Google
         def update!(**args)
           @oauth_token_secret_version = args[:oauth_token_secret_version] if args.key?(:oauth_token_secret_version)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # Message for opening SCM Pull Request.
+      class OpenGitRepositoryLinkPullRequestRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message representing a SCM Pull Request.
+        # Corresponds to the JSON property `pullRequest`
+        # @return [Google::Apis::DeveloperconnectV1::PullRequest]
+        attr_accessor :pull_request
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pull_request = args[:pull_request] if args.key?(:pull_request)
         end
       end
       
@@ -2526,6 +2825,224 @@ module Google
         end
       end
       
+      # Message representing a SCM Pull Request.
+      class PullRequest
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The username of the author.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Required. The target commit SHA of the base branch.
+        # Corresponds to the JSON property `baseRef`
+        # @return [String]
+        attr_accessor :base_ref
+      
+        # Optional. The body description of the PR.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Output only. When the PR was closed.
+        # Corresponds to the JSON property `closeTime`
+        # @return [String]
+        attr_accessor :close_time
+      
+        # Output only. When the PR was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. When the PR was declined. Only set for SCM providers that support
+        # declining pull requests. Never set for GitHub, GitHub Enterprise, GitLab, or
+        # GitLab Enterprise, where a pull request closed without being merged is `CLOSED`
+        # .
+        # Corresponds to the JSON property `declineTime`
+        # @return [String]
+        attr_accessor :decline_time
+      
+        # Required. The source commit SHA of the head branch.
+        # Corresponds to the JSON property `headRef`
+        # @return [String]
+        attr_accessor :head_ref
+      
+        # Output only. The HTML URL of the pull request on the SCM provider.
+        # Corresponds to the JSON property `htmlUrl`
+        # @return [String]
+        attr_accessor :html_url
+      
+        # Required. The ID of the PR.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. When the PR was merged.
+        # Corresponds to the JSON property `mergeTime`
+        # @return [String]
+        attr_accessor :merge_time
+      
+        # Output only. The mergeability state of the pull request.
+        # Corresponds to the JSON property `mergeability`
+        # @return [String]
+        attr_accessor :mergeability
+      
+        # Output only. The current state of the PR.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. The title of the PR.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        # Output only. When the PR was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @base_ref = args[:base_ref] if args.key?(:base_ref)
+          @body = args[:body] if args.key?(:body)
+          @close_time = args[:close_time] if args.key?(:close_time)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @decline_time = args[:decline_time] if args.key?(:decline_time)
+          @head_ref = args[:head_ref] if args.key?(:head_ref)
+          @html_url = args[:html_url] if args.key?(:html_url)
+          @id = args[:id] if args.key?(:id)
+          @merge_time = args[:merge_time] if args.key?(:merge_time)
+          @mergeability = args[:mergeability] if args.key?(:mergeability)
+          @state = args[:state] if args.key?(:state)
+          @title = args[:title] if args.key?(:title)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message representing a SCM Pull Request Comment.
+      class PullRequestComment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The username of the author.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Required. The body of the comment.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Output only. When the comment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The ID of the comment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Output only. When the comment was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @body = args[:body] if args.key?(:body)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @id = args[:id] if args.key?(:id)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Message representing a SCM Pull Request Review Comment (inline on diff).
+      class PullRequestReviewComment
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The username of the author.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # Required. The body of the comment.
+        # Corresponds to the JSON property `body`
+        # @return [String]
+        attr_accessor :body
+      
+        # Output only. The commit SHA the comment was actually applied to.
+        # Corresponds to the JSON property `commitId`
+        # @return [String]
+        attr_accessor :commit_id
+      
+        # Output only. When the comment was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The first line of the comment range (inclusive). If not specified,
+        # the comment applies only to the `last_line`.
+        # Corresponds to the JSON property `firstLine`
+        # @return [Fixnum]
+        attr_accessor :first_line
+      
+        # Output only. The ID of the comment.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Required. The last line of the comment range (inclusive). If `first_line` is
+        # not specified, the comment applies only to this line.
+        # Corresponds to the JSON property `lastLine`
+        # @return [Fixnum]
+        attr_accessor :last_line
+      
+        # Required. The file path to comment on.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Optional. The side of the diff to comment on. Defaults to HEAD.
+        # Corresponds to the JSON property `side`
+        # @return [String]
+        attr_accessor :side
+      
+        # Output only. When the comment was updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @body = args[:body] if args.key?(:body)
+          @commit_id = args[:commit_id] if args.key?(:commit_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @first_line = args[:first_line] if args.key?(:first_line)
+          @id = args[:id] if args.key?(:id)
+          @last_line = args[:last_line] if args.key?(:last_line)
+          @path = args[:path] if args.key?(:path)
+          @side = args[:side] if args.key?(:side)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # RuntimeConfig represents the runtimes where the application is deployed.
       class RuntimeConfig
         include Google::Apis::Core::Hashable
@@ -2573,6 +3090,55 @@ module Google
           @google_cloud_run = args[:google_cloud_run] if args.key?(:google_cloud_run)
           @state = args[:state] if args.key?(:state)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # SCMCommit represents commit metadata.
+      class ScmCommit
+        include Google::Apis::Core::Hashable
+      
+        # The author's display name.
+        # Corresponds to the JSON property `author`
+        # @return [String]
+        attr_accessor :author
+      
+        # The author's email address.
+        # Corresponds to the JSON property `authorEmail`
+        # @return [String]
+        attr_accessor :author_email
+      
+        # Timestamp when the commit was authored.
+        # Corresponds to the JSON property `commitTime`
+        # @return [String]
+        attr_accessor :commit_time
+      
+        # Commit message text.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Full 40-character SCM commit SHA.
+        # Corresponds to the JSON property `sha`
+        # @return [String]
+        attr_accessor :sha
+      
+        # The SCM provider's HTML URL link for this commit.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author = args[:author] if args.key?(:author)
+          @author_email = args[:author_email] if args.key?(:author_email)
+          @commit_time = args[:commit_time] if args.key?(:commit_time)
+          @message = args[:message] if args.key?(:message)
+          @sha = args[:sha] if args.key?(:sha)
+          @url = args[:url] if args.key?(:url)
         end
       end
       
