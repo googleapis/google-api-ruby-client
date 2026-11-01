@@ -402344,6 +402344,8 @@
 "/saasservicemgmt:v1/Dependency/alias": alias
 "/saasservicemgmt:v1/Dependency/unitKind": unit_kind
 "/saasservicemgmt:v1/Deprovision": deprovision
+"/saasservicemgmt:v1/DurationLimits": duration_limits
+"/saasservicemgmt:v1/DurationLimits/unitOperationTimeout": unit_operation_timeout
 "/saasservicemgmt:v1/Empty": empty
 "/saasservicemgmt:v1/ErrorBudget": error_budget
 "/saasservicemgmt:v1/ErrorBudget/allowedCount": allowed_count
@@ -402670,6 +402672,7 @@
 "/saasservicemgmt:v1/UnitKind/deleteTime": delete_time
 "/saasservicemgmt:v1/UnitKind/dependencies": dependencies
 "/saasservicemgmt:v1/UnitKind/dependencies/dependency": dependency
+"/saasservicemgmt:v1/UnitKind/durationLimits": duration_limits
 "/saasservicemgmt:v1/UnitKind/etag": etag
 "/saasservicemgmt:v1/UnitKind/inputVariableMappings": input_variable_mappings
 "/saasservicemgmt:v1/UnitKind/inputVariableMappings/input_variable_mapping": input_variable_mapping
@@ -402690,6 +402693,7 @@
 "/saasservicemgmt:v1/UnitOperation/createTime": create_time
 "/saasservicemgmt:v1/UnitOperation/deleteTime": delete_time
 "/saasservicemgmt:v1/UnitOperation/deprovision": deprovision
+"/saasservicemgmt:v1/UnitOperation/durationLimits": duration_limits
 "/saasservicemgmt:v1/UnitOperation/engineState": engine_state
 "/saasservicemgmt:v1/UnitOperation/errorCategory": error_category
 "/saasservicemgmt:v1/UnitOperation/etag": etag

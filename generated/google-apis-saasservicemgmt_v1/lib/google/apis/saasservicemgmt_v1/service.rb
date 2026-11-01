@@ -30,7 +30,7 @@ module Google
       #    Saasservicemgmt = Google::Apis::SaasservicemgmtV1 # Alias the module
       #    service = Saasservicemgmt::SaaSServiceManagementService.new
       #
-      # @see https://cloud.google.com/saas-runtime/docs
+      # @see https://docs.cloud.google.com/app-lifecycle-manager
       class SaaSServiceManagementService < Google::Apis::Core::BaseService
         DEFAULT_ENDPOINT_TEMPLATE = "https://saasservicemgmt.$UNIVERSE_DOMAIN$/"
 
