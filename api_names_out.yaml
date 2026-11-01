@@ -245706,6 +245706,8 @@
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudio/audio": audio
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudio/config": config
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig": google_cloud_dialogflow_v2beta1_input_audio_config
+"/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig/alternativeLanguageCodes": alternative_language_codes
+"/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig/alternativeLanguageCodes/alternative_language_code": alternative_language_code
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig/audioEncoding": audio_encoding
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig/bargeInConfig": barge_in_config
 "/dialogflow:v2beta1/GoogleCloudDialogflowV2beta1InputAudioConfig/defaultNoSpeechTimeout": default_no_speech_timeout

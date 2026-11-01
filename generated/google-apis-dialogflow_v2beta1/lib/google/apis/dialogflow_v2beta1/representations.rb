@@ -9623,6 +9623,7 @@ module Google
       class GoogleCloudDialogflowV2beta1InputAudioConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_encoding, as: 'audioEncoding'
           property :barge_in_config, as: 'bargeInConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1BargeInConfig::Representation
       
@@ -11125,6 +11126,7 @@ module Google
       class GoogleCloudDialogflowV2beta1SpeechToTextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_encoding, as: 'audioEncoding'
           property :disable_interim_input_transcripts, as: 'disableInterimInputTranscripts'
           property :enable_word_info, as: 'enableWordInfo'
