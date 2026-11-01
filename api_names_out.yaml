@@ -401083,6 +401083,7 @@
 "/run:v2/GoogleCloudRunV2Instance/observedGeneration": observed_generation
 "/run:v2/GoogleCloudRunV2Instance/reconciling": reconciling
 "/run:v2/GoogleCloudRunV2Instance/restartPolicy": restart_policy
+"/run:v2/GoogleCloudRunV2Instance/sandboxes": sandboxes
 "/run:v2/GoogleCloudRunV2Instance/satisfiesPzs": satisfies_pzs
 "/run:v2/GoogleCloudRunV2Instance/serviceAccount": service_account
 "/run:v2/GoogleCloudRunV2Instance/sshEnabled": ssh_enabled
@@ -401294,6 +401295,18 @@
 "/run:v2/GoogleCloudRunV2SandboxConfiguration": google_cloud_run_v2_sandbox_configuration
 "/run:v2/GoogleCloudRunV2SandboxConfiguration/templates": templates
 "/run:v2/GoogleCloudRunV2SandboxConfiguration/templates/template": template
+"/run:v2/GoogleCloudRunV2SandboxTemplate": google_cloud_run_v2_sandbox_template
+"/run:v2/GoogleCloudRunV2SandboxTemplate/args": args
+"/run:v2/GoogleCloudRunV2SandboxTemplate/args/arg": arg
+"/run:v2/GoogleCloudRunV2SandboxTemplate/command": command
+"/run:v2/GoogleCloudRunV2SandboxTemplate/command/command": command
+"/run:v2/GoogleCloudRunV2SandboxTemplate/env": env
+"/run:v2/GoogleCloudRunV2SandboxTemplate/env/env": env
+"/run:v2/GoogleCloudRunV2SandboxTemplate/image": image
+"/run:v2/GoogleCloudRunV2SandboxTemplate/name": name
+"/run:v2/GoogleCloudRunV2SandboxTemplate/volumeMounts": volume_mounts
+"/run:v2/GoogleCloudRunV2SandboxTemplate/volumeMounts/volume_mount": volume_mount
+"/run:v2/GoogleCloudRunV2SandboxTemplate/workingDir": working_dir
 "/run:v2/GoogleCloudRunV2SecretKeySelector": google_cloud_run_v2_secret_key_selector
 "/run:v2/GoogleCloudRunV2SecretKeySelector/secret": secret
 "/run:v2/GoogleCloudRunV2SecretKeySelector/version": version
@@ -401424,6 +401437,7 @@
 "/run:v2/GoogleCloudRunV2Task/observedGeneration": observed_generation
 "/run:v2/GoogleCloudRunV2Task/reconciling": reconciling
 "/run:v2/GoogleCloudRunV2Task/retried": retried
+"/run:v2/GoogleCloudRunV2Task/sandboxes": sandboxes
 "/run:v2/GoogleCloudRunV2Task/satisfiesPzs": satisfies_pzs
 "/run:v2/GoogleCloudRunV2Task/scheduledTime": scheduled_time
 "/run:v2/GoogleCloudRunV2Task/serviceAccount": service_account
@@ -401447,6 +401461,7 @@
 "/run:v2/GoogleCloudRunV2TaskTemplate/gpuZonalRedundancyDisabled": gpu_zonal_redundancy_disabled
 "/run:v2/GoogleCloudRunV2TaskTemplate/maxRetries": max_retries
 "/run:v2/GoogleCloudRunV2TaskTemplate/nodeSelector": node_selector
+"/run:v2/GoogleCloudRunV2TaskTemplate/sandboxes": sandboxes
 "/run:v2/GoogleCloudRunV2TaskTemplate/serviceAccount": service_account
 "/run:v2/GoogleCloudRunV2TaskTemplate/timeout": timeout
 "/run:v2/GoogleCloudRunV2TaskTemplate/volumes": volumes
@@ -401540,6 +401555,7 @@
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/labels/label": label
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/nodeSelector": node_selector
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/revision": revision
+"/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/sandboxes": sandboxes
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/serviceAccount": service_account
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/serviceMesh": service_mesh
 "/run:v2/GoogleCloudRunV2WorkerPoolRevisionTemplate/sessionAffinity": session_affinity

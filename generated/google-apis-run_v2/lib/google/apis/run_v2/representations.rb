@@ -340,6 +340,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRunV2SandboxConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRunV2SandboxTemplate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRunV2SecretKeySelector
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1262,6 +1274,8 @@ module Google
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :restart_policy, as: 'restartPolicy'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :service_account, as: 'serviceAccount'
           property :ssh_enabled, as: 'sshEnabled'
@@ -1505,6 +1519,8 @@ module Google
       
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
@@ -1565,6 +1581,8 @@ module Google
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
           property :revision, as: 'revision'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :scaling, as: 'scaling', class: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling, decorator: Google::Apis::RunV2::GoogleCloudRunV2RevisionScaling::Representation
       
           property :service_account, as: 'serviceAccount'
@@ -1588,6 +1606,29 @@ module Google
           property :overrides, as: 'overrides', class: Google::Apis::RunV2::GoogleCloudRunV2Overrides, decorator: Google::Apis::RunV2::GoogleCloudRunV2Overrides::Representation
       
           property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class GoogleCloudRunV2SandboxConfiguration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :templates, as: 'templates', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxTemplate, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxTemplate::Representation
+      
+        end
+      end
+      
+      class GoogleCloudRunV2SandboxTemplate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :args, as: 'args'
+          collection :command, as: 'command'
+          collection :env, as: 'env', class: Google::Apis::RunV2::GoogleCloudRunV2EnvVar, decorator: Google::Apis::RunV2::GoogleCloudRunV2EnvVar::Representation
+      
+          property :image, as: 'image'
+          property :name, as: 'name'
+          collection :volume_mounts, as: 'volumeMounts', class: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount, decorator: Google::Apis::RunV2::GoogleCloudRunV2VolumeMount::Representation
+      
+          property :working_dir, as: 'workingDir'
         end
       end
       
@@ -1791,6 +1832,8 @@ module Google
           property :observed_generation, :numeric_string => true, as: 'observedGeneration'
           property :reconciling, as: 'reconciling'
           property :retried, as: 'retried'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :satisfies_pzs, as: 'satisfiesPzs'
           property :scheduled_time, as: 'scheduledTime'
           property :service_account, as: 'serviceAccount'
@@ -1827,6 +1870,8 @@ module Google
           property :gpu_zonal_redundancy_disabled, as: 'gpuZonalRedundancyDisabled'
           property :max_retries, as: 'maxRetries'
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
+      
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
       
           property :service_account, as: 'serviceAccount'
           property :timeout, as: 'timeout'
@@ -1979,6 +2024,8 @@ module Google
           property :node_selector, as: 'nodeSelector', class: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector, decorator: Google::Apis::RunV2::GoogleCloudRunV2NodeSelector::Representation
       
           property :revision, as: 'revision'
+          property :sandboxes, as: 'sandboxes', class: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration, decorator: Google::Apis::RunV2::GoogleCloudRunV2SandboxConfiguration::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :service_mesh, as: 'serviceMesh', class: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh, decorator: Google::Apis::RunV2::GoogleCloudRunV2ServiceMesh::Representation
       
