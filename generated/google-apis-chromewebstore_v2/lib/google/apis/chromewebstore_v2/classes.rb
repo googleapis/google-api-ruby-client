@@ -22,6 +22,25 @@ module Google
   module Apis
     module ChromewebstoreV2
       
+      # Info on the author of the review.
+      class AuthorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Display name for the author.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # Request message for CancelSubmission.
       class CancelSubmissionRequest
         include Google::Apis::Core::Hashable
@@ -45,6 +64,47 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, such as a birthday. The time of
+      # day and time zone are either specified elsewhere or are insignificant. The
+      # date is relative to the Gregorian Calendar. This can represent one of the
+      # following: * A full date, with non-zero year, month, and day values. * A month
+      # and day, with a zero year (for example, an anniversary). * A year on its own,
+      # with a zero month and a zero day. * A year and month, with a zero day (for
+      # example, a credit card expiration date). Related types: * google.type.
+      # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to
+        # specify a year by itself or a year and month where the day isn't significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of a year. Must be from 1 to 12, or 0 to specify a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of the date. Must be from 1 to 9999, or 0 to specify a date without a
+        # year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -92,6 +152,32 @@ module Google
         def update!(**args)
           @crx_version = args[:crx_version] if args.key?(:crx_version)
           @deploy_percentage = args[:deploy_percentage] if args.key?(:deploy_percentage)
+        end
+      end
+      
+      # Response message for FetchItemReviews.
+      class FetchItemReviewsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of reviews.
+        # Corresponds to the JSON property `reviews`
+        # @return [Array<Google::Apis::ChromewebstoreV2::Review>]
+        attr_accessor :reviews
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @reviews = args[:reviews] if args.key?(:reviews)
         end
       end
       
@@ -186,6 +272,75 @@ module Google
         end
       end
       
+      # A single row of metrics and dimension values.
+      class MetricRow
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, such as a birthday. The time of
+        # day and time zone are either specified elsewhere or are insignificant. The
+        # date is relative to the Gregorian Calendar. This can represent one of the
+        # following: * A full date, with non-zero year, month, and day values. * A month
+        # and day, with a zero year (for example, an anniversary). * A year on its own,
+        # with a zero month and a zero day. * A year and month, with a zero day (for
+        # example, a credit card expiration date). Related types: * google.type.
+        # TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::ChromewebstoreV2::Date]
+        attr_accessor :date
+      
+        # Dimension value columns for the row.
+        # Corresponds to the JSON property `dimensionValues`
+        # @return [Array<String>]
+        attr_accessor :dimension_values
+      
+        # Metric columns for the row.
+        # Corresponds to the JSON property `metricValues`
+        # @return [Array<Google::Apis::ChromewebstoreV2::MetricValue>]
+        attr_accessor :metric_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @dimension_values = args[:dimension_values] if args.key?(:dimension_values)
+          @metric_values = args[:metric_values] if args.key?(:metric_values)
+        end
+      end
+      
+      # Represents the value of a single metric
+      class MetricValue
+        include Google::Apis::Core::Hashable
+      
+        # The name of the metric
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The unique user count associated with the metric (if applicable).
+        # Corresponds to the JSON property `uniqueUserCount`
+        # @return [Fixnum]
+        attr_accessor :unique_user_count
+      
+        # The value of the metric.
+        # Corresponds to the JSON property `value`
+        # @return [Fixnum]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @unique_user_count = args[:unique_user_count] if args.key?(:unique_user_count)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Request message for PublishItem.
       class PublishItemRequest
         include Google::Apis::Core::Hashable
@@ -268,6 +423,208 @@ module Google
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @warning_info = args[:warning_info] if args.key?(:warning_info)
+        end
+      end
+      
+      # Response message for QueryItemMetrics.
+      class QueryItemMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The metric rows.
+        # Corresponds to the JSON property `metricRows`
+        # @return [Array<Google::Apis::ChromewebstoreV2::MetricRow>]
+        attr_accessor :metric_rows
+      
+        # A token that can be sent as `page_token` to retrieve the next page. If this
+        # field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric_rows = args[:metric_rows] if args.key?(:metric_rows)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Singleton resource for the rating summary of an item.
+      class RatingSummary
+        include Google::Apis::Core::Hashable
+      
+        # The number of five star ratings.
+        # Corresponds to the JSON property `fiveStarRatingCount`
+        # @return [Fixnum]
+        attr_accessor :five_star_rating_count
+      
+        # The number of four star ratings.
+        # Corresponds to the JSON property `fourStarRatingCount`
+        # @return [Fixnum]
+        attr_accessor :four_star_rating_count
+      
+        # Identifier. Item rating summary resource name Format: publishers/`publisher`/
+        # items/`item`/ratingSummary
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The number of ratings with a non-empty review text.
+        # Corresponds to the JSON property `nonEmptyReviewCount`
+        # @return [Fixnum]
+        attr_accessor :non_empty_review_count
+      
+        # The number of one star ratings.
+        # Corresponds to the JSON property `oneStarRatingCount`
+        # @return [Fixnum]
+        attr_accessor :one_star_rating_count
+      
+        # The rating of the item as shown on the store page, expressed as a double
+        # between 1 and 5.
+        # Corresponds to the JSON property `rating`
+        # @return [Float]
+        attr_accessor :rating
+      
+        # The total number of ratings for the item.
+        # Corresponds to the JSON property `ratingCount`
+        # @return [Fixnum]
+        attr_accessor :rating_count
+      
+        # The number of three star ratings.
+        # Corresponds to the JSON property `threeStarRatingCount`
+        # @return [Fixnum]
+        attr_accessor :three_star_rating_count
+      
+        # The number of two star ratings.
+        # Corresponds to the JSON property `twoStarRatingCount`
+        # @return [Fixnum]
+        attr_accessor :two_star_rating_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @five_star_rating_count = args[:five_star_rating_count] if args.key?(:five_star_rating_count)
+          @four_star_rating_count = args[:four_star_rating_count] if args.key?(:four_star_rating_count)
+          @name = args[:name] if args.key?(:name)
+          @non_empty_review_count = args[:non_empty_review_count] if args.key?(:non_empty_review_count)
+          @one_star_rating_count = args[:one_star_rating_count] if args.key?(:one_star_rating_count)
+          @rating = args[:rating] if args.key?(:rating)
+          @rating_count = args[:rating_count] if args.key?(:rating_count)
+          @three_star_rating_count = args[:three_star_rating_count] if args.key?(:three_star_rating_count)
+          @two_star_rating_count = args[:two_star_rating_count] if args.key?(:two_star_rating_count)
+        end
+      end
+      
+      # A review written by a user to rate an item in the Chrome Web Store.
+      class Review
+        include Google::Apis::Core::Hashable
+      
+        # Info on the author of the review.
+        # Corresponds to the JSON property `authorInfo`
+        # @return [Google::Apis::ChromewebstoreV2::AuthorInfo]
+        attr_accessor :author_info
+      
+        # Content of the review.
+        # Corresponds to the JSON property `comment`
+        # @return [String]
+        attr_accessor :comment
+      
+        # Output only. When the review was posted.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The item that this review evaluates. Format: publishers/`
+        # publisher`/items/`item`
+        # Corresponds to the JSON property `item`
+        # @return [String]
+        attr_accessor :item
+      
+        # Identifier. Review resource name. Format: reviews/`reviewId`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Rating of the item, between 1 and 5.
+        # Corresponds to the JSON property `rating`
+        # @return [Fixnum]
+        attr_accessor :rating
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @author_info = args[:author_info] if args.key?(:author_info)
+          @comment = args[:comment] if args.key?(:comment)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @item = args[:item] if args.key?(:item)
+          @name = args[:name] if args.key?(:name)
+          @rating = args[:rating] if args.key?(:rating)
+        end
+      end
+      
+      # Request message for RollbackItem.
+      class RollbackItemRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The new version to assign to the package being rolled back to. This
+        # effectively "rolls forward" the previous package by giving it a higher version
+        # number than the currently-published package. E.g. if the current published
+        # version is 1.1, the new version could be 1.1.1 or 1.2 but not 1.0.
+        # Corresponds to the JSON property `newVersion`
+        # @return [String]
+        attr_accessor :new_version
+      
+        # Required. The reason for the rollback that will be used for internal auditing
+        # and developer dashboard visibility.
+        # Corresponds to the JSON property `rollbackReason`
+        # @return [String]
+        attr_accessor :rollback_reason
+      
+        # Required. The target previously published CRX version to roll back to. If
+        # unset, defaults to the last published CRX version.
+        # Corresponds to the JSON property `targetCrxVersion`
+        # @return [String]
+        attr_accessor :target_crx_version
+      
+        # Optional. If set, validate and dry run the request but do not actually
+        # initiate the rollback
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @new_version = args[:new_version] if args.key?(:new_version)
+          @rollback_reason = args[:rollback_reason] if args.key?(:rollback_reason)
+          @target_crx_version = args[:target_crx_version] if args.key?(:target_crx_version)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response message for `RollbackItem`.
+      class RollbackItemResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

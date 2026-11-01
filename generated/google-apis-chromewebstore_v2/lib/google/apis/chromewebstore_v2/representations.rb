@@ -22,6 +22,12 @@ module Google
   module Apis
     module ChromewebstoreV2
       
+      class AuthorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelSubmissionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -29,6 +35,12 @@ module Google
       end
       
       class CancelSubmissionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -46,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FetchItemReviewsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FetchItemStatusResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MetricRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PublishItemRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +95,36 @@ module Google
       end
       
       class PublishItemResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryItemMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RatingSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Review
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackItemRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RollbackItemResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,6 +166,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class CancelSubmissionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -115,6 +182,15 @@ module Google
       class CancelSubmissionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
         end
       end
       
@@ -130,6 +206,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :crx_version, as: 'crxVersion'
           property :deploy_percentage, as: 'deployPercentage'
+        end
+      end
+      
+      class FetchItemReviewsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :reviews, as: 'reviews', class: Google::Apis::ChromewebstoreV2::Review, decorator: Google::Apis::ChromewebstoreV2::Review::Representation
+      
         end
       end
       
@@ -158,6 +243,26 @@ module Google
         end
       end
       
+      class MetricRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::ChromewebstoreV2::Date, decorator: Google::Apis::ChromewebstoreV2::Date::Representation
+      
+          collection :dimension_values, as: 'dimensionValues'
+          collection :metric_values, as: 'metricValues', class: Google::Apis::ChromewebstoreV2::MetricValue, decorator: Google::Apis::ChromewebstoreV2::MetricValue::Representation
+      
+        end
+      end
+      
+      class MetricValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :unique_user_count, :numeric_string => true, as: 'uniqueUserCount'
+          property :value, :numeric_string => true, as: 'value'
+        end
+      end
+      
       class PublishItemRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -177,6 +282,59 @@ module Google
           property :state, as: 'state'
           property :warning_info, as: 'warningInfo', class: Google::Apis::ChromewebstoreV2::WarningsInfo, decorator: Google::Apis::ChromewebstoreV2::WarningsInfo::Representation
       
+        end
+      end
+      
+      class QueryItemMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metric_rows, as: 'metricRows', class: Google::Apis::ChromewebstoreV2::MetricRow, decorator: Google::Apis::ChromewebstoreV2::MetricRow::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class RatingSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :five_star_rating_count, :numeric_string => true, as: 'fiveStarRatingCount'
+          property :four_star_rating_count, :numeric_string => true, as: 'fourStarRatingCount'
+          property :name, as: 'name'
+          property :non_empty_review_count, :numeric_string => true, as: 'nonEmptyReviewCount'
+          property :one_star_rating_count, :numeric_string => true, as: 'oneStarRatingCount'
+          property :rating, as: 'rating'
+          property :rating_count, :numeric_string => true, as: 'ratingCount'
+          property :three_star_rating_count, :numeric_string => true, as: 'threeStarRatingCount'
+          property :two_star_rating_count, :numeric_string => true, as: 'twoStarRatingCount'
+        end
+      end
+      
+      class Review
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :author_info, as: 'authorInfo', class: Google::Apis::ChromewebstoreV2::AuthorInfo, decorator: Google::Apis::ChromewebstoreV2::AuthorInfo::Representation
+      
+          property :comment, as: 'comment'
+          property :create_time, as: 'createTime'
+          property :item, as: 'item'
+          property :name, as: 'name'
+          property :rating, as: 'rating'
+        end
+      end
+      
+      class RollbackItemRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :new_version, as: 'newVersion'
+          property :rollback_reason, as: 'rollbackReason'
+          property :target_crx_version, as: 'targetCrxVersion'
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class RollbackItemResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
