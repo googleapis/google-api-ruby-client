@@ -16,13 +16,13 @@ module Google
   module Apis
     module SaasservicemgmtV1
       # Version of the google-apis-saasservicemgmt_v1 gem
-      GEM_VERSION = "0.9.0"
+      GEM_VERSION = "0.10.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20261005"
+      REVISION = "20261020"
     end
   end
 end

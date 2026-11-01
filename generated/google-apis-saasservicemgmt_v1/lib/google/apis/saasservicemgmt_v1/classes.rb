@@ -277,6 +277,32 @@ module Google
         end
       end
       
+      # DurationLimits defines the time-related constraints for a UnitOperation's
+      # execution. This allows users to control how long an operation can run before
+      # being cancelled by the system.
+      class DurationLimits
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum duration a UnitOperation is allowed to execute in the
+        # RUNNING state. - Minimum value: 60 seconds (1 minute) - Maximum value: 604800
+        # seconds (7 days) If this field is not set, or if the provided value falls
+        # outside the allowed range, the system will use a default timeout of 10800
+        # seconds (3 hours). Upon exceeding this time limit, the UnitOperation will be
+        # best-effort cancelled, and its state will be set to FAILED.
+        # Corresponds to the JSON property `unitOperationTimeout`
+        # @return [String]
+        attr_accessor :unit_operation_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @unit_operation_timeout = args[:unit_operation_timeout] if args.key?(:unit_operation_timeout)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance: service Foo ` rpc Bar(google.
@@ -1960,6 +1986,13 @@ module Google
         # @return [Array<Google::Apis::SaasservicemgmtV1::Dependency>]
         attr_accessor :dependencies
       
+        # DurationLimits defines the time-related constraints for a UnitOperation's
+        # execution. This allows users to control how long an operation can run before
+        # being cancelled by the system.
+        # Corresponds to the JSON property `durationLimits`
+        # @return [Google::Apis::SaasservicemgmtV1::DurationLimits]
+        attr_accessor :duration_limits
+      
         # Output only. An opaque value that uniquely identifies a version or generation
         # of a resource. It can be used to confirm that the client and server agree on
         # the ordering of a resource being written.
@@ -2030,6 +2063,7 @@ module Google
           @default_release = args[:default_release] if args.key?(:default_release)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @dependencies = args[:dependencies] if args.key?(:dependencies)
+          @duration_limits = args[:duration_limits] if args.key?(:duration_limits)
           @etag = args[:etag] if args.key?(:etag)
           @input_variable_mappings = args[:input_variable_mappings] if args.key?(:input_variable_mappings)
           @labels = args[:labels] if args.key?(:labels)
@@ -2088,6 +2122,13 @@ module Google
         # Corresponds to the JSON property `deprovision`
         # @return [Google::Apis::SaasservicemgmtV1::Deprovision]
         attr_accessor :deprovision
+      
+        # DurationLimits defines the time-related constraints for a UnitOperation's
+        # execution. This allows users to control how long an operation can run before
+        # being cancelled by the system.
+        # Corresponds to the JSON property `durationLimits`
+        # @return [Google::Apis::SaasservicemgmtV1::DurationLimits]
+        attr_accessor :duration_limits
       
         # Optional. Output only. The engine state for on-going deployment engine
         # operation(s). This field is opaque for external usage.
@@ -2194,6 +2235,7 @@ module Google
           @create_time = args[:create_time] if args.key?(:create_time)
           @delete_time = args[:delete_time] if args.key?(:delete_time)
           @deprovision = args[:deprovision] if args.key?(:deprovision)
+          @duration_limits = args[:duration_limits] if args.key?(:duration_limits)
           @engine_state = args[:engine_state] if args.key?(:engine_state)
           @error_category = args[:error_category] if args.key?(:error_category)
           @etag = args[:etag] if args.key?(:etag)

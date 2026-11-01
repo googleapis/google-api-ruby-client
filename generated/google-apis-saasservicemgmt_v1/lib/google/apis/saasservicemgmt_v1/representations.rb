@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DurationLimits
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -373,6 +379,13 @@ module Google
       class Deprovision
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DurationLimits
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :unit_operation_timeout, as: 'unitOperationTimeout'
         end
       end
       
@@ -782,6 +795,8 @@ module Google
           property :delete_time, as: 'deleteTime'
           collection :dependencies, as: 'dependencies', class: Google::Apis::SaasservicemgmtV1::Dependency, decorator: Google::Apis::SaasservicemgmtV1::Dependency::Representation
       
+          property :duration_limits, as: 'durationLimits', class: Google::Apis::SaasservicemgmtV1::DurationLimits, decorator: Google::Apis::SaasservicemgmtV1::DurationLimits::Representation
+      
           property :etag, as: 'etag'
           collection :input_variable_mappings, as: 'inputVariableMappings', class: Google::Apis::SaasservicemgmtV1::VariableMapping, decorator: Google::Apis::SaasservicemgmtV1::VariableMapping::Representation
       
@@ -805,6 +820,8 @@ module Google
           property :create_time, as: 'createTime'
           property :delete_time, as: 'deleteTime'
           property :deprovision, as: 'deprovision', class: Google::Apis::SaasservicemgmtV1::Deprovision, decorator: Google::Apis::SaasservicemgmtV1::Deprovision::Representation
+      
+          property :duration_limits, as: 'durationLimits', class: Google::Apis::SaasservicemgmtV1::DurationLimits, decorator: Google::Apis::SaasservicemgmtV1::DurationLimits::Representation
       
           property :engine_state, as: 'engineState'
           property :error_category, as: 'errorCategory'
