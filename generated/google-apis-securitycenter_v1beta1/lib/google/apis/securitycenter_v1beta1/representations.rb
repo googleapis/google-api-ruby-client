@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Compliance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -911,6 +917,12 @@ module Google
       end
       
       class GoogleCloudSecuritycenterV2CloudLoggingEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV2CloudRun
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2497,6 +2509,13 @@ module Google
         end
       end
       
+      class CloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :revisions, as: 'revisions'
+        end
+      end
+      
       class Compliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2863,6 +2882,8 @@ module Google
           property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta1::CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta1::CloudDlpDataProfile::Representation
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta1::CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta1::CloudDlpInspection::Representation
+      
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::SecuritycenterV1beta1::CloudRun, decorator: Google::Apis::SecuritycenterV1beta1::CloudRun::Representation
       
           property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta1::ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta1::ComplianceDetails::Representation
       
@@ -3761,6 +3782,13 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV2CloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :revisions, as: 'revisions'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV2Compliance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4114,6 +4142,8 @@ module Google
           property :cloud_dlp_data_profile, as: 'cloudDlpDataProfile', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpDataProfile, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpDataProfile::Representation
       
           property :cloud_dlp_inspection, as: 'cloudDlpInspection', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpInspection, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudDlpInspection::Representation
+      
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudRun, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2CloudRun::Representation
       
           property :compliance_details, as: 'complianceDetails', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV2ComplianceDetails::Representation
       
