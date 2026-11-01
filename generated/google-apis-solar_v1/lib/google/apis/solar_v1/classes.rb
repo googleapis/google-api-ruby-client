@@ -133,6 +133,11 @@ module Google
       class BuildingInsightsDetectedArrays
         include Google::Apis::Core::Hashable
       
+        # A list of solar arrays detected on the building.
+        # Corresponds to the JSON property `arrays`
+        # @return [Array<Google::Apis::SolarV1::BuildingInsightsDetectedArraysSolarArray>]
+        attr_accessor :arrays
+      
         # Indicates the detection status of solar arrays for this building.
         # Corresponds to the JSON property `detectionStatus`
         # @return [String]
@@ -156,8 +161,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arrays = args[:arrays] if args.key?(:arrays)
           @detection_status = args[:detection_status] if args.key?(:detection_status)
           @latest_capture_date = args[:latest_capture_date] if args.key?(:latest_capture_date)
+        end
+      end
+      
+      # Details of a single detected solar array.
+      class BuildingInsightsDetectedArraysSolarArray
+        include Google::Apis::Core::Hashable
+      
+        # A GeoJSON representation of the building area where solar panels were detected.
+        # The GeoJSON data must be in RFC 7946 format and represent a Polygon for a
+        # single contiguous area. The Polygon will be represented by several loops when
+        # it contains holes. Example: ` "type": "Polygon", "coordinates": [ [ [-1, -1], [
+        # -1, 0], [0, 0], [-1, -1] ] ] `
+        # Corresponds to the JSON property `polygonGeojson`
+        # @return [Hash<String,Object>]
+        attr_accessor :polygon_geojson
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @polygon_geojson = args[:polygon_geojson] if args.key?(:polygon_geojson)
         end
       end
       

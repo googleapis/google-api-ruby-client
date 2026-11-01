@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildingInsightsDetectedArraysSolarArray
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CashPurchaseSavings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -175,9 +181,18 @@ module Google
       class BuildingInsightsDetectedArrays
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arrays, as: 'arrays', class: Google::Apis::SolarV1::BuildingInsightsDetectedArraysSolarArray, decorator: Google::Apis::SolarV1::BuildingInsightsDetectedArraysSolarArray::Representation
+      
           property :detection_status, as: 'detectionStatus'
           property :latest_capture_date, as: 'latestCaptureDate', class: Google::Apis::SolarV1::Date, decorator: Google::Apis::SolarV1::Date::Representation
       
+        end
+      end
+      
+      class BuildingInsightsDetectedArraysSolarArray
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :polygon_geojson, as: 'polygonGeojson'
         end
       end
       
