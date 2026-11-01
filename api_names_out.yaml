@@ -465891,6 +465891,7 @@
 "/webcontentpublisher:v1/SurveyConfig/customMessage": custom_message
 "/webcontentpublisher:v1/SurveyConfig/questions": questions
 "/webcontentpublisher:v1/SurveyConfig/questions/question": question
+"/webcontentpublisher:v1/SurveyConfig/reportUrl": report_url
 "/webcontentpublisher:v1/SurveyQuestion": survey_question
 "/webcontentpublisher:v1/SurveyQuestion/customQuestion": custom_question
 "/webcontentpublisher:v1/SurveyQuestion/presetQuestion": preset_question

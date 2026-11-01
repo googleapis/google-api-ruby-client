@@ -125,7 +125,7 @@ module Google
         # @return [Google::Apis::WebcontentpublisherV1::NewsletterConfig]
         attr_accessor :newsletter_config
       
-        # Output only. The current state of this CTA.
+        # Optional. The current state of this CTA.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -189,7 +189,7 @@ module Google
         # @return [String]
         attr_accessor :category_label
       
-        # Required. The question prompt displayed to readers.
+        # Optional. The question prompt displayed to readers (up to 140 characters).
         # Corresponds to the JSON property `displayText`
         # @return [String]
         attr_accessor :display_text
@@ -668,6 +668,11 @@ module Google
         # @return [Array<Google::Apis::WebcontentpublisherV1::SurveyQuestion>]
         attr_accessor :questions
       
+        # Output only. Link to the Looker Studio dashboard.
+        # Corresponds to the JSON property `reportUrl`
+        # @return [String]
+        attr_accessor :report_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -676,6 +681,7 @@ module Google
         def update!(**args)
           @custom_message = args[:custom_message] if args.key?(:custom_message)
           @questions = args[:questions] if args.key?(:questions)
+          @report_url = args[:report_url] if args.key?(:report_url)
         end
       end
       

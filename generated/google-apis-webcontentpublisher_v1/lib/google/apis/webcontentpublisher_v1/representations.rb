@@ -343,6 +343,7 @@ module Google
           property :custom_message, as: 'customMessage'
           collection :questions, as: 'questions', class: Google::Apis::WebcontentpublisherV1::SurveyQuestion, decorator: Google::Apis::WebcontentpublisherV1::SurveyQuestion::Representation
       
+          property :report_url, as: 'reportUrl'
         end
       end
       
