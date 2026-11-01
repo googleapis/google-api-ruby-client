@@ -34748,6 +34748,10 @@
 "/alertcenter:v1beta1/Alert/startTime": start_time
 "/alertcenter:v1beta1/Alert/type": type
 "/alertcenter:v1beta1/Alert/updateTime": update_time
+"/alertcenter:v1beta1/AlertDetail": alert_detail
+"/alertcenter:v1beta1/AlertDetail/fieldName": field_name
+"/alertcenter:v1beta1/AlertDetail/fieldValues": field_values
+"/alertcenter:v1beta1/AlertDetail/fieldValues/field_value": field_value
 "/alertcenter:v1beta1/AlertFeedback": alert_feedback
 "/alertcenter:v1beta1/AlertFeedback/alertId": alert_id
 "/alertcenter:v1beta1/AlertFeedback/createTime": create_time
@@ -35250,6 +35254,14 @@
 "/alertcenter:v1beta1/SuspiciousActivitySecurityDetail/oldValue": old_value
 "/alertcenter:v1beta1/SuspiciousActivitySecurityDetail/resourceId": resource_id
 "/alertcenter:v1beta1/SuspiciousActivitySecurityDetail/serialNumber": serial_number
+"/alertcenter:v1beta1/SystemDefinedAlertData": system_defined_alert_data
+"/alertcenter:v1beta1/SystemDefinedAlertData/alertDetails": alert_details
+"/alertcenter:v1beta1/SystemDefinedAlertData/alertDetails/alert_detail": alert_detail
+"/alertcenter:v1beta1/SystemDefinedAlertDataAlertDetailFieldValue": system_defined_alert_data_alert_detail_field_value
+"/alertcenter:v1beta1/SystemDefinedAlertDataAlertDetailFieldValue/boolValue": bool_value
+"/alertcenter:v1beta1/SystemDefinedAlertDataAlertDetailFieldValue/intValue": int_value
+"/alertcenter:v1beta1/SystemDefinedAlertDataAlertDetailFieldValue/stringValue": string_value
+"/alertcenter:v1beta1/SystemDefinedAlertDataAlertDetailFieldValue/timestampValue": timestamp_value
 "/alertcenter:v1beta1/TransferError": transfer_error
 "/alertcenter:v1beta1/TransferError/email": email
 "/alertcenter:v1beta1/TransferError/entityType": entity_type

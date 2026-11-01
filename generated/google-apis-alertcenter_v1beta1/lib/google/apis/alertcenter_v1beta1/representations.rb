@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlertFeedback
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -418,6 +424,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystemDefinedAlertData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SystemDefinedAlertDataAlertDetailFieldValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TransferError
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -571,6 +589,15 @@ module Google
           property :start_time, as: 'startTime'
           property :type, as: 'type'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AlertDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field_name, as: 'fieldName'
+          collection :field_values, as: 'fieldValues', class: Google::Apis::AlertcenterV1beta1::SystemDefinedAlertDataAlertDetailFieldValue, decorator: Google::Apis::AlertcenterV1beta1::SystemDefinedAlertDataAlertDetailFieldValue::Representation
+      
         end
       end
       
@@ -1142,6 +1169,24 @@ module Google
           property :old_value, as: 'oldValue'
           property :resource_id, as: 'resourceId'
           property :serial_number, as: 'serialNumber'
+        end
+      end
+      
+      class SystemDefinedAlertData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_details, as: 'alertDetails', class: Google::Apis::AlertcenterV1beta1::AlertDetail, decorator: Google::Apis::AlertcenterV1beta1::AlertDetail::Representation
+      
+        end
+      end
+      
+      class SystemDefinedAlertDataAlertDetailFieldValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :string_value, as: 'stringValue'
+          property :timestamp_value, as: 'timestampValue'
         end
       end
       
