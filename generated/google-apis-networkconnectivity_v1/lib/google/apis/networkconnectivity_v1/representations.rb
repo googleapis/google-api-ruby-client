@@ -142,6 +142,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportPscConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -898,6 +904,14 @@ module Google
         end
       end
       
+      class ExportPscConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :global_google_apis, as: 'globalGoogleApis'
+          property :published_services_and_regional_google_apis, as: 'publishedServicesAndRegionalGoogleApis'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1013,6 +1027,8 @@ module Google
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :export_psc, as: 'exportPsc'
+          property :export_psc_config, as: 'exportPscConfig', class: Google::Apis::NetworkconnectivityV1::ExportPscConfig, decorator: Google::Apis::NetworkconnectivityV1::ExportPscConfig::Representation
+      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :policy_mode, as: 'policyMode'

@@ -361041,6 +361041,9 @@
 "/networkconnectivity:v1/DnsAutomationStatus/fqdn": fqdn
 "/networkconnectivity:v1/DnsAutomationStatus/state": state
 "/networkconnectivity:v1/Empty": empty
+"/networkconnectivity:v1/ExportPscConfig": export_psc_config
+"/networkconnectivity:v1/ExportPscConfig/globalGoogleApis": global_google_apis
+"/networkconnectivity:v1/ExportPscConfig/publishedServicesAndRegionalGoogleApis": published_services_and_regional_google_apis
 "/networkconnectivity:v1/Expr": expr
 "/networkconnectivity:v1/Expr/description": description
 "/networkconnectivity:v1/Expr/expression": expression
@@ -361111,6 +361114,7 @@
 "/networkconnectivity:v1/Hub/createTime": create_time
 "/networkconnectivity:v1/Hub/description": description
 "/networkconnectivity:v1/Hub/exportPsc": export_psc
+"/networkconnectivity:v1/Hub/exportPscConfig": export_psc_config
 "/networkconnectivity:v1/Hub/labels": labels
 "/networkconnectivity:v1/Hub/labels/label": label
 "/networkconnectivity:v1/Hub/name": name
