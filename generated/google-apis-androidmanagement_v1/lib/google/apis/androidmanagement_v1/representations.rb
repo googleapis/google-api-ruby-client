@@ -736,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Outcome
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PackageNameList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -814,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Predicate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PreferentialNetworkServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -886,6 +898,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Rule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ScreenBrightnessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -923,6 +941,12 @@ module Google
       end
       
       class SignupUrl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SingleApp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -994,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Target
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TelephonyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1001,6 +1031,18 @@ module Google
       end
       
       class TermsAndConditions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeOfDay
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnifiedUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2357,6 +2399,13 @@ module Google
         end
       end
       
+      class Outcome
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outcome_type, as: 'outcomeType'
+        end
+      end
+      
       class PackageNameList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2569,6 +2618,8 @@ module Google
           property :system_update, as: 'systemUpdate', class: Google::Apis::AndroidmanagementV1::SystemUpdate, decorator: Google::Apis::AndroidmanagementV1::SystemUpdate::Representation
       
           property :tethering_config_disabled, as: 'tetheringConfigDisabled'
+          property :unified_update_policy, as: 'unifiedUpdatePolicy', class: Google::Apis::AndroidmanagementV1::UnifiedUpdatePolicy, decorator: Google::Apis::AndroidmanagementV1::UnifiedUpdatePolicy::Representation
+      
           property :uninstall_apps_disabled, as: 'uninstallAppsDisabled'
           property :unmute_microphone_disabled, as: 'unmuteMicrophoneDisabled'
           property :usage_log, as: 'usageLog', class: Google::Apis::AndroidmanagementV1::UsageLog, decorator: Google::Apis::AndroidmanagementV1::UsageLog::Representation
@@ -2611,6 +2662,23 @@ module Google
           property :battery_level, as: 'batteryLevel'
           property :create_time, as: 'createTime'
           property :event_type, as: 'eventType'
+        end
+      end
+      
+      class Predicate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date_lower_bound, as: 'dateLowerBound', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
+      
+          property :date_upper_bound, as: 'dateUpperBound', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
+      
+          collection :days_of_week, as: 'daysOfWeek'
+          property :time_of_day_lower_bound, as: 'timeOfDayLowerBound', class: Google::Apis::AndroidmanagementV1::TimeOfDay, decorator: Google::Apis::AndroidmanagementV1::TimeOfDay::Representation
+      
+          property :time_of_day_upper_bound, as: 'timeOfDayUpperBound', class: Google::Apis::AndroidmanagementV1::TimeOfDay, decorator: Google::Apis::AndroidmanagementV1::TimeOfDay::Representation
+      
+          property :update_age_lower_bound, as: 'updateAgeLowerBound'
+          property :update_age_upper_bound, as: 'updateAgeUpperBound'
         end
       end
       
@@ -2723,6 +2791,20 @@ module Google
         end
       end
       
+      class Rule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :outcome, as: 'outcome', class: Google::Apis::AndroidmanagementV1::Outcome, decorator: Google::Apis::AndroidmanagementV1::Outcome::Representation
+      
+          property :predicate, as: 'predicate', class: Google::Apis::AndroidmanagementV1::Predicate, decorator: Google::Apis::AndroidmanagementV1::Predicate::Representation
+      
+          collection :stages, as: 'stages'
+          collection :targets, as: 'targets', class: Google::Apis::AndroidmanagementV1::Target, decorator: Google::Apis::AndroidmanagementV1::Target::Representation
+      
+        end
+      end
+      
       class ScreenBrightnessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2786,6 +2868,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :url, as: 'url'
+        end
+      end
+      
+      class SingleApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
         end
       end
       
@@ -2908,6 +2997,15 @@ module Google
         end
       end
       
+      class Target
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :single_app, as: 'singleApp', class: Google::Apis::AndroidmanagementV1::SingleApp, decorator: Google::Apis::AndroidmanagementV1::SingleApp::Representation
+      
+          property :target_type, as: 'targetType'
+        end
+      end
+      
       class TelephonyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2925,6 +3023,24 @@ module Google
           property :content, as: 'content', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
           property :header, as: 'header', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+        end
+      end
+      
+      class TimeOfDay
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hours, as: 'hours'
+          property :minutes, as: 'minutes'
+          property :nanos, as: 'nanos'
+          property :seconds, as: 'seconds'
+        end
+      end
+      
+      class UnifiedUpdatePolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :rules, as: 'rules', class: Google::Apis::AndroidmanagementV1::Rule, decorator: Google::Apis::AndroidmanagementV1::Rule::Representation
       
         end
       end
