@@ -16,13 +16,13 @@ module Google
   module Apis
     module RecaptchaenterpriseV1
       # Version of the google-apis-recaptchaenterprise_v1 gem
-      GEM_VERSION = "0.75.0"
+      GEM_VERSION = "0.76.0"
 
       # Version of the code generator used to generate this client
       GENERATOR_VERSION = "0.19.1"
 
       # Revision of the discovery document this client was generated from
-      REVISION = "20261003"
+      REVISION = "20261025"
     end
   end
 end
