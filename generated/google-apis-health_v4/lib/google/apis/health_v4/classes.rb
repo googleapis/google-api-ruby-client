@@ -1139,8 +1139,9 @@ module Google
         attr_accessor :data_source_family
       
         # Optional. The maximum number of data points to return. If unspecified, at most
-        # 90 data points will be returned. The maximum page size is 10000; values above
-        # that will be truncated accordingly.
+        # `90` data points will be returned. The maximum page size is `90`. For `
+        # calories-in-heart-rate-zone`, `heart-rate`, `active-minutes`, and `total-
+        # calories`, the default and maximum page size is `14`.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
