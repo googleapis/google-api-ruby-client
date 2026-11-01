@@ -174,7 +174,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -214,7 +214,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -326,7 +326,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -449,7 +449,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -502,7 +502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -542,7 +542,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -596,7 +596,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -708,7 +708,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -764,7 +764,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -821,7 +821,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -864,7 +864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -907,7 +907,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -949,7 +949,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -989,7 +989,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1112,7 +1112,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1165,7 +1165,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1205,7 +1205,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1259,7 +1259,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1371,7 +1371,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1430,7 +1430,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1473,7 +1473,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1530,7 +1530,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1585,7 +1585,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1709,7 +1709,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1759,7 +1759,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1814,7 +1814,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1851,7 +1851,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1892,7 +1892,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -1943,7 +1943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2052,7 +2052,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2160,7 +2160,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2216,7 +2216,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2270,7 +2270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2311,7 +2311,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2351,7 +2351,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2405,7 +2405,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2460,7 +2460,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2584,7 +2584,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2634,7 +2634,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2689,7 +2689,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2726,7 +2726,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2761,7 +2761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2805,7 +2805,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2846,7 +2846,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -2898,7 +2898,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3007,7 +3007,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3118,7 +3118,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3175,7 +3175,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3229,7 +3229,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3270,7 +3270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3326,7 +3326,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3366,7 +3366,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3421,7 +3421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3472,7 +3472,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3509,7 +3509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3564,7 +3564,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3672,7 +3672,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3735,7 +3735,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3858,7 +3858,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -3898,7 +3898,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4010,7 +4010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4068,7 +4068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4191,7 +4191,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4244,7 +4244,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4302,7 +4302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4365,7 +4365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4422,7 +4422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4462,7 +4462,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4506,7 +4506,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4567,7 +4567,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4679,7 +4679,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4735,7 +4735,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4792,7 +4792,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4836,7 +4836,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4893,7 +4893,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -4950,7 +4950,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5004,7 +5004,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5059,7 +5059,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5102,7 +5102,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5165,7 +5165,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5222,7 +5222,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5272,7 +5272,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5310,7 +5310,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5361,7 +5361,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5470,7 +5470,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5512,7 +5512,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5552,7 +5552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5607,7 +5607,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5657,7 +5657,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5707,7 +5707,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5754,7 +5754,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5788,7 +5788,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5825,7 +5825,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5863,7 +5863,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5900,7 +5900,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -5953,7 +5953,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6064,7 +6064,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6104,7 +6104,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6156,7 +6156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6206,7 +6206,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6259,7 +6259,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6309,7 +6309,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6359,7 +6359,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6397,7 +6397,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6434,7 +6434,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6484,7 +6484,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6521,7 +6521,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6572,7 +6572,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6681,7 +6681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6737,7 +6737,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6777,7 +6777,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6833,7 +6833,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -6956,7 +6956,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7009,7 +7009,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7051,7 +7051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7105,7 +7105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7217,7 +7217,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7277,7 +7277,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7335,7 +7335,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7392,7 +7392,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7515,7 +7515,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7568,7 +7568,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7621,7 +7621,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7661,7 +7661,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7714,7 +7714,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7826,7 +7826,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7885,7 +7885,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7935,7 +7935,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -7972,7 +7972,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8023,7 +8023,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8131,7 +8131,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8184,7 +8184,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8226,7 +8226,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8266,7 +8266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8316,7 +8316,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8356,7 +8356,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8407,7 +8407,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8516,7 +8516,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8573,7 +8573,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8615,7 +8615,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8669,7 +8669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8703,7 +8703,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8746,7 +8746,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8800,7 +8800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8852,7 +8852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8906,7 +8906,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -8943,7 +8943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9007,7 +9007,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9116,7 +9116,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9228,7 +9228,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9351,7 +9351,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9387,7 +9387,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9425,7 +9425,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9534,7 +9534,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9586,7 +9586,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9622,7 +9622,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9661,7 +9661,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9770,7 +9770,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9820,7 +9820,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9857,7 +9857,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -9908,7 +9908,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10016,7 +10016,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10072,7 +10072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10196,7 +10196,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10254,7 +10254,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10291,7 +10291,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10341,7 +10341,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10449,7 +10449,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10502,7 +10502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10626,7 +10626,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10676,7 +10676,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10713,7 +10713,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10764,7 +10764,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10873,7 +10873,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10929,7 +10929,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -10969,7 +10969,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11023,7 +11023,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11072,7 +11072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11126,7 +11126,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11245,7 +11245,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11295,7 +11295,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11332,7 +11332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11383,7 +11383,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11492,7 +11492,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11548,7 +11548,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11588,7 +11588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11642,7 +11642,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11692,7 +11692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11729,7 +11729,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11780,7 +11780,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11889,7 +11889,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11945,7 +11945,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -11985,7 +11985,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12039,7 +12039,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12080,7 +12080,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12121,7 +12121,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12233,7 +12233,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12283,7 +12283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12337,7 +12337,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12374,7 +12374,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12414,7 +12414,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12455,7 +12455,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12509,7 +12509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12623,7 +12623,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12678,7 +12678,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12719,7 +12719,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12760,7 +12760,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12800,7 +12800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12862,7 +12862,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12923,7 +12923,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -12969,7 +12969,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13030,7 +13030,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13146,7 +13146,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13217,7 +13217,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13340,7 +13340,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13385,7 +13385,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13449,7 +13449,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13510,7 +13510,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13584,7 +13584,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13632,7 +13632,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13673,7 +13673,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13737,7 +13737,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13850,7 +13850,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -13971,7 +13971,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14094,7 +14094,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14211,7 +14211,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14282,7 +14282,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14343,7 +14343,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14415,7 +14415,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14493,7 +14493,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14564,7 +14564,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14624,7 +14624,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14687,7 +14687,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14758,7 +14758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14843,7 +14843,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14924,7 +14924,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -14985,7 +14985,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15045,7 +15045,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15168,7 +15168,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15225,7 +15225,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15270,7 +15270,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15325,7 +15325,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15441,7 +15441,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15563,7 +15563,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15626,7 +15626,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15683,7 +15683,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15726,7 +15726,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15763,7 +15763,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15819,7 +15819,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15943,7 +15943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -15995,7 +15995,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16032,7 +16032,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16073,7 +16073,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16127,7 +16127,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16236,7 +16236,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16277,7 +16277,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16317,7 +16317,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16376,7 +16376,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16433,7 +16433,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16491,7 +16491,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16617,7 +16617,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16681,7 +16681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16736,7 +16736,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16793,7 +16793,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16852,7 +16852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16913,7 +16913,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -16970,7 +16970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17010,7 +17010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17053,7 +17053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17099,7 +17099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17143,7 +17143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17183,7 +17183,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17243,7 +17243,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17283,7 +17283,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17359,7 +17359,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17471,7 +17471,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17590,7 +17590,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17643,7 +17643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17699,7 +17699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17755,7 +17755,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17810,7 +17810,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17864,7 +17864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17902,7 +17902,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -17958,7 +17958,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18018,7 +18018,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18062,7 +18062,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18119,7 +18119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18176,7 +18176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18233,7 +18233,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18290,7 +18290,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18349,7 +18349,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18405,7 +18405,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18466,7 +18466,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18525,7 +18525,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18583,7 +18583,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18642,7 +18642,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18699,7 +18699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18757,7 +18757,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18812,7 +18812,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18870,7 +18870,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -18936,7 +18936,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19001,7 +19001,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19044,7 +19044,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19120,7 +19120,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19182,7 +19182,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19241,7 +19241,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19305,7 +19305,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19364,7 +19364,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19417,7 +19417,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19457,7 +19457,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19501,7 +19501,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19557,7 +19557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19669,7 +19669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19713,7 +19713,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19756,7 +19756,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19879,7 +19879,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19938,7 +19938,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -19978,7 +19978,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20022,7 +20022,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20075,7 +20075,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20187,7 +20187,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20231,7 +20231,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20289,7 +20289,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20332,7 +20332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20383,7 +20383,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20421,7 +20421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20462,7 +20462,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20500,7 +20500,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20552,7 +20552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20660,7 +20660,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20720,7 +20720,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20761,7 +20761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20801,7 +20801,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20924,7 +20924,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -20977,7 +20977,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21017,7 +21017,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21074,7 +21074,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21186,7 +21186,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21245,7 +21245,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21303,7 +21303,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21344,7 +21344,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21395,7 +21395,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21432,7 +21432,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21473,7 +21473,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21511,7 +21511,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21563,7 +21563,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21671,7 +21671,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21731,7 +21731,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21772,7 +21772,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21812,7 +21812,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21850,7 +21850,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21959,7 +21959,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -21997,7 +21997,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22106,7 +22106,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22156,7 +22156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22194,7 +22194,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22238,7 +22238,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22276,7 +22276,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22327,7 +22327,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22435,7 +22435,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22491,7 +22491,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22533,7 +22533,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22586,7 +22586,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22627,7 +22627,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22671,7 +22671,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22715,7 +22715,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22758,7 +22758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22811,7 +22811,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22851,7 +22851,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22895,7 +22895,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -22948,7 +22948,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23064,7 +23064,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23108,7 +23108,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23151,7 +23151,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23210,7 +23210,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23261,7 +23261,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23298,7 +23298,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23339,7 +23339,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23396,7 +23396,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23505,7 +23505,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23546,7 +23546,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23588,7 +23588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23628,7 +23628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23751,7 +23751,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23791,7 +23791,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23903,7 +23903,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -23940,7 +23940,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24048,7 +24048,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24172,7 +24172,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24226,7 +24226,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24266,7 +24266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24310,7 +24310,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24365,7 +24365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24476,7 +24476,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24536,7 +24536,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24580,7 +24580,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24623,7 +24623,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24747,7 +24747,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24800,7 +24800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24840,7 +24840,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24897,7 +24897,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -24958,7 +24958,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25081,7 +25081,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25139,7 +25139,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25197,7 +25197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25256,7 +25256,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25297,7 +25297,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25366,7 +25366,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25479,7 +25479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25598,7 +25598,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25641,7 +25641,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25699,7 +25699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25762,7 +25762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25825,7 +25825,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -25950,7 +25950,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26003,7 +26003,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26053,7 +26053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26090,7 +26090,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26130,7 +26130,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26171,7 +26171,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26211,7 +26211,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26251,7 +26251,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26302,7 +26302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26410,7 +26410,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26463,7 +26463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26519,7 +26519,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26575,7 +26575,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26628,7 +26628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26681,7 +26681,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26734,7 +26734,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26775,7 +26775,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26815,7 +26815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26852,7 +26852,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -26961,7 +26961,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27014,7 +27014,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27069,7 +27069,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27119,7 +27119,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27156,7 +27156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27193,7 +27193,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27244,7 +27244,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27352,7 +27352,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27473,7 +27473,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27527,7 +27527,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27580,7 +27580,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27634,7 +27634,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27684,7 +27684,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27739,7 +27739,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27795,7 +27795,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27919,7 +27919,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -27972,7 +27972,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28028,7 +28028,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28071,7 +28071,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28115,7 +28115,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28172,7 +28172,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28284,7 +28284,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28398,7 +28398,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28454,7 +28454,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28510,7 +28510,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28554,7 +28554,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28610,7 +28610,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28667,7 +28667,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28710,7 +28710,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28833,7 +28833,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28886,7 +28886,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28926,7 +28926,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -28970,7 +28970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29024,7 +29024,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29136,7 +29136,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29180,7 +29180,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29223,7 +29223,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29346,7 +29346,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29386,7 +29386,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29498,7 +29498,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29560,7 +29560,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29613,7 +29613,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29667,7 +29667,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29717,7 +29717,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29754,7 +29754,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29795,7 +29795,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29835,7 +29835,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -29891,7 +29891,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30003,7 +30003,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30042,7 +30042,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30151,7 +30151,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30204,7 +30204,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30257,7 +30257,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30314,7 +30314,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30368,7 +30368,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30422,7 +30422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30545,7 +30545,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30598,7 +30598,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30638,7 +30638,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30692,7 +30692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30804,7 +30804,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30863,7 +30863,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30906,7 +30906,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -30943,7 +30943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31051,7 +31051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31105,7 +31105,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31150,7 +31150,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31197,7 +31197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31248,7 +31248,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31295,7 +31295,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31347,7 +31347,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31388,7 +31388,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31423,7 +31423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31532,7 +31532,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31643,7 +31643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31704,7 +31704,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31762,7 +31762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31815,7 +31815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31866,7 +31866,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31918,7 +31918,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -31970,7 +31970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32020,7 +32020,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32070,7 +32070,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32107,7 +32107,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32158,7 +32158,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32266,7 +32266,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32322,7 +32322,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32372,7 +32372,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32496,7 +32496,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32550,7 +32550,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32603,7 +32603,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32643,7 +32643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32697,7 +32697,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32808,7 +32808,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32867,7 +32867,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32921,7 +32921,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -32974,7 +32974,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33014,7 +33014,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33068,7 +33068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33180,7 +33180,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33239,7 +33239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33282,7 +33282,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33339,7 +33339,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33393,7 +33393,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33433,7 +33433,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33477,7 +33477,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33531,7 +33531,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33643,7 +33643,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33756,7 +33756,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33816,7 +33816,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33860,7 +33860,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33903,7 +33903,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33956,7 +33956,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -33996,7 +33996,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34039,7 +34039,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34083,7 +34083,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34138,7 +34138,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34250,7 +34250,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34365,7 +34365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34425,7 +34425,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34469,7 +34469,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34528,7 +34528,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34571,7 +34571,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34630,7 +34630,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34753,7 +34753,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34793,7 +34793,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34847,7 +34847,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -34959,7 +34959,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35022,7 +35022,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35146,7 +35146,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35199,7 +35199,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35239,7 +35239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35280,7 +35280,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35334,7 +35334,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35445,7 +35445,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35505,7 +35505,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35548,7 +35548,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35588,7 +35588,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35699,7 +35699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35757,7 +35757,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35810,7 +35810,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35869,7 +35869,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35926,7 +35926,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -35966,7 +35966,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36010,7 +36010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36067,7 +36067,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36179,7 +36179,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36235,7 +36235,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36291,7 +36291,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36335,7 +36335,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36391,7 +36391,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36448,7 +36448,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36502,7 +36502,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36557,7 +36557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36600,7 +36600,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36662,7 +36662,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36719,7 +36719,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36843,7 +36843,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36896,7 +36896,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36936,7 +36936,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -36990,7 +36990,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37101,7 +37101,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37161,7 +37161,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37204,7 +37204,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37328,7 +37328,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37382,7 +37382,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37423,7 +37423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37477,7 +37477,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37589,7 +37589,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37649,7 +37649,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37692,7 +37692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37745,7 +37745,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37785,7 +37785,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37839,7 +37839,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -37951,7 +37951,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38010,7 +38010,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38053,7 +38053,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38110,7 +38110,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38234,7 +38234,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38287,7 +38287,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38327,7 +38327,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38368,7 +38368,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38422,7 +38422,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38533,7 +38533,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38593,7 +38593,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38636,7 +38636,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38698,7 +38698,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38759,7 +38759,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38805,7 +38805,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38864,7 +38864,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -38980,7 +38980,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39050,7 +39050,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39093,7 +39093,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39157,7 +39157,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39215,7 +39215,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39289,7 +39289,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39333,7 +39333,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39373,7 +39373,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39434,7 +39434,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39546,7 +39546,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39666,7 +39666,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39785,7 +39785,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39900,7 +39900,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -39970,7 +39970,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40029,7 +40029,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40100,7 +40100,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40169,7 +40169,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40239,7 +40239,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40296,7 +40296,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40353,7 +40353,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40423,7 +40423,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40507,7 +40507,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40587,7 +40587,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40646,7 +40646,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40686,7 +40686,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40798,7 +40798,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40919,7 +40919,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -40975,7 +40975,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41018,7 +41018,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41072,7 +41072,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41112,7 +41112,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41166,7 +41166,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41278,7 +41278,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41332,7 +41332,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41385,7 +41385,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41426,7 +41426,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41470,7 +41470,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41526,7 +41526,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41638,7 +41638,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41682,7 +41682,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41725,7 +41725,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41784,7 +41784,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41824,7 +41824,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41868,7 +41868,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -41921,7 +41921,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42033,7 +42033,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42077,7 +42077,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42135,7 +42135,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42178,7 +42178,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42237,7 +42237,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42293,7 +42293,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42353,7 +42353,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42394,7 +42394,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42463,7 +42463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42576,7 +42576,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42692,7 +42692,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42758,7 +42758,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42824,7 +42824,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42880,7 +42880,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42933,7 +42933,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -42973,7 +42973,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43016,7 +43016,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43056,7 +43056,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43100,7 +43100,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43143,7 +43143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43196,7 +43196,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43308,7 +43308,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43364,7 +43364,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43420,7 +43420,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43479,7 +43479,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43535,7 +43535,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43591,7 +43591,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43635,7 +43635,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43678,7 +43678,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43800,7 +43800,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43853,7 +43853,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43893,7 +43893,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -43947,7 +43947,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44058,7 +44058,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44101,7 +44101,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44140,7 +44140,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44181,7 +44181,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44293,7 +44293,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44348,7 +44348,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44394,7 +44394,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44447,7 +44447,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44487,7 +44487,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44530,7 +44530,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44587,7 +44587,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44699,7 +44699,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44762,7 +44762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44815,7 +44815,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44858,7 +44858,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44916,7 +44916,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -44953,7 +44953,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45009,7 +45009,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45068,7 +45068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45108,7 +45108,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45152,7 +45152,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45206,7 +45206,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45318,7 +45318,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45362,7 +45362,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45420,7 +45420,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45463,7 +45463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45520,7 +45520,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45573,7 +45573,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45615,7 +45615,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45669,7 +45669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45781,7 +45781,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45837,7 +45837,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45878,7 +45878,51 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such
+        # policy or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_region_ssl_policy_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -45932,7 +45976,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46044,7 +46088,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46156,7 +46200,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46213,7 +46257,94 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource.
+        # Replaces any existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::RegionSetPolicyRequest] region_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_region_ssl_policy_iam_policy(project, region, resource, region_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/sslPolicies/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionSetPolicyRequest::Representation
+          command.request_object = region_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_region_ssl_policy_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/regions/{region}/sslPolicies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46266,7 +46397,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46306,7 +46437,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46360,7 +46491,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46472,7 +46603,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46528,7 +46659,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46581,7 +46712,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46621,7 +46752,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46675,7 +46806,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46787,7 +46918,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46846,7 +46977,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46903,7 +47034,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -46959,7 +47090,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47012,7 +47143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47052,7 +47183,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47106,7 +47237,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47218,7 +47349,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47262,7 +47393,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47302,7 +47433,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47347,7 +47478,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47459,7 +47590,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47509,7 +47640,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47557,7 +47688,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47602,7 +47733,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47714,7 +47845,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47766,7 +47897,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47890,7 +48021,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -47927,7 +48058,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48035,7 +48166,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48083,7 +48214,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48130,7 +48261,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48245,7 +48376,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48306,7 +48437,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48353,7 +48484,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48399,7 +48530,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48445,7 +48576,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48495,7 +48626,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48557,7 +48688,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48673,7 +48804,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48722,7 +48853,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48770,7 +48901,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48817,7 +48948,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48878,7 +49009,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -48993,7 +49124,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49051,7 +49182,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49112,7 +49243,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49159,7 +49290,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49205,7 +49336,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49328,7 +49459,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49381,7 +49512,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49421,7 +49552,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49465,7 +49596,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49519,7 +49650,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49631,7 +49762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49688,7 +49819,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49746,7 +49877,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49790,7 +49921,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49833,7 +49964,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -49894,7 +50025,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50017,7 +50148,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50070,7 +50201,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50110,7 +50241,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50154,7 +50285,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50207,7 +50338,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50319,7 +50450,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50378,7 +50509,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50422,7 +50553,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50465,7 +50596,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50515,7 +50646,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50552,7 +50683,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50602,7 +50733,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50710,7 +50841,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50763,7 +50894,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50820,7 +50951,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50870,7 +51001,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -50907,7 +51038,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51015,7 +51146,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51070,7 +51201,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51125,7 +51256,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51248,7 +51379,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51301,7 +51432,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51357,7 +51488,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51413,7 +51544,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51453,7 +51584,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51497,7 +51628,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51543,7 +51674,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51663,7 +51794,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51707,7 +51838,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51747,7 +51878,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51801,7 +51932,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -51912,7 +52043,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52045,7 +52176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52161,7 +52292,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52277,7 +52408,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52336,7 +52467,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52392,7 +52523,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52448,7 +52579,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52492,7 +52623,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52552,7 +52683,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52608,7 +52739,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52664,7 +52795,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52714,7 +52845,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52751,7 +52882,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52802,7 +52933,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52910,7 +53041,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52950,7 +53081,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -52993,7 +53124,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53117,7 +53248,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53167,7 +53298,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53204,7 +53335,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53244,7 +53375,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53298,7 +53429,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53406,7 +53537,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53515,7 +53646,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53575,7 +53706,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53625,7 +53756,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53665,7 +53796,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53707,7 +53838,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53831,7 +53962,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53884,7 +54015,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53927,7 +54058,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -53971,7 +54102,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54025,7 +54156,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54136,7 +54267,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54196,7 +54327,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54240,7 +54371,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54283,7 +54414,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54317,7 +54448,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54370,7 +54501,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54426,7 +54557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54463,7 +54594,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54504,7 +54635,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54558,7 +54689,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54667,7 +54798,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54708,7 +54839,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54749,7 +54880,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54789,7 +54920,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54843,7 +54974,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -54967,7 +55098,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55017,7 +55148,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55054,7 +55185,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55105,7 +55236,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55214,7 +55345,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55338,7 +55469,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55391,7 +55522,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55429,7 +55560,48 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a resource. May be empty if no such
+        # policy or resource exists.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_ssl_policy_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'projects/{project}/global/sslPolicies/{resource}/getIamPolicy', options)
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55479,7 +55651,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55588,7 +55760,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55697,7 +55869,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55751,7 +55923,88 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on the specified resource.
+        # Replaces any existing policy.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::GlobalSetPolicyRequest] global_set_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_ssl_policy_iam_policy(project, resource, global_set_policy_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/sslPolicies/{resource}/setIamPolicy', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalSetPolicyRequest::Representation
+          command.request_object = global_set_policy_request_object
+          command.response_representation = Google::Apis::ComputeV1::Policy::Representation
+          command.response_class = Google::Apis::ComputeV1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [String] user_ip
+        #   Legacy name for parameter that has been superseded by `quotaUser`.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_ssl_policy_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, 'projects/{project}/global/sslPolicies/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55874,7 +56127,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -55914,7 +56167,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56026,7 +56279,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56149,7 +56402,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56206,7 +56459,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56247,7 +56500,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56291,7 +56544,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56345,7 +56598,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56457,7 +56710,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56571,7 +56824,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56615,7 +56868,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56658,7 +56911,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56721,7 +56974,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56851,7 +57104,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56904,7 +57157,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -56960,7 +57213,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57007,7 +57260,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57051,7 +57304,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57105,7 +57358,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57224,7 +57477,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57337,7 +57590,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57408,7 +57661,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57452,7 +57705,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57509,7 +57762,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57552,7 +57805,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57602,7 +57855,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57639,7 +57892,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57690,7 +57943,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57798,7 +58051,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57854,7 +58107,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -57978,7 +58231,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58028,7 +58281,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58065,7 +58318,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58116,7 +58369,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58225,7 +58478,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58281,7 +58534,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58334,7 +58587,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58458,7 +58711,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58508,7 +58761,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58545,7 +58798,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58596,7 +58849,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58705,7 +58958,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58761,7 +59014,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58815,7 +59068,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58869,7 +59122,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58923,7 +59176,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -58980,7 +59233,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59034,7 +59287,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59157,7 +59410,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59210,7 +59463,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59250,7 +59503,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59304,7 +59557,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59416,7 +59669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59475,7 +59728,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59518,7 +59771,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59574,7 +59827,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59630,7 +59883,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59753,7 +60006,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59806,7 +60059,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59846,7 +60099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59890,7 +60143,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -59944,7 +60197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60056,7 +60309,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60112,7 +60365,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60168,7 +60421,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60227,7 +60480,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60286,7 +60539,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60329,7 +60582,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60379,7 +60632,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60416,7 +60669,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60467,7 +60720,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60576,7 +60829,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60630,7 +60883,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60684,7 +60937,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60737,7 +60990,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60791,7 +61044,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60848,7 +61101,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -60888,7 +61141,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61012,7 +61265,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61062,7 +61315,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61099,7 +61352,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61150,7 +61403,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61259,7 +61512,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61313,7 +61566,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61366,7 +61619,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61406,7 +61659,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61529,7 +61782,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61582,7 +61835,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61622,7 +61875,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61676,7 +61929,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61788,7 +62041,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61846,7 +62099,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -61970,7 +62223,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62020,7 +62273,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62057,7 +62310,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62108,7 +62361,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62164,7 +62417,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62273,7 +62526,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62329,7 +62582,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62369,7 +62622,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62423,7 +62676,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62465,7 +62718,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62588,7 +62841,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62641,7 +62894,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62681,7 +62934,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62721,7 +62974,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62775,7 +63028,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62887,7 +63140,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62944,7 +63197,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -62987,7 +63240,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63110,7 +63363,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63163,7 +63416,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63203,7 +63456,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63257,7 +63510,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63369,7 +63622,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63426,7 +63679,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63479,7 +63732,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63518,7 +63771,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63575,7 +63828,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63685,7 +63938,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63750,7 +64003,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63789,7 +64042,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63830,7 +64083,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63942,7 +64195,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -63996,7 +64249,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64049,7 +64302,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64089,7 +64342,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64142,7 +64395,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64253,7 +64506,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64309,7 +64562,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64346,7 +64599,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
         
@@ -64454,7 +64707,7 @@ module Google
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
-          command.set_api_version_header "2026-09-01"
+          command.set_api_version_header "2026-11-01"
           execute_or_queue_command(command, &block)
         end
 

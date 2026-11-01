@@ -628,6 +628,25 @@ module Google
         # @return [Fixnum]
         attr_accessor :external_ipv6_prefix_length
       
+        # Reference to the source of external IPv4 addresses,
+        # like a PublicDelegatedPrefix (PDP) for BYOIP.
+        # The PDP must support enhanced IPv4 allocations.
+        # Use one of the following formats to specify a PDP when allocating an
+        # external IPv4 address using BYOIP.
+        # 
+        # -
+        # Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/
+        # projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # -
+        # Partial URL, as in
+        # 
+        # 
+        # - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        # - regions/region/publicDelegatedPrefixes/pdp-name
+        # Corresponds to the JSON property `ipCollection`
+        # @return [String]
+        attr_accessor :ip_collection
+      
         # Output only. [Output Only] Type of the resource. Alwayscompute#accessConfig
         # for access configs.
         # Corresponds to the JSON property `kind`
@@ -703,6 +722,7 @@ module Google
         def update!(**args)
           @external_ipv6 = args[:external_ipv6] if args.key?(:external_ipv6)
           @external_ipv6_prefix_length = args[:external_ipv6_prefix_length] if args.key?(:external_ipv6_prefix_length)
+          @ip_collection = args[:ip_collection] if args.key?(:ip_collection)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @nat_ip = args[:nat_ip] if args.key?(:nat_ip)
@@ -842,6 +862,15 @@ module Google
         # @return [String]
         attr_accessor :network
       
+        # Optional. The URL of the network attachment that this address comes from in
+        # the
+        # following format:
+        # projects/`project`/regions/`region_name`/networkAttachments/`
+        # network_attachment_name`.
+        # Corresponds to the JSON property `networkAttachment`
+        # @return [String]
+        attr_accessor :network_attachment
+      
         # This signifies the networking tier used for configuring this address and
         # can only take the following values: PREMIUM orSTANDARD. Internal IP addresses
         # are always Premium Tier;
@@ -906,6 +935,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Optional. Producer Service's Service class ID for the region of this address.
+        # Can
+        # only be used with network_attachment. It is not possible to use on its own;
+        # however, network_attachment can be used without service_class_id.
+        # Corresponds to the JSON property `serviceClassId`
+        # @return [String]
+        attr_accessor :service_class_id
+      
         # Output only. [Output Only] The status of the address, which can be one
         # ofRESERVING, RESERVED, or IN_USE.
         # An address that is RESERVING is currently in the process of
@@ -947,11 +984,13 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
+          @network_attachment = args[:network_attachment] if args.key?(:network_attachment)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @prefix_length = args[:prefix_length] if args.key?(:prefix_length)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @service_class_id = args[:service_class_id] if args.key?(:service_class_id)
           @status = args[:status] if args.key?(:status)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @users = args[:users] if args.key?(:users)
@@ -4505,6 +4544,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Defines a dynamic forwarding configuration for the backend service.
+        # Corresponds to the JSON property `dynamicForwarding`
+        # @return [Google::Apis::ComputeV1::BackendServiceDynamicForwarding]
+        attr_accessor :dynamic_forwarding
+      
         # [Output Only] The resource URL for the edge security policy associated with
         # this backend service.
         # Corresponds to the JSON property `edgeSecurityPolicy`
@@ -4963,6 +5007,7 @@ module Google
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @custom_response_headers = args[:custom_response_headers] if args.key?(:custom_response_headers)
           @description = args[:description] if args.key?(:description)
+          @dynamic_forwarding = args[:dynamic_forwarding] if args.key?(:dynamic_forwarding)
           @edge_security_policy = args[:edge_security_policy] if args.key?(:edge_security_policy)
           @enable_cdn = args[:enable_cdn] if args.key?(:enable_cdn)
           @external_managed_migration_state = args[:external_managed_migration_state] if args.key?(:external_managed_migration_state)
@@ -5480,6 +5525,81 @@ module Google
         def update!(**args)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Defines a dynamic forwarding configuration for the backend service.
+      class BackendServiceDynamicForwarding
+        include Google::Apis::Core::Hashable
+      
+        # Defines Dynamic Forwarding Proxy configuration.
+        # Corresponds to the JSON property `forwardProxy`
+        # @return [Google::Apis::ComputeV1::BackendServiceDynamicForwardingForwardProxy]
+        attr_accessor :forward_proxy
+      
+        # Defines a IP:PORT based dynamic forwarding configuration for the backend
+        # service. Some ranges are restricted: Restricted
+        # ranges.
+        # Corresponds to the JSON property `ipPortSelection`
+        # @return [Google::Apis::ComputeV1::BackendServiceDynamicForwardingIpPortSelection]
+        attr_accessor :ip_port_selection
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forward_proxy = args[:forward_proxy] if args.key?(:forward_proxy)
+          @ip_port_selection = args[:ip_port_selection] if args.key?(:ip_port_selection)
+        end
+      end
+      
+      # Defines Dynamic Forwarding Proxy configuration.
+      class BackendServiceDynamicForwardingForwardProxy
+        include Google::Apis::Core::Hashable
+      
+        # A boolean flag enabling dynamic forwarding proxy.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # Determines the dynamic forwarding proxy mode.
+        # Corresponds to the JSON property `proxyMode`
+        # @return [String]
+        attr_accessor :proxy_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @proxy_mode = args[:proxy_mode] if args.key?(:proxy_mode)
+        end
+      end
+      
+      # Defines a IP:PORT based dynamic forwarding configuration for the backend
+      # service. Some ranges are restricted: Restricted
+      # ranges.
+      class BackendServiceDynamicForwardingIpPortSelection
+        include Google::Apis::Core::Hashable
+      
+        # A boolean flag enabling IP:PORT based dynamic forwarding.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -7388,6 +7508,16 @@ module Google
       class CacheInvalidationRule
         include Google::Apis::Core::Hashable
       
+        # If set, this invalidation rule will only apply to requests routed to the
+        # given backend service or backend bucket.
+        # For example, for a backend bucket `bb1` in the same scope as the URL map,
+        # the path would be `projects/my-project/global/backendBuckets/bb1`; and
+        # for a backend service `bs1` in the same scope as the URL map, the path
+        # would be `projects/my-project/global/backendServices/bs1`.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
         # A list of cache tags used to identify cached objects.
         # 
         # - Cache tags are specified when the response is first cached, by setting
@@ -7401,6 +7531,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :cache_tags
       
+        # If set, this invalidation rule will only apply to responses with the given
+        # content-type. Parameters are not allowed and are ignored from the response
+        # when matching. Wildcards are not allowed.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
         # If set, this invalidation rule will only apply to requests with a Host
         # header matching host. This field also accepts wildcards (*) to replace the
         # leftmost (or first) label of a hostname. For example, *.example.com will
@@ -7408,6 +7545,12 @@ module Google
         # Corresponds to the JSON property `host`
         # @return [String]
         attr_accessor :host
+      
+        # If set, this invalidation rule will only apply to responses with the
+        # given HTTP status. Valid range is 200-599.
+        # Corresponds to the JSON property `httpStatus`
+        # @return [Fixnum]
+        attr_accessor :http_status
       
         # 
         # Corresponds to the JSON property `path`
@@ -7420,8 +7563,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
           @cache_tags = args[:cache_tags] if args.key?(:cache_tags)
+          @content_type = args[:content_type] if args.key?(:content_type)
           @host = args[:host] if args.key?(:host)
+          @http_status = args[:http_status] if args.key?(:http_status)
           @path = args[:path] if args.key?(:path)
         end
       end
@@ -9584,7 +9730,14 @@ module Google
         # @return [String]
         attr_accessor :confidential_instance_type
       
+        # A set of Confidential Paravisor (SVSM) options.
+        # Corresponds to the JSON property `confidentialParavisorConfig`
+        # @return [Google::Apis::ComputeV1::ConfidentialParavisorConfig]
+        attr_accessor :confidential_paravisor_config
+      
         # Defines whether the instance should have confidential compute enabled.
+        # When enabled, the technology used defaults to
+        # AMD SEV unless confidentialInstanceType is specified.
         # Corresponds to the JSON property `enableConfidentialCompute`
         # @return [Boolean]
         attr_accessor :enable_confidential_compute
@@ -9597,7 +9750,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidential_instance_type = args[:confidential_instance_type] if args.key?(:confidential_instance_type)
+          @confidential_paravisor_config = args[:confidential_paravisor_config] if args.key?(:confidential_paravisor_config)
           @enable_confidential_compute = args[:enable_confidential_compute] if args.key?(:enable_confidential_compute)
+        end
+      end
+      
+      # A set of Confidential Paravisor (SVSM) options.
+      class ConfidentialParavisorConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines the type of TPM to use for the confidential instance.
+        # Corresponds to the JSON property `confidentialTpmType`
+        # @return [String]
+        attr_accessor :confidential_tpm_type
+      
+        # Defines the IRQ mode to use for the confidential instance.
+        # Corresponds to the JSON property `sevSnpIrqMode`
+        # @return [String]
+        attr_accessor :sev_snp_irq_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidential_tpm_type = args[:confidential_tpm_type] if args.key?(:confidential_tpm_type)
+          @sev_snp_irq_mode = args[:sev_snp_irq_mode] if args.key?(:sev_snp_irq_mode)
         end
       end
       
@@ -10768,6 +10947,43 @@ module Google
         # @return [String]
         attr_accessor :source_instant_snapshot_id
       
+        # The machine image to create the disk from. You can provide this as a
+        # partial or full URL to the resource. For example, the following are valid
+        # values:
+        # 
+        # 
+        # - https://www.googleapis.com/compute/v1/projects/project/global/
+        # machineImages/machineImage
+        # - projects/project/global/machineImages/machineImage
+        # - global/machineImages/machineImage
+        # Corresponds to the JSON property `sourceMachineImage`
+        # @return [String]
+        attr_accessor :source_machine_image
+      
+        # The device name of a disk within a given machine image. The
+        # source_machine_image must be specified.
+        # Corresponds to the JSON property `sourceMachineImageDiskDeviceName`
+        # @return [String]
+        attr_accessor :source_machine_image_disk_device_name
+      
+        # Thecustomer-supplied
+        # encryption key of the source machine image. Required if the source
+        # machine image is protected by a customer-supplied encryption key.
+        # Corresponds to the JSON property `sourceMachineImageEncryptionKey`
+        # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
+        attr_accessor :source_machine_image_encryption_key
+      
+        # Output only. [Output Only] The unique ID of the machine image used to create
+        # this disk.
+        # This value identifies the exact machine image that was used to create this
+        # persistent disk. For example, if you created the persistent disk from a
+        # machine image that was later deleted and recreated under the same name, the
+        # source machine image ID would identify the exact version of the machine
+        # image that was used.
+        # Corresponds to the JSON property `sourceMachineImageId`
+        # @return [String]
+        attr_accessor :source_machine_image_id
+      
         # The source snapshot used to create this disk. You can provide this as a
         # partial or full URL to the resource. For example, the following are valid
         # values:
@@ -10903,6 +11119,10 @@ module Google
           @source_image_id = args[:source_image_id] if args.key?(:source_image_id)
           @source_instant_snapshot = args[:source_instant_snapshot] if args.key?(:source_instant_snapshot)
           @source_instant_snapshot_id = args[:source_instant_snapshot_id] if args.key?(:source_instant_snapshot_id)
+          @source_machine_image = args[:source_machine_image] if args.key?(:source_machine_image)
+          @source_machine_image_disk_device_name = args[:source_machine_image_disk_device_name] if args.key?(:source_machine_image_disk_device_name)
+          @source_machine_image_encryption_key = args[:source_machine_image_encryption_key] if args.key?(:source_machine_image_encryption_key)
+          @source_machine_image_id = args[:source_machine_image_id] if args.key?(:source_machine_image_id)
           @source_snapshot = args[:source_snapshot] if args.key?(:source_snapshot)
           @source_snapshot_encryption_key = args[:source_snapshot_encryption_key] if args.key?(:source_snapshot_encryption_key)
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
@@ -12225,6 +12445,26 @@ module Google
         end
       end
       
+      # Dynamic compression policy for this URL Map's route.
+      class DynamicCompressionPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Compress text responses using Brotli or gzip compression, based on
+        # the client's Accept-Encoding header.
+        # Corresponds to the JSON property `compressionMode`
+        # @return [String]
+        attr_accessor :compression_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compression_mode = args[:compression_mode] if args.key?(:compression_mode)
+        end
+      end
+      
       # Describes the cause of the error with structured details.
       # Example of an error when contacting the "pubsub.googleapis.com" API when it
       # is not enabled:
@@ -13543,6 +13783,18 @@ module Google
         # @return [String]
         attr_accessor :parent
       
+        # Indicates the source of this Firewall Policy. This field is optional on
+        # creation and defaults to USER_DEFINED.
+        # The USER_DEFINED value indicates a regular firewall policy.
+        # The SYSTEM value indicates a system-level policy managed by an
+        # internal service like GKE. This SYSTEM value is reserved for
+        # internal services and cannot be set by users during policy creation.
+        # Policies with a SYSTEM source cannot be modified or deleted by
+        # users.
+        # Corresponds to the JSON property `policySource`
+        # @return [String]
+        attr_accessor :policy_source
+      
         # The type of the firewall policy. This field can be one of
         # VPC_POLICY, RDMA_ROCE_POLICY or ULL_POLICY.
         # Note: if not specified then VPC_POLICY will be used.
@@ -13615,6 +13867,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @packet_mirroring_rules = args[:packet_mirroring_rules] if args.key?(:packet_mirroring_rules)
           @parent = args[:parent] if args.key?(:parent)
+          @policy_source = args[:policy_source] if args.key?(:policy_source)
           @policy_type = args[:policy_type] if args.key?(:policy_type)
           @region = args[:region] if args.key?(:region)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
@@ -14335,6 +14588,61 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
+        # IP addresses for which this forwarding rule accepts traffic. All IP
+        # addresses must have the same IP version, IPv4 or IPv6. When a client sends
+        # traffic that matches one of the specified IP addresses, protocol and ports,
+        # the forwarding rule directs the traffic to the referencedbackendService. All
+        # IP addresses are served by the same set of
+        # backends, and they share the target capacities specified in the backend
+        # service fairly.
+        # Global external Passthrough Network Load Balancer requires two IP addresses
+        # for each forwarding rule to provide high availability when both IP
+        # addresses are used to serve client requests. The two IP addresses must come
+        # from global IP pools that belong to two distinct Availability
+        # Groups, represented by the
+        # purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0
+        # andPASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1. TheIPAddresses field
+        # specifies zero, one, or two IP addresses:
+        # 
+        # - If omitted, Google Cloud assigns two ephemeral IP addresses, one from
+        # each Availability Group.
+        # - If you specify one IP address that references an existing static IP
+        # address resource from one Availability Group, Google Cloud assigns an
+        # ephemeral IP address from the other Availability Group.
+        # - If you specify two IP addresses that reference existing static IP
+        # address resources, they are required to be from different Availability
+        # Groups.
+        # For global external Passthrough Network Load Balancer, each IP address can be
+        # one of the following:
+        # 
+        # - A static or ephemeral IPv4 address from a Google-owned IP pool.
+        # - A static IPv4 address from a global public delegated prefix.
+        # - A static or ephemeral IPv6 /96 prefix from a Google-owned IP pool.
+        # For global external Passthrough Network Load Balancer, the two IP addresses
+        # can be of different types. One IP address can be from a BYOIP prefix while
+        # the other is from a Google-owned IP pool. One IP address can be static
+        # while the other is ephemeral. However, both IP addresses must have the same
+        # IP version, IPv4 or IPv6.
+        # The IP addresses can only be set at creation and cannot be updated.
+        # When creating a global external Passthrough Network Load Balancer
+        # forwarding rule (a parent forwarding rule), you must use theIPAddresses field,
+        # but the Google Cloud-generated child
+        # forwarding rules set the IPAddress field instead. Refer to
+        # theavailabilityGroup field for further details.
+        # Refer to the IPAddress field for the formats that can be used
+        # to specify IP addresses while creating a forwarding rule.
+        # Because Passthrough Network Load Balancers do not terminate or translate
+        # traffic, the backend stack types must be compatible with the forwarding
+        # rule IP version:
+        # 
+        # - If the forwarding rule IP version is IPv4, backends should be
+        # configured as dual-stack or IPv4-only.
+        # - If the forwarding rule IP version is IPv6, backends should be
+        # configured as dual-stack or IPv6-only.
+        # Corresponds to the JSON property `IPAddresses`
+        # @return [Array<String>]
+        attr_accessor :ip_addresses
+      
         # The IP protocol to which this rule applies.
         # For protocol forwarding, valid
         # options are TCP, UDP, ESP,AH, SCTP, ICMP andL3_DEFAULT.
@@ -14391,6 +14699,34 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::ForwardingRuleAttachedExtension>]
         attr_accessor :attached_extensions
       
+        # Output only. [Output Only] Specifies the load balancing availability group,
+        # one of the
+        # two that collectively provide high availability.
+        # Specifies the availability group of the forwarding rule. This
+        # field is for use by global external passthrough load balancers (load
+        # balancing scheme EXTERNAL_PASSTHROUGH) and is set for the
+        # child forwarding rules only. The possible values are:
+        # 
+        # - AVAILABILITY_GROUP0: Set for the child forwarding rule
+        # that is programmed on the AVAILABILITY_GROUP0 load balancing
+        # stack. The child forwarding rule has the same IP protocol, port, and
+        # backend service settings as the parent forwarding rule, but has only one of
+        # the two IP addresses of the parent forwarding rule, the one with the
+        # purpose PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0.
+        # - AVAILABILITY_GROUP1: Set for the child forwarding rule
+        # that is programmed on the AVAILABILITY_GROUP1 load balancing
+        # stack. The child forwarding rule has the same IP protocol, port and backend
+        # service settings as the parent forwarding rule, but has only one of the two
+        # IP addresses of the parent forwarding rule, the one with the
+        # purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1.
+        # For each global external Passthrough Network Load Balancer forwarding rule
+        # (a parent forwarding rule) that you create, Google Cloud generates two
+        # output-only child forwarding rules, one forAVAILABILITY_GROUP0 and one
+        # forAVAILABILITY_GROUP1.
+        # Corresponds to the JSON property `availabilityGroup`
+        # @return [String]
+        attr_accessor :availability_group
+      
         # Identifies the backend service to which the forwarding rule sends traffic.
         # It is a required field for the following load balancers:
         # 
@@ -14414,6 +14750,18 @@ module Google
         # Corresponds to the JSON property `baseForwardingRule`
         # @return [String]
         attr_accessor :base_forwarding_rule
+      
+        # Output only. [Output Only] The resource URLs for the child forwarding rules.
+        # Applicable only to the parent forwarding rule of global
+        # external passthrough load balancers. This field contains the list of child
+        # forwarding rule URLs associated with the parent forwarding rule: one for
+        # each availability group. AVAILABILITY_GROUP0 will be the first element, and
+        # AVAILABILITY_GROUP1 will be the second element. Refer to theavailabilityGroup
+        # field for further details. It cannot be set
+        # by any other forwarding rules.
+        # Corresponds to the JSON property `childForwardingRules`
+        # @return [Array<String>]
+        attr_accessor :child_forwarding_rules
       
         # Output only. [Output Only] Creation timestamp inRFC3339
         # text format.
@@ -14615,6 +14963,14 @@ module Google
         attr_accessor :no_automate_dns_zone
         alias_method :no_automate_dns_zone?, :no_automate_dns_zone
       
+        # Output only. [Output Only] The resource URL for the parent forwarding rule.
+        # Applicable only to the child forwarding rules of global external
+        # passthrough load balancers. This field contains the URL of the parent
+        # forwarding rule.
+        # Corresponds to the JSON property `parentForwardingRule`
+        # @return [String]
+        attr_accessor :parent_forwarding_rule
+      
         # The ports, portRange, and allPorts
         # fields are mutually exclusive. Only packets addressed to ports in the
         # specified range will be forwarded to the backends configured with this
@@ -14783,13 +15139,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
+          @ip_addresses = args[:ip_addresses] if args.key?(:ip_addresses)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
           @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @allow_psc_global_access = args[:allow_psc_global_access] if args.key?(:allow_psc_global_access)
           @attached_extensions = args[:attached_extensions] if args.key?(:attached_extensions)
+          @availability_group = args[:availability_group] if args.key?(:availability_group)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @base_forwarding_rule = args[:base_forwarding_rule] if args.key?(:base_forwarding_rule)
+          @child_forwarding_rules = args[:child_forwarding_rules] if args.key?(:child_forwarding_rules)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @external_managed_backend_bucket_migration_state = args[:external_managed_backend_bucket_migration_state] if args.key?(:external_managed_backend_bucket_migration_state)
@@ -14808,6 +15167,7 @@ module Google
           @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
           @no_automate_dns_zone = args[:no_automate_dns_zone] if args.key?(:no_automate_dns_zone)
+          @parent_forwarding_rule = args[:parent_forwarding_rule] if args.key?(:parent_forwarding_rule)
           @port_range = args[:port_range] if args.key?(:port_range)
           @ports = args[:ports] if args.key?(:ports)
           @psc_connection_id = args[:psc_connection_id] if args.key?(:psc_connection_id)
@@ -21629,6 +21989,11 @@ module Google
         # @return [Google::Apis::ComputeV1::CorsPolicy]
         attr_accessor :cors_policy
       
+        # Dynamic compression policy for this URL Map's route.
+        # Corresponds to the JSON property `dynamicCompressionPolicy`
+        # @return [Google::Apis::ComputeV1::DynamicCompressionPolicy]
+        attr_accessor :dynamic_compression_policy
+      
         # The specification for fault injection introduced into traffic to test
         # the resiliency of clients to backend service failure. As part of fault
         # injection, when clients send requests to a backend service, delays can be
@@ -21638,6 +22003,16 @@ module Google
         # Corresponds to the JSON property `faultInjectionPolicy`
         # @return [Google::Apis::ComputeV1::HttpFaultInjection]
         attr_accessor :fault_injection_policy
+      
+        # The configuration for Cloud CDN's image optimization feature. This feature
+        # dynamically processes and delivers images from the network edge.
+        # Image Optimization is only available for Global External Application Load
+        # Balancers.
+        # Either Cloud CDN must be enabled on the backend service or backend bucket
+        # serving the route, or cache policy must be configured on the same route.
+        # Corresponds to the JSON property `imageOptimizationPolicy`
+        # @return [Google::Apis::ComputeV1::ImageOptimizationPolicy]
+        attr_accessor :image_optimization_policy
       
         # A Duration represents a fixed-length span of time represented
         # as a count of seconds and fractions of seconds at nanosecond
@@ -21696,7 +22071,9 @@ module Google
         def update!(**args)
           @cache_policy = args[:cache_policy] if args.key?(:cache_policy)
           @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
+          @dynamic_compression_policy = args[:dynamic_compression_policy] if args.key?(:dynamic_compression_policy)
           @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @image_optimization_policy = args[:image_optimization_policy] if args.key?(:image_optimization_policy)
           @max_stream_duration = args[:max_stream_duration] if args.key?(:max_stream_duration)
           @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
           @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
@@ -22691,6 +23068,30 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # The configuration for Cloud CDN's image optimization feature. This feature
+      # dynamically processes and delivers images from the network edge.
+      # Image Optimization is only available for Global External Application Load
+      # Balancers.
+      # Either Cloud CDN must be enabled on the backend service or backend bucket
+      # serving the route, or cache policy must be configured on the same route.
+      class ImageOptimizationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies whether to interpret query parameters for image optimization.
+        # Corresponds to the JSON property `queryParameterInterpretation`
+        # @return [String]
+        attr_accessor :query_parameter_interpretation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query_parameter_interpretation = args[:query_parameter_interpretation] if args.key?(:query_parameter_interpretation)
         end
       end
       
@@ -35560,6 +35961,20 @@ module Google
       class MachineImageParams
         include Google::Apis::Core::Hashable
       
+        # Input only. Specifies the list of disk device names that must be excluded from
+        # the
+        # new machine image.
+        # Corresponds to the JSON property `excludedDisks`
+        # @return [Array<String>]
+        attr_accessor :excluded_disks
+      
+        # Input only. Specifies the list of disk device names that must be included with
+        # the
+        # new machine image.
+        # Corresponds to the JSON property `includedDisks`
+        # @return [Array<String>]
+        attr_accessor :included_disks
+      
         # Input only. Resource manager tags to be bound to the machine image. Tag keys
         # and values
         # have the same definition as resource
@@ -35578,6 +35993,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @excluded_disks = args[:excluded_disks] if args.key?(:excluded_disks)
+          @included_disks = args[:included_disks] if args.key?(:included_disks)
           @resource_manager_tags = args[:resource_manager_tags] if args.key?(:resource_manager_tags)
         end
       end
@@ -37065,6 +37482,11 @@ module Google
         # @return [String]
         attr_accessor :i_pv4_range
       
+        # Output only. [Output Only] Additional tags for this resource.
+        # Corresponds to the JSON property `additionalTags`
+        # @return [Array<String>]
+        attr_accessor :additional_tags
+      
         # Must be set to create a VPC network. If not set, a legacy network is
         # created.
         # When set to true, the VPC network is created in auto mode.
@@ -37213,6 +37635,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @i_pv4_range = args[:i_pv4_range] if args.key?(:i_pv4_range)
+          @additional_tags = args[:additional_tags] if args.key?(:additional_tags)
           @auto_create_subnetworks = args[:auto_create_subnetworks] if args.key?(:auto_create_subnetworks)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
@@ -46363,6 +46786,31 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix>]
         attr_accessor :public_delegated_sub_prefixs
       
+        # Immutable. The purpose of the public delegated prefix.
+        # This field can only be set for the top-level global public delegated
+        # prefix. It is an output-only field for the sub-delegates that inherit the
+        # value from the top-level global public delegated prefix. Once the value is
+        # set, it cannot be changed.
+        # The field cannot be set for regional public delegated prefixes.
+        # The supported values are:
+        # 
+        # 
+        # - APPLICATION_AND_PROXY_LOAD_BALANCERS: The global public
+        # delegated prefix can only be used by Global External Application and
+        # Proxy Load Balancers to allocate addresses for forwarding rules. This is
+        # the default value.
+        # - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0: The
+        # global public delegated prefix can only be used by Global External
+        # Passthrough Network Load Balancers to allocate Availability Group 0
+        # addresses for forwarding rules.
+        # - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1: The
+        # global public delegated prefix can only be used by Global External
+        # Passthrough Network Load Balancers to allocate Availability Group 1
+        # addresses for forwarding rules.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
         # Output only. [Output Only] URL of the region where the public delegated prefix
         # resides.
         # This field applies only to the region resource. You must specify this
@@ -46414,6 +46862,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
           @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -46735,6 +47184,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. [Output Only] The purpose of the sub public delegated prefix.
+        # Inherited
+        # from parent prefix.
+        # Corresponds to the JSON property `purpose`
+        # @return [String]
+        attr_accessor :purpose
+      
         # Output only. [Output Only] The region of the sub public delegated prefix if it
         # is
         # regional. If absent, the sub prefix is global.
@@ -46762,6 +47218,7 @@ module Google
           @is_address = args[:is_address] if args.key?(:is_address)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @status = args[:status] if args.key?(:status)
         end
@@ -52610,6 +53067,13 @@ module Google
         # @return [String]
         attr_accessor :graceful_shutdown_timestamp
       
+        # Output only. Protection tier for the workload which specifies the workload
+        # expectations in the event of infrastructure failures at data center
+        # (e.g. power and/or cooling failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # Time in future when the instance will be terminated inRFC3339 text format.
         # Corresponds to the JSON property `terminationTimestamp`
         # @return [String]
@@ -52623,6 +53087,7 @@ module Google
         def update!(**args)
           @availability_domain = args[:availability_domain] if args.key?(:availability_domain)
           @graceful_shutdown_timestamp = args[:graceful_shutdown_timestamp] if args.key?(:graceful_shutdown_timestamp)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @termination_timestamp = args[:termination_timestamp] if args.key?(:termination_timestamp)
         end
       end
@@ -55754,6 +56219,13 @@ module Google
         # @return [Google::Apis::ComputeV1::BfdStatus]
         attr_accessor :bfd_status
       
+        # Output only. [Output Only] Indicates whether the BGP peer is in a
+        # depreferenced state.
+        # Corresponds to the JSON property `depreferenced`
+        # @return [Boolean]
+        attr_accessor :depreferenced
+        alias_method :depreferenced?, :depreferenced
+      
         # Output only. Enable IPv4 traffic over BGP Peer.
         # It is enabled by default if the peerIpAddress is version 4.
         # Corresponds to the JSON property `enableIpv4`
@@ -55867,6 +56339,7 @@ module Google
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
           @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
+          @depreferenced = args[:depreferenced] if args.key?(:depreferenced)
           @enable_ipv4 = args[:enable_ipv4] if args.key?(:enable_ipv4)
           @enable_ipv6 = args[:enable_ipv6] if args.key?(:enable_ipv6)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
@@ -57029,6 +57502,13 @@ module Google
         # @return [Google::Apis::ComputeV1::Duration]
         attr_accessor :preemption_notice_duration
       
+        # Protection tier for the workload which specifies the workload
+        # expectations in the event of infrastructure failures at data center
+        # (e.g. power and/or cooling failures).
+        # Corresponds to the JSON property `protectionTier`
+        # @return [String]
+        attr_accessor :protection_tier
+      
         # Specifies the provisioning model of the instance.
         # Corresponds to the JSON property `provisioningModel`
         # @return [String]
@@ -57072,6 +57552,7 @@ module Google
           @on_instance_stop_action = args[:on_instance_stop_action] if args.key?(:on_instance_stop_action)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @preemption_notice_duration = args[:preemption_notice_duration] if args.key?(:preemption_notice_duration)
+          @protection_tier = args[:protection_tier] if args.key?(:protection_tier)
           @provisioning_model = args[:provisioning_model] if args.key?(:provisioning_model)
           @skip_guest_os_shutdown = args[:skip_guest_os_shutdown] if args.key?(:skip_guest_os_shutdown)
           @termination_time = args[:termination_time] if args.key?(:termination_time)
@@ -60280,7 +60761,8 @@ module Google
         # @return [String]
         attr_accessor :snapshot_group_name
       
-        # Indicates the type of the snapshot.
+        # Indicates the type of the snapshot. Valid values are ARCHIVE
+        # or STANDARD. The default is STANDARD.
         # Corresponds to the JSON property `snapshotType`
         # @return [String]
         attr_accessor :snapshot_type
@@ -65893,7 +66375,7 @@ module Google
         # 
         # - //certificatemanager.googleapis.com/projects/`project`/locations/`
         # location`/certificates/`resourceName`.
-        # - https://certificatemanager.googleapis.com/v1alpha1/projects/`project`/
+        # - https://certificatemanager.`universeDomain`/v1alpha1/projects/`project`/
         # locations/`location`/certificates/`resourceName`.
         # Corresponds to the JSON property `sslCertificates`
         # @return [Array<String>]
@@ -69014,6 +69496,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # [Output Only] The status of the URL map.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ComputeV1::UrlMapStatus]
+        attr_accessor :status
+      
         # The list of expected URL mapping tests. Request to update theUrlMap succeeds
         # only if all test cases pass. You can specify a
         # maximum of 100 tests per UrlMap.
@@ -69044,6 +69531,7 @@ module Google
           @path_matchers = args[:path_matchers] if args.key?(:path_matchers)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @status = args[:status] if args.key?(:status)
           @tests = args[:tests] if args.key?(:tests)
         end
       end
@@ -69172,6 +69660,31 @@ module Google
         end
       end
       
+      # Message representing the quota usage for a UrlMap.
+      class UrlMapQuotaUsage
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The number of forwarding rules that uses this UrlMap.
+        # Corresponds to the JSON property `forwardingRules`
+        # @return [Fixnum]
+        attr_accessor :forwarding_rules
+      
+        # Output only. The number of quota units calculated for this UrlMap.
+        # Corresponds to the JSON property `units`
+        # @return [Fixnum]
+        attr_accessor :units
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rules = args[:forwarding_rules] if args.key?(:forwarding_rules)
+          @units = args[:units] if args.key?(:units)
+        end
+      end
+      
       # 
       class UrlMapReference
         include Google::Apis::Core::Hashable
@@ -69188,6 +69701,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @url_map = args[:url_map] if args.key?(:url_map)
+        end
+      end
+      
+      # [Output Only] The status of the URL map.
+      class UrlMapStatus
+        include Google::Apis::Core::Hashable
+      
+        # Message representing the quota usage for a UrlMap.
+        # Corresponds to the JSON property `quotaUsage`
+        # @return [Google::Apis::ComputeV1::UrlMapQuotaUsage]
+        attr_accessor :quota_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @quota_usage = args[:quota_usage] if args.key?(:quota_usage)
         end
       end
       
@@ -69310,6 +69842,11 @@ module Google
         attr_accessor :load_succeeded
         alias_method :load_succeeded?, :load_succeeded
       
+        # Message representing the quota usage for a UrlMap.
+        # Corresponds to the JSON property `quotaUsage`
+        # @return [Google::Apis::ComputeV1::UrlMapQuotaUsage]
+        attr_accessor :quota_usage
+      
         # 
         # Corresponds to the JSON property `testFailures`
         # @return [Array<Google::Apis::ComputeV1::TestFailure>]
@@ -69330,6 +69867,7 @@ module Google
         def update!(**args)
           @load_errors = args[:load_errors] if args.key?(:load_errors)
           @load_succeeded = args[:load_succeeded] if args.key?(:load_succeeded)
+          @quota_usage = args[:quota_usage] if args.key?(:quota_usage)
           @test_failures = args[:test_failures] if args.key?(:test_failures)
           @test_passed = args[:test_passed] if args.key?(:test_passed)
         end
@@ -72913,6 +73451,11 @@ module Google
         # @return [String]
         attr_accessor :fault_response
       
+        # The flow management configuration for the wire.
+        # Corresponds to the JSON property `flowManagement`
+        # @return [String]
+        attr_accessor :flow_management
+      
         def initialize(**args)
            update!(**args)
         end
@@ -72922,6 +73465,7 @@ module Google
           @bandwidth_allocation = args[:bandwidth_allocation] if args.key?(:bandwidth_allocation)
           @bandwidth_unmetered = args[:bandwidth_unmetered] if args.key?(:bandwidth_unmetered)
           @fault_response = args[:fault_response] if args.key?(:fault_response)
+          @flow_management = args[:flow_management] if args.key?(:flow_management)
         end
       end
       
@@ -72940,6 +73484,11 @@ module Google
         attr_accessor :identity_certificate_enabled
         alias_method :identity_certificate_enabled?, :identity_certificate_enabled
       
+        # 
+        # Corresponds to the JSON property `identityType`
+        # @return [String]
+        attr_accessor :identity_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -72948,6 +73497,7 @@ module Google
         def update!(**args)
           @identity = args[:identity] if args.key?(:identity)
           @identity_certificate_enabled = args[:identity_certificate_enabled] if args.key?(:identity_certificate_enabled)
+          @identity_type = args[:identity_type] if args.key?(:identity_type)
         end
       end
       

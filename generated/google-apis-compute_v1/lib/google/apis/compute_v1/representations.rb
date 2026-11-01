@@ -562,6 +562,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceDynamicForwarding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceDynamicForwardingForwardProxy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackendServiceDynamicForwardingIpPortSelection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceFailoverPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1144,6 +1162,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialParavisorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionDraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1451,6 +1475,12 @@ module Google
       end
       
       class Duration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DynamicCompressionPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2634,6 +2664,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImageOptimizationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -8626,7 +8662,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UrlMapQuotaUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMapReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlMapStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -9361,6 +9409,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :external_ipv6, as: 'externalIpv6'
           property :external_ipv6_prefix_length, as: 'externalIpv6PrefixLength'
+          property :ip_collection, as: 'ipCollection'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_ip, as: 'natIP'
@@ -9388,11 +9437,13 @@ module Google
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network, as: 'network'
+          property :network_attachment, as: 'networkAttachment'
           property :network_tier, as: 'networkTier'
           property :prefix_length, as: 'prefixLength'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :service_class_id, as: 'serviceClassId'
           property :status, as: 'status'
           property :subnetwork, as: 'subnetwork'
           collection :users, as: 'users'
@@ -10147,6 +10198,8 @@ module Google
           collection :custom_request_headers, as: 'customRequestHeaders'
           collection :custom_response_headers, as: 'customResponseHeaders'
           property :description, as: 'description'
+          property :dynamic_forwarding, as: 'dynamicForwarding', class: Google::Apis::ComputeV1::BackendServiceDynamicForwarding, decorator: Google::Apis::ComputeV1::BackendServiceDynamicForwarding::Representation
+      
           property :edge_security_policy, as: 'edgeSecurityPolicy'
           property :enable_cdn, as: 'enableCDN'
           property :external_managed_migration_state, as: 'externalManagedMigrationState'
@@ -10288,6 +10341,31 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dry_run, as: 'dryRun'
           property :name, as: 'name'
+        end
+      end
+      
+      class BackendServiceDynamicForwarding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forward_proxy, as: 'forwardProxy', class: Google::Apis::ComputeV1::BackendServiceDynamicForwardingForwardProxy, decorator: Google::Apis::ComputeV1::BackendServiceDynamicForwardingForwardProxy::Representation
+      
+          property :ip_port_selection, as: 'ipPortSelection', class: Google::Apis::ComputeV1::BackendServiceDynamicForwardingIpPortSelection, decorator: Google::Apis::ComputeV1::BackendServiceDynamicForwardingIpPortSelection::Representation
+      
+        end
+      end
+      
+      class BackendServiceDynamicForwardingForwardProxy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :proxy_mode, as: 'proxyMode'
+        end
+      end
+      
+      class BackendServiceDynamicForwardingIpPortSelection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -10723,8 +10801,11 @@ module Google
       class CacheInvalidationRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :backend_service, as: 'backendService'
           collection :cache_tags, as: 'cacheTags'
+          property :content_type, as: 'contentType'
           property :host, as: 'host'
+          property :http_status, as: 'httpStatus'
           property :path, as: 'path'
         end
       end
@@ -11278,7 +11359,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidential_instance_type, as: 'confidentialInstanceType'
+          property :confidential_paravisor_config, as: 'confidentialParavisorConfig', class: Google::Apis::ComputeV1::ConfidentialParavisorConfig, decorator: Google::Apis::ComputeV1::ConfidentialParavisorConfig::Representation
+      
           property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
+      class ConfidentialParavisorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidential_tpm_type, as: 'confidentialTpmType'
+          property :sev_snp_irq_mode, as: 'sevSnpIrqMode'
         end
       end
       
@@ -11494,6 +11585,11 @@ module Google
           property :source_image_id, as: 'sourceImageId'
           property :source_instant_snapshot, as: 'sourceInstantSnapshot'
           property :source_instant_snapshot_id, as: 'sourceInstantSnapshotId'
+          property :source_machine_image, as: 'sourceMachineImage'
+          property :source_machine_image_disk_device_name, as: 'sourceMachineImageDiskDeviceName'
+          property :source_machine_image_encryption_key, as: 'sourceMachineImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
+      
+          property :source_machine_image_id, as: 'sourceMachineImageId'
           property :source_snapshot, as: 'sourceSnapshot'
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
@@ -11844,6 +11940,13 @@ module Google
         end
       end
       
+      class DynamicCompressionPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compression_mode, as: 'compressionMode'
+        end
+      end
+      
       class ErrorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12127,6 +12230,7 @@ module Google
           collection :packet_mirroring_rules, as: 'packetMirroringRules', class: Google::Apis::ComputeV1::FirewallPolicyRule, decorator: Google::Apis::ComputeV1::FirewallPolicyRule::Representation
       
           property :parent, as: 'parent'
+          property :policy_source, as: 'policySource'
           property :policy_type, as: 'policyType'
           property :region, as: 'region'
           property :rule_tuple_count, as: 'ruleTupleCount'
@@ -12270,14 +12374,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_address, as: 'IPAddress'
+          collection :ip_addresses, as: 'IPAddresses'
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
           property :allow_global_access, as: 'allowGlobalAccess'
           property :allow_psc_global_access, as: 'allowPscGlobalAccess'
           collection :attached_extensions, as: 'attachedExtensions', class: Google::Apis::ComputeV1::ForwardingRuleAttachedExtension, decorator: Google::Apis::ComputeV1::ForwardingRuleAttachedExtension::Representation
       
+          property :availability_group, as: 'availabilityGroup'
           property :backend_service, as: 'backendService'
           property :base_forwarding_rule, as: 'baseForwardingRule'
+          collection :child_forwarding_rules, as: 'childForwardingRules'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :external_managed_backend_bucket_migration_state, as: 'externalManagedBackendBucketMigrationState'
@@ -12297,6 +12404,7 @@ module Google
           property :network, as: 'network'
           property :network_tier, as: 'networkTier'
           property :no_automate_dns_zone, as: 'noAutomateDnsZone'
+          property :parent_forwarding_rule, as: 'parentForwardingRule'
           property :port_range, as: 'portRange'
           collection :ports, as: 'ports'
           property :psc_connection_id, :numeric_string => true, as: 'pscConnectionId'
@@ -13924,7 +14032,11 @@ module Google
       
           property :cors_policy, as: 'corsPolicy', class: Google::Apis::ComputeV1::CorsPolicy, decorator: Google::Apis::ComputeV1::CorsPolicy::Representation
       
+          property :dynamic_compression_policy, as: 'dynamicCompressionPolicy', class: Google::Apis::ComputeV1::DynamicCompressionPolicy, decorator: Google::Apis::ComputeV1::DynamicCompressionPolicy::Representation
+      
           property :fault_injection_policy, as: 'faultInjectionPolicy', class: Google::Apis::ComputeV1::HttpFaultInjection, decorator: Google::Apis::ComputeV1::HttpFaultInjection::Representation
+      
+          property :image_optimization_policy, as: 'imageOptimizationPolicy', class: Google::Apis::ComputeV1::ImageOptimizationPolicy, decorator: Google::Apis::ComputeV1::ImageOptimizationPolicy::Representation
       
           property :max_stream_duration, as: 'maxStreamDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
@@ -14124,6 +14236,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class ImageOptimizationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query_parameter_interpretation, as: 'queryParameterInterpretation'
         end
       end
       
@@ -17221,6 +17340,8 @@ module Google
       class MachineImageParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :excluded_disks, as: 'excludedDisks'
+          collection :included_disks, as: 'includedDisks'
           hash :resource_manager_tags, as: 'resourceManagerTags'
         end
       end
@@ -17602,6 +17723,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :i_pv4_range, as: 'IPv4Range'
+          collection :additional_tags, as: 'additionalTags'
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
@@ -19782,6 +19904,7 @@ module Google
           property :parent_prefix, as: 'parentPrefix'
           collection :public_delegated_sub_prefixs, as: 'publicDelegatedSubPrefixs', class: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix, decorator: Google::Apis::ComputeV1::PublicDelegatedPrefixPublicDelegatedSubPrefix::Representation
       
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -19865,6 +19988,7 @@ module Google
           property :is_address, as: 'isAddress'
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :status, as: 'status'
         end
@@ -21389,6 +21513,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain, as: 'availabilityDomain'
           property :graceful_shutdown_timestamp, as: 'gracefulShutdownTimestamp'
+          property :protection_tier, as: 'protectionTier'
           property :termination_timestamp, as: 'terminationTimestamp'
         end
       end
@@ -22082,6 +22207,7 @@ module Google
       
           property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeV1::BfdStatus, decorator: Google::Apis::ComputeV1::BfdStatus::Representation
       
+          property :depreferenced, as: 'depreferenced'
           property :enable_ipv4, as: 'enableIpv4'
           property :enable_ipv6, as: 'enableIpv6'
           property :ip_address, as: 'ipAddress'
@@ -22374,6 +22500,7 @@ module Google
           property :preemptible, as: 'preemptible'
           property :preemption_notice_duration, as: 'preemptionNoticeDuration', class: Google::Apis::ComputeV1::Duration, decorator: Google::Apis::ComputeV1::Duration::Representation
       
+          property :protection_tier, as: 'protectionTier'
           property :provisioning_model, as: 'provisioningModel'
           property :skip_guest_os_shutdown, as: 'skipGuestOsShutdown'
           property :termination_time, as: 'terminationTime'
@@ -25185,6 +25312,8 @@ module Google
       
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :status, as: 'status', class: Google::Apis::ComputeV1::UrlMapStatus, decorator: Google::Apis::ComputeV1::UrlMapStatus::Representation
+      
           collection :tests, as: 'tests', class: Google::Apis::ComputeV1::UrlMapTest, decorator: Google::Apis::ComputeV1::UrlMapTest::Representation
       
         end
@@ -25222,10 +25351,26 @@ module Google
         end
       end
       
+      class UrlMapQuotaUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rules, as: 'forwardingRules'
+          property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
       class UrlMapReference
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :url_map, as: 'urlMap'
+        end
+      end
+      
+      class UrlMapStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :quota_usage, as: 'quotaUsage', class: Google::Apis::ComputeV1::UrlMapQuotaUsage, decorator: Google::Apis::ComputeV1::UrlMapQuotaUsage::Representation
+      
         end
       end
       
@@ -25256,6 +25401,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :load_errors, as: 'loadErrors'
           property :load_succeeded, as: 'loadSucceeded'
+          property :quota_usage, as: 'quotaUsage', class: Google::Apis::ComputeV1::UrlMapQuotaUsage, decorator: Google::Apis::ComputeV1::UrlMapQuotaUsage::Representation
+      
           collection :test_failures, as: 'testFailures', class: Google::Apis::ComputeV1::TestFailure, decorator: Google::Apis::ComputeV1::TestFailure::Representation
       
           property :test_passed, as: 'testPassed'
@@ -26108,6 +26255,7 @@ module Google
           property :bandwidth_allocation, as: 'bandwidthAllocation'
           property :bandwidth_unmetered, :numeric_string => true, as: 'bandwidthUnmetered'
           property :fault_response, as: 'faultResponse'
+          property :flow_management, as: 'flowManagement'
         end
       end
       
@@ -26116,6 +26264,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :identity, as: 'identity'
           property :identity_certificate_enabled, as: 'identityCertificateEnabled'
+          property :identity_type, as: 'identityType'
         end
       end
       
