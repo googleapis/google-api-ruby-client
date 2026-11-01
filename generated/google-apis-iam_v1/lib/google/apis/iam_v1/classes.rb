@@ -2259,7 +2259,7 @@ module Google
         attr_accessor :full_resource_name
       
         # Optional limit on the number of roles to include in the response. The default
-        # is 300, and the maximum is 2,000.
+        # is 300, and the maximum is 3,000.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
