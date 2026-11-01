@@ -285950,6 +285950,7 @@
 "/dlp:v2/GooglePrivacyDlpV2ImageLocation": google_privacy_dlp_v2_image_location
 "/dlp:v2/GooglePrivacyDlpV2ImageLocation/boundingBoxes": bounding_boxes
 "/dlp:v2/GooglePrivacyDlpV2ImageLocation/boundingBoxes/bounding_box": bounding_box
+"/dlp:v2/GooglePrivacyDlpV2ImageLocation/pageNumber": page_number
 "/dlp:v2/GooglePrivacyDlpV2ImageRedactionConfig": google_privacy_dlp_v2_image_redaction_config
 "/dlp:v2/GooglePrivacyDlpV2ImageRedactionConfig/infoType": info_type
 "/dlp:v2/GooglePrivacyDlpV2ImageRedactionConfig/redactAllText": redact_all_text

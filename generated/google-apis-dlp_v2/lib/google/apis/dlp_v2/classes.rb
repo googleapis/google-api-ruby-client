@@ -6494,6 +6494,11 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2BoundingBox>]
         attr_accessor :bounding_boxes
       
+        # The 0-indexed page number or frame index for multi-page image formats.
+        # Corresponds to the JSON property `pageNumber`
+        # @return [Fixnum]
+        attr_accessor :page_number
+      
         def initialize(**args)
            update!(**args)
         end
@@ -6501,6 +6506,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_boxes = args[:bounding_boxes] if args.key?(:bounding_boxes)
+          @page_number = args[:page_number] if args.key?(:page_number)
         end
       end
       
