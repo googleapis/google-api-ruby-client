@@ -1022,36 +1022,47 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A map containing the current values of the widgets in the displayed card. The
-        # map keys are the string IDs assigned with each widget. The structure of the
-        # map value object is dependent on the widget type: **Note**: The following
-        # examples are formatted for Apps Script's V8 runtime. If you're using Rhino
-        # runtime, you must add `[""]` after the value. For example, instead of `e.
-        # commonEventObject.formInputs.employeeName.stringInputs.value[0]`, format the
-        # event object as `e.commonEventObject.formInputs.employeeName[""].stringInputs.
-        # value[0]`. To learn more about runtimes in Apps Script, see the [V8 Runtime
-        # Overview](https://developers.google.com/apps-script/guides/v8-runtime). *
-        # Single-valued widgets (for example, a text box): a list of strings (only one
-        # element). **Example**: for a text input widget with `employeeName` as its ID,
-        # access the text input value with: `e.commonEventObject.formInputs.employeeName.
-        # stringInputs.value[0]`. * Multi-valued widgets (for example, checkbox groups):
-        # a list of strings. **Example**: for a multi-value widget with `participants`
-        # as its ID, access the value array with: `e.commonEventObject.formInputs.
-        # participants.stringInputs.value`. * **A date-time picker**: a [`DateTimeInput
-        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
-        # objects#date-time-input). **Example**: For a picker with an ID of `myDTPicker`,
-        # access the [`DateTimeInput`](https://developers.google.com/workspace/add-ons/
-        # concepts/event-objects#date-time-input) object using `e.commonEventObject.
-        # formInputs.myDTPicker.dateTimeInput`. * **A date-only picker**: a [`DateInput
-        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
-        # objects#date-input). **Example**: For a picker with an ID of `myDatePicker`,
-        # access the [`DateInput`](https://developers.google.com/workspace/add-ons/
-        # concepts/event-objects#date-input) object using `e.commonEventObject.
-        # formInputs.myDatePicker.dateInput`. * **A time-only picker**: a [`TimeInput
-        # object`](https://developers.google.com/workspace/add-ons/concepts/event-
-        # objects#time-input). **Example**: For a picker with an ID of `myTimePicker`,
-        # access the [`TimeInput`](https://developers.google.com/workspace/add-ons/
-        # concepts/event-objects#time-input) object using `e.commonEventObject.
-        # formInputs.myTimePicker.timeInput`.
+        # map keys are the string `name` values assigned to each input widget (such as `
+        # TextInput.name`, `SelectionInput.name`, `DateTimePicker.name`, or `
+        # DecoratedText.SwitchControl.name`). The structure of the map value object is
+        # dependent on the widget type: **Note**: The following examples are formatted
+        # for Apps Script's V8 runtime. If you're using Rhino runtime, you must add `[""]
+        # ` after the value. For example, instead of `e.commonEventObject.formInputs.
+        # employeeName.stringInputs.value[0]`, format the event object as `e.
+        # commonEventObject.formInputs.employeeName[""].stringInputs.value[0]`. To learn
+        # more about runtimes in Apps Script, see the [V8 Runtime Overview](https://
+        # developers.google.com/apps-script/guides/v8-runtime). * Single-valued widgets (
+        # for example, a `TextInput` widget, or a `SelectionInput` widget of type `
+        # DROPDOWN` or `RADIO_BUTTON`): a `StringInputs` object containing a single-
+        # element list (or an empty list if no selection is made). **Example**: for a
+        # text input widget with `employeeName` as its `name`, access the text input
+        # value with: `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`
+        # . * Multi-valued widgets (for example, a `SelectionInput` widget of type `
+        # CHECK_BOX`, `SWITCH`, or `MULTI_SELECT`): a `StringInputs` object containing
+        # the list of selected item `value` strings. **Example**: for a multi-value
+        # widget with `participants` as its `name`, access the value array with: `e.
+        # commonEventObject.formInputs.participants.stringInputs.value`. * **A `
+        # DecoratedText.SwitchControl` widget**: a `StringInputs` object. When `selected`
+        # is `true`, `stringInputs.value` contains the switch's `value` field (or `""`
+        # if `value` was not specified; if multiple switches share the same `name`, each
+        # selected switch's `value` is included in the list). When `selected` is `false`,
+        # the switch's `value` is omitted from `stringInputs.value`. * **A date-time
+        # picker (`DateTimePickerType.DATE_AND_TIME`)**: a [`DateTimeInput object`](
+        # https://developers.google.com/workspace/add-ons/concepts/event-objects#date-
+        # time-input). **Example**: For a picker with a `name` of `myDTPicker`, access
+        # the [`DateTimeInput`](https://developers.google.com/workspace/add-ons/concepts/
+        # event-objects#date-time-input) object using `e.commonEventObject.formInputs.
+        # myDTPicker.dateTimeInput`. * **A date-only picker (`DateTimePickerType.
+        # DATE_ONLY`)**: a [`DateInput object`](https://developers.google.com/workspace/
+        # add-ons/concepts/event-objects#date-input). **Example**: For a picker with a `
+        # name` of `myDatePicker`, access the [`DateInput`](https://developers.google.
+        # com/workspace/add-ons/concepts/event-objects#date-input) object using `e.
+        # commonEventObject.formInputs.myDatePicker.dateInput`. * **A time-only picker (`
+        # DateTimePickerType.TIME_ONLY`)**: a [`TimeInput object`](https://developers.
+        # google.com/workspace/add-ons/concepts/event-objects#time-input). **Example**:
+        # For a picker with a `name` of `myTimePicker`, access the [`TimeInput`](https://
+        # developers.google.com/workspace/add-ons/concepts/event-objects#time-input)
+        # object using `e.commonEventObject.formInputs.myTimePicker.timeInput`.
         # Corresponds to the JSON property `formInputs`
         # @return [Hash<String,Google::Apis::ChatV1::Inputs>]
         attr_accessor :form_inputs
@@ -2261,14 +2272,14 @@ module Google
       class GoogleAppsCardV1Card
         include Google::Apis::Core::Hashable
       
-        # The card's actions. Actions are added to the card's toolbar menu. [Google
-        # Workspace add-ons](https://developers.google.com/workspace/add-ons): For
-        # example, the following JSON constructs a card action menu with `Settings` and `
-        # Send Feedback` options: ``` "card_actions": [ ` "actionLabel": "Settings", "
-        # onClick": ` "action": ` "functionName": "goToView", "parameters": [ ` "key": "
-        # viewType", "value": "SETTING" ` ], "loadIndicator": "LoadIndicator.SPINNER" ` `
-        # `, ` "actionLabel": "Send Feedback", "onClick": ` "openLink": ` "url": "https:
-        # //example.com/feedback" ` ` ` ] ```
+        # The card's actions. Actions are added to the card's toolbar menu. Supports up
+        # to 10 `CardAction` items. [Google Workspace add-ons](https://developers.google.
+        # com/workspace/add-ons): For example, the following JSON constructs a card
+        # action menu with `Settings` and `Send Feedback` options: ``` "card_actions": [
+        # ` "actionLabel": "Settings", "onClick": ` "action": ` "functionName": "
+        # goToView", "parameters": [ ` "key": "viewType", "value": "SETTING" ` ], "
+        # loadIndicator": "LoadIndicator.SPINNER" ` ` `, ` "actionLabel": "Send Feedback"
+        # , "onClick": ` "openLink": ` "url": "https://example.com/feedback" ` ` ` ] ```
         # Corresponds to the JSON property `cardActions`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1CardAction>]
         attr_accessor :card_actions
@@ -3847,7 +3858,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :uncollapsible_widgets_count
       
-        # All the widgets in the section. Must contain at least one widget.
+        # All the widgets in the section. Must contain at least one widget. A card
+        # supports up to 100 widgets across all sections.
         # Corresponds to the JSON property `widgets`
         # @return [Array<Google::Apis::ChatV1::GoogleAppsCardV1Widget>]
         attr_accessor :widgets
@@ -4107,9 +4119,10 @@ module Google
         # @return [String]
         attr_accessor :control_type
       
-        # The name by which the switch widget is identified in a form input event. For
-        # details about working with form inputs, see [Receive form data](https://
-        # developers.google.com/workspace/chat/read-form-data).
+        # The name by which the switch widget is identified in a form input event (as
+        # the key in `CommonEventObject.form_inputs`). For details about working with
+        # form inputs, see [Receive form data](https://developers.google.com/workspace/
+        # chat/read-form-data).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4122,14 +4135,18 @@ module Google
         # @return [Google::Apis::ChatV1::GoogleAppsCardV1Action]
         attr_accessor :on_change_action
       
-        # When `true`, the switch is selected.
+        # When `true`, the switch is selected, and its `value` is included in `
+        # CommonEventObject.form_inputs[name].string_inputs.value`.
         # Corresponds to the JSON property `selected`
         # @return [Boolean]
         attr_accessor :selected
         alias_method :selected?, :selected
       
-        # The value entered by a user, returned as part of a form input event. For
-        # details about working with form inputs, see [Receive form data](https://
+        # The value returned in `CommonEventObject.form_inputs[name].string_inputs` when
+        # the switch is selected (`selected` is `true`). If `selected` is `true` and `
+        # value` is unset, an empty string (`""`) is returned in `string_inputs.value`.
+        # When `selected` is `false`, this value is omitted from `string_inputs.value`.
+        # For details about working with form inputs, see [Receive form data](https://
         # developers.google.com/workspace/chat/read-form-data).
         # Corresponds to the JSON property `value`
         # @return [String]
