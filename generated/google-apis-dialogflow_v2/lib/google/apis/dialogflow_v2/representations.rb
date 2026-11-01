@@ -8322,6 +8322,7 @@ module Google
       class GoogleCloudDialogflowV2InputAudioConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_encoding, as: 'audioEncoding'
           property :disable_interim_input_transcripts, as: 'disableInterimInputTranscripts'
           property :disable_no_speech_recognized_event, as: 'disableNoSpeechRecognizedEvent'
@@ -9680,6 +9681,7 @@ module Google
       class GoogleCloudDialogflowV2SpeechToTextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alternative_language_codes, as: 'alternativeLanguageCodes'
           property :audio_encoding, as: 'audioEncoding'
           property :disable_interim_input_transcripts, as: 'disableInterimInputTranscripts'
           property :enable_word_info, as: 'enableWordInfo'
