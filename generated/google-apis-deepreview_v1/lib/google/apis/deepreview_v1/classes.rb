@@ -356,6 +356,15 @@ module Google
         # @return [String]
         attr_accessor :model
       
+        # Optional. Reasoning effort level for model calls in the review pipeline.
+        # Defaults to `THINKING_LEVEL_MEDIUM` when omitted or `
+        # THINKING_LEVEL_UNSPECIFIED`. Non-`THINKING_LEVEL_MEDIUM` thinking levels
+        # require `gemini_api_key` when calling `CreateReview`; otherwise `CreateReview`
+        # returns `INVALID_ARGUMENT`.
+        # Corresponds to the JSON property `thinkingLevel`
+        # @return [String]
+        attr_accessor :thinking_level
+      
         # Optional. Review execution topology profile to use.
         # Corresponds to the JSON property `topology`
         # @return [String]
@@ -376,6 +385,7 @@ module Google
           @gemini_api_key = args[:gemini_api_key] if args.key?(:gemini_api_key)
           @gemini_api_key_set = args[:gemini_api_key_set] if args.key?(:gemini_api_key_set)
           @model = args[:model] if args.key?(:model)
+          @thinking_level = args[:thinking_level] if args.key?(:thinking_level)
           @topology = args[:topology] if args.key?(:topology)
           @user_prompt = args[:user_prompt] if args.key?(:user_prompt)
         end
@@ -546,8 +556,8 @@ module Google
       end
       
       # Response message for estimating what a review would cost. When the cost can't
-      # be estimated, for example because too few past reviews used the same model and
-      # depth, the costs are unset and `past_review_count` is 0.
+      # be estimated, for example because too few past reviews used the same model,
+      # depth, and thinking level, the costs are unset and `past_review_count` is 0.
       class EstimateReviewCostResponse
         include Google::Apis::Core::Hashable
       
