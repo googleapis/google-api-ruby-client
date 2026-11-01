@@ -4111,6 +4111,11 @@ module Google
         # @return [String]
         attr_accessor :restart_policy
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV1::SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Optional. Email address of the IAM service account associated with the
         # Instance. The service account represents the identity of the running container,
         # and determines what permissions the Instance has. If not provided, the
@@ -4134,6 +4139,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @restart_policy = args[:restart_policy] if args.key?(:restart_policy)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @volumes = args[:volumes] if args.key?(:volumes)
         end
@@ -5587,6 +5593,11 @@ module Google
         # @return [String]
         attr_accessor :runtime_class_name
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV1::SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Email address of the IAM service account associated with the revision of the
         # service. The service account represents the identity of the running revision,
         # and determines what permissions the revision has. If not provided, the
@@ -5619,6 +5630,7 @@ module Google
           @image_pull_secrets = args[:image_pull_secrets] if args.key?(:image_pull_secrets)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
           @runtime_class_name = args[:runtime_class_name] if args.key?(:runtime_class_name)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
@@ -5858,6 +5870,85 @@ module Google
         # Update properties of this object
         def update!(**args)
           @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Configuration for sandboxes.
+      class SandboxConfiguration
+        include Google::Apis::Core::Hashable
+      
+        # Required. Sandbox templates that can be launched through the `sandbox` CLI.
+        # Corresponds to the JSON property `templates`
+        # @return [Array<Google::Apis::RunV1::SandboxTemplate>]
+        attr_accessor :templates
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @templates = args[:templates] if args.key?(:templates)
+        end
+      end
+      
+      # Template for a single sandbox.
+      class SandboxTemplate
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Arguments to the entrypoint. The docker image's CMD is used if this
+        # is not provided.
+        # Corresponds to the JSON property `args`
+        # @return [Array<String>]
+        attr_accessor :args
+      
+        # Optional. Entrypoint array. Not executed within a shell. The docker image's
+        # ENTRYPOINT is used if this is not provided.
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        # Optional. List of environment variables to set in the sandbox.
+        # Corresponds to the JSON property `env`
+        # @return [Array<Google::Apis::RunV1::EnvVar>]
+        attr_accessor :env
+      
+        # Required. Name of the container image in Dockerhub or Artifact Registry. If
+        # the host is not provided, Dockerhub is assumed.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Optional. Volume to mount into the container's filesystem.
+        # Corresponds to the JSON property `volumeMounts`
+        # @return [Array<Google::Apis::RunV1::VolumeMount>]
+        attr_accessor :volume_mounts
+      
+        # Optional. Container's working directory. If not specified, the container
+        # runtime's default will be used, which might be configured in the container
+        # image.
+        # Corresponds to the JSON property `workingDir`
+        # @return [String]
+        attr_accessor :working_dir
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @args = args[:args] if args.key?(:args)
+          @command = args[:command] if args.key?(:command)
+          @env = args[:env] if args.key?(:env)
+          @image = args[:image] if args.key?(:image)
+          @name = args[:name] if args.key?(:name)
+          @volume_mounts = args[:volume_mounts] if args.key?(:volume_mounts)
+          @working_dir = args[:working_dir] if args.key?(:working_dir)
         end
       end
       
@@ -6559,6 +6650,11 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :node_selector
       
+        # Configuration for sandboxes.
+        # Corresponds to the JSON property `sandboxes`
+        # @return [Google::Apis::RunV1::SandboxConfiguration]
+        attr_accessor :sandboxes
+      
         # Optional. Email address of the IAM service account associated with the task of
         # a job execution. The service account represents the identity of the running
         # task, and determines what permissions the task has. If not provided, the task
@@ -6590,6 +6686,7 @@ module Google
           @containers = args[:containers] if args.key?(:containers)
           @max_retries = args[:max_retries] if args.key?(:max_retries)
           @node_selector = args[:node_selector] if args.key?(:node_selector)
+          @sandboxes = args[:sandboxes] if args.key?(:sandboxes)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
           @volumes = args[:volumes] if args.key?(:volumes)
