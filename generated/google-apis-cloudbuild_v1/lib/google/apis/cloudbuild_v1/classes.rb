@@ -1015,6 +1015,15 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
+        # Optional. Ranked list (earlier items have higher priority) of Machine Series
+        # to consider when provisioning Worker VMs. A concrete machine type will be
+        # selected based on machine availability in the given region. This field must be
+        # empty for the Build to be eligible to be paired with a pre-provisioned worker
+        # VM.
+        # Corresponds to the JSON property `rankedMachineSeries`
+        # @return [Array<String>]
+        attr_accessor :ranked_machine_series
+      
         # Requested verifiability options.
         # Corresponds to the JSON property `requestedVerifyOption`
         # @return [String]
@@ -1082,6 +1091,7 @@ module Google
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @pool = args[:pool] if args.key?(:pool)
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @ranked_machine_series = args[:ranked_machine_series] if args.key?(:ranked_machine_series)
           @requested_verify_option = args[:requested_verify_option] if args.key?(:requested_verify_option)
           @resolved_worker_release = args[:resolved_worker_release] if args.key?(:resolved_worker_release)
           @secret_env = args[:secret_env] if args.key?(:secret_env)
@@ -4596,6 +4606,13 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Optional. Ranked list (earlier items have higher priority) of Machine Series
+        # to consider when provisioning Worker VMs. A concrete machine type will be
+        # selected based on machine availability in the given region.
+        # Corresponds to the JSON property `rankedMachineSeries`
+        # @return [Array<String>]
+        attr_accessor :ranked_machine_series
+      
         # Optional. Option to specify which release or release channel (rapid|regular|
         # stable) to use to run this build.
         # Corresponds to the JSON property `workerRelease`
@@ -4611,6 +4628,7 @@ module Google
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @enable_nested_virtualization = args[:enable_nested_virtualization] if args.key?(:enable_nested_virtualization)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @ranked_machine_series = args[:ranked_machine_series] if args.key?(:ranked_machine_series)
           @worker_release = args[:worker_release] if args.key?(:worker_release)
         end
       end
