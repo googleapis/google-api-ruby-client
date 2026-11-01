@@ -1,5 +1,9 @@
 # Release history for google-apis-devicerun_v1alpha
 
+### v0.4.0 (2026-11-01)
+
+* Regenerated from discovery document revision 20261028
+
 ### v0.3.0 (2026-10-21)
 
 * Regenerated from discovery document revision 20261019
