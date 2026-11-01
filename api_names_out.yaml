@@ -433206,8 +433206,13 @@
 "/solar:v1/BuildingInsights/solarPotential": solar_potential
 "/solar:v1/BuildingInsights/statisticalArea": statistical_area
 "/solar:v1/BuildingInsightsDetectedArrays": building_insights_detected_arrays
+"/solar:v1/BuildingInsightsDetectedArrays/arrays": arrays
+"/solar:v1/BuildingInsightsDetectedArrays/arrays/array": array
 "/solar:v1/BuildingInsightsDetectedArrays/detectionStatus": detection_status
 "/solar:v1/BuildingInsightsDetectedArrays/latestCaptureDate": latest_capture_date
+"/solar:v1/BuildingInsightsDetectedArraysSolarArray": building_insights_detected_arrays_solar_array
+"/solar:v1/BuildingInsightsDetectedArraysSolarArray/polygonGeojson": polygon_geojson
+"/solar:v1/BuildingInsightsDetectedArraysSolarArray/polygonGeojson/polygon_geojson": polygon_geojson
 "/solar:v1/CashPurchaseSavings": cash_purchase_savings
 "/solar:v1/CashPurchaseSavings/outOfPocketCost": out_of_pocket_cost
 "/solar:v1/CashPurchaseSavings/paybackYears": payback_years
