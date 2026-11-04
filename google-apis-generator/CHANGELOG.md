@@ -1,5 +1,11 @@
 # Release History
 
+### 0.19.3 (2026-11-04)
+
+#### Documentation
+
+* link to the published Ruby version support policy ([#28300](https://github.com/googleapis/google-api-ruby-client/issues/28300)) 
+
 ### 0.19.2 (2026-11-01)
 
 #### Documentation
