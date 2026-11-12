@@ -130,7 +130,7 @@ def find_changed_directories files
     when %r{^(generated/[^/]+)/}
       dirs << Regexp.last_match[1]
     when %r{^google-apis-core/}
-      dirs << "google-apis-core" << "generated/google-apis-discovery_v1"
+      dirs << "google-apis-core" << "generated/google-apis-discovery_v1" << "google-apis-generator"
     when %r{^google-apis-generator/}
       dirs << "google-apis-generator"
     end
