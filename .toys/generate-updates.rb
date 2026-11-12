@@ -193,6 +193,7 @@ def regen_single_gem api, version
       "--verbose"
     ]
     result = exec cmd, in: [:string, "a\n"], out: [:capture, :inherit], err: [:capture, :inherit], e: false
+    exec ["git", "checkout", "--", "Gemfile.lock"]
     unless result.success?
       err_detail = result.captured_err.to_s.strip
       err_detail = result.captured_out.to_s.strip if err_detail.empty?
@@ -215,6 +216,7 @@ def clean_old_gems
       "--verbose"
     ]
     result = exec cmd, out: [:capture, :inherit], err: [:capture, :inherit], e: false
+    exec ["git", "checkout", "--", "Gemfile.lock"]
     unless result.success?
       err_detail = result.captured_err.to_s.strip
       err_detail = result.captured_out.to_s.strip if err_detail.empty?
@@ -227,7 +229,39 @@ def clean_old_gems
 end
 
 def bundle_generator
-  Dir.chdir "#{context_directory}/google-apis-generator" do
-    exec ["bundle", "install"]
+  branch_name = "gen/generator-lockfile-#{@timestamp}"
+  commit_message = "chore(generator): refresh Gemfile.lock"
+  if git_remote && open_pr_exists?(commit_message)
+    puts "Pull request already exists for refreshing google-apis-generator/Gemfile.lock", :yellow
+    Dir.chdir "#{context_directory}/google-apis-generator" do
+      exec ["bundle", "install"]
+      exec ["git", "checkout", "--", "Gemfile.lock"]
+    end
+    return
+  end
+  approval_message = approval_token ? "Rubber-stamped generator lockfile refresh!" : nil
+  labels = approval_token ? ["automerge"] : nil
+  result = yoshi_pr_generator.capture enabled: !git_remote.nil?,
+                                      remote: git_remote,
+                                      branch_name: branch_name,
+                                      commit_message: commit_message,
+                                      labels: labels,
+                                      auto_approve: approval_message,
+                                      approval_token: approval_token do
+    Dir.chdir "#{context_directory}/google-apis-generator" do
+      exec ["bundle", "install"]
+      exec ["git", "checkout", "--", "Gemfile.lock"] unless git_remote
+    end
+  end
+  case result
+  when Integer
+    puts "Opened pull request #{result} for refreshing google-apis-generator/Gemfile.lock", :green, :bold
+  when :unchanged
+    puts "No changes for google-apis-generator/Gemfile.lock", :magenta
+  when :aborted
+    puts "Error when refreshing google-apis-generator/Gemfile.lock", :red, :bold
+    @errors << "google-apis-generator/Gemfile.lock"
+  else
+    puts "Installed bundle for google-apis-generator", :cyan
   end
 end
