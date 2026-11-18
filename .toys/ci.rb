@@ -56,6 +56,15 @@ def run
     dirs.each { |dir| puts "  #{dir}" }
   end
 
+  # When a PR deletes a gem, its files show up as changed but its directory
+  # no longer exists, so there is nothing to test there.
+  removed_dirs = dirs.reject { |dir| Dir.exist? dir }
+  unless removed_dirs.empty?
+    puts "Skipping removed gem directories:", :bold
+    removed_dirs.each { |dir| puts "  #{dir}" }
+    dirs -= removed_dirs
+  end
+
   if dirs.include? 'google-apis-core'
     puts 'Installing local google-apis-core changes...'
     Dir.chdir 'google-apis-core' do
