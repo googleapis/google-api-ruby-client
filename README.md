@@ -25,8 +25,8 @@ drive.authorization = ... # See Googleauth or Signet libraries
 
 # Search for files in Drive (first page only)
 files = drive.list_files(q: "title contains 'finances'")
-files.items.each do |file|
-  puts file.title
+files.files.each do |file|
+  puts file.name
 end
 
 # Upload a file
