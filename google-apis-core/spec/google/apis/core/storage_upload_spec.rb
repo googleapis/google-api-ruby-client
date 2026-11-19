@@ -533,4 +533,115 @@ RSpec.describe Google::Apis::Core::StorageUploadCommand do
     end
   end
 
+  context 'when refreshing idempotency token' do
+    let(:file) { StringIO.new("Hello world") }
+
+    it 'does not set token if add_invocation_id_header is false' do
+      command.options.add_invocation_id_header = false
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'sets token if add_invocation_id_header is true' do
+      command.options.add_invocation_id_header = true
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).not_to be_nil
+    end
+
+    it 'generates a new token on subsequent calls' do
+      command.options.add_invocation_id_header = true
+      command.send(:refresh_idempotency_token)
+      token1 = command.header['X-Goog-Gcs-Idempotency-Token']
+      
+      command.send(:refresh_idempotency_token)
+      token2 = command.header['X-Goog-Gcs-Idempotency-Token']
+      
+      expect(token1).not_to eq(token2)
+    end
+
+    it 'does not overwrite existing token if already present in options.header' do
+      command.options.add_invocation_id_header = true
+      command.options.header = { 'X-Goog-Gcs-Idempotency-Token' => 'custom-token' }
+      command.send(:refresh_idempotency_token)
+      expect(command.header['X-Goog-Gcs-Idempotency-Token']).to be_nil
+    end
+
+    it 'calls refresh_idempotency_token in initiate_resumable_upload and send_upload_command' do
+      allow(command).to receive(:refresh_idempotency_token).and_call_original
+      
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .to_return(headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK))
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .to_return(body: %(OK))
+
+      command.execute(client)
+      
+      expect(command).to have_received(:refresh_idempotency_token).twice
+    end
+
+    it 'calls refresh_idempotency_token in check_resumable_upload' do
+      allow(command).to receive(:refresh_idempotency_token).and_call_original
+      
+      upload_id = 'TestId'
+      upload_url = "https://www.googleapis.com/zoo/animals?uploadType=resumable&upload_id=#{upload_id}"
+      
+      stub_request(:put, upload_url)
+        .with(
+          headers: {
+            'Content-Length' => '0',
+            'Content-Range' => "bytes */11"
+          }
+        )
+        .to_return(status: 200, headers: { 'Range' => 'bytes=0-10' })
+
+      stub_request(:put, upload_url)
+        .with(headers: { 'Content-Range' => "bytes */11" })
+        .to_return(status: 200)
+        
+      command.upload_id = upload_id
+      
+      command.execute(client)
+      
+      expect(command).to have_received(:refresh_idempotency_token).at_least(:once)
+    end
+
+    it 'uses different tokens for distinct RPCs and keeps same token across retries' do
+      command.options.add_invocation_id_header = true
+      command.options.retries = 1
+
+      post_tokens = []
+      put_tokens = []
+
+      stub_request(:post, 'https://www.googleapis.com/zoo/animals?uploadType=resumable')
+        .to_return do |request|
+          post_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { headers: { 'Location' => 'https://www.googleapis.com/zoo/animals' }, body: %(OK) }
+        end
+        
+      stub_request(:put, 'https://www.googleapis.com/zoo/animals')
+        .to_return do |request|
+          put_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { status: 503, body: %(Service Unavailable) }
+        end
+        .then
+        .to_return do |request|
+          put_tokens << request.headers['X-Goog-Gcs-Idempotency-Token']
+          { status: 200, body: %(OK) }
+        end
+
+      command.execute(client)
+
+      expect(post_tokens.length).to eq(1)
+      expect(put_tokens.length).to eq(2)
+      
+      expect(post_tokens[0]).not_to be_nil
+      expect(put_tokens[0]).not_to be_nil
+      
+      #distinct RPC steps have different tokens
+      expect(post_tokens[0]).not_to eq(put_tokens[0])
+    
+      #same RPC step keeps same token across retries
+      expect(put_tokens[0]).to eq(put_tokens[1])
+    end
+  end
 end
